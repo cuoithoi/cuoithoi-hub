@@ -1,0 +1,45 @@
+.modal {
+  position: fixed;
+  z-index: 5;
+  visibility: hidden;
+  width: 100vh;
+}
+.modal.active {
+  visibility: visible;
+  transform: all 2s linear;
+  opacity: 1;
+  top: 0;
+}
+.modalContainer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #333;
+  opacity: 0.3;
+  z-index: 5;
+}
+.modalBlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100vw;
+  position: relative;
+  height: 100vh;
+}
+.modalContent {
+  width: 80%;
+  background-color: white;
+  z-index: 5;
+  position: relative;
+  margin: auto;
+}
+.closeModalIcon {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.25rem;
+  z-index: 10;
+  width: 2.4rem;
+}
