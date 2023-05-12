@@ -142,7 +142,7 @@ const Mypage = () => {
               label={Languages.buttonText.createTypeTC}
               buttonStyle={BUTTON_STYLES.PINK}
               width={100}
-              textStyle={BUTTON_STYLES.PINK}
+              textStyle={BUTTON_STYLES.WHITE}
               isLowerCase
               onPress={navigateLetterpage}
             />
@@ -190,7 +190,7 @@ const Mypage = () => {
                       <Button
                         label={Languages.buttonText.edit}
                         buttonStyle={BUTTON_STYLES.BLUE}
-                        textStyle={BUTTON_STYLES.PINK}
+                        textStyle={BUTTON_STYLES.WHITE}
                         autocenter
                         width={60}
                         isLowerCase
@@ -199,7 +199,7 @@ const Mypage = () => {
                       <Button
                         label={Languages.buttonText.seeBefore}
                         buttonStyle={BUTTON_STYLES.ORRANGE}
-                        textStyle={BUTTON_STYLES.PINK}
+                        textStyle={BUTTON_STYLES.WHITE}
                         autocenter
                         width={60}
                         isLowerCase
@@ -208,7 +208,7 @@ const Mypage = () => {
                       <Button
                         label={Languages.buttonText.copylink}
                         buttonStyle={BUTTON_STYLES.DARKMODE}
-                        textStyle={BUTTON_STYLES.PINK}
+                        textStyle={BUTTON_STYLES.WHITE}
                         autocenter
                         width={60}
                         isLowerCase
@@ -218,7 +218,7 @@ const Mypage = () => {
                       <Button
                         label={Languages.buttonText.payment}
                         buttonStyle={BUTTON_STYLES.PINK}
-                        textStyle={BUTTON_STYLES.PINK}
+                        textStyle={BUTTON_STYLES.WHITE}
                         autocenter
                         width={60}
                         isLowerCase
@@ -227,7 +227,7 @@ const Mypage = () => {
                       <Button
                         label={Languages.buttonText.dowloadTc}
                         buttonStyle={BUTTON_STYLES.PINK}
-                        textStyle={BUTTON_STYLES.PINK}
+                        textStyle={BUTTON_STYLES.WHITE}
                         autocenter
                         width={60}
                         isLowerCase
@@ -236,7 +236,7 @@ const Mypage = () => {
                       <Button
                         label={Languages.buttonText.dowloadClient}
                         buttonStyle={BUTTON_STYLES.BLUE}
-                        textStyle={BUTTON_STYLES.PINK}
+                        textStyle={BUTTON_STYLES.WHITE}
                         autocenter
                         width={75}
                         isLowerCase
@@ -245,7 +245,7 @@ const Mypage = () => {
                       <Button
                         label={Languages.buttonText.checkGuest}
                         buttonStyle={BUTTON_STYLES.LIGHT_BLUE}
-                        textStyle={BUTTON_STYLES.PINK}
+                        textStyle={BUTTON_STYLES.WHITE}
                         autocenter
                         width={70}
                         isLowerCase
@@ -254,7 +254,7 @@ const Mypage = () => {
                       <Button
                         label={Languages.buttonText.delete}
                         buttonStyle={BUTTON_STYLES.DARKMODE}
-                        textStyle={BUTTON_STYLES.PINK}
+                        textStyle={BUTTON_STYLES.WHITE}
                         autocenter
                         width={60}
                         isLowerCase
@@ -275,7 +275,7 @@ const Mypage = () => {
               <Button
                 label={Languages.buttonText.createTypeTC}
                 buttonStyle={BUTTON_STYLES.PINK}
-                textStyle={BUTTON_STYLES.PINK}
+                textStyle={BUTTON_STYLES.WHITE}
                 isLowerCase
                 onPress={navigateLetterpage}
               />
