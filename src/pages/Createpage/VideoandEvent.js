@@ -1,8 +1,8 @@
 import { MyTextInput } from "@/components/input";
-import React, { forwardRef, useCallback, useImperativeHandle, useMemo, useRef, useState } from "react";
+import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from "react";
 import Languages from '@/commons/Languages'
 import { SelectWarningTemplate, fiedlsCreatePage } from "@/commons/FieldsDataObj";
-import { BUTTON_STYLES, CheckParams, Convert, EventOfProgram, INPUT_FIELDS } from "@/commons/Constant.ts";
+import { BUTTON_STYLES, CheckParams, Convert, EventOfProgram, INPUT_FIELDS, itemLocal } from "@/commons/Constant.ts";
 import { FaCalendar, FaLink } from "react-icons/fa";
 import { Panel } from "@/components/panel";
 import FormValidate from "@/utils/FormValidate";
@@ -10,6 +10,7 @@ import Popup from "@/components/modal/Popup";
 import { RadioButton } from "@/components/RadioButton";
 import { MyTextArea } from "@/components/textarea";
 import { Button } from "@/components/button";
+import { getItemFromLocalStorage } from "@/utils/localStorage";
 
 const VideoandEvent = forwardRef(({ }, ref) => {
 
@@ -19,7 +20,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
 
     }));
 
-    const [value] = useState(fiedlsCreatePage)
+    const [value, setValue] = useState(fiedlsCreatePage)
     const [openPanel, setOpenPanel] = useState(true)
     const [radioWarnTemplate, setRadioWarnTemplate] = useState('none')
     const [warnTemp, setWarnTemp] = useState('')
@@ -33,6 +34,22 @@ const VideoandEvent = forwardRef(({ }, ref) => {
     const refTimeToMusic = useRef(null)
     const refWarn = useRef(null)
     const refModal = useRef(null)
+    const itemLocal = getItemFromLocalStorage('createLeter')
+    useEffect(() => {
+        if (itemLocal) {
+            itemLocal.videoLink && (value.videoLink = itemLocal.videoLink)
+            itemLocal.eventOfProgram.timeToWellcome && (value.eventOfProgram.timeToWellcome = itemLocal.eventOfProgram.timeToWellcome)
+            itemLocal.eventOfProgram.timeToCelebrate && (value.eventOfProgram.timeToCelebrate = itemLocal.eventOfProgram.timeToCelebrate)
+            itemLocal.eventOfProgram.timeToDinner && (value.eventOfProgram.timeToDinner = itemLocal.eventOfProgram.timeToDinner)
+            itemLocal.eventOfProgram.timeToMusic && (value.eventOfProgram.timeToMusic = itemLocal.eventOfProgram.timeToMusic)
+        } else {
+            value.videoLink = ''
+            value.eventOfProgram.timeToWellcome = ''
+            value.eventOfProgram.timeToCelebrate = ''
+            value.eventOfProgram.timeToDinner = ''
+            value.eventOfProgram.timeToMusic = ''
+        }
+    }, [])
 
     const radioChangeHandlerWarnTemplate = (text, value) => {
         setRadioWarnTemplate(value)
@@ -56,7 +73,6 @@ const VideoandEvent = forwardRef(({ }, ref) => {
         refWarn.current?.setErrorMsg(errMsgWarn)
 
         if (`${errMsgVideoLink}${errMsgTimeToWellcome}${errMsgTimeToCelebrate}${errMsgTimeToDinner}${errMsgTimeToMusic}${errMsgWarn}`.length === 0) {
-            console.log('VideoandEvent')
             setOpenPanel(true)
             return true
         }
@@ -70,23 +86,55 @@ const VideoandEvent = forwardRef(({ }, ref) => {
         switch (name) {
 
             case INPUT_FIELDS.videoLink:
-                value.videoLink = e;
+                value.videoLink = e
+                setValue(prevValues => ({
+                    ...prevValues,
+                    videoLink: e
+                }));
                 break
 
             case EventOfProgram.timeToWellcome:
-                value.eventOfProgram.timeToWellcome = e;
+                value.eventOfProgram.timeToWellcome = e
+                setValue(prevValues => ({
+                    ...prevValues,
+                    eventOfProgram: {
+                        ...prevValues.eventOfProgram,
+                        timeToWellcome: e
+                    }
+                }));
                 break
 
             case EventOfProgram.timeToCelebrate:
-                value.eventOfProgram.timeToCelebrate = e;
+                value.eventOfProgram.timeToCelebrate = e
+                setValue(prevValues => ({
+                    ...prevValues,
+                    eventOfProgram: {
+                        ...prevValues.eventOfProgram,
+                        timeToCelebrate: e
+                    }
+                }));
                 break
 
             case EventOfProgram.timeToDinner:
-                value.eventOfProgram.timeToDinner = e;
+                value.eventOfProgram.timeToDinner = e
+                setValue(prevValues => ({
+                    ...prevValues,
+                    eventOfProgram: {
+                        ...prevValues.eventOfProgram,
+                        timeToDinner: e
+                    }
+                }));
                 break
 
             case EventOfProgram.timeToMusic:
-                value.eventOfProgram.timeToMusic = e;
+                value.eventOfProgram.timeToMusic = e
+                setValue(prevValues => ({
+                    ...prevValues,
+                    eventOfProgram: {
+                        ...prevValues.eventOfProgram,
+                        timeToMusic: e
+                    }
+                }));
                 break
 
             default:
@@ -113,6 +161,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
             isIcon,
             icon,
             inputStyle,
+            values
         ) => {
 
 
@@ -131,6 +180,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
                         onChangeText={(e) => onChangeText(e.target.value, name)}
                         onKeyPress={onKeyPress}
                         inputStyle={inputStyle}
+                        value={values}
                     />
                 </div>
             )
@@ -217,7 +267,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
                 <div className='video_event_wedding'>
                     <div className='fullwidth_input_colum'>
                         <div className='single_hor_input'>
-                            {renderInput(refVideoLink, Languages.text.linkVideo, Languages.text.linkVideo, INPUT_FIELDS.videoLink, 'text', 200, true, <FaLink />)}
+                            {renderInput(refVideoLink, Languages.text.linkVideo, Languages.text.linkVideo, INPUT_FIELDS.videoLink, 'text', 200, true, <FaLink />, '', value.videoLink)}
                         </div>
                     </div>
                 </div>
@@ -231,7 +281,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
                             {renderInput('', '', Languages.text.welcomeGuest, '', 'text', 200, true, <FaCalendar />, 'disable')}
                         </div>
                         <div className='half_row_hor_input'>
-                            {renderInput(refTimeToWellcome, '', '', EventOfProgram.timeToWellcome, 'time', 200, false)}
+                            {renderInput(refTimeToWellcome, '', '', EventOfProgram.timeToWellcome, 'time', 200, false, '', '', value.eventOfProgram.timeToWellcome)}
                         </div>
                     </div>
 
@@ -240,7 +290,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
                             {renderInput('', '', Languages.text.celebrate, '', 'text', 200, true, <FaCalendar />, 'disable')}
                         </div>
                         <div className='half_row_hor_input'>
-                            {renderInput(refTimeToCelebrate, '', '', EventOfProgram.timeToCelebrate, 'time', 200, false)}
+                            {renderInput(refTimeToCelebrate, '', '', EventOfProgram.timeToCelebrate, 'time', 200, false, '', '', value.eventOfProgram.timeToCelebrate)}
                         </div>
                     </div>
 
@@ -249,7 +299,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
                             {renderInput('', '', Languages.text.dinner, '', 'text', 200, true, <FaCalendar />, 'disable')}
                         </div>
                         <div className='half_row_hor_input'>
-                            {renderInput(refTimeToDinner, '', '', EventOfProgram.timeToDinner, 'time', 200, false)}
+                            {renderInput(refTimeToDinner, '', '', EventOfProgram.timeToDinner, 'time', 200, false, '', '', value.eventOfProgram.timeToDinner)}
                         </div>
                     </div>
 
@@ -258,7 +308,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
                             {renderInput('', '', Languages.text.music, '', 'text', 200, true, <FaCalendar />, 'disable')}
                         </div>
                         <div className='half_row_hor_input'>
-                            {renderInput(refTimeToMusic, '', '', EventOfProgram.timeToMusic, 'time', 200, false)}
+                            {renderInput(refTimeToMusic, '', '', EventOfProgram.timeToMusic, 'time', 200, false, '', '', value.eventOfProgram.timeToMusic)}
                         </div>
                     </div>
 

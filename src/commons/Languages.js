@@ -33,6 +33,8 @@ const Languages = {
     notTop: 'Thứ',
     death: 'Đã mất',
     contentInvite: 'Nhập nội dung lời mời',
+    address: 'Địa chỉ',
+    note: 'Ghi chú thêm (Ví dụ: Giao giờ hành chính)'
   },
   common: {
     cancel: 'Hủy bỏ',
@@ -63,9 +65,10 @@ const Languages = {
     delete: 'Xoá thiệp',
     edit: 'Chỉnh sửa',
     invitationTemplate: 'Lời mời mẫu',
-
     titleTemplate: 'Tiêu đề mẫu',
     saveSettings: 'LƯU CÀI ĐẶT',
+    success: 'Xác nhận',
+    svDetails: 'Xem chi tiết dịch vụ'
   },
   errorMsg: {
     noInternet: 'Kết nối bị gián đoạn, vui lòng thử lại!',
@@ -81,11 +84,9 @@ const Languages = {
   text: {
     verifyHeader: 'Xác thực OTP gửi về Email',
     textBanner: 'Chia sẻ khoảnh khắc đặc biệt trong cuộc sống!',
+    textTinhte: '"Chạm tinh tế - Khắc thương yêu"',
     textHeadTC:
       'Tạo thiệp dễ dàng, chia sẻ nhanh chóng, & sửa đổi không giới hạn!',
-    creatContent:
-      'Praesent bibendum, est nec gravida fermentum, massa lacus posuere ex, sed varius ante nibh vitae eros. Cras faucibus pretium enim, sit amet vulputate eros iaculis a. Morbi placerat in est vel rutrum.',
-    chooseDs: 'Chọn thiết kế & làm thiệp mời của riêng bạn!',
     showFullIf: 'Hiển thị đầy đủ thông tin:',
     address: 'Địa điểm diễn ra lễ cưới',
     albumWed: 'Album ảnh cưới',
@@ -195,7 +196,6 @@ const Languages = {
     effectBg: 'Chọn hiệu ứng',
     packageProduct: 'BẠN MUỐN MUA GÓI SẢN PHẨM NÀO?',
     packagePro: 'Chọn gói sản phẩm muốn mua',
-
     anotherPro: 'Sản phẩm khác',
     referralCode: 'Mã giới thiệu',
     changePlan: 'Có thể thay đổi plan theo ý muốn',
@@ -205,7 +205,22 @@ const Languages = {
     nologin: 'Vui lòng đăng nhập',
     nologinContent: 'Vui lòng đăng nhập hoặc đăng ký tài khoản để thực hiện tính năng này. Xin cảm ơn',
     managerletter: 'Quản lý thiệp cưới',
-    productNumber: 'Product Number'
+    productNumber: 'Product Number',
+    success: 'Thành Công',
+    happysuccess: 'Xin chúc mừng bạn đã tạo thiệp cưới thành công',
+    confimSuccess: 'Xác nhận thông tin',
+    ReceiverPerson: 'Thông tin người nhận',
+    servicesInfo: 'Thông tin dịch vụ',
+    packageSer: 'Gói dịch vụ',
+    total: 'Tổng',
+    free14day: '(Bạn có thể sử dụng miễn phí thiệp trong vòng 14 ngày)',
+    payServices: 'Để thanh toán dịch vụ, vui lòng liên hệ tới bộ phận chăm sóc khách hàng',
+    draff: 'Lưu bản nháp thành công',
+    noneToken: 'Phiên đăng nhập hết hạn vui lòng đăng nhập lại để sử dụng tính năng này',
+    noletter: 'Vui lòng tạo thiệp trước',
+    noletterContent: 'Vui lòng tạo thiệp trước khi thực hiện tính năng này. Xin cảm ơn',
+    mobileWeddingCard: 'Thiệp cưới di động của riêng bạn Chỉ với 5 phút, tạo thiệp mời thật dễ dàng!',
+    aFewClicks: 'Hãy lựa chọn mẫu thiệp, tải lên ảnh cưới và chỉnh sửa nội dung chỉ với vài thao tác nhấn chuột đơn giản.'
   },
   errorMsg: {
     noInternet: 'Kết nối bị gián đoạn, vui lòng thử lại!',
@@ -267,6 +282,8 @@ const Languages = {
     errEmptyBirthday: '01/01/1920',
     errKYC: 'Vui lòng xác thực CMT/CCCD để thực hiện việc rút tiền',
     notKYc: ' chưa xác thực CMT/CCCD',
+    errorSuccess: 'Hệ thống quá tải vui lòng thử lại trong ít phút nữa',
+    success: 'Quá trình tạo thiệp cưới thành công. Ấn tiếp tục để kích hoạt'
   },
 }
 

@@ -31,7 +31,9 @@
 .grayButton {
   background: var(--gray-color-2);
 }
-
+.pink {
+  color: var(--color-hover);
+}
 .white {
   color: var(--white-color);
 }

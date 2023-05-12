@@ -1,7 +1,7 @@
 import React from 'react'
 import { AnimationOnScroll } from 'react-animation-on-scroll'
 import Hero from '../components/letter-page/Hero'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import Invitation from '../components/letter-page/Invitation'
 import TimeLocation from '../components/letter-page/TimeLocation'
 import Schedule from '../components/letter-page/Schedule'
@@ -15,16 +15,20 @@ import Sidebar from '../components/letter-page/sub-comp/Sidebar'
 import YoutubeVideo from '../components/letter-page/YoutubeVideo'
 import Snowfall from 'react-snowfall'
 import snowImage from '../assets/home-image/snow.png'
+import leaveEffect from '../assets/home-image/leaveEffect.png'
+import peachEffect from '../assets/home-image/peachEffect.png'
+import snowWhiteEffect from '../assets/home-image/snowWhiteEffect.png'
 import NavButton from '../components/letter-page/sub-comp/NavButton'
 import Message from '@/components/letter-page/Message'
 import Response from '@/components/letter-page/Response'
 import Gallery1 from '@/components/letter-page/Gallery-1'
 import LetterEnvelop from '@/components/letter-page/LetterEnvelop'
+import styles from './LetterPage.module.css'
 const LetterPage = () => {
   const snowImg = document.createElement('img')
-  snowImg.src = snowImage
-  snowImg.width = 20
-  const images = [snowImg]
+  // snowImg.src = leaveEffect
+  // snowImg.width = 20
+  let images
   const [isOpen, setIsOpen] = useState(false)
   const [isLetterOpen, setIsLetterOpen] = useState(false)
   const [modalContent, setModalContent] = useState('')
@@ -38,9 +42,29 @@ const LetterPage = () => {
       document.body.style.overflow = 'unset'
     }
   }, [isOpen])
+  useEffect(() => {
+    snowImg.src = leaveEffect
+    // switch (bgEffect) {
+    //   case 'LEAVE_EFFECT':
+    //     break
+    //   default:
+    //     break
+    // }
+    images = [snowImg]
+  }, [])
+  const bgColor = useMemo(() => {
+    let style = ''
 
+    if (1) {
+      style = styles.pinkBg
+    }
 
+    if (0) {
+      style = styles.grayBg
+    }
 
+    return style
+  }, [])
   if (!isLetterOpen) {
     return (
       <div className='w-screen h-screen m-0 p-0 flex items-center justify-center bg-main'>
@@ -52,11 +76,15 @@ const LetterPage = () => {
     )
   }
   return (
-    <div className='letter-wrapper '>
+    <div className={`letter-wrapper ${bgColor}`}>
       <AnimationOnScroll
-        animateIn="animate__zoomInDown" offset={10} animatePreScroll={false} duration={3} delay={0}
+        animateIn='animate__zoomInDown'
+        offset={10}
+        animatePreScroll={false}
+        duration={3}
+        delay={0}
       >
-        <div className='letter-layout'>
+        <div className={`letter-layout ${bgColor}`}>
           <Snowfall
             color='#E29C67'
             snowflakeCount={100}
@@ -67,10 +95,9 @@ const LetterPage = () => {
               zIndex: 11,
             }}
             images={images}
-            radius={[2, 15]}
+            radius={[1, 6]}
           />
           <NavButton setIsNavOpen={setIsNavOpen} />
-
 
           <Hero setIsNavOpen={setIsNavOpen} />
           <Invitation />
@@ -98,7 +125,7 @@ const LetterPage = () => {
         index={index}
         numberImage={numberImage}
       />
-    </div >
+    </div>
   )
 }
 

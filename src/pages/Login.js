@@ -19,7 +19,6 @@ import { Alias } from '@/commons/Constant.ts'
 import Loading from '@/components/Loading'
 import { signinUser } from '@/features/auth/authSlice'
 import { Input } from '@/components/input/Input'
-import { verifyOTP } from '@/features/auth/authSlice'
 // initial state
 const schema = yup.object().shape({
   password: yup
@@ -33,7 +32,7 @@ const schema = yup.object().shape({
 })
 
 const Login = () => {
-  const { hash, userId, user } = useSelector((store) => store.auth)
+  const { user } = useSelector((store) => store.auth)
   const navigate = useNavigate()
   const dispatch = useDispatch()
   // /////// handle redirect when signin success//////////

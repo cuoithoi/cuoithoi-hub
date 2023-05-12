@@ -82,7 +82,7 @@ export const Button = ({
 
     switch (textStyle) {
       case BUTTON_STYLES.PINK:
-        color = styles.white
+        color = styles.pink
         break
       case BUTTON_STYLES.WHITE:
         color = styles.white

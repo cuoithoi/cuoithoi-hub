@@ -1,45 +1,64 @@
-.container{
+.container {
     padding: 40px 0;
+    display: flex;
+    height: 100%;
+    align-items: center;
 }
-.blockUIimage{
+
+.blockUIimage {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.blockUIimage img{
+
+.blockUIimage img {
     flex: 1 1;
-    max-width: 600px;
+    max-width: 500px;
     width: 100%;
     object-fit: cover;
     object-position: center;
 }
-.blockUIText{
+
+.blockUIText {
     display: flex;
     align-items: center;
 }
-.wrapper_content{
+
+.wrapper_content {
     flex: 2 1;
 }
-.blockUIhead{
-    font-size: 45px;
+
+.blockUIhead {
+    font-size: 34px;
     font-weight: 600;
     text-overflow: ellipsis;
     color: var(--text-color-head);
     letter-spacing: 0;
 }
-.blockUIContent{
+
+.blockUIContent {
     color: var(--text-color-darkmode);
     font-size: 19px;
     font-family: var(--quick-sand-font-family);
     font-weight: 600;
     margin-bottom: 20px;
 }
-.yellowsBg{
+
+.yellowsBg {
     background-color: var(--bg-yellows-color)
 }
-.greenBg{
+
+.greenBg {
     background-color: var(--green-opacity-bg);
+}
+
+.tranparentgreenBg {
+    background-color: var(--bg-tranparent-green);
+}
+
+.darkBg {
+    background-color: var(--text-color-darkmode);
 }
 
 @media (max-width: 768px) {
@@ -47,13 +66,16 @@
     .blockUIimage img {
         max-width: 300px;
     }
-    .blockUIText{
+
+    .blockUIText {
         padding: 0 15px;
     }
-    .blockUIhead{
+
+    .blockUIhead {
         font-size: 22px;
     }
-    .blockUIContent{
+
+    .blockUIContent {
         font-size: 16px;
         text-align: justify;
     }

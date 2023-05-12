@@ -237,11 +237,11 @@ export const SelectEffectBg = [
 ];
 
 export const fiedlsCreatePage = {
-  "userId": "1",
+  "userId": "",
   "id": "",
   "coverImage": "",
   "thumbnailImage": "",
-  "effectImage": "",
+  "effectImage": "none",
   "informationOfGroom": [
     {
       "firstName": "",
@@ -254,7 +254,7 @@ export const fiedlsCreatePage = {
       "middleFatherNameOfGroom": "",
       "fatherNameOfGroom": "",
       "phoneNumberOfFatherGroom": "",
-      "isGoneFather": "false",
+      "isGoneFather": "",
       "firstMotherNameOfGroom": "",
       "middleMotherNameOfGroom": "",
       "motherNameOfGroom": "",
@@ -343,27 +343,27 @@ export const fiedlsCreatePage = {
   "fontStyleOfTitle": {
     "id": 1,
     "name": "",
-    "value": ""
+    "value": "pacifico"
   },
   "fontStyleOfContent": {
     "id": 1,
     "name": "",
-    "value": ""
+    "value": "inter"
   },
   "styleBackground": {
     "id": 1,
     "name": "",
-    "value": ""
+    "value": "none"
   },
   "backgroundColor": {
     "id": 1,
     "name": "",
-    "value": ""
+    "value": "none"
   },
   "effectBackgroud": {
     "id": 1,
     "name": "",
-    "value": ""
+    "value": "none"
   },
   "packageType": "",
   "anotherProduct": [],
@@ -371,5 +371,16 @@ export const fiedlsCreatePage = {
   "isPaid": false,
   "createTime": "",
   "updatedTime": "",
-  "expiredTime": ""
+  "expiredTime": "",
+  "confirmName": "",
+  "confirmPhone": "",
+  "confirmEmail": "",
+  "confirmAddress": "",
+  "confirmNote": "",
+  "confirmProvince": "",
+  "confirmDistrict": "",
+  "confirmWardt": "",
+  "totalAmount": "",
+  "productId": ""
+
 }

@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react'
 // import closeIcon from '@/assets/home-image/close-icon.svg'
-import closeIcon from "@/assets/svg/icon-close-outline.svg";
-import { Button } from "../button";
-import { BUTTON_STYLES } from "@/commons/Constant.ts";
+import closeIcon from '@/assets/svg/icon-close-outline.svg'
+import { Button } from '../button'
+import { BUTTON_STYLES } from '@/commons/Constant.ts'
 // import classes from './modal.module.css'
-import CloseIcon from "../icons/CloseIcon";
+import CloseIcon from '../icons/CloseIcon'
 const Modal = ({
   title,
   visible,
@@ -15,26 +15,29 @@ const Modal = ({
   btnSubmitText,
   btnOrrangeText,
   content,
-  maxWidth
+  maxWidth,
 }) => {
   // const newTitle = title?.toUpperCase()
   return (
-    <div className={`modal ${visible ? "active" : "deactive"} margin-auto`}>
-      <div className="modal-container" onClick={onCancel}></div>
-      <div className="modal-block ">
-        <div className="modal-content overflow-hidden modal-mw p-4 rounded-lg" style={{maxWidth: maxWidth}}>
+    <div className={`modal ${visible ? 'active' : 'deactive'} margin-auto`}>
+      <div className='modal-container' onClick={onCancel}></div>
+      <div className='modal-block '>
+        <div
+          className='modal-content overflow-hidden modal-mw p-4 rounded-lg'
+          style={{ maxWidth: maxWidth }}
+        >
           {/* <div className='close-modal-icon'>
             <CloseIcon />
           </div> */}
           <img
             src={closeIcon}
-            alt=""
-            className="close-modal-icon"
+            alt=''
+            className='close-modal-icon'
             onClick={onCancel}
           />
-          <h1 className="text-text text-center text-3xl"></h1>
+          <h1 className='text-text text-center text-3xl'></h1>
           {content}
-          <div className="flex justify-center items-center gap-4">
+          <div className='flex justify-center items-center gap-4'>
             {btnCancelText && (
               <Button
                 onPress={onCancel}
@@ -54,7 +57,7 @@ const Modal = ({
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Modal;
+export default Modal

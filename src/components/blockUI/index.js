@@ -45,6 +45,14 @@ function BlockUI({
                 containerStyle = styles.greenBg;
                 break;
 
+            case BACKGROUND_STYLES.TRANPARENTGREEN:
+                containerStyle = styles.tranparentgreenBg;
+                break;
+
+            case BACKGROUND_STYLES.DRAK:
+                containerStyle = styles.darkBg;
+                break;
+
             default:
                 containerStyle = styles.whiteBg;
                 break;
@@ -66,7 +74,7 @@ function BlockUI({
                     }
 
                     <div className={styles.blockUIText}>
-                        <AnimationOnScroll  animateIn={animateContent ? animateContent : 'animate__fadeInUp'} {...rest}>
+                        <AnimationOnScroll animateIn={animateContent ? animateContent : 'animate__fadeInUp'} {...rest}>
                             <div className={`${styles.wrapper_content} ${styleBoxText ? styleBoxText : ''}`}>
                                 <h2 className={styles.blockUIhead}>
                                     {title}
@@ -89,7 +97,7 @@ function BlockUI({
                         </AnimationOnScroll>
                     </div>
                     {
-                        isright && <AnimationOnScroll animateIn={animateImg ? animateImg : 'animate__fadeInRight' } {...rest}><div className={`${styles.blockUIimage} ${styleBoxImg ? styleBoxImg : ''}`}>
+                        isright && <AnimationOnScroll animateIn={animateImg ? animateImg : 'animate__fadeInRight'} {...rest}><div className={`${styles.blockUIimage} ${styleBoxImg ? styleBoxImg : ''}`}>
                             <img src={img} className={styleImg} alt={title} />
                         </div></AnimationOnScroll>
                     }

@@ -1,5 +1,5 @@
 import { MyTextInput } from "@/components/input";
-import React, { forwardRef, useCallback, useImperativeHandle, useRef, useState } from "react";
+import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from "react";
 import Languages from '@/commons/Languages'
 import { fiedlsCreatePage } from "@/commons/FieldsDataObj";
 import { NAME_INPUT_BRIDE } from "@/commons/Constant.ts";
@@ -8,6 +8,9 @@ import ImgUploadIcon from "@/components/icons/ImgUploadIcon";
 import arrayMove from 'array-move-e5'
 import Qrcode from "@/components/icons/IcQrcode";
 import FormValidate from "@/utils/FormValidate";
+import { toast } from "react-toastify";
+import { uploadImage } from "@/utils/axios";
+import { getItemFromLocalStorage } from "@/utils/localStorage";
 
 const BankingBrice = forwardRef(({ }, ref) => {
 
@@ -21,7 +24,7 @@ const BankingBrice = forwardRef(({ }, ref) => {
     const [qrFather, setQrFather] = useState([])
     const [qrMother, setQrMother] = useState([])
 
-    const [value] = useState(fiedlsCreatePage)
+    const [value, setValue] = useState(fiedlsCreatePage)
 
     const refUnderfine = useRef(null)
     const refOwnerBride = useRef(null)
@@ -30,15 +33,38 @@ const BankingBrice = forwardRef(({ }, ref) => {
     const refNumberBankFather = useRef(null)
     const refOwnerMother = useRef(null)
     const refNumberBankMother = useRef(null)
+    const itemLocal = getItemFromLocalStorage('createLeter')
+    useEffect(() => {
+
+        if (itemLocal) {
+            itemLocal.informationOfBride[0].ownerBankOfBride && (value.informationOfBride[0].ownerBankOfBride = itemLocal.informationOfBride[0].ownerBankOfBride)
+            itemLocal.informationOfBride[0].bankOfNumberBride && (value.informationOfBride[0].bankOfNumberBride = itemLocal.informationOfBride[0].bankOfNumberBride)
+            itemLocal.informationOfBride[0].ownerBankOfFatherBride && (value.informationOfBride[0].ownerBankOfFatherBride = itemLocal.informationOfBride[0].ownerBankOfFatherBride)
+            itemLocal.informationOfBride[0].bankOfNumberFatherBride && (value.informationOfBride[0].bankOfNumberFatherBride = itemLocal.informationOfBride[0].bankOfNumberFatherBride)
+            itemLocal.informationOfBride[0].ownerBankOfMotherBride && (value.informationOfBride[0].ownerBankOfMotherBride = itemLocal.informationOfBride[0].ownerBankOfMotherBride)
+            itemLocal.informationOfBride[0].bankOfNumberMotherBride && (value.informationOfBride[0].bankOfNumberMotherBride = itemLocal.informationOfBride[0].bankOfNumberMotherBride)
+            itemLocal.informationOfBride[0].qrCodeFatherBrideLink && (value.informationOfBride[0].qrCodeFatherBrideLink = itemLocal.informationOfBride[0].qrCodeFatherBrideLink)
+            itemLocal.informationOfBride[0].qrCodeMotherBrideLink && (value.informationOfBride[0].qrCodeMotherBrideLink = itemLocal.informationOfBride[0].qrCodeMotherBrideLink)
+            itemLocal.informationOfBride[0].qrCodeBrideLink && (value.informationOfBride[0].qrCodeBrideLink = itemLocal.informationOfBride[0].qrCodeBrideLink)
+        } else {
+            value.informationOfBride[0].ownerBankOfBride = ''
+            value.informationOfBride[0].bankOfNumberBride = ''
+            value.informationOfBride[0].ownerBankOfFatherBride = ''
+            value.informationOfBride[0].bankOfNumberFatherBride = ''
+            value.informationOfBride[0].ownerBankOfMotherBride = ''
+            value.informationOfBride[0].bankOfNumberMotherBride = ''
+        }
+
+    }, [])
 
     const onChangeCreatLetter = useCallback(() => {
 
         const errMsgOwnerBride = FormValidate.inputContentEmpty(value.informationOfBride[0].ownerBankOfBride)
         const errMsgNumberBankBride = FormValidate.inputContentEmpty(value.informationOfBride[0].bankOfNumberBride)
-        const errMsgOwnerFather = FormValidate.inputContentEmpty(value.informationOfBride[0].ownerBankOfFatherBrice)
-        const refNumberBankFather = FormValidate.inputContentEmpty(value.informationOfBride[0].bankOfNumberFatherBrice)
-        const errMsgOwnerMother = FormValidate.inputContentEmpty(value.informationOfBride[0].ownerBankOfMotherBrice)
-        const errMsgNumberBankMother = FormValidate.inputContentEmpty(value.informationOfBride[0].bankOfNumberMotherBrice)
+        const errMsgOwnerFather = FormValidate.inputContentEmpty(value.informationOfBride[0].ownerBankOfFatherBride)
+        const refNumberBankFather = FormValidate.inputContentEmpty(value.informationOfBride[0].bankOfNumberFatherBride)
+        const errMsgOwnerMother = FormValidate.inputContentEmpty(value.informationOfBride[0].ownerBankOfMotherBride)
+        const errMsgNumberBankMother = FormValidate.inputContentEmpty(value.informationOfBride[0].bankOfNumberMotherBride)
 
         refOwnerBride.current?.setErrorMsg(errMsgOwnerBride)
         refNumberBankBride.current?.setErrorMsg(errMsgNumberBankBride)
@@ -48,7 +74,6 @@ const BankingBrice = forwardRef(({ }, ref) => {
         refNumberBankMother.current?.setErrorMsg(errMsgNumberBankMother)
 
         if (`${errMsgOwnerBride}${errMsgNumberBankBride}${errMsgOwnerFather}${refNumberBankFather}${errMsgOwnerMother}${errMsgNumberBankMother}`.length === 0) {
-            console.log('bankingBride')
             return true
         }
         return false
@@ -61,38 +86,110 @@ const BankingBrice = forwardRef(({ }, ref) => {
 
             case NAME_INPUT_BRIDE.nameBankOfBride:
                 value.informationOfBride[0].nameBankOfBride = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfBride];
+                    newArray[0]['nameBankOfBride'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfBride: newArray
+                    };
+                });
                 break
 
             case NAME_INPUT_BRIDE.ownerBankOfBride:
                 value.informationOfBride[0].ownerBankOfBride = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfBride];
+                    newArray[0]['ownerBankOfBride'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfBride: newArray
+                    };
+                });
                 break
 
             case NAME_INPUT_BRIDE.bankOfNumberBride:
                 value.informationOfBride[0].bankOfNumberBride = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfBride];
+                    newArray[0]['bankOfNumberBride'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfBride: newArray
+                    };
+                });
                 break
 
-            case NAME_INPUT_BRIDE.nameBankOfFatherBrice:
-                value.informationOfBride[0].nameBankOfFatherBrice = e;
+            case NAME_INPUT_BRIDE.nameBankOfFatherBride:
+                value.informationOfBride[0].nameBankOfFatherBride = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfBride];
+                    newArray[0]['nameBankOfFatherBride'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfBride: newArray
+                    };
+                });
                 break
 
-            case NAME_INPUT_BRIDE.ownerBankOfFatherBrice:
-                value.informationOfBride[0].ownerBankOfFatherBrice = e;
+            case NAME_INPUT_BRIDE.ownerBankOfFatherBride:
+                value.informationOfBride[0].ownerBankOfFatherBride = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfBride];
+                    newArray[0]['ownerBankOfFatherBride'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfBride: newArray
+                    };
+                });
                 break
 
-            case NAME_INPUT_BRIDE.bankOfNumberFatherBrice:
-                value.informationOfBride[0].bankOfNumberFatherBrice = e;
+            case NAME_INPUT_BRIDE.bankOfNumberFatherBride:
+                value.informationOfBride[0].bankOfNumberFatherBride = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfBride];
+                    newArray[0]['bankOfNumberFatherBride'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfBride: newArray
+                    };
+                });
                 break
 
-            case NAME_INPUT_BRIDE.nameBankOfMotherBrice:
-                value.informationOfBride[0].nameBankOfBride = e;
+            case NAME_INPUT_BRIDE.nameBankOfMotherBride:
+                value.informationOfBride[0].nameBankOfMotherBride = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfBride];
+                    newArray[0]['nameBankOfMotherBride'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfBride: newArray
+                    };
+                });
                 break
 
-            case NAME_INPUT_BRIDE.ownerBankOfMotherBrice:
-                value.informationOfBride[0].ownerBankOfMotherBrice = e;
+            case NAME_INPUT_BRIDE.ownerBankOfMotherBride:
+                value.informationOfBride[0].ownerBankOfMotherBride = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfBride];
+                    newArray[0]['ownerBankOfMotherBride'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfBride: newArray
+                    };
+                });
                 break
 
-            case NAME_INPUT_BRIDE.bankOfNumberMotherBrice:
-                value.informationOfBride[0].bankOfNumberMotherBrice = e;
+            case NAME_INPUT_BRIDE.bankOfNumberMotherBride:
+                value.informationOfBride[0].bankOfNumberMotherBride = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfBride];
+                    newArray[0]['bankOfNumberMotherBride'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfBride: newArray
+                    };
+                });
                 break
 
             default:
@@ -118,7 +215,7 @@ const BankingBrice = forwardRef(({ }, ref) => {
             maxLength,
             isIcon,
             icon,
-            inputStyle,
+            values
         ) => {
 
 
@@ -127,6 +224,7 @@ const BankingBrice = forwardRef(({ }, ref) => {
                     <MyTextInput
                         ref={ref === '' ? refUnderfine : ref}
                         label={label}
+                        value={values}
                         name={name}
                         placeHolder={placehodel}
                         type={type}
@@ -136,7 +234,6 @@ const BankingBrice = forwardRef(({ }, ref) => {
                         styleGroup={'man_inputStyle'}
                         onChangeText={(e) => onChangeText(e.target.value, name)}
                         onKeyPress={onKeyPress}
-                        inputStyle={inputStyle}
                     />
                 </div>
             )
@@ -146,17 +243,41 @@ const BankingBrice = forwardRef(({ }, ref) => {
 
     const onChangeBrice = (imageList) => {
         setqrBride(imageList)
-        value.informationOfBride[0].qrCodeBriceLink = imageList
+        if (imageList.length > 0) {
+            uploadImage(imageList[0].file)
+                .then((response) => {
+                    value.informationOfBride[0].qrCodeBrideLink = response.data.data;
+                })
+                .catch((error) => {
+                    toast.error(error)
+                });
+        }
     }
 
     const onChangeFather = (imageList) => {
         setQrFather(imageList)
-        value.informationOfBride[0].qrCodeFatherBriceLink = imageList
+        if (imageList.length > 0) {
+            uploadImage(imageList[0].file)
+                .then((response) => {
+                    value.informationOfBride[0].qrCodeFatherBrideLink = response.data.data;
+                })
+                .catch((error) => {
+                    toast.error(error)
+                });
+        }
     }
 
     const onChangeMother = (imageList) => {
         setQrMother(imageList)
-        value.informationOfBride[0].qrCodeMotherBriceLink = imageList
+        if (imageList.length > 0) {
+            uploadImage(imageList[0].file)
+                .then((response) => {
+                    value.informationOfBride[0].qrCodeMotherBrideLink = response.data.data;
+                })
+                .catch((error) => {
+                    toast.error(error)
+                });
+        }
     }
 
     const onSortEnd = useCallback((oldIndex, newIndex) => {
@@ -166,7 +287,7 @@ const BankingBrice = forwardRef(({ }, ref) => {
     }, [])
 
     const renderImageUploadSingle = useCallback(
-        (title, images, desc, allowDrag, onChange, max, height, icon, titleImages) => {
+        (title, images, desc, allowDrag, onChange, max, height, icon, titleImages, urlLocal) => {
             return (
                 <div className='uploading_single_img_group'>
                     <h2>{title}</h2>
@@ -181,6 +302,7 @@ const BankingBrice = forwardRef(({ }, ref) => {
                         onSortEnd={onSortEnd}
                         allowDrag={allowDrag}
                         title={titleImages || Languages.text.addonepic}
+                        urlLocal={urlLocal}
                     />
                 </div>
             )
@@ -189,7 +311,7 @@ const BankingBrice = forwardRef(({ }, ref) => {
     )
 
     return (
-        <div className='section_banking_groom'>
+        <div className='section_banking_Bride '>
             <h2>{Languages.text.women}</h2>
 
             <div className='inforBank_one_per'>
@@ -200,10 +322,10 @@ const BankingBrice = forwardRef(({ }, ref) => {
                 </div>
                 <div className='double_input_row'>
                     <div className='half_row_hor_input'>
-                        {renderInput(refOwnerBride, Languages.text.accountHolder, Languages.text.accountHolder, NAME_INPUT_BRIDE.ownerBankOfBride, 'text', 200, false)}
+                        {renderInput(refOwnerBride, Languages.text.accountHolder, Languages.text.accountHolder, NAME_INPUT_BRIDE.ownerBankOfBride, 'text', 200, false, '', value.informationOfBride[0].ownerBankOfBride)}
                     </div>
                     <div className='half_row_hor_input'>
-                        {renderInput(refNumberBankBride, Languages.text.serinumber, Languages.text.serinumber, NAME_INPUT_BRIDE.bankOfNumberBride, 'number', 14, false)}
+                        {renderInput(refNumberBankBride, Languages.text.serinumber, Languages.text.serinumber, NAME_INPUT_BRIDE.bankOfNumberBride, 'number', 16, false, '', value.informationOfBride[0].bankOfNumberBride)}
                     </div>
                 </div>
                 <div className='list_album_uploads'>
@@ -216,7 +338,8 @@ const BankingBrice = forwardRef(({ }, ref) => {
                         1,
                         150,
                         <Qrcode />,
-                        Languages.text.qrcode
+                        Languages.text.qrcode,
+                        itemLocal?.informationOfBride[0].qrCodeBrideLink
                     )}
                 </div>
             </div>
@@ -229,10 +352,10 @@ const BankingBrice = forwardRef(({ }, ref) => {
                 </div>
                 <div className='double_input_row'>
                     <div className='half_row_hor_input'>
-                        {renderInput(refOwnerFather, Languages.text.accountHolder, Languages.text.accountHolder, NAME_INPUT_BRIDE.ownerBankOfFatherBride, 'text', 200, false)}
+                        {renderInput(refOwnerFather, Languages.text.accountHolder, Languages.text.accountHolder, NAME_INPUT_BRIDE.ownerBankOfFatherBride, 'text', 200, false, '', value.informationOfBride[0].ownerBankOfFatherBride)}
                     </div>
                     <div className='half_row_hor_input'>
-                        {renderInput(refNumberBankFather, Languages.text.serinumber, Languages.text.serinumber, NAME_INPUT_BRIDE.bankOfNumberFatherBride, 'number', 14, false)}
+                        {renderInput(refNumberBankFather, Languages.text.serinumber, Languages.text.serinumber, NAME_INPUT_BRIDE.bankOfNumberFatherBride, 'number', 16, false, '', value.informationOfBride[0].bankOfNumberFatherBride)}
                     </div>
                 </div>
                 <div className='list_album_uploads'>
@@ -245,7 +368,8 @@ const BankingBrice = forwardRef(({ }, ref) => {
                         1,
                         150,
                         <Qrcode />,
-                        Languages.text.qrcode
+                        Languages.text.qrcode,
+                        itemLocal?.informationOfBride[0].qrCodeFatherBrideLink
                     )}
                 </div>
             </div>
@@ -253,15 +377,15 @@ const BankingBrice = forwardRef(({ }, ref) => {
             <div className='inforBank_one_per'>
                 <div className='fullwidth_input_colum'>
                     <div className='single_hor_input'>
-                        {renderInput('', Languages.inputText.mother, Languages.inputText.mother, NAME_INPUT_BRIDE.nameBankOfMotherBrice, 'text', 200, true)}
+                        {renderInput('', Languages.inputText.mother, Languages.inputText.mother, NAME_INPUT_BRIDE.nameBankOfMotherBride, 'text', 200, true)}
                     </div>
                 </div>
                 <div className='double_input_row'>
                     <div className='half_row_hor_input'>
-                        {renderInput(refOwnerMother, Languages.text.accountHolder, Languages.text.accountHolder, NAME_INPUT_BRIDE.ownerBankOfMotherBride, 'text', 200, false)}
+                        {renderInput(refOwnerMother, Languages.text.accountHolder, Languages.text.accountHolder, NAME_INPUT_BRIDE.ownerBankOfMotherBride, 'text', 200, false, '', value.informationOfBride[0].ownerBankOfMotherBride)}
                     </div>
                     <div className='half_row_hor_input'>
-                        {renderInput(refNumberBankMother, Languages.text.serinumber, Languages.text.serinumber, NAME_INPUT_BRIDE.bankOfNumberMotherBride, 'number', 14, false)}
+                        {renderInput(refNumberBankMother, Languages.text.serinumber, Languages.text.serinumber, NAME_INPUT_BRIDE.bankOfNumberMotherBride, 'number', 16, false, '', value.informationOfBride[0].bankOfNumberMotherBride)}
                     </div>
                 </div>
                 <div className='list_album_uploads'>
@@ -274,7 +398,8 @@ const BankingBrice = forwardRef(({ }, ref) => {
                         1,
                         150,
                         <Qrcode />,
-                        Languages.text.qrcode
+                        Languages.text.qrcode,
+                        itemLocal?.informationOfBride[0].qrCodeMotherBrideLink
                     )}
                 </div>
             </div>

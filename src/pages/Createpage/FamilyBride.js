@@ -1,8 +1,8 @@
 import { MyTextInput } from "@/components/input";
-import React, { forwardRef, useCallback, useImperativeHandle, useRef, useState } from "react";
+import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from "react";
 import Languages from '@/commons/Languages'
 import { SelectInvitationTemplate, fiedlsCreatePage } from "@/commons/FieldsDataObj";
-import { BUTTON_STYLES, CheckParams, Convert, NAME_INPUT_BRIDE } from "@/commons/Constant.ts";
+import { BUTTON_STYLES, CheckParams, Convert, NAME_INPUT_BRIDE, itemLocal } from "@/commons/Constant.ts";
 import { RadioButton } from "@/components/RadioButton";
 import IcChrysanthemum from '@/assets/home-image/IcChrysanthemum.svg'
 import { MyTextArea } from "@/components/textarea";
@@ -11,6 +11,7 @@ import { useMemo } from "react";
 import Popup from "@/components/modal/Popup";
 import TitleCreate from "@/components/createPage/subcomp/TitleCreate";
 import FormValidate from "@/utils/FormValidate";
+import { getItemFromLocalStorage } from "@/utils/localStorage";
 
 const FamilyBride = forwardRef(({ props }, ref) => {
     useImperativeHandle(ref, () => ({
@@ -19,7 +20,7 @@ const FamilyBride = forwardRef(({ props }, ref) => {
 
     }));
 
-    const [value] = useState(fiedlsCreatePage)
+    const [value, setValue] = useState(fiedlsCreatePage)
     const [radioDead, setRadioDead] = useState('none')
     const [inviteTemp, setInviteTemp] = useState('')
 
@@ -45,6 +46,47 @@ const FamilyBride = forwardRef(({ props }, ref) => {
 
     const refinvite = useRef(null)
 
+    const itemLocal = getItemFromLocalStorage('createLeter')
+
+    useEffect(() => {
+
+        if (itemLocal) {
+            itemLocal.informationOfBride[0].firstName && (value.informationOfBride[0].firstName = itemLocal.informationOfBride[0].firstName)
+            itemLocal.informationOfBride[0].middleName && (value.informationOfBride[0].middleName = itemLocal.informationOfBride[0].middleName)
+            itemLocal.informationOfBride[0].name && (value.informationOfBride[0].name = itemLocal.informationOfBride[0].name)
+            itemLocal.informationOfBride[0].phoneNumberOfBride && (value.informationOfBride[0].phoneNumberOfBride = itemLocal.informationOfBride[0].phoneNumberOfBride)
+            itemLocal.informationOfBride[0].firstFatherNameOfBride && (value.informationOfBride[0].firstFatherNameOfBride = itemLocal.informationOfBride[0].firstFatherNameOfBride)
+            itemLocal.informationOfBride[0].middleFatherNameOfBride && (value.informationOfBride[0].middleFatherNameOfBride = itemLocal.informationOfBride[0].middleFatherNameOfBride)
+            itemLocal.informationOfBride[0].fatherNameOfBride && (value.informationOfBride[0].fatherNameOfBride = itemLocal.informationOfBride[0].fatherNameOfBride)
+            itemLocal.informationOfBride[0].phoneNumberOfFatherBride && (value.informationOfBride[0].phoneNumberOfFatherBride = itemLocal.informationOfBride[0].phoneNumberOfFatherBride)
+            itemLocal.informationOfBride[0].isGoneFatherBride && (value.informationOfBride[0].isGoneFatherBride = itemLocal.informationOfBride[0].isGoneFatherBride)
+            itemLocal.informationOfBride[0].firstMotherNameOfBride && (value.informationOfBride[0].firstMotherNameOfBride = itemLocal.informationOfBride[0].firstMotherNameOfBride)
+            itemLocal.informationOfBride[0].middleMotherNameOfBride && (value.informationOfBride[0].middleMotherNameOfBride = itemLocal.informationOfBride[0].middleMotherNameOfBride)
+            itemLocal.informationOfBride[0].motherNameOfBride && (value.informationOfBride[0].motherNameOfBride = itemLocal.informationOfBride[0].motherNameOfBride)
+            itemLocal.informationOfBride[0].phoneNumberOfMotherBride && (value.informationOfBride[0].phoneNumberOfMotherBride = itemLocal.informationOfBride[0].phoneNumberOfMotherBride)
+            itemLocal.informationOfBride[0].isGoneMotherOfBride && (value.informationOfBride[0].isGoneMotherOfBride = itemLocal.informationOfBride[0].isGoneMotherOfBride)
+            itemLocal.isDisplayGonePeople && (setRadioDead(itemLocal.isDisplayGonePeople))
+            itemLocal.contentOfInvitation && (setInviteTemp(itemLocal.contentOfInvitation))
+            itemLocal.contentOfInvitation && (value.contentOfInvitation = itemLocal.contentOfInvitation)
+        } else {
+            value.informationOfBride[0].firstName = ''
+            value.informationOfBride[0].middleName = ''
+            value.informationOfBride[0].name = ''
+            value.informationOfBride[0].phoneNumberOfBride = ''
+            value.informationOfBride[0].firstFatherNameOfBride = ''
+            value.informationOfBride[0].middleFatherNameOfBride = ''
+            value.informationOfBride[0].fatherNameOfBride = ''
+            value.informationOfBride[0].phoneNumberOfFatherBride = ''
+            value.informationOfBride[0].isGoneFatherBride = ''
+            value.informationOfBride[0].firstMotherNameOfBride = ''
+            value.informationOfBride[0].middleMotherNameOfBride = ''
+            value.informationOfBride[0].motherNameOfBride = ''
+            value.informationOfBride[0].phoneNumberOfMotherBride = ''
+            value.informationOfBride[0].isGoneMotherOfBride = ''
+            value.contentOfInvitation = ''
+        }
+
+    }, [])
 
     const renderRadio = useCallback(
         (id, label, value, onChange, isSelected) => {
@@ -81,7 +123,7 @@ const FamilyBride = forwardRef(({ props }, ref) => {
         const errMsgNameMother = FormValidate.inputNameEmpty(value.informationOfBride[0].motherNameOfBride, Languages.errorMsg.required, Languages.errorMsg.userNameRegex)
         const errMsgPhoneMother = FormValidate.passConFirmPhone(value.informationOfBride[0].phoneNumberOfMotherBride)
 
-        const errMsgInvite = FormValidate.inputNameEmpty(value.informationOfBride[0].motherNameOfBride, Languages.errorMsg.required, Languages.errorMsg.userNameRegex)
+        const errMsgInvite = FormValidate.inputNameEmpty(value.contentOfInvitation, Languages.errorMsg.required, Languages.errorMsg.userNameRegex)
 
         refinvite.current?.setErrorMsg(errMsgInvite)
 
@@ -102,7 +144,6 @@ const FamilyBride = forwardRef(({ props }, ref) => {
         refPhoneBride.current?.setErrorMsg(errMsgPhoneB)
 
         if (`${errMsgFirstNameB}${errMsgMiddleNameB}${errMsgNameB}${errMsgPhoneB}${errMsgFirstNameFather}${errMsgMiddleNameFather}${errMsgNameFather}${errMsgPhoneFather}${errMsgFirstNameMother}${errMsgMiddleNameMother}${errMsgNameMother}${errMsgPhoneMother}${errMsgInvite}`.length === 0) {
-            console.log('passing')
             return true
         }
         return false
@@ -114,59 +155,157 @@ const FamilyBride = forwardRef(({ props }, ref) => {
         switch (name) {
 
             case NAME_INPUT_BRIDE.firstName:
-                value.informationOfBride[0].firstName = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfBride];
+                    newArray[0]['firstName'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfBride: newArray
+                    };
+                });
                 break
 
             case NAME_INPUT_BRIDE.middleName:
-                value.informationOfBride[0].middleName = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfBride];
+                    newArray[0]['middleName'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfBride: newArray
+                    };
+                });
                 break
 
             case NAME_INPUT_BRIDE.name:
-                value.informationOfBride[0].name = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfBride];
+                    newArray[0]['name'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfBride: newArray
+                    };
+                });
                 break
 
             case NAME_INPUT_BRIDE.phoneNumberOfBride:
-                value.informationOfBride[0].phoneNumberOfBride = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfBride];
+                    newArray[0]['phoneNumberOfBride'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfBride: newArray
+                    };
+                });
                 break
 
             case NAME_INPUT_BRIDE.firstFatherNameOfBride:
-                value.informationOfBride[0].firstFatherNameOfBride = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfBride];
+                    newArray[0]['firstFatherNameOfBride'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfBride: newArray
+                    };
+                });
                 break
 
             case NAME_INPUT_BRIDE.middleFatherNameOfBride:
-                value.informationOfBride[0].middleFatherNameOfBride = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfBride];
+                    newArray[0]['middleFatherNameOfBride'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfBride: newArray
+                    };
+                });
                 break
 
             case NAME_INPUT_BRIDE.fatherNameOfBride:
-                value.informationOfBride[0].fatherNameOfBride = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfBride];
+                    newArray[0]['fatherNameOfBride'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfBride: newArray
+                    };
+                });
                 break
 
             case NAME_INPUT_BRIDE.phoneNumberOfFatherBride:
-                value.informationOfBride[0].phoneNumberOfFatherBride = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfBride];
+                    newArray[0]['phoneNumberOfFatherBride'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfBride: newArray
+                    };
+                });
                 break
 
             case NAME_INPUT_BRIDE.isGoneFatherBride:
-                value.informationOfBride[0].isGoneFatherBride = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfBride];
+                    newArray[0]['isGoneFatherBride'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfBride: newArray
+                    };
+                });
                 break
 
             case NAME_INPUT_BRIDE.firstMotherNameOfBride:
-                value.informationOfBride[0].firstMotherNameOfBride = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfBride];
+                    newArray[0]['firstMotherNameOfBride'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfBride: newArray
+                    };
+                });
                 break
 
             case NAME_INPUT_BRIDE.middleMotherNameOfBride:
-                value.informationOfBride[0].middleMotherNameOfBride = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfBride];
+                    newArray[0]['middleMotherNameOfBride'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfBride: newArray
+                    };
+                });
                 break
 
             case NAME_INPUT_BRIDE.motherNameOfBride:
-                value.informationOfBride[0].motherNameOfBride = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfBride];
+                    newArray[0]['motherNameOfBride'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfBride: newArray
+                    };
+                });
                 break
 
             case NAME_INPUT_BRIDE.phoneNumberOfMotherBride:
-                value.informationOfBride[0].phoneNumberOfMotherBride = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfBride];
+                    newArray[0]['phoneNumberOfMotherBride'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfBride: newArray
+                    };
+                });
                 break
 
             case NAME_INPUT_BRIDE.isGoneMotherOfBride:
-                value.informationOfBride[0].isGoneMotherOfBride = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfBride];
+                    newArray[0]['isGoneMotherOfBride'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfBride: newArray
+                    };
+                });
                 break
 
             default:
@@ -174,7 +313,7 @@ const FamilyBride = forwardRef(({ props }, ref) => {
         }
 
 
-    }, [value]);
+    }, [value, setValue]);
 
     const radioChangeHandlerInviteTemplate = (text, values) => {
         setRadioInviteTemplate(values)
@@ -266,7 +405,7 @@ const FamilyBride = forwardRef(({ props }, ref) => {
             maxLength,
             isIcon,
             icon,
-            inputStyle,
+            values
         ) => {
 
 
@@ -275,6 +414,7 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                     <MyTextInput
                         ref={ref === '' ? refUnderfine : ref}
                         label={label}
+                        value={values}
                         name={name}
                         placeHolder={placehodel}
                         type={type}
@@ -284,7 +424,6 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                         styleGroup={'man_inputStyle'}
                         onChangeText={(e) => onChangeText(e.target.value, name)}
                         onKeyPress={onKeyPress}
-                        inputStyle={inputStyle}
                     />
                 </div>
             )
@@ -314,7 +453,8 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                         'text',
                         15,
                         false,
-                        false
+                        false,
+                        value.informationOfBride[0].firstName
                     )}
                     {renderInput(
                         refMiddleNameBride,
@@ -324,7 +464,8 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                         'text',
                         30,
                         false,
-                        false
+                        false,
+                        value.informationOfBride[0].middleName
                     )}
                     {renderInput(
                         refNameBride,
@@ -334,7 +475,8 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                         'text',
                         30,
                         false,
-                        false
+                        false,
+                        value.informationOfBride[0].name
                     )}
 
                     <div className='item_field_single'>
@@ -374,7 +516,8 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                         'number',
                         10,
                         false,
-                        false
+                        false,
+                        value.informationOfBride[0].phoneNumberOfBride
                     )}
                 </div>
             </div>
@@ -392,7 +535,8 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                         'text',
                         15,
                         false,
-                        false
+                        false,
+                        value.informationOfBride[0].firstFatherNameOfBride
                     )}
                     {renderInput(
                         refMiddleNameFather,
@@ -402,7 +546,8 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                         'text',
                         30,
                         false,
-                        false
+                        false,
+                        value.informationOfBride[0].middleFatherNameOfBride
                     )}
                     {renderInput(
                         refNameFather,
@@ -412,7 +557,8 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                         'text',
                         30,
                         false,
-                        false
+                        false,
+                        value.informationOfBride[0].fatherNameOfBride
                     )}
 
                     <div className='item_field_single select_code'>
@@ -437,13 +583,14 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                         'number',
                         10,
                         false,
-                        false
+                        false,
+                        value.informationOfBride[0].phoneNumberOfFatherBride
                     )}
                     <div className="item_field_single">
                         <div className="Input_boxGroupInput__G9mP9 man_inputStyle">
                             <label className="Input_label__90o4b">{Languages.inputText.death}</label>
                             <div className="Input_formGroup__mXqJL ">
-                                <input type="checkbox" className="Input_form_control__5uYZX inputStyle" onChange={(e) => onChangeText(e.target.checked, NAME_INPUT_BRIDE.isGoneFatherBride)} />
+                                <input type="checkbox" defaultChecked={itemLocal ? itemLocal.informationOfBride[0].isGoneFatherBride : false} className="Input_form_control__5uYZX inputStyle" onChange={(e) => onChangeText(e.target.checked, NAME_INPUT_BRIDE.isGoneFatherBride)} />
                             </div>
                         </div>
                     </div>
@@ -463,7 +610,8 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                         'text',
                         15,
                         false,
-                        false
+                        false,
+                        value.informationOfBride[0].firstMotherNameOfBride
                     )}
                     {renderInput(
                         refMiddleNameMother,
@@ -473,7 +621,8 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                         'text',
                         30,
                         false,
-                        false
+                        false,
+                        value.informationOfBride[0].middleMotherNameOfBride
                     )}
                     {renderInput(
                         refNameMother,
@@ -483,7 +632,8 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                         'text',
                         30,
                         false,
-                        false
+                        false,
+                        value.informationOfBride[0].motherNameOfBride
                     )}
 
                     <div className='item_field_single select_code'>
@@ -508,13 +658,14 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                         'number',
                         10,
                         false,
-                        false
+                        false,
+                        value.informationOfBride[0].phoneNumberOfMotherBride
                     )}
                     <div className="item_field_single">
                         <div className="Input_boxGroupInput__G9mP9 man_inputStyle">
                             <label className="Input_label__90o4b">{Languages.inputText.death}</label>
                             <div className="Input_formGroup__mXqJL ">
-                                <input type="checkbox" className="Input_form_control__5uYZX inputStyle" onChange={(e) => onChangeText(e.target.checked, NAME_INPUT_BRIDE.isGoneMotherOfBride)} />
+                                <input type="checkbox" defaultChecked={itemLocal ? itemLocal.informationOfBride[0].isGoneMotherOfBride : false} className="Input_form_control__5uYZX inputStyle" onChange={(e) => onChangeText(e.target.checked, NAME_INPUT_BRIDE.isGoneMotherOfBride)} />
                             </div>
                         </div>
                     </div>

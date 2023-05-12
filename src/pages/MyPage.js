@@ -1,10 +1,10 @@
-import React, { useMemo, useRef } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Header from "@/components/header";
 import Footer from "./Footer/Footer";
 import Icpolygon from "@/assets/home-image/IcPolygon.svg";
 import Languages from "@/commons/Languages";
 import { Button } from "@/components/button";
-import { BUTTON_STYLES } from "@/commons/Constant.ts";
+import { BUTTON_STYLES, CheckParams } from "@/commons/Constant.ts";
 import ChooseTypeBlock from "@/components/chooseTypeBlock";
 import Loading from "@/components/Loading";
 import { Alias } from "@/commons/Constant.ts";
@@ -12,19 +12,33 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Popup from "@/components/modal/Popup";
 import IcInf from '@/assets/home-image/IcInf.svg'
+import { getItemFromLocalStorage } from "@/utils/localStorage";
 
 const Mypage = () => {
 
   const navigate = useNavigate();
 
+  const [checkParams, setCheckParams] = useState(CheckParams.NOTOKEN)
+  const [dataLocal, setDataLocal] = useState(false)
   const { user } = useSelector((store) => store.auth)
 
   const refModal = useRef(null)
 
+  useEffect(() => {
+
+    if (getItemFromLocalStorage('createLeter')) setDataLocal(true)
+
+  }, [])
+
   const navigateLetterpage = () => {
     if (user)
-      navigate(Alias.createPage);
+      navigate(Alias.createPage, {
+        state: {
+          createpage: true
+        }
+      });
     else {
+      setCheckParams(CheckParams.NOTOKEN)
       refModal.current?.showModal()
     }
   };
@@ -35,6 +49,7 @@ const Mypage = () => {
 
   const renderContentModal = useMemo(() => {
     return (
+      checkParams == CheckParams.NOTOKEN &&
       <div className='renderContentModal'>
         <div className='head'>
           <img src={IcInf} alt={'icinf'} />
@@ -44,8 +59,18 @@ const Mypage = () => {
           <p>{Languages.text.nologinContent}</p>
         </div>
       </div>
+      || checkParams == CheckParams.EDITOR &&
+      <div className='renderContentModal'>
+        <div className='head'>
+          <img src={IcInf} alt={'icinf'} />
+          <h2>{Languages.text.noletter}</h2>
+        </div>
+        <div className='contentModal'>
+          <p>{Languages.text.noletterContent}</p>
+        </div>
+      </div>
     )
-  }, [])
+  }, [checkParams])
 
   const renderModal = useMemo(() => {
     return (
@@ -57,7 +82,7 @@ const Mypage = () => {
         onSuccessPress={onPressLogin}
       />
     )
-  }, [])
+  }, [onPressLogin])
 
   const renderTable = useMemo(() => {
     return (
@@ -79,6 +104,26 @@ const Mypage = () => {
       </tr>
     );
   }, []);
+
+  const onChangeEditor = useCallback(() => {
+
+    if (dataLocal) {
+
+      navigate(
+        Alias.editor, {
+        state: {
+          editor: true
+        }
+      }
+      );
+
+    }
+    else {
+      setCheckParams(CheckParams.EDITOR)
+      refModal.current?.showModal()
+    }
+
+  }, [setCheckParams, dataLocal])
 
   return (
     <div className="mypage">
@@ -149,6 +194,7 @@ const Mypage = () => {
                         autocenter
                         width={60}
                         isLowerCase
+                        onPress={onChangeEditor}
                       />
                       <Button
                         label={Languages.buttonText.seeBefore}

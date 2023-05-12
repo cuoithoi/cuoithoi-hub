@@ -1,5 +1,5 @@
 import { MyTextInput } from "@/components/input";
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Languages from '@/commons/Languages'
 import { fiedlsCreatePage } from "@/commons/FieldsDataObj";
 import { NAME_INPUT_GROOM } from "@/commons/Constant.ts";
@@ -7,6 +7,7 @@ import TitleCreate from "@/components/createPage/subcomp/TitleCreate";
 import FormValidate from "@/utils/FormValidate";
 import { forwardRef } from "react";
 import { useImperativeHandle } from "react";
+import { getItemFromLocalStorage } from "@/utils/localStorage";
 
 const FamilyGroom = forwardRef(({ }, ref) => {
 
@@ -16,7 +17,7 @@ const FamilyGroom = forwardRef(({ }, ref) => {
 
     }));
 
-    const [value] = useState(fiedlsCreatePage)
+    const [value, setValue] = useState(fiedlsCreatePage)
 
     const refUnderfine = useRef(null)
     const refFirstnNameGroom = useRef(null)
@@ -33,6 +34,44 @@ const FamilyGroom = forwardRef(({ }, ref) => {
     const refMiddleNameMother = useRef(null)
     const refNameMother = useRef(null)
     const refPhoneMother = useRef(null)
+
+    const itemLocal = getItemFromLocalStorage('createLeter')
+
+    useEffect(() => {
+
+        if (itemLocal) {
+            itemLocal.informationOfGroom[0].firstName && (value.informationOfGroom[0].firstName = itemLocal.informationOfGroom[0].firstName)
+            itemLocal.informationOfGroom[0].middleName && (value.informationOfGroom[0].middleName = itemLocal.informationOfGroom[0].middleName)
+            itemLocal.informationOfGroom[0].name && (value.informationOfGroom[0].name = itemLocal.informationOfGroom[0].name)
+            itemLocal.informationOfGroom[0].phoneNumberOfGroom && (value.informationOfGroom[0].phoneNumberOfGroom = itemLocal.informationOfGroom[0].phoneNumberOfGroom)
+            itemLocal.informationOfGroom[0].firstFatherNameOfGroom && (value.informationOfGroom[0].firstFatherNameOfGroom = itemLocal.informationOfGroom[0].firstFatherNameOfGroom)
+            itemLocal.informationOfGroom[0].middleFatherNameOfGroom && (value.informationOfGroom[0].middleFatherNameOfGroom = itemLocal.informationOfGroom[0].middleFatherNameOfGroom)
+            itemLocal.informationOfGroom[0].fatherNameOfGroom && (value.informationOfGroom[0].fatherNameOfGroom = itemLocal.informationOfGroom[0].fatherNameOfGroom)
+            itemLocal.informationOfGroom[0].phoneNumberOfFatherGroom && (value.informationOfGroom[0].phoneNumberOfFatherGroom = itemLocal.informationOfGroom[0].phoneNumberOfFatherGroom)
+            itemLocal.informationOfGroom[0].isGoneFather && (value.informationOfGroom[0].isGoneFather = itemLocal.informationOfGroom[0].isGoneFather)
+            itemLocal.informationOfGroom[0].firstMotherNameOfGroom && (value.informationOfGroom[0].firstMotherNameOfGroom = itemLocal.informationOfGroom[0].firstMotherNameOfGroom)
+            itemLocal.informationOfGroom[0].middleMotherNameOfGroom && (value.informationOfGroom[0].middleMotherNameOfGroom = itemLocal.informationOfGroom[0].middleMotherNameOfGroom)
+            itemLocal.informationOfGroom[0].motherNameOfGroom && (value.informationOfGroom[0].motherNameOfGroom = itemLocal.informationOfGroom[0].motherNameOfGroom)
+            itemLocal.informationOfGroom[0].phoneNumberOfMotherGroom && (value.informationOfGroom[0].phoneNumberOfMotherGroom = itemLocal.informationOfGroom[0].phoneNumberOfMotherGroom)
+            itemLocal.informationOfGroom[0].isGoneMother && (value.informationOfGroom[0].isGoneMother = itemLocal.informationOfGroom[0].isGoneMother)
+        } else {
+            value.informationOfGroom[0].firstName = ''
+            value.informationOfGroom[0].middleName = ''
+            value.informationOfGroom[0].name = ''
+            value.informationOfGroom[0].phoneNumberOfGroom = ''
+            value.informationOfGroom[0].firstFatherNameOfGroom = ''
+            value.informationOfGroom[0].middleFatherNameOfGroom = ''
+            value.informationOfGroom[0].fatherNameOfGroom = ''
+            value.informationOfGroom[0].phoneNumberOfFatherGroom = ''
+            value.informationOfGroom[0].isGoneFather = false
+            value.informationOfGroom[0].firstMotherNameOfGroom = ''
+            value.informationOfGroom[0].middleMotherNameOfGroom = ''
+            value.informationOfGroom[0].motherNameOfGroom = ''
+            value.informationOfGroom[0].phoneNumberOfMotherGroom = ''
+            value.informationOfGroom[0].isGoneMother = false
+        }
+
+    }, [])
 
     const onChangeCreatLetter = useCallback(() => {
 
@@ -79,66 +118,164 @@ const FamilyGroom = forwardRef(({ }, ref) => {
         switch (name) {
 
             case NAME_INPUT_GROOM.firstName:
-                value.informationOfGroom[0].firstName = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfGroom];
+                    newArray[0]['firstName'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfGroom: newArray
+                    };
+                });
                 break
 
             case NAME_INPUT_GROOM.middleName:
-                value.informationOfGroom[0].middleName = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfGroom];
+                    newArray[0]['middleName'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfGroom: newArray
+                    };
+                });
                 break
 
             case NAME_INPUT_GROOM.name:
-                value.informationOfGroom[0].name = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfGroom];
+                    newArray[0]['name'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfGroom: newArray
+                    };
+                });
                 break
 
             case NAME_INPUT_GROOM.phoneNumberOfGroom:
-                value.informationOfGroom[0].phoneNumberOfGroom = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfGroom];
+                    newArray[0]['phoneNumberOfGroom'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfGroom: newArray
+                    };
+                });
                 break
 
             case NAME_INPUT_GROOM.firstFatherNameOfGroom:
-                value.informationOfGroom[0].firstFatherNameOfGroom = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfGroom];
+                    newArray[0]['firstFatherNameOfGroom'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfGroom: newArray
+                    };
+                });
                 break
 
             case NAME_INPUT_GROOM.middleFatherNameOfGroom:
-                value.informationOfGroom[0].middleFatherNameOfGroom = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfGroom];
+                    newArray[0]['middleFatherNameOfGroom'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfGroom: newArray
+                    };
+                });
                 break
 
             case NAME_INPUT_GROOM.fatherNameOfGroom:
-                value.informationOfGroom[0].fatherNameOfGroom = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfGroom];
+                    newArray[0]['fatherNameOfGroom'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfGroom: newArray
+                    };
+                });
                 break
 
             case NAME_INPUT_GROOM.phoneNumberOfFatherGroom:
-                value.informationOfGroom[0].phoneNumberOfFatherGroom = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfGroom];
+                    newArray[0]['phoneNumberOfFatherGroom'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfGroom: newArray
+                    };
+                });
                 break
 
             case NAME_INPUT_GROOM.isGoneFather:
-                value.informationOfGroom[0].isGoneFather = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfGroom];
+                    newArray[0]['isGoneFather'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfGroom: newArray
+                    };
+                });
                 break
 
             case NAME_INPUT_GROOM.firstMotherNameOfGroom:
-                value.informationOfGroom[0].firstMotherNameOfGroom = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfGroom];
+                    newArray[0]['firstMotherNameOfGroom'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfGroom: newArray
+                    };
+                });
                 break
 
             case NAME_INPUT_GROOM.middleMotherNameOfGroom:
-                value.informationOfGroom[0].middleMotherNameOfGroom = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfGroom];
+                    newArray[0]['middleMotherNameOfGroom'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfGroom: newArray
+                    };
+                });
                 break
 
             case NAME_INPUT_GROOM.motherNameOfGroom:
-                value.informationOfGroom[0].motherNameOfGroom = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfGroom];
+                    newArray[0]['motherNameOfGroom'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfGroom: newArray
+                    };
+                });
                 break
 
             case NAME_INPUT_GROOM.phoneNumberOfMotherGroom:
-                value.informationOfGroom[0].phoneNumberOfMotherGroom = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfGroom];
+                    newArray[0]['phoneNumberOfMotherGroom'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfGroom: newArray
+                    };
+                });
                 break
 
             case NAME_INPUT_GROOM.isGoneMother:
-                value.informationOfGroom[0].isGoneMother = e;
+                setValue(prevValues => {
+                    const newArray = [...prevValues.informationOfGroom];
+                    newArray[0]['isGoneMother'] = e;
+                    return {
+                        ...prevValues,
+                        informationOfGroom: newArray
+                    };
+                });
                 break
 
             default:
                 break
         }
 
-    }, [value]);
+    }, [setValue]);
 
     const onChangeSelectStt = useCallback((e) => {
 
@@ -168,7 +305,7 @@ const FamilyGroom = forwardRef(({ }, ref) => {
             maxLength,
             isIcon,
             icon,
-            inputStyle,
+            values
         ) => {
 
 
@@ -186,13 +323,14 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                         styleGroup={'man_inputStyle'}
                         onChangeText={(e) => onChangeText(e.target.value, name)}
                         onKeyPress={onKeyPress}
-                        inputStyle={inputStyle}
+                        value={values}
                     />
                 </div>
             )
         },
         [refUnderfine]
     )
+
 
     return (
         <div className='total_family_one_side'>
@@ -212,7 +350,9 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                         'text',
                         15,
                         false,
-                        false
+                        false,
+                        value.informationOfGroom[0].firstName
+
                     )}
                     {renderInput(
                         refMiddleNameGroom,
@@ -222,7 +362,8 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                         'text',
                         30,
                         false,
-                        false
+                        false,
+                        value.informationOfGroom[0].middleName
                     )}
                     {renderInput(
                         refNameGroom,
@@ -232,7 +373,8 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                         'text',
                         30,
                         false,
-                        false
+                        false,
+                        value.informationOfGroom[0].name
                     )}
 
                     <div className='item_field_single'>
@@ -272,7 +414,8 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                         'number',
                         10,
                         false,
-                        false
+                        false,
+                        value.informationOfGroom[0].phoneNumberOfGroom
                     )}
                 </div>
             </div>
@@ -290,7 +433,8 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                         'text',
                         15,
                         false,
-                        false
+                        false,
+                        value.informationOfGroom[0].firstFatherNameOfGroom
                     )}
                     {renderInput(
                         refMiddleNameFather,
@@ -300,7 +444,8 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                         'text',
                         30,
                         false,
-                        false
+                        false,
+                        value.informationOfGroom[0].middleFatherNameOfGroom
                     )}
                     {renderInput(
                         refNameFather,
@@ -310,7 +455,8 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                         'text',
                         30,
                         false,
-                        false
+                        false,
+                        value.informationOfGroom[0].fatherNameOfGroom
                     )}
 
                     <div className='item_field_single select_code'>
@@ -335,13 +481,14 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                         'number',
                         10,
                         false,
-                        false
+                        false,
+                        value.informationOfGroom[0].phoneNumberOfFatherGroom
                     )}
                     <div className="item_field_single">
                         <div className="Input_boxGroupInput__G9mP9 man_inputStyle">
                             <label className="Input_label__90o4b">{Languages.inputText.death}</label>
                             <div className="Input_formGroup__mXqJL ">
-                                <input type="checkbox" className="Input_form_control__5uYZX inputStyle" onChange={(e) => onChangeText(e.target.checked, NAME_INPUT_GROOM.isGoneFather)} />
+                                <input type="checkbox" defaultChecked={itemLocal ? itemLocal.informationOfGroom[0].isGoneFather : false} className="Input_form_control__5uYZX inputStyle" onChange={(e) => onChangeText(e.target.checked, NAME_INPUT_GROOM.isGoneFather)} />
                             </div>
                         </div>
                     </div>
@@ -362,7 +509,8 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                         'text',
                         15,
                         false,
-                        false
+                        false,
+                        value.informationOfGroom[0].firstMotherNameOfGroom
                     )}
                     {renderInput(
                         refMiddleNameMother,
@@ -372,7 +520,8 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                         'text',
                         30,
                         false,
-                        false
+                        false,
+                        value.informationOfGroom[0].middleMotherNameOfGroom
                     )}
                     {renderInput(
                         refNameMother,
@@ -382,7 +531,8 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                         'text',
                         30,
                         false,
-                        false
+                        false,
+                        value.informationOfGroom[0].motherNameOfGroom
                     )}
 
                     <div className='item_field_single select_code'>
@@ -407,13 +557,14 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                         'number',
                         10,
                         false,
-                        false
+                        false,
+                        value.informationOfGroom[0].phoneNumberOfMotherGroom
                     )}
                     <div className="item_field_single">
                         <div className="Input_boxGroupInput__G9mP9 man_inputStyle">
                             <label className="Input_label__90o4b">{Languages.inputText.death}</label>
                             <div className="Input_formGroup__mXqJL ">
-                                <input type="checkbox" className="Input_form_control__5uYZX inputStyle" onChange={(e) => onChangeText(e.target.checked, NAME_INPUT_GROOM.isGoneMother)} />
+                                <input type="checkbox" defaultChecked={itemLocal ? itemLocal.informationOfGroom[0].isGoneMother : false} className="Input_form_control__5uYZX inputStyle" onChange={(e) => onChangeText(e.target.checked, NAME_INPUT_GROOM.isGoneMother)} />
                             </div>
                         </div>
                     </div>

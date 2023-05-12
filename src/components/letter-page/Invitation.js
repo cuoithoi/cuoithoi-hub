@@ -7,11 +7,11 @@ import TitleSection from './sub-comp/TitleSection'
 const Invitation = () => {
   return (
     <section
-      style={{ backgroundImage: `url(${invitationBg})` }}
       className='bg-center bg-no-repeat bg-cover section-mb layout-mw'
       id='invitation'
+      style={{ backgroundImage: `url(${invitationBg})` }}
     >
-      <div className='text-center py-14 pr-2 pl-2'>
+      <div className='section-mb text-center py-14 pr-2 pl-2'>
         <TitleSection title='LỜI MỜI' />
         <p className='border-section-1 pb-4'>
           <p className='text-lg '>Trân trọng kính mời,</p>

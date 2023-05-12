@@ -44,10 +44,9 @@ const Footer = () => {
                             <Button
                                 label={Languages.buttonText.scanQr}
                                 buttonStyle={BUTTON_STYLES.PINK}
-                                getTextStyle={BUTTON_STYLES.WHITE}
+                                textStyle={BUTTON_STYLES.WHITE}
                                 rightIcon={<FaRegClock className='iconQrcode' />}
                                 isLowerCase
-                                textStyle={BUTTON_STYLES.PINK}
                             />
                         </div>
                     </div>

@@ -1,9 +1,9 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import Header from '@/components/header'
 import Footer from './Footer/Footer'
 import Loading from '@/components/Loading'
 import Languages from '@/commons/Languages'
-import { BUTTON_STYLES } from '@/commons/Constant.ts'
+import { APi, BUTTON_STYLES, config } from '@/commons/Constant.ts'
 import BlockUI from '@/components/blockUI'
 import IcSystem from '@/assets/home-image/IcSystem.svg'
 import IcReview from '@/assets/home-image/IcReview.svg'
@@ -13,6 +13,7 @@ import { Button } from '@/components/button'
 import { AnimationOnScroll } from 'react-animation-on-scroll'
 import ChooseTypeBlock from '@/components/chooseTypeBlock'
 import { BACKGROUND_STYLES } from '@/commons/Constant.ts'
+import { useBaseService } from '@/utils/BaseServices'
 
 const Services = () => {
 
@@ -20,13 +21,24 @@ const Services = () => {
         setTimeout(() => {
             window.scrollTo(0, 5)
         }, 1500);
-      }, [])
+    }, [])
 
     const renderList = useCallback((title) => {
         return <li>
             <img src={IcSuccess} alt='check' />
             <p>{title}</p>
         </li>
+    }, [])
+
+    const { get } = useBaseService()
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        const asyncListProduct = async () => {
+            const response = await get(APi.listProduct, config);
+            setData(response.data)
+        };
+        asyncListProduct();
     }, [])
 
     return (
@@ -105,82 +117,27 @@ const Services = () => {
                             </div>
                             <div className='package_Box_sellect'>
                                 <div className='md:grid md:grid-cols-4 md:gap-10'>
-                                    <AnimationOnScroll animateIn={'animate__fadeInRight'} offset={100} initiallyVisible={true} animatePreScroll={false} duration={2}>
-                                        <div className='item_package_level'>
-                                            <div className='header'>
-                                                Basic
-                                            </div>
-                                            <div className='List_item_show'>
-
-                                                <div className='item_single_line'>
-                                                    <img src={IcCheck} alt='IcCheck' />
-                                                    Mobile Invitation
+                                    {
+                                        data.map(function (item, index) {
+                                            return <AnimationOnScroll key={index} animateIn={'animate__fadeInRight'} offset={100} initiallyVisible={true} animatePreScroll={false} duration={2}>
+                                                <div className='item_package_level'>
+                                                    <div className='header'>
+                                                        {item.name}
+                                                    </div>
+                                                    <div className='List_item_show'>
+                                                        {
+                                                            item.subProduct.map(function (item, index) {
+                                                                return <div key={index} className='item_single_line'>
+                                                                    <img src={IcCheck} alt='IcCheck' />
+                                                                    {item.name}
+                                                                </div>
+                                                            })
+                                                        }
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </AnimationOnScroll>
-                                    <AnimationOnScroll animateIn={'animate__fadeInLeft'} offset={100} initiallyVisible={true} animatePreScroll={false} duration={2}>
-                                        <div className='item_package_level'>
-                                            <div className='header'>
-                                                Basic+
-                                            </div>
-                                            <div className='List_item_show'>
-
-                                                <div className='item_single_line'>
-                                                    <img src={IcCheck} alt='IcCheck' />
-                                                    Mobile Invitation
-                                                </div>
-                                                <div className='item_single_line'>
-                                                    <img src={IcCheck} alt='IcCheck' />
-                                                    Video Clip
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </AnimationOnScroll>
-                                    <AnimationOnScroll animateIn={'animate__fadeInDown'} offset={100} initiallyVisible={true} animatePreScroll={false} duration={2}>
-                                        <div className='item_package_level'>
-                                            <div className='header'>
-                                                Poster Set
-                                            </div>
-                                            <div className='List_item_show'>
-
-                                                <div className='item_single_line'>
-                                                    <img src={IcCheck} alt='IcCheck' />
-                                                    Mobile Invitation
-                                                </div>
-                                                <div className='item_single_line'>
-                                                    <img src={IcCheck} alt='IcCheck' />
-                                                    Poster
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </AnimationOnScroll>
-                                    <AnimationOnScroll animateIn={'animate__fadeInUpBig'} offset={100} initiallyVisible={true} animatePreScroll={false} duration={2}>
-                                        <div className='item_package_level'>
-                                            <div className='header'>
-                                                All in One
-                                            </div>
-                                            <div className='List_item_show'>
-
-                                                <div className='item_single_line'>
-                                                    <img src={IcCheck} alt='IcCheck' />
-                                                    Mobile Invitation
-                                                </div>
-                                                <div className='item_single_line'>
-                                                    <img src={IcCheck} alt='IcCheck' />
-                                                    Video Clip
-                                                </div>
-                                                <div className='item_single_line'>
-                                                    <img src={IcCheck} alt='IcCheck' />
-                                                    Poster
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </AnimationOnScroll>
-
+                                            </AnimationOnScroll>
+                                        })
+                                    }
                                 </div>
                             </div>
                         </div>
