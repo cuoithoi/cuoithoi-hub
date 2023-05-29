@@ -102,6 +102,15 @@ function MenuBar({ colorText }) {
           </Link>
           <li className={styles.nav_item}>
             <NavLink
+              to='/'
+              className={isactive && `${styles.nav_link}`}
+              style={{ color: colorText }}
+            >
+              {Languages.menu.home}
+            </NavLink>
+          </li>
+          <li className={styles.nav_item}>
+            <NavLink
               to={Alias.services}
               className={isactive && `${styles.nav_link}`}
               style={{ color: colorText }}
@@ -135,7 +144,7 @@ function MenuBar({ colorText }) {
                 onPress={navigateLogin}
                 buttonStyle={BUTTON_STYLES.PINK}
                 width={100}
-                textStyle={BUTTON_STYLES.PINK}
+                textStyle={BUTTON_STYLES.WHITE}
                 leftIcon={<FaUserAlt style={{ color: BUTTON_STYLES.WHITE }} />}
                 isLowerCase
               />
@@ -144,7 +153,7 @@ function MenuBar({ colorText }) {
                 onPress={onOpenDropdown}
                 buttonStyle={BUTTON_STYLES.PINK}
                 width={'auto'}
-                textStyle={BUTTON_STYLES.PINK}
+                textStyle={BUTTON_STYLES.WHITE}
                 leftIcon={<FaUserAlt style={{ color: BUTTON_STYLES.WHITE }} />}
                 isLowerCase
                 autocenter
@@ -155,7 +164,7 @@ function MenuBar({ colorText }) {
           {open && (
             <div className={styles.dropdownbutton}>
               <div className={styles.text}>
-                <span>{Languages.text.hello} {user.email}</span>
+                <span>{Languages.text.hello} {user && user.email}</span>
                 <p onClick={onOpenModal}>
                   <FaSignOutAlt /> {Languages.text.logout}
                 </p>

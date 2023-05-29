@@ -5,8 +5,10 @@ import YouTube from 'react-youtube'
 import { useDispatch, useSelector } from 'react-redux'
 import { setIsAudioPlay } from '../../features/letter-page/music-vid-reducer'
 import LazyLoad from 'react-lazy-load'
-
-const YoutubeVideo = () => {
+import { youtubeParser } from '@/utils/helpers'
+const YoutubeVideo = ({ videoLink }) => {
+  const youtubeId = youtubeParser(videoLink)
+  console.log(youtubeId)
   const dispatch = useDispatch()
   const { audioElement, isAudioPlay } = useSelector((store) => store.musicVid)
   const [prevState, setPrevState] = useState(false)
@@ -28,7 +30,7 @@ const YoutubeVideo = () => {
       <div className='pt-5  pb-3'>
         <LazyLoad height={325} offset={300}>
           <YouTube
-            videoId='GhQxrCrVSyw'
+            videoId={youtubeId}
             opts={{ width: '100%', height: '325' }}
             onPlay={onPlay}
             onPause={onPause}

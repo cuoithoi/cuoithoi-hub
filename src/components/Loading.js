@@ -2,10 +2,9 @@ import React, { useEffect, useState } from 'react'
 
 const Loading = () => {
 
-    const [load, setLoad] = useState(false);
+    const [load, setLoad] = useState(true);
 
     useEffect(() => {
-        setLoad(true);
         setTimeout(() => {
             setLoad(false);
         }, 1500);

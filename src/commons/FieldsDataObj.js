@@ -69,28 +69,28 @@ export const SelectMusic = [
   {
     id: '0',
     name: 'none',
-    value: 'none',
+    value: 0,
     url: ' ',
     text: 'Không phát nhạc nền'
   },
   {
     id: 'music_one',
     name: 'music_one',
-    value: 'music_one',
+    value: 1,
     url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
     text: 'Bài 1'
   },
   {
     id: 'music_two',
     name: 'music_two',
-    value: 'music_two',
+    value: 2,
     url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
     text: 'Bài 2',
   },
   {
     id: 'music_three',
     name: 'music_three',
-    value: 'music_three',
+    value: 3,
     url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
     text: 'Bài 3'
   }
@@ -237,11 +237,11 @@ export const SelectEffectBg = [
 ];
 
 export const fiedlsCreatePage = {
-  "userId": "1",
+  "userId": "",
   "id": "",
   "coverImage": "",
   "thumbnailImage": "",
-  "effectImage": "",
+  "effectImage": "none",
   "informationOfGroom": [
     {
       "firstName": "",
@@ -254,7 +254,7 @@ export const fiedlsCreatePage = {
       "middleFatherNameOfGroom": "",
       "fatherNameOfGroom": "",
       "phoneNumberOfFatherGroom": "",
-      "isGoneFather": "false",
+      "isGoneFather": "",
       "firstMotherNameOfGroom": "",
       "middleMotherNameOfGroom": "",
       "motherNameOfGroom": "",
@@ -303,19 +303,21 @@ export const fiedlsCreatePage = {
       "nameBankOfMotherBride": "",
       "ownerBankOfMotherBride": "",
       "bankOfNumberMotherBride": "",
-      "qrCodeMotherBrideLink": ""
+      "qrCodeMotherBrideLink": "",
+      "isDisplayGonePeople": "",
+      "contentOfInvitation": "",
     }
   ],
-  "isDisplayGonePeople": "",
-  "contentOfInvitation": "",
   "timeAndLocationOfWedding": {
     "dateOfEventWedding": "",
     "timeOfEventWedding": "",
     "locationOfWedding": "",
     "mapDirectLink": "",
     "isDisplayCountDown": "",
-    "contentOfCountDown": ""
   },
+  "arraylist": [{
+    "contentOfCountDown": ""
+  }],
   "timeAndLocationOfEgagement": {
     "dateOfEventEgagement": "",
     "timeOfEventEgagement": "",
@@ -343,27 +345,27 @@ export const fiedlsCreatePage = {
   "fontStyleOfTitle": {
     "id": 1,
     "name": "",
-    "value": ""
+    "value": "pacifico"
   },
   "fontStyleOfContent": {
     "id": 1,
     "name": "",
-    "value": ""
+    "value": "inter"
   },
   "styleBackground": {
     "id": 1,
     "name": "",
-    "value": ""
+    "value": "none"
   },
   "backgroundColor": {
     "id": 1,
     "name": "",
-    "value": ""
+    "value": "none"
   },
   "effectBackgroud": {
     "id": 1,
     "name": "",
-    "value": ""
+    "value": "none"
   },
   "packageType": "",
   "anotherProduct": [],
@@ -371,5 +373,16 @@ export const fiedlsCreatePage = {
   "isPaid": false,
   "createTime": "",
   "updatedTime": "",
-  "expiredTime": ""
+  "expiredTime": "",
+  "confirmName": "",
+  "confirmPhone": "",
+  "confirmEmail": "",
+  "confirmAddress": "",
+  "confirmNote": "",
+  "confirmProvince": "",
+  "confirmDistrict": "",
+  "confirmWardt": "",
+  "totalAmount": "",
+  "productId": ""
+
 }

@@ -12,6 +12,9 @@ const initialState = {
   user: getUserFromLocalStorage(),
   hash: '',
   userId: '',
+  emailVerify: {
+    hash: '',
+  },
 }
 
 export const signupUser = createAsyncThunk(
@@ -33,11 +36,28 @@ export const signinUser = createAsyncThunk(
   async (user, thunkAPI) => {
     try {
       const response = await customFetch.post('/signin', user)
+      console.log(response)
       if (response.data.data.errorCode)
         throw new Error('Tên đăng nhập hoặc mật khẩu không chính xác')
       return response.data
     } catch (error) {
       toast.error(error)
+    }
+  }
+)
+
+// this function use for verify email when user forgot password
+export const verifyEmail = createAsyncThunk(
+  'auth/verifyEmail',
+  async (email) => {
+    try {
+      const response = await customFetch.post('/verify-user-by-email', email)
+      return response.data.data
+    } catch (error) {
+      toast.error(
+        'Xác thực email thất bại, Vui lòng kiểm tra lại',
+        error.response.message
+      )
     }
   }
 )
@@ -95,6 +115,13 @@ const authSlice = createSlice({
       toast.success('Đăng nhập thành công!')
       addUserToLocalStorage(payload.data)
       state.isLoading = false
+    },
+    [verifyEmail.pending]: (state) => {
+      state.isLoading = true
+    },
+    [verifyEmail.fulfilled]: (state, { payload }) => {
+      state.isLoading = false
+      state.emailVerify.hash = payload.hash
     },
   },
 })

@@ -1,8 +1,8 @@
 import { MyTextInput } from "@/components/input";
-import React, { forwardRef, useCallback, useImperativeHandle, useMemo, useRef, useState } from "react";
+import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from "react";
 import Languages from '@/commons/Languages'
 import { SelectTimeTemplate, fiedlsCreatePage } from "@/commons/FieldsDataObj";
-import { BUTTON_STYLES, CheckParams, Convert, NAME_INPUT_GROOM, TIME_AND_LOCATION } from "@/commons/Constant.ts";
+import { BUTTON_STYLES, CheckParams, Convert, TIME_AND_LOCATION } from "@/commons/Constant.ts";
 import { Button } from "@/components/button";
 import { MyTextArea } from "@/components/textarea";
 import { FaLink, FaMap } from "react-icons/fa";
@@ -10,6 +10,7 @@ import { RadioButton } from "@/components/RadioButton";
 import Popup from "@/components/modal/Popup";
 import TitleCreate from "@/components/createPage/subcomp/TitleCreate";
 import FormValidate from "@/utils/FormValidate";
+import { getItemFromLocalStorage } from "@/utils/localStorage";
 
 const TimeandLocation = forwardRef(({ }, ref) => {
 
@@ -24,7 +25,7 @@ const TimeandLocation = forwardRef(({ }, ref) => {
     const [radioCountdowTemplate, setRadioCountdowTemplate] = useState('none')
     const refModal = useRef(null)
 
-    const [value] = useState(fiedlsCreatePage)
+    const [value, setValue] = useState(fiedlsCreatePage)
 
     const refUnderfine = useRef(null)
     const refDateOfEventWedding = useRef(null)
@@ -32,14 +33,32 @@ const TimeandLocation = forwardRef(({ }, ref) => {
     const refLocationOfWedding = useRef(null)
     const refMapDirectLink = useRef(null)
     const refTitleTemplate = useRef(null)
+    const itemLocal = getItemFromLocalStorage('createLeter')
+
+
+    useEffect(() => {
+        if (itemLocal) {
+            itemLocal.timeAndLocationOfWedding.dateOfEventWedding && (value.timeAndLocationOfWedding.dateOfEventWedding = itemLocal.timeAndLocationOfWedding.dateOfEventWedding)
+            itemLocal.timeAndLocationOfWedding.timeOfEventWedding && (value.timeAndLocationOfWedding.timeOfEventWedding = itemLocal.timeAndLocationOfWedding.timeOfEventWedding)
+            itemLocal.timeAndLocationOfWedding.locationOfWedding && (value.timeAndLocationOfWedding.locationOfWedding = itemLocal.timeAndLocationOfWedding.locationOfWedding)
+            itemLocal.timeAndLocationOfWedding.mapDirectLink && (value.timeAndLocationOfWedding.mapDirectLink = itemLocal.timeAndLocationOfWedding.mapDirectLink)
+            itemLocal.timeAndLocationOfWedding.contentOfCountDown && (setCountdownTemp(itemLocal.timeAndLocationOfWedding.contentOfCountDown))
+            itemLocal.timeAndLocationOfWedding.contentOfCountDown && (value.arraylist[0].contentOfCountDown = itemLocal.timeAndLocationOfWedding.contentOfCountDown)
+        } else {
+            value.timeAndLocationOfWedding.dateOfEventWedding = ''
+            value.timeAndLocationOfWedding.timeOfEventWedding = ''
+            value.timeAndLocationOfWedding.locationOfWedding = ''
+            value.timeAndLocationOfWedding.mapDirectLink = ''
+            value.timeAndLocationOfWedding.contentOfCountDown = ''
+        }
+    }, [])
 
     value.timeAndLocationOfWedding.isDisplayCountDown = true;
-
 
     const radioChangeHandlerCountdownTemplate = (text, values) => {
         setRadioCountdowTemplate(values)
         setCountdownTemp(text)
-        value.timeAndLocationOfWedding.contentOfCountDown = text
+        value.arraylist[0].contentOfCountDown = text
     }
 
     const renderRadio = useCallback(
@@ -113,7 +132,7 @@ const TimeandLocation = forwardRef(({ }, ref) => {
         const errMsgTimeOfEventWedding = FormValidate.inputContentEmpty(value.timeAndLocationOfWedding.timeOfEventWedding)
         const errMsgLocationOfWedding = FormValidate.inputContentEmpty(value.timeAndLocationOfWedding.locationOfWedding)
         const errMsgMapDirectLink = FormValidate.inputContentEmpty(value.timeAndLocationOfWedding.mapDirectLink)
-        const errMsgTitleTemplate = FormValidate.inputContentEmpty(countdownTemp)
+        const errMsgTitleTemplate = FormValidate.inputContentEmpty(value.arraylist[0].contentOfCountDown)
 
 
         refDateOfEventWedding.current?.setErrorMsg(errMsgDateOfEventWedding)
@@ -123,7 +142,6 @@ const TimeandLocation = forwardRef(({ }, ref) => {
         refTitleTemplate.current?.setErrorMsg(errMsgTitleTemplate)
 
         if (`${errMsgDateOfEventWedding}${errMsgTimeOfEventWedding}${errMsgLocationOfWedding}${errMsgMapDirectLink}${errMsgTitleTemplate}`.length === 0) {
-            console.log('passing')
             return true
         }
         return false
@@ -135,23 +153,58 @@ const TimeandLocation = forwardRef(({ }, ref) => {
         switch (name) {
 
             case TIME_AND_LOCATION.dateOfEventWedding:
-                value.timeAndLocationOfWedding.dateOfEventWedding = e;
+                setValue(prevValues => ({
+                    ...prevValues,
+                    timeAndLocationOfWedding: {
+                        ...prevValues.timeAndLocationOfWedding,
+                        dateOfEventWedding: e
+                    }
+                }));
+                value.timeAndLocationOfWedding.dateOfEventWedding = e
                 break
 
             case TIME_AND_LOCATION.timeOfEventWedding:
-                value.timeAndLocationOfWedding.timeOfEventWedding = e;
+                setValue(prevValues => ({
+                    ...prevValues,
+                    timeAndLocationOfWedding: {
+                        ...prevValues.timeAndLocationOfWedding,
+                        timeOfEventWedding: e
+                    }
+                }));
+                value.timeAndLocationOfWedding.timeOfEventWedding = e
                 break
 
             case TIME_AND_LOCATION.locationOfWedding:
-                value.timeAndLocationOfWedding.locationOfWedding = e;
+                setValue(prevValues => ({
+                    ...prevValues,
+                    timeAndLocationOfWedding: {
+                        ...prevValues.timeAndLocationOfWedding,
+                        locationOfWedding: e
+                    }
+                }));
+                value.timeAndLocationOfWedding.locationOfWedding = e
                 break
 
             case TIME_AND_LOCATION.mapDirectLink:
-                value.timeAndLocationOfWedding.mapDirectLink = e;
+                setValue(prevValues => ({
+                    ...prevValues,
+                    timeAndLocationOfWedding: {
+                        ...prevValues.timeAndLocationOfWedding,
+                        mapDirectLink: e
+                    }
+                }));
+                value.timeAndLocationOfWedding.mapDirectLink = e
                 break
 
             case TIME_AND_LOCATION.isDisplayCountDown:
-                value.timeAndLocationOfWedding.isDisplayCountDown = e;
+                setValue(prevValues => ({
+                    ...prevValues,
+                    timeAndLocationOfWedding: {
+                        ...prevValues.timeAndLocationOfWedding,
+                        isDisplayCountDown: e
+                    }
+                }));
+                value.timeAndLocationOfWedding.isDisplayCountDown = e
                 break
 
             default:
@@ -159,9 +212,7 @@ const TimeandLocation = forwardRef(({ }, ref) => {
         }
 
 
-    }, [value]);
-
-    
+    }, [setValue]);
 
     const onKeyPress = useCallback(() => {
 
@@ -175,11 +226,11 @@ const TimeandLocation = forwardRef(({ }, ref) => {
             label,
             placehodel,
             name,
+            values,
             type,
             maxLength,
             isIcon,
-            icon,
-            inputStyle,
+            icon
         ) => {
 
 
@@ -188,6 +239,7 @@ const TimeandLocation = forwardRef(({ }, ref) => {
                     <MyTextInput
                         ref={ref === '' ? refUnderfine : ref}
                         label={label}
+                        value={values}
                         name={name}
                         placeHolder={placehodel}
                         type={type}
@@ -197,7 +249,6 @@ const TimeandLocation = forwardRef(({ }, ref) => {
                         styleGroup={'man_inputStyle'}
                         onChangeText={(e) => onChangeText(e.target.value, name)}
                         onKeyPress={onKeyPress}
-                        inputStyle={inputStyle}
                     />
                 </div>
             )
@@ -212,7 +263,7 @@ const TimeandLocation = forwardRef(({ }, ref) => {
 
     const onChangeCountdownTemp = useCallback((e) => {
         setCountdownTemp(e.target.value)
-        value.timeAndLocationOfWedding.contentOfCountDown = e.target.value
+        value.arraylist[0].contentOfCountDown = e.target.value
     }, [value])
 
 
@@ -223,20 +274,20 @@ const TimeandLocation = forwardRef(({ }, ref) => {
 
             <div className='double_input_row'>
                 <div className='half_row_hor_input'>
-                    {renderInput(refDateOfEventWedding, Languages.text.wedding, Languages.text.wedding, TIME_AND_LOCATION.dateOfEventWedding, 'date', 200, false)}
+                    {renderInput(refDateOfEventWedding, Languages.text.wedding, Languages.text.wedding, TIME_AND_LOCATION.dateOfEventWedding, value.timeAndLocationOfWedding.dateOfEventWedding, 'date', 200, false)}
                 </div>
                 <div className='half_row_hor_input'>
-                    {renderInput(refTimeOfEventWedding, Languages.text.timer, Languages.text.timer, TIME_AND_LOCATION.timeOfEventWedding, 'time', 200, false)}
+                    {renderInput(refTimeOfEventWedding, Languages.text.timer, Languages.text.timer, TIME_AND_LOCATION.timeOfEventWedding, value.timeAndLocationOfWedding.timeOfEventWedding, 'time', 200, false)}
                 </div>
             </div>
 
             <div className='fullwidth_input_colum'>
                 <div className='single_hor_input'>
-                    {renderInput(refLocationOfWedding, Languages.text.placeWedding, Languages.text.placeWedding, TIME_AND_LOCATION.locationOfWedding, 'text', 200, true, <FaMap />)}
+                    {renderInput(refLocationOfWedding, Languages.text.placeWedding, Languages.text.placeWedding, TIME_AND_LOCATION.locationOfWedding, value.timeAndLocationOfWedding.locationOfWedding, 'text', 200, true, <FaMap />)}
                 </div>
 
                 <div className='single_hor_input'>
-                    {renderInput(refMapDirectLink, Languages.text.mapPlaceWedding, Languages.text.mapPlaceWedding, TIME_AND_LOCATION.mapDirectLink, 'text', 200, true, <FaLink />)}
+                    {renderInput(refMapDirectLink, Languages.text.mapPlaceWedding, Languages.text.mapPlaceWedding, TIME_AND_LOCATION.mapDirectLink, value.timeAndLocationOfWedding.mapDirectLink, 'text', 200, true, <FaLink />)}
                 </div>
 
                 <div className='single_hor_input checkbox_inline_colum'>
@@ -264,7 +315,7 @@ const TimeandLocation = forwardRef(({ }, ref) => {
 
                         label={Languages.buttonText.titleTemplate}
                         buttonStyle={BUTTON_STYLES.PINK}
-                        textStyle={BUTTON_STYLES.PINK}
+                        textStyle={BUTTON_STYLES.WHITE}
                         isLowerCase
                         onPress={onChangeOpenCountdownTemplate}
                     />

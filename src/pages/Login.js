@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 
@@ -7,19 +7,15 @@ import yup from '@/utils/yupGlobal'
 import { useForm } from 'react-hook-form'
 import Languages from '@/commons/Languages'
 import Header from '@/components/header'
-import { MyTextInput } from '@/components/input'
-import { useRef } from 'react'
 import { BUTTON_STYLES } from '@/commons/Constant.ts'
 import { Button } from '@/components/button'
 import { Link, useNavigate } from 'react-router-dom'
 import LoginSocial from '@/components/loginSocial'
 import Footer from './Footer/Footer'
-import FormValidate from '@/utils/FormValidate'
 import { Alias } from '@/commons/Constant.ts'
 import Loading from '@/components/Loading'
 import { signinUser } from '@/features/auth/authSlice'
 import { Input } from '@/components/input/Input'
-import { verifyOTP } from '@/features/auth/authSlice'
 // initial state
 const schema = yup.object().shape({
   password: yup
@@ -33,7 +29,7 @@ const schema = yup.object().shape({
 })
 
 const Login = () => {
-  const { hash, userId, user } = useSelector((store) => store.auth)
+  const { user } = useSelector((store) => store.auth)
   const navigate = useNavigate()
   const dispatch = useDispatch()
   // /////// handle redirect when signin success//////////
@@ -51,12 +47,8 @@ const Login = () => {
     resolver: yupResolver(schema),
   })
   const onSubmit = (data) => {
-    console.log(data)
     dispatch(signinUser(data))
   }
-
-  // console.log(register('username'))
-  console.log(errors)
 
   return (
     <div className='Login'>
@@ -98,7 +90,7 @@ const Login = () => {
                   type='submit'
                   buttonStyle={BUTTON_STYLES.PINK}
                   width={100}
-                  textStyle={BUTTON_STYLES.PINK}
+                  textStyle={BUTTON_STYLES.WHITE}
                   isLowerCase
                 />
 

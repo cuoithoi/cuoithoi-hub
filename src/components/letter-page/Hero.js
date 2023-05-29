@@ -3,8 +3,13 @@ import homeMain from '../../assets/home-image/home-main.png'
 import { AnimationOnScroll } from 'react-animation-on-scroll'
 // import menuNav from '../../assets/home-image/menu-nav.svg'
 // import AudioPlay from './sub-comp/AudioPlay'
-const Hero = () => {
-
+const Hero = ({
+  manfirstName,
+  manName,
+  womanfirstName,
+  womanName,
+  coverImage,
+}) => {
   return (
     <div
       className='text-center pt-20 pb-20 relative section-mb layout-mw'
@@ -12,7 +17,7 @@ const Hero = () => {
     >
       {/* <AudioPlay /> */}
       <h2 className='text-main'>Thân mời tới dự bữa tiệc</h2>
-      <h1>Việt Anh & Phương Anh</h1>
+      <h1>{`${manfirstName} ${manName} & ${womanfirstName}  ${womanName}`}</h1>
       <div className='flex justify-center pt-3'>
         <img src={homeMain} alt='' />
       </div>

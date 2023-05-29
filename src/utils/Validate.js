@@ -78,7 +78,7 @@ function isValidPassword(orgPass) {
 }
 
 function isFbYoutubeLink(link) {
-    return  YOUTUBE_LINK_REGEX.test(link) || FACEBOOK_LINK_REGEX.test(link);
+    return YOUTUBE_LINK_REGEX.test(link) || FACEBOOK_LINK_REGEX.test(link);
 }
 
 function trim(str) {
@@ -89,7 +89,7 @@ function trim(str) {
 }
 
 function upperOneChar(str) {
-    if (str ) {
+    if (str) {
         const char = /[A-Z]/;
         return char.test(str);
     }
@@ -110,6 +110,18 @@ function checkSpaceChar(str) {
     }
     return false;
 }
+
+function formatMoney(number) {
+    if (!number) {
+        return '0 đ';
+    }
+    return (
+        `${Math.ceil(Number(number))
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, '.')} đ`
+    );
+}
+
 export default {
     isEmpty,
     isStringEmpty,
@@ -125,5 +137,6 @@ export default {
     isFbYoutubeLink,
     upperOneChar,
     checkSpecialChar,
-    checkSpaceChar
+    checkSpaceChar,
+    formatMoney
 };

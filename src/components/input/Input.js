@@ -71,3 +71,4 @@ export const Input = ({
     </div>
   )
 }
+// export default Input

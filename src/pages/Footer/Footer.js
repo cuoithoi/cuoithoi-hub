@@ -1,23 +1,39 @@
+
 import Languages from '@/commons/Languages'
-import React from 'react'
+import React, { useRef } from 'react'
 import IcZalo from '@/assets/home-image/IcZalo.svg'
 import IcPhone from '@/assets/home-image/IcPhone.svg'
 import { Button } from '@/components/button'
 import { BUTTON_STYLES } from '@/commons/Constant.ts'
-import { FaRegClock } from 'react-icons/fa'
+import { FaAngleDown, FaRegClock } from 'react-icons/fa'
 import Iclogo from '@/assets/home-image/IcLogo.svg'
+import { Payment } from '@/components/Payment'
 
 const Footer = () => {
+
+    const ref = useRef(null);
+
+
+    const onChangeShowModalPayment = () => {
+        ref?.current?.show();
+    }
+
     return (
         <div className='footer'>
-            
+
             <div className='container mx-auto'>
 
-                <div className='md:grid md:grid-cols-3 md:gap-4'>
+                <div className='lg:grid lg:grid-cols-3 lg:gap-4'>
 
                     <div className='component_ShowInf_Company divided-right'>
-                        <h2>{Languages.text.supportCustormer}</h2>
-                        <div className='infomationDetails'>
+                        <input className="checkbox" id="checkbox1" type="checkbox" />
+                        <label htmlFor="checkbox1" className="checkbox-label">
+                            <h2>{Languages.text.supportCustormer}</h2>
+                            <div className='icon_toogle'>
+                                <FaAngleDown />
+                            </div>
+                        </label>
+                        <div id='checkbox1_info' className='infomationDetails'>
                             <p>{Languages.text.timeWork}</p>
                             <div className='contact_phone'>
                                 <img src={IcZalo} title='zalo' />
@@ -34,7 +50,13 @@ const Footer = () => {
                     </div>
 
                     <div className='component_ShowInf_Company divided-right'>
-                        <h2>{Languages.text.bankInf}</h2>
+                        <input className="checkbox" id="checkbox2" type="checkbox" />
+                        <label htmlFor="checkbox2" className="checkbox-label">
+                            <h2>{Languages.text.bankInf}</h2>
+                            <div className='icon_toogle'>
+                                <FaAngleDown />
+                            </div>
+                        </label>
                         <div className='infomationDetails'>
                             <div className='contact'>
                                 <p>Ngân hàng: Shinhan</p>
@@ -44,20 +66,23 @@ const Footer = () => {
                             <Button
                                 label={Languages.buttonText.scanQr}
                                 buttonStyle={BUTTON_STYLES.PINK}
-                                getTextStyle={BUTTON_STYLES.WHITE}
+                                textStyle={BUTTON_STYLES.WHITE}
                                 rightIcon={<FaRegClock className='iconQrcode' />}
                                 isLowerCase
-                                textStyle={BUTTON_STYLES.PINK}
+                                onPress={onChangeShowModalPayment}
                             />
                         </div>
                     </div>
 
                     <div className='component_ShowInf_Company infoCompany'>
-
-                        <div className='logo_footer'>
-                            <img src={Iclogo} alt='logo' />
-                        </div>
-
+                        <input className="checkbox" id="checkbox3" type="checkbox" /><label htmlFor="checkbox3" className="checkbox-label">
+                            <div className='logo_footer'>
+                                <img src={Iclogo} alt='logo' />
+                            </div>
+                            <div className='icon_toogle'>
+                                <FaAngleDown />
+                            </div>
+                        </label>
                         <div className='infomationDetails'>
                             <div className='contact'>
                                 <p>CEO: Đặng Hoàng Minh</p>
@@ -67,7 +92,9 @@ const Footer = () => {
                             </div>
                         </div>
                     </div>
-
+                    <Payment
+                        ref={ref}
+                    />
                 </div>
             </div>
         </div>
@@ -76,3 +103,4 @@ const Footer = () => {
 
 
 export default Footer
+

@@ -3,6 +3,7 @@ import dayjs from 'dayjs'
 import range from 'lodash-es/range'
 import 'dayjs/locale/es' // load on demand
 import TitleDescribe from './TitleDescribe'
+import { formatMonth } from '@/utils/helpers'
 // import Tit
 // import '../../../style.scss'
 
@@ -10,8 +11,8 @@ const weekDays = ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7']
 
 const todayObj = dayjs()
 
-const Calendar = () => {
-  const dayObj = dayjs('2023-04-05')
+const Calendar = ({ dateOfEventWedding }) => {
+  const dayObj = dayjs(dateOfEventWedding)
   const thisYear = dayObj.year()
   const thisMonth = dayObj.month() // (January as 0, December as 11)
   const daysInMonth = dayObj.daysInMonth()
@@ -26,11 +27,10 @@ const Calendar = () => {
     <div className='calendar text-xl'>
       <div className='header '>
         <div className='datetime text-text'>
-          <TitleDescribe
-            title={`Tháng ${dayObj.locale('vi').format('M/YYYY')}`}
-          />
+          <TitleDescribe title={`Tháng ${formatMonth(dateOfEventWedding)}`} />
           {/* Tháng {dayObj.locale('vi').format('M/YYYY')} */}
         </div>
+        {/* ${dayObj.locale('vi').format('M/YYYY')} */}
       </div>
       <div className='week-container'>
         {weekDays.map((d) => (
