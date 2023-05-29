@@ -5,14 +5,14 @@ const app = express();
 const dotenv = require("dotenv");
 dotenv.config();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3006;
 
 // use static
-app.use(express.static(path.join(__dirname, "../build")));
+app.use(express.static(path.join(__dirname, "../../build")));
 
 // get file index.html from 'public/build/index.html'
 app.use("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../build", "index.html"));
+  res.sendFile(path.join(__dirname, "../../build", "index.html"));
 });
 
 // endfile
