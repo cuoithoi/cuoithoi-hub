@@ -2,7 +2,10 @@ const express = require("express");
 const path = require("path");
 const app = express();
 
-const PORT = 3006;
+const dotenv = require("dotenv");
+dotenv.config();
+
+const PORT = process.env.PORT || 3006;
 
 // use static
 app.use(express.static(path.join(__dirname, "../../build")));
@@ -15,5 +18,5 @@ app.use("/", (req, res) => {
 // endfile
 
 app.listen(PORT, () => {
-  console.log("weddingWeb (express + react) run : " + PORT);
+  console.log("WebAdmin (express + react) run : " + PORT);
 });
