@@ -63,16 +63,16 @@ const VideoandEvent = forwardRef(({ }, ref) => {
         const errMsgTimeToCelebrate = FormValidate.inputContentEmpty(value.eventOfProgram.timeToCelebrate)
         const errMsgTimeToDinner = FormValidate.inputContentEmpty(value.eventOfProgram.timeToDinner)
         const errMsgTimeToMusic = FormValidate.inputContentEmpty(value.eventOfProgram.timeToMusic)
-        const errMsgWarn = FormValidate.inputContentEmpty(warnTemp)
+        // const errMsgWarn = FormValidate.inputContentEmpty(warnTemp)
 
-        refVideoLink.current?.setErrorMsg(errMsgVideoLink)
-        refTimeToWellcome.current?.setErrorMsg(errMsgTimeToWellcome)
-        refTimeToCelebrate.current?.setErrorMsg(errMsgTimeToCelebrate)
-        refTimeToDinner.current?.setErrorMsg(errMsgTimeToDinner)
-        refTimeToMusic.current?.setErrorMsg(errMsgTimeToMusic)
-        refWarn.current?.setErrorMsg(errMsgWarn)
+        // refVideoLink.current?.setErrorMsg(errMsgVideoLink)
+        // refTimeToWellcome.current?.setErrorMsg(errMsgTimeToWellcome)
+        // refTimeToCelebrate.current?.setErrorMsg(errMsgTimeToCelebrate)
+        // refTimeToDinner.current?.setErrorMsg(errMsgTimeToDinner)
+        // refTimeToMusic.current?.setErrorMsg(errMsgTimeToMusic)
+        // refWarn.current?.setErrorMsg(errMsgWarn)
 
-        if (`${errMsgVideoLink}${errMsgTimeToWellcome}${errMsgTimeToCelebrate}${errMsgTimeToDinner}${errMsgTimeToMusic}${errMsgWarn}`.length === 0) {
+        if (`${errMsgVideoLink}${errMsgTimeToWellcome}${errMsgTimeToCelebrate}${errMsgTimeToDinner}${errMsgTimeToMusic}`.length === 0) {
             setOpenPanel(true)
             return true
         }
@@ -330,7 +330,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
 
                             label={Languages.buttonText.titleTemplate}
                             buttonStyle={BUTTON_STYLES.PINK}
-                            textStyle={BUTTON_STYLES.PINK}
+                            textStyle={BUTTON_STYLES.WHITE}
                             isLowerCase
                             onPress={onChangeOpenWarnTemplate}
                         />

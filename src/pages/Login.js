@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 
@@ -7,14 +7,11 @@ import yup from '@/utils/yupGlobal'
 import { useForm } from 'react-hook-form'
 import Languages from '@/commons/Languages'
 import Header from '@/components/header'
-import { MyTextInput } from '@/components/input'
-import { useRef } from 'react'
 import { BUTTON_STYLES } from '@/commons/Constant.ts'
 import { Button } from '@/components/button'
 import { Link, useNavigate } from 'react-router-dom'
 import LoginSocial from '@/components/loginSocial'
 import Footer from './Footer/Footer'
-import FormValidate from '@/utils/FormValidate'
 import { Alias } from '@/commons/Constant.ts'
 import Loading from '@/components/Loading'
 import { signinUser } from '@/features/auth/authSlice'
@@ -50,12 +47,8 @@ const Login = () => {
     resolver: yupResolver(schema),
   })
   const onSubmit = (data) => {
-    console.log(data)
     dispatch(signinUser(data))
   }
-
-  // console.log(register('username'))
-  console.log(errors)
 
   return (
     <div className='Login'>

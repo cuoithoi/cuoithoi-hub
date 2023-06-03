@@ -104,7 +104,7 @@ const RecoveryPwd = () => {
                   type='submit'
                   buttonStyle={BUTTON_STYLES.PINK}
                   width={100}
-                  textStyle={BUTTON_STYLES.PINK}
+                  textStyle={BUTTON_STYLES.WHITE}
                   isLowerCase
                 />
               </form>

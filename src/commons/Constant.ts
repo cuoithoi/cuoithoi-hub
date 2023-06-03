@@ -2,6 +2,7 @@ import {
   getItemFromLocalStorage,
   getLocalAccessToken,
 } from '@/utils/localStorage'
+import axios from 'axios'
 
 export enum Events {
   TOAST = 'TOAST',
@@ -24,7 +25,17 @@ export enum CheckParams {
   SUCCESS_CREATE = 6,
   CONFIRM_INFO = 7,
   EDITOR = 8,
-  NOTOKEN = 9
+  NOTOKEN = 9,
+  PAYMENT = 10,
+  PAYMENTSUCCESS = 11,
+}
+
+export enum Status {
+  ACTIVE = 1, // ĐÃ KÍCH HOẠT THIỆP
+  INACTIVE = 2, // CHƯA KÍCH HOẠT
+  DRAFT = 3, // BẢN NHÁP
+  REQUEST_PAYMENT = 4, //YÊU CẦU TRẢ PHÍ
+  EXPIRE = 5, //HẾT HẠN SỬ DỤNG
 }
 
 export enum ErrorCodes {
@@ -46,7 +57,7 @@ export enum Convert {
 export const Alias = {
   homePage: '/',
   letterPage: '/letterPage',
-  congrats: '/chuc-phuc-chi-tiet',
+  congrats: 'chuc-phuc-chi-tiet',
   login: '/login',
   register: '/dang-ky',
   pwdRecovery: '/khoi-phuc-mat-khau',
@@ -56,7 +67,7 @@ export const Alias = {
   verifyOtp: '/xac-thuc-otp',
   emailOtp: '/xac-thuc-email',
   customerCare: '/cham-soc-khach-hang',
-  editor: '/chinh-sua-thiep'
+  editor: '/chinh-sua-thiep',
 }
 
 export enum BUTTON_STYLES {
@@ -78,7 +89,7 @@ export enum BACKGROUND_STYLES {
   YELLOWS = 'YELLOWS',
   GREEN = 'GREEN',
   DRAK = 'DRAK',
-  TRANPARENTGREEN= 'TRANPARENTGREEN'
+  TRANPARENTGREEN = 'TRANPARENTGREEN',
 }
 
 export const NAME_INPUT_GROOM = {
@@ -186,16 +197,27 @@ export const INPUT_FIELDS = {
 }
 
 export const APi = {
-  BaseUrl: 'http://172.173.169.122:3000/api',
+  BaseUrl: 'http://14.225.205.60:3000/api',
   uploadImage: '/upload-images',
   createInvitation: '/create-invitation',
   listProduct: '/list-product',
   anotherProduct: '/list-other-product',
+  updateInvitation: '/update-invitation',
+  listInvitation: '/list-invitation',
+  deleteInvitation: '/delete-invitation',
+  excelClient: '/export-excel/recurrent-info',
+  exportWish: '/export-excel/wish',
+  invitationDetail: '/invitation-detail',
+  notifi: '/get-list-question-category',
+  faq: '/get-list-question',
+  inforCompany: '/get-information-base',
+  codeSale: '/check-sale-code',
 }
+
+export const BankData = 'https://api.vietqr.io/v2/banks'
 
 export const config = {
   headers: { Authorization: 'Bearer ' + getLocalAccessToken() },
 }
 
 export const itemLocal = getItemFromLocalStorage('createLeter')
-

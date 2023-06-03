@@ -1,20 +1,14 @@
-import React, { useEffect, useState, useCallback, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styles from "./HomePage.module.css";
 import Languages from "@/commons/Languages";
 import { Button } from "@/components/button";
 import BlockUI from "@/components/blockUI";
-import { BUTTON_STYLES } from "@/commons/Constant.ts";
+import { Alias, BUTTON_STYLES } from "@/commons/Constant.ts";
 import IcDoublePhone from "@/assets/home-image/IcDoublePhone.svg";
 import IcPhoneHeart from "@/assets/home-image/IcPhoneHeart.svg";
-import IcPhoneAround from "@/assets/home-image/IcPhoneAround.svg";
-import IcPhoneList from "@/assets/home-image/IcPhoneList.svg";
 import { BACKGROUND_STYLES } from "@/commons/Constant.ts";
-import IcCapture from "@/assets/home-image/capture.svg";
-import IcFile from "@/assets/home-image/file.svg";
-import IcMapMarker from "@/assets/home-image/map-marker.svg";
 import Footer from "../Footer/Footer";
 import Header from "@/components/header";
-import Loading from "@/components/Loading";
 import { AnimationOnScroll } from "react-animation-on-scroll";
 import { Element, Link } from "react-scroll";
 import { Fade } from 'react-slideshow-image';
@@ -30,7 +24,10 @@ import IcTooltipMedia from '@/assets/home-image/Icon_TooltipMedia.svg'
 import IcTooltipExcel from '@/assets/home-image/Icon_TooltipExcel.svg'
 import Img_3phone from '@/assets/home-image/Img_3phone.svg'
 import ImgFeedback from '@/assets/home-image/ImgFeedback.svg'
+import Ic_HomepageCreate from '@/assets/home-image/IcHomepageCreate.svg'
+import Ic_HomepageSeemore from '@/assets/home-image/IcHomepageSeemore.svg'
 import ChooseTypeBlock from "@/components/chooseTypeBlock";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const fadeImages = [
   {
@@ -46,34 +43,58 @@ const fadeImages = [
 
 const Homepage = () => {
 
-
-  const [height, setHeight] = useState(0)
-
-  const [heightTopFooter, setHeightTopFooter] = useState(0)
+  const [heightTopFooter, setHeightTopFooter] = useState('auto')
   const refFooter = useRef(null)
 
+  const [activeSection, setActiveSection] = useState('section1');
+  const [isScrolling, setIsScrolling] = useState(false);
+
+  const navigate = useNavigate();
+
   useEffect(() => {
+    
+    const handleScroll = () => {
+      if (!isScrolling) {
+        const scrollTop = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const sections = ['section1', 'section2', 'section3', 'section4', 'section5', 'section6', 'section7', 'section8'];
+
+        const sectionTops = sections.map((section) => {
+          const element = document.querySelector(`[name="${section}"]`);
+          return element.offsetTop;
+        });
+
+        const sectionIndex = sectionTops.findIndex(
+          (top) => scrollTop < top + windowHeight / 2
+        );
+
+        setActiveSection(sections[sectionIndex]);
+        setIsScrolling(false);
+      };
+    }
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+
+  }, [isScrolling]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
     const windowHeight = window.innerHeight;
     const heightFooter = refFooter.current?.offsetHeight;
     const heightBoxTopFooter = windowHeight - heightFooter
-    setHeightTopFooter(heightBoxTopFooter)
+    const widthScreen = window.innerWidth;
+    if (widthScreen > 768) setHeightTopFooter(heightBoxTopFooter)
   }, [])
 
-  const handleWheel = (e) => {
-    const currentScrollPos = window.pageYOffset;
-    const windowHeight = window.innerHeight;
-    const distanceToScroll = e.deltaY > 0 ? windowHeight : -windowHeight;
-    window.scrollBy({ top: distanceToScroll, behavior: "smooth" });
-  };
+  const onNavigateCreatePage = () => navigate(Alias.mypage);
 
-  useEffect(() => {
-    setHeight(window.innerHeight)
-  }, [])
+  const onChangeToServices = () => navigate(Alias.services)
 
   return (
     <>
-      <Loading />
-
       <nav className="dotted_scroll">
         <ul>
           <li>
@@ -111,9 +132,9 @@ const Homepage = () => {
         </ul>
       </nav>
 
-      <div className="main" onWheel={handleWheel}>
+      <div className="main" >
 
-        <Element name="section1" className="section" style={{ height: height }}>
+        <Element name="section1" className={`${activeSection === 'section1' ? 'active' : ''} ${"section"}`} >
           <Header typeLogo={BACKGROUND_STYLES.WHITE} />
           <div className={`${styles.homepage_box}`}>
             <div className="slide-container">
@@ -122,7 +143,7 @@ const Homepage = () => {
                 transitionDuration={1000}
                 arrows={false}>
                 {fadeImages.map((fadeImage, index) => (
-                  <div className="each-fade" key={index} style={{ height: height }}>
+                  <div className="each-fade" key={index} style={{ height: "100vh" }}>
                     <div className="image-container" >
                       <img src={fadeImage.url} />
                     </div>
@@ -147,6 +168,7 @@ const Homepage = () => {
                     label={Languages.buttonText.createTC}
                     textStyle={BUTTON_STYLES.PINK}
                     isLowerCase
+                    onPress={onNavigateCreatePage}
                   />
                   <Button
                     label={Languages.buttonText.anyMore}
@@ -163,7 +185,7 @@ const Homepage = () => {
           </div>
         </Element>
 
-        <Element name="section2" className="section" style={{ height: height }}>
+        <Element name="section2" className={`${activeSection === 'section2' ? 'active' : ''} ${"section"}`} >
           <BlockUI
             isright
             title={Languages.text.mobileWeddingCard}
@@ -245,7 +267,7 @@ const Homepage = () => {
           </BlockUI>
         </Element>
 
-        <Element name="section3" className="section" style={{ height: height }}>
+        <Element name="section3" className={`${activeSection === 'section3' ? 'active' : ''} ${"section"}`}>
 
           <div className="wrapbox_image_pc">
             <div className="container mx-auto">
@@ -263,7 +285,7 @@ const Homepage = () => {
 
         </Element>
 
-        <Element name="section4" className="section" style={{ height: height }}>
+        <Element name="section4" className={`${activeSection === 'section4' ? 'active' : ''} ${"section"}`} >
           <div className="wrapbox_image_pc box_3phone_section">
             <div className="container mx-auto">
               <div className="head">
@@ -347,7 +369,7 @@ const Homepage = () => {
           </div>
         </Element>
 
-        <Element name="section5" className="section" style={{ height: height }}>
+        <Element name="section5" className={`${activeSection === 'section5' ? 'active' : ''} ${"section"}`} >
           <BlockUI
             isright
             isbutton
@@ -362,12 +384,13 @@ const Homepage = () => {
             textStyleButton={BUTTON_STYLES.WHITE}
             animateImg={"animate__fadeInBottomLeft"}
             animateContent={"animate__fadeInRight"}
+            onPress={onNavigateCreatePage}
           >
             {Languages.text.contentEffect}
           </BlockUI>
         </Element>
 
-        <Element name="section6" className="section" style={{ height: height }}>
+        <Element name="section6" className={`${activeSection === 'section6' ? 'active' : ''} ${"section"}`} >
 
 
           <div className="box_save_wish" >
@@ -390,41 +413,52 @@ const Homepage = () => {
 
 
         </Element>
-        <Element name="section7" className="section" style={{ height: height }}>
+
+        <Element name="section7" className={`${activeSection === 'section7' ? 'active' : ''} ${"section"}`}>
           <div className="choosetypeblock_box">
             <ChooseTypeBlock />
           </div>
 
         </Element>
-        <Element name="section8" className="section" style={{ height: height }}>
 
-          <div className="box_top_footer" style={{ height: heightTopFooter }}>
-            <div className="container mx-auto">
-              <div className="box_wrap">
-                <div className="text">
-                  <p>Một lời mời đặc biệt cho ngày đặc biệt của bạn</p>
-                  <h3>Bạn muốn tạo lời mời đặc biệt ấy theo cách nào?</h3>
-                </div>
-                <div className="button">
-                  <Button
-                    label={Languages.buttonText.svDetails}
-                    buttonStyle={BUTTON_STYLES.WHITE}
-                    textStyle={BUTTON_STYLES.WHITE}
-                    isLowerCase
-                    autocenter
-                  />
+        <Element name="section8" className={`${activeSection === 'section8' ? 'active' : ''} ${"section"}`} >
+          <div className="ref_footer_style_Homepage">
+            <div className="box_top_footer" style={{ height: heightTopFooter }}>
+              <div className="container mx-auto">
+                <div className="box_wrap">
+                  <div className="text">
+                    <p>Một lời mời đặc biệt cho ngày đặc biệt của bạn</p>
+                    <h3>Bạn muốn tạo lời mời đặc biệt ấy theo cách nào?</h3>
+                  </div>
+                  <div className="button">
+                    <Button
+                      label={Languages.buttonText.svDetails}
+                      buttonStyle={BUTTON_STYLES.WHITE}
+                      textStyle={BUTTON_STYLES.WHITE}
+                      isLowerCase
+                      autocenter
+                      onPress={onChangeToServices}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
+            <div className="bottom_footer" ref={refFooter}>
+              <Footer />
+            </div>
           </div>
-          <div ref={refFooter} className="ref_footer_style_Homepage">
-            <Footer />
-          </div>
-
         </Element>
 
-      </div>
+        <div className="view_experience">
+          <NavLink to={Alias.mypage}>
+            <img src={Ic_HomepageCreate} alt="Ic_HomepageCreate" />
+          </NavLink>
+          <NavLink to={Alias.mypage}>
+            <img src={Ic_HomepageSeemore} alt="Ic_HomepageSeemore" />
+          </NavLink>
+        </div>
 
+      </div>
     </>
   );
 };

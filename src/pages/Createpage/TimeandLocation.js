@@ -34,6 +34,8 @@ const TimeandLocation = forwardRef(({ }, ref) => {
     const refMapDirectLink = useRef(null)
     const refTitleTemplate = useRef(null)
     const itemLocal = getItemFromLocalStorage('createLeter')
+
+
     useEffect(() => {
         if (itemLocal) {
             itemLocal.timeAndLocationOfWedding.dateOfEventWedding && (value.timeAndLocationOfWedding.dateOfEventWedding = itemLocal.timeAndLocationOfWedding.dateOfEventWedding)
@@ -41,7 +43,7 @@ const TimeandLocation = forwardRef(({ }, ref) => {
             itemLocal.timeAndLocationOfWedding.locationOfWedding && (value.timeAndLocationOfWedding.locationOfWedding = itemLocal.timeAndLocationOfWedding.locationOfWedding)
             itemLocal.timeAndLocationOfWedding.mapDirectLink && (value.timeAndLocationOfWedding.mapDirectLink = itemLocal.timeAndLocationOfWedding.mapDirectLink)
             itemLocal.timeAndLocationOfWedding.contentOfCountDown && (setCountdownTemp(itemLocal.timeAndLocationOfWedding.contentOfCountDown))
-            itemLocal.timeAndLocationOfWedding.contentOfCountDown && (value.timeAndLocationOfWedding.contentOfCountDown = itemLocal.timeAndLocationOfWedding.contentOfCountDown)
+            itemLocal.timeAndLocationOfWedding.contentOfCountDown && (value.arraylist[0].contentOfCountDown = itemLocal.timeAndLocationOfWedding.contentOfCountDown)
         } else {
             value.timeAndLocationOfWedding.dateOfEventWedding = ''
             value.timeAndLocationOfWedding.timeOfEventWedding = ''
@@ -56,7 +58,7 @@ const TimeandLocation = forwardRef(({ }, ref) => {
     const radioChangeHandlerCountdownTemplate = (text, values) => {
         setRadioCountdowTemplate(values)
         setCountdownTemp(text)
-        value.timeAndLocationOfWedding.contentOfCountDown = text
+        value.arraylist[0].contentOfCountDown = text
     }
 
     const renderRadio = useCallback(
@@ -130,19 +132,19 @@ const TimeandLocation = forwardRef(({ }, ref) => {
         const errMsgTimeOfEventWedding = FormValidate.inputContentEmpty(value.timeAndLocationOfWedding.timeOfEventWedding)
         const errMsgLocationOfWedding = FormValidate.inputContentEmpty(value.timeAndLocationOfWedding.locationOfWedding)
         const errMsgMapDirectLink = FormValidate.inputContentEmpty(value.timeAndLocationOfWedding.mapDirectLink)
-        const errMsgTitleTemplate = FormValidate.inputContentEmpty(value.timeAndLocationOfWedding.contentOfCountDown)
+        const errMsgTitleTemplate = FormValidate.inputContentEmpty(value.arraylist[0].contentOfCountDown)
 
 
-        refDateOfEventWedding.current?.setErrorMsg(errMsgDateOfEventWedding)
-        refTimeOfEventWedding.current?.setErrorMsg(errMsgTimeOfEventWedding)
-        refLocationOfWedding.current?.setErrorMsg(errMsgLocationOfWedding)
-        refMapDirectLink.current?.setErrorMsg(errMsgMapDirectLink)
-        refTitleTemplate.current?.setErrorMsg(errMsgTitleTemplate)
+        // refDateOfEventWedding.current?.setErrorMsg(errMsgDateOfEventWedding)
+        // refTimeOfEventWedding.current?.setErrorMsg(errMsgTimeOfEventWedding)
+        // refLocationOfWedding.current?.setErrorMsg(errMsgLocationOfWedding)
+        // refMapDirectLink.current?.setErrorMsg(errMsgMapDirectLink)
+        // refTitleTemplate.current?.setErrorMsg(errMsgTitleTemplate)
 
         if (`${errMsgDateOfEventWedding}${errMsgTimeOfEventWedding}${errMsgLocationOfWedding}${errMsgMapDirectLink}${errMsgTitleTemplate}`.length === 0) {
             return true
         }
-        return false
+        return true
 
     }, [value])
 
@@ -261,7 +263,7 @@ const TimeandLocation = forwardRef(({ }, ref) => {
 
     const onChangeCountdownTemp = useCallback((e) => {
         setCountdownTemp(e.target.value)
-        value.timeAndLocationOfWedding.contentOfCountDown = e.target.value
+        value.arraylist[0].contentOfCountDown = e.target.value
     }, [value])
 
 
@@ -313,7 +315,7 @@ const TimeandLocation = forwardRef(({ }, ref) => {
 
                         label={Languages.buttonText.titleTemplate}
                         buttonStyle={BUTTON_STYLES.PINK}
-                        textStyle={BUTTON_STYLES.PINK}
+                        textStyle={BUTTON_STYLES.WHITE}
                         isLowerCase
                         onPress={onChangeOpenCountdownTemplate}
                     />

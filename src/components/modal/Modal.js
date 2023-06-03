@@ -50,7 +50,7 @@ const Modal = ({
                 onPress={onOk}
                 label={btnSubmitText}
                 buttonStyle={BUTTON_STYLES.PINK}
-                textStyle={BUTTON_STYLES.PINK}
+                textStyle={BUTTON_STYLES.WHITE}
               />
             )}
           </div>

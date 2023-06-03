@@ -12,6 +12,7 @@ const initialState = {
   user: getUserFromLocalStorage(),
   hash: '',
   userId: '',
+  token: '',
   emailVerify: {
     hash: '',
   },
@@ -90,6 +91,7 @@ const authSlice = createSlice({
       state.hash = payload.hash
       state.email = payload.email
       state.userId = payload._id
+      state.token = payload.token
       state.isSignupSuccess = true
       toast.success('Đăng ký thành công!')
     },

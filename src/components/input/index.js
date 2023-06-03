@@ -160,6 +160,7 @@ export const MyTextInput = forwardRef(
             disabled={!disabled}
             readOnly={!disabled}
             onFocus={focus}
+            autoComplete='autocomplete'
             onKeyUp={eventTextChange}
             onInput={eventTextChange}
             className={`${styles.form_control} ${inputStyle ? inputStyle : ""

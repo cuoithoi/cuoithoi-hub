@@ -40,20 +40,20 @@ const FamilyGroom = forwardRef(({ }, ref) => {
     useEffect(() => {
 
         if (itemLocal) {
-            itemLocal.informationOfGroom[0].firstName && (value.informationOfGroom[0].firstName = itemLocal.informationOfGroom[0].firstName)
-            itemLocal.informationOfGroom[0].middleName && (value.informationOfGroom[0].middleName = itemLocal.informationOfGroom[0].middleName)
-            itemLocal.informationOfGroom[0].name && (value.informationOfGroom[0].name = itemLocal.informationOfGroom[0].name)
-            itemLocal.informationOfGroom[0].phoneNumberOfGroom && (value.informationOfGroom[0].phoneNumberOfGroom = itemLocal.informationOfGroom[0].phoneNumberOfGroom)
-            itemLocal.informationOfGroom[0].firstFatherNameOfGroom && (value.informationOfGroom[0].firstFatherNameOfGroom = itemLocal.informationOfGroom[0].firstFatherNameOfGroom)
-            itemLocal.informationOfGroom[0].middleFatherNameOfGroom && (value.informationOfGroom[0].middleFatherNameOfGroom = itemLocal.informationOfGroom[0].middleFatherNameOfGroom)
-            itemLocal.informationOfGroom[0].fatherNameOfGroom && (value.informationOfGroom[0].fatherNameOfGroom = itemLocal.informationOfGroom[0].fatherNameOfGroom)
-            itemLocal.informationOfGroom[0].phoneNumberOfFatherGroom && (value.informationOfGroom[0].phoneNumberOfFatherGroom = itemLocal.informationOfGroom[0].phoneNumberOfFatherGroom)
-            itemLocal.informationOfGroom[0].isGoneFather && (value.informationOfGroom[0].isGoneFather = itemLocal.informationOfGroom[0].isGoneFather)
-            itemLocal.informationOfGroom[0].firstMotherNameOfGroom && (value.informationOfGroom[0].firstMotherNameOfGroom = itemLocal.informationOfGroom[0].firstMotherNameOfGroom)
-            itemLocal.informationOfGroom[0].middleMotherNameOfGroom && (value.informationOfGroom[0].middleMotherNameOfGroom = itemLocal.informationOfGroom[0].middleMotherNameOfGroom)
-            itemLocal.informationOfGroom[0].motherNameOfGroom && (value.informationOfGroom[0].motherNameOfGroom = itemLocal.informationOfGroom[0].motherNameOfGroom)
-            itemLocal.informationOfGroom[0].phoneNumberOfMotherGroom && (value.informationOfGroom[0].phoneNumberOfMotherGroom = itemLocal.informationOfGroom[0].phoneNumberOfMotherGroom)
-            itemLocal.informationOfGroom[0].isGoneMother && (value.informationOfGroom[0].isGoneMother = itemLocal.informationOfGroom[0].isGoneMother)
+            itemLocal.informationOfGroom.firstName && (value.informationOfGroom[0].firstName = itemLocal.informationOfGroom.firstName)
+            itemLocal.informationOfGroom.middleName && (value.informationOfGroom[0].middleName = itemLocal.informationOfGroom.middleName)
+            itemLocal.informationOfGroom.name && (value.informationOfGroom[0].name = itemLocal.informationOfGroom.name)
+            itemLocal.informationOfGroom.phoneNumberOfGroom && (value.informationOfGroom[0].phoneNumberOfGroom = itemLocal.informationOfGroom.phoneNumberOfGroom)
+            itemLocal.informationOfGroom.firstFatherNameOfGroom && (value.informationOfGroom[0].firstFatherNameOfGroom = itemLocal.informationOfGroom.firstFatherNameOfGroom)
+            itemLocal.informationOfGroom.middleFatherNameOfGroom && (value.informationOfGroom[0].middleFatherNameOfGroom = itemLocal.informationOfGroom.middleFatherNameOfGroom)
+            itemLocal.informationOfGroom.fatherNameOfGroom && (value.informationOfGroom[0].fatherNameOfGroom = itemLocal.informationOfGroom.fatherNameOfGroom)
+            itemLocal.informationOfGroom.phoneNumberOfFatherGroom && (value.informationOfGroom[0].phoneNumberOfFatherGroom = itemLocal.informationOfGroom.phoneNumberOfFatherGroom)
+            itemLocal.informationOfGroom.isGoneFather && (value.informationOfGroom[0].isGoneFather = itemLocal.informationOfGroom.isGoneFather)
+            itemLocal.informationOfGroom.firstMotherNameOfGroom && (value.informationOfGroom[0].firstMotherNameOfGroom = itemLocal.informationOfGroom.firstMotherNameOfGroom)
+            itemLocal.informationOfGroom.middleMotherNameOfGroom && (value.informationOfGroom[0].middleMotherNameOfGroom = itemLocal.informationOfGroom.middleMotherNameOfGroom)
+            itemLocal.informationOfGroom.motherNameOfGroom && (value.informationOfGroom[0].motherNameOfGroom = itemLocal.informationOfGroom.motherNameOfGroom)
+            itemLocal.informationOfGroom.phoneNumberOfMotherGroom && (value.informationOfGroom[0].phoneNumberOfMotherGroom = itemLocal.informationOfGroom.phoneNumberOfMotherGroom)
+            itemLocal.informationOfGroom.isGoneMother && (value.informationOfGroom[0].isGoneMother = itemLocal.informationOfGroom.isGoneMother)
         } else {
             value.informationOfGroom[0].firstName = ''
             value.informationOfGroom[0].middleName = ''
@@ -91,22 +91,22 @@ const FamilyGroom = forwardRef(({ }, ref) => {
         const errMsgPhoneMother = FormValidate.passConFirmPhone(value.informationOfGroom[0].phoneNumberOfMotherGroom)
 
         refFirstnNameMother.current?.setErrorMsg(errMsgFirstNameMother)
-        refMiddleNameMother.current?.setErrorMsg(errMsgMiddleNameMother)
+        // refMiddleNameMother.current?.setErrorMsg(errMsgMiddleNameMother)
         refNameMother.current?.setErrorMsg(errMsgNameMother)
         refPhoneMother.current?.setErrorMsg(errMsgPhoneMother)
 
         refFirstnNameFather.current?.setErrorMsg(errMsgFirstNameFather)
-        refMiddleNameFather.current?.setErrorMsg(errMsgMiddleNameFather)
+        // refMiddleNameFather.current?.setErrorMsg(errMsgMiddleNameFather)
         refNameFather.current?.setErrorMsg(errMsgNameFather)
         refPhoneFather.current?.setErrorMsg(errMsgPhoneFather)
 
         refFirstnNameGroom.current?.setErrorMsg(errMsgFirstNameG)
-        refMiddleNameGroom.current?.setErrorMsg(errMsgMiddleNameG)
+        // refMiddleNameGroom.current?.setErrorMsg(errMsgMiddleNameG)
         refNameGroom.current?.setErrorMsg(errMsgNameG)
         refPhoneGroom.current?.setErrorMsg(errMsgPhoneG)
 
 
-        if (`${errMsgFirstNameG}${errMsgMiddleNameG}${errMsgNameG}${errMsgPhoneG}${errMsgFirstNameFather}${errMsgMiddleNameFather}${errMsgNameFather}${errMsgPhoneFather}${errMsgFirstNameMother}${errMsgMiddleNameMother}${errMsgNameMother}${errMsgPhoneMother}`.length === 0) {
+        if (`${errMsgFirstNameG}${errMsgNameG}${errMsgPhoneG}${errMsgFirstNameFather}${errMsgNameFather}${errMsgPhoneFather}${errMsgFirstNameMother}${errMsgNameMother}${errMsgPhoneMother}${errMsgMiddleNameG}${errMsgMiddleNameFather}${errMsgMiddleNameMother}`.length === 0) {
             return true
         }
         return false
@@ -488,7 +488,7 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                         <div className="Input_boxGroupInput__G9mP9 man_inputStyle">
                             <label className="Input_label__90o4b">{Languages.inputText.death}</label>
                             <div className="Input_formGroup__mXqJL ">
-                                <input type="checkbox" defaultChecked={itemLocal ? itemLocal.informationOfGroom[0].isGoneFather : false} className="Input_form_control__5uYZX inputStyle" onChange={(e) => onChangeText(e.target.checked, NAME_INPUT_GROOM.isGoneFather)} />
+                                <input type="checkbox" defaultChecked={false} className="Input_form_control__5uYZX inputStyle" onChange={(e) => onChangeText(e.target.checked, NAME_INPUT_GROOM.isGoneFather)} />
                             </div>
                         </div>
                     </div>
@@ -564,7 +564,7 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                         <div className="Input_boxGroupInput__G9mP9 man_inputStyle">
                             <label className="Input_label__90o4b">{Languages.inputText.death}</label>
                             <div className="Input_formGroup__mXqJL ">
-                                <input type="checkbox" defaultChecked={itemLocal ? itemLocal.informationOfGroom[0].isGoneMother : false} className="Input_form_control__5uYZX inputStyle" onChange={(e) => onChangeText(e.target.checked, NAME_INPUT_GROOM.isGoneMother)} />
+                                <input type="checkbox" defaultChecked={false} className="Input_form_control__5uYZX inputStyle" onChange={(e) => onChangeText(e.target.checked, NAME_INPUT_GROOM.isGoneMother)} />
                             </div>
                         </div>
                     </div>

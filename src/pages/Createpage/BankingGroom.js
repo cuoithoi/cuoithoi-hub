@@ -2,7 +2,7 @@ import { MyTextInput } from "@/components/input";
 import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from "react";
 import Languages from '@/commons/Languages'
 import { fiedlsCreatePage } from "@/commons/FieldsDataObj";
-import { NAME_INPUT_GROOM, itemLocal } from "@/commons/Constant.ts";
+import { BankData, NAME_INPUT_GROOM, itemLocal } from "@/commons/Constant.ts";
 import { ImageUpload } from "@/components/imageUpload";
 import ImgUploadIcon from "@/components/icons/ImgUploadIcon";
 import arrayMove from 'array-move-e5'
@@ -11,6 +11,7 @@ import FormValidate from "@/utils/FormValidate";
 import { toast } from "react-toastify";
 import { uploadImage } from "@/utils/axios";
 import { getItemFromLocalStorage } from "@/utils/localStorage";
+import { useBaseService } from "@/utils/BaseServices";
 
 const BankingGroom = forwardRef(({ }, ref) => {
 
@@ -20,9 +21,12 @@ const BankingGroom = forwardRef(({ }, ref) => {
 
     }));
 
+    const { get } = useBaseService()
+
     const [qrGroom, setQrGroom] = useState([])
     const [qrFather, setQrFather] = useState([])
     const [qrMother, setQrMother] = useState([])
+    const [dataBank, setDataBank] = useState([])
 
     const refUnderfine = useRef(null)
     const refOwnerGroom = useRef(null)
@@ -39,15 +43,20 @@ const BankingGroom = forwardRef(({ }, ref) => {
     useEffect(() => {
 
         if (itemLocal) {
-            itemLocal.informationOfGroom[0].ownerBankOfGroom && (value.informationOfGroom[0].ownerBankOfGroom = itemLocal.informationOfGroom[0].ownerBankOfGroom)
-            itemLocal.informationOfGroom[0].bankOfNumberGroom && (value.informationOfGroom[0].bankOfNumberGroom = itemLocal.informationOfGroom[0].bankOfNumberGroom)
-            itemLocal.informationOfGroom[0].ownerBankOfFatherGroom && (value.informationOfGroom[0].ownerBankOfFatherGroom = itemLocal.informationOfGroom[0].ownerBankOfFatherGroom)
-            itemLocal.informationOfGroom[0].bankOfNumberFatherGroom && (value.informationOfGroom[0].bankOfNumberFatherGroom = itemLocal.informationOfGroom[0].bankOfNumberFatherGroom)
-            itemLocal.informationOfGroom[0].ownerBankOfMotherGroom && (value.informationOfGroom[0].ownerBankOfMotherGroom = itemLocal.informationOfGroom[0].ownerBankOfMotherGroom)
-            itemLocal.informationOfGroom[0].bankOfNumberMotherGroom && (value.informationOfGroom[0].bankOfNumberMotherGroom = itemLocal.informationOfGroom[0].bankOfNumberMotherGroom)
-            itemLocal.informationOfGroom[0].qrCodeFatherGroomLink && (value.informationOfGroom[0].qrCodeFatherGroomLink = itemLocal.informationOfGroom[0].qrCodeFatherGroomLink)
-            itemLocal.informationOfGroom[0].qrCodeMotherGroomLink && (value.informationOfGroom[0].qrCodeMotherGroomLink = itemLocal.informationOfGroom[0].qrCodeMotherGroomLink)
-            itemLocal.informationOfGroom[0].qrCodeGroomLink && (value.informationOfGroom[0].qrCodeGroomLink = itemLocal.informationOfGroom[0].qrCodeGroomLink)
+
+            itemLocal.informationOfGroom.nameBankOfGroom && (value.informationOfGroom[0].nameBankOfGroom = itemLocal.informationOfGroom.nameBankOfGroom)
+            itemLocal.informationOfGroom.nameBankOfFatherGroom && (value.informationOfGroom[0].nameBankOfFatherGroom = itemLocal.informationOfGroom.nameBankOfFatherGroom)
+            itemLocal.informationOfGroom.nameBankOfMotherGroom && (value.informationOfGroom[0].nameBankOfMotherGroom = itemLocal.informationOfGroom.nameBankOfMotherGroom)
+
+            itemLocal.informationOfGroom.ownerBankOfGroom && (value.informationOfGroom[0].ownerBankOfGroom = itemLocal.informationOfGroom.ownerBankOfGroom)
+            itemLocal.informationOfGroom.bankOfNumberGroom && (value.informationOfGroom[0].bankOfNumberGroom = itemLocal.informationOfGroom.bankOfNumberGroom)
+            itemLocal.informationOfGroom.ownerBankOfFatherGroom && (value.informationOfGroom[0].ownerBankOfFatherGroom = itemLocal.informationOfGroom.ownerBankOfFatherGroom)
+            itemLocal.informationOfGroom.bankOfNumberFatherGroom && (value.informationOfGroom[0].bankOfNumberFatherGroom = itemLocal.informationOfGroom.bankOfNumberFatherGroom)
+            itemLocal.informationOfGroom.ownerBankOfMotherGroom && (value.informationOfGroom[0].ownerBankOfMotherGroom = itemLocal.informationOfGroom.ownerBankOfMotherGroom)
+            itemLocal.informationOfGroom.bankOfNumberMotherGroom && (value.informationOfGroom[0].bankOfNumberMotherGroom = itemLocal.informationOfGroom.bankOfNumberMotherGroom)
+            itemLocal.informationOfGroom.qrCodeFatherGroomLink && (value.informationOfGroom[0].qrCodeFatherGroomLink = itemLocal.informationOfGroom.qrCodeFatherGroomLink)
+            itemLocal.informationOfGroom.qrCodeMotherGroomLink && (value.informationOfGroom[0].qrCodeMotherGroomLink = itemLocal.informationOfGroom.qrCodeMotherGroomLink)
+            itemLocal.informationOfGroom.qrCodeGroomLink && (value.informationOfGroom[0].qrCodeGroomLink = itemLocal.informationOfGroom.qrCodeGroomLink)
         } else {
             value.informationOfGroom[0].ownerBankOfGroom = ''
             value.informationOfGroom[0].bankOfNumberGroom = ''
@@ -71,12 +80,12 @@ const BankingGroom = forwardRef(({ }, ref) => {
         const errMsgNumberBankMother = FormValidate.inputContentEmpty(value.informationOfGroom[0].bankOfNumberMotherGroom)
 
 
-        refOwnerGroom.current?.setErrorMsg(errMsgOwnerGroom)
-        refNumberBankGroom.current?.setErrorMsg(errMsgNumberBankGroom)
-        refOwnerFather.current?.setErrorMsg(errMsgOwnerFather)
-        refNumberBankFather.current?.setErrorMsg(refNumberBankFather)
-        refOwnerMother.current?.setErrorMsg(errMsgOwnerMother)
-        refNumberBankMother.current?.setErrorMsg(errMsgNumberBankMother)
+        // refOwnerGroom.current?.setErrorMsg(errMsgOwnerGroom)
+        // refNumberBankGroom.current?.setErrorMsg(errMsgNumberBankGroom)
+        // refOwnerFather.current?.setErrorMsg(errMsgOwnerFather)
+        // refNumberBankFather.current?.setErrorMsg(refNumberBankFather)
+        // refOwnerMother.current?.setErrorMsg(errMsgOwnerMother)
+        // refNumberBankMother.current?.setErrorMsg(errMsgNumberBankMother)
 
         if (`${errMsgOwnerGroom}${errMsgNumberBankGroom}${errMsgOwnerFather}${refNumberBankFather}${errMsgOwnerMother}${errMsgNumberBankMother}`.length === 0) {
             return true
@@ -84,6 +93,16 @@ const BankingGroom = forwardRef(({ }, ref) => {
         return false
 
     }, [value])
+
+    useEffect(() => {
+
+        const asyncListBank = async () => {
+            const response = await get(BankData);
+            setDataBank(response.data)
+        };
+        asyncListBank();
+
+    }, [])
 
     const onChangeText = useCallback((e, name) => {
 
@@ -306,16 +325,39 @@ const BankingGroom = forwardRef(({ }, ref) => {
         [onSortEnd]
     )
 
+    const renderBank = useCallback((name, label, itemlocal) => {
+
+        return <div className='fullwidth_input_colum'>
+            <div className='single_hor_input man_inputStyle' style={{ marginBottom: 10 }}>
+                <label className="Input_label__90o4b">{label}</label>
+                <select
+                    className='form_sellect_control'
+                    name='form_sellect_stt'
+                    onChange={(e) => onChangeText(e.target.value, name)}
+                    style={{ maxWidth: 'unset' }}
+                >
+                    <option value={itemlocal ? itemlocal : Languages.text.bank}>{itemlocal ? itemlocal : Languages.text.bank}</option>
+                    {
+
+                        dataBank.map(function (item, index) {
+
+                            return <option key={index} value={item?.amount}>{item?.name} </option>
+
+                        })
+                    }
+                </select>
+            </div>
+        </div>
+
+    }, [dataBank])
+
     return (
         <div className='section_banking_groom'>
             <h2>{Languages.text.man}</h2>
 
             <div className='inforBank_one_per'>
-                <div className='fullwidth_input_colum'>
-                    <div className='single_hor_input'>
-                        {renderInput('', Languages.inputText.groom, Languages.inputText.groom, NAME_INPUT_GROOM.nameBankOfGroom, 'text', 200, true)}
-                    </div>
-                </div>
+
+                {renderBank(NAME_INPUT_GROOM.nameBankOfGroom, 'Ngân Hàng Chú rể', value.informationOfGroom[0].nameBankOfGroom)}
                 <div className='double_input_row'>
                     <div className='half_row_hor_input'>
                         {renderInput(refOwnerGroom, Languages.text.accountHolder, Languages.text.accountHolder, NAME_INPUT_GROOM.ownerBankOfGroom, 'text', 200, false, '', value.informationOfGroom[0].ownerBankOfGroom)}
@@ -335,17 +377,14 @@ const BankingGroom = forwardRef(({ }, ref) => {
                         150,
                         <Qrcode />,
                         Languages.text.qrcode,
-                        itemLocal?.informationOfGroom[0].qrCodeGroomLink
+                        itemLocal?.informationOfGroom.qrCodeGroomLink
                     )}
                 </div>
             </div>
 
             <div className='inforBank_one_per'>
-                <div className='fullwidth_input_colum'>
-                    <div className='single_hor_input'>
-                        {renderInput('', Languages.inputText.father, Languages.inputText.father, NAME_INPUT_GROOM.nameBankOfFatherGroom, 'text', 200, true)}
-                    </div>
-                </div>
+                {renderBank(NAME_INPUT_GROOM.nameBankOfFatherGroom, 'Ngân Hàng Bố Chú rể', value.informationOfGroom[0].nameBankOfFatherGroom)}
+
                 <div className='double_input_row'>
                     <div className='half_row_hor_input'>
                         {renderInput(refOwnerFather, Languages.text.accountHolder, Languages.text.accountHolder, NAME_INPUT_GROOM.ownerBankOfFatherGroom, 'text', 200, false, '', value.informationOfGroom[0].ownerBankOfFatherGroom)}
@@ -365,17 +404,14 @@ const BankingGroom = forwardRef(({ }, ref) => {
                         150,
                         <Qrcode />,
                         Languages.text.qrcode,
-                        itemLocal?.informationOfGroom[0].qrCodeFatherGroomLink
+                        itemLocal?.informationOfGroom.qrCodeFatherGroomLink
                     )}
                 </div>
             </div>
 
             <div className='inforBank_one_per'>
-                <div className='fullwidth_input_colum'>
-                    <div className='single_hor_input'>
-                        {renderInput('', Languages.inputText.mother, Languages.inputText.mother, NAME_INPUT_GROOM.nameBankOfMotherGroom, 'text', 200, true)}
-                    </div>
-                </div>
+                {renderBank(NAME_INPUT_GROOM.nameBankOfMotherGroom, 'Ngân Hàng Mẹ Chú rể', value.informationOfGroom[0].nameBankOfMotherGroom)}
+
                 <div className='double_input_row'>
                     <div className='half_row_hor_input'>
                         {renderInput(refOwnerMother, Languages.text.accountHolder, Languages.text.accountHolder, NAME_INPUT_GROOM.ownerBankOfMotherGroom, 'text', 200, false, '', value.informationOfGroom[0].ownerBankOfMotherGroom)}
@@ -395,7 +431,7 @@ const BankingGroom = forwardRef(({ }, ref) => {
                         150,
                         <Qrcode />,
                         Languages.text.qrcode,
-                        itemLocal?.informationOfGroom[0].qrCodeMotherGroomLink
+                        itemLocal?.informationOfGroom.qrCodeMotherGroomLink
                     )}
                 </div>
             </div>

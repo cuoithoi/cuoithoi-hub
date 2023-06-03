@@ -1,14 +1,12 @@
 import { useSelector } from 'react-redux'
-
-const ProtectedRoute = ({ children }) => {
-
+import { Outlet } from 'react-router-dom'
+const ProtectedRoute = () => {
   const { user } = useSelector((state) => state.auth)
 
   if (!user) {
-    return window.location.href = "/"
+    return (window.location.href = '/')
   }
-  return children
-
+  return <Outlet />
 }
 
 export default ProtectedRoute

@@ -31,22 +31,30 @@ import { uploadImage } from '@/utils/axios'
 import { useSelector } from 'react-redux'
 import { useBaseService } from '@/utils/BaseServices'
 import Validate from '@/utils/Validate'
-import { getItemFromLocalStorage, removeStorage, setStorage } from '@/utils/localStorage'
+import { getItemFromLocalStorage, getStorage, removeStorage, setStorage } from '@/utils/localStorage'
+import ProvinceDistrictList from './ProvinceDistrictList'
 
 const CreatePage = () => {
 
   const navigate = useNavigate()
   const location = useLocation();
 
-  const [values] = useState(fiedlsCreatePage)
+  const [values, setValues] = useState(fiedlsCreatePage)
 
   const [editor, setEditor] = useState(false)
+  const [idCreateRespon, setIdCreateRespon] = useState(false)
 
   const [checkParams, setCheckParams] = useState(CheckParams.AFFTER)
 
   const [imagesCover, setImagesCover] = useState([])
   const [images, setImages] = useState([])
   const [album, setAlbum] = useState([])
+
+  const [imagesCoverURL, setImagesCoverURL] = useState([])
+  const [imagesURL, setImagesURL] = useState([])
+  const [albumURL, setAlbumURL] = useState([])
+
+  const [messageCodeInvite, setMessageCodeInvite] = useState('')
 
   const [guestbookTemp, setGuestbookTemp] = useState('')
 
@@ -58,7 +66,7 @@ const CreatePage = () => {
   const [radioTypeBg, setRadioTypeBg] = useState('none')
   const [radioColorBg, setRadioColorBg] = useState('none')
   const [radioEffectBg, setRadioEffectBg] = useState('none')
-  const [radioMusic, setRadioMusic] = useState('none')
+  const [radioMusic, setRadioMusic] = useState(0)
 
   const [openPanel, setOpenPanel] = useState(true)
 
@@ -69,6 +77,9 @@ const CreatePage = () => {
   const [valuedataAnother, setValueDataAnother] = useState([]);
   const [packageType, setPackageType] = useState([])
   const [valuedataAnotherTotalPrice, setValuedataAnotherTotalPrice] = useState(0)
+  const [codeinvite, setCodeinvite] = useState('')
+  const [percentOff, setPercentOff] = useState(1)
+  const [checkUrl, setCheckUrl] = useState(true)
 
   const refUnderfine = useRef(null)
   const refGroom = useRef(null)
@@ -85,6 +96,7 @@ const CreatePage = () => {
   const refConfirmEmail = useRef(null)
   const refConfirmAddress = useRef(null)
   const refModal = useRef(null)
+  const refCodeinvite = useRef(null)
 
   const { post, get } = useBaseService()
   const { user } = useSelector((store) => store.auth)
@@ -94,7 +106,46 @@ const CreatePage = () => {
   values.isUseGuestBook = true
   values.isEffectOfOpenning = true
 
-  const itemLocal = getItemFromLocalStorage('createLeter')
+  useEffect(() => {
+    if (location.state?.createpage) {
+      removeStorage('createLeter')
+      removeStorage('hasReloaded')
+      setCheckUrl(true)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (location.state?.editor) {
+      setIdCreateRespon(location.state?.id)
+      setEditor(location.state?.editor)
+      setCheckUrl(false)
+      const asyncDetails = async () => {
+        try {
+          const response = await get(APi.invitationDetail, config, {
+            _id: location.state?.id,
+          })
+
+          setStorage('createLeter', JSON.stringify(response.data), 10 * 86400)
+          const hasReloaded = getStorage('hasReloaded');
+          if (!hasReloaded) {
+            setStorage('hasReloaded', true);
+            window.location.reload();
+          }
+          setCodeinvite(response.data?.codeInvite)
+          setPackageType([response.data?.productId?.name, response.data?.productId?.amount, response.data?.productId?._id])
+          setValueDataAnother(response.data?.anotherProduct)
+          setValuedataAnotherTotalPrice(response.data?.totalAmount)
+          setAlbumURL(response.data?.album)
+          setImagesURL(response.data?.thumbnailImage)
+          setImagesCoverURL([...response.data?.coverImage])
+        } catch (error) {
+          console.error('Đã xảy ra lỗi:', error)
+        }
+      }
+      asyncDetails()
+    }
+
+  }, [])
 
   useEffect(() => {
 
@@ -113,20 +164,22 @@ const CreatePage = () => {
 
   }, [])
 
+  const itemLocal = getItemFromLocalStorage('createLeter')
+
   useEffect(() => {
 
     if (itemLocal) {
 
-      itemLocal.song && setRadioMusic(itemLocal.song)
-      itemLocal.fontStyleOfTitle && setRadioStyleTitle(itemLocal.fontStyleOfTitle.value)
-      itemLocal.fontStyleOfContent && setRadioStyleContent(itemLocal.fontStyleOfContent.value)
-      itemLocal.styleBackground && setRadioTypeBg(itemLocal.styleBackground.value)
-      itemLocal.backgroundColor && setRadioColorBg(itemLocal.backgroundColor.value)
-      itemLocal.effectBackgroud && setRadioEffectBg(itemLocal.effectBackgroud.value)
-      itemLocal.effectImage && setRadioEffectImage(itemLocal.effectImage)
-      itemLocal.coverImage && (values.coverImage = itemLocal.coverImage)
-      itemLocal.thumbnailImage && (values.thumbnailImage = itemLocal.thumbnailImage)
-      itemLocal.album && (values.album = itemLocal.album)
+      itemLocal?.song && setRadioMusic(itemLocal?.song)
+      itemLocal?.fontStyleOfTitle && setRadioStyleTitle(itemLocal?.fontStyleOfTitle.value)
+      itemLocal?.fontStyleOfContent && setRadioStyleContent(itemLocal?.fontStyleOfContent.value)
+      itemLocal?.styleBackground && setRadioTypeBg(itemLocal?.styleBackground.value)
+      itemLocal?.backgroundColor && setRadioColorBg(itemLocal?.backgroundColor.value)
+      itemLocal?.effectBackgroud && setRadioEffectBg(itemLocal?.effectBackgroud.value)
+      itemLocal?.effectImage && setRadioEffectImage(itemLocal?.effectImage)
+      // itemLocal?.coverImage && (values.coverImage = itemLocal?.coverImage)
+      // itemLocal?.thumbnailImage && (values.thumbnailImage = itemLocal?.thumbnailImage)
+      // itemLocal?.album && (values.album = itemLocal?.album)
     }
 
   }, [values, setRadioMusic, setRadioStyleTitle, setRadioStyleContent, setRadioTypeBg, setRadioColorBg, setRadioEffectBg])
@@ -140,17 +193,11 @@ const CreatePage = () => {
 
   }, [user])
 
-  useEffect(() => {
-    if (location.state?.createpage)
-      removeStorage('createLeter')
-  }, [])
 
-  useEffect(() => {
-    if (location.state?.editor)
-      setEditor(location.state?.editor)
-  }, [setEditor])
-
-  const onNavigateMypage = () => navigate(Alias.mypage)
+  const onNavigateMypage = () => {
+    navigate(Alias.mypage)
+    removeStorage('hasReloaded')
+  }
 
   const radioChangeHandlerGuestbookTemplate = (text, value) => {
     setRadioGuestbookTemplate(value)
@@ -199,7 +246,7 @@ const CreatePage = () => {
       imageList.slice(-1).map(function (item) {
         return uploadImage(item.file)
           .then((response) => {
-            values.thumbnailImage = response.data.data;
+            setImagesURL(response.data.data)
           })
           .catch((error) => {
             toast.error(error)
@@ -215,7 +262,7 @@ const CreatePage = () => {
       imageList.slice(-1).map(function (item) {
         return uploadImage(item.file)
           .then((response) => {
-            values.coverImage = response.data.data;
+            setImagesCoverURL(response.data.data)
           })
           .catch((error) => {
             toast.error(error)
@@ -236,6 +283,7 @@ const CreatePage = () => {
         return uploadImage(item.file)
           .then((response) => {
             values.album.push([response.data.data])
+            setAlbumURL([...response.data.data])
           })
           .catch((error) => {
             toast.error(error)
@@ -253,16 +301,16 @@ const CreatePage = () => {
     const errMsgPassword = FormValidate.inputContentEmpty(values.password)
     const errMsgContentGuestBook = FormValidate.inputContentEmpty(guestbookTemp)
 
-    if (pointer) refPassword.current?.setErrorMsg(errMsgPassword)
+    // if (pointer) refPassword.current?.setErrorMsg(errMsgPassword)
 
-    refContentGuestBook.current?.setErrorMsg(errMsgContentGuestBook)
+    // refContentGuestBook.current?.setErrorMsg(errMsgContentGuestBook)
 
     if (`${errMsgPassword}${errMsgContentGuestBook}`.length === 0) {
       setOpenPanel(true)
       return true
     }
     setOpenPanel(false)
-    return false
+    return true
 
   }, [values, guestbookTemp, pointer])
 
@@ -272,50 +320,86 @@ const CreatePage = () => {
 
       case INPUT_FIELDS.isUseConfirm:
         values.isUseConfirm = e;
+        setValues(prevValues => ({
+          ...prevValues,
+          isUseConfirm: e
+        }));
         break
 
       case INPUT_FIELDS.isUseGuestBook:
         values.isUseGuestBook = e;
+        setValues(prevValues => ({
+          ...prevValues,
+          isUseGuestBook: e
+        }));
         setPointer(!pointer)
         break
 
       case INPUT_FIELDS.password:
         values.password = e;
+        setValues(prevValues => ({
+          ...prevValues,
+          password: e
+        }));
         break
 
       case INPUT_FIELDS.isEffectOfOpenning:
         values.isEffectOfOpenning = e;
+        setValues(prevValues => ({
+          ...prevValues,
+          isEffectOfOpenning: e
+        }));
         break
 
       case INPUT_FIELDS.referralCode:
-        values.codeInvite = e;
+        setCodeinvite(e)
         break
 
       case INPUT_FIELDS.confirmName:
         values.confirmName = e;
+        setValues(prevValues => ({
+          ...prevValues,
+          confirmName: e
+        }));
         break
 
       case INPUT_FIELDS.confirmPhone:
         values.confirmPhone = e;
+        setValues(prevValues => ({
+          ...prevValues,
+          confirmPhone: e
+        }));
         break
 
       case INPUT_FIELDS.confirmEmail:
         values.confirmEmail = e;
+        setValues(prevValues => ({
+          ...prevValues,
+          confirmEmail: e
+        }));
         break
 
       case INPUT_FIELDS.confirmAdd:
         values.confirmAddress = e;
+        setValues(prevValues => ({
+          ...prevValues,
+          confirmAddress: e
+        }));
         break
 
       case INPUT_FIELDS.confirmNote:
         values.confirmNote = e;
+        setValues(prevValues => ({
+          ...prevValues,
+          confirmNote: e
+        }));
         break
 
       default:
         break
     }
 
-  }, [values, setPointer, pointer]);
+  }, [values, setPointer, pointer, setCodeinvite]);
 
   const onChangeOpenGuestbookTemplate = () => {
     setCheckParams(CheckParams.TITLE_SAVE_PEN_TEMPLATES)
@@ -329,7 +413,7 @@ const CreatePage = () => {
 
     setPackageType([e.target.options[e.target.selectedIndex].text, e.target.value, dataId]);
 
-  }, [values]);
+  }, [values, setPackageType]);
 
   const onCheckedDataAnother = useCallback((e) => {
 
@@ -339,8 +423,8 @@ const CreatePage = () => {
     } else {
       updatedList.splice(valuedataAnother.indexOf(e.target.value), 1);
     }
+    values.anotherProduct = updatedList
     setValueDataAnother(updatedList);
-
   }, [valuedataAnother])
 
   const onChangeSaveDraff = useCallback(() => {
@@ -390,6 +474,12 @@ const CreatePage = () => {
 
   }, [])
 
+  const onKeyPress = useCallback(() => {
+
+    return
+
+  }, []);
+
   const renderInput = useCallback(
     (
       ref,
@@ -422,7 +512,7 @@ const CreatePage = () => {
         </div>
       )
     },
-    []
+    [onKeyPress, onChangeText]
   )
 
   const renderImageUploadSingle = useCallback(
@@ -448,12 +538,6 @@ const CreatePage = () => {
     },
     [onSortEnd]
   )
-
-  const onKeyPress = useCallback(() => {
-
-    return
-
-  }, []);
 
   const renderAlbum = useMemo(() => {
     return <Panel title={Languages.text.albumWed}>
@@ -553,7 +637,9 @@ const CreatePage = () => {
         </div>
         <div className={`${pointer ? 'double_input_row' : 'double_input_row disable'}`}>
           <div className='half_row_hor_input'>
-            {renderInput(refPassword, Languages.text.settingPwd, Languages.text.settingPwd, INPUT_FIELDS.password, 'password', 50, false)}
+            <form>
+              {renderInput(refPassword, Languages.text.settingPwd, Languages.text.settingPwd, INPUT_FIELDS.password, 'password', 50, false)}
+            </form>
           </div>
           <div className='half_row_hor_input'>
             <span>
@@ -577,7 +663,7 @@ const CreatePage = () => {
 
             label={Languages.buttonText.titleTemplate}
             buttonStyle={BUTTON_STYLES.PINK}
-            textStyle={BUTTON_STYLES.PINK}
+            textStyle={BUTTON_STYLES.WHITE}
             isLowerCase
             onPress={onChangeOpenGuestbookTemplate}
 
@@ -686,7 +772,7 @@ const CreatePage = () => {
       </Panel>
     </div>
 
-  }, [dataPackage, editor])
+  }, [dataPackage, editor, onChangePackage])
 
   const renderProductAnother = useMemo(() => {
 
@@ -711,7 +797,23 @@ const CreatePage = () => {
       </Panel>
     </div>
 
-  }, [dataAnother, valuedataAnother, editor])
+  }, [dataAnother, valuedataAnother, editor, onCheckedDataAnother])
+
+  const onChangeCodePress = useCallback(async (e) => {
+
+    setCodeinvite(e)
+    const response = await post(APi.codeSale, { "code": e }, config);
+    if (response.data === null) {
+      refCodeinvite?.current?.setErrorMsg(Languages.errorMsg.errorCode)
+      setMessageCodeInvite('')
+      setCodeinvite('')
+    } else {
+      setCodeinvite(response.data.code)
+      setMessageCodeInvite(Languages.errorMsg.correctCode)
+      setPercentOff(response.data.percentOff)
+    }
+
+  }, [setMessageCodeInvite, setCodeinvite])
 
   const renderReferralCode = useMemo(() => {
 
@@ -720,7 +822,21 @@ const CreatePage = () => {
         <div className='wrap_package_referralcode'>
           <div className='fullwidth_input_colum'>
             <div className='single_hor_input'>
-              {renderInput('', Languages.text.referralCode, Languages.text.referralCode, INPUT_FIELDS.referralCode, 'text', 200, false)}
+              <MyTextInput
+                ref={refCodeinvite}
+                value={codeinvite}
+                label={Languages.text.referralCode}
+                name={INPUT_FIELDS.referralCode}
+                placeHolder={Languages.text.referralCode}
+                type={'text'}
+                maxLength={20}
+                styleGroup={'man_inputStyle'}
+                onChangeText={(e) => onChangeCodePress(e.target.value)}
+                disabled={messageCodeInvite.length > 0 ? false : true}
+              />
+              <div className='messageSuccess'>
+                <p>{messageCodeInvite}</p>
+              </div>
             </div>
           </div>
 
@@ -728,7 +844,7 @@ const CreatePage = () => {
       </Panel>
     </div>
 
-  }, [editor])
+  }, [editor, codeinvite, messageCodeInvite])
 
   function onChangeGuestbookTemp(event) {
     setGuestbookTemp(event.target.value)
@@ -766,8 +882,8 @@ const CreatePage = () => {
 
     const jsonData = {
       "userId": user?.userId,
-      "coverImage": values.coverImage,
-      "thumbnailImage": values.thumbnailImage,
+      "coverImage": imagesCoverURL,
+      "thumbnailImage": imagesURL,
       "effectImage": radioEffectImage,
       "informationOfGroom":
       {
@@ -831,15 +947,15 @@ const CreatePage = () => {
         "bankOfNumberMotherBride": values.informationOfBride[0].bankOfNumberMotherBride,
         "qrCodeMotherBrideLink": values.informationOfBride[0].qrCodeMotherBrideLink
       },
-      "isDisplayGonePeople": values.isDisplayGonePeople,
-      "contentOfInvitation": values.contentOfInvitation,
+      "isDisplayGonePeople": values.informationOfBride[0].isDisplayGonePeople,
+      "contentOfInvitation": values.informationOfBride[0].contentOfInvitation,
       "timeAndLocationOfWedding": {
         "dateOfEventWedding": values.timeAndLocationOfWedding.dateOfEventWedding,
         "timeOfEventWedding": values.timeAndLocationOfWedding.timeOfEventWedding,
         "locationOfWedding": values.timeAndLocationOfWedding.locationOfWedding,
         "mapDirectLink": values.timeAndLocationOfWedding.mapDirectLink,
         "isDisplayCountDown": values.timeAndLocationOfWedding.isDisplayCountDown,
-        "contentOfCountDown": values.timeAndLocationOfWedding.contentOfCountDown
+        "contentOfCountDown": values.arraylist[0].contentOfCountDown
       },
       "timeAndLocationOfEgagement": {
         "dateOfEventEgagement": values.timeAndLocationOfEgagement.dateOfEventEgagement,
@@ -860,11 +976,6 @@ const CreatePage = () => {
         "timeToMusic": values.eventOfProgram.timeToMusic
       },
       "song": radioMusic,
-      "isUseConfirm": values.isUseConfirm,
-      "isUseGuestBook": values.isUseGuestBook,
-      "password": values.password,
-      "contentGuestBook": values.contentGuestBook,
-      "isEffectOfOpenning": values.isEffectOfOpenning,
       "fontStyleOfTitle": {
         "value": radioStyleTitle
       },
@@ -880,86 +991,126 @@ const CreatePage = () => {
       "effectBackgroud": {
         "value": radioEffectBg
       },
-      "packageType": packageType,
-      "anotherProduct": values.anotherProduct,
-      "codeInvite": values.codeInvite,
-      "productId": packageType[2]
     }
 
-    const response = await post(APi.createInvitation, jsonData, config);
-    console.log(response.errorCode)
+    if (checkUrl) {
+      const response = await post(APi.createInvitation, Object.assign(jsonData, {
+        "isUseConfirm": values.isUseConfirm,
+        "isUseGuestBook": values.isUseGuestBook,
+        "password": values.password,
+        "contentGuestBook": values.contentGuestBook,
+        "isEffectOfOpenning": values.isEffectOfOpenning,
+        "packageType": packageType,
+        "anotherProduct": values.anotherProduct,
+        "codeInvite": codeinvite,
+        "productId": packageType[2],
+        "status": '2'
+      }), config);
+      removeStorage('createLeter')
+      if (response.errorCode == 0) {
+        toast.success(Languages.errorMsg.success)
+        setIdCreateRespon(response.data._id)
+        setDisable(false)
+        console.log(response)
+        // setStorage('createLeter', JSON.stringify(response.data), 10 * 86400)
+      }
+      else {
+        toast.error(Languages.errorMsg.errorSuccess)
+      }
+    } else {
 
-    removeStorage('createLeter')
+      const responseupdate = await post(APi.updateInvitation, Object.assign(jsonData, {
+        "_id": idCreateRespon
+      }), config);
+      if (responseupdate.errorCode == 0) {
+        toast.success(Languages.errorMsg.updatesuccess)
+        setDisable(false)
+      }
+      else {
+        toast.error(Languages.errorMsg.errorSuccess)
+      }
 
-    if (response.errorCode == 0) {
-      toast.success(Languages.errorMsg.success)
-      setStorage('createLeter', JSON.stringify(values), 10 * 86400)
-      setDisable(!disable)
     }
-    else {
-      toast.error(Languages.errorMsg.errorSuccess)
-    }
 
-  }, [images, imagesCover, album, passValidateSuccess])
+  }, [imagesURL, imagesCoverURL, album, packageType, user, codeinvite, idCreateRespon])
 
-  const onOpenSuccessConfirm = () => {
-
-    console.log(values.timeAndLocationOfWedding.contentOfCountDown)
-
-
+  const onOpenSuccessConfirm = useCallback(() => {
+console.log(imagesCoverURL)
     try {
-      if (imagesCover.length === 0 || images.length === 0 || album.length === 0) {
+      if (imagesCoverURL.length === 0 || imagesURL.length === 0 || albumURL.length === 0) {
 
-        toast.error(Languages.errorMsg.uploadingEmpty, {
-          position: toast.POSITION.TOP_CENTER
-        });
+        toast.error(Languages.errorMsg.uploadingEmpty);
 
       } else if (passValidateSuccess() !== true) {
-
-        toast.error(Languages.errorMsg.noEmpty, {
-          position: toast.POSITION.TOP_CENTER
-        })
+        toast.error(Languages.errorMsg.noEmpty)
+        onChangeSaveSetting()
 
       } else {
-
+        onChangeSaveSetting()
         const totalSum = valuedataAnother.reduce((acc, curr) => {
           const arrayItem = curr.split(",", 2).slice(0, 1).map(Number);
           const sum = parseInt(arrayItem[0]);
           return acc + sum;
         }, 0);
-        const total = parseInt(packageType[1]) + totalSum;
+
+        const discount = percentOff === 1 ? percentOff === 0 : percentOff
+        const total = parseInt(packageType[1]) + totalSum * (parseInt(1 - discount));
         setValuedataAnotherTotalPrice(total)
 
         setCheckParams(CheckParams.CONFIRM_INFO)
         refModal.current?.showModal()
-
       }
 
     } catch {
       window.location.reload()
     }
 
-  }
+  }, [onChangeSaveSetting, passValidateSuccess, setValuedataAnotherTotalPrice, imagesCoverURL, imagesURL, albumURL  , codeinvite, percentOff])
 
 
-  const onChangeValidateConfirm = useCallback(() => {
+  const onChangeValidateConfirm = useCallback(async () => {
 
-    const errMsgCornfimName = FormValidate.inputContentEmpty(values.confirmName)
-    const errMsgCornfimPhone = FormValidate.passConFirmPhone(values.confirmPhone)
-    const errMsgCornfimEmail = FormValidate.emailValidate(values.confirmEmail)
-    const errMsgCornfimAddress = FormValidate.inputContentEmpty(values.confirmAddress)
+    // const errMsgCornfimName = FormValidate.inputContentEmpty(values.confirmName)
+    // const errMsgCornfimPhone = FormValidate.passConFirmPhone(values.confirmPhone)
+    // const errMsgCornfimEmail = FormValidate.emailValidate(values.confirmEmail)
+    // const errMsgCornfimAddress = FormValidate.inputContentEmpty(values.confirmAddress)
 
-    refConfirmName.current?.setErrorMsg(errMsgCornfimName)
-    refConfirmPhone.current?.setErrorMsg(errMsgCornfimPhone)
-    refConfirmEmail.current?.setErrorMsg(errMsgCornfimEmail)
-    refConfirmAddress.current?.setErrorMsg(errMsgCornfimAddress)
+    // refConfirmName.current?.setErrorMsg(errMsgCornfimName)
+    // refConfirmPhone.current?.setErrorMsg(errMsgCornfimPhone)
+    // refConfirmEmail.current?.setErrorMsg(errMsgCornfimEmail)
+    // refConfirmAddress.current?.setErrorMsg(errMsgCornfimAddress)
 
-    if (`${errMsgCornfimName}${errMsgCornfimPhone}${errMsgCornfimEmail}${errMsgCornfimAddress}`.length === 0) {
-      onChangeSaveSetting()
+    // if (`${errMsgCornfimName}${errMsgCornfimPhone}${errMsgCornfimEmail}${errMsgCornfimAddress}`.length === 0) {
+
+    const jsonData = {
+      "_id": idCreateRespon,
+      "status": "4",
+      "confirmName": values.confirmName,
+      "confirmPhone": values.confirmPhone,
+      "confirmEmail": values.confirmEmail,
+      "confirmAddress": values.confirmAddress,
+      "confirmNote": values.confirmNote,
+      "confirmProvince": values.confirmProvince,
+      "confirmDistrict": values.confirmDistrict,
+      "confirmWardt": values.confirmWardt,
+      "totalAmount": valuedataAnotherTotalPrice,
     }
-    return false
 
-  }, [values, onChangeSaveSetting])
+    const response = await post(APi.updateInvitation, jsonData, config);
+
+    if (response.errorCode == 0) {
+      toast.success(Languages.errorMsg.updatesuccess)
+      setDisable(false)
+    }
+    else {
+      toast.error(Languages.errorMsg.errorSuccess)
+    }
+
+
+    // }
+    // return false
+
+  }, [values, valuedataAnotherTotalPrice])
 
   const onShowModalAgree = () => {
 
@@ -974,6 +1125,7 @@ const CreatePage = () => {
 
       case CheckParams.AFFTER:
         navigate('/')
+        removeStorage('hasReloaded')
         break
 
       case CheckParams.CONFIRM_INFO:
@@ -1042,26 +1194,8 @@ const CreatePage = () => {
                   </div>
                 </div>
 
-                <div className='address_province_'>
-                  <select
-                    className='form_sellect_control select_province'
-                    name='form_sellect_stt'
-                  >
-                    <option value='-1'>Chọn Tình/Thành</option>
-                  </select>
-                  <select
-                    className='form_sellect_control select_district'
-                    name='form_sellect_stt'
-                  >
-                    <option value='-1'>Chọn Quận/Huyện</option>
-                  </select>
-                  <select
-                    className='form_sellect_control select_wardt'
-                    name='form_sellect_stt'
-                  >
-                    <option value='-1'>Chọn Phường/Xã</option>
-                  </select>
-                </div>
+                <ProvinceDistrictList />
+
                 <div className='fullwidth_input_colum'>
                   <div className='single_hor_input'>
                     {renderInput('', '', Languages.inputText.note, INPUT_FIELDS.confirmNote, 'text', 200, true)}
@@ -1117,11 +1251,13 @@ const CreatePage = () => {
                   <h5>
                     {Languages.text.referralCode}
                   </h5>
-                  <p>sdsfdsf</p>
+                  <p>{codeinvite}</p>
                 </div>
                 <div className='box_right'>
                   <h5>
-                    7%
+                    {
+                      parseInt(percentOff * 100)
+                    }%
                   </h5>
                 </div>
               </div>
@@ -1187,12 +1323,15 @@ const CreatePage = () => {
             onPress={onShowModalAgree}
           />
           <div className='btn_group_r'>
-            <Button
-              label={Languages.common.saveDraf}
-              buttonStyle={BUTTON_STYLES.GRAY}
-              isLowerCase
-              onPress={onChangeSaveDraff}
-            />
+            {
+              checkUrl ? <Button
+                label={Languages.common.saveDraf}
+                buttonStyle={BUTTON_STYLES.GRAY}
+                isLowerCase
+                onPress={onOpenSuccessConfirm}
+              /> : ''
+            }
+
             <Button
               label={Languages.common.continue}
               buttonStyle={BUTTON_STYLES.PINK}
@@ -1268,7 +1407,7 @@ const CreatePage = () => {
                 <Button
                   label={Languages.buttonText.saveSettings}
                   buttonStyle={BUTTON_STYLES.PINK}
-                  textStyle={BUTTON_STYLES.PINK}
+                  textStyle={BUTTON_STYLES.WHITE}
                   autocenter
                   onPress={onOpenSuccessConfirm}
                 />
@@ -1297,7 +1436,6 @@ const CreatePage = () => {
         </div>
       </div>
       {renderModal}
-
       <Footer />
     </div>
   )

@@ -56,6 +56,10 @@ export const ImageUpload = forwardRef(
       return null;
     }, [errMsg]);
 
+    const onRemove = useCallback(() => {
+      setCheckurlLocal(true)
+    }, [checkUrlLocal])
+
     return (
       <div className="wrap_box_upload_image_section">
         {
@@ -154,7 +158,7 @@ export const ImageUpload = forwardRef(
                 >
                   <div
                     className="absolute pointer"
-
+                    onClick={onRemove}
                   >
                     <CloseIcon />
                   </div>
@@ -174,6 +178,7 @@ export const ImageUpload = forwardRef(
                 >
                   <div
                     className="absolute pointer"
+                    onClick={onRemove}
                   >
                     <CloseIcon />
                   </div>

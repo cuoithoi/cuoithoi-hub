@@ -14,7 +14,7 @@
 
 .blockUIimage img {
     flex: 1 1;
-    max-width: 500px;
+    max-width: calc(100vh/2);
     width: 100%;
     object-fit: cover;
     object-position: center;
@@ -61,7 +61,28 @@
     background-color: var(--text-color-darkmode);
 }
 
+@media (min-width: 1120px) and (max-width: 1199px) {
+    .blockUIimage img {
+        max-width: 300px;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1099px) {
+    .blockUIimage img {
+        max-width: 300px;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1369px) {
+    .blockUIimage img {
+        max-width: calc(100vh/2);
+    }
+}
+
 @media (max-width: 768px) {
+    .container {
+        padding: 70px 0;
+    }
 
     .blockUIimage img {
         max-width: 300px;

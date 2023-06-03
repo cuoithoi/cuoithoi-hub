@@ -60,12 +60,12 @@ const DamNgoAnHoi = forwardRef(({ }, ref) => {
         const errMsgLocationOfEventInterrogation = FormValidate.inputContentEmpty(value.timeAndLocationOfInterrogation.locationOfInterrogation)
 
 
-        refDateOfEgagement.current?.setErrorMsg(errMsgDateOfEgagement)
-        refTimeOfEgagement.current?.setErrorMsg(errMsgTimeOfEgagement)
-        refLocationOfEgagement.current?.setErrorMsg(errMsgLocationOfEgagement)
-        refDateOfEventInterrogation.current?.setErrorMsg(errMsgDateOfEventInterrogation)
-        refTimeOfEventInterrogation.current?.setErrorMsg(errMsgTimeOfEventInterrogation)
-        refLocationOfEventInterrogation.current?.setErrorMsg(errMsgLocationOfEventInterrogation)
+        // refDateOfEgagement.current?.setErrorMsg(errMsgDateOfEgagement)
+        // refTimeOfEgagement.current?.setErrorMsg(errMsgTimeOfEgagement)
+        // refLocationOfEgagement.current?.setErrorMsg(errMsgLocationOfEgagement)
+        // refDateOfEventInterrogation.current?.setErrorMsg(errMsgDateOfEventInterrogation)
+        // refTimeOfEventInterrogation.current?.setErrorMsg(errMsgTimeOfEventInterrogation)
+        // refLocationOfEventInterrogation.current?.setErrorMsg(errMsgLocationOfEventInterrogation)
 
         if (`${errMsgDateOfEgagement}${errMsgTimeOfEgagement}${errMsgLocationOfEgagement}${errMsgDateOfEventInterrogation}${errMsgTimeOfEventInterrogation}${errMsgLocationOfEventInterrogation}`.length === 0) {
             setOpenPanel(true)

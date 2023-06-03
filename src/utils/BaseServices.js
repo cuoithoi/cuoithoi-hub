@@ -13,6 +13,12 @@ export const ResponseCodes = {
     Expires: 406,
 };
 
+export const csv = axios.create({
+    baseURL: APi.BaseUrl,
+    responseType: 'blob',
+    timeout: 12000
+});
+
 const api = axios.create({
     baseURL: APi.BaseUrl,
     headers: {
@@ -22,31 +28,32 @@ const api = axios.create({
 });
 
 export function useBaseService() {
-
     const [accessToken] = useState(getLocalAccessToken() || null);
 
     const handleError = (error) => {
         const { response } = error;
-        if (response.status === ResponseCodes.Timeout) {
-            // Handle timeout error here
-        } else if (response.status === ResponseCodes.TokenInvalid) {
-            // Handle token invalid error here
+        if (response?.status === ResponseCodes.Timeout) {
+            console.log(ResponseCodes.Timeout);
+        } else if (response?.status === ResponseCodes.TokenInvalid) {
+            console.log(ResponseCodes.TokenInvalid);
+            // Xử lý lỗi token không hợp lệ tại đây
         } else {
-            // Handle other errors here
+            console.log('Lỗi khác');
+            // Xử lý các lỗi khác tại đây
         }
         return Promise.reject(error);
     };
 
-    const get = async (url, config) => {
+    const get = async (url, config, params) => {
         try {
             const headers = {
                 Authorization: accessToken,
-                ...config?.headers,
+                ...(config?.headers || {}),
             };
-            const response = await api.get(url, { ...config, headers });
+            const response = await api.get(url, { ...config, headers, params });
             return response.data;
         } catch (error) {
-            handleError(error);
+            return handleError(error);
         }
     };
 
@@ -59,7 +66,7 @@ export function useBaseService() {
             const response = await api.post(url, data, { ...config, headers });
             return response.data;
         } catch (error) {
-            handleError(error);
+            return handleError(error);
         }
     };
 
@@ -72,33 +79,33 @@ export function useBaseService() {
             const response = await api.put(url, data, { ...config, headers });
             return response.data;
         } catch (error) {
-            handleError(error);
+            return handleError(error);
         }
     };
 
-    const del = async (url, config) => {
+    const del = async (url, data, config) => {
         try {
             const headers = {
-                Authorization: accessToken,
+                Authorization: `Bearer ${accessToken}`,
                 ...config?.headers,
             };
-            const response = await api.delete(url, { ...config, headers });
+            const response = await api.delete(url, { ...config, headers, data });
             return response.data;
         } catch (error) {
-            handleError(error);
+            return handleError(error);
         }
     };
 
     const postWithFormData = async (url, data, config) => {
         try {
             const formData = new FormData();
-            Object.keys(data).forEach((key) => {
-                if (Array.isArray(data[key])) {
-                    data[key].forEach((value) => {
-                        formData.append(key, value);
+            Object.entries(data).forEach(([key, value]) => {
+                if (Array.isArray(value)) {
+                    value.forEach((item) => {
+                        formData.append(key, item);
                     });
                 } else {
-                    formData.append(key, data[key]);
+                    formData.append(key, value);
                 }
             });
             const headers = {
@@ -109,29 +116,34 @@ export function useBaseService() {
             const response = await api.post(url, formData, { ...config, headers });
             return response.data;
         } catch (error) {
-            handleError(error);
+            return handleError(error);
         }
     };
 
     const cache = {};
+
     const getWithCache = async (url, config, cacheConfig) => {
         const cachedData = cache[url];
         if (cachedData) {
             return Promise.resolve(cachedData);
         }
+
         try {
             const response = await get(url, config);
             cache[url] = response;
+
             if (cacheConfig) {
                 setTimeout(() => {
                     delete cache[url];
                 }, cacheConfig.timeout || 60000);
             }
+
             return response;
         } catch (error) {
-            handleError(error);
+            return handleError(error);
         }
     };
+
     return {
         get,
         post,

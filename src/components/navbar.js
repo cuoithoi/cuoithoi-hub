@@ -102,6 +102,15 @@ function MenuBar({ colorText }) {
           </Link>
           <li className={styles.nav_item}>
             <NavLink
+              to='/'
+              className={isactive && `${styles.nav_link}`}
+              style={{ color: colorText }}
+            >
+              {Languages.menu.home}
+            </NavLink>
+          </li>
+          <li className={styles.nav_item}>
+            <NavLink
               to={Alias.services}
               className={isactive && `${styles.nav_link}`}
               style={{ color: colorText }}

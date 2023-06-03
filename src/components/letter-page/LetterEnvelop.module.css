@@ -7,17 +7,17 @@
 }
 
 .container > .envelopeWrapper {
-  background: #f5edd1;
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+  /* background: #f5edd1; */
+  /* box-shadow: 0 0 40px rgba(0, 0, 0, 0.2); */
 }
 
 .envelopeWrapper > .envelope {
   position: relative;
-  width: 300px;
+  width: 320px;
   height: 230px;
 }
 
-.envelopeWrapper > .envelope::before {
+/* .envelopeWrapper > .envelope::before {
   content: '';
   position: absolute;
   top: 0;
@@ -27,9 +27,21 @@
   border-left: 150px solid transparent;
   transform-origin: top;
   transition: all 0.4s ease-in-out 0.6s;
+} */
+.envelopImg {
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  transform-origin: top;
+  transition: all 0.4s ease-in-out 0.6s;
 }
-
-.envelopeWrapper > .envelope::after {
+.envelopBodyImg {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+}
+/* .envelopeWrapper > .envelope::after {
   content: '';
   position: absolute;
   z-index: 2;
@@ -39,7 +51,7 @@
   border-right: 150px solid #e6cfa7;
   border-bottom: 100px solid #e6cfa7;
   border-left: 150px solid #e6cfa7;
-}
+} */
 
 .envelope > .letter {
   position: absolute;
@@ -74,7 +86,18 @@
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
-
+.signIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 15px;
+  height: 15px;
+  z-index: 4;
+  transform: translate(-50%, -20%) rotate(45deg);
+  transition: transform 0.4s ease-in-out 0.6s;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
 .heartIcon:before,
 .heartIcon:after {
   content: '';
@@ -309,13 +332,13 @@
   }
 }
 
-.animate__zoomOutUp {
+/* .animate__zoomOutUp {
   -webkit-animation-name: zoomOutUp;
   animation-name: zoomOutUp;
   -webkit-transform-origin: center bottom;
   transform-origin: center bottom;
-  animation-duration: 8.2s;
-}
+  animation-duration: 3s;
+} */
 
 @keyframes backInDown {
   0% {
@@ -338,6 +361,6 @@
 .animate__backInDown {
   -webkit-animation-name: backInDown;
   animation-name: backInDown;
-  animation-duration: 3.2s;
-  animation-delay: 1.5s;
+  animation-duration: 1s;
+  animation-delay: 0.5s;
 }

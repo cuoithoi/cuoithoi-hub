@@ -48,6 +48,7 @@ const Languages = {
     or: 'Hoặc',
     continue: 'Tiếp tục',
     saveDraf: 'Lưu bản nháp',
+    pay: 'Thanh toán'
   },
   buttonText: {
     createTC: 'Tạo thiệp cưới',
@@ -59,6 +60,7 @@ const Languages = {
     seeBefore: 'Xem trước',
     copylink: 'Copy link',
     payment: 'Trả phí',
+    expire: 'Hết hạn',
     dowloadTc: 'Tải thiệp cưới',
     dowloadClient: 'Tải danh sách khách',
     checkGuest: 'Kiểm tra khách mời',
@@ -74,12 +76,20 @@ const Languages = {
     noInternet: 'Kết nối bị gián đoạn, vui lòng thử lại!',
   },
   menu: {
+    home:'Trang chủ',
     services: 'Dịch vụ',
     customerCare: 'Chăm sóc khách hàng',
     myPage: 'Trang của tôi',
     login: 'Đăng nhập',
     register: 'Đăng ký',
     verifyOtp: 'Xác thực OTP',
+    yourPage: 'Đám cưới của bạn',
+    commentPage: 'Danh sách lời chúc',
+    createPage: 'Tạo thiệp',
+    recoveryPwd: 'Quên mật khẩu',
+    notfound: 'Không tìm thấy trang',
+    emailOtp: 'Xác thực Email',
+    editorPage: 'Chỉnh sửa thiệp'
   },
   text: {
     verifyHeader: 'Xác thực OTP gửi về Email',
@@ -105,6 +115,7 @@ const Languages = {
     date: 'Ngày cưới',
     manager: 'Quản lý',
     free: 'Miễn phí',
+    draffversion: 'Bản nháp',
     autoDelete: '(Tự động xoá sau 24 ngày)',
     onlyDate: '(Còn 30 ngày)',
     complete: 'Hoàn thành',
@@ -115,7 +126,7 @@ const Languages = {
     hot: 'HOT',
     packageServices: 'Các gói dịch vụ',
     only: 'Chỉ với',
-    price: '1.000.000đ',
+    price: '600.000đ',
     packAllDs: 'trọn gói thiết kế',
     mUse: '3 tháng sử dụng',
     savePen: 'Lưu bút',
@@ -220,9 +231,16 @@ const Languages = {
     noletter: 'Vui lòng tạo thiệp trước',
     noletterContent: 'Vui lòng tạo thiệp trước khi thực hiện tính năng này. Xin cảm ơn',
     mobileWeddingCard: 'Thiệp cưới di động của riêng bạn Chỉ với 5 phút, tạo thiệp mời thật dễ dàng!',
-    aFewClicks: 'Hãy lựa chọn mẫu thiệp, tải lên ảnh cưới và chỉnh sửa nội dung chỉ với vài thao tác nhấn chuột đơn giản.'
+    aFewClicks: 'Hãy lựa chọn mẫu thiệp, tải lên ảnh cưới và chỉnh sửa nội dung chỉ với vài thao tác nhấn chuột đơn giản.',
+    bank: 'Chọn ngân hàng',
+    deleteItem: 'Bạn có chắc muốn xóa',
+    deleteContent: 'Bấm đồng ý để tiếp tục xóa',
+    paymentSuccess: 'Thanh toán thành công',
+    alertSendPayment: 'Cuoithoi đã nhận được thông tin thanh toán và sẽ gửi thư xác nhận tới email của bạn.',
+    contactnow: 'Liên hệ ngay cho chúng tôi khi cần hỗ trợ'
   },
   errorMsg: {
+    noCorect: 'Không hợp lệ',
     noInternet: 'Kết nối bị gián đoạn, vui lòng thử lại!',
     sessionExpired: 'Kết nối bị gián đoạn, vui lòng thử lại!',
     userNameRequired: 'Họ và tên không được để trống',
@@ -268,7 +286,7 @@ const Languages = {
     uploading: 'Đang tải ảnh lên',
     uploadingError: 'Tải ảnh thất bại',
     uploadingEmpty: 'Thiếu ảnh. Vui lòng tải ảnh lên!',
-    noEmpty: 'Vui lòng điền đẩy đủ thông tin để hoàn tất',
+    noEmpty: 'Chúng tôi cần thêm thông tin',
     errStk: 'Số tài khoản hoặc số thẻ vượt quá giới hạn cho phép',
     errStkEmpty: 'Số tài khoản hoặc số thẻ trống',
     errNameEmpty: 'Tên tài khoản ngân hàng trống',
@@ -283,7 +301,11 @@ const Languages = {
     errKYC: 'Vui lòng xác thực CMT/CCCD để thực hiện việc rút tiền',
     notKYc: ' chưa xác thực CMT/CCCD',
     errorSuccess: 'Hệ thống quá tải vui lòng thử lại trong ít phút nữa',
-    success: 'Quá trình tạo thiệp cưới thành công. Ấn tiếp tục để kích hoạt'
+    success: 'Quá trình tạo thiệp cưới thành công. Ấn tiếp tục để kích hoạt',
+    updatesuccess: 'Cập nhật thiệp cưới thành công.',
+    nocreaptePage: 'Hệ thống đang tải hoặc chưa có thiệp nào được khởi tạo',
+    errorCode: 'Mã giới thiệu không chính xác',
+    correctCode: 'Mã giới thiệu được áp dụng'
   },
 }
 

@@ -6,32 +6,35 @@ import Invitation from '../components/letter-page/Invitation'
 import TimeLocation from '../components/letter-page/TimeLocation'
 import Schedule from '../components/letter-page/Schedule'
 import Congrats from '../components/letter-page/Congrats'
-import Footer from '../components/letter-page/Footer'
+
 import FooterLogo from '@/components/letter-page/FooterLogo'
-import Gallery from '../components/letter-page/Gallery'
+
 import Modal from '../components/letter-page/sub-comp/Modal'
 import { galleryImage } from '../utils/gallery-data'
 import Sidebar from '../components/letter-page/sub-comp/Sidebar'
 import YoutubeVideo from '../components/letter-page/YoutubeVideo'
 import Snowfall from 'react-snowfall'
-import snowImage from '../assets/home-image/snow.png'
+
 import leaveEffect from '../assets/home-image/leaveEffect.png'
-import peachEffect from '../assets/home-image/peachEffect.png'
-import snowWhiteEffect from '../assets/home-image/snowWhiteEffect.png'
+
 import NavButton from '../components/letter-page/sub-comp/NavButton'
 import Message from '@/components/letter-page/Message'
 import Response from '@/components/letter-page/Response'
 import Gallery1 from '@/components/letter-page/Gallery-1'
-import LetterEnvelop from '@/components/letter-page/LetterEnvelop'
+import LetterEnvelop from '@/components/letter-page/LetterEnvelop1'
+
+import { getDataApi } from '@/utils/axios'
 import styles from './LetterPage.module.css'
+import { useParams } from 'react-router-dom'
+import SnowFall from '@/components/letter-page/SnowFall'
 const LetterPage = () => {
-  const snowImg = document.createElement('img')
-  // snowImg.src = leaveEffect
-  // snowImg.width = 20
-  let images
+  const { id } = useParams()
+
   const [isOpen, setIsOpen] = useState(false)
+  const [letter, setLetter] = useState(null)
   const [isLetterOpen, setIsLetterOpen] = useState(false)
   const [modalContent, setModalContent] = useState('')
+  const [isLoading, setIsLoading] = useState(true)
   const [index, setIndex] = useState(0)
   const [isNavOpen, setIsNavOpen] = useState(false)
   const numberImage = galleryImage.length
@@ -43,19 +46,20 @@ const LetterPage = () => {
     }
   }, [isOpen])
   useEffect(() => {
-    snowImg.src = leaveEffect
-    // switch (bgEffect) {
-    //   case 'LEAVE_EFFECT':
-    //     break
-    //   default:
-    //     break
-    // }
-    images = [snowImg]
+    const fetchData = async () => {
+      setIsLoading(true)
+      const data = await getDataApi(`/invitation-detail?_id=${id}`)
+      console.log(data)
+      setIsLoading(false)
+
+      setLetter(data.data)
+    }
+    fetchData()
   }, [])
   const bgColor = useMemo(() => {
     let style = ''
 
-    if (1) {
+    if (0) {
       style = styles.pinkBg
     }
 
@@ -65,55 +69,103 @@ const LetterPage = () => {
 
     return style
   }, [])
-  if (!isLetterOpen) {
+  if (isLoading) return
+  const {
+    album,
+    anotherProduct,
+    backgroundColor,
+    codeInvite,
+    contentGuestBook,
+    contentOfInvitation,
+    coverImage,
+    createTime,
+    effectBackgroud,
+    effectImage,
+    eventOfProgram,
+    fontStyleOfContent,
+    fontStyleOfTitle,
+    informationOfBride,
+    informationOfGroom,
+    isDisplayGonePeople,
+    isEffectOfOpenning,
+    isPaid,
+    isUseConfirm,
+    isUseGuestBook,
+    password,
+    productId,
+    song,
+    styleBackground,
+    thumbnailImage,
+    timeAndLocationOfEgagement,
+    timeAndLocationOfInterrogation,
+    timeAndLocationOfWedding,
+    userId,
+    videoLink,
+  } = letter
+  if (!isLetterOpen && !isLoading) {
+    console.log(timeAndLocationOfWedding)
     return (
       <div className='w-screen h-screen m-0 p-0 flex items-center justify-center bg-main'>
         <LetterEnvelop
           isLetterOpen={isLetterOpen}
           setIsLetterOpen={setIsLetterOpen}
+          manfirstName={informationOfGroom.firstName}
+          coverImage={coverImage}
+          manName={informationOfGroom.name}
+          womanfirstName={informationOfBride.firstName}
+          womanName={informationOfBride.name}
+          timeAndLocationOfWedding={timeAndLocationOfWedding}
         />
       </div>
     )
   }
+
+  console.log(letter)
   return (
     <div className={`letter-wrapper ${bgColor}`}>
       <AnimationOnScroll
         animateIn='animate__zoomInDown'
         offset={10}
         animatePreScroll={false}
-        duration={3}
+        duration={2}
         delay={0}
       >
         <div className={`letter-layout ${bgColor}`}>
-          <Snowfall
-            color='#E29C67'
-            snowflakeCount={100}
-            style={{
-              position: 'fixed',
-              width: '100vw',
-              height: '100vh',
-              zIndex: 11,
-            }}
-            images={images}
-            radius={[1, 6]}
-          />
-          <NavButton setIsNavOpen={setIsNavOpen} />
+          <SnowFall type={effectBackgroud.value} />
+          <NavButton setIsNavOpen={setIsNavOpen} song={song} />
 
-          <Hero setIsNavOpen={setIsNavOpen} />
-          <Invitation />
-          {/* <Gallery
-          setModalContent={setModalContent}
-          setIsOpen={setIsOpen}
-          setIndex={setIndex}
-        /> */}
-          <Gallery1 />
-          <YoutubeVideo />
-          <TimeLocation />
-          <Schedule />
-          <Congrats setModalContent={setModalContent} setIsOpen={setIsOpen} />
+          <Hero
+            song={song}
+            setIsNavOpen={setIsNavOpen}
+            manfirstName={informationOfGroom.firstName}
+            coverImage={coverImage}
+            manName={informationOfGroom.name}
+            womanfirstName={informationOfBride.firstName}
+            womanName={informationOfBride.name}
+            timeAndLocationOfWedding={timeAndLocationOfWedding}
+          />
+          <Invitation
+            informationOfBride={informationOfBride}
+            informationOfGroom={informationOfGroom}
+            contentOfInvitation={contentOfInvitation}
+            timeAndLocationOfWedding={timeAndLocationOfWedding}
+          />
+          <Gallery1 album={album} />
+          <YoutubeVideo videoLink={videoLink} />
+          <TimeLocation
+            timeAndLocationOfWedding={timeAndLocationOfWedding}
+            timeAndLocationOfEgagement={timeAndLocationOfEgagement}
+            timeAndLocationOfInterrogation={timeAndLocationOfInterrogation}
+          />
+          <Schedule eventOfProgram={eventOfProgram} />
+          <Congrats
+            setModalContent={setModalContent}
+            setIsOpen={setIsOpen}
+            informationOfBride={informationOfBride}
+            informationOfGroom={informationOfGroom}
+          />
           <Message />
           <Response />
-          {/* <Footer /> */}
           <FooterLogo />
         </div>
       </AnimationOnScroll>

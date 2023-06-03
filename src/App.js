@@ -1,11 +1,10 @@
-import React from 'react'
-import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import LetterPage from './pages/LetterPage'
 import HomePage from './pages/Homepage/Homepage'
 import { Alias } from './commons/Constant.ts'
 import Login from './pages/Login'
-import Register from './pages/Register'
 import RecoveryPwd from './pages/RecoveryPwd'
 import Mypage from './pages/MyPage'
 import Notfound from './pages/Notfound'
@@ -22,33 +21,142 @@ import ProtectedRoute from './pages/ProtectedRoute'
 import RegisterRefactor from './pages/RegisterRefactor'
 import CustomerCare from './pages/CustomerCare'
 import 'react-toastify/dist/ReactToastify.css'
+import Languages from './commons/Languages'
+
+export const PageTitle = (props) => {
+  useEffect(() => {
+    document.title = props.title || ''
+  }, [props.title])
+  return props.children
+}
 
 function App() {
   return (
     <div className='app'>
       <BrowserRouter>
         <Routes>
-          <Route path={Alias.homePage} element={<HomePage />} />
-          <Route path={Alias.mypage} element={<Mypage />} />
           <Route
-            path={Alias.letterPage}
+            path={Alias.homePage}
             element={
-              <ProtectedRoute>
-                <LetterPage />
-              </ProtectedRoute>
+              <PageTitle title={Languages.menu.home}>
+                <HomePage />
+              </PageTitle>
             }
           />
-          <Route path={Alias.congrats} element={<CommentDetail />} />
-          <Route path={Alias.createPage} element={<CreatePage />} />
-          <Route path={Alias.editor} element={<CreatePage />} />
-          <Route path={Alias.pwdRecovery} element={<RecoveryPwd />} />
-          <Route path={Alias.register} element={<RegisterRefactor />} />
-          <Route path={Alias.login} element={<Login />} />
-          <Route path={Alias.customerCare} element={<CustomerCare />} />
-          <Route path={Alias.services} element={<Services />} />
-          <Route path={Alias.verifyOtp} element={<VerifyOtp />} />
-          <Route path={Alias.emailOtp} element={<EmailOtp />} />
-          <Route path='*' element={<Notfound />} />
+          <Route
+            path={Alias.mypage}
+            element={
+              <PageTitle title={Languages.menu.myPage}>
+                <Mypage />
+              </PageTitle>
+            }
+          />
+          <Route
+            path={`${Alias.letterPage}/:id`}
+            element={
+              <PageTitle title={Languages.menu.yourPage}>
+                <ProtectedRoute />
+              </PageTitle>
+            }
+          >
+            <Route index element={<LetterPage />} />
+            <Route
+              path={`${Alias.congrats}`}
+              element={
+                <PageTitle title={Languages.menu.commentPage}>
+                  <CommentDetail />
+                </PageTitle>
+              }
+            />
+          </Route>
+          {/* <Route
+            path={`${Alias.letterPage}/:id`}
+            element={
+              <PageTitle title={Languages.menu.yourPage}>
+                <LetterPage />
+              </PageTitle>
+            }
+          /> */}
+          <Route
+            path={Alias.createPage}
+            element={
+              <PageTitle title={Languages.menu.createPage}>
+                <CreatePage />
+              </PageTitle>
+            }
+          />
+          <Route
+            path={`${Alias.editor}/:id`}
+            element={
+              <PageTitle title={Languages.menu.editorPage}>
+                <CreatePage />
+              </PageTitle>
+            }
+          />
+          <Route
+            path={Alias.pwdRecovery}
+            element={
+              <PageTitle title={Languages.menu.recoveryPwd}>
+                <RecoveryPwd />
+              </PageTitle>
+            }
+          />
+          <Route
+            path={Alias.register}
+            element={
+              <PageTitle title={Languages.menu.register}>
+                <RegisterRefactor />
+              </PageTitle>
+            }
+          />
+          <Route
+            path={Alias.login}
+            element={
+              <PageTitle title={Languages.menu.login}>
+                <Login />
+              </PageTitle>
+            }
+          />
+          <Route
+            path={Alias.customerCare}
+            element={
+              <PageTitle title={Languages.menu.customerCare}>
+                <CustomerCare />
+              </PageTitle>
+            }
+          />
+          <Route
+            path={Alias.services}
+            element={
+              <PageTitle title={Languages.menu.services}>
+                <Services />
+              </PageTitle>
+            }
+          />
+          <Route
+            path={Alias.verifyOtp}
+            element={
+              <PageTitle title={Languages.menu.verifyOtp}>
+                <VerifyOtp />
+              </PageTitle>
+            }
+          />
+          <Route
+            path={Alias.emailOtp}
+            element={
+              <PageTitle title={Languages.menu.emailOtp}>
+                <EmailOtp />
+              </PageTitle>
+            }
+          />
+          <Route
+            path='*'
+            element={
+              <PageTitle title={Languages.menu.notfound}>
+                <Notfound />
+              </PageTitle>
+            }
+          />
         </Routes>
       </BrowserRouter>
       <ToastContainer />
