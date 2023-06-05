@@ -127,21 +127,21 @@ const FamilyBride = forwardRef(({ props }, ref) => {
 
         // refinvite.current?.setErrorMsg(errMsgInvite)
 
-        // refFirstnNameMother.current?.setErrorMsg(errMsgFirstNameMother)
-        // // refMiddleNameMother.current?.setErrorMsg(errMsgMiddleNameMother)
-        // refNameMother.current?.setErrorMsg(errMsgNameMother)
-        // refPhoneMother.current?.setErrorMsg(errMsgPhoneMother)
+        refFirstnNameMother.current?.setErrorMsg(errMsgFirstNameMother)
+        // refMiddleNameMother.current?.setErrorMsg(errMsgMiddleNameMother)
+        refNameMother.current?.setErrorMsg(errMsgNameMother)
+        refPhoneMother.current?.setErrorMsg(errMsgPhoneMother)
 
-        // refFirstnNameFather.current?.setErrorMsg(errMsgFirstNameFather)
-        // // refMiddleNameFather.current?.setErrorMsg(errMsgMiddleNameFather)
-        // refNameFather.current?.setErrorMsg(errMsgNameFather)
-        // refPhoneFather.current?.setErrorMsg(errMsgPhoneFather)
+        refFirstnNameFather.current?.setErrorMsg(errMsgFirstNameFather)
+        // refMiddleNameFather.current?.setErrorMsg(errMsgMiddleNameFather)
+        refNameFather.current?.setErrorMsg(errMsgNameFather)
+        refPhoneFather.current?.setErrorMsg(errMsgPhoneFather)
 
 
-        // refFirstnNameBride.current?.setErrorMsg(errMsgFirstNameB)
-        // // refMiddleNameBride.current?.setErrorMsg(errMsgMiddleNameB)
-        // refNameBride.current?.setErrorMsg(errMsgNameB)
-        // refPhoneBride.current?.setErrorMsg(errMsgPhoneB)
+        refFirstnNameBride.current?.setErrorMsg(errMsgFirstNameB)
+        // refMiddleNameBride.current?.setErrorMsg(errMsgMiddleNameB)
+        refNameBride.current?.setErrorMsg(errMsgNameB)
+        refPhoneBride.current?.setErrorMsg(errMsgPhoneB)
 
         if (`${errMsgFirstNameB}${errMsgNameB}${errMsgPhoneB}${errMsgFirstNameFather}${errMsgNameFather}${errMsgPhoneFather}${errMsgFirstNameMother}${errMsgNameMother}${errMsgPhoneMother}${errMsgMiddleNameB}${errMsgMiddleNameFather}${errMsgMiddleNameMother}`.length === 0) {
             return true

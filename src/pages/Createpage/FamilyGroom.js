@@ -90,20 +90,20 @@ const FamilyGroom = forwardRef(({ }, ref) => {
         const errMsgNameMother = FormValidate.inputNameEmpty(value.informationOfGroom[0].motherNameOfGroom, Languages.errorMsg.required, Languages.errorMsg.userNameRegex)
         const errMsgPhoneMother = FormValidate.passConFirmPhone(value.informationOfGroom[0].phoneNumberOfMotherGroom)
 
-        // refFirstnNameMother.current?.setErrorMsg(errMsgFirstNameMother)
-        // // refMiddleNameMother.current?.setErrorMsg(errMsgMiddleNameMother)
-        // refNameMother.current?.setErrorMsg(errMsgNameMother)
-        // refPhoneMother.current?.setErrorMsg(errMsgPhoneMother)
+        refFirstnNameMother.current?.setErrorMsg(errMsgFirstNameMother)
+        // refMiddleNameMother.current?.setErrorMsg(errMsgMiddleNameMother)
+        refNameMother.current?.setErrorMsg(errMsgNameMother)
+        refPhoneMother.current?.setErrorMsg(errMsgPhoneMother)
 
-        // refFirstnNameFather.current?.setErrorMsg(errMsgFirstNameFather)
-        // // refMiddleNameFather.current?.setErrorMsg(errMsgMiddleNameFather)
-        // refNameFather.current?.setErrorMsg(errMsgNameFather)
-        // refPhoneFather.current?.setErrorMsg(errMsgPhoneFather)
+        refFirstnNameFather.current?.setErrorMsg(errMsgFirstNameFather)
+        // refMiddleNameFather.current?.setErrorMsg(errMsgMiddleNameFather)
+        refNameFather.current?.setErrorMsg(errMsgNameFather)
+        refPhoneFather.current?.setErrorMsg(errMsgPhoneFather)
 
-        // refFirstnNameGroom.current?.setErrorMsg(errMsgFirstNameG)
-        // // refMiddleNameGroom.current?.setErrorMsg(errMsgMiddleNameG)
-        // refNameGroom.current?.setErrorMsg(errMsgNameG)
-        // refPhoneGroom.current?.setErrorMsg(errMsgPhoneG)
+        refFirstnNameGroom.current?.setErrorMsg(errMsgFirstNameG)
+        // refMiddleNameGroom.current?.setErrorMsg(errMsgMiddleNameG)
+        refNameGroom.current?.setErrorMsg(errMsgNameG)
+        refPhoneGroom.current?.setErrorMsg(errMsgPhoneG)
 
 
         if (`${errMsgFirstNameG}${errMsgNameG}${errMsgPhoneG}${errMsgFirstNameFather}${errMsgNameFather}${errMsgPhoneFather}${errMsgFirstNameMother}${errMsgNameMother}${errMsgPhoneMother}${errMsgMiddleNameG}${errMsgMiddleNameFather}${errMsgMiddleNameMother}`.length === 0) {

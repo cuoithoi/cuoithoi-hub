@@ -137,7 +137,7 @@ const CreatePage = () => {
           setValuedataAnotherTotalPrice(response.data?.totalAmount)
           setAlbumURL(response.data?.album)
           setImagesURL(response.data?.thumbnailImage)
-          setImagesCoverURL(response.data?.coverImage)
+          setImagesCoverURL([...response.data?.coverImage])
         } catch (error) {
           console.error('Đã xảy ra lỗi:', error)
         }
@@ -176,10 +176,10 @@ const CreatePage = () => {
       itemLocal?.styleBackground && setRadioTypeBg(itemLocal?.styleBackground.value)
       itemLocal?.backgroundColor && setRadioColorBg(itemLocal?.backgroundColor.value)
       itemLocal?.effectBackgroud && setRadioEffectBg(itemLocal?.effectBackgroud.value)
-      itemLocal?.effectImage && setRadioEffectImage(itemLocal?.effectImage) 
-      itemLocal?.coverImage && (values.coverImage = itemLocal?.coverImage)
-      itemLocal?.thumbnailImage && (values.thumbnailImage = itemLocal?.thumbnailImage)
-      itemLocal?.album && (values.album = itemLocal?.album)
+      itemLocal?.effectImage && setRadioEffectImage(itemLocal?.effectImage)
+      // itemLocal?.coverImage && (values.coverImage = itemLocal?.coverImage)
+      // itemLocal?.thumbnailImage && (values.thumbnailImage = itemLocal?.thumbnailImage)
+      // itemLocal?.album && (values.album = itemLocal?.album)
     }
 
   }, [values, setRadioMusic, setRadioStyleTitle, setRadioStyleContent, setRadioTypeBg, setRadioColorBg, setRadioEffectBg])
@@ -1032,7 +1032,7 @@ const CreatePage = () => {
 
     }
 
-  }, [imagesURL, imagesCoverURL, albumURL, packageType, user, codeinvite, idCreateRespon])
+  }, [imagesURL, imagesCoverURL, album, packageType, user, codeinvite, idCreateRespon])
 
   const onOpenSuccessConfirm = useCallback(() => {
 
@@ -1042,7 +1042,7 @@ const CreatePage = () => {
         toast.error(Languages.errorMsg.uploadingEmpty);
 
       } else if (passValidateSuccess() !== true) {
-        toast.error(Languages.errorMsg.noEmpty)
+
         onChangeSaveSetting()
 
       } else {

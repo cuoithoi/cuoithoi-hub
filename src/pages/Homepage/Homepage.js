@@ -52,7 +52,11 @@ const Homepage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    
+    return window.scrollTo(0, 0)
+  }, [])
+
+  useEffect(() => {
+
     const handleScroll = () => {
       if (!isScrolling) {
         const scrollTop = window.scrollY;
@@ -81,7 +85,6 @@ const Homepage = () => {
   }, [isScrolling]);
 
   useEffect(() => {
-    window.scrollTo(0, 0)
     const windowHeight = window.innerHeight;
     const heightFooter = refFooter.current?.offsetHeight;
     const heightBoxTopFooter = windowHeight - heightFooter
