@@ -827,7 +827,7 @@ const CreatePage = () => {
                 value={codeinvite}
                 label={Languages.text.referralCode}
                 name={INPUT_FIELDS.referralCode}
-                placeHolder={Languages.text.referralCode}
+                placeHolder={'Nhập ' +Languages.text.referralCode}
                 type={'text'}
                 maxLength={20}
                 styleGroup={'man_inputStyle'}

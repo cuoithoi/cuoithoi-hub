@@ -9,8 +9,6 @@ import {
   BUTTON_STYLES,
   CheckParams,
   Status,
-  apiCSV,
-  config,
 } from '@/commons/Constant.ts'
 import ChooseTypeBlock from '@/components/chooseTypeBlock'
 import Loading from '@/components/Loading'
@@ -20,7 +18,6 @@ import { useNavigate } from 'react-router-dom'
 import Popup from '@/components/modal/Popup'
 import IcInf from '@/assets/home-image/IcInf.svg'
 import {
-  getItemFromLocalStorage,
   getLocalAccessToken,
   removeStorage,
 } from '@/utils/localStorage'
@@ -45,6 +42,10 @@ const Mypage = () => {
     window.scrollTo(0, 0)
     removeStorage('hasReloaded');
   }, [])
+
+  const config = {
+    headers: { Authorization: 'Bearer ' + user?.token },
+  }
 
   useEffect(() => {
     if (!user) return

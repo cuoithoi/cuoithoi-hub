@@ -345,7 +345,7 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                     {renderInput(
                         refFirstnNameGroom,
                         Languages.inputText.firstNameGroom,
-                        Languages.inputText.firstName,
+                        'Nguyễn',
                         NAME_INPUT_GROOM.firstName,
                         'text',
                         15,
@@ -357,7 +357,7 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                     {renderInput(
                         refMiddleNameGroom,
                         Languages.inputText.firstAnother,
-                        Languages.inputText.firstAnother,
+                        'Văn',
                         NAME_INPUT_GROOM.middleName,
                         'text',
                         30,
@@ -368,7 +368,7 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                     {renderInput(
                         refNameGroom,
                         Languages.inputText.nameGroom,
-                        Languages.inputText.namesingle,
+                        'A',
                         NAME_INPUT_GROOM.name,
                         'text',
                         30,
@@ -409,7 +409,7 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                     {renderInput(
                         refPhoneGroom,
                         Languages.inputText.phone,
-                        Languages.inputText.phonepla,
+                        '0384012345',
                         NAME_INPUT_GROOM.phoneNumberOfGroom,
                         'number',
                         10,
@@ -428,7 +428,7 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                     {renderInput(
                         refFirstnNameFather,
                         Languages.inputText.firstName,
-                        Languages.inputText.firstName,
+                        'Nguyễn',
                         NAME_INPUT_GROOM.firstFatherNameOfGroom,
                         'text',
                         15,
@@ -439,7 +439,7 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                     {renderInput(
                         refMiddleNameFather,
                         Languages.inputText.firstAnother,
-                        Languages.inputText.firstAnother,
+                        'Văn',
                         NAME_INPUT_GROOM.middleFatherNameOfGroom,
                         'text',
                         30,
@@ -450,7 +450,7 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                     {renderInput(
                         refNameFather,
                         Languages.inputText.namesingle,
-                        Languages.inputText.namesingle,
+                        'A',
                         NAME_INPUT_GROOM.fatherNameOfGroom,
                         'text',
                         30,
@@ -476,7 +476,7 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                     {renderInput(
                         refPhoneFather,
                         Languages.inputText.phone,
-                        Languages.inputText.phonepla,
+                        '0384012345',
                         NAME_INPUT_GROOM.phoneNumberOfFatherGroom,
                         'number',
                         10,
@@ -504,7 +504,7 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                     {renderInput(
                         refFirstnNameMother,
                         Languages.inputText.firstName,
-                        Languages.inputText.firstName,
+                        'Nguyễn',
                         NAME_INPUT_GROOM.firstMotherNameOfGroom,
                         'text',
                         15,
@@ -515,7 +515,7 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                     {renderInput(
                         refMiddleNameMother,
                         Languages.inputText.firstAnother,
-                        Languages.inputText.firstAnother,
+                        'Thị',
                         NAME_INPUT_GROOM.middleMotherNameOfGroom,
                         'text',
                         30,
@@ -526,7 +526,7 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                     {renderInput(
                         refNameMother,
                         Languages.inputText.namesingle,
-                        Languages.inputText.namesingle,
+                        'B',
                         NAME_INPUT_GROOM.motherNameOfGroom,
                         'text',
                         30,
@@ -552,7 +552,7 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                     {renderInput(
                         refPhoneMother,
                         Languages.inputText.phone,
-                        Languages.inputText.phonepla,
+                        '0384012345',
                         NAME_INPUT_GROOM.phoneNumberOfMotherGroom,
                         'number',
                         10,

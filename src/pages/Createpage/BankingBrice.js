@@ -367,10 +367,10 @@ const BankingBrice = forwardRef(({ }, ref) => {
                 {renderBank(NAME_INPUT_BRIDE.nameBankOfBride, 'Ngân Hàng Cô dâu', value.informationOfBride[0].nameBankOfBride)}
                 <div className='double_input_row'>
                     <div className='half_row_hor_input'>
-                        {renderInput(refOwnerBride, Languages.text.accountHolder, Languages.text.accountHolder, NAME_INPUT_BRIDE.ownerBankOfBride, 'text', 200, false, '', value.informationOfBride[0].ownerBankOfBride)}
+                        {renderInput(refOwnerBride, Languages.text.accountHolder, 'Nhập ' + Languages.text.accountHolder, NAME_INPUT_BRIDE.ownerBankOfBride, 'text', 200, false, '', value.informationOfBride[0].ownerBankOfBride)}
                     </div>
                     <div className='half_row_hor_input'>
-                        {renderInput(refNumberBankBride, Languages.text.serinumber, Languages.text.serinumber, NAME_INPUT_BRIDE.bankOfNumberBride, 'number', 16, false, '', value.informationOfBride[0].bankOfNumberBride)}
+                        {renderInput(refNumberBankBride, Languages.text.serinumber, 'Nhập ' + Languages.text.serinumber, NAME_INPUT_BRIDE.bankOfNumberBride, 'number', 16, false, '', value.informationOfBride[0].bankOfNumberBride)}
                     </div>
                 </div>
                 <div className='list_album_uploads'>
@@ -394,10 +394,10 @@ const BankingBrice = forwardRef(({ }, ref) => {
 
                 <div className='double_input_row'>
                     <div className='half_row_hor_input'>
-                        {renderInput(refOwnerFather, Languages.text.accountHolder, Languages.text.accountHolder, NAME_INPUT_BRIDE.ownerBankOfFatherBride, 'text', 200, false, '', value.informationOfBride[0].ownerBankOfFatherBride)}
+                        {renderInput(refOwnerFather, Languages.text.accountHolder, 'Nhập ' + Languages.text.accountHolder, NAME_INPUT_BRIDE.ownerBankOfFatherBride, 'text', 200, false, '', value.informationOfBride[0].ownerBankOfFatherBride)}
                     </div>
                     <div className='half_row_hor_input'>
-                        {renderInput(refNumberBankFather, Languages.text.serinumber, Languages.text.serinumber, NAME_INPUT_BRIDE.bankOfNumberFatherBride, 'number', 16, false, '', value.informationOfBride[0].bankOfNumberFatherBride)}
+                        {renderInput(refNumberBankFather, Languages.text.serinumber, 'Nhập ' + Languages.text.serinumber, NAME_INPUT_BRIDE.bankOfNumberFatherBride, 'number', 16, false, '', value.informationOfBride[0].bankOfNumberFatherBride)}
                     </div>
                 </div>
                 <div className='list_album_uploads'>
@@ -420,10 +420,10 @@ const BankingBrice = forwardRef(({ }, ref) => {
                 {renderBank(NAME_INPUT_BRIDE.nameBankOfMotherBride, 'Ngân Hàng Mẹ Cô dâu', value.informationOfBride[0].nameBankOfMotherBride)}
                 <div className='double_input_row'>
                     <div className='half_row_hor_input'>
-                        {renderInput(refOwnerMother, Languages.text.accountHolder, Languages.text.accountHolder, NAME_INPUT_BRIDE.ownerBankOfMotherBride, 'text', 200, false, '', value.informationOfBride[0].ownerBankOfMotherBride)}
+                        {renderInput(refOwnerMother, Languages.text.accountHolder, 'Nhập ' + Languages.text.accountHolder, NAME_INPUT_BRIDE.ownerBankOfMotherBride, 'text', 200, false, '', value.informationOfBride[0].ownerBankOfMotherBride)}
                     </div>
                     <div className='half_row_hor_input'>
-                        {renderInput(refNumberBankMother, Languages.text.serinumber, Languages.text.serinumber, NAME_INPUT_BRIDE.bankOfNumberMotherBride, 'number', 16, false, '', value.informationOfBride[0].bankOfNumberMotherBride)}
+                        {renderInput(refNumberBankMother, Languages.text.serinumber, 'Nhập ' + Languages.text.serinumber, NAME_INPUT_BRIDE.bankOfNumberMotherBride, 'number', 16, false, '', value.informationOfBride[0].bankOfNumberMotherBride)}
                     </div>
                 </div>
                 <div className='list_album_uploads'>

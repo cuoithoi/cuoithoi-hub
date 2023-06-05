@@ -360,10 +360,10 @@ const BankingGroom = forwardRef(({ }, ref) => {
                 {renderBank(NAME_INPUT_GROOM.nameBankOfGroom, 'Ngân Hàng Chú rể', value.informationOfGroom[0].nameBankOfGroom)}
                 <div className='double_input_row'>
                     <div className='half_row_hor_input'>
-                        {renderInput(refOwnerGroom, Languages.text.accountHolder, Languages.text.accountHolder, NAME_INPUT_GROOM.ownerBankOfGroom, 'text', 200, false, '', value.informationOfGroom[0].ownerBankOfGroom)}
+                        {renderInput(refOwnerGroom, Languages.text.accountHolder, 'Nhập ' + Languages.text.accountHolder, NAME_INPUT_GROOM.ownerBankOfGroom, 'text', 200, false, '', value.informationOfGroom[0].ownerBankOfGroom)}
                     </div>
                     <div className='half_row_hor_input'>
-                        {renderInput(refNumberBankGroom, Languages.text.serinumber, Languages.text.serinumber, NAME_INPUT_GROOM.bankOfNumberGroom, 'number', 14, false, '', value.informationOfGroom[0].bankOfNumberGroom)}
+                        {renderInput(refNumberBankGroom, Languages.text.serinumber,'Nhập ' + Languages.text.serinumber, NAME_INPUT_GROOM.bankOfNumberGroom, 'number', 14, false, '', value.informationOfGroom[0].bankOfNumberGroom)}
                     </div>
                 </div>
                 <div className='list_album_uploads'>
@@ -387,10 +387,10 @@ const BankingGroom = forwardRef(({ }, ref) => {
 
                 <div className='double_input_row'>
                     <div className='half_row_hor_input'>
-                        {renderInput(refOwnerFather, Languages.text.accountHolder, Languages.text.accountHolder, NAME_INPUT_GROOM.ownerBankOfFatherGroom, 'text', 200, false, '', value.informationOfGroom[0].ownerBankOfFatherGroom)}
+                        {renderInput(refOwnerFather, Languages.text.accountHolder, 'Nhập ' + Languages.text.accountHolder, NAME_INPUT_GROOM.ownerBankOfFatherGroom, 'text', 200, false, '', value.informationOfGroom[0].ownerBankOfFatherGroom)}
                     </div>
                     <div className='half_row_hor_input'>
-                        {renderInput(refNumberBankFather, Languages.text.serinumber, Languages.text.serinumber, NAME_INPUT_GROOM.bankOfNumberFatherGroom, 'number', 14, false, '', value.informationOfGroom[0].bankOfNumberFatherGroom)}
+                        {renderInput(refNumberBankFather, Languages.text.serinumber, 'Nhập ' + Languages.text.serinumber, NAME_INPUT_GROOM.bankOfNumberFatherGroom, 'number', 14, false, '', value.informationOfGroom[0].bankOfNumberFatherGroom)}
                     </div>
                 </div>
                 <div className='list_album_uploads'>
@@ -414,10 +414,10 @@ const BankingGroom = forwardRef(({ }, ref) => {
 
                 <div className='double_input_row'>
                     <div className='half_row_hor_input'>
-                        {renderInput(refOwnerMother, Languages.text.accountHolder, Languages.text.accountHolder, NAME_INPUT_GROOM.ownerBankOfMotherGroom, 'text', 200, false, '', value.informationOfGroom[0].ownerBankOfMotherGroom)}
+                        {renderInput(refOwnerMother, Languages.text.accountHolder, 'Nhập ' + Languages.text.accountHolder, NAME_INPUT_GROOM.ownerBankOfMotherGroom, 'text', 200, false, '', value.informationOfGroom[0].ownerBankOfMotherGroom)}
                     </div>
                     <div className='half_row_hor_input'>
-                        {renderInput(refNumberBankMother, Languages.text.serinumber, Languages.text.serinumber, NAME_INPUT_GROOM.bankOfNumberMotherGroom, 'number', 14, false, '', value.informationOfGroom[0].bankOfNumberMotherGroom)}
+                        {renderInput(refNumberBankMother, Languages.text.serinumber, 'Nhập ' + Languages.text.serinumber, NAME_INPUT_GROOM.bankOfNumberMotherGroom, 'number', 14, false, '', value.informationOfGroom[0].bankOfNumberMotherGroom)}
                     </div>
                 </div>
                 <div className='list_album_uploads'>

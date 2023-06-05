@@ -283,11 +283,11 @@ const TimeandLocation = forwardRef(({ }, ref) => {
 
             <div className='fullwidth_input_colum'>
                 <div className='single_hor_input'>
-                    {renderInput(refLocationOfWedding, Languages.text.placeWedding, Languages.text.placeWedding, TIME_AND_LOCATION.locationOfWedding, value.timeAndLocationOfWedding.locationOfWedding, 'text', 200, true, <FaMap />)}
+                    {renderInput(refLocationOfWedding, Languages.text.placeWedding, 'Nhập ' + Languages.text.placeWedding, TIME_AND_LOCATION.locationOfWedding, value.timeAndLocationOfWedding.locationOfWedding, 'text', 200, true, <FaMap />)}
                 </div>
 
                 <div className='single_hor_input'>
-                    {renderInput(refMapDirectLink, Languages.text.mapPlaceWedding, Languages.text.mapPlaceWedding, TIME_AND_LOCATION.mapDirectLink, value.timeAndLocationOfWedding.mapDirectLink, 'text', 200, true, <FaLink />)}
+                    {renderInput(refMapDirectLink, Languages.text.mapPlaceWedding, 'Nhập ' + Languages.text.mapPlaceWedding, TIME_AND_LOCATION.mapDirectLink, value.timeAndLocationOfWedding.mapDirectLink, 'text', 200, true, <FaLink />)}
                 </div>
 
                 <div className='single_hor_input checkbox_inline_colum'>

@@ -3,7 +3,7 @@ import Header from "@/components/header";
 import Footer from "./Footer/Footer";
 import Loading from "@/components/Loading";
 import Languages from "@/commons/Languages";
-import { APi, BUTTON_STYLES, config } from "@/commons/Constant.ts";
+import { APi, Alias, BUTTON_STYLES, config } from "@/commons/Constant.ts";
 import BlockUI from "@/components/blockUI";
 import IcSystem from "@/assets/home-image/IcSystem.svg";
 import IcReview from "@/assets/home-image/IcReview.svg";
@@ -21,8 +21,12 @@ import itemImageServices2 from "@/assets/home-image/IMG_Sv2.svg";
 import itemImageServices3 from "@/assets/home-image/IMG_Sv3.svg";
 import itemImageServicesShow from "@/assets/home-image/IMG_S_Show.svg";
 import { FaCheck } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const Services = () => {
+
+  const navigate = useNavigate();
+
   useEffect(() => {
     setTimeout(() => {
       window.scrollTo(0, 5);
@@ -48,6 +52,8 @@ const Services = () => {
     };
     asyncListProduct();
   }, []);
+
+  const onChangeRes = () => navigate(Alias.login)
 
   return (
     <div className="Login">
@@ -159,6 +165,7 @@ const Services = () => {
                       textStyle={BUTTON_STYLES.WHITE}
                       autocenter
                       isLowerCase
+                      onPress={onChangeRes}
                     />
                   </div>
                 </AnimationOnScroll>
@@ -207,7 +214,7 @@ const Services = () => {
                       buttonStyle={BUTTON_STYLES.PINK}
                       textStyle={BUTTON_STYLES.WHITE}
                     />
-                    <div className="box_abs_image_video animate__fadeInLeft_phone">
+                    <div className="box_abs_image_video">
                       <div className="frame_video_box">
                         <img src={ICFrameVideo} alt="video" />
                         <video controls autoPlay={true} loop>
@@ -239,7 +246,7 @@ const Services = () => {
                       buttonStyle={BUTTON_STYLES.PINK}
                       textStyle={BUTTON_STYLES.WHITE}
                     />
-                    <div className="box_abs_image_video animate__fadeInLeft_phone">
+                    <div className="box_abs_image_video">
                       <video controls autoPlay={true} loop>
                         <source src={video_NFT} type="video/mp4" />
                         Your browser does not support the video tag.

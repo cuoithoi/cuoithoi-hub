@@ -448,7 +448,7 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                     {renderInput(
                         refFirstnNameBride,
                         Languages.inputText.firstNameBride,
-                        Languages.inputText.firstName,
+                        'Nguyễn',
                         NAME_INPUT_BRIDE.firstName,
                         'text',
                         15,
@@ -459,7 +459,7 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                     {renderInput(
                         refMiddleNameBride,
                         Languages.inputText.firstAnother,
-                        Languages.inputText.firstAnother,
+                        'Thị',
                         NAME_INPUT_BRIDE.middleName,
                         'text',
                         30,
@@ -470,7 +470,7 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                     {renderInput(
                         refNameBride,
                         Languages.inputText.nameBride,
-                        Languages.inputText.namesingle,
+                        'B',
                         NAME_INPUT_BRIDE.name,
                         'text',
                         30,
@@ -511,7 +511,7 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                     {renderInput(
                         refPhoneBride,
                         Languages.inputText.phone,
-                        Languages.inputText.phonepla,
+                        '0384012345',
                         NAME_INPUT_BRIDE.phoneNumberOfBride,
                         'number',
                         10,
@@ -530,7 +530,7 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                     {renderInput(
                         refFirstnNameFather,
                         Languages.inputText.firstName,
-                        Languages.inputText.firstName,
+                        'Nguyễn',
                         NAME_INPUT_BRIDE.firstFatherNameOfBride,
                         'text',
                         15,
@@ -541,7 +541,7 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                     {renderInput(
                         refMiddleNameFather,
                         Languages.inputText.firstAnother,
-                        Languages.inputText.firstAnother,
+                        'Văn',
                         NAME_INPUT_BRIDE.middleFatherNameOfBride,
                         'text',
                         30,
@@ -552,7 +552,7 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                     {renderInput(
                         refNameFather,
                         Languages.inputText.namesingle,
-                        Languages.inputText.namesingle,
+                        'A',
                         NAME_INPUT_BRIDE.fatherNameOfBride,
                         'text',
                         30,
@@ -578,7 +578,7 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                     {renderInput(
                         refPhoneFather,
                         Languages.inputText.phone,
-                        Languages.inputText.phonepla,
+                        '0384012345',
                         NAME_INPUT_BRIDE.phoneNumberOfFatherBride,
                         'number',
                         10,
@@ -605,7 +605,7 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                     {renderInput(
                         refFirstnNameMother,
                         Languages.inputText.firstName,
-                        Languages.inputText.firstName,
+                        'Nguyễn',
                         NAME_INPUT_BRIDE.firstMotherNameOfBride,
                         'text',
                         15,
@@ -616,7 +616,7 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                     {renderInput(
                         refMiddleNameMother,
                         Languages.inputText.firstAnother,
-                        Languages.inputText.firstAnother,
+                        'Thị',
                         NAME_INPUT_BRIDE.middleMotherNameOfBride,
                         'text',
                         30,
@@ -627,7 +627,7 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                     {renderInput(
                         refNameMother,
                         Languages.inputText.namesingle,
-                        Languages.inputText.namesingle,
+                        'B',
                         NAME_INPUT_BRIDE.motherNameOfBride,
                         'text',
                         30,
@@ -653,7 +653,7 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                     {renderInput(
                         refPhoneMother,
                         Languages.inputText.phone,
-                        Languages.inputText.phonepla,
+                        '0384012345',
                         NAME_INPUT_BRIDE.phoneNumberOfMotherBride,
                         'number',
                         10,

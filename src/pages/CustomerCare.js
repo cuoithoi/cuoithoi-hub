@@ -8,6 +8,7 @@ import { Button } from '@/components/button'
 import { APi, BUTTON_STYLES, config } from '@/commons/Constant.ts'
 import { Link } from 'react-router-dom'
 import { useBaseService } from '@/utils/BaseServices'
+import PaginatedList from '@/components/pagination'
 
 const CustomerCare = () => {
     const refNotice = useRef(null);
@@ -131,7 +132,7 @@ const CustomerCare = () => {
                     <div className='faq_box_custormer'>
                         <div className='head'>
                             <h2>
-                                FAQ
+                                Câu hỏi thường gặp
                             </h2>
                         </div>
                         {
@@ -141,15 +142,7 @@ const CustomerCare = () => {
                                         <div className='category_name_group'>
                                             <h3>{item.content}</h3>
                                         </div> {
-                                            item.questions.map(function (item, indexChild) {
-                                                return <Panel title={item.title} key={indexChild}>
-                                                    <div className='panel_colisape_description'>
-                                                        <div className='entry'>
-                                                            {item.description}
-                                                        </div>
-                                                    </div>
-                                                </Panel>
-                                            })
+                                            <PaginatedList data={item.questions} itemsPerPage={5} />
                                         }
 
                                     </div>
@@ -159,12 +152,27 @@ const CustomerCare = () => {
                     </div>
                 </div>
                 <div ref={refManual} className='sec_video'>
+
                     <div className='container mx-auto'>
+                        <div className='faq_box_custormer'>
+                            <div className='head'>
+                                <h2>
+                                    Hướng dẫn
+                                </h2>
+                            </div>
+                        </div>
                         <iframe width="100%" height={heightVideo} src="https://www.youtube.com/embed/qnXQgQfwJU4" title="Người được chọn tên Hoa - 23/11/2021" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
                     </div>
                 </div>
                 <div ref={refCS} className='sec_quickly_answer'>
                     <div className='container mx-auto'>
+                        <div className='faq_box_custormer'>
+                            <div className='head'>
+                                <h2>
+                                    Thông tin liên hệ
+                                </h2>
+                            </div>
+                        </div>
                         <div className='box_support_guest'>
                             <div className='all_ready'>
                                 <FaHeadphones /> <span>We will Answer Quickly</span>
@@ -193,6 +201,7 @@ const CustomerCare = () => {
             <Footer />
         </div>
     )
+    
 }
 
 export default CustomerCare
