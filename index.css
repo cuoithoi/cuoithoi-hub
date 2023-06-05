@@ -2845,7 +2845,7 @@ img {
 
 .sec_video {
   background: var(--bg-pink-blur);
-  padding: 100px 0;
+  padding: 10px 0 100px
 }
 
 .sec_video iframe {
@@ -2855,7 +2855,7 @@ img {
 
 .box_support_guest {
   border: 2px solid var(--bg-pink-color);
-  margin: 100px auto;
+  margin: 0 auto 50px;
   border-radius: 10px;
   text-align: center;
   display: flex;
@@ -3157,6 +3157,32 @@ img {
   color: var(--black-color);
 }
 
+.pagination {
+  display: block;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.navigation button {
+  width: auto;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid var(--bg-pink-color);
+  padding: 15px;
+  font-family: var(--quick-sand-font-family);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+
 .container {
   padding-right: 15px;
   padding-left: 15px;
@@ -3182,7 +3208,7 @@ img {
 
 @media (min-width: 1536px) {
   .container {
-    width: 1536px;
+    width: 1400px;
   }
 }
 
