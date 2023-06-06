@@ -1,14 +1,16 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Button } from './button';
-import { BUTTON_STYLES } from '@/commons/Constant.ts';
+import { Alias, BUTTON_STYLES } from '@/commons/Constant.ts';
 import Languages from '@/commons/Languages';
 import itemImage from '@/assets/home-image/item.png'
+import { useNavigate } from 'react-router-dom';
 
 
 function ChooseTypeBlock({
     backgroundColor
 }) {
 
+    const navigate = useNavigate();
     const [heightImg, setHeightImg] = useState('auto')
 
     useEffect(() => {
@@ -30,6 +32,7 @@ function ChooseTypeBlock({
 
     }, [heightImg]);
 
+    const onChangeToServices = () => navigate(Alias.services)
 
     return (
         <div className='section_wrap_type_ds' style={{ background: backgroundColor }}>
@@ -57,10 +60,12 @@ function ChooseTypeBlock({
                 </div>
                 <div className='bottom-button-click center'>
                     <Button
-                        label={Languages.buttonText.seeAll}
+                        label={Languages.buttonText.tryIt}
                         buttonStyle={BUTTON_STYLES.PINK}
                         isLowerCase
                         textStyle={BUTTON_STYLES.WHITE}
+                        onPress={onChangeToServices}
+                        
                     />
                 </div>
             </div>

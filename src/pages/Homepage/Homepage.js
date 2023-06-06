@@ -178,6 +178,7 @@ const Homepage = () => {
                     buttonStyle={BUTTON_STYLES.WHITE}
                     textStyle={BUTTON_STYLES.WHITE}
                     isLowerCase
+                    onPress={onChangeToServices}
                   />
                 </AnimationOnScroll>
 

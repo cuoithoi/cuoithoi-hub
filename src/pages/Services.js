@@ -79,6 +79,7 @@ const Services = () => {
           initiallyVisible={true}
           animatePreScroll={false}
           duration={2}
+          onPress={onChangeRes}
         >
           <h2 className="wraps_title">{Languages.text.freeDraft}</h2>
           {Languages.text.beauToday}
@@ -213,6 +214,7 @@ const Services = () => {
                       label={Languages.buttonText.tryIt}
                       buttonStyle={BUTTON_STYLES.PINK}
                       textStyle={BUTTON_STYLES.WHITE}
+                      onPress={onChangeRes}
                     />
                     <div className="box_abs_image_video">
                       <div className="frame_video_box">
@@ -245,6 +247,7 @@ const Services = () => {
                       label={Languages.buttonText.tryIt}
                       buttonStyle={BUTTON_STYLES.PINK}
                       textStyle={BUTTON_STYLES.WHITE}
+                      onPress={onChangeRes}
                     />
                     <div className="box_abs_image_video">
                       <video controls autoPlay={true} loop>

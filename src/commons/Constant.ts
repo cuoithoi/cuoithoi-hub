@@ -197,7 +197,7 @@ export const INPUT_FIELDS = {
 }
 
 export const APi = {
-  BaseUrl: 'http://14.225.205.60:3000/api',
+  BaseUrl: 'http://14.225.254.190:3000/api',
   uploadImage: '/upload-images',
   createInvitation: '/create-invitation',
   listProduct: '/list-product',

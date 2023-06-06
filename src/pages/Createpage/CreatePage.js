@@ -827,7 +827,7 @@ const CreatePage = () => {
                 value={codeinvite}
                 label={Languages.text.referralCode}
                 name={INPUT_FIELDS.referralCode}
-                placeHolder={'Nhập ' +Languages.text.referralCode}
+                placeHolder={'Nhập ' + Languages.text.referralCode}
                 type={'text'}
                 maxLength={20}
                 styleGroup={'man_inputStyle'}
@@ -1004,7 +1004,7 @@ const CreatePage = () => {
         "anotherProduct": values.anotherProduct,
         "codeInvite": codeinvite,
         "productId": packageType[2],
-        "status": '2'
+        "status": '3'
       }), config);
       removeStorage('createLeter')
       if (response.errorCode == 0) {
@@ -1020,7 +1020,8 @@ const CreatePage = () => {
     } else {
 
       const responseupdate = await post(APi.updateInvitation, Object.assign(jsonData, {
-        "_id": idCreateRespon
+        "_id": idCreateRespon,
+        "status": '2',
       }), config);
       if (responseupdate.errorCode == 0) {
         toast.success(Languages.errorMsg.updatesuccess)
@@ -1065,7 +1066,7 @@ const CreatePage = () => {
       window.location.reload()
     }
 
-  }, [onChangeSaveSetting, passValidateSuccess, setValuedataAnotherTotalPrice, imagesCoverURL, imagesURL, albumURL  , codeinvite, percentOff])
+  }, [onChangeSaveSetting, passValidateSuccess, setValuedataAnotherTotalPrice, imagesCoverURL, imagesURL, albumURL, codeinvite, percentOff])
 
 
   const onChangeValidateConfirm = useCallback(async () => {

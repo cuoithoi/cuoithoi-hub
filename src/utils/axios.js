@@ -81,10 +81,10 @@ const getDataApi = async (url) => {
     handleErrors(error)
   }
 }
-const postDataApi = async (url) => {
+const postDataApi = async (url, data) => {
   try {
-    const token = getLocalAccessToken()
-    const resp = await customFetch.post(url)
+    const resp = await customFetch.post(url, data)
+    console.log(resp)
     return resp.data
   } catch (error) {
     console.log(error)

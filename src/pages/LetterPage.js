@@ -164,7 +164,7 @@ const LetterPage = () => {
             informationOfBride={informationOfBride}
             informationOfGroom={informationOfGroom}
           />
-          <Message />
+          <Message id={userId} />
           <Response />
           <FooterLogo />
         </div>

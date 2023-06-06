@@ -251,7 +251,7 @@ const Mypage = () => {
     }
   }, [])
 
-  const onChangePayment = useCallback(() => {
+  const onChangePayment = useCallback((id, amount) => {
     refPayment?.current?.show()
   }, [])
 
@@ -379,6 +379,8 @@ const Mypage = () => {
                               />
                             )}
 
+                            <Payment ref={refPayment} id={item?._id} amount={item?.amount} />
+
                             {item?.isPaid === true && (
                               <Button
                                 label={Languages.buttonText.dowloadTc}
@@ -451,7 +453,6 @@ const Mypage = () => {
         )}
       </div>
       {renderModal}
-      <Payment ref={refPayment} />
       <Footer />
     </div>
   )

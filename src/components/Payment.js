@@ -11,7 +11,8 @@ import IcCheck from '@/assets/home-image/IcCheck.svg'
 export const Payment = forwardRef(
     (
         {
-            props
+            id,
+            amount
         },
         ref
     ) => {
@@ -27,6 +28,7 @@ export const Payment = forwardRef(
         const [checkParams, setCheckParams] = useState(CheckParams.PAYMENT)
 
         const show = () => {
+            console.log(id, amount)
             setCheckParams(CheckParams.PAYMENT)
             refModal?.current?.showModal();
         }

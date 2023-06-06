@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import TitleSection from './sub-comp/TitleSection'
 import WeddingCmt from './sub-comp/WeddingCmt'
 import { Carousel } from 'react-responsive-carousel'
@@ -11,22 +11,31 @@ import WriteMessage from './sub-comp/WriteMessage'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { Alias } from '@/commons/Constant.ts'
 import { getDataWithParams } from '@/utils/axios'
+import { customFetch } from '@/utils/axios'
 const Message = () => {
   const navigate = useNavigate()
+  const [isLoading, setIsLoading] = useState(true)
+  const [cmtList, setCmtList] = useState(null)
   const { id } = useParams()
+  console.log(id)
   const modalRef = useRef()
   const handleShowModal = () => {
     modalRef.current.showModal()
   }
   useEffect(() => {
     const getData = async () => {
-      const resp = await getDataWithParams('/get/list-wish', {
-        invitationsId: id,
-      })
-      console.log(resp)
+      try {
+        setIsLoading(true)
+        const resp = await customFetch.get(`/get/list-wish?_id=${id}`)
+        setCmtList(resp.data.data[0].data)
+        setIsLoading(false)
+      } catch (err) {
+        console.log(err)
+      }
     }
     getData()
   }, [])
+  if (isLoading) return
   return (
     <div className='layout-mw section-mb py-10'>
       <TitleSection title='LỜI CHÚC' />
@@ -37,8 +46,8 @@ const Message = () => {
         centerMode={true}
         showIndicators={false}
       >
-        {new Array(10).fill(0).map((_, index) => {
-          return <WeddingCmt index={index} />
+        {cmtList.map((cmt, index) => {
+          return <WeddingCmt cmt={cmt} index={index} key={index} />
         })}
       </Carousel>
       <div className='flex justify-center items-center gap-6'>

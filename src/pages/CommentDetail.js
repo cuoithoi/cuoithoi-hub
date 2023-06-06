@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import TitleSection from '@/components/letter-page/sub-comp/TitleSection'
 import WeddingCmt from '@/components/letter-page/sub-comp/WeddingCmt'
 import { customFetch } from '@/utils/axios'
@@ -8,28 +8,24 @@ import { useParams } from 'react-router-dom'
 import { getLocalAccessToken } from '@/utils/localStorage'
 const CommentDetail = () => {
   const { id } = useParams()
-  const { get, del } = useBaseService()
+  const [cmtList, setCmtList] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
+  // const { get, del } = useBaseService()
   useEffect(() => {
     const getData = async () => {
-      const token = getLocalAccessToken()
-      const response = await get(`/get/list-wish?invitationsId=${id}`, config, {
-        invitationsId: id,
-      })
-      // const resp = await customFetch.get(
-      //   `/get/list-wish?invitationsId=${id}`,
-      //   {
-      //     headers: {
-      //       Authorization: 'Bearer ' + token,
-      //     },
-      //   },
-      //   {
-      //     invitationsId: id,
-      //   }
-      // )
-      console.log(response)
+      try {
+        setIsLoading(true)
+        const resp = await customFetch.get(`/get/list-wish?_id=${id}`)
+        setCmtList(resp.data.data[0].data)
+        setIsLoading(false)
+      } catch (err) {
+        console.log(err)
+      }
     }
     getData()
   }, [])
+  if (isLoading) return
+  console.log(cmtList)
   return (
     <div className='letter-wrapper h-full'>
       <div className=' letter-layout h-full'>
@@ -37,12 +33,8 @@ const CommentDetail = () => {
           <div className='congrats-wrapper pt-16'>
             <TitleSection title='LỜI CHÚC' />
           </div>
-          {new Array(10).fill(0).map((_, i) => {
-            return (
-              <div key={i}>
-                <WeddingCmt viewDetail={true} />
-              </div>
-            )
+          {cmtList.map((cmt, index) => {
+            return <WeddingCmt cmt={cmt} viewDetail={true} key={index} />
           })}
         </div>
       </div>

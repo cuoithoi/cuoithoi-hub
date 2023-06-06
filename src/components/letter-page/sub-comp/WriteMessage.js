@@ -76,7 +76,6 @@ const WriteMessage = () => {
         <div className='flex w-full justify-center'>
           <Button
             label={'Gửi lời chúc'}
-            onPress={onSubmit}
             buttonStyle={BUTTON_STYLES.PINK}
             textStyle={BUTTON_STYLES.WHITE}
           />
