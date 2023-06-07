@@ -5,7 +5,7 @@ import { Button } from "@/components/button";
 import BlockUI from "@/components/blockUI";
 import { Alias, BUTTON_STYLES } from "@/commons/Constant.ts";
 import IcDoublePhone from "@/assets/home-image/IcDoublePhone.svg";
-import IcPhoneHeart from "@/assets/home-image/IcPhoneHeart.svg";
+import IcPhoneHeart from "@/assets/home-image/IcPhoneHeart.png";
 import { BACKGROUND_STYLES } from "@/commons/Constant.ts";
 import Footer from "../Footer/Footer";
 import Header from "@/components/header";
@@ -17,27 +17,31 @@ import IcTooltip from '@/assets/home-image/Icon-tooltip.svg'
 import IcTooltip1 from '@/assets/home-image/Icon-tooltip (1).svg'
 import IcTooltip2 from '@/assets/home-image/Icon-tooltip (2).svg'
 import IcTooltip3 from '@/assets/home-image/Icon-tooltip (3).svg'
-import ImgSection from '@/assets/home-image/imgSection.svg'
+import ImgSection from '@/assets/home-image/imgSection.png'
 import IcPlus from '@/assets/home-image/Icon_Plus.svg'
 import IcTooltipMap from '@/assets/home-image/Icon_TooltipMap.svg'
 import IcTooltipMedia from '@/assets/home-image/Icon_TooltipMedia.svg'
 import IcTooltipExcel from '@/assets/home-image/Icon_TooltipExcel.svg'
-import Img_3phone from '@/assets/home-image/Img_3phone.svg'
-import ImgFeedback from '@/assets/home-image/ImgFeedback.svg'
+import Img_3phone from '@/assets/home-image/Img_3phone.png'
+import ImgFeedback from '@/assets/home-image/ImgFeedback.png'
 import Ic_HomepageCreate from '@/assets/home-image/IcHomepageCreate.svg'
 import Ic_HomepageSeemore from '@/assets/home-image/IcHomepageSeemore.svg'
 import ChooseTypeBlock from "@/components/chooseTypeBlock";
 import { NavLink, useNavigate } from "react-router-dom";
+import Slider1 from '@/assets/home-image/m_img2-min.jpg';
+import Slider2 from '@/assets/home-image/m_img3-min.jpg';
+import Slider3 from '@/assets/home-image/m_img4-min.jpg';
+
 
 const fadeImages = [
   {
-    url: 'https://dalpeng.com/img/main/m_img4.jpg',
+    url: Slider1,
   },
   {
-    url: 'https://dalpeng.com/img/main/m_img3.jpg',
+    url: Slider2,
   },
   {
-    url: 'https://dalpeng.com/img/main/m_img2.jpg',
+    url: Slider3,
   },
 ];
 

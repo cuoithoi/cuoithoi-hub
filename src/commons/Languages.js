@@ -108,7 +108,7 @@ const Languages = {
     supportCustormer: 'Hỗ trợ khách hàng',
     bankInf: 'Thông tin ngân hàng',
     typeDs: 'Chọn mẫu thiệp của bạn',
-    createaWeddingYourOwn: 'Tạo mẫu cướicủa riêng bạn',
+    createaWeddingYourOwn: 'Tạo mẫu cưới của riêng bạn',
     managerTc: 'Quản lý thiệp cưới',
     seeTC: 'Xem thiệp ',
     status: 'Trạng thái',

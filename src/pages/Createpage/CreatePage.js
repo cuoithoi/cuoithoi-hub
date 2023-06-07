@@ -744,7 +744,7 @@ const CreatePage = () => {
 
   const renderBuyPackageProduct = useMemo(() => {
 
-    return !editor && <><TitleCreate title={Languages.text.packageProduct} divided={true} /><div className='sec_group_panel_collape' style={{ marginBottom: 20 }}>
+    return !editor && <><TitleCreate title={Languages.text.packageProduct} divided={true} /><div className='sec_group_panel_collape' style={{ marginBottom: 30, marginTop: 30 }}>
       <select
         className='form_sellect_control'
         name='form_sellect_stt'
@@ -1310,14 +1310,14 @@ const CreatePage = () => {
             onPress={onShowModalAgree}
           />
           <div className='btn_group_r'>
-            {
+            {/* {
               checkUrl ? <Button
                 label={Languages.common.saveDraf}
                 buttonStyle={BUTTON_STYLES.GRAY}
                 isLowerCase
                 onPress={onOpenSuccessConfirm}
               /> : ''
-            }
+            } */}
 
             <Button
               label={Languages.common.continue}

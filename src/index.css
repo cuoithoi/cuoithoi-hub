@@ -112,16 +112,8 @@ code {
 
 .bg-main {
   background: linear-gradient(to bottom,
-      rgb(173 77 95 / 22%),
-      rgb(185 130 130 / 15%)),
-    url('./assets/home-image/Bg_Banner.png');
-  background-size: cover;
-  background-position: center;
-}
-
-.section-mb {
-  /* max-width: 560px;
-  margin: auto; */
+      rgb(173 77 95 / 15%),
+      rgb(185 130 130 / 0%));
 }
 
 .lateef {
@@ -312,12 +304,8 @@ p {
 /* layout restructor */
 .letter-wrapper {
   background: linear-gradient(to bottom,
-      rgb(173 77 95 / 22%),
-      rgb(185 130 130 / 15%)),
-    url('./assets/home-image/Bg_Banner.png');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+      rgb(173 77 95 / 15%),
+      rgb(185 130 130 / 0%));
 }
 
 .letter-wrapper .animate__zoomInDown {
@@ -413,7 +401,7 @@ p {
 }
 
 .wrapbox_image_pc {
-  background: url('../src/assets/home-image/bgsection.svg') no-repeat;
+  background: url('../src/assets/home-image/bgsection.png') no-repeat;
   background-size: cover;
   background-position: bottom;
   padding: 40px;
@@ -492,7 +480,7 @@ p {
 .box_top_footer {
   position: relative;
   overflow: hidden;
-  background: url('../src/assets/home-image/IMG_BgTopFooter.svg') no-repeat;
+  background: url('../src/assets/home-image/IMG_BgTopFooter.png') no-repeat;
   background-size: cover;
   padding: 30px;
   display: flex;
@@ -3627,7 +3615,7 @@ img {
 
 @media (min-width: 1024px) and (max-width: 1099px) {
   .box_3phone_wrap_image {
-    margin: 0 auto 180px;
+    margin: 0 0 0 200px;
   }
 
   .image_show_demo_wish img {

@@ -125,7 +125,7 @@ const Mypage = () => {
     return (
       <tr className='bg-teal-400 wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0'>
         <th className='p-3 text-center'>{Languages.text.productNumber}</th>
-        <th className='p-3 text-center'>{Languages.text.status}</th>
+        <th className='p-3 text-center' width='200px'>{Languages.text.status}</th>
         <th className='p-3 text-center' width='200px'>
           {Languages.text.date}
         </th>
