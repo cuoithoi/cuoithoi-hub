@@ -11,6 +11,9 @@ const CommentDetail = () => {
   const [cmtList, setCmtList] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
   // const { get, del } = useBaseService()
+  const deleteCmt = (index) => {
+    setCmtList((prev) => prev.splice(index, 1))
+  }
   useEffect(() => {
     const getData = async () => {
       try {
@@ -27,14 +30,22 @@ const CommentDetail = () => {
   if (isLoading) return
   console.log(cmtList)
   return (
-    <div className='letter-wrapper h-full'>
+    <div className='letter-wrapper h-full pb-96'>
       <div className=' letter-layout h-full'>
         <div className='text-center  relative section-mb layout-mw h-full'>
           <div className='congrats-wrapper pt-16'>
             <TitleSection title='LỜI CHÚC' />
           </div>
           {cmtList.map((cmt, index) => {
-            return <WeddingCmt cmt={cmt} viewDetail={true} key={index} />
+            return (
+              <WeddingCmt
+                cmt={cmt}
+                viewDetail={true}
+                key={index}
+                index={index}
+                deleteCmt={deleteCmt}
+              />
+            )
           })}
         </div>
       </div>

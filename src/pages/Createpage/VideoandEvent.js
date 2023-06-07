@@ -267,7 +267,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
                 <div className='video_event_wedding'>
                     <div className='fullwidth_input_colum'>
                         <div className='single_hor_input'>
-                            {renderInput(refVideoLink, Languages.text.linkVideo, 'Nhập ' + Languages.text.linkVideo, INPUT_FIELDS.videoLink, 'text', 200, true, <FaLink />, '', value.videoLink)}
+                            {renderInput(refVideoLink,'', 'Nhập ' + Languages.text.linkVideo, INPUT_FIELDS.videoLink, 'text', 200, true, <FaLink />, '', value.videoLink)}
                         </div>
                     </div>
                 </div>
@@ -321,7 +321,6 @@ const VideoandEvent = forwardRef(({ }, ref) => {
                         <MyTextArea
                             ref={refWarn}
                             value={warnTemp}
-                            label={Languages.text.contentWarnning}
                             placeHolder={'Nhập ' +Languages.text.contentWarnning}
                             maxLength={500}
                             onChangeText={onChangeWarnTemp}

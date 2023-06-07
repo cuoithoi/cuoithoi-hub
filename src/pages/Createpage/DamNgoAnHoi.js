@@ -208,7 +208,7 @@ const DamNgoAnHoi = forwardRef(({ }, ref) => {
 
             <div className='fullwidth_input_colum'>
                 <div className='single_hor_input'>
-                    {renderInput(refLocationOfEgagement, Languages.text.placeEagement, 'Nhập ' + Languages.text.placeEagement, Egagement.locationOfEgagement, value.timeAndLocationOfEgagement.locationOfEgagement, 'text', 200, true, <FaMap />, '', value.timeAndLocationOfEgagement.locationOfEgagement)}
+                    {renderInput(refLocationOfEgagement, '', 'Nhập ' + Languages.text.placeEagement, Egagement.locationOfEgagement, value.timeAndLocationOfEgagement.locationOfEgagement, 'text', 200, true, <FaMap />, '', value.timeAndLocationOfEgagement.locationOfEgagement)}
                 </div>
             </div>
 
@@ -223,7 +223,7 @@ const DamNgoAnHoi = forwardRef(({ }, ref) => {
 
             <div className='fullwidth_input_colum'>
                 <div className='single_hor_input'>
-                    {renderInput(refLocationOfEventInterrogation, Languages.text.placeInterrogation,'Nhập ' + Languages.text.placeInterrogation, Interrogation.locationOfInterrogation, value.timeAndLocationOfInterrogation.locationOfInterrogation, 'text', 200, true, <FaMap />)}
+                    {renderInput(refLocationOfEventInterrogation, '','Nhập ' + Languages.text.placeInterrogation, Interrogation.locationOfInterrogation, value.timeAndLocationOfInterrogation.locationOfInterrogation, 'text', 200, true, <FaMap />)}
                 </div>
             </div>
 

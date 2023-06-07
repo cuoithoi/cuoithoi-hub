@@ -15,12 +15,15 @@ import { customFetch } from '@/utils/axios'
 const Message = () => {
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(true)
-  const [cmtList, setCmtList] = useState(null)
+  const [cmtList, setCmtList] = useState([])
   const { id } = useParams()
   console.log(id)
   const modalRef = useRef()
   const handleShowModal = () => {
     modalRef.current.showModal()
+  }
+  const deleteCmt = (index) => {
+    setCmtList((prev) => prev.splice(index, 1))
   }
   useEffect(() => {
     const getData = async () => {
@@ -35,6 +38,7 @@ const Message = () => {
     }
     getData()
   }, [])
+  console.log(deleteCmt)
   if (isLoading) return
   return (
     <div className='layout-mw section-mb py-10'>
@@ -46,8 +50,15 @@ const Message = () => {
         centerMode={true}
         showIndicators={false}
       >
-        {cmtList.map((cmt, index) => {
-          return <WeddingCmt cmt={cmt} index={index} key={index} />
+        {cmtList?.map((cmt, index) => {
+          return (
+            <WeddingCmt
+              cmt={cmt}
+              index={index}
+              key={index}
+              deleteCmt={deleteCmt}
+            />
+          )
         })}
       </Carousel>
       <div className='flex justify-center items-center gap-6'>
@@ -68,7 +79,10 @@ const Message = () => {
           }}
         />
       </div>
-      <Popup ref={modalRef} content={<WriteMessage />} />
+      <Popup
+        ref={modalRef}
+        content={<WriteMessage setCmtList={setCmtList} />}
+      />
     </div>
   )
 }

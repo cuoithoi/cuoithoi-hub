@@ -5,8 +5,9 @@ import Hero from './Hero'
 import classes from './LetterEnvelop.module.css'
 import EnvelopContent from './sub-comp/EnvelopContent'
 import Loading from '../Loading'
-import envelopImg from '@/assets/envelopImg/Envelope_.png'
-import envelopBodyImg from '@/assets/envelopImg/Envelope_body.png'
+import envelopImg from '@/assets/envelopImg/Envelope_ 1.png'
+import envelopBodyImg from '@/assets/envelopImg/Envelope_body1.png'
+import heartIcon from '@/assets/envelopImg/heartOpen.png'
 
 const LetterEnvelop = ({
   isLetterOpen,
@@ -23,11 +24,11 @@ const LetterEnvelop = ({
     setOpen(true)
     setTimeout(() => {
       setIsLetterOpen((prev) => !prev)
-    }, 8000)
+    }, 4500)
 
     setTimeout(() => {
       window.scrollTo(0, 1)
-    }, 8050)
+    }, 4550)
   }
 
   useEffect(() => {
@@ -47,11 +48,16 @@ const LetterEnvelop = ({
           onClick={openLetter}
         >
           <div className={classes.envelope}>
-            <div className={classes.envelopImg}>
+            <div
+              className={`${classes.envelopImg} ${open && classes.envelopOpen}`}
+            >
               <img src={envelopImg} alt='' />
             </div>
 
-            <div className={` overflow-hidden ${classes.letter}`}>
+            <div
+              className={`  overflow-hidden ${classes.letter}`}
+              style={{ zIndex: '1' }}
+            >
               <div className={classes.text}>
                 <EnvelopContent
                   manfirstName={manfirstName}
@@ -73,11 +79,13 @@ const LetterEnvelop = ({
               <div className={`${classes.heart} ${classes.a7}`}></div>
               <div className={`${classes.heart} ${classes.a8}`}></div>
             </div>
-            <div className={classes.envelopBodyImg}>
+            <div className={classes.envelopBodyImg} style={{ zIndex: '2' }}>
               <img src={envelopBodyImg} alt='' />
             </div>
           </div>
-          <div className={classes.heartIcon}></div>
+          <div className={classes.signIcon}>
+            <img src={heartIcon} alt='' />
+          </div>
           {/* <img src={envelopSignImg} alt='' className={classes.signIcon} /> */}
         </div>
       </div>

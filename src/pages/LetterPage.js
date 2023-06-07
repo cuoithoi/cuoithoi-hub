@@ -22,7 +22,7 @@ import Message from '@/components/letter-page/Message'
 import Response from '@/components/letter-page/Response'
 import Gallery1 from '@/components/letter-page/Gallery-1'
 import LetterEnvelop from '@/components/letter-page/LetterEnvelop1'
-
+import LetterEnvelopTrial from '@/components/letter-page/LetterEnvelop'
 import { getDataApi } from '@/utils/axios'
 import styles from './LetterPage.module.css'
 import { useParams } from 'react-router-dom'
@@ -106,7 +106,7 @@ const LetterPage = () => {
     console.log(timeAndLocationOfWedding)
     return (
       <div className='w-screen h-screen m-0 p-0 flex items-center justify-center bg-main'>
-        <LetterEnvelop
+        <LetterEnvelopTrial
           isLetterOpen={isLetterOpen}
           setIsLetterOpen={setIsLetterOpen}
           manfirstName={informationOfGroom.firstName}

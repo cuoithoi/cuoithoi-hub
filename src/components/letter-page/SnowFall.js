@@ -18,7 +18,8 @@ const SnowFall = ({ type }) => {
     return (
       <Snowfall
         color='#E29C67'
-        snowflakeCount={70}
+        snowflakeCount={60}
+        speed={[1, 3]}
         style={{
           position: 'fixed',
           width: '100vw',
@@ -32,7 +33,8 @@ const SnowFall = ({ type }) => {
   return (
     <Snowfall
       // color='#E29C67'
-      snowflakeCount={70}
+      snowflakeCount={45}
+      speed={[1, 3]}
       style={{
         position: 'fixed',
         width: '100vw',

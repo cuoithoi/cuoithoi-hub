@@ -701,7 +701,6 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                     <MyTextArea
                         ref={refinvite}
                         value={inviteTemp}
-                        label={Languages.inputText.contentInvite}
                         placeHolder={Languages.inputText.contentInvite}
                         maxLength={500}
                         onChangeText={onChangeInviteTemp}

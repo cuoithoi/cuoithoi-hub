@@ -4,12 +4,27 @@ import closeIcon from '@/assets/svg/icon-close-outline.svg'
 import { Button } from '@/components/button'
 import { BUTTON_STYLES } from '@/commons/Constant.ts'
 import { convertTimeFormat } from '@/utils/helpers'
-const WeddingCmt = ({ viewDetail, cmt }) => {
+const WeddingCmt = ({ viewDetail, cmt, deleteCmt, index }) => {
+  console.log(deleteCmt, index)
   return (
     <div
       className={`${!viewDetail && 'max-w-md'} p-4 relative`}
       style={{ width: '100%' }}
     >
+      <img
+        onClick={() => deleteCmt(index)}
+        src={closeIcon}
+        alt=''
+        // className=' w-6 '
+        style={{
+          width: '28px',
+          position: 'absolute',
+          right: '24px',
+          top: '24px',
+          cursor: 'pointer',
+          zIndex: '10 !important',
+        }}
+      />
       <div
         className='p-4 rounded-lg'
         style={{ background: 'rgba(238, 241, 239, 0.5)', width: '100%' }}
@@ -22,17 +37,7 @@ const WeddingCmt = ({ viewDetail, cmt }) => {
             </p>
           </div>
         )}
-        <img
-          src={closeIcon}
-          alt=''
-          // className=' w-6 '
-          style={{
-            width: '28px',
-            position: 'absolute',
-            right: '24px',
-            top: '24px',
-          }}
-        />
+
         {!viewDetail && (
           <img
             src={msgCmtTitle}

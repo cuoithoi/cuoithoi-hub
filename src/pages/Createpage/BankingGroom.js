@@ -238,7 +238,7 @@ const BankingGroom = forwardRef(({ }, ref) => {
                 <div className='item_field_single'>
                     <MyTextInput
                         ref={ref === '' ? refUnderfine : ref}
-                        label={label}
+                        label={''}
                         value={values}
                         name={name}
                         placeHolder={placehodel}

@@ -497,7 +497,6 @@ const CreatePage = () => {
         <div className='item_field_single'>
           <MyTextInput
             ref={ref === '' ? refUnderfine : ref}
-            label={label}
             name={name}
             placeHolder={placehodel}
             type={type}
@@ -654,7 +653,6 @@ const CreatePage = () => {
           <MyTextArea
             ref={refContentGuestBook}
             value={guestbookTemp}
-            label={Languages.inputText.contentInvite}
             placeHolder={Languages.inputText.contentInvite}
             maxLength={500}
             onChangeText={onChangeGuestbookTemp}

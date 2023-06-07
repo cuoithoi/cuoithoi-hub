@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef, useImperativeHandle, useState } from 'react'
 import { Input } from '../../input/Input'
 import yup from '@/utils/yupGlobal'
 import { useForm } from 'react-hook-form'
@@ -17,7 +17,7 @@ const schema = yup.object().shape({
   passWish: yup.string().required('Yêu cầu nhập mật khẩu'),
 })
 
-const WriteMessage = () => {
+const WriteMessage = ({ setCmtList }) => {
   const { id } = useParams()
   const {
     register,
@@ -36,7 +36,7 @@ const WriteMessage = () => {
           ...data,
           invitationsId: id,
         })
-        console.log(res)
+        setCmtList((prev) => [...prev, data])
         toast.success(res.data[0].messaging)
       } catch {
         toast.error('Gửi lời chúc không thành công')
