@@ -33,6 +33,9 @@ import { useBaseService } from '@/utils/BaseServices'
 import Validate from '@/utils/Validate'
 import { getItemFromLocalStorage, getStorage, removeStorage, setStorage } from '@/utils/localStorage'
 import ProvinceDistrictList from './ProvinceDistrictList'
+import Song_1 from '@/assets/audio/bai1.mp3'
+import Song_2 from '@/assets/audio/bai2.mp3'
+import Song_3 from '@/assets/audio/bai3.mp3'
 
 const CreatePage = () => {
 
@@ -578,9 +581,9 @@ const CreatePage = () => {
           {renderMapRadio('', SelectMusic, radioChangeHandlerMusic, radioMusic)}
           <MultiPlayer
             urls={[
-              'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
-              'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
-              'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
+              Song_1,
+              Song_2,
+              Song_3,
             ]}
           />
         </div>
@@ -741,60 +744,45 @@ const CreatePage = () => {
 
   const renderBuyPackageProduct = useMemo(() => {
 
-    return !editor && <div className='sec_group_panel_collape'>
-      <Panel title={Languages.text.packageProduct}>
-        <div className='wrap_package_product'>
-          <div className='item_field_single'>
-            <div className='sellect_option'>
-              <label className='Input_label__90o4b'>
-                {Languages.text.packagePro}
-              </label>
-              <select
-                className='form_sellect_control'
-                name='form_sellect_stt'
-                onChange={onChangePackage}
-              >
-                <option value='-1'>{Languages.text.packagePro}</option>
-                {
-                  dataPackage.map(function (item, index) {
+    return !editor && <><TitleCreate title={Languages.text.packageProduct} divided={true} /><div className='sec_group_panel_collape' style={{ marginBottom: 20 }}>
+      <select
+        className='form_sellect_control'
+        name='form_sellect_stt'
+        onChange={onChangePackage}
+        style={{ maxWidth: 'unset' }}
+      >
+        <option value='-1'>{Languages.text.packagePro}</option>
+        {
+          dataPackage.map(function (item, index) {
 
-                    return <option data--id={item._id} key={index} value={item.amount}>{item.name} </option>
+            return <option data--id={item._id} key={index} value={item.amount}>{item.name} </option>
 
-                  })
-                }
+          })
+        }
 
-              </select>
-            </div>
-          </div>
-        </div>
-      </Panel>
+      </select>
     </div>
-
+    </>
   }, [dataPackage, editor, onChangePackage])
 
   const renderProductAnother = useMemo(() => {
 
-    return !editor && <div className='sec_group_panel_collape'>
-      <Panel title={Languages.text.anotherPro}>
-        <div className='wrap_package_product_another'>
-          {
-            dataAnother.map(function (item, index) {
-              return <div key={index} className='single_hor_input checkbox_inline_colum'>
-                <div className="item_field_single">
-                  <div className="Input_boxGroupInput__8ghvv man_inputStyle">
-                    <label className="Input_label__XHiJ4">{item.name} - {Validate.formatMoney(item.amount)}</label>
-                    <div className="Input_formGroup__Ln91z ">
-                      <input name={item.name} defaultChecked={false} type="checkbox" data--amount={item.amount} value={[item.amount, item.name]} onChange={(e) => onCheckedDataAnother(e)} className="Input_form_control__zkQn6 checkbox_input_style " />
-                    </div>
-                  </div>
+    return !editor && <><TitleCreate title={Languages.text.anotherPro} divided={true} /><div className='sec_group_panel_collape'>
+      {
+        dataAnother.map(function (item, index) {
+          return <div key={index} className='single_hor_input checkbox_inline_colum'>
+            <div className="item_field_single">
+              <div className="Input_boxGroupInput__8ghvv man_inputStyle">
+                <label className="Input_label__XHiJ4">{item.name} - {Validate.formatMoney(item.amount)}</label>
+                <div className="Input_formGroup__Ln91z ">
+                  <input name={item.name} defaultChecked={false} type="checkbox" data--amount={item.amount} value={[item.amount, item.name]} onChange={(e) => onCheckedDataAnother(e)} className="Input_form_control__zkQn6 checkbox_input_style " />
                 </div>
               </div>
-            })
-          }
-        </div>
-      </Panel>
-    </div>
-
+            </div>
+          </div>
+        })
+      }</div>
+    </>
   }, [dataAnother, valuedataAnother, editor, onCheckedDataAnother])
 
   const onChangeCodePress = useCallback(async (e) => {
@@ -1398,9 +1386,9 @@ const CreatePage = () => {
               {renderOpenStartEffect}
               {renderTextStyle}
               {renderEffectBgStyle}
+              {renderReferralCode}
               {renderBuyPackageProduct}
               {renderProductAnother}
-              {renderReferralCode}
 
               <div className='savesetting_btn'>
                 <Button

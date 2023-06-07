@@ -205,7 +205,7 @@ const Languages = {
     typeBg: 'Chọn kiểu nền:',
     colorBg: 'Chọn màu nền:',
     effectBg: 'Chọn hiệu ứng',
-    packageProduct: 'BẠN MUỐN MUA GÓI SẢN PHẨM NÀO?',
+    packageProduct: 'Chọn Gói Sản Phẩm Bạn Muốn Mua',
     packagePro: 'Chọn gói sản phẩm muốn mua',
     anotherPro: 'Sản phẩm khác',
     referralCode: 'Mã giới thiệu',
