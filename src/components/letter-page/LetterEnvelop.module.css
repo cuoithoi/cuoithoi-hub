@@ -65,7 +65,7 @@
 .envelope > .letter {
   position: absolute;
   right: 8%;
-  bottom: 0;
+  bottom: 5px;
   width: 84%;
   height: 80%;
   background: #fff;
