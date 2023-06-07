@@ -4,7 +4,7 @@ import Languages from "@/commons/Languages";
 import { Button } from "@/components/button";
 import BlockUI from "@/components/blockUI";
 import { Alias, BUTTON_STYLES } from "@/commons/Constant.ts";
-import IcDoublePhone from "@/assets/home-image/IcDoublePhone.svg";
+import IcDoublePhone from "@/assets/home-image/IcDoublePhone.png";
 import IcPhoneHeart from "@/assets/home-image/IcPhoneHeart.png";
 import { BACKGROUND_STYLES } from "@/commons/Constant.ts";
 import Footer from "../Footer/Footer";

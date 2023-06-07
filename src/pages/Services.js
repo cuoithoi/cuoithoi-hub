@@ -20,6 +20,8 @@ import itemImageServices1 from "@/assets/home-image/IMG_Sv1.png";
 import itemImageServices2 from "@/assets/home-image/IMG_Sv2.png";
 import itemImageServices3 from "@/assets/home-image/IMG_Sv3.png";
 import itemImageShowServices1 from "@/assets/home-image/Img_Show.jpg";
+import itemImageShowServices2 from "@/assets/home-image/Img_Show2.png";
+import itemImageShowServices3 from "@/assets/home-image/Img_Show3.png";
 import { FaCheck } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
@@ -423,7 +425,7 @@ const Services = () => {
               checkTypeIdProduct === 'tab_two' && <div className="box_details_services">
                 <div className="md:grid md:grid-cols-3 md:gap-12">
                   <div className="image_box_left">
-                    <img src={itemImageServices2} alt='itemimageservices1' />
+                    <img src={itemImageShowServices2} alt='itemimageservices1' />
                   </div>
                   <div className="content_box_right col-span-2">
                     <div className="content">
@@ -486,7 +488,7 @@ const Services = () => {
               checkTypeIdProduct === 'tab_three' && <div className="box_details_services">
                 <div className="md:grid md:grid-cols-3 md:gap-12">
                   <div className="image_box_left">
-                    <img src={itemImageServices3} alt='itemimageservices1' />
+                    <img src={itemImageShowServices3} alt='itemimageservices1' />
                   </div>
                   <div className="content_box_right col-span-2">
                     <div className="content">
