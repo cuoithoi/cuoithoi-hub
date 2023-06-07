@@ -30,7 +30,7 @@ const CommentDetail = () => {
   if (isLoading) return
   console.log(cmtList)
   return (
-    <div className='letter-wrapper h-full pb-96'>
+    <div className='letter-wrapper h-full '>
       <div className=' letter-layout h-full'>
         <div className='text-center  relative section-mb layout-mw h-full'>
           <div className='congrats-wrapper pt-16'>

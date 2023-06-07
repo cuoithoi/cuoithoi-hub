@@ -316,6 +316,7 @@ p {
   max-width: 560px;
   margin: auto;
   /* position: relative; */
+  height: 100vh;
 }
 
 .letter-input {

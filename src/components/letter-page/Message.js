@@ -49,6 +49,8 @@ const Message = () => {
         showArrows={true}
         centerMode={true}
         showIndicators={false}
+        swipeable 
+        emulateTouch 
       >
         {cmtList?.map((cmt, index) => {
           return (

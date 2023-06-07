@@ -91,9 +91,8 @@ const Response = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className='flex justify-between gap-10 pb-10 max-w-sm margin-auto'>
           <div
-            className={`text-center bg-letter-main-color rounded-lg border-gray-item-color side-choose ${
-              guestSide === 1 ? classes.activeSide : ''
-            }`}
+            className={`text-center  rounded-lg border-gray-item-color side-choose ${guestSide === 1 ? 'bg-letter-main-color' : ''
+              }`}
             onClick={() => setGuestSide(1)}
           >
             <div className='py-4 px-6'>
@@ -102,15 +101,14 @@ const Response = () => {
                 alt='man response'
                 className='margin-auto pb-2'
               />
-              <p className='text-white m-0' style={{ color: 'white' }}>
+              <p className='text-white m-0' style={guestSide === 1 ? { color: 'white' } : { color: 'black' }}>
                 Khách nhà trai
               </p>
             </div>
           </div>
           <div
-            className={`text-center bg-white rounded-lg border-gray-item-color side-choose ${
-              guestSide === 2 ? classes.activeSide : ''
-            }`}
+            className={`text-center rounded-lg border-gray-item-color side-choose ${guestSide === 2 ? 'bg-letter-main-color' : ''
+              }`}
             onClick={() => setGuestSide(2)}
           >
             <div className='py-4 px-6 '>
@@ -119,7 +117,7 @@ const Response = () => {
                 alt='man response'
                 className='margin-auto pb-2 '
               />
-              <p className='text-white m-0'>Khách nhà gái</p>
+              <p className='text-white m-0' style={guestSide === 2 ? { color: 'white' } : { color: 'black' }}>Khách nhà gái</p>
             </div>
           </div>
         </div>
