@@ -77,22 +77,19 @@ export const SelectMusic = [
     id: 'music_one',
     name: 'music_one',
     value: 1,
-    url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
-    text: 'Bài 1'
+    text: 'Vũ điệu tình yêu'
   },
   {
     id: 'music_two',
     name: 'music_two',
     value: 2,
-    url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
-    text: 'Bài 2',
+    text: 'Hương nắng hạ',
   },
   {
     id: 'music_three',
     name: 'music_three',
     value: 3,
-    url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
-    text: 'Bài 3'
+    text: 'Bước chân hoàng gia'
   }
 ];
 

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useRef } from 'react'
-import beautifulInWhite from '../../../assets/audio/bai1.mp3'
-import perfect from '@/assets/audio/bai2.mp3'
-import allOfMe from '@/assets/audio/bai3.mp3'
+import beautifulInWhite from '../../../assets/audio/vudieutinhyeu.mp3'
+import perfect from '@/assets/audio/huongnangha.mp3'
+import allOfMe from '@/assets/audio/buochanhoanggia.mp3'
 import { AiFillPlayCircle, AiFillPauseCircle } from 'react-icons/ai'
 import VolumnOpen from '../../icons/VolumnOpen'
 import VolumnMute from '../../icons/VolumeMute'
@@ -26,8 +26,8 @@ const AudioPlay = ({ song }) => {
     if (song === 2) {
       songSrc = perfect
     }
-    if (song === allOfMe) {
-      songSrc = perfect
+    if (song === 3) {
+      songSrc = allOfMe
     }
     return songSrc
   }

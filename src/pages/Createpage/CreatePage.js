@@ -33,9 +33,9 @@ import { useBaseService } from '@/utils/BaseServices'
 import Validate from '@/utils/Validate'
 import { getItemFromLocalStorage, getStorage, removeStorage, setStorage } from '@/utils/localStorage'
 import ProvinceDistrictList from './ProvinceDistrictList'
-import Song_1 from '@/assets/audio/bai1.mp3'
-import Song_2 from '@/assets/audio/bai2.mp3'
-import Song_3 from '@/assets/audio/bai3.mp3'
+import Song_1 from '@/assets/audio/vudieutinhyeu.mp3'
+import Song_2 from '@/assets/audio/huongnangha.mp3'
+import Song_3 from '@/assets/audio/buochanhoanggia.mp3'
 
 const CreatePage = () => {
 
