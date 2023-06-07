@@ -3,7 +3,7 @@ import Languages from '@/commons/Languages'
 import { Button } from '@/components/button'
 import IcFacebook from '@/assets/home-image/IcFacebook.svg'
 import IcGoogle from '@/assets/home-image/IcGoogle.svg'
-// import FacebookLogin from '@greatsumini/react-facebook-login'
+import FacebookLogin from '@greatsumini/react-facebook-login'
 const LoginSocial = () => {
   return (
     <div className='otherLoginSocial'>
@@ -24,8 +24,8 @@ const LoginSocial = () => {
         }
       /> */}
 
-      {/* <FacebookLogin
-        appId="483402090594315"
+      <FacebookLogin
+        appId="6234250993358177"
         onSuccess={(response) => {
           console.log('Login Success!', response);
         }}
@@ -35,7 +35,7 @@ const LoginSocial = () => {
         onProfileSuccess={(response) => {
           console.log('Get Profile Success!', response);
         }}
-      > */}
+      >
         <Button
           label={Languages.inputText.continueWithFB}
           width={100}
@@ -48,7 +48,7 @@ const LoginSocial = () => {
             />
           }
         />
-      {/* </FacebookLogin> */}
+      </FacebookLogin>
       
       <Button
         label={Languages.inputText.continueWithGG}

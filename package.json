@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@greatsumini/react-facebook-login": "^3.3.3",
     "@hookform/resolvers": "^3.0.1",
     "@react-google-maps/api": "^2.18.1",
     "@reduxjs/toolkit": "^1.9.3",
