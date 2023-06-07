@@ -3614,6 +3614,10 @@ img {
 }
 
 @media (min-width: 1024px) and (max-width: 1099px) {
+  .main_tit .tit_type2 {
+    font-size: 30px;
+  }
+
   .box_3phone_wrap_image {
     margin: 0 0 0 200px;
   }

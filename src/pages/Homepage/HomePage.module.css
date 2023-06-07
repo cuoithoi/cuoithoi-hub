@@ -3,6 +3,11 @@
     padding: 10px 0;
     box-shadow: 0px 0px 2px 0px var(--bg-pink-color);
     margin-bottom: 0;
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    width: 100%;
+    background: #fff;
 }
 
 .header_top_bar {
