@@ -3843,7 +3843,7 @@ img {
   }
 }
 
-@media (min-width: 1024px) and (max-width: 1099px) {
+@media (min-width: 1000px) and (max-width: 1099px) {
   html {
     overflow: unset;
     scroll-snap-type: unset;
@@ -3856,6 +3856,10 @@ img {
     scroll-snap-type: y mandatory;
     overflow-y: scroll;
     height: 100vh;
+  }
+  
+  .wrap_ds_review{
+    padding: 40px 0;
   }
 
   .box_abs_image_video {
