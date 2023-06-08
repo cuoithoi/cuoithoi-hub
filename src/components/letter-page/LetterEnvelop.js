@@ -39,12 +39,10 @@ const LetterEnvelop = ({
 
   return (
     <>
-      <Loading />
+      {/* <Loading /> */}
       <div className={`${classes.container} ${classes.animate__backInDown}`}>
         <div
-          className={`${classes.envelopeWrapper} ${open && classes.flap} ${
-            open && classes.animate__zoomOutUp
-          }`}
+          className={`${classes.envelopeWrapper} ${open && classes.flap}`}
           onClick={openLetter}
         >
           <div className={classes.envelope}>
@@ -55,7 +53,7 @@ const LetterEnvelop = ({
             </div>
 
             <div
-              className={`  overflow-hidden ${classes.letter}`}
+              className={`overflow-hidden ${classes.letter}`}
               style={{ zIndex: '1' }}
             >
               <div className={classes.text}>

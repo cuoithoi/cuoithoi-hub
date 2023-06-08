@@ -102,7 +102,7 @@ const LetterPage = () => {
     userId,
     videoLink,
   } = letter
-  if (!isLetterOpen && !isLoading) {
+  if (isLetterOpen && isLoading) {
     console.log(timeAndLocationOfWedding)
     return (
       <div className='w-screen h-screen m-0 p-0 flex items-center justify-center bg-main'>
