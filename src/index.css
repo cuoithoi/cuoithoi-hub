@@ -111,11 +111,9 @@ code {
 }
 
 .bg-main {
-  background: linear-gradient(
-    to bottom,
-    rgb(173 77 95 / 15%),
-    rgb(185 130 130 / 0%)
-  );
+  background: linear-gradient(to bottom,
+      rgb(173 77 95 / 50%),
+      rgb(185 130 130 / 15%));
 }
 
 .lateef {
@@ -305,11 +303,7 @@ p {
 
 /* layout restructor */
 .letter-wrapper {
-  background: linear-gradient(
-    to bottom,
-    rgb(173 77 95 / 15%),
-    rgb(185 130 130 / 0%)
-  );
+  background: linear-gradient(to bottom, rgb(173 77 95 / 40%), rgb(185 130 130 / 15%));
 }
 
 .letter-wrapper .animate__zoomInDown {
@@ -319,8 +313,47 @@ p {
 .letter-layout {
   max-width: 560px;
   margin: auto;
-  /* position: relative; */
-  height: 100vh;
+  position: relative;
+}
+
+.letter-layout {
+  -webkit-animation-name: gototiop;
+  animation-name: gototiop;
+  animation-duration: 1.5s;
+}
+
+.nav-btn-container {
+  -webkit-animation-name: gototiopnav-btn-container;
+  animation-name: gototiopnav-btn-container;
+  animation-duration: 1.5s;
+}
+
+@keyframes gototiopnav-btn-container {
+  0% {
+    top: -700%;
+  }
+
+  60% {
+    top: -200%;
+  }
+
+  to {
+    top: 0;
+  }
+}
+
+@keyframes gototiop {
+  0% {
+    transform: translate(0, 100%);
+  }
+
+  60% {
+    transform: translate(0, 50%);
+  }
+
+  to {
+    transform: translate(0, 0);
+  }
 }
 
 .letter-input {
@@ -1278,11 +1311,9 @@ p {
 }
 
 .bg_form {
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       rgb(173 77 95 / 22%),
-      rgb(185 130 130 / 15%)
-    ),
+      rgb(185 130 130 / 15%)),
     url('/src/assets/home-image/Bg_Banner.png');
   background-size: cover;
   background-position: center;
@@ -1516,11 +1547,9 @@ table .date {
 
 .Notfound .number::before {
   background-color: #673ab7;
-  background-image: radial-gradient(
-      closest-side at 50% 50%,
+  background-image: radial-gradient(closest-side at 50% 50%,
       #ffc107 100%,
-      rgba(0, 0, 0, 0)
-    ),
+      rgba(0, 0, 0, 0)),
     radial-gradient(closest-side at 50% 50%, #e91e63 100%, rgba(0, 0, 0, 0));
   background-repeat: repeat-x;
   background-size: 40vmin 40vmin;
@@ -1920,6 +1949,7 @@ table .date {
 }
 
 @keyframes bblFadInOut {
+
   0%,
   80%,
   100% {
@@ -2620,10 +2650,7 @@ img {
   padding-top: 15px;
 }
 
-.custom_display_sec_radio_music
-  .group_radio_choose_template
-  .SelectInvitationTemplate_map:first-child
-  .customize_radio {
+.custom_display_sec_radio_music .group_radio_choose_template .SelectInvitationTemplate_map:first-child .customize_radio {
   padding-top: 0;
 }
 
@@ -2662,17 +2689,11 @@ img {
   justify-content: space-between;
 }
 
-.custom_style_radio
-  .group_radio_choose_template
-  .SelectInvitationTemplate_map
-  label {
+.custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map label {
   display: none;
 }
 
-.custom_style_radio
-  .group_radio_choose_template
-  .SelectInvitationTemplate_map
-  input:is([type='checkbox'], [type='radio']) {
+.custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map input:is([type='checkbox'], [type='radio']) {
   -webkit-appearance: none;
   width: 133px;
   height: 105px;
@@ -2682,225 +2703,116 @@ img {
   background-repeat: no-repeat;
 }
 
-.option_title
-  .custom_style_radio
-  .group_radio_choose_template
-  .SelectInvitationTemplate_map:first-child
-  input:is([type='checkbox'], [type='radio']) {
+.option_title .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map:first-child input:is([type='checkbox'], [type='radio']) {
   background: url('../src/assets/home-image/IcPacifico.png');
 }
 
-.option_title
-  .custom_style_radio
-  .group_radio_choose_template
-  .SelectInvitationTemplate_map:nth-child(2)
-  input:is([type='checkbox'], [type='radio']) {
+.option_title .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map:nth-child(2) input:is([type='checkbox'], [type='radio']) {
   background: url('../src/assets/home-image/IcViber.png');
 }
 
-.option_title
-  .custom_style_radio
-  .group_radio_choose_template
-  .SelectInvitationTemplate_map:nth-child(3)
-  input:is([type='checkbox'], [type='radio']) {
+.option_title .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map:nth-child(3) input:is([type='checkbox'], [type='radio']) {
   background: url('../src/assets/home-image/IcYeseva.png');
 }
 
-.option_title
-  .custom_style_radio
-  .group_radio_choose_template
-  .SelectInvitationTemplate_map:nth-child(4)
-  input:is([type='checkbox'], [type='radio']) {
+.option_title .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map:nth-child(4) input:is([type='checkbox'], [type='radio']) {
   background: url('../src/assets/home-image/IcLoster.png');
 }
 
-.option_title
-  .custom_style_radio
-  .group_radio_choose_template
-  .SelectInvitationTemplate_map:last-child
-  input:is([type='checkbox'], [type='radio']) {
+.option_title .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map:last-child input:is([type='checkbox'], [type='radio']) {
   background: url('../src/assets/home-image/IcPlayfair.png');
 }
 
-.option_content
-  .custom_style_radio
-  .group_radio_choose_template
-  .SelectInvitationTemplate_map:first-child
-  input:is([type='checkbox'], [type='radio']) {
+.option_content .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map:first-child input:is([type='checkbox'], [type='radio']) {
   background: url('../src/assets/home-image/IcInter.png');
 }
 
-.option_content
-  .custom_style_radio
-  .group_radio_choose_template
-  .SelectInvitationTemplate_map:nth-child(2)
-  input:is([type='checkbox'], [type='radio']) {
+.option_content .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map:nth-child(2) input:is([type='checkbox'], [type='radio']) {
   background: url('../src/assets/home-image/IcRoboto.png');
 }
 
-.option_content
-  .custom_style_radio
-  .group_radio_choose_template
-  .SelectInvitationTemplate_map:nth-child(3)
-  input:is([type='checkbox'], [type='radio']) {
+.option_content .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map:nth-child(3) input:is([type='checkbox'], [type='radio']) {
   background: url('../src/assets/home-image/IcOpensans.png');
 }
 
-.option_content
-  .custom_style_radio
-  .group_radio_choose_template
-  .SelectInvitationTemplate_map:nth-child(4)
-  input:is([type='checkbox'], [type='radio']) {
+.option_content .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map:nth-child(4) input:is([type='checkbox'], [type='radio']) {
   background: url('../src/assets/home-image/IcMonterrat.png');
 }
 
-.option_content
-  .custom_style_radio
-  .group_radio_choose_template
-  .SelectInvitationTemplate_map:last-child
-  input:is([type='checkbox'], [type='radio']) {
+.option_content .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map:last-child input:is([type='checkbox'], [type='radio']) {
   background: url('../src/assets/home-image/IcNatosans.png');
 }
 
-.option_type_bg
-  .custom_style_radio
-  .group_radio_choose_template
-  .SelectInvitationTemplate_map:first-child
-  input:is([type='checkbox'], [type='radio']) {
+.option_type_bg .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map:first-child input:is([type='checkbox'], [type='radio']) {
   background: url('../src/assets/home-image/IcNone.png');
 }
 
-.option_type_bg
-  .custom_style_radio
-  .group_radio_choose_template
-  .SelectInvitationTemplate_map:nth-child(2)
-  input:is([type='checkbox'], [type='radio']) {
+.option_type_bg .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map:nth-child(2) input:is([type='checkbox'], [type='radio']) {
   background: url('../src/assets/home-image/IcHoa.png');
 }
 
-.option_type_bg
-  .custom_style_radio
-  .group_radio_choose_template
-  .SelectInvitationTemplate_map:nth-child(3)
-  input:is([type='checkbox'], [type='radio']) {
+.option_type_bg .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map:nth-child(3) input:is([type='checkbox'], [type='radio']) {
   background: url('../src/assets/home-image/IcLa.png');
 }
 
-.option_type_bg
-  .custom_style_radio
-  .group_radio_choose_template
-  .SelectInvitationTemplate_map:nth-child(4)
-  input:is([type='checkbox'], [type='radio']) {
+.option_type_bg .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map:nth-child(4) input:is([type='checkbox'], [type='radio']) {
   background: url('../src/assets/home-image/IcTuyet.png');
 }
 
-.option_type_bg
-  .custom_style_radio
-  .group_radio_choose_template
-  .SelectInvitationTemplate_map:last-child
-  input:is([type='checkbox'], [type='radio']) {
+.option_type_bg .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map:last-child input:is([type='checkbox'], [type='radio']) {
   background: url('../src/assets/home-image/Ichoavan.png');
 }
 
-.option_color_bg
-  .custom_style_radio
-  .group_radio_choose_template
-  .SelectInvitationTemplate_map:first-child
-  input:is([type='checkbox'], [type='radio']) {
+.option_color_bg .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map:first-child input:is([type='checkbox'], [type='radio']) {
   background: url('../src/assets/home-image/IcTrang.png');
 }
 
-.option_color_bg
-  .custom_style_radio
-  .group_radio_choose_template
-  .SelectInvitationTemplate_map:nth-child(2)
-  input:is([type='checkbox'], [type='radio']) {
+.option_color_bg .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map:nth-child(2) input:is([type='checkbox'], [type='radio']) {
   background: url('../src/assets/home-image/IcXam.png');
 }
 
-.option_color_bg
-  .custom_style_radio
-  .group_radio_choose_template
-  .SelectInvitationTemplate_map:nth-child(3)
-  input:is([type='checkbox'], [type='radio']) {
+.option_color_bg .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map:nth-child(3) input:is([type='checkbox'], [type='radio']) {
   background: url('../src/assets/home-image/IcHong.png');
 }
 
-.option_color_bg
-  .custom_style_radio
-  .group_radio_choose_template
-  .SelectInvitationTemplate_map:nth-child(4)
-  input:is([type='checkbox'], [type='radio']) {
+.option_color_bg .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map:nth-child(4) input:is([type='checkbox'], [type='radio']) {
   background: url('../src/assets/home-image/IcXanh.png');
 }
 
-.option_color_bg
-  .custom_style_radio
-  .group_radio_choose_template
-  .SelectInvitationTemplate_map:last-child
-  input:is([type='checkbox'], [type='radio']) {
+.option_color_bg .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map:last-child input:is([type='checkbox'], [type='radio']) {
   background: url('../src/assets/home-image/Icvang.png');
 }
 
-.option_effect_bg
-  .custom_style_radio
-  .group_radio_choose_template
-  .SelectInvitationTemplate_map:first-child
-  input:is([type='checkbox'], [type='radio']) {
+.option_effect_bg .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map:first-child input:is([type='checkbox'], [type='radio']) {
   background: url('../src/assets/home-image/IcNone.png');
 }
 
-.option_effect_bg
-  .custom_style_radio
-  .group_radio_choose_template
-  .SelectInvitationTemplate_map:nth-child(2)
-  input:is([type='checkbox'], [type='radio']) {
+.option_effect_bg .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map:nth-child(2) input:is([type='checkbox'], [type='radio']) {
   background: url('../src/assets/home-image/IcHoadao.png');
 }
 
-.option_effect_bg
-  .custom_style_radio
-  .group_radio_choose_template
-  .SelectInvitationTemplate_map:nth-child(3)
-  input:is([type='checkbox'], [type='radio']) {
+.option_effect_bg .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map:nth-child(3) input:is([type='checkbox'], [type='radio']) {
   background: url('../src/assets/home-image/IcLavang.png');
 }
 
-.option_effect_bg
-  .custom_style_radio
-  .group_radio_choose_template
-  .SelectInvitationTemplate_map:nth-child(4)
-  input:is([type='checkbox'], [type='radio']) {
+.option_effect_bg .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map:nth-child(4) input:is([type='checkbox'], [type='radio']) {
   background: url('../src/assets/home-image/IcBongtuyet.png');
 }
 
-.option_effect_bg
-  .custom_style_radio
-  .group_radio_choose_template
-  .SelectInvitationTemplate_map:last-child
-  input:is([type='checkbox'], [type='radio']) {
+.option_effect_bg .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map:last-child input:is([type='checkbox'], [type='radio']) {
   background: url('../src/assets/home-image/IcKimtuyen.png');
 }
 
-.custom_style_radio
-  .group_radio_choose_template
-  .SelectInvitationTemplate_map
-  input:is([type='checkbox'], [type='radio']):hover {
+.custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map input:is([type='checkbox'], [type='radio']):hover {
   border: 2px solid var(--primary-Blue-color-400);
 }
 
-.custom_style_radio
-  .group_radio_choose_template
-  .SelectInvitationTemplate_map
-  input:is([type='checkbox'], [type='radio']):focus {
+.custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map input:is([type='checkbox'], [type='radio']):focus {
   outline: 2px solid var(--primary-Blue-color-400);
   outline-offset: 2px;
 }
 
-.custom_style_radio
-  .group_radio_choose_template
-  .SelectInvitationTemplate_map
-  input:is([type='checkbox'], [type='radio']):checked {
+.custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map input:is([type='checkbox'], [type='radio']):checked {
   border: 2px solid var(--primary-Blue-color-400);
   filter: brightness(1.2);
 }
@@ -2918,7 +2830,7 @@ img {
   max-width: 100%;
 }
 
-.another_item > div {
+.another_item>div {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -3540,7 +3452,7 @@ img {
     padding: 5px 0;
   }
 
-  .select_code ~ .item_field_single {
+  .select_code~.item_field_single {
     flex-basis: 68%;
   }
 
@@ -3625,7 +3537,7 @@ img {
     margin-top: 5px;
   }
 
-  .checkbox:checked + .checkbox-label + .infomationDetails {
+  .checkbox:checked+.checkbox-label+.infomationDetails {
     display: none;
   }
 
@@ -3814,6 +3726,7 @@ img {
 }
 
 @keyframes fadeIn2 {
+
   0%,
   20% {
     opacity: 0;
@@ -3826,6 +3739,7 @@ img {
 }
 
 @-webkit-keyframes fadeIn2 {
+
   0%,
   20% {
     opacity: 0;
@@ -3851,6 +3765,7 @@ img {
 }
 
 @keyframes fadeIn3 {
+
   0%,
   40% {
     opacity: 0;
@@ -3863,6 +3778,7 @@ img {
 }
 
 @-webkit-keyframes fadeIn3 {
+
   0%,
   40% {
     opacity: 0;
@@ -4016,6 +3932,7 @@ img {
     transform: translate3d(0, 0, 0);
   }
 }
+
 /* fix bug gallery slider */
 .gallery-section .slide {
   display: flex;
@@ -4023,6 +3940,7 @@ img {
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.2);
 }
+
 .comment-detail {
   padding-bottom: 1080px;
 }

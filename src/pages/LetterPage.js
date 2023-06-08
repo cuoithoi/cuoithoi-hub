@@ -123,52 +123,46 @@ const LetterPage = () => {
   console.log(letter)
   return (
     <div className={`letter-wrapper ${bgColor}`}>
-      <AnimationOnScroll
-        animateIn='animate__zoomInDown'
-        offset={10}
-        animatePreScroll={false}
-        duration={2}
-        delay={0}
-      >
-        <div className={`letter-layout ${bgColor}`}>
-          <SnowFall type={effectBackgroud.value} />
-          <NavButton setIsNavOpen={setIsNavOpen} song={song} />
 
-          <Hero
-            song={song}
-            setIsNavOpen={setIsNavOpen}
-            manfirstName={informationOfGroom.firstName}
-            coverImage={coverImage}
-            manName={informationOfGroom.name}
-            womanfirstName={informationOfBride.firstName}
-            womanName={informationOfBride.name}
-            timeAndLocationOfWedding={timeAndLocationOfWedding}
-          />
-          <Invitation
-            informationOfBride={informationOfBride}
-            informationOfGroom={informationOfGroom}
-            contentOfInvitation={contentOfInvitation}
-            timeAndLocationOfWedding={timeAndLocationOfWedding}
-          />
-          <Gallery1 album={album} />
-          <YoutubeVideo videoLink={videoLink} />
-          <TimeLocation
-            timeAndLocationOfWedding={timeAndLocationOfWedding}
-            timeAndLocationOfEgagement={timeAndLocationOfEgagement}
-            timeAndLocationOfInterrogation={timeAndLocationOfInterrogation}
-          />
-          <Schedule eventOfProgram={eventOfProgram} />
-          <Congrats
-            setModalContent={setModalContent}
-            setIsOpen={setIsOpen}
-            informationOfBride={informationOfBride}
-            informationOfGroom={informationOfGroom}
-          />
-          <Message id={userId} />
-          <Response />
-          <FooterLogo />
-        </div>
-      </AnimationOnScroll>
+      <div className={`letter-layout ${bgColor}`}>
+        <SnowFall type={effectBackgroud.value} />
+        <NavButton setIsNavOpen={setIsNavOpen} song={song} />
+
+        <Hero
+          song={song}
+          setIsNavOpen={setIsNavOpen}
+          manfirstName={informationOfGroom.firstName}
+          coverImage={coverImage}
+          manName={informationOfGroom.name}
+          womanfirstName={informationOfBride.firstName}
+          womanName={informationOfBride.name}
+          timeAndLocationOfWedding={timeAndLocationOfWedding}
+        />
+        <Invitation
+          informationOfBride={informationOfBride}
+          informationOfGroom={informationOfGroom}
+          contentOfInvitation={contentOfInvitation}
+          timeAndLocationOfWedding={timeAndLocationOfWedding}
+        />
+        <Gallery1 album={album} />
+        <YoutubeVideo videoLink={videoLink} />
+        <TimeLocation
+          timeAndLocationOfWedding={timeAndLocationOfWedding}
+          timeAndLocationOfEgagement={timeAndLocationOfEgagement}
+          timeAndLocationOfInterrogation={timeAndLocationOfInterrogation}
+        />
+        <Schedule eventOfProgram={eventOfProgram} />
+        <Congrats
+          setModalContent={setModalContent}
+          setIsOpen={setIsOpen}
+          informationOfBride={informationOfBride}
+          informationOfGroom={informationOfGroom}
+        />
+        <Message id={userId} />
+        <Response />
+        <FooterLogo />
+      </div>
+
       <Sidebar isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
       <Modal
         isOpen={isOpen}

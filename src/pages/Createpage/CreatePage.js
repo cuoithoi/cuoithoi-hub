@@ -1010,6 +1010,7 @@ const CreatePage = () => {
         "note": values.note
       }), config);
       if (responseupdate.errorCode == 0) {
+        console.log(responseupdate)
         toast.success(Languages.errorMsg.updatesuccess)
         setDisable(false)
         removeStorage('hasReloaded')
