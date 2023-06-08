@@ -11,6 +11,7 @@ import { RadioButton } from "@/components/RadioButton";
 import { MyTextArea } from "@/components/textarea";
 import { Button } from "@/components/button";
 import { getItemFromLocalStorage } from "@/utils/localStorage";
+import { values } from "lodash";
 
 const VideoandEvent = forwardRef(({ }, ref) => {
 
@@ -51,9 +52,10 @@ const VideoandEvent = forwardRef(({ }, ref) => {
         }
     }, [])
 
-    const radioChangeHandlerWarnTemplate = (text, value) => {
-        setRadioWarnTemplate(value)
+    const radioChangeHandlerWarnTemplate = (text, values) => {
+        setRadioWarnTemplate(values)
         setWarnTemp(text)
+        value.note = values
     }
 
     const onChangeCreatLetter = useCallback(() => {
@@ -258,6 +260,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
 
     function onChangeWarnTemp(event) {
         setWarnTemp(event.target.value)
+        value.note = event.target.value
     }
 
     return (

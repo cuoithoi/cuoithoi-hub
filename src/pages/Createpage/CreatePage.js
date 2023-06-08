@@ -990,14 +990,13 @@ const CreatePage = () => {
         "anotherProduct": values.anotherProduct,
         "codeInvite": codeinvite,
         "productId": packageType[2],
-        "status": '3'
+        "status": '2'
       }), config);
       removeStorage('createLeter')
       if (response.errorCode == 0) {
         toast.success(Languages.errorMsg.success)
         setIdCreateRespon(response.data._id)
         setDisable(false)
-        console.log(response)
         // setStorage('createLeter', JSON.stringify(response.data), 10 * 86400)
       }
       else {
@@ -1007,11 +1006,13 @@ const CreatePage = () => {
 
       const responseupdate = await post(APi.updateInvitation, Object.assign(jsonData, {
         "_id": idCreateRespon,
-        "status": '2',
+        "status": '3',
+        "note": values.note
       }), config);
       if (responseupdate.errorCode == 0) {
         toast.success(Languages.errorMsg.updatesuccess)
         setDisable(false)
+        removeStorage('hasReloaded')
       }
       else {
         toast.error(Languages.errorMsg.errorSuccess)
@@ -1029,11 +1030,15 @@ const CreatePage = () => {
         toast.error(Languages.errorMsg.uploadingEmpty);
 
       } else if (passValidateSuccess() !== true) {
-
-        onChangeSaveSetting()
+        if (disable)
+          onChangeSaveSetting()
 
       } else {
-        onChangeSaveSetting()
+        
+        if (disable) {
+          onChangeSaveSetting()
+        }
+
         const totalSum = valuedataAnother.reduce((acc, curr) => {
           const arrayItem = curr.split(",", 2).slice(0, 1).map(Number);
           const sum = parseInt(arrayItem[0]);
@@ -1052,7 +1057,7 @@ const CreatePage = () => {
       window.location.reload()
     }
 
-  }, [onChangeSaveSetting, passValidateSuccess, setValuedataAnotherTotalPrice, imagesCoverURL, imagesURL, albumURL, codeinvite, percentOff])
+  }, [onChangeSaveSetting, passValidateSuccess, setValuedataAnotherTotalPrice, imagesCoverURL, imagesURL, albumURL, codeinvite, percentOff, disable])
 
 
   const onChangeValidateConfirm = useCallback(async () => {
@@ -1303,14 +1308,15 @@ const CreatePage = () => {
 
       <Loading />
       <div className='header_editpage'>
-        <div className='header header_edit'>
-          <Button
-            label={Languages.common.cancel}
-            isLowerCase
-            onPress={onShowModalAgree}
-          />
-          <div className='btn_group_r'>
-            {/* {
+        <div className='container mx-auto'>
+          <div className='header header_edit'>
+            <Button
+              label={Languages.common.cancel}
+              isLowerCase
+              onPress={onShowModalAgree}
+            />
+            <div className='btn_group_r'>
+              {/* {
               checkUrl ? <Button
                 label={Languages.common.saveDraf}
                 buttonStyle={BUTTON_STYLES.GRAY}
@@ -1319,14 +1325,15 @@ const CreatePage = () => {
               /> : ''
             } */}
 
-            <Button
-              label={Languages.common.continue}
-              buttonStyle={BUTTON_STYLES.PINK}
-              textStyle={BUTTON_STYLES.WHITE}
-              isLowerCase
-              disabled={disable}
-              onPress={onNavigateMypage}
-            />
+              <Button
+                label={Languages.common.continue}
+                buttonStyle={BUTTON_STYLES.PINK}
+                textStyle={BUTTON_STYLES.WHITE}
+                isLowerCase
+                disabled={disable}
+                onPress={onNavigateMypage}
+              />
+            </div>
           </div>
         </div>
       </div>

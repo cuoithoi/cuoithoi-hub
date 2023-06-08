@@ -32,8 +32,8 @@ export enum CheckParams {
 
 export enum Status {
   ACTIVE = 1, // ĐÃ KÍCH HOẠT THIỆP
-  INACTIVE = 2, // CHƯA KÍCH HOẠT
-  DRAFT = 3, // BẢN NHÁP
+  DRAFT = 2, // BẢN NHÁP
+  INACTIVE = 3, // CHƯA KÍCH HOẠT
   REQUEST_PAYMENT = 4, //YÊU CẦU TRẢ PHÍ
   EXPIRE = 5, //HẾT HẠN SỬ DỤNG
 }
