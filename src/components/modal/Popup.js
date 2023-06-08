@@ -13,7 +13,8 @@ const Popup = forwardRef(
       btnCancelText,
       btnSubmitText,
       content,
-      maxWidth
+      maxWidth,
+      height,
     },
     ref
   ) => {
@@ -54,6 +55,7 @@ const Popup = forwardRef(
         btnSubmitText={btnSubmitText}
         content={content}
         maxWidth={maxWidth}
+        height={height}
       />
     )
   }

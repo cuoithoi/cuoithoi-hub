@@ -27,7 +27,10 @@ const Gallery = ({ album }) => {
             return (
               <div className='gallery-image mb-3 relative'>
                 <img src={image[0]} alt='image gallery' />
-                <div className='absolute bottom-8 right-8 w-6 h-6 flex items-center justify-end cursor-pointer'>
+                <div
+                  className='absolute bottom-8 right-8 w-12 h-6 flex items-center justify-end cursor-pointer rounded-md '
+                  style={{ backgroundColor: 'rgba(0,0,0,0.2)' }}
+                >
                   <span style={{ color: 'white' }} className='mr-1'>
                     {randomNumber(16)}
                   </span>
@@ -56,7 +59,10 @@ const Gallery = ({ album }) => {
                 <div className='img-container'>
                   <img src={image[0]} alt='image gallery' />
                 </div>
-                <div className='absolute bottom-2 right-2 w-6 h-6 flex items-center justify-end cursor-pointer'>
+                <div
+                  className='absolute bottom-2 right-2 w-8 h-6 flex items-center justify-end cursor-pointer rounded-md  bg-bg-appear'
+                  style={{ backgroundColor: 'rgba(0,0,0,0.2)' }}
+                >
                   <span style={{ color: 'white' }} className='mr-1'>
                     {randomNumber(16)}
                   </span>

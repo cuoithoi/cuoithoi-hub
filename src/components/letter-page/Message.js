@@ -12,18 +12,30 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { Alias } from '@/commons/Constant.ts'
 import { getDataWithParams } from '@/utils/axios'
 import { customFetch } from '@/utils/axios'
+import CommentDetail from '@/pages/CommentDetail'
 const Message = () => {
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(true)
   const [cmtList, setCmtList] = useState([])
+  const cmtRef = useRef()
   const { id } = useParams()
-  console.log(id)
   const modalRef = useRef()
   const handleShowModal = () => {
     modalRef.current.showModal()
   }
+  const handleCloseModalWriting = () => {
+    modalRef.current.hideModal()
+  }
+  const handleShowCmtDetail = () => {
+    cmtRef.current.showModal()
+  }
   const deleteCmt = (index) => {
-    setCmtList((prev) => prev.splice(index, 1))
+    console.log('delete cmt')
+    setCmtList((prev) => {
+      prev.splice(index, 1)
+      console.log(prev)
+      return prev
+    })
   }
   useEffect(() => {
     const getData = async () => {
@@ -38,38 +50,43 @@ const Message = () => {
     }
     getData()
   }, [])
-  console.log(deleteCmt)
   if (isLoading) return
   return (
     <div className='layout-mw section-mb py-10'>
       <TitleSection title='LỜI CHÚC' />
-      <Carousel
-        showStatus={false}
-        showThumbs={false}
-        showArrows={true}
-        centerMode={true}
-        showIndicators={false}
-        swipeable 
-        emulateTouch 
-      >
-        {cmtList?.map((cmt, index) => {
-          return (
-            <WeddingCmt
-              cmt={cmt}
-              index={index}
-              key={index}
-              deleteCmt={deleteCmt}
-            />
-          )
-        })}
-      </Carousel>
+      {cmtList.length > 0 ? (
+        <Carousel
+          showStatus={false}
+          showThumbs={false}
+          showArrows={true}
+          centerMode={true}
+          showIndicators={false}
+          swipeable
+          emulateTouch
+        >
+          {cmtList?.map((cmt, index) => {
+            return (
+              <WeddingCmt
+                cmt={cmt}
+                index={index}
+                key={index}
+                deleteCmt={() => deleteCmt(index)}
+              />
+            )
+          })}
+        </Carousel>
+      ) : (
+        'Chưa có danh sách lời chúc để hiện thị'
+      )}
       <div className='flex justify-center items-center gap-6'>
         {/* <Link to={'/' + Alias.letterPage + '/' + Alias.congrats}> */}
         <Button
           label='Xem tất cả'
           buttonStyle={BUTTON_STYLES.BORDER_LIGHT_BLUE}
           rounded={true}
-          onPress={() => navigate(Alias.congrats)}
+          onPress={() => {
+            handleShowCmtDetail()
+          }}
         />
         {/* </Link> */}
         <Button
@@ -83,8 +100,14 @@ const Message = () => {
       </div>
       <Popup
         ref={modalRef}
-        content={<WriteMessage setCmtList={setCmtList} />}
+        content={
+          <WriteMessage
+            setCmtList={setCmtList}
+            handleCloseModal={handleCloseModalWriting}
+          />
+        }
       />
+      <Popup ref={cmtRef} height={'80vh'} content={<CommentDetail />} />
     </div>
   )
 }

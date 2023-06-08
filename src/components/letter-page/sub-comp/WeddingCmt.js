@@ -5,14 +5,13 @@ import { Button } from '@/components/button'
 import { BUTTON_STYLES } from '@/commons/Constant.ts'
 import { convertTimeFormat } from '@/utils/helpers'
 const WeddingCmt = ({ viewDetail, cmt, deleteCmt, index }) => {
-  console.log(deleteCmt, index)
   return (
     <div
       className={`${!viewDetail && 'max-w-md'} p-4 relative`}
       style={{ width: '100%' }}
     >
       <img
-        onClick={() => deleteCmt(index)}
+        onClick={deleteCmt}
         src={closeIcon}
         alt=''
         // className=' w-6 '
