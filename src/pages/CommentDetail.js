@@ -8,15 +8,17 @@ import { useParams } from 'react-router-dom'
 import { getLocalAccessToken } from '@/utils/localStorage'
 const CommentDetail = () => {
   const { id } = useParams()
-  const [cmtList, setCmtList] = useState(null)
+  const [cmtList, setCmtList] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   // const { get, del } = useBaseService()
   const deleteCmt = (index) => {
-    setCmtList((prev) => {
-      prev.splice(index, 1)
-      console.log(prev)
-      return prev
+    let newCmtList = cmtList
+    newCmtList = newCmtList.filter(function (_, i) {
+      console.log(i, index)
+      return i !== index
     })
+    console.log(newCmtList)
+    setCmtList(newCmtList)
   }
   useEffect(() => {
     const getData = async () => {
@@ -40,6 +42,11 @@ const CommentDetail = () => {
           <div className='congrats-wrapper pt-16'>
             <TitleSection title='LỜI CHÚC' />
           </div>
+          {cmtList.length > 0 ? (
+            ''
+          ) : (
+            <p className='py-10'>Thiệp hiện chưa có lời chúc</p>
+          )}
           {cmtList.map((cmt, index) => {
             return (
               <WeddingCmt
@@ -47,7 +54,7 @@ const CommentDetail = () => {
                 viewDetail={true}
                 key={index}
                 index={index}
-                deleteCmt={deleteCmt}
+                deleteCmt={() => deleteCmt(index)}
                 maxWidth={'560px'}
               />
             )
