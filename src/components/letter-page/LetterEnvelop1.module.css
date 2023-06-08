@@ -335,9 +335,9 @@
   }
 }
 
-.animate__backInDown {
+/* .animate__backInDown {
   -webkit-animation-name: backInDown;
   animation-name: backInDown;
   animation-duration: 1s;
   animation-delay: 0.5s;
-}
+} */

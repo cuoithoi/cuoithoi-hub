@@ -30,8 +30,8 @@ const CommentDetail = () => {
   if (isLoading) return
   console.log(cmtList)
   return (
-    <div className='letter-wrapper h-full '>
-      <div className=' letter-layout h-full'>
+    <div className='letter-wrapper h-full comment-detail'>
+      <div className=' letter-layout h-full comment-detail'>
         <div className='text-center  relative section-mb layout-mw h-full'>
           <div className='congrats-wrapper pt-16'>
             <TitleSection title='LỜI CHÚC' />

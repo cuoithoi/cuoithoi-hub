@@ -36,7 +36,7 @@ const WriteMessage = ({ setCmtList }) => {
           ...data,
           invitationsId: id,
         })
-        setCmtList((prev) => [...prev, data])
+        setCmtList((prev) => [data, ...prev])
         toast.success(res.data[0].messaging)
       } catch {
         toast.error('Gửi lời chúc không thành công')

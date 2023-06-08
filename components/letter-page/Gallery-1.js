@@ -11,7 +11,10 @@ const Gallery = ({ album }) => {
     return Math.floor(Math.random() * number)
   }
   return (
-    <div className='py-10 px-3 section-mb layout-mw' id='gallery'>
+    <div
+      className='py-10 px-3 section-mb layout-mw gallery-section'
+      id='gallery'
+    >
       <TitleSection title='ALBUM' />
       <div>
         <Carousel
