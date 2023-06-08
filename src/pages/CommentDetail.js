@@ -12,7 +12,11 @@ const CommentDetail = () => {
   const [isLoading, setIsLoading] = useState(true)
   // const { get, del } = useBaseService()
   const deleteCmt = (index) => {
-    setCmtList((prev) => prev.splice(index, 1))
+    setCmtList((prev) => {
+      prev.splice(index, 1)
+      console.log(prev)
+      return prev
+    })
   }
   useEffect(() => {
     const getData = async () => {
@@ -27,11 +31,11 @@ const CommentDetail = () => {
     }
     getData()
   }, [])
-  if (isLoading) return
   console.log(cmtList)
+  if (isLoading) return
   return (
-    <div className='letter-wrapper h-full comment-detail'>
-      <div className=' letter-layout h-full comment-detail'>
+    <div className=' h-full  overflow-y-scroll'>
+      <div className=' letter-layout h-full '>
         <div className='text-center  relative section-mb layout-mw h-full'>
           <div className='congrats-wrapper pt-16'>
             <TitleSection title='LỜI CHÚC' />
@@ -44,6 +48,7 @@ const CommentDetail = () => {
                 key={index}
                 index={index}
                 deleteCmt={deleteCmt}
+                maxWidth={'560px'}
               />
             )
           })}

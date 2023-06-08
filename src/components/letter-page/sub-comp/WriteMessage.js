@@ -17,7 +17,7 @@ const schema = yup.object().shape({
   passWish: yup.string().required('Yêu cầu nhập mật khẩu'),
 })
 
-const WriteMessage = ({ setCmtList }) => {
+const WriteMessage = ({ setCmtList, handleCloseModal }) => {
   const { id } = useParams()
   const {
     register,
@@ -36,9 +36,12 @@ const WriteMessage = ({ setCmtList }) => {
           ...data,
           invitationsId: id,
         })
-        setCmtList((prev) => [data, ...prev])
+        const newData = { ...data, createTime: new Date() }
+        setCmtList((prev) => [newData, ...prev])
         toast.success(res.data[0].messaging)
-      } catch {
+        handleCloseModal()
+      } catch (error) {
+        console.log(error)
         toast.error('Gửi lời chúc không thành công')
       }
     }

@@ -13,10 +13,12 @@ const Popup = forwardRef(
       btnCancelText,
       btnSubmitText,
       content,
-      maxWidth
+      maxWidth,
+      height,
     },
     ref
   ) => {
+    console.log(height, content)
     const [visible, setVisible] = useState(false)
 
     const hideModal = () => {
@@ -42,7 +44,7 @@ const Popup = forwardRef(
     const handleCancel = () => {
       setVisible(false)
     }
-
+    console.log(height)
     return (
       <Modal
         title={title}
@@ -54,6 +56,7 @@ const Popup = forwardRef(
         btnSubmitText={btnSubmitText}
         content={content}
         maxWidth={maxWidth}
+        height={height}
       />
     )
   }

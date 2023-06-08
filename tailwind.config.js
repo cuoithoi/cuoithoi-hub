@@ -8,6 +8,7 @@ module.exports = {
       second: '#F38723',
       text: '#585858',
       'main-bg': 'rgba(167, 189, 181, 0.15)',
+      'bg-appear': 'rgba(0, 0, 0, 0.1',
     },
   },
   plugins: [],
