@@ -38,34 +38,26 @@ function App() {
           <Route
             path={Alias.homePage}
             element={
-              <PageTitle title={Languages.menu.home}>
-                <HomePage />
-              </PageTitle>
+              <HomePage />
             }
           />
           <Route
             path={Alias.mypage}
             element={
-              <PageTitle title={Languages.menu.myPage}>
-                <Mypage />
-              </PageTitle>
+              <Mypage />
             }
           />
           <Route
             path={`${Alias.letterPage}/:id`}
             element={
-              <PageTitle title={Languages.menu.yourPage}>
-                <ProtectedRoute />
-              </PageTitle>
+              <ProtectedRoute />
             }
           >
             <Route index element={<LetterPage />} />
             <Route
               path={`${Alias.congrats}`}
               element={
-                <PageTitle title={Languages.menu.commentPage}>
-                  <CommentDetail />
-                </PageTitle>
+                <CommentDetail />
               }
             />
           </Route>
@@ -80,81 +72,61 @@ function App() {
           <Route
             path={Alias.createPage}
             element={
-              <PageTitle title={Languages.menu.createPage}>
-                <CreatePage />
-              </PageTitle>
+              <CreatePage />
             }
           />
           <Route
             path={`${Alias.editor}/:id`}
             element={
-              <PageTitle title={Languages.menu.editorPage}>
-                <CreatePage />
-              </PageTitle>
+              <CreatePage />
             }
           />
           <Route
             path={Alias.pwdRecovery}
             element={
-              <PageTitle title={Languages.menu.recoveryPwd}>
-                <RecoveryPwd />
-              </PageTitle>
+              <RecoveryPwd />
             }
           />
           <Route
             path={Alias.register}
             element={
-              <PageTitle title={Languages.menu.register}>
-                <RegisterRefactor />
-              </PageTitle>
+              <RegisterRefactor />
             }
           />
           <Route
             path={Alias.login}
             element={
-              <PageTitle title={Languages.menu.login}>
-                <Login />
-              </PageTitle>
+              <Login />
             }
           />
           <Route
             path={Alias.customerCare}
             element={
-              <PageTitle title={Languages.menu.customerCare}>
-                <CustomerCare />
-              </PageTitle>
+              <CustomerCare />
             }
           />
           <Route
             path={Alias.services}
             element={
-              <PageTitle title={Languages.menu.services}>
-                <Services />
-              </PageTitle>
+              <Services />
             }
           />
           <Route
             path={Alias.verifyOtp}
             element={
-              <PageTitle title={Languages.menu.verifyOtp}>
-                <VerifyOtp />
-              </PageTitle>
+              <VerifyOtp />
             }
           />
           <Route
             path={Alias.emailOtp}
             element={
-              <PageTitle title={Languages.menu.emailOtp}>
-                <EmailOtp />
-              </PageTitle>
+              <EmailOtp />
             }
           />
           <Route
             path='*'
             element={
-              <PageTitle title={Languages.menu.notfound}>
-                <Notfound />
-              </PageTitle>
+              <Notfound />
             }
           />
         </Routes>

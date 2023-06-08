@@ -227,7 +227,7 @@ const Services = () => {
                     <div className="box_abs_image_video">
                       <div className="frame_video_box">
                         <img src={ICFrameVideo} alt="video" />
-                        <video controls autoPlay={false} loop muted>
+                        <video controls autoPlay loop muted>
                           <source src={video_wedding} type="video/mp4" />
                           Your browser does not support the video tag.
                         </video>
@@ -258,7 +258,7 @@ const Services = () => {
                       onPress={onChangeRes}
                     />
                     <div className="box_abs_image_video">
-                      <video controls autoPlay={false} loop muted>
+                      <video controls autoPlay loop muted>
                         <source src={video_NFT} type="video/mp4" />
                         Your browser does not support the video tag.
                       </video>
