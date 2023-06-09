@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Header from "@/components/header";
 import Footer from "./Footer/Footer";
 import Loading from "@/components/Loading";
@@ -27,9 +27,19 @@ import { useNavigate } from "react-router-dom";
 
 const Services = () => {
 
+  const videoRef = useRef(null);
+
   const [checkTypeIdProduct, setCheckTypeIdProduct] = useState('tab_one')
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+    if (isMobile) {
+      videoRef.current.removeAttribute('autoplay')
+    }
+  }, []);
 
   useEffect(() => {
     setTimeout(() => {
@@ -227,7 +237,7 @@ const Services = () => {
                     <div className="box_abs_image_video">
                       <div className="frame_video_box">
                         <img src={ICFrameVideo} alt="video" />
-                        <video controls autoPlay loop muted>
+                        <video ref={videoRef} controls autoPlay loop muted>
                           <source src={video_wedding} type="video/mp4" />
                           Your browser does not support the video tag.
                         </video>
@@ -258,7 +268,7 @@ const Services = () => {
                       onPress={onChangeRes}
                     />
                     <div className="box_abs_image_video">
-                      <video controls autoPlay loop muted>
+                      <video ref={videoRef} controls autoPlay loop muted>
                         <source src={video_NFT} type="video/mp4" />
                         Your browser does not support the video tag.
                       </video>

@@ -143,11 +143,11 @@ const Mypage = () => {
   }, [])
 
   const onChangeEditor = useCallback(
-    (id) => {
+    (id, isPaid) => {
       if (id) {
         navigate(`${Alias.editor}/${id}`, {
           state: {
-            editor: true,
+            editor: isPaid,
             id: id,
           },
         })
@@ -338,7 +338,7 @@ const Mypage = () => {
                                 autocenter
                                 width={60}
                                 isLowerCase
-                                onPress={() => onChangeEditor(item?._id)}
+                                onPress={() => onChangeEditor(item?._id, item?.isPaid)}
                               />
                             )}
 

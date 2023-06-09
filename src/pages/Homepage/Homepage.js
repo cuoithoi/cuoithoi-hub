@@ -314,6 +314,7 @@ const Homepage = () => {
                       >
                         <div className="step2_list">
                           <img src={IcTooltipExcel} alt="tooltip" />
+                          <div className="tooltip"><strong>Quản lý khách mời tham dự</strong>Dễ dàng cập nhật thông tin về khách mời tham dự lễ cưới với tính năng RSVP</div>
                         </div>
 
                       </AnimationOnScroll>
@@ -337,6 +338,7 @@ const Homepage = () => {
                       >
                         <div className="step2_list">
                           <img src={IcTooltipMap} alt="tooltip1" />
+                          <div className="tooltip"><strong>Tích hợp Google Map ngay trên thiệp cưới</strong>Tạo thuận tiện cho khách mời của bạn trong việc tìm đường đến địa điểm tổ chức tiệc cưới</div>
                         </div>
 
                       </AnimationOnScroll>
@@ -360,6 +362,7 @@ const Homepage = () => {
                       >
                         <div className="step2_list">
                           <img src={IcTooltipMedia} alt="tooltip2" />
+                          <div className="tooltip"><strong>Bất cứ nơi đâu và bất cứ khi nào</strong>Sửa đổi nội dung và giao diện</div>
                         </div>
                       </AnimationOnScroll>
                     </li>

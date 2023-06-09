@@ -450,6 +450,17 @@ p {
   font-size: 17px;
 }
 
+.box_3phone_wrap_iconn_section .step2_list li .tooltip {
+  bottom: 105px;
+  left: -158%;
+  background-color: var(--bg-pink-color);
+  font-family: var(--quick-sand-font-family);
+}
+
+.box_3phone_wrap_iconn_section .step2_list li .tooltip::after {
+  border-top: 6px solid var(--bg-pink-color);
+}
+
 .wrapbox_image_pc {
   background: url('../src/assets/home-image/bgsection.png') no-repeat;
   background-size: cover;
