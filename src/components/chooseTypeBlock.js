@@ -16,7 +16,7 @@ function ChooseTypeBlock({
     useEffect(() => {
         const windowHeight = window.innerHeight;
         const heightBoxTopFooter = windowHeight / 2
-        if (windowHeight < 700)
+        if (windowHeight < 900)
             setHeightImg(heightBoxTopFooter)
     }, [])
 
