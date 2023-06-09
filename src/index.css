@@ -956,6 +956,10 @@ p {
 }
 
 /* IMAGE GALLERY */
+.list_album_uploads .wrap_box_upload_image_child {
+  margin-top: 0;
+}
+
 .gallery-image {
   /* height: 100vw; */
   display: flex;
@@ -1666,8 +1670,11 @@ table .date {
 }
 
 .all_services {
-  background: var(--pink-color-2);
-  padding: 60px 15px;
+  background: url('/src/assets/home-image/bg_bgsvtranparent.png') var(--pink-color-2) no-repeat;
+  padding: 120px 15px;
+  background-size: 1900px;
+  background-position-y: bottom;
+
 }
 
 .all_services_types .head_hot {
@@ -3231,6 +3238,13 @@ img {
   cursor: pointer;
 }
 
+.slider_cmt .slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100% !important;
+}
+
 .container {
   padding-right: 15px;
   padding-left: 15px;
@@ -3267,6 +3281,14 @@ img {
 }
 
 @media (max-width: 991px) {
+  .all_services {
+    padding: 50px 0;
+  }
+
+  .List_item_show .item_single_line {
+    padding: 26px 8px;
+  }
+
   .dotted_scroll {
     display: none;
   }

@@ -35,6 +35,7 @@ const Response = () => {
     resolver: yupResolver(schema),
   })
   const [numPeopleAttend, setNumberPeopleAttend] = useState(0)
+  const [disable, setDisable] = useState(false)
   const increaseNumberPeople = () => {
     setNumberPeopleAttend((prev) => prev + 1)
   }
@@ -62,15 +63,22 @@ const Response = () => {
     }
     const sendResponse = async () => {
       try {
-        const resp = await postDataApi('/send/recurrent-info', {
-          ...data,
-          isGuestSide: guestSide,
-          numberPeopleParticipate: numPeopleAttend,
-          invitationsId: '',
-        })
-        if (resp.errorCode === 0) {
-          toast.success('gửi phản hồi thành công')
+        if (!disable) {
+          const resp = await postDataApi('/send/recurrent-info', {
+            ...data,
+            isGuestSide: guestSide,
+            numberPeopleParticipate: numPeopleAttend,
+            invitationsId: '',
+          })
+          if (resp.errorCode === 0) {
+            toast.success('gửi phản hồi thành công')
+            setDisable(true)
+            setTimeout(() => {
+              setDisable(false)
+            }, 10000);
+          }
         }
+        else if (disable) toast.warn('Sau 10 giây mới có thể gửi lại')
       } catch (error) {
         toast.success(error.message)
       }
@@ -198,7 +206,6 @@ const Response = () => {
             label='Xác nhận'
             rounded={true}
             width='100'
-            onPress={onSubmit}
           />
         </div>
       </form>

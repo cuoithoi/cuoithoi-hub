@@ -56,14 +56,15 @@ const Message = () => {
       <TitleSection title='LỜI CHÚC' />
       {cmtList.length > 0 ? (
         <Carousel
-          showStatus={false}
-          showThumbs={false}
-          showArrows={true}
-          centerMode={true}
-          showIndicators={false}
-          swipeable
-          emulateTouch
-          className='slider_cmt'
+        showStatus={false}
+        showThumbs={false}
+        showArrows={true}
+        centerMode={true}
+        showIndicators={false}
+        swipeable
+        emulateTouch
+        className='slider_cmt'
+        renderThumbs={() => null}
         >
           {cmtList?.map((cmt, index) => {
             return (
@@ -77,7 +78,7 @@ const Message = () => {
           })}
         </Carousel>
       ) : (
-        'Chưa có danh sách lời chúc để hiện thị'
+        <p className='text-center'>Chưa có danh sách lời chúc để hiện thị</p>
       )}
       <div className='flex justify-center items-center gap-6'>
         {/* <Link to={'/' + Alias.letterPage + '/' + Alias.congrats}> */}

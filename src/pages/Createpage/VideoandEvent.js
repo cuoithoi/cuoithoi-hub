@@ -43,12 +43,12 @@ const VideoandEvent = forwardRef(({ }, ref) => {
             itemLocal.eventOfProgram.timeToCelebrate && (value.eventOfProgram.timeToCelebrate = itemLocal.eventOfProgram.timeToCelebrate)
             itemLocal.eventOfProgram.timeToDinner && (value.eventOfProgram.timeToDinner = itemLocal.eventOfProgram.timeToDinner)
             itemLocal.eventOfProgram.timeToMusic && (value.eventOfProgram.timeToMusic = itemLocal.eventOfProgram.timeToMusic)
+            itemLocal.note && setWarnTemp(itemLocal.note)
         } else {
             value.videoLink = ''
             value.eventOfProgram.timeToWellcome = ''
             value.eventOfProgram.timeToCelebrate = ''
             value.eventOfProgram.timeToDinner = ''
-            value.eventOfProgram.timeToMusic = ''
         }
     }, [])
 
@@ -270,7 +270,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
                 <div className='video_event_wedding'>
                     <div className='fullwidth_input_colum'>
                         <div className='single_hor_input'>
-                            {renderInput(refVideoLink,'', 'Nhập ' + Languages.text.linkVideo, INPUT_FIELDS.videoLink, 'text', 200, true, <FaLink />, '', value.videoLink)}
+                            {renderInput(refVideoLink, '', 'Nhập ' + Languages.text.linkVideo, INPUT_FIELDS.videoLink, 'text', 200, true, <FaLink />, '', value.videoLink)}
                         </div>
                     </div>
                 </div>
@@ -324,7 +324,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
                         <MyTextArea
                             ref={refWarn}
                             value={warnTemp}
-                            placeHolder={'Nhập ' +Languages.text.contentWarnning}
+                            placeHolder={'Nhập ' + Languages.text.contentWarnning}
                             maxLength={500}
                             onChangeText={onChangeWarnTemp}
                         />

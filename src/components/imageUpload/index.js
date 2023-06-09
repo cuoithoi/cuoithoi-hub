@@ -4,6 +4,7 @@ import CloseIcon from "../icons/CloseIcon";
 import SortableList, { SortableItem } from "react-easy-sort";
 import Validate from "@/utils/Validate";
 import { isArray } from "lodash";
+import { fiedlsCreatePage } from "@/commons/FieldsDataObj";
 
 export const ImageUpload = forwardRef(
   ({ images, title, icon, maxW, height, desc, maxnumber, allowDrag, onChange, onSortEnd, urlLocal }, ref) => {
@@ -12,6 +13,8 @@ export const ImageUpload = forwardRef(
     }));
 
     const [errMsg, setErrMsg] = useState("");
+
+    const [values] = useState(fiedlsCreatePage)
 
     const [checkUrlLocal, setCheckurlLocal] = useState(false);
 
@@ -58,6 +61,7 @@ export const ImageUpload = forwardRef(
 
     const onRemove = useCallback(() => {
       setCheckurlLocal(true)
+      values.album = []
     }, [checkUrlLocal])
 
     return (
@@ -147,7 +151,7 @@ export const ImageUpload = forwardRef(
           </ImageUploading>
         }
         {
-          !checkUrlLocal && <div className="image-item flex " style={{ gap: 20 }}>
+          !checkUrlLocal && <div className="image-item flex " style={{ gap: 20, flexWrap: 'wrap' }}>
             {
               !isArray(urlLocal) &&
               <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
@@ -169,26 +173,108 @@ export const ImageUpload = forwardRef(
                     style={{ height: height }}
                   />
                 </div></div>
-              || isArray(urlLocal) &&
-              urlLocal.map((image, index) =>
-                <div
-                  className="relative max-w-fit"
-                  style={{ height: height }}
-                  key={index}
-                >
+              || isArray(urlLocal) && <> {
+                urlLocal.map((image, index) =>
                   <div
-                    className="absolute pointer"
-                    onClick={onRemove}
-                  >
-                    <CloseIcon />
-                  </div>
-                  <img
-                    src={image}
-                    alt={'thumbs' + image.file?.size}
+                    className="relative max-w-fit"
                     style={{ height: height }}
-                  />
-                </div>
-              )
+                    key={index}
+                  >
+                    <div
+                      className="absolute pointer"
+                      onClick={onRemove}
+                    >
+                      <CloseIcon />
+                    </div>
+                    <img
+                      src={image}
+                      alt={'thumbs' + image.file?.size}
+                      style={{ height: height }}
+                    />
+                  </div>
+                )}
+                <ImageUploading
+                  multiple
+                  value={images}
+                  onChange={onChange}
+                  maxNumber={maxNumber}
+                  dataURLKey="data_url"
+                  acceptType={["jpg", "png", "jpeg", "bmp", ".gif", "HEIC"]}
+                  onError={onError}
+                >
+                  {({
+
+                    imageList,
+                    onImageUpload,
+                    onImageUpdate,
+                    onImageRemove,
+                    dragProps,
+
+                  }) => (
+                    // write your building UI
+                    <div className="wrap_box_upload_image_child">
+                      <SortableList
+                        onSortEnd={onSortEnd}
+                        className={'root-remove'}
+                        draggedItemClassName={'dragged'}
+                        defaultChecked
+                        draggable
+                        hidden
+                        allowDrag={allowDrag || false}
+                        style={{ width: maxW }}
+                      >
+                        {
+                          imageList.map((image, index) =>
+                            <SortableItem key={index} imgProps={{ draggable: false }}>
+                              <div className="image-item flex justify-center" >
+                                <div
+                                  className="relative max-w-fit"
+                                  style={{ height: height }}
+                                  {...dragProps}
+                                >
+                                  <div
+                                    className="absolute pointer"
+                                    onClick={() => onImageRemove(index)}
+                                  >
+                                    <CloseIcon />
+                                  </div>
+                                  <img
+                                    src={image.data_url}
+                                    alt={'thumbs' + image.file?.size}
+                                    onClick={() => onImageUpdate(index)}
+                                    style={{ height: height }}
+                                  />
+                                </div>
+                              </div>
+                            </SortableItem>
+                          )
+                        }
+                        {
+                          images.length < maxNumber && <div
+                            className="wrap_imageUploading border-img-dash flex items-center"
+                            style={{ maxWidth: maxW, height: height }}
+                            onClick={onImageUpload}
+                            {...dragProps}
+                          >
+                            <div className="justify-center">
+                              <div className='ImgUploadIcon'>
+                                {icon}
+                              </div>
+                            </div>
+                            <div className="text-center">
+                              <p className="add_image_uploading">
+                                {title}
+                              </p>
+                              {desc && <p className="desc_image_uploading">{desc}</p>}
+                            </div>
+                            {errorMessage}
+                          </div>
+                        }
+                      </SortableList>
+                    </div>
+                  )}
+                </ImageUploading>
+              </>
             }
           </div>
         }

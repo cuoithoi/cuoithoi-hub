@@ -1,5 +1,4 @@
 import React from 'react'
-import { AnimationOnScroll } from 'react-animation-on-scroll'
 import Hero from '../components/letter-page/Hero'
 import { useEffect, useState, useMemo } from 'react'
 import Invitation from '../components/letter-page/Invitation'
@@ -101,6 +100,7 @@ const LetterPage = () => {
     timeAndLocationOfWedding,
     userId,
     videoLink,
+    note
   } = letter
   if (!isLetterOpen && !isLoading) {
     console.log(timeAndLocationOfWedding)
@@ -151,7 +151,7 @@ const LetterPage = () => {
           timeAndLocationOfEgagement={timeAndLocationOfEgagement}
           timeAndLocationOfInterrogation={timeAndLocationOfInterrogation}
         />
-        <Schedule eventOfProgram={eventOfProgram} />
+        <Schedule eventOfProgram={eventOfProgram} note={note}/>
         <Congrats
           setModalContent={setModalContent}
           setIsOpen={setIsOpen}

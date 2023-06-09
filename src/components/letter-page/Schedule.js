@@ -7,7 +7,7 @@ import music from '../../assets/home-image/music.svg'
 import TitleDescribeIcon from '../icons/TitleDescribeIcon'
 import scheduleBgLeft from '../../assets/home-image/schedule-bg-left.svg'
 import scheduleBgRight from '../../assets/home-image/schedule-bg-right.svg'
-const Schedule = ({ eventOfProgram }) => {
+const Schedule = ({ eventOfProgram, note }) => {
   const { timeToWellcome, timeToCelebrate, timeToDinner, timeToMusic } =
     eventOfProgram
   return (
@@ -106,10 +106,13 @@ const Schedule = ({ eventOfProgram }) => {
         </div>
       </div>
       <div className='pb-6 border-section-1'></div>
-      <div className='text-center pt-4 '>
-        <h2 className='text-second'>Lưu ý</h2>
-        <p>Dresscode: Trắng đen - Hồng</p>
-      </div>
+      {
+        note &&
+        <div className='text-center pt-4 '>
+          <h2 className='text-second'>Lưu ý</h2>
+          <p>{note}</p>
+        </div>
+      }
     </div>
   )
 }

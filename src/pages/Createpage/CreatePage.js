@@ -105,9 +105,9 @@ const CreatePage = () => {
   const { user } = useSelector((store) => store.auth)
 
 
-  values.isUseConfirm = true
-  values.isUseGuestBook = true
-  values.isEffectOfOpenning = true
+  values.isUseConfirm = false
+  values.isUseGuestBook = false
+  values.isEffectOfOpenning = false
 
   useEffect(() => {
     if (location.state?.createpage) {
@@ -279,18 +279,17 @@ const CreatePage = () => {
     setAlbum(imageList)
 
     if (imageList.length > 0) {
-
-      imageList.slice(-1).map(function (item) {
-
-        return uploadImage(item.file)
+      imageList.forEach((imageUrl) => {
+        uploadImage(imageUrl.file)
           .then((response) => {
-            values.album.push([response.data.data])
-            setAlbumURL([...response.data.data])
+            values.album.push(response.data.data);
+            setAlbumURL((prevAlbumURL) => [...prevAlbumURL, ...response.data.data]);
+            console.log(values.album);
           })
           .catch((error) => {
-            toast.error(error)
+            toast.error(error);
           });
-      })
+      });
     }
   }
 
@@ -992,8 +991,6 @@ const CreatePage = () => {
         "status": '2'
       }), config);
 
-      console.log(response)
-
       removeStorage('createLeter')
 
       if (response.errorCode == 0) {
@@ -1014,7 +1011,7 @@ const CreatePage = () => {
       })
 
       const responseupdate = await post(APi.updateInvitation, dataUpdate, config);
-      console.log(dataUpdate)
+
       if (responseupdate.errorCode == 0) {
         // setStorage('createLeter', JSON.stringify(responseupdate.data), 10 * 86400)
         toast.success(Languages.errorMsg.updatesuccess)
@@ -1037,11 +1034,12 @@ const CreatePage = () => {
         toast.error(Languages.errorMsg.uploadingEmpty);
 
       } else if (passValidateSuccess() !== true) {
+        setDisable(false)
         if (disable)
           onChangeSaveSetting()
 
       } else {
-
+        setDisable(false)
         if (disable) {
           onChangeSaveSetting()
         }
@@ -1337,7 +1335,6 @@ const CreatePage = () => {
                 buttonStyle={BUTTON_STYLES.PINK}
                 textStyle={BUTTON_STYLES.WHITE}
                 isLowerCase
-                disabled={disable}
                 onPress={onNavigateMypage}
               />
             </div>
