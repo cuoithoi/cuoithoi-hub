@@ -35,19 +35,10 @@ function App() {
     <div className='app'>
       <BrowserRouter>
         <Routes>
-          <Route
-            path={Alias.homePage}
-            element={
-              <HomePage />
-            }
-          />
-          <Route
-            path={Alias.mypage}
-            element={
-              <Mypage />
-            }
-          />
-          <Route
+          <Route path={Alias.homePage} element={<HomePage />} />
+          <Route path={Alias.mypage} element={<Mypage />} />
+          <Route path={`${Alias.letterPage}/:id`} element={<LetterPage />} />
+          {/* <Route
             path={`${Alias.letterPage}/:id`}
             element={
               <ProtectedRoute />
@@ -60,7 +51,7 @@ function App() {
                 <CommentDetail />
               }
             />
-          </Route>
+          </Route> */}
           {/* <Route
             path={`${Alias.letterPage}/:id`}
             element={
@@ -69,66 +60,16 @@ function App() {
               </PageTitle>
             }
           /> */}
-          <Route
-            path={Alias.createPage}
-            element={
-              <CreatePage />
-            }
-          />
-          <Route
-            path={`${Alias.editor}/:id`}
-            element={
-              <CreatePage />
-            }
-          />
-          <Route
-            path={Alias.pwdRecovery}
-            element={
-              <RecoveryPwd />
-            }
-          />
-          <Route
-            path={Alias.register}
-            element={
-              <RegisterRefactor />
-            }
-          />
-          <Route
-            path={Alias.login}
-            element={
-              <Login />
-            }
-          />
-          <Route
-            path={Alias.customerCare}
-            element={
-              <CustomerCare />
-            }
-          />
-          <Route
-            path={Alias.services}
-            element={
-              <Services />
-            }
-          />
-          <Route
-            path={Alias.verifyOtp}
-            element={
-              <VerifyOtp />
-            }
-          />
-          <Route
-            path={Alias.emailOtp}
-            element={
-              <EmailOtp />
-            }
-          />
-          <Route
-            path='*'
-            element={
-              <Notfound />
-            }
-          />
+          <Route path={Alias.createPage} element={<CreatePage />} />
+          <Route path={`${Alias.editor}/:id`} element={<CreatePage />} />
+          <Route path={Alias.pwdRecovery} element={<RecoveryPwd />} />
+          <Route path={Alias.register} element={<RegisterRefactor />} />
+          <Route path={Alias.login} element={<Login />} />
+          <Route path={Alias.customerCare} element={<CustomerCare />} />
+          <Route path={Alias.services} element={<Services />} />
+          <Route path={Alias.verifyOtp} element={<VerifyOtp />} />
+          <Route path={Alias.emailOtp} element={<EmailOtp />} />
+          <Route path='*' element={<Notfound />} />
         </Routes>
       </BrowserRouter>
       <ToastContainer />

@@ -24,11 +24,14 @@ import LetterEnvelop from '@/components/letter-page/LetterEnvelop1'
 import LetterEnvelopTrial from '@/components/letter-page/LetterEnvelop'
 import { getDataApi } from '@/utils/axios'
 import styles from './LetterPage.module.css'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import SnowFall from '@/components/letter-page/SnowFall'
+import { getUserFromLocalStorage } from '@/utils/localStorage'
+import { Alias } from '@/commons/Constant.ts'
 const LetterPage = () => {
+  const navigate = useNavigate()
   const { id } = useParams()
-
+  const storageId = getUserFromLocalStorage()
   const [isOpen, setIsOpen] = useState(false)
   const [letter, setLetter] = useState(null)
   const [isLetterOpen, setIsLetterOpen] = useState(false)
@@ -100,8 +103,11 @@ const LetterPage = () => {
     timeAndLocationOfWedding,
     userId,
     videoLink,
-    note
+    note,
   } = letter
+  // if (!isPaid && userId !== storageId?.userId) {
+  //   navigate(Alias.homePage)
+  // }
   if (!isLetterOpen && !isLoading) {
     console.log(timeAndLocationOfWedding)
     return (
@@ -123,7 +129,6 @@ const LetterPage = () => {
   console.log(letter)
   return (
     <div className={`letter-wrapper ${bgColor}`}>
-
       <div className={`letter-layout ${bgColor}`}>
         <SnowFall type={effectBackgroud.value} />
         <NavButton setIsNavOpen={setIsNavOpen} song={song} />
@@ -151,7 +156,7 @@ const LetterPage = () => {
           timeAndLocationOfEgagement={timeAndLocationOfEgagement}
           timeAndLocationOfInterrogation={timeAndLocationOfInterrogation}
         />
-        <Schedule eventOfProgram={eventOfProgram} note={note}/>
+        <Schedule eventOfProgram={eventOfProgram} note={note} />
         <Congrats
           setModalContent={setModalContent}
           setIsOpen={setIsOpen}
