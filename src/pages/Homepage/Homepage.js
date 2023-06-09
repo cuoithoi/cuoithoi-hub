@@ -469,7 +469,7 @@ const Homepage = () => {
             <img src={Ic_HomepageCreate} alt="Ic_HomepageCreate" />
           </NavLink>
           <NavLink to={Alias.mypage}>
-            <img src={Ic_HomepageSeemore} alt="Ic_HomepageSeemore" />
+            <img className="hidden" src={Ic_HomepageSeemore} alt="Ic_HomepageSeemore" />
           </NavLink>
         </div>
 
