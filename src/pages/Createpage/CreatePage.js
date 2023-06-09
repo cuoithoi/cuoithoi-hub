@@ -53,8 +53,8 @@ const CreatePage = () => {
   const [images, setImages] = useState([])
   const [album, setAlbum] = useState([])
 
-  const [imagesCoverURL, setImagesCoverURL] = useState([])
-  const [imagesURL, setImagesURL] = useState([])
+  const [imagesCoverURL, setImagesCoverURL] = useState('')
+  const [imagesURL, setImagesURL] = useState('')
   const [albumURL, setAlbumURL] = useState([])
 
   const [messageCodeInvite, setMessageCodeInvite] = useState('')
@@ -118,7 +118,7 @@ const CreatePage = () => {
   }, [])
 
   useEffect(() => {
-    if (location.state?.editor) {
+    if (location.state?.editor != null) {
       setIdCreateRespon(location.state?.id)
       setEditor(location.state?.editor)
       setCheckUrl(false)
@@ -127,7 +127,6 @@ const CreatePage = () => {
           const response = await get(APi.invitationDetail, config, {
             _id: location.state?.id,
           })
-
           setStorage('createLeter', JSON.stringify(response.data), 10 * 86400)
           const hasReloaded = getStorage('hasReloaded');
           if (!hasReloaded) {
@@ -140,7 +139,7 @@ const CreatePage = () => {
           setValuedataAnotherTotalPrice(response.data?.totalAmount)
           setAlbumURL(response.data?.album)
           setImagesURL(response.data?.thumbnailImage)
-          setImagesCoverURL([response.data?.coverImage])
+          setImagesCoverURL(response.data?.coverImage)
         } catch (error) {
           console.error('Đã xảy ra lỗi:', error)
         }
@@ -990,13 +989,16 @@ const CreatePage = () => {
         "anotherProduct": values.anotherProduct,
         "codeInvite": codeinvite,
         "productId": packageType[2],
-        "status": 2
+        "status": '2'
       }), config);
+
+      console.log(response)
+
       removeStorage('createLeter')
 
       if (response.errorCode == 0) {
         toast.success(Languages.errorMsg.success)
-        setIdCreateRespon(response.data._id)
+        setIdCreateRespon(response.data.invitation._id)
         setDisable(false)
         // setStorage('createLeter', JSON.stringify(response.data), 10 * 86400)
       }
@@ -1012,11 +1014,9 @@ const CreatePage = () => {
       })
 
       const responseupdate = await post(APi.updateInvitation, dataUpdate, config);
-
-      console.log(imagesCoverURL)
-
+      console.log(dataUpdate)
       if (responseupdate.errorCode == 0) {
-
+        // setStorage('createLeter', JSON.stringify(responseupdate.data), 10 * 86400)
         toast.success(Languages.errorMsg.updatesuccess)
         setDisable(false)
         removeStorage('hasReloaded')

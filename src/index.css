@@ -3524,7 +3524,7 @@ img {
 
   .box_3phone_wrap_image img {
     margin-bottom: 200px;
-    width: 550px;
+    width: 400px;
     max-width: unset;
     object-fit: contain;
   }
@@ -3966,4 +3966,28 @@ img {
 
 .comment-detail {
   padding-bottom: 1080px;
+}
+
+@media (max-width:767px) {
+  .hidden-xs {
+    display:none !important;
+  }
+}
+
+@media (min-width:768px) and (max-width:991px) {
+  .hidden-sm {
+    display:none !important;
+  }
+}
+
+@media (min-width:992px) and (max-width:1199px) {
+  .hidden-md {
+    display:none !important;
+  }
+}
+
+@media (min-width:1200px) {
+  .hidden-lg {
+    display:none !important;
+  }
 }

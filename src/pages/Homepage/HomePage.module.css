@@ -199,8 +199,8 @@
     .styleImgCustomBox_4 {
         position: relative;
         transform: unset;
-        max-width: 250px !important;
-        margin-top: 20px;
+        max-width: 300px !important;
+        margin-top: 80px;
     }
 
     .navbar_nav {

@@ -24,6 +24,7 @@ import IcTooltipMedia from '@/assets/home-image/Icon_TooltipMedia.svg'
 import IcTooltipExcel from '@/assets/home-image/Icon_TooltipExcel.svg'
 import Img_3phone from '@/assets/home-image/Img_3phone.png'
 import ImgFeedback from '@/assets/home-image/ImgFeedback.png'
+import ImgFeedbackMB from '@/assets/home-image/Img_ImgFeedback_mb.png'
 import Ic_HomepageCreate from '@/assets/home-image/IcHomepageCreate.svg'
 import Ic_HomepageSeemore from '@/assets/home-image/IcHomepageSeemore.svg'
 import ChooseTypeBlock from "@/components/chooseTypeBlock";
@@ -414,8 +415,11 @@ const Homepage = () => {
                   offset={0}
                   delay={200}
                 >
-                  <div className="image_show_demo_wish">
+                  <div className="image_show_demo_wish hidden-xs">
                     <img src={ImgFeedback} alt="ImgFeedback" />
+                  </div>
+                  <div className="image_show_demo_wish hidden-sm hidden-md hidden-lg">
+                    <img src={ImgFeedbackMB} alt="ImgFeedback" />
                   </div>
                 </AnimationOnScroll>
               </div>
