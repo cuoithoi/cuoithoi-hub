@@ -62,24 +62,23 @@ const Response = () => {
       return
     }
     const sendResponse = async () => {
+      setDisable(true)
       try {
-        if (!disable) {
-          const resp = await postDataApi('/send/recurrent-info', {
-            ...data,
-            isGuestSide: guestSide,
-            numberPeopleParticipate: numPeopleAttend,
-            invitationsId: '',
-          })
-          if (resp.errorCode === 0) {
-            toast.success('gửi phản hồi thành công')
-            setDisable(true)
-            setTimeout(() => {
-              setDisable(false)
-            }, 10000);
-          }
+        const resp = await postDataApi('/send/recurrent-info', {
+          ...data,
+          isGuestSide: guestSide,
+          numberPeopleParticipate: numPeopleAttend,
+          invitationsId: '',
+        })
+        if (resp.errorCode === 0) {
+          toast.success('Gửi phản hồi thành công. Sau 10 giây mới có thể gửi lại')
+          setTimeout(() => {
+            setDisable(false)
+          }, 10000);
         }
-        else if (disable) toast.warn('Sau 10 giây mới có thể gửi lại')
+
       } catch (error) {
+        setDisable(false)
         toast.success(error.message)
       }
     }
@@ -206,6 +205,7 @@ const Response = () => {
             label='Xác nhận'
             rounded={true}
             width='100'
+            disabled={disable}
           />
         </div>
       </form>
