@@ -36,7 +36,7 @@ const CommentDetail = () => {
   console.log(cmtList)
   if (isLoading) return
   return (
-    <div className=' h-full  overflow-y-scroll'>
+    <div className=' h-full'>
       <div className=' letter-layout h-full '>
         <div className='text-center  relative section-mb layout-mw h-full'>
           <div className='congrats-wrapper pt-16'>

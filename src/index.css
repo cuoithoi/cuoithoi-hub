@@ -319,7 +319,19 @@ p {
 .letter-layout {
   -webkit-animation-name: gototiop;
   animation-name: gototiop;
-  animation-duration: 1.5s;
+  animation-duration: 0.5s;
+}
+
+.letter-layout .modal-content {
+  overflow: scroll;
+}
+
+.letter-layout .modal-content::-webkit-scrollbar {
+  display: none;
+}
+
+.slider_cmt .close_icon {
+  display: none;
 }
 
 .nav-btn-container {

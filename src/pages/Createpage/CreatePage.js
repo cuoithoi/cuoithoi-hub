@@ -140,7 +140,7 @@ const CreatePage = () => {
           setValuedataAnotherTotalPrice(response.data?.totalAmount)
           setAlbumURL(response.data?.album)
           setImagesURL(response.data?.thumbnailImage)
-          setImagesCoverURL([...response.data?.coverImage])
+          setImagesCoverURL([response.data?.coverImage])
         } catch (error) {
           console.error('Đã xảy ra lỗi:', error)
         }
@@ -182,7 +182,7 @@ const CreatePage = () => {
       itemLocal?.effectImage && setRadioEffectImage(itemLocal?.effectImage)
       // itemLocal?.coverImage && (values.coverImage = itemLocal?.coverImage)
       // itemLocal?.thumbnailImage && (values.thumbnailImage = itemLocal?.thumbnailImage)
-      // itemLocal?.album && (values.album = itemLocal?.album)
+      itemLocal?.album && (values.album = itemLocal?.album)
     }
 
   }, [values, setRadioMusic, setRadioStyleTitle, setRadioStyleContent, setRadioTypeBg, setRadioColorBg, setRadioEffectBg])
@@ -990,9 +990,10 @@ const CreatePage = () => {
         "anotherProduct": values.anotherProduct,
         "codeInvite": codeinvite,
         "productId": packageType[2],
-        "status": '2'
+        "status": 2
       }), config);
       removeStorage('createLeter')
+
       if (response.errorCode == 0) {
         toast.success(Languages.errorMsg.success)
         setIdCreateRespon(response.data._id)
@@ -1004,13 +1005,18 @@ const CreatePage = () => {
       }
     } else {
 
-      const responseupdate = await post(APi.updateInvitation, Object.assign(jsonData, {
+      const dataUpdate = Object.assign(jsonData, {
         "_id": idCreateRespon,
-        "status": '3',
+        "status": 3,
         "note": values.note
-      }), config);
+      })
+
+      const responseupdate = await post(APi.updateInvitation, dataUpdate, config);
+
+      console.log(imagesCoverURL)
+
       if (responseupdate.errorCode == 0) {
-        console.log(responseupdate)
+
         toast.success(Languages.errorMsg.updatesuccess)
         setDisable(false)
         removeStorage('hasReloaded')
@@ -1035,7 +1041,7 @@ const CreatePage = () => {
           onChangeSaveSetting()
 
       } else {
-        
+
         if (disable) {
           onChangeSaveSetting()
         }
@@ -1327,7 +1333,7 @@ const CreatePage = () => {
             } */}
 
               <Button
-                label={Languages.common.continue}
+                label={Languages.common.listLetter}
                 buttonStyle={BUTTON_STYLES.PINK}
                 textStyle={BUTTON_STYLES.WHITE}
                 isLowerCase

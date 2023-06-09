@@ -11,6 +11,7 @@ const WeddingCmt = ({ viewDetail, cmt, deleteCmt, index }) => {
       style={{ width: '100%' }}
     >
       <img
+        className='close_icon'
         onClick={deleteCmt}
         src={closeIcon}
         alt=''

@@ -48,7 +48,8 @@ const Languages = {
     or: 'Hoặc',
     continue: 'Tiếp tục',
     saveDraf: 'Lưu bản nháp',
-    pay: 'Thanh toán'
+    pay: 'Thanh toán',
+    listLetter: 'Danh sách thiệp'
   },
   buttonText: {
     createTC: 'Tạo thiệp cưới',

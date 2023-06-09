@@ -63,6 +63,7 @@ const Message = () => {
           showIndicators={false}
           swipeable
           emulateTouch
+          className='slider_cmt'
         >
           {cmtList?.map((cmt, index) => {
             return (

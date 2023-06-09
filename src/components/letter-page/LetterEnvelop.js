@@ -25,7 +25,7 @@ const LetterEnvelop = ({
     setOpen(true)
     setTimeout(() => {
       setIsLetterOpen(true)
-    }, 6500)
+    }, 6100)
   }
 
   return (
