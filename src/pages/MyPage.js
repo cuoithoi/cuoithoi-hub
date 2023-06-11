@@ -135,7 +135,7 @@ const Mypage = () => {
         <th className='p-3 text-center' width='250px'>
           {Languages.buttonText.edit}
         </th>
-        <th className='p-3 text-center' width='250px'>
+        <th className='p-3 text-center' width='350px'>
           {Languages.text.manager}
         </th>
       </tr>

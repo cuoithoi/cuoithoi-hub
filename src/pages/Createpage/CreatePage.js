@@ -270,7 +270,6 @@ const CreatePage = () => {
             toast.error(error)
           });
       })
-
     }
   }
 
@@ -282,9 +281,8 @@ const CreatePage = () => {
       imageList.forEach((imageUrl) => {
         uploadImage(imageUrl.file)
           .then((response) => {
-            values.album.push(response.data.data);
-            setAlbumURL((prevAlbumURL) => [...prevAlbumURL, ...response.data.data]);
-            console.log(values.album);
+            // values.album.push(response.data.data);
+            setAlbumURL((prevAlbumURL) => [...prevAlbumURL, response.data.data]);
           })
           .catch((error) => {
             toast.error(error);
@@ -951,7 +949,7 @@ const CreatePage = () => {
         "timeOfEventInterrogation": values.timeAndLocationOfInterrogation.timeOfEventInterrogation,
         "locationOfInterrogation": values.timeAndLocationOfInterrogation.locationOfInterrogation
       },
-      "album": values.album,
+      "album": albumURL,
       "videoLink": values.videoLink,
       "eventOfProgram": {
         "timeToWellcome": values.eventOfProgram.timeToWellcome,
@@ -1024,7 +1022,7 @@ const CreatePage = () => {
 
     }
 
-  }, [imagesURL, imagesCoverURL, album, packageType, user, codeinvite, idCreateRespon])
+  }, [imagesURL, imagesCoverURL, album, packageType, user, codeinvite, idCreateRespon, values, albumURL])
 
   const onOpenSuccessConfirm = useCallback(() => {
 
