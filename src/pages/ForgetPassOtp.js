@@ -19,17 +19,17 @@ import { Alias } from '@/commons/Constant.ts'
 import Loading from '@/components/Loading'
 import { signinUser, verifyOTP } from '@/features/auth/authSlice'
 import { Input } from '@/components/input/Input'
-import { toast } from 'react-toastify'
 import { customFetch } from '@/utils/axios'
+import { toast } from 'react-toastify'
+import { forgotPassOtp } from '@/features/auth/authSlice'
 // initial state
 const schema = yup.object().shape({
-  password: yup.string().min(6, 'Mật khẩu tối thiểu 6 ký tự'),
-  confirmPassword: yup.string().min(6, 'Mật khẩu tối thiểu 6 ký tự'),
+  otp: yup.string(),
   // .min(6, 'Mật khẩu tối thiểu 6 ký tự')
 })
 
-const ChangePassword = () => {
-  const { hash, otp } = useSelector((store) => store.auth.emailVerify)
+const ForgotPassOtp = () => {
+  const { hash } = useSelector((store) => store.auth.emailVerify)
   const navigate = useNavigate()
   // /////// handle redirect when signin success//////////
   useEffect(() => {}, [])
@@ -45,22 +45,18 @@ const ChangePassword = () => {
     resolver: yupResolver(schema),
   })
   const onSubmit = (data) => {
-    if (data.password !== data.confirmPassword) {
-      toast.error('Mật khẩu không khớp')
-      return
-    }
+    console.log(data)
     const postData = async () => {
       try {
-        const resp = await customFetch.post('/change-forgot-password', {
+        await customFetch.post('/verify-otp', {
           ...data,
-          otp: otp,
           hash: hash,
         })
-        console.log(resp)
-        toast.success('Thay đổi mật khẩu thành công')
-        navigate(Alias.login)
-      } catch (error) {
-        toast.error('Thay đổi mật khẩu không thành công, vui lòng thử lại')
+        dispatch(forgotPassOtp(data.otp))
+        navigate(Alias.changePassword)
+        toast.success('Xác thực OTP thành công')
+      } catch {
+        toast.error('Xác thực OTP thất bại')
       }
     }
     postData()
@@ -90,21 +86,14 @@ const ChangePassword = () => {
                 <Input
                   register={register}
                   errors={errors}
-                  name='password'
-                  type='password'
-                  placeHolder='Nhập mật khẩu mới'
+                  name='otp'
+                  type='text'
+                  placeHolder='Nhập mã OTP'
                   inputStyle={'form-control'}
                 />
-                <Input
-                  register={register}
-                  errors={errors}
-                  name='confirmPassword'
-                  type='password'
-                  placeHolder='Nhập lại mật khẩu'
-                  inputStyle={'form-control'}
-                />
+
                 <Button
-                  label='Thay đổi mật khẩu'
+                  label='Xác thực OTP'
                   type='submit'
                   buttonStyle={BUTTON_STYLES.PINK}
                   width={100}
@@ -121,4 +110,4 @@ const ChangePassword = () => {
   )
 }
 
-export default ChangePassword
+export default ForgotPassOtp
