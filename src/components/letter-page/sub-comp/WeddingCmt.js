@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import msgCmtTitle from '@/assets/home-image/msgCmtTitle.png'
 import closeIcon from '@/assets/svg/icon-close-outline.svg'
 import { Button } from '@/components/button'
 import { BUTTON_STYLES } from '@/commons/Constant.ts'
 import { convertTimeFormat } from '@/utils/helpers'
+import Popup from '@/components/modal/Popup'
+import DeleteCmtInput from './DeleteCmtInput'
 const WeddingCmt = ({ viewDetail, cmt, deleteCmt, index }) => {
+  const modalRef = useRef()
   return (
     <div
       className={`${!viewDetail && 'max-w-md'} p-4 relative`}
@@ -12,7 +15,7 @@ const WeddingCmt = ({ viewDetail, cmt, deleteCmt, index }) => {
     >
       <img
         className='close_icon'
-        onClick={deleteCmt}
+        onClick={() => modalRef.current.showModal()}
         src={closeIcon}
         alt=''
         // className=' w-6 '
@@ -64,6 +67,10 @@ const WeddingCmt = ({ viewDetail, cmt, deleteCmt, index }) => {
           />
         )}
       </div>
+      <Popup
+        ref={modalRef}
+        content={<DeleteCmtInput deleteCmt={deleteCmt} _id={cmt._id} />}
+      />
     </div>
   )
 }

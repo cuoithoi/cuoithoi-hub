@@ -30,7 +30,6 @@ const Message = () => {
     cmtRef.current.showModal()
   }
   const deleteCmt = (index) => {
-    console.log('delete cmt')
     setCmtList((prev) => {
       prev.splice(index, 1)
       console.log(prev)
@@ -56,15 +55,15 @@ const Message = () => {
       <TitleSection title='LỜI CHÚC' />
       {cmtList.length > 0 ? (
         <Carousel
-        showStatus={false}
-        showThumbs={false}
-        showArrows={true}
-        centerMode={true}
-        showIndicators={false}
-        swipeable
-        emulateTouch
-        className='slider_cmt'
-        renderThumbs={() => null}
+          showStatus={false}
+          showThumbs={false}
+          showArrows={true}
+          centerMode={true}
+          showIndicators={false}
+          swipeable
+          emulateTouch
+          className='slider_cmt'
+          renderThumbs={() => null}
         >
           {cmtList?.map((cmt, index) => {
             return (

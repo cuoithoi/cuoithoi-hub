@@ -90,6 +90,16 @@ const postDataApi = async (url, data) => {
     console.log(error)
   }
 }
+const deleteDataApi = async (url, data) => {
+  try {
+    const resp = await customFetch.delete(url, {
+      data: data,
+    })
+    return resp.data
+  } catch (error) {
+    throw new Error(error)
+  }
+}
 const getDataWithParams = async (url, params) => {
   try {
     const token = getLocalAccessToken()
@@ -206,6 +216,7 @@ export {
   getWithParams,
   getDataWithParams,
   postDataApi,
+  deleteDataApi,
   postWithFormData,
   getDataApi,
   putWithHeaders,

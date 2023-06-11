@@ -6,6 +6,7 @@ import { csv, useBaseService } from '@/utils/BaseServices'
 import { config } from '@/commons/Constant.ts'
 import { useParams } from 'react-router-dom'
 import { getLocalAccessToken } from '@/utils/localStorage'
+import Popup from '@/components/modal/Popup'
 const CommentDetail = () => {
   const { id } = useParams()
   const [cmtList, setCmtList] = useState([])
