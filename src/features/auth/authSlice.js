@@ -14,6 +14,7 @@ const initialState = {
   userId: '',
   token: '',
   emailVerify: {
+    otp: '',
     hash: '',
   },
 }
@@ -48,21 +49,31 @@ export const signinUser = createAsyncThunk(
 )
 
 // this function use for verify email when user forgot password
-export const verifyEmail = createAsyncThunk(
-  'auth/verifyEmail',
-  async (email) => {
-    try {
-      const response = await customFetch.post('/verify-user-by-email', email)
-      return response.data.data
-    } catch (error) {
-      toast.error(
-        'Xác thực email thất bại, Vui lòng kiểm tra lại',
-        error.response.message
-      )
-    }
-  }
-)
-
+// export const verifyEmail = createAsyncThunk(
+//   'auth/verifyEmail',
+//   async (email) => {
+//     try {
+//       const response = await customFetch.post('/verify-user-by-email', email)
+//       return response.data.data
+//     } catch (error) {
+//       toast.error(
+//         'Xác thực email thất bại, Vui lòng kiểm tra lại',
+//         error.response.message
+//       )
+//     }
+//   }
+// )
+// export const FogotPassVerifyOTP = createAsyncThunk(
+//   'auth/verifyOtp',
+//   async (otp, thunkAPI) => {
+//     try {
+//       const response = await customFetch.post('/verify-otp', otp)
+//       return response.data.data
+//     } catch (error) {
+//       toast.error('Xác thực OTP thất bại, Vui lòng kiểm tra lại')
+//     }
+//   }
+// )
 export const verifyOTP = createAsyncThunk(
   'auth/verifyOtp',
   async (otp, thunkAPI) => {
@@ -81,6 +92,12 @@ const authSlice = createSlice({
     logoutUser: (state) => {
       state.user = null
       removeUserFromLocalStorage()
+    },
+    verifyEmail: (state, { payload }) => {
+      state.emailVerify.hash = payload
+    },
+    forgotPassOtp: (state, { payload }) => {
+      state.emailVerify.otp = payload
     },
   },
   extraReducers: {
@@ -118,14 +135,17 @@ const authSlice = createSlice({
       addUserToLocalStorage(payload.data)
       state.isLoading = false
     },
-    [verifyEmail.pending]: (state) => {
-      state.isLoading = true
-    },
-    [verifyEmail.fulfilled]: (state, { payload }) => {
-      state.isLoading = false
-      state.emailVerify.hash = payload.hash
-    },
+    // [verifyEmail.pending]: (state) => {
+    //   state.isLoading = true
+    // },
+    // [verifyEmail.fulfilled]: (state, { payload }) => {
+    //   state.isLoading = false
+    //   state.emailVerify.hash = payload.hash
+    // },
+    // [verifyEmail.rejected]: (state, { payload }) => {
+    //   state.isLoading = false
+    // },
   },
 })
-export const { logoutUser } = authSlice.actions
+export const { logoutUser, verifyEmail, forgotPassOtp } = authSlice.actions
 export default authSlice.reducer

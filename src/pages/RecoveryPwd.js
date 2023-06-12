@@ -13,11 +13,14 @@ import { FaLongArrowAltLeft } from 'react-icons/fa'
 import Loading from '@/components/Loading'
 import { Input } from '@/components/input/Input'
 import { useForm } from 'react-hook-form'
-import { verifyEmail } from '@/features/auth/authSlice'
+// import { verifyEmail } from '@/features/auth/authSlice'
 import yup from '@/utils/yupGlobal'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { customFetch } from '@/utils/axios'
+import { verifyEmail } from '@/features/auth/authSlice'
+import { toast } from 'react-toastify'
 const schema = yup.object().shape({
   email: yup
     .string()
@@ -27,6 +30,9 @@ const schema = yup.object().shape({
 const RecoveryPwd = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const handleNavigateSuccess = () => {
+    navigate(Alias.emailOtp)
+  }
   const {
     register,
     handleSubmit,
@@ -37,8 +43,19 @@ const RecoveryPwd = () => {
     resolver: yupResolver(schema),
   })
   const onSubmit = (data) => {
-    console.log(data)
-    dispatch(verifyEmail(data))
+    const postData = async () => {
+      try {
+        const resp = await customFetch.post('/verify-user-by-email', data)
+        dispatch(verifyEmail(resp.data.data.hash))
+        toast.success(
+          'Xác thực email thành công, vui lòng nhập mã OTP gửi về email của bạn'
+        )
+        navigate(Alias.forgotPassOtp)
+      } catch (err) {
+        toast.error('Xác thực email không thành công')
+      }
+    }
+    postData()
   }
 
   // const [name, setName] = useState('');
@@ -83,14 +100,6 @@ const RecoveryPwd = () => {
                 className='fieldscli_data'
                 onSubmit={handleSubmit(onSubmit)}
               >
-                {/* <MyTextInput
-                    ref={refName}
-                    value={name}
-                    type={'text'}
-                    placeHolder={Languages.inputText.username}
-                    onChangeText={handleChangeName}
-                    inputStyle={'form-control'}
-                  /> */}
                 <Input
                   register={register}
                   errors={errors}

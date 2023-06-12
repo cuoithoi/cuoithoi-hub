@@ -22,6 +22,8 @@ import RegisterRefactor from './pages/RegisterRefactor'
 import CustomerCare from './pages/CustomerCare'
 import 'react-toastify/dist/ReactToastify.css'
 import Languages from './commons/Languages'
+import ForgotPassOtp from './pages/ForgetPassOtp'
+import ChangePassword from './pages/ChangePassword'
 
 export const PageTitle = (props) => {
   useEffect(() => {
@@ -69,6 +71,8 @@ function App() {
           <Route path={Alias.services} element={<Services />} />
           <Route path={Alias.verifyOtp} element={<VerifyOtp />} />
           <Route path={Alias.emailOtp} element={<EmailOtp />} />
+          <Route path={Alias.forgotPassOtp} element={<ForgotPassOtp />} />
+          <Route path={Alias.changePassword} element={<ChangePassword />} />
           <Route path='*' element={<Notfound />} />
         </Routes>
       </BrowserRouter>
