@@ -530,11 +530,12 @@ const CreatePage = () => {
             allowDrag={allowDrag}
             title={titleImages || Languages.text.addonepic}
             urlLocal={urlLocal}
+            idCreateRespon={idCreateRespon}
           />
         </div>
       )
     },
-    [onSortEnd]
+    [onSortEnd, idCreateRespon]
   )
 
   const renderAlbum = useMemo(() => {
@@ -951,7 +952,7 @@ const CreatePage = () => {
         "timeOfEventInterrogation": values.timeAndLocationOfInterrogation.timeOfEventInterrogation,
         "locationOfInterrogation": values.timeAndLocationOfInterrogation.locationOfInterrogation
       },
-      "album": albumURL,
+      "album": values.album === [] || albumURL,
       "videoLink": values.videoLink,
       "eventOfProgram": {
         "timeToWellcome": values.eventOfProgram.timeToWellcome,
@@ -1026,12 +1027,12 @@ const CreatePage = () => {
   }, [imagesURL,
     imagesCoverURL,
     album,
+    albumURL,
     packageType,
     user,
     codeinvite,
     idCreateRespon,
     values,
-    albumURL,
     radioMusic,
     radioStyleTitle,
     radioStyleContent,
@@ -1069,8 +1070,6 @@ const CreatePage = () => {
         const discount = parseInt((1 - percentOff) * 100);
         const total = (parseInt(packageType[1]) + totalSumAnother) * (discount / 100);
         setValuedataAnotherTotalPrice(total)
-
-        console.log(percentOff, discount, total)
 
         setCheckParams(CheckParams.CONFIRM_INFO)
         refModal.current?.showModal()

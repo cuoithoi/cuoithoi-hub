@@ -5,9 +5,11 @@ import SortableList, { SortableItem } from "react-easy-sort";
 import Validate from "@/utils/Validate";
 import { isArray } from "lodash";
 import { fiedlsCreatePage } from "@/commons/FieldsDataObj";
+import { APi, config } from '@/commons/Constant.ts'
+import { useBaseService } from '@/utils/BaseServices'
 
 export const ImageUpload = forwardRef(
-  ({ images, title, icon, maxW, height, desc, maxnumber, allowDrag, onChange, onSortEnd, urlLocal }, ref) => {
+  ({ images, title, icon, maxW, height, desc, maxnumber, allowDrag, onChange, onSortEnd, urlLocal, idCreateRespon }, ref) => {
     useImperativeHandle(ref, () => ({
       setErrorMsg
     }));
@@ -18,7 +20,11 @@ export const ImageUpload = forwardRef(
 
     const [checkUrlLocal, setCheckurlLocal] = useState(false);
 
+    const [albumList, setAlbumList] = useState(urlLocal)
+
     const maxNumber = maxnumber || 10;
+
+    const { post } = useBaseService()
 
     //function sort and updatelist => call out component
     // const onChange = (imageList) => {
@@ -63,6 +69,23 @@ export const ImageUpload = forwardRef(
       setCheckurlLocal(true)
       values.album = []
     }, [checkUrlLocal])
+
+    const onRemoveAlnum = async (itemUrl) => {
+
+      const newAlbum = [...albumList];
+      newAlbum.splice(itemUrl, 1);
+      setAlbumList(newAlbum);
+
+      const dataUpdate = Object.assign({
+        "_id": idCreateRespon,
+        "album": newAlbum
+      })
+
+      const responseupdate = await post(APi.updateInvitation, dataUpdate, config);
+      if (responseupdate.errorCode == 0) {
+        values.album = responseupdate.data?.album
+      }
+    }
 
     return (
       <div className="wrap_box_upload_image_section">
@@ -174,7 +197,7 @@ export const ImageUpload = forwardRef(
                   />
                 </div></div>
               || isArray(urlLocal) && <> {
-                urlLocal.map((image, index) =>
+                albumList.map((image, index) =>
                   <div
                     className="relative max-w-fit"
                     style={{ height: height }}
@@ -182,7 +205,7 @@ export const ImageUpload = forwardRef(
                   >
                     <div
                       className="absolute pointer"
-                      onClick={onRemove}
+                      onClick={() => onRemoveAlnum(image)}
                     >
                       <CloseIcon />
                     </div>
@@ -278,9 +301,6 @@ export const ImageUpload = forwardRef(
             }
           </div>
         }
-
-
-
 
       </div>
     );
