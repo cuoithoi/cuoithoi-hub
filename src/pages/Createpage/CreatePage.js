@@ -976,7 +976,6 @@ const CreatePage = () => {
         "value": radioEffectBg
       },
     }
-
     if (checkUrl) {
       const response = await post(APi.createInvitation, Object.assign(jsonData, {
         "isUseConfirm": values.isUseConfirm,
@@ -1024,7 +1023,22 @@ const CreatePage = () => {
 
     }
 
-  }, [imagesURL, imagesCoverURL, album, packageType, user, codeinvite, idCreateRespon, values, albumURL])
+  }, [imagesURL,
+    imagesCoverURL,
+    album,
+    packageType,
+    user,
+    codeinvite,
+    idCreateRespon,
+    values,
+    albumURL,
+    radioMusic,
+    radioStyleTitle,
+    radioStyleContent,
+    radioTypeBg,
+    radioColorBg,
+    radioEffectBg,
+    radioEffectImage])
 
   const onOpenSuccessConfirm = useCallback(() => {
 
@@ -1052,7 +1066,7 @@ const CreatePage = () => {
           const sum = parseInt(arrayItem[0]);
           return acc + sum;
         }, 0);
-        const discount = parseInt((1 - 0.7) * 100);
+        const discount = parseInt((1 - percentOff) * 100);
         const total = (parseInt(packageType[1]) + totalSumAnother) * (discount / 100);
         setValuedataAnotherTotalPrice(total)
 
