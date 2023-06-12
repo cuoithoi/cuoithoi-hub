@@ -1,7 +1,6 @@
 import React from 'react'
 import { Carousel } from 'react-responsive-carousel'
-import bankQr from '@/assets/temp-file/bank-qr.png'
-import bankText from '@/assets/temp-file/bank-text.png'
+
 const BankInfo = ({
   nameBank,
   nameBankOfFather,
@@ -17,7 +16,16 @@ const BankInfo = ({
         Thông tin {`${isBride ? 'Nhà gái' : 'Nhà trai'}`}
       </h2>
       <div className=' text-left'>
-        <Carousel showArrows={true} centerMode={true}>
+        <Carousel
+          showStatus={false}
+          showArrows={false}
+          centerMode={true}
+          showIndicators={false}
+          swipeable
+          emulateTouch
+          centerSlidePercentage={100}
+          className='banking_happy_invite'
+        >
           <div className=' text-left'>
             <h2>{isBride ? 'Cô dâu' : 'Chú rể'}</h2>
             <p className='pr-4 text-sm'>{nameBank}</p>

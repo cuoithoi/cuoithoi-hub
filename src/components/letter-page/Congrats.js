@@ -163,9 +163,3 @@ const Congrats = ({ informationOfBride, informationOfGroom }) => {
 }
 
 export default Congrats
-// <button onClick={() => handleShowModal()}>click</button>
-// <Popup
-//   ref={modalRef}
-//   btnCancelText={Languages.common.cancel}
-//   btnSubmitText={Languages.common.delete}
-// />

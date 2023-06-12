@@ -14,7 +14,6 @@ import Sidebar from '../components/letter-page/sub-comp/Sidebar'
 import YoutubeVideo from '../components/letter-page/YoutubeVideo'
 import Snowfall from 'react-snowfall'
 
-import leaveEffect from '../assets/home-image/leaveEffect.png'
 
 import NavButton from '../components/letter-page/sub-comp/NavButton'
 import Message from '@/components/letter-page/Message'

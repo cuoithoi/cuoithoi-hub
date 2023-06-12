@@ -13,6 +13,7 @@ import { Alias } from '@/commons/Constant.ts'
 import { getDataWithParams } from '@/utils/axios'
 import { customFetch } from '@/utils/axios'
 import CommentDetail from '@/pages/CommentDetail'
+import { Convert } from '../../commons/Constant.ts'
 const Message = () => {
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(true)
@@ -32,7 +33,6 @@ const Message = () => {
   const deleteCmt = (index) => {
     setCmtList((prev) => {
       prev.splice(index, 1)
-      console.log(prev)
       return prev
     })
   }
@@ -64,6 +64,7 @@ const Message = () => {
           emulateTouch
           className='slider_cmt'
           renderThumbs={() => null}
+          centerSlidePercentage={100}
         >
           {cmtList?.map((cmt, index) => {
             return (
@@ -108,7 +109,7 @@ const Message = () => {
           />
         }
       />
-      <Popup ref={cmtRef} height={'80vh'} content={<CommentDetail />} />
+      <Popup ref={cmtRef} height={'80vh'} content={<CommentDetail />} maxWidth={Convert.W_800}/>
     </div>
   )
 }

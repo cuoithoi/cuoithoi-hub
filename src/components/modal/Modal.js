@@ -25,7 +25,7 @@ const Modal = ({
       <div className='modal-block '>
         <div
           className='modal-content overflow-hidden modal-mw p-4 rounded-lg'
-          style={{ maxWidth: maxWidth, height: height }}
+          style={{ maxWidth: maxWidth, height: height, width: '100%' }}
         >
           {/* <div className='close-modal-icon'>
             <CloseIcon />

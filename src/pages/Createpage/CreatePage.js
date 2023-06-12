@@ -975,6 +975,9 @@ const CreatePage = () => {
       "effectBackgroud": {
         "value": radioEffectBg
       },
+      "productId": packageType[2],
+      "packageType": packageType,
+      "anotherProduct": values.anotherProduct
     }
     if (checkUrl) {
       const response = await post(APi.createInvitation, Object.assign(jsonData, {
@@ -983,10 +986,7 @@ const CreatePage = () => {
         "password": values.password,
         "contentGuestBook": values.contentGuestBook,
         "isEffectOfOpenning": values.isEffectOfOpenning,
-        "packageType": packageType,
-        "anotherProduct": values.anotherProduct,
         "codeInvite": codeinvite,
-        "productId": packageType[2],
         "status": '2'
       }), config);
 
