@@ -24,9 +24,9 @@ const Gallery = ({ album }) => {
           selectedItem={selectedItem}
         >
           {album.map((image) => {
-            return (
+              return (
               <div className='gallery-image mb-3 relative'>
-                <img src={image[0]} alt='image gallery' />
+                <img src={image} alt='image gallery' />
                 <div
                   className='absolute bottom-8 right-8 w-12 h-6 flex items-center justify-end cursor-pointer rounded-md '
                   style={{ backgroundColor: 'rgba(0,0,0,0.2)' }}
@@ -57,7 +57,7 @@ const Gallery = ({ album }) => {
                 onClick={() => setSelectedItem(index)}
               >
                 <div className='img-container'>
-                  <img src={image[0]} alt='image gallery' />
+                  <img src={image} alt='image gallery' />
                 </div>
                 <div
                   className='absolute bottom-2 right-2 w-8 h-6 flex items-center justify-end cursor-pointer rounded-md  bg-bg-appear'

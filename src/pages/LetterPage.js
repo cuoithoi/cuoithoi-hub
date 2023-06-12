@@ -126,7 +126,6 @@ const LetterPage = () => {
     )
   }
 
-  console.log(letter)
   return (
     <div className={`letter-wrapper ${bgColor}`}>
       <div className={`letter-layout ${bgColor}`}>
