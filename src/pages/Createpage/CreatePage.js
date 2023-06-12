@@ -81,7 +81,7 @@ const CreatePage = () => {
   const [packageType, setPackageType] = useState([])
   const [valuedataAnotherTotalPrice, setValuedataAnotherTotalPrice] = useState(0)
   const [codeinvite, setCodeinvite] = useState('')
-  const [percentOff, setPercentOff] = useState(1)
+  const [percentOff, setPercentOff] = useState(0)
   const [checkUrl, setCheckUrl] = useState(true)
 
   const refUnderfine = useRef(null)
@@ -757,6 +757,7 @@ const CreatePage = () => {
         }
 
       </select>
+
     </div>
     </>
   }, [dataPackage, editor, onChangePackage])
@@ -777,7 +778,8 @@ const CreatePage = () => {
             </div>
           </div>
         })
-      }</div>
+      }
+    </div>
     </>
   }, [dataAnother, valuedataAnother, editor, onCheckedDataAnother])
 
@@ -1031,26 +1033,30 @@ const CreatePage = () => {
 
         toast.error(Languages.errorMsg.uploadingEmpty);
 
-      } else if (passValidateSuccess() !== true) {
-        setDisable(false)
-        if (disable)
-          onChangeSaveSetting()
-
-      } else {
+      } else if (packageType.length === 0) {
+        toast.error(Languages.text.packagePro);
+      }
+      // else if (passValidateSuccess() !== true) {
+      //   setDisable(false)
+      //   if (disable)
+      //     onChangeSaveSetting()
+      // } 
+      else {
         setDisable(false)
         if (disable) {
           onChangeSaveSetting()
         }
 
-        const totalSum = valuedataAnother.reduce((acc, curr) => {
+        const totalSumAnother = valuedataAnother.reduce((acc, curr) => {
           const arrayItem = curr.split(",", 2).slice(0, 1).map(Number);
           const sum = parseInt(arrayItem[0]);
           return acc + sum;
         }, 0);
-
-        const discount = percentOff === 1 ? percentOff === 0 : percentOff
-        const total = parseInt(packageType[1]) + totalSum * (parseInt(1 - discount));
+        const discount = parseInt((1 - 0.7) * 100);
+        const total = (parseInt(packageType[1]) + totalSumAnother) * (discount / 100);
         setValuedataAnotherTotalPrice(total)
+
+        console.log(percentOff, discount, total)
 
         setCheckParams(CheckParams.CONFIRM_INFO)
         refModal.current?.showModal()
@@ -1101,6 +1107,7 @@ const CreatePage = () => {
       toast.error(Languages.errorMsg.errorSuccess)
     }
 
+    navigate(Alias.mypage)
 
     // }
     // return false
@@ -1134,7 +1141,6 @@ const CreatePage = () => {
   }, [checkParams, onChangeValidateConfirm])
 
   const renderContentModal = useMemo(() => {
-
     return (
 
       checkParams === CheckParams.AFFTER &&
