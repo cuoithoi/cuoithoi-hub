@@ -14,7 +14,6 @@ import Sidebar from '../components/letter-page/sub-comp/Sidebar'
 import YoutubeVideo from '../components/letter-page/YoutubeVideo'
 import Snowfall from 'react-snowfall'
 
-
 import NavButton from '../components/letter-page/sub-comp/NavButton'
 import Message from '@/components/letter-page/Message'
 import Response from '@/components/letter-page/Response'
@@ -27,6 +26,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import SnowFall from '@/components/letter-page/SnowFall'
 import { getUserFromLocalStorage } from '@/utils/localStorage'
 import { Alias } from '@/commons/Constant.ts'
+import { isElementOfType } from 'react-dom/test-utils'
 const LetterPage = () => {
   const navigate = useNavigate()
   const { id } = useParams()
@@ -72,31 +72,31 @@ const LetterPage = () => {
   }, [])
   if (isLoading) return
   const {
-    album,
     anotherProduct,
     backgroundColor,
     codeInvite,
     contentGuestBook,
+    fontStyleOfContent,
+    fontStyleOfTitle,
+    isDisplayGonePeople,
+    isPaid,
+    password,
+    productId,
+    styleBackground,
+    thumbnailImage,
+    album,
     contentOfInvitation,
     coverImage,
-    createTime,
+    // createTime,
     effectBackgroud,
     effectImage,
     eventOfProgram,
-    fontStyleOfContent,
-    fontStyleOfTitle,
     informationOfBride,
     informationOfGroom,
-    isDisplayGonePeople,
     isEffectOfOpenning,
-    isPaid,
     isUseConfirm,
     isUseGuestBook,
-    password,
-    productId,
     song,
-    styleBackground,
-    thumbnailImage,
     timeAndLocationOfEgagement,
     timeAndLocationOfInterrogation,
     timeAndLocationOfWedding,
@@ -107,7 +107,7 @@ const LetterPage = () => {
   // if (!isPaid && userId !== storageId?.userId) {
   //   navigate(Alias.homePage)
   // }
-  if (!isLetterOpen && !isLoading) {
+  if (!isLetterOpen && !isLoading && isEffectOfOpenning) {
     console.log(timeAndLocationOfWedding)
     return (
       <div className='w-screen h-screen m-0 p-0 flex items-center justify-center bg-main'>
@@ -132,7 +132,7 @@ const LetterPage = () => {
         <NavButton setIsNavOpen={setIsNavOpen} song={song} />
 
         <Hero
-          song={song}
+          effectImage={effectImage}
           setIsNavOpen={setIsNavOpen}
           manfirstName={informationOfGroom.firstName}
           coverImage={coverImage}
@@ -161,8 +161,8 @@ const LetterPage = () => {
           informationOfBride={informationOfBride}
           informationOfGroom={informationOfGroom}
         />
-        <Message id={userId} />
-        <Response />
+        {isUseGuestBook && <Message id={userId} />}
+        {isUseConfirm && <Response />}
         <FooterLogo />
       </div>
 
