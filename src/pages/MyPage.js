@@ -31,6 +31,7 @@ const Mypage = () => {
 
   const [checkParams, setCheckParams] = useState(CheckParams.NOTOKEN)
   const [listDataApi, setListDataApi] = useState([])
+  const [limit, setLimit] = useState(0)
   const { user } = useSelector((store) => store.auth)
 
   const refModal = useRef(null)
@@ -60,18 +61,35 @@ const Mypage = () => {
         console.error('Đã xảy ra lỗi:', error)
       }
     }
+
+    console.log(limit)
+
+    const asyncLimit = async () => {
+      try {
+        const response = await get(APi.checkLimit, config, {
+          userId: user?.userId,
+        })
+        setLimit(response.data.total)
+      } catch (error) {
+        console.error('Đã xảy ra lỗi:', error)
+      }
+    }
+    asyncLimit()
     asyncListPage()
     // }
   }, [])
 
   const navigateLetterpage = () => {
-    if (user) {
+    if (user && limit < 3) {
       navigate(Alias.createPage, {
         state: {
           createpage: true,
         },
       })
       window.location.reload()
+    } else if (limit === 3) {
+      setCheckParams(CheckParams.LIMIT)
+      refModal.current?.showModal()
     } else {
       setCheckParams(CheckParams.NOTOKEN)
       refModal.current?.showModal()
@@ -103,6 +121,17 @@ const Mypage = () => {
           </div>
           <div className='contentModal'>
             <p>{Languages.text.noletterContent}</p>
+          </div>
+        </div>
+      )) ||
+      (checkParams == CheckParams.LIMIT && (
+        <div className='renderContentModal'>
+          <div className='head'>
+            <img src={IcInf} alt={'icinf'} />
+            <h2>{Languages.text.limit}</h2>
+          </div>
+          <div className='contentModal'>
+            <p>{Languages.text.contentLimit}</p>
           </div>
         </div>
       ))

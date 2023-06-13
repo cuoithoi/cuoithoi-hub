@@ -220,6 +220,8 @@ const Languages = {
     productNumber: 'Product Number',
     success: 'Thành Công',
     happysuccess: 'Xin chúc mừng bạn đã tạo thiệp cưới thành công',
+    waring: 'Cảnh báo',
+    outPageCreate: 'Hãy nhớ lưu tất cả các thiếp lập của bạn trước khi rời trang để tránh mất thông tin! ',
     confimSuccess: 'Xác nhận thông tin',
     ReceiverPerson: 'Thông tin người nhận',
     servicesInfo: 'Thông tin dịch vụ',
@@ -236,9 +238,11 @@ const Languages = {
     bank: 'Chọn ngân hàng',
     deleteItem: 'Bạn có chắc muốn xóa',
     deleteContent: 'Bấm đồng ý để tiếp tục xóa',
-    paymentSuccess: 'Thanh toán thành công',
+    paymentSuccess: 'Đã nhận thông tin',
     alertSendPayment: 'Cuoithoi đã nhận được thông tin thanh toán và sẽ gửi thư xác nhận tới email của bạn.',
-    contactnow: 'Liên hệ ngay cho chúng tôi khi cần hỗ trợ'
+    contactnow: 'Liên hệ ngay cho chúng tôi khi cần hỗ trợ',
+    limit: 'Vượt quá số lượng',
+    contentLimit: 'Số lượng thiệp miễn phí đã được tạo tối đa'
   },
   errorMsg: {
     noCorect: 'Không hợp lệ',

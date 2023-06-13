@@ -3,7 +3,7 @@ import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo
 import Languages from '@/commons/Languages'
 import { SelectWarningTemplate, fiedlsCreatePage } from "@/commons/FieldsDataObj";
 import { BUTTON_STYLES, CheckParams, Convert, EventOfProgram, INPUT_FIELDS, itemLocal } from "@/commons/Constant.ts";
-import { FaCalendar, FaLink } from "react-icons/fa";
+import { FaLink } from "react-icons/fa";
 import { Panel } from "@/components/panel";
 import FormValidate from "@/utils/FormValidate";
 import Popup from "@/components/modal/Popup";
@@ -11,7 +11,6 @@ import { RadioButton } from "@/components/RadioButton";
 import { MyTextArea } from "@/components/textarea";
 import { Button } from "@/components/button";
 import { getItemFromLocalStorage } from "@/utils/localStorage";
-import { values } from "lodash";
 
 const VideoandEvent = forwardRef(({ }, ref) => {
 
@@ -281,7 +280,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
 
                     <div className='double_input_row'>
                         <div className='half_row_hor_input'>
-                            {renderInput('', '', Languages.text.welcomeGuest, '', 'text', 200, true, <FaCalendar />, 'disable')}
+                            {renderInput('', '', Languages.text.welcomeGuest, '', 'text', 200, false,'', 'disable')}
                         </div>
                         <div className='half_row_hor_input'>
                             {renderInput(refTimeToWellcome, '', '', EventOfProgram.timeToWellcome, 'time', 200, false, '', '', value.eventOfProgram.timeToWellcome)}
@@ -290,7 +289,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
 
                     <div className='double_input_row'>
                         <div className='half_row_hor_input'>
-                            {renderInput('', '', Languages.text.celebrate, '', 'text', 200, true, <FaCalendar />, 'disable')}
+                            {renderInput('', '', Languages.text.celebrate, '', 'text', 200, false,'', 'disable')}
                         </div>
                         <div className='half_row_hor_input'>
                             {renderInput(refTimeToCelebrate, '', '', EventOfProgram.timeToCelebrate, 'time', 200, false, '', '', value.eventOfProgram.timeToCelebrate)}
@@ -299,7 +298,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
 
                     <div className='double_input_row'>
                         <div className='half_row_hor_input'>
-                            {renderInput('', '', Languages.text.dinner, '', 'text', 200, true, <FaCalendar />, 'disable')}
+                            {renderInput('', '', Languages.text.dinner, '', 'text', 200, false, '', 'disable')}
                         </div>
                         <div className='half_row_hor_input'>
                             {renderInput(refTimeToDinner, '', '', EventOfProgram.timeToDinner, 'time', 200, false, '', '', value.eventOfProgram.timeToDinner)}
@@ -308,7 +307,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
 
                     <div className='double_input_row'>
                         <div className='half_row_hor_input'>
-                            {renderInput('', '', Languages.text.music, '', 'text', 200, true, <FaCalendar />, 'disable')}
+                            {renderInput('', '', Languages.text.music, '', 'text', 200, false, '', 'disable')}
                         </div>
                         <div className='half_row_hor_input'>
                             {renderInput(refTimeToMusic, '', '', EventOfProgram.timeToMusic, 'time', 200, false, '', '', value.eventOfProgram.timeToMusic)}

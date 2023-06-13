@@ -2627,8 +2627,6 @@ img {
   right: 0;
   max-width: 350px;
   width: 100%;
-  -webkit-transform: translate3d(-100%, 0, 0);
-  transform: translate3d(-100%, 0, 0);
   height: 100%;
   display: flex;
   align-items: center;
@@ -3101,6 +3099,13 @@ img {
   font-size: 16px;
   line-height: 150%;
   color: var(--color-hover);
+}
+
+.show_type_display {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
 }
 
 .checkbox {
@@ -3958,11 +3963,6 @@ img {
   .wrap_ds_review {
     padding: 40px 0;
   }
-
-  .box_abs_image_video {
-    transform: translate3d(-20%, 0, 0);
-  }
-
   .animate__fadeInLeft_phone {
     -webkit-animation: fadeInLeftsm;
     animation: fadeInLeftsm;

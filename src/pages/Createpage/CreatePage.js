@@ -104,11 +104,6 @@ const CreatePage = () => {
   const { post, get } = useBaseService()
   const { user } = useSelector((store) => store.auth)
 
-
-  values.isUseConfirm = false
-  values.isUseGuestBook = false
-  values.isEffectOfOpenning = false
-
   useEffect(() => {
     if (location.state?.createpage) {
       removeStorage('createLeter')
@@ -197,8 +192,8 @@ const CreatePage = () => {
 
 
   const onNavigateMypage = () => {
-    navigate(Alias.mypage)
-    removeStorage('hasReloaded')
+    setCheckParams(CheckParams.SUCCESS_CREATE)
+    refModal.current?.showModal();
   }
 
   const radioChangeHandlerGuestbookTemplate = (text, value) => {
@@ -328,11 +323,11 @@ const CreatePage = () => {
         break
 
       case INPUT_FIELDS.isUseGuestBook:
-        values.isUseGuestBook = e;
         setValues(prevValues => ({
           ...prevValues,
           isUseGuestBook: e
         }));
+        values.isUseGuestBook = e;
         setPointer(!pointer)
         break
 
@@ -603,7 +598,7 @@ const CreatePage = () => {
             <div className="Input_boxGroupInput__8ghvv man_inputStyle">
               <label className="Input_label__XHiJ4">{Languages.text.use}</label>
               <div className="Input_formGroup__Ln91z ">
-                <input name="" defaultChecked={true} type="checkbox" className="Input_form_control__zkQn6 checkbox_input_style " onChange={(e) => onChangeText(e.target.checked, INPUT_FIELDS.isUseConfirm)} />
+                <input name="" defaultChecked={itemLocal ? itemLocal?.isUseConfirm : false} type="checkbox" className="Input_form_control__zkQn6 checkbox_input_style " onChange={(e) => onChangeText(e.target.checked, INPUT_FIELDS.isUseConfirm)} />
               </div>
             </div>
           </div>
@@ -631,7 +626,7 @@ const CreatePage = () => {
           <div className="Input_boxGroupInput__8ghvv man_inputStyle">
             <label className="Input_label__XHiJ4">{Languages.text.use}</label>
             <div className="Input_formGroup__Ln91z ">
-              <input name="" defaultChecked={true} type="checkbox" className="Input_form_control__zkQn6 checkbox_input_style " onChange={(e) => onChangeText(e.target.checked, INPUT_FIELDS.isUseGuestBook)} />
+              <input name="" defaultChecked={itemLocal ? itemLocal?.isUseGuestBook : false} type="checkbox" className="Input_form_control__zkQn6 checkbox_input_style " onChange={(e) => onChangeText(e.target.checked, INPUT_FIELDS.isUseGuestBook)} />
             </div>
           </div>
 
@@ -687,7 +682,7 @@ const CreatePage = () => {
           <div className="Input_boxGroupInput__8ghvv man_inputStyle">
             <label className="Input_label__XHiJ4">{Languages.text.use}</label>
             <div className="Input_formGroup__Ln91z ">
-              <input name="" defaultChecked={true} type="checkbox" className="Input_form_control__zkQn6 checkbox_input_style " onChange={(e) => onChangeText(e.target.checked, INPUT_FIELDS.isEffectOfOpenning)} />
+              <input name="" defaultChecked={itemLocal ? itemLocal?.isEffectOfOpenning : false} type="checkbox" className="Input_form_control__zkQn6 checkbox_input_style " onChange={(e) => onChangeText(e.target.checked, INPUT_FIELDS.isEffectOfOpenning)} />
             </div>
           </div>
         </div>
@@ -982,6 +977,7 @@ const CreatePage = () => {
       "packageType": packageType,
       "anotherProduct": values.anotherProduct
     }
+
     if (checkUrl) {
       const response = await post(APi.createInvitation, Object.assign(jsonData, {
         "isUseConfirm": values.isUseConfirm,
@@ -1149,6 +1145,11 @@ const CreatePage = () => {
         onChangeValidateConfirm()
         break
 
+      case CheckParams.SUCCESS_CREATE:
+        navigate(Alias.mypage)
+        removeStorage('hasReloaded')
+        break
+
       default:
         break
     }
@@ -1173,10 +1174,10 @@ const CreatePage = () => {
       || checkParams === CheckParams.SUCCESS_CREATE && <div className='renderContentModal' >
         <div className='head'>
           <img src={IcInf} alt={'icinf'} />
-          <h2>{Languages.text.success}</h2>
+          <h2>{Languages.text.waring}</h2>
         </div>
         <div className='contentModal'>
-          <p>{Languages.text.happysuccess}</p>
+          <p>{Languages.text.outPageCreate}</p>
         </div>
       </div >
 
@@ -1322,7 +1323,7 @@ const CreatePage = () => {
         btnCancelText={Languages.common.cancel}
         btnSubmitText={Languages.common.agree}
         onSuccessPress={onPressHandleModal}
-        maxWidth={checkParams === CheckParams.AFFTER ? Convert.W_400 : Convert.W_800}
+        maxWidth={checkParams === CheckParams.AFFTER || checkParams === CheckParams.SUCCESS_CREATE ? Convert.W_400 : Convert.W_800}
       />
     )
   }, [renderContentModal, checkParams])

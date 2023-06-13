@@ -28,6 +28,7 @@ export enum CheckParams {
   NOTOKEN = 9,
   PAYMENT = 10,
   PAYMENTSUCCESS = 11,
+  LIMIT = 12
 }
 
 export enum Status {
@@ -214,6 +215,7 @@ export const APi = {
   faq: '/get-list-question',
   inforCompany: '/get-information-base',
   codeSale: '/check-sale-code',
+  checkLimit: 'check-limit-create'
 }
 
 export const BankData = 'https://api.vietqr.io/v2/banks'

@@ -108,7 +108,6 @@ const LetterPage = () => {
   //   navigate(Alias.homePage)
   // }
   if (!isLetterOpen && !isLoading && isEffectOfOpenning) {
-    console.log(timeAndLocationOfWedding)
     return (
       <div className='w-screen h-screen m-0 p-0 flex items-center justify-center bg-main'>
         <LetterEnvelopTrial

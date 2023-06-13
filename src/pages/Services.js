@@ -144,7 +144,7 @@ const Services = () => {
         </div>
 
         <div className="wrap_ds_review">
-          <div className="container mx-auto">
+          <div className="container mx-auto" >
             <div className="md:grid md:grid-cols-3 md:gap-4">
               <div className="col-span-2">
                 <AnimationOnScroll
@@ -194,7 +194,7 @@ const Services = () => {
         </div>
 
         <div className="section_video_NFT">
-          <div className="container mx-auto">
+          <div className="container mx-auto" style={{position: 'relative'}}>
             <div className="md:grid md:grid-cols-2 md:gap-4">
               <TabContent>
                 <div title="Video Clip Service" className="tab-content">
@@ -326,7 +326,7 @@ const Services = () => {
                       <h3>Couple at the races (1916)</h3>
                       <div className="property_type">
                         <div className="property_desc">
-                          Heerak Park, South Korea
+                          Ethel Plummer, America
                         </div>
                         <div className="property_size">
                           <span>Kích thước: A3</span>|<span>Khung Gỗ</span>
@@ -349,7 +349,7 @@ const Services = () => {
                       <h3>Love. Neue graphik (1968)</h3>
                       <div className="property_type">
                         <div className="property_desc">
-                          Heerak Park, South Korea
+                          Robert Indiana, America
                         </div>
                         <div className="property_size">
                           <span>Kích thước: A3</span>|<span>Khung Gỗ</span>
@@ -442,7 +442,7 @@ const Services = () => {
                       <h3>Couple at the races (1916)</h3>
                       <div className="property_type">
                         <div className="property_desc">
-                          Heerak Park, South Korea
+                          Ethel Plummer, America
                         </div>
                         <div className="property_size">
                           <span>Kích thước: A3</span>|<span>Khung Gỗ</span>
@@ -505,7 +505,7 @@ const Services = () => {
                       <h3>Love. Neue graphik (1968)</h3>
                       <div className="property_type">
                         <div className="property_desc">
-                          Heerak Park, South Korea
+                          Robert Indiana, America
                         </div>
                         <div className="property_size">
                           <span>Kích thước: A3</span>|<span>Khung Gỗ</span>

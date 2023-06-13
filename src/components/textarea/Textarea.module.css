@@ -40,7 +40,7 @@
     background: var(--color-input);
     min-height: 200px;
     padding: 10px 15px;
-    color: var(--gray-color-3);
+    color: var(--black-color);
     border-radius: 5px;
     border: none;
     font-family: var(--quick-sand-font-family);

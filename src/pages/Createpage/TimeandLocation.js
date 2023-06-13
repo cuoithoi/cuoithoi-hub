@@ -295,7 +295,7 @@ const TimeandLocation = forwardRef(({ }, ref) => {
                         <div className="Input_boxGroupInput__8ghvv man_inputStyle">
                             <label className="Input_label__XHiJ4">{Languages.text.displayDateCoundown}</label>
                             <div className="Input_formGroup__Ln91z ">
-                                <input name="" defaultChecked={true} type="checkbox" className="Input_form_control__zkQn6 checkbox_input_style " onChange={(e) => onChangeText(e.target.checked, TIME_AND_LOCATION.isDisplayCountDown)} />
+                                <input name="" defaultChecked={itemLocal ? itemLocal?.timeAndLocationOfWedding?.isDisplayCountDown : false} type="checkbox" className="Input_form_control__zkQn6 checkbox_input_style " onChange={(e) => onChangeText(e.target.checked, TIME_AND_LOCATION.isDisplayCountDown)} />
                             </div>
                         </div>
                     </div>
