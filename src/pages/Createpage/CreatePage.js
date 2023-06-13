@@ -243,6 +243,7 @@ const CreatePage = () => {
 
 
   const onChange = (imageList) => {
+    values.album = albumURL
     setImages(imageList)
     if (imageList.length > 0) {
       imageList.slice(-1).map(function (item) {
@@ -258,6 +259,7 @@ const CreatePage = () => {
   }
 
   const onChangeCoverImage = (imageList) => {
+    values.album = albumURL
     setImagesCover(imageList)
     if (imageList.length > 0) {
 
@@ -281,7 +283,7 @@ const CreatePage = () => {
       imageList.forEach((imageUrl) => {
         uploadImage(imageUrl.file)
           .then((response) => {
-            // values.album.push(response.data.data);
+            values.album.push(response.data.data);
             setAlbumURL((prevAlbumURL) => [...prevAlbumURL, response.data.data]);
           })
           .catch((error) => {
@@ -952,7 +954,7 @@ const CreatePage = () => {
         "timeOfEventInterrogation": values.timeAndLocationOfInterrogation.timeOfEventInterrogation,
         "locationOfInterrogation": values.timeAndLocationOfInterrogation.locationOfInterrogation
       },
-      "album": values.album === [] || albumURL,
+      "album": values.album === [] ? albumURL : values.album,
       "videoLink": values.videoLink,
       "eventOfProgram": {
         "timeToWellcome": values.eventOfProgram.timeToWellcome,
