@@ -4,7 +4,7 @@ import { Button } from '@/components/button'
 import IcFacebook from '@/assets/home-image/IcFacebook.svg'
 import IcGoogle from '@/assets/home-image/IcGoogle.svg'
 import FacebookLogin from '@greatsumini/react-facebook-login'
-import { GoogleOAuthProvider } from '@react-oauth/google';
+import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
 
 const LoginSocial = () => {
   return (
@@ -51,19 +51,19 @@ const LoginSocial = () => {
           }
         />
       </FacebookLogin>
-      <GoogleOAuthProvider clientId="714927639601-fmahu1dtpmssop1omn4f99shjk1jnm3q.apps.googleusercontent.com">
-        <Button
-          label={Languages.inputText.continueWithGG}
-          width={100}
-          isLowerCase
-          leftIcon={
-            <img
-              src={IcGoogle}
-              className='icon_login'
-              title={Languages.inputText.continueWithFB}
-            />
-          }
+      <GoogleOAuthProvider clientId="PUT-YOUR-CLIENT-ID-HERE">
+
+        <GoogleLogin
+          onSuccess={credentialResponse => {
+            console.log(credentialResponse);
+          }}
+
+          onError={() => {
+            console.log('Login Failed');
+          }}
+          text={Languages.inputText.continueWithGG}
         />
+        
       </GoogleOAuthProvider>
 
     </div>
