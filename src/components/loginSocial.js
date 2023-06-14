@@ -51,7 +51,7 @@ const LoginSocial = () => {
           }
         />
       </FacebookLogin>
-      <GoogleOAuthProvider clientId="PUT-YOUR-CLIENT-ID-HERE">
+      <GoogleOAuthProvider clientId="714927639601-fmahu1dtpmssop1omn4f99shjk1jnm3q.apps.googleusercontent.com">
 
         <GoogleLogin
           onSuccess={credentialResponse => {
@@ -63,7 +63,7 @@ const LoginSocial = () => {
           }}
           text={Languages.inputText.continueWithGG}
         />
-        
+
       </GoogleOAuthProvider>
 
     </div>
