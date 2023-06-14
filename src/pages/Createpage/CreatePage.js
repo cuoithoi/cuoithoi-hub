@@ -975,17 +975,17 @@ const CreatePage = () => {
       },
       "productId": packageType[2],
       "packageType": packageType,
-      "anotherProduct": values.anotherProduct
+      "anotherProduct": values.anotherProduct,
+      "isUseConfirm": values.isUseConfirm,
+      "isUseGuestBook": values.isUseGuestBook,
+      "password": values.password,
+      "contentGuestBook": values.contentGuestBook,
+      "isEffectOfOpenning": values.isEffectOfOpenning,
+      "codeInvite": codeinvite,
     }
 
     if (checkUrl) {
       const response = await post(APi.createInvitation, Object.assign(jsonData, {
-        "isUseConfirm": values.isUseConfirm,
-        "isUseGuestBook": values.isUseGuestBook,
-        "password": values.password,
-        "contentGuestBook": values.contentGuestBook,
-        "isEffectOfOpenning": values.isEffectOfOpenning,
-        "codeInvite": codeinvite,
         "status": '2'
       }), config);
 
