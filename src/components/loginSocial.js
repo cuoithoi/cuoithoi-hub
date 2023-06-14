@@ -52,9 +52,20 @@ const LoginSocial = () => {
         />
       </FacebookLogin>
       <GoogleOAuthProvider clientId="714927639601-fmahu1dtpmssop1omn4f99shjk1jnm3q.apps.googleusercontent.com">
-        
+        <Button
+          label={Languages.inputText.continueWithGG}
+          width={100}
+          isLowerCase
+          leftIcon={
+            <img
+              src={IcGoogle}
+              className='icon_login'
+              title={Languages.inputText.continueWithFB}
+            />
+          }
+        />
       </GoogleOAuthProvider>
-      
+
     </div>
   )
 }
