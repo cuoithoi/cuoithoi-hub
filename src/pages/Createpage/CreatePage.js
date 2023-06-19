@@ -879,12 +879,12 @@ const CreatePage = () => {
         "middleFatherNameOfGroom": values.informationOfGroom[0].middleFatherNameOfGroom,
         "fatherNameOfGroom": values.informationOfGroom[0].fatherNameOfGroom,
         "phoneNumberOfFatherGroom": values.informationOfGroom[0].phoneNumberOfFatherGroom,
-        "isGoneFather": values.informationOfGroom[0].isGoneFather,
+        "isGoneFather": values.informationOfGroom[0].isGoneFather || false,
         "firstMotherNameOfGroom": values.informationOfGroom[0].firstMotherNameOfGroom,
         "middleMotherNameOfGroom": values.informationOfGroom[0].middleMotherNameOfGroom,
         "motherNameOfGroom": values.informationOfGroom[0].motherNameOfGroom,
         "phoneNumberOfMotherGroom": values.informationOfGroom[0].phoneNumberOfMotherGroom,
-        "isGoneMother": values.informationOfGroom[0].isGoneMother,
+        "isGoneMother": values.informationOfGroom[0].isGoneMother || false,
         "nameBankOfGroom": values.informationOfGroom[0].nameBankOfGroom,
         "ownerBankOfGroom": values.informationOfGroom[0].ownerBankOfGroom,
         "bankOfNumberGroom": values.informationOfGroom[0].bankOfNumberGroom,
@@ -910,12 +910,12 @@ const CreatePage = () => {
         "middleFatherNameOfBride": values.informationOfBride[0].middleFatherNameOfBride,
         "fatherNameOfBride": values.informationOfBride[0].fatherNameOfBride,
         "phoneNumberOfFatherBride": values.informationOfBride[0].phoneNumberOfFatherBride,
-        "isGoneFatherBride": values.informationOfBride[0].isGoneFatherBride,
+        "isGoneFatherBride": values.informationOfBride[0].isGoneFatherBride || false,
         "firstMotherNameOfBride": values.informationOfBride[0].firstMotherNameOfBride,
         "middleMotherNameOfBride": values.informationOfBride[0].middleMotherNameOfBride,
         "motherNameOfBride": values.informationOfBride[0].motherNameOfBride,
         "phoneNumberOfMotherBride": values.informationOfBride[0].phoneNumberOfMotherBride,
-        "isGoneMotherOfBride": values.informationOfBride[0].isGoneMotherOfBride,
+        "isGoneMotherOfBride": values.informationOfBride[0].isGoneMotherOfBride || false,
         "nameBankOfBride": values.informationOfBride[0].nameBankOfBride,
         "ownerBankOfBride": values.informationOfBride[0].ownerBankOfBride,
         "bankOfNumberBride": values.informationOfBride[0].bankOfNumberBride,
@@ -929,7 +929,7 @@ const CreatePage = () => {
         "bankOfNumberMotherBride": values.informationOfBride[0].bankOfNumberMotherBride,
         "qrCodeMotherBrideLink": values.informationOfBride[0].qrCodeMotherBrideLink
       },
-      "isDisplayGonePeople": values.informationOfBride[0].isDisplayGonePeople,
+      "isDisplayGonePeople": values.informationOfBride[0].isDisplayGonePeople || false,
       "contentOfInvitation": values.informationOfBride[0].contentOfInvitation,
       "timeAndLocationOfWedding": {
         "dateOfEventWedding": values.timeAndLocationOfWedding.dateOfEventWedding,
@@ -988,9 +988,8 @@ const CreatePage = () => {
       const response = await post(APi.createInvitation, Object.assign(jsonData, {
         "status": '2'
       }), config);
-
+      console.log(jsonData)
       removeStorage('createLeter')
-
       if (response.errorCode == 0) {
         toast.success(Languages.errorMsg.success)
         setIdCreateRespon(response.data.invitation._id)
@@ -1055,10 +1054,9 @@ const CreatePage = () => {
       //     onChangeSaveSetting()
       // } 
       else {
-        setDisable(false)
-        if (disable) {
-          onChangeSaveSetting()
-        }
+
+        onChangeSaveSetting()
+
 
         const totalSumAnother = valuedataAnother.reduce((acc, curr) => {
           const arrayItem = curr.split(",", 2).slice(0, 1).map(Number);

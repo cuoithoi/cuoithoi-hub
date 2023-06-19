@@ -488,7 +488,7 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                         <div className="Input_boxGroupInput__G9mP9 man_inputStyle">
                             <label className="Input_label__90o4b">{Languages.inputText.death}</label>
                             <div className="Input_formGroup__mXqJL ">
-                                <input type="checkbox" defaultChecked={false} className="Input_form_control__5uYZX inputStyle" onChange={(e) => onChangeText(e.target.checked, NAME_INPUT_GROOM.isGoneFather)} />
+                                <input type="checkbox" defaultChecked={itemLocal ? itemLocal.informationOfGroom.isGoneFather : false} className="Input_form_control__5uYZX inputStyle" onChange={(e) => onChangeText(e.target.checked, NAME_INPUT_GROOM.isGoneFather)} />
                             </div>
                         </div>
                     </div>
@@ -564,7 +564,7 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                         <div className="Input_boxGroupInput__G9mP9 man_inputStyle">
                             <label className="Input_label__90o4b">{Languages.inputText.death}</label>
                             <div className="Input_formGroup__mXqJL ">
-                                <input type="checkbox" defaultChecked={false} className="Input_form_control__5uYZX inputStyle" onChange={(e) => onChangeText(e.target.checked, NAME_INPUT_GROOM.isGoneMother)} />
+                                <input type="checkbox" defaultChecked={itemLocal ? itemLocal.informationOfGroom.isGoneMother : false} className="Input_form_control__5uYZX inputStyle" onChange={(e) => onChangeText(e.target.checked, NAME_INPUT_GROOM.isGoneMother)} />
                             </div>
                         </div>
                     </div>
