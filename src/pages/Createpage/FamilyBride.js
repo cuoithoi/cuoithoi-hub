@@ -445,28 +445,7 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                     <label>{Languages.inputText.bride}</label>
                 </div>
                 <div className='group_input_control'>
-                    {renderInput(
-                        refFirstnNameBride,
-                        Languages.inputText.firstNameBride,
-                        'Nguyễn',
-                        NAME_INPUT_BRIDE.firstName,
-                        'text',
-                        15,
-                        false,
-                        false,
-                        value.informationOfBride[0].firstName
-                    )}
-                    {renderInput(
-                        refMiddleNameBride,
-                        Languages.inputText.firstAnother,
-                        'Thị',
-                        NAME_INPUT_BRIDE.middleName,
-                        'text',
-                        30,
-                        false,
-                        false,
-                        value.informationOfBride[0].middleName
-                    )}
+                    
                     {renderInput(
                         refNameBride,
                         Languages.inputText.nameBride,
@@ -494,20 +473,7 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                             </select>
                         </div>
                     </div>
-                    <div className='item_field_single select_code'>
-                        <div className='sellect_option select_phone_code'>
-                            <label className='Input_label__90o4b'>
-                                {Languages.inputText.codeArea}
-                            </label>
-                            <select
-                                className='form_sellect_control select_phone_code_area'
-                                name='form_sellect_stt'
-                                onChange={onChangeSelectCodeArea}
-                            >
-                                <option value='1'>+84</option>
-                            </select>
-                        </div>
-                    </div>
+             
                     {renderInput(
                         refPhoneBride,
                         Languages.inputText.phone,
@@ -527,28 +493,7 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                     <label>{Languages.inputText.father}</label>
                 </div>
                 <div className='group_input_control'>
-                    {renderInput(
-                        refFirstnNameFather,
-                        Languages.inputText.firstName,
-                        'Nguyễn',
-                        NAME_INPUT_BRIDE.firstFatherNameOfBride,
-                        'text',
-                        15,
-                        false,
-                        false,
-                        value.informationOfBride[0].firstFatherNameOfBride
-                    )}
-                    {renderInput(
-                        refMiddleNameFather,
-                        Languages.inputText.firstAnother,
-                        'Văn',
-                        NAME_INPUT_BRIDE.middleFatherNameOfBride,
-                        'text',
-                        30,
-                        false,
-                        false,
-                        value.informationOfBride[0].middleFatherNameOfBride
-                    )}
+            
                     {renderInput(
                         refNameFather,
                         Languages.inputText.namesingle,
@@ -561,20 +506,6 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                         value.informationOfBride[0].fatherNameOfBride
                     )}
 
-                    <div className='item_field_single select_code'>
-                        <div className='sellect_option select_phone_code'>
-                            <label className='Input_label__90o4b'>
-                                {Languages.inputText.codeArea}
-                            </label>
-                            <select
-                                className='form_sellect_control select_phone_code_area'
-                                name='form_sellect_stt'
-                                onChange={onChangeSelectCodeArea}
-                            >
-                                <option value='1'>+84</option>
-                            </select>
-                        </div>
-                    </div>
                     {renderInput(
                         refPhoneFather,
                         Languages.inputText.phone,
@@ -602,28 +533,7 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                     <label>{Languages.inputText.mother}</label>
                 </div>
                 <div className='group_input_control'>
-                    {renderInput(
-                        refFirstnNameMother,
-                        Languages.inputText.firstName,
-                        'Nguyễn',
-                        NAME_INPUT_BRIDE.firstMotherNameOfBride,
-                        'text',
-                        15,
-                        false,
-                        false,
-                        value.informationOfBride[0].firstMotherNameOfBride
-                    )}
-                    {renderInput(
-                        refMiddleNameMother,
-                        Languages.inputText.firstAnother,
-                        'Thị',
-                        NAME_INPUT_BRIDE.middleMotherNameOfBride,
-                        'text',
-                        30,
-                        false,
-                        false,
-                        value.informationOfBride[0].middleMotherNameOfBride
-                    )}
+       
                     {renderInput(
                         refNameMother,
                         Languages.inputText.namesingle,
@@ -636,20 +546,6 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                         value.informationOfBride[0].motherNameOfBride
                     )}
 
-                    <div className='item_field_single select_code'>
-                        <div className='sellect_option select_phone_code'>
-                            <label className='Input_label__90o4b'>
-                                {Languages.inputText.codeArea}
-                            </label>
-                            <select
-                                className='form_sellect_control select_phone_code_area'
-                                name='form_sellect_stt'
-                                onChange={onChangeSelectCodeArea}
-                            >
-                                <option value='1'>+84</option>
-                            </select>
-                        </div>
-                    </div>
                     {renderInput(
                         refPhoneMother,
                         Languages.inputText.phone,

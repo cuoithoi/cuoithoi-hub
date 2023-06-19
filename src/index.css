@@ -2867,7 +2867,15 @@ img {
 
 .savesetting_btn {
   clear: both;
-  padding: 20px 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  right: 0;
+}
+
+.rounded {
+  border-radius: unset;
 }
 
 .wrap_flop_note_using {
@@ -3963,6 +3971,7 @@ img {
   .wrap_ds_review {
     padding: 40px 0;
   }
+
   .animate__fadeInLeft_phone {
     -webkit-animation: fadeInLeftsm;
     animation: fadeInLeftsm;

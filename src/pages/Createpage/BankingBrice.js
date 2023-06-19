@@ -363,14 +363,11 @@ const BankingBrice = forwardRef(({ }, ref) => {
             <h2>{Languages.text.women}</h2>
 
             <div className='inforBank_one_per'>
-                {renderBank(NAME_INPUT_BRIDE.nameBankOfBride, 'Ngân Hàng Cô dâu', value.informationOfBride[0].nameBankOfBride)}
-                <div className='double_input_row'>
-                    <div className='half_row_hor_input'>
-                        {renderInput(refOwnerBride, Languages.text.accountHolder, 'Nhập ' + Languages.text.accountHolder, NAME_INPUT_BRIDE.ownerBankOfBride, 'text', 200, false, '', value.informationOfBride[0].ownerBankOfBride)}
-                    </div>
-                    <div className='half_row_hor_input'>
-                        {renderInput(refNumberBankBride, Languages.text.serinumber, 'Nhập ' + Languages.text.serinumber, NAME_INPUT_BRIDE.bankOfNumberBride, 'number', 16, false, '', value.informationOfBride[0].bankOfNumberBride)}
-                    </div>
+
+                <div className='three_input_col'>
+                    {renderBank(NAME_INPUT_BRIDE.nameBankOfBride, 'Ngân Hàng Cô dâu', value.informationOfBride[0].nameBankOfBride)}
+                    {renderInput(refOwnerBride, Languages.text.accountHolder, 'Nhập ' + Languages.text.accountHolder, NAME_INPUT_BRIDE.ownerBankOfBride, 'text', 200, false, '', value.informationOfBride[0].ownerBankOfBride)}
+                    {renderInput(refNumberBankBride, Languages.text.serinumber, 'Nhập ' + Languages.text.serinumber, NAME_INPUT_BRIDE.bankOfNumberBride, 'number', 16, false, '', value.informationOfBride[0].bankOfNumberBride)}
                 </div>
                 <div className='list_album_uploads'>
                     {renderImageUploadSingle(
@@ -389,15 +386,12 @@ const BankingBrice = forwardRef(({ }, ref) => {
             </div>
 
             <div className='inforBank_one_per'>
-                {renderBank(NAME_INPUT_BRIDE.nameBankOfFatherBride, 'Ngân Hàng Bố Cô dâu', value.informationOfBride[0].nameBankOfFatherBride)}
 
-                <div className='double_input_row'>
-                    <div className='half_row_hor_input'>
-                        {renderInput(refOwnerFather, Languages.text.accountHolder, 'Nhập ' + Languages.text.accountHolder, NAME_INPUT_BRIDE.ownerBankOfFatherBride, 'text', 200, false, '', value.informationOfBride[0].ownerBankOfFatherBride)}
-                    </div>
-                    <div className='half_row_hor_input'>
-                        {renderInput(refNumberBankFather, Languages.text.serinumber, 'Nhập ' + Languages.text.serinumber, NAME_INPUT_BRIDE.bankOfNumberFatherBride, 'number', 16, false, '', value.informationOfBride[0].bankOfNumberFatherBride)}
-                    </div>
+                <div className='three_input_col'>
+                    {renderBank(NAME_INPUT_BRIDE.nameBankOfFatherBride, 'Ngân Hàng Bố Cô dâu', value.informationOfBride[0].nameBankOfFatherBride)}
+                    {renderInput(refOwnerFather, Languages.text.accountHolder, 'Nhập ' + Languages.text.accountHolder, NAME_INPUT_BRIDE.ownerBankOfFatherBride, 'text', 200, false, '', value.informationOfBride[0].ownerBankOfFatherBride)}
+                    {renderInput(refNumberBankFather, Languages.text.serinumber, 'Nhập ' + Languages.text.serinumber, NAME_INPUT_BRIDE.bankOfNumberFatherBride, 'number', 16, false, '', value.informationOfBride[0].bankOfNumberFatherBride)}
+
                 </div>
                 <div className='list_album_uploads'>
                     {renderImageUploadSingle(
@@ -416,14 +410,14 @@ const BankingBrice = forwardRef(({ }, ref) => {
             </div>
 
             <div className='inforBank_one_per'>
-                {renderBank(NAME_INPUT_BRIDE.nameBankOfMotherBride, 'Ngân Hàng Mẹ Cô dâu', value.informationOfBride[0].nameBankOfMotherBride)}
-                <div className='double_input_row'>
-                    <div className='half_row_hor_input'>
-                        {renderInput(refOwnerMother, Languages.text.accountHolder, 'Nhập ' + Languages.text.accountHolder, NAME_INPUT_BRIDE.ownerBankOfMotherBride, 'text', 200, false, '', value.informationOfBride[0].ownerBankOfMotherBride)}
-                    </div>
-                    <div className='half_row_hor_input'>
-                        {renderInput(refNumberBankMother, Languages.text.serinumber, 'Nhập ' + Languages.text.serinumber, NAME_INPUT_BRIDE.bankOfNumberMotherBride, 'number', 16, false, '', value.informationOfBride[0].bankOfNumberMotherBride)}
-                    </div>
+
+                <div className='three_input_col'>
+                    {renderBank(NAME_INPUT_BRIDE.nameBankOfMotherBride, 'Ngân Hàng Mẹ Cô dâu', value.informationOfBride[0].nameBankOfMotherBride)}
+
+                    {renderInput(refOwnerMother, Languages.text.accountHolder, 'Nhập ' + Languages.text.accountHolder, NAME_INPUT_BRIDE.ownerBankOfMotherBride, 'text', 200, false, '', value.informationOfBride[0].ownerBankOfMotherBride)}
+
+                    {renderInput(refNumberBankMother, Languages.text.serinumber, 'Nhập ' + Languages.text.serinumber, NAME_INPUT_BRIDE.bankOfNumberMotherBride, 'number', 16, false, '', value.informationOfBride[0].bankOfNumberMotherBride)}
+
                 </div>
                 <div className='list_album_uploads'>
                     {renderImageUploadSingle(

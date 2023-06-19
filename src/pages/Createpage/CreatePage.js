@@ -733,8 +733,8 @@ const CreatePage = () => {
 
       <div className='sec_options_select_type'>
 
-        {renderComponentStyle('option_type_bg', Languages.text.typeBg, SelectTypeBg, radioChangeHandlerTypebg, radioTypeBg)}
-        {renderComponentStyle('option_color_bg', Languages.text.colorBg, SelectColorBg, radioChangeHandlerColorBg, radioColorBg)}
+        {/* {renderComponentStyle('option_type_bg', Languages.text.typeBg, SelectTypeBg, radioChangeHandlerTypebg, radioTypeBg)}
+        {renderComponentStyle('option_color_bg', Languages.text.colorBg, SelectColorBg, radioChangeHandlerColorBg, radioColorBg)} */}
         {renderComponentStyle('option_effect_bg', Languages.text.effectBg, SelectEffectBg, radioChangeHandlerEffectBg, radioEffectBg)}
 
       </div>
@@ -1433,8 +1433,9 @@ const CreatePage = () => {
                   label={Languages.buttonText.saveSettings}
                   buttonStyle={BUTTON_STYLES.PINK}
                   textStyle={BUTTON_STYLES.WHITE}
-                  autocenter
                   onPress={onOpenSuccessConfirm}
+                  width={100}
+                  rounded={'rounded'}
                 />
               </div>
               <div className='wrap_flop_note_using float_display'>

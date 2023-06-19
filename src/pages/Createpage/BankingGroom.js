@@ -357,14 +357,11 @@ const BankingGroom = forwardRef(({ }, ref) => {
 
             <div className='inforBank_one_per'>
 
-                {renderBank(NAME_INPUT_GROOM.nameBankOfGroom, 'Ngân Hàng Chú rể', value.informationOfGroom[0].nameBankOfGroom)}
-                <div className='double_input_row'>
-                    <div className='half_row_hor_input'>
-                        {renderInput(refOwnerGroom, Languages.text.accountHolder, 'Nhập ' + Languages.text.accountHolder, NAME_INPUT_GROOM.ownerBankOfGroom, 'text', 200, false, '', value.informationOfGroom[0].ownerBankOfGroom)}
-                    </div>
-                    <div className='half_row_hor_input'>
-                        {renderInput(refNumberBankGroom, Languages.text.serinumber,'Nhập ' + Languages.text.serinumber, NAME_INPUT_GROOM.bankOfNumberGroom, 'number', 14, false, '', value.informationOfGroom[0].bankOfNumberGroom)}
-                    </div>
+
+                <div className='three_input_col'>
+                    {renderBank(NAME_INPUT_GROOM.nameBankOfGroom, 'Ngân Hàng Chú rể', value.informationOfGroom[0].nameBankOfGroom)}
+                    {renderInput(refOwnerGroom, Languages.text.accountHolder, 'Nhập ' + Languages.text.accountHolder, NAME_INPUT_GROOM.ownerBankOfGroom, 'text', 200, false, '', value.informationOfGroom[0].ownerBankOfGroom)}
+                    {renderInput(refNumberBankGroom, Languages.text.serinumber, 'Nhập ' + Languages.text.serinumber, NAME_INPUT_GROOM.bankOfNumberGroom, 'number', 14, false, '', value.informationOfGroom[0].bankOfNumberGroom)}
                 </div>
                 <div className='list_album_uploads'>
                     {renderImageUploadSingle(
@@ -383,16 +380,13 @@ const BankingGroom = forwardRef(({ }, ref) => {
             </div>
 
             <div className='inforBank_one_per'>
-                {renderBank(NAME_INPUT_GROOM.nameBankOfFatherGroom, 'Ngân Hàng Bố Chú rể', value.informationOfGroom[0].nameBankOfFatherGroom)}
 
-                <div className='double_input_row'>
-                    <div className='half_row_hor_input'>
-                        {renderInput(refOwnerFather, Languages.text.accountHolder, 'Nhập ' + Languages.text.accountHolder, NAME_INPUT_GROOM.ownerBankOfFatherGroom, 'text', 200, false, '', value.informationOfGroom[0].ownerBankOfFatherGroom)}
-                    </div>
-                    <div className='half_row_hor_input'>
-                        {renderInput(refNumberBankFather, Languages.text.serinumber, 'Nhập ' + Languages.text.serinumber, NAME_INPUT_GROOM.bankOfNumberFatherGroom, 'number', 14, false, '', value.informationOfGroom[0].bankOfNumberFatherGroom)}
-                    </div>
+                <div className='three_input_col'>
+                    {renderBank(NAME_INPUT_GROOM.nameBankOfFatherGroom, 'Ngân Hàng Bố Chú rể', value.informationOfGroom[0].nameBankOfFatherGroom)}
+                    {renderInput(refOwnerFather, Languages.text.accountHolder, 'Nhập ' + Languages.text.accountHolder, NAME_INPUT_GROOM.ownerBankOfFatherGroom, 'text', 200, false, '', value.informationOfGroom[0].ownerBankOfFatherGroom)}
+                    {renderInput(refNumberBankFather, Languages.text.serinumber, 'Nhập ' + Languages.text.serinumber, NAME_INPUT_GROOM.bankOfNumberFatherGroom, 'number', 14, false, '', value.informationOfGroom[0].bankOfNumberFatherGroom)}
                 </div>
+
                 <div className='list_album_uploads'>
                     {renderImageUploadSingle(
                         '',
@@ -410,15 +404,12 @@ const BankingGroom = forwardRef(({ }, ref) => {
             </div>
 
             <div className='inforBank_one_per'>
-                {renderBank(NAME_INPUT_GROOM.nameBankOfMotherGroom, 'Ngân Hàng Mẹ Chú rể', value.informationOfGroom[0].nameBankOfMotherGroom)}
 
-                <div className='double_input_row'>
-                    <div className='half_row_hor_input'>
-                        {renderInput(refOwnerMother, Languages.text.accountHolder, 'Nhập ' + Languages.text.accountHolder, NAME_INPUT_GROOM.ownerBankOfMotherGroom, 'text', 200, false, '', value.informationOfGroom[0].ownerBankOfMotherGroom)}
-                    </div>
-                    <div className='half_row_hor_input'>
-                        {renderInput(refNumberBankMother, Languages.text.serinumber, 'Nhập ' + Languages.text.serinumber, NAME_INPUT_GROOM.bankOfNumberMotherGroom, 'number', 14, false, '', value.informationOfGroom[0].bankOfNumberMotherGroom)}
-                    </div>
+
+                <div className='three_input_col'>
+                    {renderBank(NAME_INPUT_GROOM.nameBankOfMotherGroom, 'Ngân Hàng Mẹ Chú rể', value.informationOfGroom[0].nameBankOfMotherGroom)}
+                    {renderInput(refOwnerMother, Languages.text.accountHolder, 'Nhập ' + Languages.text.accountHolder, NAME_INPUT_GROOM.ownerBankOfMotherGroom, 'text', 200, false, '', value.informationOfGroom[0].ownerBankOfMotherGroom)}
+                    {renderInput(refNumberBankMother, Languages.text.serinumber, 'Nhập ' + Languages.text.serinumber, NAME_INPUT_GROOM.bankOfNumberMotherGroom, 'number', 14, false, '', value.informationOfGroom[0].bankOfNumberMotherGroom)}
                 </div>
                 <div className='list_album_uploads'>
                     {renderImageUploadSingle(
