@@ -745,7 +745,7 @@ const CreatePage = () => {
         onChange={onChangePackage}
         style={{ maxWidth: 'unset' }}
       >
-        <option value='-1'>{Languages.text.packagePro}</option>
+        <option value='-1'>{itemLocal?.productId ? itemLocal.productId.name : Languages.text.packagePro}</option>
         {
           dataPackage.map(function (item, index) {
 
@@ -770,7 +770,7 @@ const CreatePage = () => {
               <div className="Input_boxGroupInput__8ghvv man_inputStyle">
                 <label className="Input_label__XHiJ4">{item.name} - {Validate.formatMoney(item.amount)}</label>
                 <div className="Input_formGroup__Ln91z ">
-                  <input name={item.name} defaultChecked={false} type="checkbox" data--amount={item.amount} value={[item.amount, item.name]} onChange={(e) => onCheckedDataAnother(e)} className="Input_form_control__zkQn6 checkbox_input_style " />
+                  <input name={item.name} defaultChecked={itemLocal?.anotherProduct.length - 1 === index ? true : false} type="checkbox" data--amount={item.amount} value={[item.amount, item.name]} onChange={(e) => onCheckedDataAnother(e)} className="Input_form_control__zkQn6 checkbox_input_style " />
                 </div>
               </div>
             </div>
@@ -903,7 +903,7 @@ const CreatePage = () => {
         "firstName": values.informationOfBride[0].firstName,
         "middleName": values.informationOfBride[0].middleName,
         "name": values.informationOfBride[0].name,
-        "isOldBrotherBride": values.informationOfBride[0].isOldBrotherBride,
+        "isOldBrotherBride": values.informationOfBride[0].isOldBrotherBride || false,
         "codingRegion": "84",
         "phoneNumberOfBride": values.informationOfBride[0].phoneNumberOfBride,
         "firstFatherNameOfBride": values.informationOfBride[0].firstFatherNameOfBride,
@@ -974,7 +974,6 @@ const CreatePage = () => {
         "value": radioEffectBg
       },
       "productId": packageType[2],
-      "packageType": packageType,
       "anotherProduct": values.anotherProduct,
       "isUseConfirm": values.isUseConfirm,
       "isUseGuestBook": values.isUseGuestBook,
@@ -988,8 +987,9 @@ const CreatePage = () => {
       const response = await post(APi.createInvitation, Object.assign(jsonData, {
         "status": '2'
       }), config);
-      console.log(jsonData)
+
       removeStorage('createLeter')
+
       if (response.errorCode == 0) {
         toast.success(Languages.errorMsg.success)
         setIdCreateRespon(response.data.invitation._id)
@@ -1054,9 +1054,10 @@ const CreatePage = () => {
       //     onChangeSaveSetting()
       // } 
       else {
-
-        onChangeSaveSetting()
-
+        setDisable(false)
+        if (disable) {
+          onChangeSaveSetting()
+        }
 
         const totalSumAnother = valuedataAnother.reduce((acc, curr) => {
           const arrayItem = curr.split(",", 2).slice(0, 1).map(Number);
