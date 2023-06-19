@@ -8,7 +8,9 @@ const BankInfo = ({
   qrCode,
   qrCodeFatherLink,
   qrCodeMotherLink,
-  isBride,
+  isGoneFather,
+  isGoneMother,
+  isBride
 }) => {
   return (
     <div>
@@ -29,18 +31,25 @@ const BankInfo = ({
           <div className=' text-left'>
             <h2>{isBride ? 'Cô dâu' : 'Chú rể'}</h2>
             <p className='pr-4 text-sm'>{nameBank}</p>
-            <img src={qrCode} alt='' />
+            <img src={qrCode} alt={isBride ? 'Cô dâu' : 'Chú rể'} />
           </div>
-          <div className=' text-left'>
-            <h2 className=' text-left'>Bố</h2>
-            <p className='pr-4 text-sm'>{nameBankOfFather}</p>
-            <img src={qrCodeFatherLink} alt='' />
-          </div>
-          <div className=' text-left'>
-            <h2>Mẹ</h2>
-            <p className='pr-4 text-sm'>{nameBankOfMother}</p>
-            <img src={qrCodeMotherLink} alt='' />
-          </div>
+          {
+            isGoneFather === false ? <div className=' text-left'>
+              <h2 className=' text-left'>Bố</h2>
+              <p className='pr-4 text-sm'>{nameBankOfFather}</p>
+              <img src={qrCodeFatherLink} alt='qrFather' />
+            </div> : <div className=' text-left'>
+            </div>
+          }
+
+          {
+            isGoneMother === false ? <div className=' text-left'>
+              <h2>Mẹ</h2>
+              <p className='pr-4 text-sm'>{nameBankOfMother}</p>
+              <img src={qrCodeMotherLink} alt='qrMother' />
+            </div> : <div className=' text-left'>
+            </div>
+          }
         </Carousel>
       </div>
     </div>

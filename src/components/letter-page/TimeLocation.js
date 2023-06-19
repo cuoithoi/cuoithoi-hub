@@ -1,20 +1,20 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import TitleSection from './sub-comp/TitleSection'
-import TitleDescribe from './sub-comp/TitleDescribe'
-import calander from '../../assets/home-image/calander.svg'
-import MapIcon from '../icons/MapIcon'
 import mapIcon from '../../assets/home-image/map-icon.png'
 import background from '../../assets/home-image/time-schedule-bg.png'
 import Calendar from './sub-comp/Calendar'
 import CountDown from './sub-comp/Countdown'
 import LazyLoad from 'react-lazy-load'
 import { formatDay } from '@/utils/helpers'
+
 const TimeLocation = ({
   timeAndLocationOfWedding,
   timeAndLocationOfEgagement,
   timeAndLocationOfInterrogation,
 }) => {
-  const address = `378 Minh Khai, Hai Bà Trưng, Hà Nội`
+
+  const [embeddedMap, setEmbeddedMap] = useState('');
+
   const {
     dateOfEventInterrogation,
     locationOfInterrogation,
@@ -28,7 +28,21 @@ const TimeLocation = ({
     timeOfEventWedding,
     mapDirectLink,
   } = timeAndLocationOfWedding
-  const src = `https://maps.google.com/maps?&q="+${locationOfWedding}"&output=embed`
+
+
+
+  useEffect(() => {
+
+    const regex = /@(-?\d+\.\d+),(-?\d+\.\d+)/;
+    const match = mapDirectLink.match(regex);
+    if (match) {
+      const latitude = match[1];
+      const longitude = match[2];
+      const iframeCode = `<iframe src="https://maps.google.com/maps?q=${latitude},${longitude}&hl=es&z=14&amp;output=embed" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`;
+      setEmbeddedMap(iframeCode);
+    }
+  }, [])
+
   return (
     <div
       className='pt-10 pb-10 bg-main-bg section-mb layout-mw'
@@ -82,30 +96,13 @@ const TimeLocation = ({
       </div>
       <div>
         <LazyLoad height={325} offset={200}>
-          {/* <iframe
-            src={src}
-            width='100%'
-            height='350'
-            style={{ border: '0' }}
-            allowFullScreen=''
-            loading='lazy'
-            referrerPolicy='no-referrer-when-downgrade'
-          ></iframe> */}
-          <iframe
-            src={src}
-            width='100%'
-            height='350'
-            style={{ border: '0' }}
-            allowfullscreen=''
-            loading='lazy'
-            referrerpolicy='no-referrer-when-downgrade'
-          ></iframe>
+          <div dangerouslySetInnerHTML={{ __html: embeddedMap }}></div>
         </LazyLoad>
       </div>
       <div className='flex justify-center pt-6 mt-2'>
         <button className='btn-map'>
           <img src={mapIcon} alt='' className='gg-map-icon' />
-          <a href={mapDirectLink} className='pl-12 pr-3 py-3 link-map '>
+          <a href={mapDirectLink} target='_blank' className='pl-12 pr-3 py-3 link-map '>
             Chỉ đường trên Google Maps
           </a>
         </button>
@@ -115,7 +112,4 @@ const TimeLocation = ({
 }
 
 export default TimeLocation
-// https://goo.gl/maps/4STQwR9ZS1EyfP6z6
-{
-  /* <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.9430993939277!2d105.79570607572326!3d20.994917880646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135acbea4c8dd29%3A0xd08da6f53bdfde6!2zQsO6biBCw7IgSHXhur8gVGh1IFPGsMahbmc!5e0!3m2!1svi!2s!4v1685274687229!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> */
-}
+

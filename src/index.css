@@ -1186,7 +1186,7 @@ p {
 }
 
 .footer-letter {
-  background-color: var(--bg-bold-green);
+  border-top: 2px solid var(--bg-tooltip-color);
 }
 
 .footer .component_ShowInf_Company h2 {

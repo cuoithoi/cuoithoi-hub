@@ -1,7 +1,5 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { useState } from 'react'
-import { useEffect } from 'react'
-import Hero from './Hero'
 import classes from './LetterEnvelop.module.css'
 import EnvelopContent from './sub-comp/EnvelopContent'
 import Loading from '../Loading'
@@ -10,7 +8,6 @@ import envelopBodyImg from '@/assets/envelopImg/Envelope_body1.png'
 import heartIcon from '@/assets/envelopImg/heartOpen.png'
 
 const LetterEnvelop = ({
-  isLetterOpen,
   setIsLetterOpen,
   manfirstName,
   manName,
@@ -80,7 +77,6 @@ const LetterEnvelop = ({
               <img src={heartIcon} alt='' />
             </div>
           </div>
-          {/* <img src={envelopSignImg} alt='' className={classes.signIcon} /> */}
         </div>
       </div >
     </>

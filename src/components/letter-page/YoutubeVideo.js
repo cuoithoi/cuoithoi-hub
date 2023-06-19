@@ -8,7 +8,6 @@ import LazyLoad from 'react-lazy-load'
 import { youtubeParser } from '@/utils/helpers'
 const YoutubeVideo = ({ videoLink }) => {
   const youtubeId = youtubeParser(videoLink)
-  console.log(youtubeId)
   const dispatch = useDispatch()
   const { audioElement, isAudioPlay } = useSelector((store) => store.musicVid)
   const [prevState, setPrevState] = useState(false)
@@ -24,7 +23,7 @@ const YoutubeVideo = ({ videoLink }) => {
     }
     return
   }
-  return (
+  return (videoLink &&
     <div className='py-10 px-3 section-mb layout-mw'>
       <TitleSection title='VIDEO' />
       <div className='pt-5  pb-3'>

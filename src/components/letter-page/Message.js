@@ -5,17 +5,13 @@ import { Carousel } from 'react-responsive-carousel'
 import { Button } from '../button'
 import { BUTTON_STYLES } from '@/commons/Constant.ts'
 import Popup from '../modal/Popup'
-import Languages from '@/commons/Languages'
 import { useRef } from 'react'
 import WriteMessage from './sub-comp/WriteMessage'
-import { Link, useNavigate, useParams } from 'react-router-dom'
-import { Alias } from '@/commons/Constant.ts'
-import { getDataWithParams } from '@/utils/axios'
+import { useNavigate, useParams } from 'react-router-dom'
 import { customFetch } from '@/utils/axios'
 import CommentDetail from '@/pages/CommentDetail'
 import { Convert } from '../../commons/Constant.ts'
 const Message = () => {
-  const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(true)
   const [cmtList, setCmtList] = useState([])
   const cmtRef = useRef()
@@ -109,7 +105,7 @@ const Message = () => {
           />
         }
       />
-      <Popup ref={cmtRef} height={'80vh'} content={<CommentDetail />} maxWidth={Convert.W_800}/>
+      <Popup ref={cmtRef} height={'80vh'} content={<CommentDetail />} maxWidth={Convert.W_800} />
     </div>
   )
 }

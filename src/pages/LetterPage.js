@@ -12,25 +12,18 @@ import Modal from '../components/letter-page/sub-comp/Modal'
 import { galleryImage } from '../utils/gallery-data'
 import Sidebar from '../components/letter-page/sub-comp/Sidebar'
 import YoutubeVideo from '../components/letter-page/YoutubeVideo'
-import Snowfall from 'react-snowfall'
 
 import NavButton from '../components/letter-page/sub-comp/NavButton'
 import Message from '@/components/letter-page/Message'
 import Response from '@/components/letter-page/Response'
 import Gallery1 from '@/components/letter-page/Gallery-1'
-import LetterEnvelop from '@/components/letter-page/LetterEnvelop1'
 import LetterEnvelopTrial from '@/components/letter-page/LetterEnvelop'
 import { getDataApi } from '@/utils/axios'
 import styles from './LetterPage.module.css'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import SnowFall from '@/components/letter-page/SnowFall'
-import { getUserFromLocalStorage } from '@/utils/localStorage'
-import { Alias } from '@/commons/Constant.ts'
-import { isElementOfType } from 'react-dom/test-utils'
 const LetterPage = () => {
-  const navigate = useNavigate()
   const { id } = useParams()
-  const storageId = getUserFromLocalStorage()
   const [isOpen, setIsOpen] = useState(false)
   const [letter, setLetter] = useState(null)
   const [isLetterOpen, setIsLetterOpen] = useState(false)
@@ -50,7 +43,6 @@ const LetterPage = () => {
     const fetchData = async () => {
       setIsLoading(true)
       const data = await getDataApi(`/invitation-detail?_id=${id}`)
-      console.log(data)
       setIsLoading(false)
 
       setLetter(data.data)
@@ -72,22 +64,9 @@ const LetterPage = () => {
   }, [])
   if (isLoading) return
   const {
-    anotherProduct,
-    backgroundColor,
-    codeInvite,
-    contentGuestBook,
-    fontStyleOfContent,
-    fontStyleOfTitle,
-    isDisplayGonePeople,
-    isPaid,
-    password,
-    productId,
-    styleBackground,
-    thumbnailImage,
     album,
     contentOfInvitation,
     coverImage,
-    // createTime,
     effectBackgroud,
     effectImage,
     eventOfProgram,
@@ -104,9 +83,7 @@ const LetterPage = () => {
     videoLink,
     note,
   } = letter
-  // if (!isPaid && userId !== storageId?.userId) {
-  //   navigate(Alias.homePage)
-  // }
+
   if (!isLetterOpen && !isLoading && isEffectOfOpenning) {
     return (
       <div className='w-screen h-screen m-0 p-0 flex items-center justify-center bg-main'>
@@ -135,9 +112,9 @@ const LetterPage = () => {
           setIsNavOpen={setIsNavOpen}
           manfirstName={informationOfGroom.firstName}
           coverImage={coverImage}
-          manName={informationOfGroom.name}
+          manName={`${informationOfGroom.middleName} ${informationOfGroom.name}`}
           womanfirstName={informationOfBride.firstName}
-          womanName={informationOfBride.name}
+          womanName={`${informationOfBride.middleName} ${informationOfBride.name}`}
           timeAndLocationOfWedding={timeAndLocationOfWedding}
         />
         <Invitation

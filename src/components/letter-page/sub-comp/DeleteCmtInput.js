@@ -25,20 +25,17 @@ const DeleteCmtInput = ({ handleCloseModal, deleteCmt, _id }) => {
     resolver: yupResolver(schema),
   })
   const onSubmit = (data) => {
-    console.log(data)
-    console.log(id, _id)
+
     const postData = async () => {
       try {
         const res = await deleteDataApi(`/delete-wish/${_id}`, {
           ...data,
           _id: _id,
         })
-        console.log(res)
         toast.success('Xoá lời chúc thành công')
         deleteCmt()
         handleCloseModal()
       } catch (error) {
-        console.log(error)
         toast.error('Xoá lời chúc không thành công, vui lòng thử lại')
       }
     }

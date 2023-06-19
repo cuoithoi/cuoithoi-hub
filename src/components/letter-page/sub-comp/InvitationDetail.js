@@ -20,18 +20,18 @@ const InvitationDetail = ({ info, isBride }) => {
     console.log(info)
     return (
       <div className='text-center px-4'>
-        <h2 className='text-main'>Nhà Trai</h2>
-        <p>Chú rể</p>
+        <h2 className='text-main'>Nhà Gái</h2>
+        <p>Cô Dâu</p>
         <h1>{`${firstName} ${middleName} ${name}`}</h1>
         <p>{isOldBrotherBride ? 'Trưởng nữ' : 'Thứ nữ'}</p>
-        <p>Bố {isGoneMotherOfBride === "true" ? '(Cố)' : ''}</p>
+        <p>Bố {isGoneMotherOfBride ? '(Cố)' : ''}</p>
         <p className='show_type_display'>
-          {isGoneFatherBride === "true" ? <img src={IcChrysanthemum} /> : ''} Ông.{' '}
+          {isGoneFatherBride ? <img src={IcChrysanthemum} /> : ''} Ông.{' '}
           {`${firstFatherNameOfBride} ${middleFatherNameOfBride} ${fatherNameOfBride}`}
         </p>
-        <p>Mẹ {isGoneMotherOfBride === "true" ? '(Cố)' : ''}</p>
+        <p>Mẹ {isGoneMotherOfBride ? '(Cố)' : ''}</p>
         <p className='show_type_display'>
-          {isGoneMotherOfBride === "true" ? <img src={IcChrysanthemum} /> : ''} Bà.{' '}
+          {isGoneMotherOfBride ? <img src={IcChrysanthemum} /> : ''} Bà.{' '}
           {`${firstMotherNameOfBride} ${middleMotherNameOfBride} ${motherNameOfBride}`}
         </p>
       </div>
@@ -54,18 +54,18 @@ const InvitationDetail = ({ info, isBride }) => {
 
   return (
     <div className='text-center px-4'>
-      <h2 className='text-main'>Nhà Gái</h2>
-      <p>Cô dâu</p>
+      <h2 className='text-main'>Nhà Trai</h2>
+      <p>Chú Rể</p>
       <h1>{`${firstName} ${middleName} ${name}`}</h1>
       <p>{isOldBrotherGroom ? 'Trưởng nam' : 'Thứ nam'}</p>
-      <p>Bố {isGoneFather === "true" ? '(Cố)' : ''}</p>
+      <p>Bố {isGoneFather ? '(Cố)' : ''}</p>
       <p className='show_type_display'>
-        {isGoneFather === "true" ? <img src={IcChrysanthemum} /> : ''} Ông.{' '}
+        {isGoneFather ? <img src={IcChrysanthemum} /> : ''} Ông.{' '}
         {`${firstFatherNameOfGroom} ${middleFatherNameOfGroom} ${fatherNameOfGroom}`}
       </p>
-      <p>Mẹ {isGoneMother === "true" ? '(Cố)' : ''}</p>
+      <p>Mẹ {isGoneMother ? '(Cố)' : ''}</p>
       <p className='show_type_display'>
-        {isGoneMother === "true" ? <img src={IcChrysanthemum} /> : ''} Bà.{' '}
+        {isGoneMother ? <img src={IcChrysanthemum} /> : ''} Bà.{' '}
         {`${firstMotherNameOfGroom} ${middleMotherNameOfGroom} ${motherNameOfGroom}`}
       </p>
     </div>

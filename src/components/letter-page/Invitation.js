@@ -13,7 +13,6 @@ const Invitation = ({
   timeAndLocationOfWedding,
   contentOfInvitation,
 }) => {
-  const dayObj = dayjs(timeAndLocationOfWedding.dateOfEventWedding)
   const { dateOfEventWedding, locationOfWedding } = timeAndLocationOfWedding
   return (
     <section
@@ -33,13 +32,21 @@ const Invitation = ({
             <InvitationDetail info={informationOfGroom} isBride={false} />
             <InvitationDetail info={informationOfBride} isBride={true} />
           </div>
-          <h2 className='py-4'>
-            {getDayOfWeeks(dateOfEventWedding)}, ngày{' '}
-            {formatDay(dateOfEventWedding)}
-          </h2>
-          <h2 className='text-second'>Địa chỉ</h2>
-          <p className='px-20 pb-6 border-section-1'>{locationOfWedding}</p>
-          <p className='px-20'>{contentOfInvitation}</p>
+          {
+            dateOfEventWedding && <>
+              <h2 className='py-4'>
+                {getDayOfWeeks(dateOfEventWedding)}, ngày{' '}
+                {formatDay(dateOfEventWedding)}
+              </h2>
+            </>
+          }
+          {
+            locationOfWedding && <>
+              <h2 className='text-second'>Địa chỉ</h2>
+              <p className='px-20 pb-6 border-section-1'>{locationOfWedding}</p>
+              <p className='px-20'>{contentOfInvitation}</p></>
+          }
+
         </div>
       </div>
     </section>

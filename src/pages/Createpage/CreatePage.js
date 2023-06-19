@@ -36,6 +36,7 @@ import ProvinceDistrictList from './ProvinceDistrictList'
 import Song_1 from '@/assets/audio/vudieutinhyeu.mp3'
 import Song_2 from '@/assets/audio/huongnangha.mp3'
 import Song_3 from '@/assets/audio/buochanhoanggia.mp3'
+import { all } from 'axios'
 
 const CreatePage = () => {
 
@@ -73,7 +74,7 @@ const CreatePage = () => {
 
   const [openPanel, setOpenPanel] = useState(true)
 
-  const [pointer, setPointer] = useState(true)
+  const [pointer, setPointer] = useState(false)
   const [disable, setDisable] = useState(true)
   const [dataPackage, setDataPackage] = useState([]);
   const [dataAnother, setDataAnother] = useState([]);
@@ -128,9 +129,14 @@ const CreatePage = () => {
             setStorage('hasReloaded', true);
             window.location.reload();
           }
+          const anotherProduct = response.data?.anotherProduct.filter((item, index, self) => {
+            return index === self.findIndex((t) => (
+              t === item
+            ));
+          });
           setCodeinvite(response.data?.codeInvite)
           setPackageType([response.data?.productId?.name, response.data?.productId?.amount, response.data?.productId?._id])
-          setValueDataAnother(response.data?.anotherProduct)
+          setValueDataAnother(anotherProduct)
           setValuedataAnotherTotalPrice(response.data?.totalAmount)
           setAlbumURL(response.data?.album)
           setImagesURL(response.data?.thumbnailImage)
@@ -143,6 +149,7 @@ const CreatePage = () => {
     }
 
   }, [])
+
 
   useEffect(() => {
 
@@ -770,7 +777,7 @@ const CreatePage = () => {
               <div className="Input_boxGroupInput__8ghvv man_inputStyle">
                 <label className="Input_label__XHiJ4">{item.name} - {Validate.formatMoney(item.amount)}</label>
                 <div className="Input_formGroup__Ln91z ">
-                  <input name={item.name} defaultChecked={itemLocal?.anotherProduct.length - 1 === index ? true : false} type="checkbox" data--amount={item.amount} value={[item.amount, item.name]} onChange={(e) => onCheckedDataAnother(e)} className="Input_form_control__zkQn6 checkbox_input_style " />
+                  <input name={item.name} defaultChecked={itemLocal?.anotherProduct.find(items => items.includes(item.name)) === item.amount + "," + item.name ? true : false} type="checkbox" data--amount={item.amount} value={[item.amount, item.name]} onChange={(e) => onCheckedDataAnother(e)} className="Input_form_control__zkQn6 checkbox_input_style " />
                 </div>
               </div>
             </div>
@@ -779,7 +786,7 @@ const CreatePage = () => {
       }
     </div>
     </>
-  }, [dataAnother, valuedataAnother, editor, onCheckedDataAnother])
+  }, [dataAnother, editor, onCheckedDataAnother])
 
   const onChangeCodePress = useCallback(async (e) => {
 
@@ -974,7 +981,7 @@ const CreatePage = () => {
         "value": radioEffectBg
       },
       "productId": packageType[2],
-      "anotherProduct": values.anotherProduct,
+      "anotherProduct": valuedataAnother,
       "isUseConfirm": values.isUseConfirm,
       "isUseGuestBook": values.isUseGuestBook,
       "password": values.password,
@@ -1030,6 +1037,7 @@ const CreatePage = () => {
     codeinvite,
     idCreateRespon,
     values,
+    valuedataAnother,
     radioMusic,
     radioStyleTitle,
     radioStyleContent,

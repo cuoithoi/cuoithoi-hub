@@ -1,8 +1,5 @@
 import React, { useRef } from 'react'
 import TitleSection from './sub-comp/TitleSection'
-import TitleDescribe from './sub-comp/TitleDescribe'
-import phoneMain from '../../assets/home-image/phone-main.svg'
-import phoneSecond from '../../assets/home-image/phone-second.svg'
 import InforPhone from './sub-comp/InforPhone'
 import Popup from '../modal/Popup'
 import Languages from '@/commons/Languages'
@@ -14,10 +11,10 @@ const Congrats = ({ informationOfBride, informationOfGroom }) => {
   const {
     firstName: firstNameBride,
     name: nameBride,
+    middleName: middleNameBride,
     firstFatherNameOfBride,
     middleFatherNameOfBride,
     fatherNameOfBride,
-    isOldBrotherBride,
     firstMotherNameOfBride,
     middleMotherNameOfBride,
     motherNameOfBride,
@@ -30,14 +27,16 @@ const Congrats = ({ informationOfBride, informationOfGroom }) => {
     qrCodeBrideLink,
     qrCodeFatherBrideLink,
     qrCodeMotherBrideLink,
+    isGoneFatherBride,
+    isGoneMotherOfBride
   } = informationOfBride
   const {
     firstName: firstNameGroom,
     name: nameGroom,
+    middleName: middleNameGroom,
     firstFatherNameOfGroom,
     middleFatherNameOfGroom,
     fatherNameOfGroom,
-    isOldBrotherGroom,
     firstMotherNameOfGroom,
     middleMotherNameOfGroom,
     motherNameOfGroom,
@@ -50,6 +49,8 @@ const Congrats = ({ informationOfBride, informationOfGroom }) => {
     qrCodeGroomLink,
     qrCodeFatherGroomLink,
     qrCodeMotherGroomLink,
+    isGoneFather,
+    isGoneMother
   } = informationOfGroom
   const modalRef = useRef()
   const modalRef1 = useRef()
@@ -68,14 +69,14 @@ const Congrats = ({ informationOfBride, informationOfGroom }) => {
       <div className='flex justify-around'>
         <InforPhone
           title='Chú rể'
-          name={`${firstNameGroom} ${nameGroom}`}
+          name={`${firstNameGroom} ${middleNameGroom} ${nameGroom}`}
           phoneNumber={phoneNumberOfGroom}
           phoneColor='main'
           nameSizeLg={true}
         />
         <InforPhone
           title='Cô dâu'
-          name={`${firstNameBride} ${nameBride}`}
+          name={`${firstNameBride} ${middleNameBride} ${nameBride}`}
           phoneNumber={phoneNumberOfBride}
           nameSizeLg={true}
         />
@@ -83,26 +84,26 @@ const Congrats = ({ informationOfBride, informationOfGroom }) => {
       <div className='flex justify-around'>
         <InforPhone
           title='Bố'
-          name={`Ông. ${firstFatherNameOfGroom} ${middleFatherNameOfGroom} ${fatherNameOfGroom}`}
+          name={`Ông. ${firstFatherNameOfGroom} ${middleFatherNameOfGroom} ${fatherNameOfGroom} ${isGoneFather ? '(Cố)' : ''}`}
           phoneNumber={phoneNumberOfFatherGroom}
           phoneColor='main'
         />
         <InforPhone
           title='Bố'
-          name={`Ông. ${firstFatherNameOfBride} ${middleFatherNameOfBride} ${fatherNameOfBride}`}
+          name={`Ông. ${firstFatherNameOfBride} ${middleFatherNameOfBride} ${fatherNameOfBride} ${isGoneFatherBride ? '(Cố)' : ''}`}
           phoneNumber={phoneNumberOfFatherBride}
         />
       </div>
       <div className='flex justify-around'>
         <InforPhone
           title='Mẹ'
-          name={`Bà. ${firstMotherNameOfGroom} ${middleMotherNameOfGroom} ${motherNameOfGroom}`}
+          name={`Bà. ${firstMotherNameOfGroom} ${middleMotherNameOfGroom} ${motherNameOfGroom} ${isGoneMother ? '(Cố)' : ''}`}
           phoneNumber={phoneNumberOfMotherGroom}
           phoneColor='main'
         />
         <InforPhone
           title='Mẹ'
-          name={`Bà. ${firstMotherNameOfBride} ${middleMotherNameOfBride} ${motherNameOfBride}`}
+          name={`Bà. ${firstMotherNameOfBride} ${middleMotherNameOfBride} ${motherNameOfBride} ${isGoneMotherOfBride ? '(Cố)' : ''}`}
           phoneNumber={phoneNumberOfMotherBride}
         />
       </div>
@@ -138,6 +139,8 @@ const Congrats = ({ informationOfBride, informationOfGroom }) => {
             qrCode={qrCodeGroomLink}
             qrCodeFatherLink={qrCodeFatherGroomLink}
             qrCodeMotherLink={qrCodeMotherGroomLink}
+            isGoneFather={isGoneFather}
+            isGoneMother={isGoneMother}
             isBride={false}
           />
         }
@@ -155,6 +158,8 @@ const Congrats = ({ informationOfBride, informationOfGroom }) => {
             qrCodeFatherLink={qrCodeFatherBrideLink}
             qrCodeMotherLink={qrCodeMotherBrideLink}
             isBride={true}
+            isGoneFather={isGoneFatherBride}
+            isGoneMother={isGoneMotherOfBride}
           />
         }
       />
