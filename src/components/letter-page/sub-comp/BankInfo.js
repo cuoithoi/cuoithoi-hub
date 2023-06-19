@@ -26,6 +26,7 @@ const BankInfo = ({
           swipeable
           emulateTouch
           centerSlidePercentage={100}
+          showThumbs={false}
           className='banking_happy_invite'
         >
           <div className=' text-left'>
