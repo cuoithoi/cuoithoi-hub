@@ -332,6 +332,10 @@ export const fiedlsCreatePage = {
   "album": [],
   "videoLink": "",
   "eventOfProgram": {
+    "eventOfProgramEditOne": "Đón khách",
+    "eventOfProgramEditTwo": "Làm lễ",
+    "eventOfProgramEditThree": "Tiệc tối",
+    "eventOfProgramEditFour": "Âm nhạc",
     "timeToWellcome": "",
     "timeToCelebrate": "",
     "timeToDinner": "",

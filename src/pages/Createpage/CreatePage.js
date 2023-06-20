@@ -710,6 +710,23 @@ const CreatePage = () => {
       </div>
       <div className='option_select custom_style_radio'>
         {renderMapRadio('', data, onChangeRadio, state)}
+        <div className='tooltip_effect_bg'>
+          {
+            state === SelectEffectBg[0].value && <p>Phong cách đơn giản, tinh tế và không có sự chuyển động</p>
+          }
+          {
+            state === SelectEffectBg[1].value && <p>Hiệu ứng Animation Những cánh hoa đào rơi, tượng trưng cho sự tươi mới và tình yêu.</p>
+          }
+          {
+            state === SelectEffectBg[2].value && <p>Hiệu ứng Animation Những chiếc lá vàng rơi nhẹ nhàng, tạo không gian ấm áp và lãng mạn.</p>
+          }
+          {
+            state === SelectEffectBg[3].value && <p> Hiệu ứng Animation Những bông tuyết bay lượn múa, mang đến cảm giác mùa đông lạnh giá và thần tiên.</p>
+          }
+          {
+            state === SelectEffectBg[4].value && <p>Sự lấp lánh của những hạt kim tuyến tạo ra không gian rực rỡ và tráng lệ</p>
+          }
+        </div>
       </div>
     </div>
   }, [])
@@ -943,7 +960,8 @@ const CreatePage = () => {
       "timeAndLocationOfWedding": {
         "dateOfEventWedding": values.timeAndLocationOfWedding.dateOfEventWedding,
         "timeOfEventWedding": values.timeAndLocationOfWedding.timeOfEventWedding,
-        "locationOfWedding": values.timeAndLocationOfWedding.namelocationOfWedding + ', ' + values.timeAndLocationOfWedding.locationOfWedding,
+        "namelocationOfWedding": values.timeAndLocationOfWedding.namelocationOfWedding,
+        "locationOfWedding": values.timeAndLocationOfWedding.locationOfWedding,
         "mapDirectLink": values.timeAndLocationOfWedding.mapDirectLink,
         "isDisplayCountDown": values.timeAndLocationOfWedding.isDisplayCountDown,
         "contentOfCountDown": values.arraylist[0].contentOfCountDown
@@ -961,6 +979,10 @@ const CreatePage = () => {
       "album": values.album === [] ? albumURL : values.album,
       "videoLink": values.videoLink,
       "eventOfProgram": {
+        "eventOfProgramEditOne": values.eventOfProgram.eventOfProgramEditOne,
+        "eventOfProgramEditTwo": values.eventOfProgram.eventOfProgramEditTwo,
+        "eventOfProgramEditThree": values.eventOfProgram.eventOfProgramEditThree,
+        "eventOfProgramEditFour": values.eventOfProgram.eventOfProgramEditFour,
         "timeToWellcome": values.eventOfProgram.timeToWellcome,
         "timeToCelebrate": values.eventOfProgram.timeToCelebrate,
         "timeToDinner": values.eventOfProgram.timeToDinner,
@@ -994,7 +1016,7 @@ const CreatePage = () => {
       "isUseEvent": values.arraylist[0].isUseEvent,
       "isUseDamNgo": values.arraylist[0].isUseDamNgo
     }
-
+    console.log(jsonData)
     if (checkUrl) {
       const response = await post(APi.createInvitation, Object.assign(jsonData, {
         "status": '2'

@@ -8,7 +8,7 @@ import TitleDescribeIcon from '../icons/TitleDescribeIcon'
 import scheduleBgLeft from '../../assets/home-image/schedule-bg-left.svg'
 import scheduleBgRight from '../../assets/home-image/schedule-bg-right.svg'
 const Schedule = ({ eventOfProgram, note }) => {
-  const { timeToWellcome, timeToCelebrate, timeToDinner, timeToMusic } =
+  const { timeToWellcome, timeToCelebrate, timeToDinner, timeToMusic, eventOfProgramEditOne, eventOfProgramEditTwo, eventOfProgramEditThree, eventOfProgramEditFour } =
     eventOfProgram
   return (
     <div
@@ -40,7 +40,7 @@ const Schedule = ({ eventOfProgram, note }) => {
             </div>
             <div className='w-28'>
               <h3>{timeToWellcome}</h3>
-              <h2>Đón khách</h2>
+              <h2>{eventOfProgramEditOne}</h2>
             </div>
           </div>
 
@@ -55,7 +55,7 @@ const Schedule = ({ eventOfProgram, note }) => {
             </div>
             <div className='w-28'>
               <h3>{timeToCelebrate}</h3>
-              <h2>Làm lễ</h2>
+              <h2>{eventOfProgramEditTwo}</h2>
             </div>
           </div>
 
@@ -74,7 +74,7 @@ const Schedule = ({ eventOfProgram, note }) => {
             </div>
             <div className='w-28'>
               <h3>{timeToDinner}</h3>
-              <h2>Tiệc tối</h2>
+              <h2>{eventOfProgramEditThree}</h2>
             </div>
           </div>
 
@@ -93,7 +93,7 @@ const Schedule = ({ eventOfProgram, note }) => {
             </div>
             <div className='w-28'>
               <h3>{timeToMusic}</h3>
-              <h2>Âm nhạc</h2>
+              <h2>{eventOfProgramEditFour}</h2>
             </div>
           </div>
         </div>

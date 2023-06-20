@@ -69,14 +69,14 @@ const Congrats = ({ informationOfBride, informationOfGroom }) => {
       <div className='flex justify-around'>
         <InforPhone
           title='Chú rể'
-          name={`${firstNameGroom} ${middleNameGroom} ${nameGroom}`}
+          name={`${nameGroom}`}
           phoneNumber={phoneNumberOfGroom}
           phoneColor='main'
           nameSizeLg={true}
         />
         <InforPhone
           title='Cô dâu'
-          name={`${firstNameBride} ${middleNameBride} ${nameBride}`}
+          name={`${nameBride}`}
           phoneNumber={phoneNumberOfBride}
           nameSizeLg={true}
         />
@@ -84,26 +84,26 @@ const Congrats = ({ informationOfBride, informationOfGroom }) => {
       <div className='flex justify-around'>
         <InforPhone
           title='Bố'
-          name={`Ông. ${firstFatherNameOfGroom} ${middleFatherNameOfGroom} ${fatherNameOfGroom} ${isGoneFather ? '(Cố)' : ''}`}
+          name={`Ông. ${fatherNameOfGroom} ${isGoneFather ? '(Cố)' : ''}`}
           phoneNumber={phoneNumberOfFatherGroom}
           phoneColor='main'
         />
         <InforPhone
           title='Bố'
-          name={`Ông. ${firstFatherNameOfBride} ${middleFatherNameOfBride} ${fatherNameOfBride} ${isGoneFatherBride ? '(Cố)' : ''}`}
+          name={`Ông. ${fatherNameOfBride} ${isGoneFatherBride ? '(Cố)' : ''}`}
           phoneNumber={phoneNumberOfFatherBride}
         />
       </div>
       <div className='flex justify-around'>
         <InforPhone
           title='Mẹ'
-          name={`Bà. ${firstMotherNameOfGroom} ${middleMotherNameOfGroom} ${motherNameOfGroom} ${isGoneMother ? '(Cố)' : ''}`}
+          name={`Bà. ${motherNameOfGroom} ${isGoneMother ? '(Cố)' : ''}`}
           phoneNumber={phoneNumberOfMotherGroom}
           phoneColor='main'
         />
         <InforPhone
           title='Mẹ'
-          name={`Bà. ${firstMotherNameOfBride} ${middleMotherNameOfBride} ${motherNameOfBride} ${isGoneMotherOfBride ? '(Cố)' : ''}`}
+          name={`Bà. ${motherNameOfBride} ${isGoneMotherOfBride ? '(Cố)' : ''}`}
           phoneNumber={phoneNumberOfMotherBride}
         />
       </div>

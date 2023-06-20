@@ -184,6 +184,10 @@ export const EventOfProgram = {
   timeToCelebrate: 'timeToCelebrate',
   timeToDinner: 'timeToDinner',
   timeToMusic: 'timeToMusic',
+  eventOfProgramEditOne: 'eventOfProgramEditOne',
+  eventOfProgramEditTwo: 'eventOfProgramEditTwo',
+  eventOfProgramEditThree: 'eventOfProgramEditThree',
+  eventOfProgramEditFour: 'eventOfProgramEditFour'
 }
 
 export const INPUT_FIELDS = {

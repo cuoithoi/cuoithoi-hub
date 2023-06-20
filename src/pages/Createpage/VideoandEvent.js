@@ -11,6 +11,7 @@ import { RadioButton } from "@/components/RadioButton";
 import { MyTextArea } from "@/components/textarea";
 import { Button } from "@/components/button";
 import { getItemFromLocalStorage } from "@/utils/localStorage";
+import Ic_Edit from '@/assets/home-image/Ic_createOutline.png'
 
 const VideoandEvent = forwardRef(({ }, ref) => {
 
@@ -28,12 +29,21 @@ const VideoandEvent = forwardRef(({ }, ref) => {
     const [block, setBlock] = useState(false)
     const [blockEvent, setBlockEvent] = useState(false)
 
+    const [blockEvent1, setBlockEvent1] = useState(true)
+    const [blockEvent2, setBlockEvent2] = useState(true)
+    const [blockEvent3, setBlockEvent3] = useState(true)
+    const [blockEvent4, setBlockEvent4] = useState(true)
+
     const refUnderfine = useRef(null)
     const refVideoLink = useRef(null)
     const refTimeToWellcome = useRef(null)
     const refTimeToCelebrate = useRef(null)
     const refTimeToDinner = useRef(null)
     const refTimeToMusic = useRef(null)
+    const refEdit1 = useRef(null)
+    const refEdit2 = useRef(null)
+    const refEdit3 = useRef(null)
+    const refEdit4 = useRef(null)
     const refWarn = useRef(null)
     const refModal = useRef(null)
     const itemLocal = getItemFromLocalStorage('createLeter')
@@ -136,6 +146,49 @@ const VideoandEvent = forwardRef(({ }, ref) => {
                     eventOfProgram: {
                         ...prevValues.eventOfProgram,
                         timeToMusic: e
+                    }
+                }));
+                break
+
+            case EventOfProgram.eventOfProgramEditOne:
+                value.eventOfProgram.eventOfProgramEditOne = e
+                setValue(prevValues => ({
+                    ...prevValues,
+                    eventOfProgram: {
+                        ...prevValues.eventOfProgram,
+                        eventOfProgramEditOne: e
+                    }
+                }));
+                break
+
+            case EventOfProgram.eventOfProgramEditTwo:
+                value.eventOfProgram.eventOfProgramEditTwo = e
+                setValue(prevValues => ({
+                    ...prevValues,
+                    eventOfProgram: {
+                        ...prevValues.eventOfProgram,
+                        eventOfProgramEditTwo: e
+                    }
+                }));
+                break
+            case EventOfProgram.eventOfProgramEditThree:
+                value.eventOfProgram.eventOfProgramEditThree = e
+                setValue(prevValues => ({
+                    ...prevValues,
+                    eventOfProgram: {
+                        ...prevValues.eventOfProgram,
+                        eventOfProgramEditThree: e
+                    }
+                }));
+                break
+
+            case EventOfProgram.eventOfProgramEditFour:
+                value.eventOfProgram.eventOfProgramEditFour = e
+                setValue(prevValues => ({
+                    ...prevValues,
+                    eventOfProgram: {
+                        ...prevValues.eventOfProgram,
+                        eventOfProgramEditFour: e
                     }
                 }));
                 break
@@ -290,6 +343,33 @@ const VideoandEvent = forwardRef(({ }, ref) => {
         value.note = event.target.value
     }
 
+    const onChangeBlockEvent = (event) => {
+        if (blockEvent) {
+            switch (event) {
+                case 'event1':
+                    setBlockEvent1(!blockEvent1)
+                    refEdit1.current?.focus()
+                    break;
+                case 'event2':
+                    setBlockEvent2(!blockEvent2)
+                    refEdit2.current?.focus()
+                    break;
+                case 'event3':
+                    setBlockEvent3(!blockEvent3)
+                    refEdit3.current?.focus()
+                    break;
+                case 'event4':
+                    setBlockEvent4(!blockEvent4)
+                    refEdit4.current?.focus()
+                    break;
+                default:
+                    break
+            }
+            return
+        }
+        return false
+    }
+
     return (
 
         <>
@@ -340,37 +420,49 @@ const VideoandEvent = forwardRef(({ }, ref) => {
                     </div>
                     <div className='double_input_row'>
                         <div className='half_row_hor_input'>
-                            {renderInput('', '', Languages.text.welcomeGuest, '', 'text', 200, false, '', 'disable')}
+                            {renderInput(refEdit1, '', Languages.text.welcomeGuest, EventOfProgram.eventOfProgramEditOne, 'text', 200, false, '', blockEvent1 && 'disable', value.eventOfProgram.eventOfProgramEditOne)}
                         </div>
                         <div className='half_row_hor_input'>
                             {renderInput(refTimeToWellcome, '', '', EventOfProgram.timeToWellcome, 'time', 200, false, '', '', value.eventOfProgram.timeToWellcome, blockEvent)}
                         </div>
-                    </div>
-
-                    <div className='double_input_row'>
-                        <div className='half_row_hor_input'>
-                            {renderInput('', '', Languages.text.celebrate, '', 'text', 200, false, '', 'disable')}
-                        </div>
-                        <div className='half_row_hor_input'>
-                            {renderInput(refTimeToCelebrate, '', '', EventOfProgram.timeToCelebrate, 'time', 200, false, '', '', value.eventOfProgram.timeToCelebrate , blockEvent)}
+                        <div className="ic_ceateoutline" onClick={() => onChangeBlockEvent('event1')}>
+                            <img src={Ic_Edit} alt="Ic_Edit" />
                         </div>
                     </div>
 
                     <div className='double_input_row'>
                         <div className='half_row_hor_input'>
-                            {renderInput('', '', Languages.text.dinner, '', 'text', 200, false, '', 'disable')}
+                            {renderInput(refEdit2, '', Languages.text.celebrate, EventOfProgram.eventOfProgramEditTwo, 'text', 200, false, '', blockEvent2 && 'disable', value.eventOfProgram.eventOfProgramEditTwo)}
                         </div>
                         <div className='half_row_hor_input'>
-                            {renderInput(refTimeToDinner, '', '', EventOfProgram.timeToDinner, 'time', 200, false, '', '', value.eventOfProgram.timeToDinner , blockEvent)}
+                            {renderInput(refTimeToCelebrate, '', '', EventOfProgram.timeToCelebrate, 'time', 200, false, '', '', value.eventOfProgram.timeToCelebrate, blockEvent)}
+                        </div>
+                        <div className="ic_ceateoutline" onClick={() => onChangeBlockEvent('event2')}>
+                            <img src={Ic_Edit} alt="Ic_Edit" />
                         </div>
                     </div>
 
                     <div className='double_input_row'>
                         <div className='half_row_hor_input'>
-                            {renderInput('', '', Languages.text.music, '', 'text', 200, false, '', 'disable')}
+                            {renderInput(refEdit3, '', Languages.text.dinner, EventOfProgram.eventOfProgramEditThree, 'text', 200, false, '', blockEvent3 && 'disable', value.eventOfProgram.eventOfProgramEditThree)}
                         </div>
                         <div className='half_row_hor_input'>
-                            {renderInput(refTimeToMusic, '', '', EventOfProgram.timeToMusic, 'time', 200, false, '', '', value.eventOfProgram.timeToMusic , blockEvent)}
+                            {renderInput(refTimeToDinner, '', '', EventOfProgram.timeToDinner, 'time', 200, false, '', '', value.eventOfProgram.timeToDinner, blockEvent)}
+                        </div>
+                        <div className="ic_ceateoutline" onClick={() => onChangeBlockEvent('event3')}>
+                            <img src={Ic_Edit} alt="Ic_Edit" />
+                        </div>
+                    </div>
+
+                    <div className='double_input_row'>
+                        <div className='half_row_hor_input'>
+                            {renderInput(refEdit4, '', Languages.text.music, EventOfProgram.eventOfProgramEditFour, 'text', 200, false, '', blockEvent4 && 'disable', value.eventOfProgram.eventOfProgramEditFour)}
+                        </div>
+                        <div className='half_row_hor_input'>
+                            {renderInput(refTimeToMusic, '', '', EventOfProgram.timeToMusic, 'time', 200, false, '', '', value.eventOfProgram.timeToMusic, blockEvent)}
+                        </div>
+                        <div className="ic_ceateoutline" onClick={() => onChangeBlockEvent('event4')}>
+                            <img src={Ic_Edit} alt="Ic_Edit" />
                         </div>
                     </div>
 

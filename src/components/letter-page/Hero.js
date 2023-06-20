@@ -36,7 +36,7 @@ const Hero = ({
         style={{ backgroundImage: `url(${renderEffectImage()})` }}
       >
         <h2 className='text-main'>Thân mời tới dự bữa tiệc</h2>
-        <h1 className='pb-96'>{`${manfirstName} ${manName} & ${womanfirstName}  ${womanName}`}</h1>
+        <h1 className='pb-96'>{`${manName} & ${womanName}`}</h1>
         <div className='flex justify-center pt-3 w-full'>
           <img src={''} alt='' className='w-full' />
         </div>

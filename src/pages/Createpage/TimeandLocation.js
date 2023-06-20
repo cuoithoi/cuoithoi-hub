@@ -186,7 +186,7 @@ const TimeandLocation = forwardRef(({ }, ref) => {
                 value.timeAndLocationOfWedding.locationOfWedding = e
                 break
 
-            case TIME_AND_LOCATION.namelocationOfWeddinglocationOfWedding:
+            case TIME_AND_LOCATION.namelocationOfWedding:
                 setValue(prevValues => ({
                     ...prevValues,
                     timeAndLocationOfWedding: {
@@ -194,7 +194,7 @@ const TimeandLocation = forwardRef(({ }, ref) => {
                         namelocationOfWedding: e
                     }
                 }));
-                value.timeAndLocationOfWedding.locationOfWedding = e
+                value.timeAndLocationOfWedding.namelocationOfWedding = e
                 break
 
             case TIME_AND_LOCATION.mapDirectLink:

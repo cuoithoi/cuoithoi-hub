@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import TitleSection from './sub-comp/TitleSection'
-import { galleryImage } from '../../utils/gallery-data'
 import heartIcon from '@/assets/svg/letter-heart.svg'
 import heartIconFill from '@/assets/svg/letter-heart-fill.svg'
 import { Carousel } from 'react-responsive-carousel'
 import styles from 'react-responsive-carousel/lib/styles/carousel.min.css'
+
 const Gallery = ({ album }) => {
   const [selectedItem, setSelectedItem] = useState(0)
   const randomNumber = (number) => {
@@ -44,9 +44,7 @@ const Gallery = ({ album }) => {
             )
           })}
         </Carousel>
-        {/* <div className='gallery-image mb-3'>
-          <img src={galleryImage[0].imageUrl} alt='image gallery' />
-        </div> */}
+  
         <ul className=' gallery-container'>
           {album.map((image, index) => {
             const heartRandom = Math.floor(Math.random() * 2)

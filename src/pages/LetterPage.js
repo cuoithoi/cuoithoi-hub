@@ -9,7 +9,6 @@ import Congrats from '../components/letter-page/Congrats'
 import FooterLogo from '@/components/letter-page/FooterLogo'
 
 import Modal from '../components/letter-page/sub-comp/Modal'
-import { galleryImage } from '../utils/gallery-data'
 import Sidebar from '../components/letter-page/sub-comp/Sidebar'
 import YoutubeVideo from '../components/letter-page/YoutubeVideo'
 
@@ -31,7 +30,7 @@ const LetterPage = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [index, setIndex] = useState(0)
   const [isNavOpen, setIsNavOpen] = useState(false)
-  const numberImage = galleryImage.length
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden'
@@ -75,6 +74,9 @@ const LetterPage = () => {
     isEffectOfOpenning,
     isUseConfirm,
     isUseGuestBook,
+    isUseEvent,
+    isUseVideo,
+    isUseDamNgo,
     song,
     timeAndLocationOfEgagement,
     timeAndLocationOfInterrogation,
@@ -112,9 +114,9 @@ const LetterPage = () => {
           setIsNavOpen={setIsNavOpen}
           manfirstName={informationOfGroom.firstName}
           coverImage={coverImage}
-          manName={`${informationOfGroom.middleName} ${informationOfGroom.name}`}
+          manName={`${informationOfGroom.name}`}
           womanfirstName={informationOfBride.firstName}
-          womanName={`${informationOfBride.middleName} ${informationOfBride.name}`}
+          womanName={`${informationOfBride.name}`}
           timeAndLocationOfWedding={timeAndLocationOfWedding}
         />
         <Invitation
@@ -124,13 +126,15 @@ const LetterPage = () => {
           timeAndLocationOfWedding={timeAndLocationOfWedding}
         />
         <Gallery1 album={album} />
-        <YoutubeVideo videoLink={videoLink} />
-        <TimeLocation
-          timeAndLocationOfWedding={timeAndLocationOfWedding}
-          timeAndLocationOfEgagement={timeAndLocationOfEgagement}
-          timeAndLocationOfInterrogation={timeAndLocationOfInterrogation}
-        />
-        <Schedule eventOfProgram={eventOfProgram} note={note} />
+        {isUseVideo && <YoutubeVideo videoLink={videoLink} />}
+        {
+          isUseDamNgo && <TimeLocation
+            timeAndLocationOfWedding={timeAndLocationOfWedding}
+            timeAndLocationOfEgagement={timeAndLocationOfEgagement}
+            timeAndLocationOfInterrogation={timeAndLocationOfInterrogation}
+          />
+        }
+        {isUseEvent && <Schedule eventOfProgram={eventOfProgram} note={note} />}
         <Congrats
           setModalContent={setModalContent}
           setIsOpen={setIsOpen}
@@ -148,7 +152,6 @@ const LetterPage = () => {
         setIsOpen={setIsOpen}
         modalContent={modalContent}
         index={index}
-        numberImage={numberImage}
       />
     </div>
   )
