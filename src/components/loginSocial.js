@@ -55,7 +55,7 @@ const LoginSocial = () => {
 
         <GoogleLogin
           onSuccess={credentialResponse => {
-            console.log(credentialResponse.profileObj);
+            console.log(credentialResponse);
           }}
 
           onError={() => {
