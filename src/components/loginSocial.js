@@ -29,7 +29,7 @@ const LoginSocial = () => {
       <FacebookLogin
         appId="6234250993358177"
         onSuccess={(response) => {
-          console.log('Login Success!', response.profileObj);
+          console.log('Login Success!', response);
         }}
         onFail={(error) => {
           console.log('Login Failed!', error);
@@ -55,7 +55,7 @@ const LoginSocial = () => {
 
         <GoogleLogin
           onSuccess={credentialResponse => {
-            console.log(credentialResponse);
+            console.log(credentialResponse.profileObj);
           }}
 
           onError={() => {
