@@ -1016,7 +1016,7 @@ const CreatePage = () => {
       "isUseEvent": values.arraylist[0].isUseEvent,
       "isUseDamNgo": values.arraylist[0].isUseDamNgo
     }
-    console.log(jsonData)
+    
     if (checkUrl) {
       const response = await post(APi.createInvitation, Object.assign(jsonData, {
         "status": '2'

@@ -51,7 +51,7 @@ const LoginSocial = () => {
           }
         />
       </FacebookLogin>
-      <GoogleOAuthProvider clientId="714927639601-fmahu1dtpmssop1omn4f99shjk1jnm3q.apps.googleusercontent.com">
+      <GoogleOAuthProvider>
 
         <GoogleLogin
           onSuccess={credentialResponse => {

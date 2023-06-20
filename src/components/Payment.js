@@ -1,13 +1,16 @@
-import React, { forwardRef, useCallback, useImperativeHandle, useMemo, useRef, useState } from "react";
+import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from "react";
 import Popup from "./modal/Popup";
 import { MyTextInput } from "./input";
 import Languages from "@/commons/Languages";
 import ICQrLogo from '@/assets/home-image/qrcode.jpg'
 import ICMomo from '@/assets/home-image/IcMomo.svg'
-import { BUTTON_STYLES, CheckParams, Convert } from "@/commons/Constant.ts";
+import { APi, BUTTON_STYLES, CheckParams, Convert, config } from "@/commons/Constant.ts";
 import { Button } from "./button";
 import IcCheck from '@/assets/home-image/IcCheck.svg'
 import Validate from "@/utils/Validate";
+import FormValidate from "@/utils/FormValidate";
+import { useBaseService } from "@/utils/BaseServices";
+import { toast } from "react-toastify";
 
 export const Payment = forwardRef(
     (
@@ -24,6 +27,7 @@ export const Payment = forwardRef(
         }));
 
         const refModal = useRef(null)
+        const refCode = useRef(null)
 
         const [value, setValue] = useState('')
 
@@ -31,6 +35,8 @@ export const Payment = forwardRef(
         const [getAmount, setGetAmount] = useState(0)
 
         const [checkParams, setCheckParams] = useState(CheckParams.PAYMENT)
+
+        const { post } = useBaseService()
 
         const show = () => {
             setCheckParams(CheckParams.PAYMENT)
@@ -46,16 +52,40 @@ export const Payment = forwardRef(
         }
 
         const hide = () => {
-            refModal?.current?.hideModal();
+            refModal?.current?.hideModal()
         }
 
-        const onChangePayment = useCallback(() => {
-            setCheckParams(CheckParams.PAYMENTSUCCESS)
-            refModal?.current?.showModal();
-        }, [])
+        const onChangePayment = useCallback(async () => {
+
+            const errMsgValue = FormValidate.inputContentEmpty(value);
+            refCode.current?.setErrorMsg(errMsgValue);
+
+            if (`${errMsgValue}`.length === 0) {
+
+                const dataUpdate = {
+                    "_id": getId,
+                    "status": "4",
+                }
+
+                const responseupdate = await post(APi.updateInvitation, dataUpdate, config);
+
+                if (responseupdate.errorCode == 0) {
+                    toast.success(Languages.errorMsg.expireRequest)
+                    setCheckParams(CheckParams.PAYMENTSUCCESS)
+                    refModal?.current?.showModal()
+                }
+                else {
+                    toast.error(Languages.errorMsg.errorSuccess)
+                }
+            }
+
+        }, [value])
 
         const onChangeCloseModal = useCallback(() => {
             refModal?.current?.hideModal();
+            setTimeout(() => {
+                window.location.reload()
+            }, 1000);
         })
 
         const renderContentModal = useMemo(() => {
@@ -109,6 +139,7 @@ export const Payment = forwardRef(
                                     </div>
                                     <div className='content_step'>
                                         Số tiền thanh toán<p className='warn'> {Validate.formatMoney(getAmount)}</p>
+                                        Nội dung
                                         <div className='demo'>
                                             <p>CTODID{getId.substr(-4, 4).toUpperCase()}</p>
                                         </div>
@@ -121,6 +152,7 @@ export const Payment = forwardRef(
                                     </div>
                                     <div className='content_step'>
                                         <MyTextInput
+                                            ref={refCode}
                                             value={value}
                                             placeHolder={'Nhập mã giao dịch'}
                                             type={'text'}

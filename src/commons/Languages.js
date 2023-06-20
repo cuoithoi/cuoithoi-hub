@@ -321,7 +321,8 @@ const Languages = {
     updatesuccess: 'Cập nhật thiệp cưới thành công.',
     nocreaptePage: 'Hệ thống đang tải hoặc chưa có thiệp nào được khởi tạo',
     errorCode: 'Mã giới thiệu không chính xác',
-    correctCode: 'Mã giới thiệu được áp dụng'
+    correctCode: 'Mã giới thiệu được áp dụng',
+    expireRequest: 'Yêu cầu kích hoạt thành công. Chúng tôi sẽ phản hồi lại trong thời gian sớm nhất',
   },
 }
 
