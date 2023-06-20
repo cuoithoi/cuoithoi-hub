@@ -29,7 +29,7 @@ const LoginSocial = () => {
       <FacebookLogin
         appId="6234250993358177"
         onSuccess={(response) => {
-          console.log('Login Success!', response);
+          console.log('Login Success!', response.profileObj);
         }}
         onFail={(error) => {
           console.log('Login Failed!', error);
