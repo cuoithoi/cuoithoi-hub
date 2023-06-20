@@ -62,6 +62,7 @@ const LoginSocial = () => {
             console.log('Login Failed');
           }}
           text={Languages.inputText.continueWithGG}
+          width='100%'
         />
 
       </GoogleOAuthProvider>
