@@ -8,6 +8,7 @@ import FormValidate from "@/utils/FormValidate";
 import { forwardRef } from "react";
 import { useImperativeHandle } from "react";
 import { getItemFromLocalStorage } from "@/utils/localStorage";
+import Ic_PersonGroom from '@/assets/home-image/Ic_PersonGroom.png'
 
 const FamilyGroom = forwardRef(({ }, ref) => {
 
@@ -335,53 +336,53 @@ const FamilyGroom = forwardRef(({ }, ref) => {
     return (
         <div className='total_family_one_side'>
 
-            <TitleCreate title={Languages.text.man} divided={true} />
+            <TitleCreate title={<div><img src={Ic_PersonGroom} alt="Ic_Bride" />{Languages.text.man}</div>} divided={true} />
 
             <div className='input_fields_control'>
                 <div className='place_title_input'>
                     <label>{Languages.inputText.groom}</label>
                 </div>
                 <div className='group_input_control'>
-               
-                    {renderInput(
-                        refNameGroom,
-                        Languages.inputText.nameGroom,
-                        'A',
-                        NAME_INPUT_GROOM.name,
-                        'text',
-                        30,
-                        false,
-                        false,
-                        value.informationOfGroom[0].name
-                    )}
 
-                    <div className='item_field_single'>
-                        <div className='sellect_option'>
-                            <label className='Input_label__90o4b'>
-                                {Languages.inputText.stt}
-                            </label>
-                            <select
-                                className='form_sellect_control'
-                                name='form_sellect_stt'
-                                onChange={onChangeSelectStt}
-                            >
-                                <option value='true'>{Languages.inputText.top1}</option>
-                                <option value='false'>{Languages.inputText.notTop}</option>
-                            </select>
+                    <div className="col-width-input-left">
+                        {renderInput(
+                            refNameGroom,
+                            '',
+                            'A',
+                            NAME_INPUT_GROOM.name,
+                            'text',
+                            30,
+                            false,
+                            false,
+                            value.informationOfGroom[0].name
+                        )}
+
+                        <div className='item_field_single'>
+                            <div className='sellect_option'>
+                                <select
+                                    className='form_sellect_control'
+                                    name='form_sellect_stt'
+                                    onChange={onChangeSelectStt}
+                                >
+                                    <option value='true'>{Languages.inputText.top1}</option>
+                                    <option value='false'>{Languages.inputText.notTop}</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-
-                    {renderInput(
-                        refPhoneGroom,
-                        Languages.inputText.phone,
-                        '0384012345',
-                        NAME_INPUT_GROOM.phoneNumberOfGroom,
-                        'number',
-                        10,
-                        false,
-                        false,
-                        value.informationOfGroom[0].phoneNumberOfGroom
-                    )}
+                    <div className="col-width-input-right">
+                        {renderInput(
+                            refPhoneGroom,
+                            '',
+                            '0384012345',
+                            NAME_INPUT_GROOM.phoneNumberOfGroom,
+                            'number',
+                            10,
+                            false,
+                            false,
+                            value.informationOfGroom[0].phoneNumberOfGroom
+                        )}
+                    </div>
                 </div>
             </div>
 
@@ -390,39 +391,40 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                     <label>{Languages.inputText.father}</label>
                 </div>
                 <div className='group_input_control'>
-          
-                    {renderInput(
-                        refNameFather,
-                        Languages.inputText.namesingle,
-                        'A',
-                        NAME_INPUT_GROOM.fatherNameOfGroom,
-                        'text',
-                        30,
-                        false,
-                        false,
-                        value.informationOfGroom[0].fatherNameOfGroom
-                    )}
-
-                    {renderInput(
-                        refPhoneFather,
-                        Languages.inputText.phone,
-                        '0384012345',
-                        NAME_INPUT_GROOM.phoneNumberOfFatherGroom,
-                        'number',
-                        10,
-                        false,
-                        false,
-                        value.informationOfGroom[0].phoneNumberOfFatherGroom
-                    )}
-                    <div className="item_field_single">
-                        <div className="Input_boxGroupInput__G9mP9 man_inputStyle">
-                            <label className="Input_label__90o4b">{Languages.inputText.death}</label>
-                            <div className="Input_formGroup__mXqJL ">
-                                <input type="checkbox" defaultChecked={itemLocal ? itemLocal.informationOfGroom.isGoneFather : false} className="Input_form_control__5uYZX inputStyle" onChange={(e) => onChangeText(e.target.checked, NAME_INPUT_GROOM.isGoneFather)} />
+                    <div className="col-width-input-left">
+                        {renderInput(
+                            refNameFather,
+                            '',
+                            'A',
+                            NAME_INPUT_GROOM.fatherNameOfGroom,
+                            'text',
+                            30,
+                            false,
+                            false,
+                            value.informationOfGroom[0].fatherNameOfGroom
+                        )}
+                        <div className="item_field_single">
+                            <div className="Input_boxGroupInput__G9mP9 man_inputStyle checkbox">
+                                <label className="Input_label__90o4b">{Languages.inputText.death}</label>
+                                <div className="Input_formGroup__mXqJL ">
+                                    <input type="checkbox" defaultChecked={itemLocal ? itemLocal.informationOfGroom.isGoneFather : false} className="Input_form_control__5uYZX inputStyle" onChange={(e) => onChangeText(e.target.checked, NAME_INPUT_GROOM.isGoneFather)} />
+                                </div>
                             </div>
                         </div>
                     </div>
-
+                    <div className="col-width-input-right">
+                        {renderInput(
+                            refPhoneFather,
+                            '',
+                            '0384012345',
+                            NAME_INPUT_GROOM.phoneNumberOfFatherGroom,
+                            'number',
+                            10,
+                            false,
+                            false,
+                            value.informationOfGroom[0].phoneNumberOfFatherGroom
+                        )}
+                    </div>
                 </div>
             </div>
 
@@ -431,37 +433,39 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                     <label>{Languages.inputText.mother}</label>
                 </div>
                 <div className='group_input_control'>
-       
-                    {renderInput(
-                        refNameMother,
-                        Languages.inputText.namesingle,
-                        'B',
-                        NAME_INPUT_GROOM.motherNameOfGroom,
-                        'text',
-                        30,
-                        false,
-                        false,
-                        value.informationOfGroom[0].motherNameOfGroom
-                    )}
-
-                    {renderInput(
-                        refPhoneMother,
-                        Languages.inputText.phone,
-                        '0384012345',
-                        NAME_INPUT_GROOM.phoneNumberOfMotherGroom,
-                        'number',
-                        10,
-                        false,
-                        false,
-                        value.informationOfGroom[0].phoneNumberOfMotherGroom
-                    )}
-                    <div className="item_field_single">
-                        <div className="Input_boxGroupInput__G9mP9 man_inputStyle">
-                            <label className="Input_label__90o4b">{Languages.inputText.death}</label>
-                            <div className="Input_formGroup__mXqJL ">
-                                <input type="checkbox" defaultChecked={itemLocal ? itemLocal.informationOfGroom.isGoneMother : false} className="Input_form_control__5uYZX inputStyle" onChange={(e) => onChangeText(e.target.checked, NAME_INPUT_GROOM.isGoneMother)} />
+                    <div className="col-width-input-left">
+                        {renderInput(
+                            refNameMother,
+                            '',
+                            'B',
+                            NAME_INPUT_GROOM.motherNameOfGroom,
+                            'text',
+                            30,
+                            false,
+                            false,
+                            value.informationOfGroom[0].motherNameOfGroom
+                        )}
+                        <div className="item_field_single">
+                            <div className="Input_boxGroupInput__G9mP9 man_inputStyle checkbox">
+                                <label className="Input_label__90o4b">{Languages.inputText.death}</label>
+                                <div className="Input_formGroup__mXqJL ">
+                                    <input type="checkbox" defaultChecked={itemLocal ? itemLocal.informationOfGroom.isGoneMother : false} className="Input_form_control__5uYZX inputStyle" onChange={(e) => onChangeText(e.target.checked, NAME_INPUT_GROOM.isGoneMother)} />
+                                </div>
                             </div>
                         </div>
+                    </div>
+                    <div className="col-width-input-right">
+                        {renderInput(
+                            refPhoneMother,
+                            '',
+                            '0384012345',
+                            NAME_INPUT_GROOM.phoneNumberOfMotherGroom,
+                            'number',
+                            10,
+                            false,
+                            false,
+                            value.informationOfGroom[0].phoneNumberOfMotherGroom
+                        )}
                     </div>
                 </div>
             </div>

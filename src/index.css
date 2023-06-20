@@ -62,6 +62,7 @@ Global Styles
   --bg-tranparent-green: rgba(167, 189, 181, 0.2);
   --bg-pink-blur: #f6eaea;
   --rbga--pink-bold: rgba(127, 90, 90, 1);
+  --bg-gray-color-letter-page: rgba(207, 207, 207, 1)
 }
 
 *,
@@ -606,13 +607,25 @@ p {
 
 .header {
   display: flex;
-  align-items: center;
-  /* padding: 12px; */
   border-radius: 6px 6px 0 0;
   font-size: 20px;
   font-weight: 400;
-  /* background-color: #1abc9c; */
-  /* color: black; */
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.header h1 {
+  font-family: var(--quick-sand-font-family);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  color: var(--bg-pink-color);
+}
+
+.header .buttton_header {
+  position: absolute;
+  right: 15px;
 }
 
 .nav {
@@ -1030,6 +1043,10 @@ p {
   width: 3rem;
   height: 3rem;
   color: var(--main-color);
+}
+
+.Createpage {
+  background: var(--bg-gray-color-letter-page);
 }
 
 .section_wrap_type_ds {
@@ -2154,10 +2171,14 @@ img {
   font-family: var(--quick-sand-font-family);
   color: var(--black-color);
   text-transform: inherit;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
 }
 
 .wrapper_information_wedding {
-  margin: 40px 0;
+  margin: 0 0;
 }
 
 .title_comp_wed {
@@ -2180,10 +2201,18 @@ img {
   align-items: center;
   position: relative;
   padding-bottom: 5px;
+  margin-bottom: 20px;
+}
+
+.title_comp_wed h2 div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .title_comp_wed_add_cus h2 {
   font-size: 40px;
+  margin-bottom: 0;
 }
 
 .title_comp_wed .divided {
@@ -2221,21 +2250,18 @@ img {
 .effect_image_options {
   display: flex;
   gap: 40px;
-  margin-top: 10px;
+  margin: 30px 0;
+  justify-content: center;
 }
 
 .header_editpage {
   padding: 20px;
-  position: fixed;
-  width: 100%;
-  top: 0;
+  width: 75%;
   z-index: 2;
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
-}
-
-.header_edit {
-  justify-content: space-between;
+  margin: auto;
+  background: var(--white-color);
 }
 
 .btn_group_r {
@@ -2244,7 +2270,12 @@ img {
 }
 
 .my_input_form_data_group {
-  margin-top: 120px;
+  background: var(--white-color);
+  max-width: 75%;
+  margin: 0 auto 0;
+  padding-bottom: 40px;
+  padding-top: 70px;
+  box-shadow: 0px 13px 37px rgba(0, 0, 0, 0.21);
 }
 
 .my_input_form_data_group .container {
@@ -2280,6 +2311,23 @@ img {
   grid-column-gap: 40px;
 }
 
+.group_input_control .col-width-input-left {
+  flex: 1;
+}
+
+.group_input_control .col-width-input-left .man_inputStyle,
+.group_input_control .col-width-input-left .form_sellect_control {
+  max-width: 100%;
+}
+
+.group_input_control .checkbox {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: start;
+  gap: 10px;
+  align-items: center;
+}
+
 .item_field_single {
   flex-basis: 251px;
   flex-grow: revert;
@@ -2291,6 +2339,7 @@ img {
 
 .man_inputStyle label {
   font-family: var(--quick-sand-font-family);
+  font-weight: 500;
 }
 
 .input_create_half {
@@ -2315,7 +2364,6 @@ img {
 
 .form_sellect_control {
   width: 100%;
-  max-width: 250px;
   background: var(--color-input);
   height: 40px;
   padding: 10px 15px;
@@ -2327,6 +2375,10 @@ img {
 
 .form_sellect_control option {
   padding: 5px;
+}
+
+.coppyMaps {
+  font-family: var(--quick-sand-font-family);
 }
 
 .select_code {
@@ -2411,6 +2463,7 @@ img {
   align-items: center;
   justify-content: space-between;
   gap: 40px;
+  flex: 1;
 }
 
 .double_input_row .half_row_hor_input {
@@ -2421,9 +2474,23 @@ img {
   max-width: 100%;
 }
 
+.inforBank_one_per {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.inforBank_one_per .man_inputStyle {
+  max-width: 100%;
+}
+
+.inforBank_one_per .three_input_col {
+  flex: 1;
+}
+
 .fullwidth_input_colum {
   display: flex;
-  width: 100%;
+  flex: 1;
   flex-direction: column;
 }
 
@@ -2449,9 +2516,8 @@ img {
   background: var(--panel-color);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: start;
   padding: 5px 10px;
-  color: var(--white-color);
   font-family: var(--quick-sand-font-family);
   font-style: normal;
   font-weight: 700;
@@ -2460,6 +2526,20 @@ img {
   text-transform: uppercase;
   color: var(--white-color);
   cursor: pointer;
+  gap: 30px;
+  position: relative;
+}
+
+.collapse-child-title .left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.collapse-child-title .no_fields {
+  position: absolute;
+  right: 10px;
+  font-size: 13px;
 }
 
 .collapse-child-title::-moz-selection {
@@ -2486,6 +2566,10 @@ img {
 .album_list_thumb_wedding {
   margin: 20px 0;
   display: block;
+}
+
+input:disabled {
+  cursor: not-allowed;
 }
 
 .album_list_thumb_wedding .notifi {
@@ -2665,6 +2749,9 @@ img {
   font-size: 25px;
   font-weight: 600;
   color: var(--black-color);
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .custom_display_sec_radio_music {
@@ -2865,13 +2952,22 @@ img {
   justify-content: space-between;
 }
 
+.clear {
+  clear: both;
+}
+
 .savesetting_btn {
   clear: both;
   position: fixed;
   bottom: 0;
-  width: 100%;
+  width: 75%;
   left: 0;
   right: 0;
+  margin: 0 auto;
+}
+
+.savesetting_btn button {
+  border-radius: 0;
 }
 
 .rounded {
@@ -3042,6 +3138,7 @@ img {
 .body_form .wrap_form .address_province_ {
   display: flex;
   gap: 20px;
+  width: 100%;
   margin-bottom: 20px;
 }
 
@@ -3309,6 +3406,75 @@ img {
 }
 
 @media (max-width: 991px) {
+
+  .header_editpage,
+  .my_input_form_data_group {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .my_input_form_data_group {
+    padding-top: 0;
+  }
+
+  .uploading_single_img_group {
+    margin-bottom: 20px;
+  }
+
+  .group_input_control {
+    display: block;
+  }
+
+  .group_input_control .checkbox {
+    margin: 15px 0;
+  }
+
+  .body_form .wrap_form .address_province_ {
+    display: block;
+    margin-bottom: 0;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .header h1 {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .header .buttton_header {
+    position: relative;
+  }
+
+  .root-remove {
+    flex-wrap: unset;
+  }
+
+  .collapse-child-title {
+    font-size: 18px;
+    gap: 10px;
+  }
+
+  .collapse-child-title .no_fields {
+    font-size: 9px;
+  }
+
+  .savesetting_btn {
+    width: 100%;
+  }
+
+  .title_comp_wed h2 {
+    font-size: 18px;
+  }
+
+  .form_sellect_control {
+    margin-bottom: 10px;
+  }
+
   .all_services {
     padding: 50px 0;
   }
@@ -3483,11 +3649,6 @@ img {
     font-size: 18px;
   }
 
-  .my_input_form_data_group {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-
   .item_field_single {
     flex-basis: 100%;
   }
@@ -3654,6 +3815,10 @@ img {
     -webkit-animation: upanddown2 1s infinite linear alternate;
     animation: upanddown2 1s infinite linear alternate;
     z-index: 99999;
+  }
+
+  .double_input_row .half_row_hor_input.w_67_sm_lg {
+    width: 67%;
   }
 }
 

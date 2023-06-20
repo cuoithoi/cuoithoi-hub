@@ -1,8 +1,9 @@
+import Languages from '@/commons/Languages';
 import React, { useCallback, useState } from 'react'
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
 
 export const Panel = (props) => {
-    const { title, children, valiOpen, date } = props;
+    const { title, children, valiOpen, date, noFields } = props;
 
     const [open, setOpen] = useState(true)
 
@@ -15,7 +16,6 @@ export const Panel = (props) => {
             <div className="panel multi-collapse" onClick={handleChange}>
                 <div className='card_body'>
                     <h2 className='collapse-child-title'>
-                        {title}
                         <div className='right_title_panel'>
                             {
                                 date && <span className='date'>
@@ -26,6 +26,12 @@ export const Panel = (props) => {
                                 !open ? <FaAngleUp /> : <FaAngleDown />
                             }
                         </div>
+                        {title}
+                        {
+                            noFields && <span className='no_fields'>
+                                {Languages.text.noFields}
+                            </span>
+                        }
                     </h2>
 
                 </div>

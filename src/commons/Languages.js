@@ -100,7 +100,7 @@ const Languages = {
       'Tạo thiệp dễ dàng, chia sẻ nhanh chóng, & sửa đổi không giới hạn!',
     showFullIf: 'Hiển thị đầy đủ thông tin:',
     address: 'Địa điểm diễn ra lễ cưới',
-    albumWed: 'Album ảnh cưới',
+    albumWed: 'Album ảnh cưới (tối đa 30 ảnh)',
     listCustomer: 'Danh sách khách mời',
     effectOpen: 'Hiệu ứng mở thiệp đẹp & chuyên nghiệp',
     contentEffect:
@@ -158,7 +158,9 @@ const Languages = {
     timeadnlocation: 'Thời gian và địa điểm',
     wedding: 'lễ cưới',
     timer: 'Thời gian',
-    placeWedding: 'Địa điểm lễ cưới',
+    place: 'Địa điểm',
+    placeWedding: 'Địa chỉ (Ví dụ: Sảnh A, tầng 2, số 117 Trần Duy Hưng)',
+    namePlaceWed: 'Tên địa điểm (Khách sạn, nhà riêng,...)',
     mapPlaceWedding: 'Liên kết địa điểm lễ cưới',
     displayDateCoundown: 'Hiển thị Thời gian đếm ngược đến ngày cưới',
     titleCountdownTemp: 'Nhập nội dung tiêu đề đếm ngược thời gian',
@@ -186,8 +188,12 @@ const Languages = {
     qrcode: 'Tải lên QR Code',
     confirmAttend: 'Xác nhận tham dự ',
     useFeatureAttend: 'Bạn có muốn sử dụng tính năng Xác nhận tham dự không?',
+    useFeatureVideo: 'Bạn có muốn sử dụng tính năng video không?',
+    useFeatureEvent: 'Bạn có muốn sử dụng tính năng Chương trình không?',
+    useFeatureDamNgo: 'Bạn có muốn sử dụng tính năng Dặm ngõ và Ăn hỏi không?',
     use: 'Sử dụng',
     attend: 'Tính năng',
+    enablevideo: 'Để thể hiện tình yêu của các bạn trong ngày trọng đại này, hãy gửi cho Cưới Thôi một video trên thiệp cưới của bạn nhé.',
     enableAttend:
       'cho phép khách mời xác nhận có tham dự đám cưới hay không. Chỉ có cô dâu và chú rể xem được tình trạng tham dự và số liệu thống kê khách mời.',
     readChart:
@@ -242,7 +248,12 @@ const Languages = {
     alertSendPayment: 'Cuoithoi đã nhận được thông tin thanh toán và sẽ gửi thư xác nhận tới email của bạn.',
     contactnow: 'Liên hệ ngay cho chúng tôi khi cần hỗ trợ',
     limit: 'Vượt quá số lượng',
-    contentLimit: 'Số lượng thiệp miễn phí đã được tạo tối đa'
+    contentLimit: 'Số lượng thiệp miễn phí đã được tạo tối đa',
+    accountGroom: 'Tài khoản nhà trai',
+    accountBride: 'Tài khoản nhà gái',
+    noFields: '(Không bắt buộc)',
+    coppyMaps: '*Sao chép liên kết địa điểm lễ cưới trên trang Google Maps',
+    togetherCreate: 'Cùng tạo Thiệp Cưới cho ngày trọng đại của bạn nhé!'
   },
   errorMsg: {
     noCorect: 'Không hợp lệ',

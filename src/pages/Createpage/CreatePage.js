@@ -36,7 +36,9 @@ import ProvinceDistrictList from './ProvinceDistrictList'
 import Song_1 from '@/assets/audio/vudieutinhyeu.mp3'
 import Song_2 from '@/assets/audio/huongnangha.mp3'
 import Song_3 from '@/assets/audio/buochanhoanggia.mp3'
-import { all } from 'axios'
+import Ic_heart from '@/assets/home-image/Ic_heart.png'
+import Ic_RedHeart from '@/assets/home-image/Ic_RedHeart.png'
+import Ic_PurpleHeart from '@/assets/home-image/Ic_PurpleHeart.png'
 
 const CreatePage = () => {
 
@@ -543,7 +545,7 @@ const CreatePage = () => {
   )
 
   const renderAlbum = useMemo(() => {
-    return <Panel title={Languages.text.albumWed}>
+    return <Panel title={<div className='left'><img src={Ic_heart} alt='Ic_heart' />{Languages.text.albumWed}<img src={Ic_heart} alt='Ic_heart' /></div>} >
       <div className='album_list_thumb_wedding'>
         <div className='album_notifi'>
           <ul className='notifi'>
@@ -594,7 +596,7 @@ const CreatePage = () => {
   }, [radioMusic, radioChangeHandlerMusic])
 
   const renderConfirmAttend = useMemo(() => {
-    return !editor && <Panel title={Languages.text.confirmAttend}>
+    return !editor && <Panel title={Languages.text.confirmAttend} noFields={true}>
 
       <div className='sec_panel_use_feature_attend fullwidth_input_colum'>
         <div className='title'>
@@ -623,7 +625,7 @@ const CreatePage = () => {
 
   const renderGuestbook = useMemo(() => {
 
-    return !editor && <Panel title={Languages.text.guestbook} valiOpen={openPanel}>
+    return !editor && <Panel noFields={true} title={Languages.text.guestbook} valiOpen={openPanel}>
 
       <div className='sec_panel_use_feature_attend fullwidth_input_colum'>
         <div className='title'>
@@ -941,7 +943,7 @@ const CreatePage = () => {
       "timeAndLocationOfWedding": {
         "dateOfEventWedding": values.timeAndLocationOfWedding.dateOfEventWedding,
         "timeOfEventWedding": values.timeAndLocationOfWedding.timeOfEventWedding,
-        "locationOfWedding": values.timeAndLocationOfWedding.locationOfWedding,
+        "locationOfWedding": values.timeAndLocationOfWedding.namelocationOfWedding + ', ' + values.timeAndLocationOfWedding.locationOfWedding,
         "mapDirectLink": values.timeAndLocationOfWedding.mapDirectLink,
         "isDisplayCountDown": values.timeAndLocationOfWedding.isDisplayCountDown,
         "contentOfCountDown": values.arraylist[0].contentOfCountDown
@@ -988,6 +990,9 @@ const CreatePage = () => {
       "contentGuestBook": values.contentGuestBook,
       "isEffectOfOpenning": values.isEffectOfOpenning,
       "codeInvite": codeinvite,
+      "isUseVideo": values.arraylist[0].isUseVideo,
+      "isUseEvent": values.arraylist[0].isUseEvent,
+      "isUseDamNgo": values.arraylist[0].isUseDamNgo
     }
 
     if (checkUrl) {
@@ -1342,11 +1347,17 @@ const CreatePage = () => {
       <div className='header_editpage'>
         <div className='container mx-auto'>
           <div className='header header_edit'>
-            <Button
-              label={Languages.common.cancel}
-              isLowerCase
-              onPress={onShowModalAgree}
-            />
+            <h1>
+              {Languages.text.togetherCreate}
+            </h1>
+            <div className='buttton_header'>
+              <Button
+                label={Languages.common.cancel}
+                isLowerCase
+                onPress={onShowModalAgree}
+              />
+            </div>
+
             <div className='btn_group_r'>
               {/* {
               checkUrl ? <Button
@@ -1357,13 +1368,13 @@ const CreatePage = () => {
               /> : ''
             } */}
 
-              <Button
+              {/* <Button
                 label={Languages.common.listLetter}
                 buttonStyle={BUTTON_STYLES.PINK}
                 textStyle={BUTTON_STYLES.WHITE}
                 isLowerCase
                 onPress={onNavigateMypage}
-              />
+              /> */}
             </div>
           </div>
         </div>
@@ -1374,7 +1385,7 @@ const CreatePage = () => {
             <div className='md:grid md:grid-cols-3 md:gap-5'>
               <div className='col-span-2'>
                 {renderImageUploadSingle(
-                  Languages.text.chooseCoverImage,
+                  <><img src={Ic_RedHeart} alt='Ic_RedHeart' />{Languages.text.chooseCoverImage}</>,
                   imagesCover,
                   Languages.text.bigsize,
                   false,
@@ -1383,7 +1394,7 @@ const CreatePage = () => {
                 )}
               </div>
               {renderImageUploadSingle(
-                Languages.text.chooseThumbs,
+                <><img src={Ic_PurpleHeart} alt='Ic_RedHeart' />{Languages.text.chooseThumbs}</>,
                 images,
                 Languages.text.smallsize,
                 false,
@@ -1435,7 +1446,6 @@ const CreatePage = () => {
                   textStyle={BUTTON_STYLES.WHITE}
                   onPress={onOpenSuccessConfirm}
                   width={100}
-                  rounded={'rounded'}
                 />
               </div>
               <div className='wrap_flop_note_using float_display'>
@@ -1456,13 +1466,14 @@ const CreatePage = () => {
                   </ul>
                 </div>
               </div>
-
+              <div className='clear'></div>
             </div>
+            <div className='clear'></div>
           </div>
         </div>
       </div>
       {renderModal}
-      <Footer />
+
     </div>
   )
 }

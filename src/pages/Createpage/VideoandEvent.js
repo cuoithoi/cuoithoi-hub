@@ -25,6 +25,8 @@ const VideoandEvent = forwardRef(({ }, ref) => {
     const [radioWarnTemplate, setRadioWarnTemplate] = useState('none')
     const [warnTemp, setWarnTemp] = useState('')
     const [checkParams, setCheckParams] = useState(CheckParams.AFFTER)
+    const [block, setBlock] = useState(false)
+    const [blockEvent, setBlockEvent] = useState(false)
 
     const refUnderfine = useRef(null)
     const refVideoLink = useRef(null)
@@ -138,12 +140,36 @@ const VideoandEvent = forwardRef(({ }, ref) => {
                 }));
                 break
 
+            case INPUT_FIELDS.isUseVideo:
+                setValue(prevValues => {
+                    const newArray = [...prevValues.arraylist];
+                    newArray[0]['isUseVideo'] = e;
+                    return {
+                        ...prevValues,
+                        arraylist: newArray
+                    };
+                });
+                setBlock(!block)
+                break
+
+            case INPUT_FIELDS.isUseEvent:
+                setValue(prevValues => {
+                    const newArray = [...prevValues.arraylist];
+                    newArray[0]['isUseEvent'] = e;
+                    return {
+                        ...prevValues,
+                        arraylist: newArray
+                    };
+                });
+                setBlockEvent(!blockEvent)
+                break
+
             default:
                 break
         }
 
 
-    }, [value]);
+    }, [value, block]);
 
     const onKeyPress = useCallback(() => {
 
@@ -162,7 +188,8 @@ const VideoandEvent = forwardRef(({ }, ref) => {
             isIcon,
             icon,
             inputStyle,
-            values
+            values,
+            disabled
         ) => {
 
 
@@ -182,6 +209,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
                         onKeyPress={onKeyPress}
                         inputStyle={inputStyle}
                         value={values}
+                        disabled={disabled}
                     />
                 </div>
             )
@@ -265,34 +293,66 @@ const VideoandEvent = forwardRef(({ }, ref) => {
     return (
 
         <>
-            <Panel title={Languages.text.video} valiOpen={openPanel}>
+            <Panel noFields={true} title={Languages.text.video} valiOpen={openPanel}>
+                <div className='sec_panel_use_feature_attend fullwidth_input_colum'>
+                    <div className='title'>
+                        {Languages.text.useFeatureVideo}
+                    </div>
+                    <div className='single_hor_input checkbox_inline_colum'>
+                        <div className="item_field_single">
+                            <div className="Input_boxGroupInput__8ghvv man_inputStyle">
+                                <label className="Input_label__XHiJ4">{Languages.text.use}</label>
+                                <div className="Input_formGroup__Ln91z ">
+                                    <input name="" defaultChecked={itemLocal ? itemLocal?.isUseVideo : false} type="checkbox" className="Input_form_control__zkQn6 checkbox_input_style " onChange={(e) => onChangeText(e.target.checked, INPUT_FIELDS.isUseVideo)} />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='details_attend'>
+                        <p style={{ marginBottom: 0 }}>
+                            {Languages.text.enablevideo}
+                        </p>
+                    </div>
+                </div>
                 <div className='video_event_wedding'>
                     <div className='fullwidth_input_colum'>
                         <div className='single_hor_input'>
-                            {renderInput(refVideoLink, '', 'Nhập ' + Languages.text.linkVideo, INPUT_FIELDS.videoLink, 'text', 200, true, <FaLink />, '', value.videoLink)}
+                            {renderInput(refVideoLink, '', 'Nhập ' + Languages.text.linkVideo, INPUT_FIELDS.videoLink, 'text', 200, true, <FaLink />, '', value.videoLink, block)}
                         </div>
                     </div>
                 </div>
             </Panel>
 
-            <Panel title={Languages.text.weddingProgram} valiOpen={openPanel}>
+            <Panel noFields={true} title={Languages.text.weddingProgram} valiOpen={openPanel}>
                 <div className='program_wedding'>
-
+                    <div className='title'>
+                        {Languages.text.useFeatureEvent}
+                    </div>
+                    <div className='single_hor_input checkbox_inline_colum'>
+                        <div className="item_field_single">
+                            <div className="Input_boxGroupInput__8ghvv man_inputStyle">
+                                <label className="Input_label__XHiJ4">{Languages.text.use}</label>
+                                <div className="Input_formGroup__Ln91z ">
+                                    <input name="" defaultChecked={itemLocal ? itemLocal?.isUseEvent : false} type="checkbox" className="Input_form_control__zkQn6 checkbox_input_style " onChange={(e) => onChangeText(e.target.checked, INPUT_FIELDS.isUseEvent)} />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div className='double_input_row'>
                         <div className='half_row_hor_input'>
-                            {renderInput('', '', Languages.text.welcomeGuest, '', 'text', 200, false,'', 'disable')}
+                            {renderInput('', '', Languages.text.welcomeGuest, '', 'text', 200, false, '', 'disable')}
                         </div>
                         <div className='half_row_hor_input'>
-                            {renderInput(refTimeToWellcome, '', '', EventOfProgram.timeToWellcome, 'time', 200, false, '', '', value.eventOfProgram.timeToWellcome)}
+                            {renderInput(refTimeToWellcome, '', '', EventOfProgram.timeToWellcome, 'time', 200, false, '', '', value.eventOfProgram.timeToWellcome, blockEvent)}
                         </div>
                     </div>
 
                     <div className='double_input_row'>
                         <div className='half_row_hor_input'>
-                            {renderInput('', '', Languages.text.celebrate, '', 'text', 200, false,'', 'disable')}
+                            {renderInput('', '', Languages.text.celebrate, '', 'text', 200, false, '', 'disable')}
                         </div>
                         <div className='half_row_hor_input'>
-                            {renderInput(refTimeToCelebrate, '', '', EventOfProgram.timeToCelebrate, 'time', 200, false, '', '', value.eventOfProgram.timeToCelebrate)}
+                            {renderInput(refTimeToCelebrate, '', '', EventOfProgram.timeToCelebrate, 'time', 200, false, '', '', value.eventOfProgram.timeToCelebrate , blockEvent)}
                         </div>
                     </div>
 
@@ -301,7 +361,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
                             {renderInput('', '', Languages.text.dinner, '', 'text', 200, false, '', 'disable')}
                         </div>
                         <div className='half_row_hor_input'>
-                            {renderInput(refTimeToDinner, '', '', EventOfProgram.timeToDinner, 'time', 200, false, '', '', value.eventOfProgram.timeToDinner)}
+                            {renderInput(refTimeToDinner, '', '', EventOfProgram.timeToDinner, 'time', 200, false, '', '', value.eventOfProgram.timeToDinner , blockEvent)}
                         </div>
                     </div>
 
@@ -310,7 +370,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
                             {renderInput('', '', Languages.text.music, '', 'text', 200, false, '', 'disable')}
                         </div>
                         <div className='half_row_hor_input'>
-                            {renderInput(refTimeToMusic, '', '', EventOfProgram.timeToMusic, 'time', 200, false, '', '', value.eventOfProgram.timeToMusic)}
+                            {renderInput(refTimeToMusic, '', '', EventOfProgram.timeToMusic, 'time', 200, false, '', '', value.eventOfProgram.timeToMusic , blockEvent)}
                         </div>
                     </div>
 

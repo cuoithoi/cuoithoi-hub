@@ -12,6 +12,7 @@ import Popup from "@/components/modal/Popup";
 import TitleCreate from "@/components/createPage/subcomp/TitleCreate";
 import FormValidate from "@/utils/FormValidate";
 import { getItemFromLocalStorage } from "@/utils/localStorage";
+import Ic_Bride from '@/assets/home-image/Ic_Bride.png'
 
 const FamilyBride = forwardRef(({ props }, ref) => {
     useImperativeHandle(ref, () => ({
@@ -439,52 +440,52 @@ const FamilyBride = forwardRef(({ props }, ref) => {
     return (
 
         <div className='total_family_one_side'>
-            <TitleCreate title={Languages.text.women} divided={true} />
+            <TitleCreate title={<div><img src={Ic_Bride} alt="Ic_Bride" />{Languages.text.women}</div>} divided={true} />
             <div className='input_fields_control'>
                 <div className='place_title_input'>
                     <label>{Languages.inputText.bride}</label>
                 </div>
                 <div className='group_input_control'>
-                    
-                    {renderInput(
-                        refNameBride,
-                        Languages.inputText.nameBride,
-                        'B',
-                        NAME_INPUT_BRIDE.name,
-                        'text',
-                        30,
-                        false,
-                        false,
-                        value.informationOfBride[0].name
-                    )}
+                    <div className="col-width-input-left">
+                        {renderInput(
+                            refNameBride,
+                            '',
+                            'B',
+                            NAME_INPUT_BRIDE.name,
+                            'text',
+                            30,
+                            false,
+                            false,
+                            value.informationOfBride[0].name
+                        )}
 
-                    <div className='item_field_single'>
-                        <div className='sellect_option'>
-                            <label className='Input_label__90o4b'>
-                                {Languages.inputText.stt}
-                            </label>
-                            <select
-                                className='form_sellect_control'
-                                name='form_sellect_stt'
-                                onChange={onChangeSelectStt}
-                            >
-                                <option value='true'>{Languages.inputText.top1woman}</option>
-                                <option value='false'>{Languages.inputText.notTop}</option>
-                            </select>
+                        <div className='item_field_single'>
+                            <div className='sellect_option'>
+                     
+                                <select
+                                    className='form_sellect_control'
+                                    name='form_sellect_stt'
+                                    onChange={onChangeSelectStt}
+                                >
+                                    <option value='true'>{Languages.inputText.top1woman}</option>
+                                    <option value='false'>{Languages.inputText.notTop}</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-             
-                    {renderInput(
-                        refPhoneBride,
-                        Languages.inputText.phone,
-                        '0384012345',
-                        NAME_INPUT_BRIDE.phoneNumberOfBride,
-                        'number',
-                        10,
-                        false,
-                        false,
-                        value.informationOfBride[0].phoneNumberOfBride
-                    )}
+                    <div className="col-width-input-right">
+                        {renderInput(
+                            refPhoneBride,
+                            '',
+                            '0384012345',
+                            NAME_INPUT_BRIDE.phoneNumberOfBride,
+                            'number',
+                            10,
+                            false,
+                            false,
+                            value.informationOfBride[0].phoneNumberOfBride
+                        )}
+                    </div>
                 </div>
             </div>
 
@@ -493,37 +494,39 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                     <label>{Languages.inputText.father}</label>
                 </div>
                 <div className='group_input_control'>
-            
-                    {renderInput(
-                        refNameFather,
-                        Languages.inputText.namesingle,
-                        'A',
-                        NAME_INPUT_BRIDE.fatherNameOfBride,
-                        'text',
-                        30,
-                        false,
-                        false,
-                        value.informationOfBride[0].fatherNameOfBride
-                    )}
-
-                    {renderInput(
-                        refPhoneFather,
-                        Languages.inputText.phone,
-                        '0384012345',
-                        NAME_INPUT_BRIDE.phoneNumberOfFatherBride,
-                        'number',
-                        10,
-                        false,
-                        false,
-                        value.informationOfBride[0].phoneNumberOfFatherBride
-                    )}
-                    <div className="item_field_single">
-                        <div className="Input_boxGroupInput__G9mP9 man_inputStyle">
-                            <label className="Input_label__90o4b">{Languages.inputText.death}</label>
-                            <div className="Input_formGroup__mXqJL ">
-                                <input type="checkbox" defaultChecked={itemLocal ? itemLocal.informationOfBride.isGoneFatherBride : false} className="Input_form_control__5uYZX inputStyle" onChange={(e) => onChangeText(e.target.checked, NAME_INPUT_BRIDE.isGoneFatherBride)} />
+                    <div className="col-width-input-left">
+                        {renderInput(
+                            refNameFather,
+                            '',
+                            'A',
+                            NAME_INPUT_BRIDE.fatherNameOfBride,
+                            'text',
+                            30,
+                            false,
+                            false,
+                            value.informationOfBride[0].fatherNameOfBride
+                        )}
+                        <div className="item_field_single">
+                            <div className="Input_boxGroupInput__G9mP9 man_inputStyle checkbox">
+                                <label className="Input_label__90o4b">{Languages.inputText.death}</label>
+                                <div className="Input_formGroup__mXqJL ">
+                                    <input type="checkbox" defaultChecked={itemLocal ? itemLocal.informationOfBride.isGoneFatherBride : false} className="Input_form_control__5uYZX inputStyle" onChange={(e) => onChangeText(e.target.checked, NAME_INPUT_BRIDE.isGoneFatherBride)} />
+                                </div>
                             </div>
                         </div>
+                    </div>
+                    <div className="col-width-input-right">
+                        {renderInput(
+                            refPhoneFather,
+                            '',
+                            '0384012345',
+                            NAME_INPUT_BRIDE.phoneNumberOfFatherBride,
+                            'number',
+                            10,
+                            false,
+                            false,
+                            value.informationOfBride[0].phoneNumberOfFatherBride
+                        )}
                     </div>
                 </div>
             </div>
@@ -533,39 +536,41 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                     <label>{Languages.inputText.mother}</label>
                 </div>
                 <div className='group_input_control'>
-       
-                    {renderInput(
-                        refNameMother,
-                        Languages.inputText.namesingle,
-                        'B',
-                        NAME_INPUT_BRIDE.motherNameOfBride,
-                        'text',
-                        30,
-                        false,
-                        false,
-                        value.informationOfBride[0].motherNameOfBride
-                    )}
+                    <div className="col-width-input-left">
+                        {renderInput(
+                            refNameMother,
+                            '',
+                            'B',
+                            NAME_INPUT_BRIDE.motherNameOfBride,
+                            'text',
+                            30,
+                            false,
+                            false,
+                            value.informationOfBride[0].motherNameOfBride
+                        )}
 
-                    {renderInput(
-                        refPhoneMother,
-                        Languages.inputText.phone,
-                        '0384012345',
-                        NAME_INPUT_BRIDE.phoneNumberOfMotherBride,
-                        'number',
-                        10,
-                        false,
-                        false,
-                        value.informationOfBride[0].phoneNumberOfMotherBride
-                    )}
-                    <div className="item_field_single">
-                        <div className="Input_boxGroupInput__G9mP9 man_inputStyle">
-                            <label className="Input_label__90o4b">{Languages.inputText.death}</label>
-                            <div className="Input_formGroup__mXqJL ">
-                                <input type="checkbox" defaultChecked={itemLocal ? itemLocal.informationOfBride.isGoneMotherOfBride : false} className="Input_form_control__5uYZX inputStyle" onChange={(e) => onChangeText(e.target.checked, NAME_INPUT_BRIDE.isGoneMotherOfBride)} />
+                        <div className="item_field_single">
+                            <div className="Input_boxGroupInput__G9mP9 man_inputStyle checkbox">
+                                <label className="Input_label__90o4b">{Languages.inputText.death}</label>
+                                <div className="Input_formGroup__mXqJL ">
+                                    <input type="checkbox" defaultChecked={itemLocal ? itemLocal.informationOfBride.isGoneMotherOfBride : false} className="Input_form_control__5uYZX inputStyle" onChange={(e) => onChangeText(e.target.checked, NAME_INPUT_BRIDE.isGoneMotherOfBride)} />
+                                </div>
                             </div>
                         </div>
                     </div>
-
+                    <div className="col-width-input-right">
+                        {renderInput(
+                            refPhoneMother,
+                            '',
+                            '0384012345',
+                            NAME_INPUT_BRIDE.phoneNumberOfMotherBride,
+                            'number',
+                            10,
+                            false,
+                            false,
+                            value.informationOfBride[0].phoneNumberOfMotherBride
+                        )}
+                    </div>
                     <div className='enable_show_deadman active'>
                         <div className='label_left'>
                             <label>{Languages.text.displayModeDeceased}</label>

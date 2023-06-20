@@ -160,6 +160,7 @@ export const NAME_INPUT_BRIDE = {
 export const TIME_AND_LOCATION = {
   dateOfEventWedding: 'dateOfEventWedding',
   timeOfEventWedding: 'timeOfEventWedding',
+  namelocationOfWedding: 'namelocationOfWedding',
   locationOfWedding: 'locationOfWedding',
   mapDirectLink: 'mapDirectLink',
   isDisplayCountDown: 'isDisplayCountDown',
@@ -188,6 +189,9 @@ export const EventOfProgram = {
 export const INPUT_FIELDS = {
   videoLink: 'videoLink',
   isUseConfirm: 'isUseConfirm',
+  isUseVideo: 'isUseVideo',
+  isUseEvent: 'isUseEvent',
+  isUseDamNgo: 'isUseDamNgo',
   isUseGuestBook: 'isUseGuestBook',
   password: 'password',
   isEffectOfOpenning: 'isEffectOfOpenning',

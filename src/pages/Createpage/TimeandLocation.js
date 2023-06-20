@@ -11,6 +11,7 @@ import Popup from "@/components/modal/Popup";
 import TitleCreate from "@/components/createPage/subcomp/TitleCreate";
 import FormValidate from "@/utils/FormValidate";
 import { getItemFromLocalStorage } from "@/utils/localStorage";
+import ProvinceDistrictList from "./ProvinceDistrictList";
 
 const TimeandLocation = forwardRef(({ }, ref) => {
 
@@ -185,6 +186,17 @@ const TimeandLocation = forwardRef(({ }, ref) => {
                 value.timeAndLocationOfWedding.locationOfWedding = e
                 break
 
+            case TIME_AND_LOCATION.namelocationOfWeddinglocationOfWedding:
+                setValue(prevValues => ({
+                    ...prevValues,
+                    timeAndLocationOfWedding: {
+                        ...prevValues.timeAndLocationOfWedding,
+                        namelocationOfWedding: e
+                    }
+                }));
+                value.timeAndLocationOfWedding.locationOfWedding = e
+                break
+
             case TIME_AND_LOCATION.mapDirectLink:
                 setValue(prevValues => ({
                     ...prevValues,
@@ -268,59 +280,81 @@ const TimeandLocation = forwardRef(({ }, ref) => {
 
 
     return (
-        <div className='sec_time_location_wed float_display'>
+        <div className='sec_time_location_wed'>
 
             <TitleCreate title={Languages.text.timeAndLocation} divided={true} />
-
-            <div className='double_input_row'>
-                <div className='half_row_hor_input'>
-                    {renderInput(refDateOfEventWedding, Languages.text.wedding, Languages.text.wedding, TIME_AND_LOCATION.dateOfEventWedding, value.timeAndLocationOfWedding.dateOfEventWedding, 'date', 200, false)}
+            <div className="input_fields_control">
+                <div className="place_title_input">
+                    <label>{Languages.text.timer}:</label>
                 </div>
-                <div className='half_row_hor_input'>
-                    {renderInput(refTimeOfEventWedding, Languages.text.timer, Languages.text.timer, TIME_AND_LOCATION.timeOfEventWedding, value.timeAndLocationOfWedding.timeOfEventWedding, 'time', 200, false)}
+                <div className='double_input_row'>
+                    <div className='half_row_hor_input'>
+                        {renderInput(refDateOfEventWedding, '', Languages.text.wedding, TIME_AND_LOCATION.dateOfEventWedding, value.timeAndLocationOfWedding.dateOfEventWedding, 'date', 200, false)}
+                    </div>
+                    <div className='half_row_hor_input'>
+                        {renderInput(refTimeOfEventWedding, '', Languages.text.timer, TIME_AND_LOCATION.timeOfEventWedding, value.timeAndLocationOfWedding.timeOfEventWedding, 'time', 200, false)}
+                    </div>
                 </div>
             </div>
-
-            <div className='fullwidth_input_colum'>
-                <div className='single_hor_input'>
-                    {renderInput(refLocationOfWedding, '', 'Nhập ' + Languages.text.placeWedding, TIME_AND_LOCATION.locationOfWedding, value.timeAndLocationOfWedding.locationOfWedding, 'text', 200, true, <FaMap />)}
+            <div className="input_fields_control">
+                <div className="place_title_input">
+                    <label>{Languages.text.place}:</label>
                 </div>
+                <div className='fullwidth_input_colum'>
+                    <div className='double_input_row'>
+                        <div className='half_row_hor_input w_67_sm_lg'>
+                            {renderInput(refLocationOfWedding, '', Languages.text.namePlaceWed, TIME_AND_LOCATION.namelocationOfWedding, value.timeAndLocationOfWedding.namelocationOfWedding, 'text', 200)}
+                        </div>
+                        <div className='half_row_hor_input'>
+                            {renderInput(refLocationOfWedding, '', Languages.text.placeWedding, TIME_AND_LOCATION.locationOfWedding, value.timeAndLocationOfWedding.locationOfWedding, 'text', 200, true, <FaMap />)}
+                        </div>
+                    </div>
 
-                <div className='single_hor_input'>
-                    {renderInput(refMapDirectLink, '', 'Nhập ' + Languages.text.mapPlaceWedding, TIME_AND_LOCATION.mapDirectLink, value.timeAndLocationOfWedding.mapDirectLink, 'text', 200, true, <FaLink />)}
-                </div>
+                    <div className="body_form">
+                        <div className="wrap_form">
+                            <ProvinceDistrictList />
+                        </div>
+                    </div>
 
-                <div className='single_hor_input checkbox_inline_colum'>
-                    <div className="item_field_single">
-                        <div className="Input_boxGroupInput__8ghvv man_inputStyle">
-                            <label className="Input_label__XHiJ4">{Languages.text.displayDateCoundown}</label>
-                            <div className="Input_formGroup__Ln91z ">
-                                <input name="" defaultChecked={itemLocal ? itemLocal?.timeAndLocationOfWedding?.isDisplayCountDown : false} type="checkbox" className="Input_form_control__zkQn6 checkbox_input_style " onChange={(e) => onChangeText(e.target.checked, TIME_AND_LOCATION.isDisplayCountDown)} />
+                    <div className='single_hor_input'>
+                        {renderInput(refMapDirectLink, '', 'Nhập ' + Languages.text.mapPlaceWedding, TIME_AND_LOCATION.mapDirectLink, value.timeAndLocationOfWedding.mapDirectLink, 'text', 200, true, <FaLink />)}
+                        <p className="coppyMaps">{Languages.text.coppyMaps}</p>
+                    </div>
+
+                    <div className='single_hor_input checkbox_inline_colum'>
+                        <div className="item_field_single">
+                            <div className="Input_boxGroupInput__8ghvv man_inputStyle">
+                                <label className="Input_label__XHiJ4">{Languages.text.displayDateCoundown}</label>
+                                <div className="Input_formGroup__Ln91z ">
+                                    <input name="" defaultChecked={itemLocal ? itemLocal?.timeAndLocationOfWedding?.isDisplayCountDown : false} type="checkbox" className="Input_form_control__zkQn6 checkbox_input_style " onChange={(e) => onChangeText(e.target.checked, TIME_AND_LOCATION.isDisplayCountDown)} />
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div className='single_hor_input'>
+                    <div className='single_hor_input'>
 
-                    <MyTextArea
-                        ref={refTitleTemplate}
-                        value={countdownTemp}
-                        placeHolder={Languages.inputText.contentInvite}
-                        maxLength={500}
-                        onChangeText={onChangeCountdownTemp}
-                    />
-                    <Button
+                        <MyTextArea
+                            ref={refTitleTemplate}
+                            value={countdownTemp}
+                            placeHolder={Languages.inputText.contentInvite}
+                            maxLength={500}
+                            onChangeText={onChangeCountdownTemp}
+                        />
+                        <Button
 
-                        label={Languages.buttonText.titleTemplate}
-                        buttonStyle={BUTTON_STYLES.PINK}
-                        textStyle={BUTTON_STYLES.WHITE}
-                        isLowerCase
-                        onPress={onChangeOpenCountdownTemplate}
-                    />
+                            label={Languages.buttonText.titleTemplate}
+                            buttonStyle={BUTTON_STYLES.PINK}
+                            textStyle={BUTTON_STYLES.WHITE}
+                            isLowerCase
+                            onPress={onChangeOpenCountdownTemplate}
+                        />
 
+                    </div>
                 </div>
             </div>
+
+
             {renderModal}
         </div>
 

@@ -2,7 +2,7 @@ import { MyTextInput } from "@/components/input";
 import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from "react";
 import Languages from '@/commons/Languages'
 import { fiedlsCreatePage } from "@/commons/FieldsDataObj";
-import { Egagement, Interrogation } from "@/commons/Constant.ts";
+import { Egagement, INPUT_FIELDS, Interrogation } from "@/commons/Constant.ts";
 import { FaMap } from "react-icons/fa";
 import { Panel } from "@/components/panel";
 import FormValidate from "@/utils/FormValidate";
@@ -25,6 +25,7 @@ const DamNgoAnHoi = forwardRef(({ }, ref) => {
     const refLocationOfEventInterrogation = useRef(null)
 
     const [openPanel, setOpenPanel] = useState(true)
+    const [block, setBlock] = useState(false)
 
     const [value, setValue] = useState(fiedlsCreatePage)
 
@@ -146,6 +147,18 @@ const DamNgoAnHoi = forwardRef(({ }, ref) => {
                 }));
                 break
 
+            case INPUT_FIELDS.isUseDamNgo:
+                setValue(prevValues => {
+                    const newArray = [...prevValues.arraylist];
+                    newArray[0]['isUseDamNgo'] = e;
+                    return {
+                        ...prevValues,
+                        arraylist: newArray
+                    };
+                });
+                setBlock(!block)
+                break
+
             default:
                 break
         }
@@ -170,6 +183,7 @@ const DamNgoAnHoi = forwardRef(({ }, ref) => {
             maxLength,
             isIcon,
             icon
+
         ) => {
 
 
@@ -188,15 +202,29 @@ const DamNgoAnHoi = forwardRef(({ }, ref) => {
                         styleGroup={'man_inputStyle'}
                         onChangeText={(e) => onChangeText(e.target.value, name)}
                         onKeyPress={onKeyPress}
+                        disabled={block}
                     />
                 </div>
             )
         },
-        [refUnderfine]
+        [refUnderfine, block]
     )
 
     return (
-        <Panel title={Languages.text.daringAndFlirting} valiOpen={openPanel}>
+        <Panel noFields={true} title={Languages.text.daringAndFlirting} valiOpen={openPanel}>
+            <div className='title'>
+                {Languages.text.useFeatureDamNgo}
+            </div>
+            <div className='single_hor_input checkbox_inline_colum'>
+                <div className="item_field_single">
+                    <div className="Input_boxGroupInput__8ghvv man_inputStyle">
+                        <label className="Input_label__XHiJ4">{Languages.text.use}</label>
+                        <div className="Input_formGroup__Ln91z ">
+                            <input name="" defaultChecked={itemLocal ? itemLocal?.isUseDamNgo : false} type="checkbox" className="Input_form_control__zkQn6 checkbox_input_style " onChange={(e) => onChangeText(e.target.checked, INPUT_FIELDS.isUseDamNgo)} />
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div className='double_input_row'>
                 <div className='half_row_hor_input'>
                     {renderInput(refDateOfEgagement, Languages.text.Egagement, Languages.text.Egagement, Egagement.dateOfEventEgagement, value.timeAndLocationOfEgagement.dateOfEventEgagement, 'date', 200, false)}
@@ -208,7 +236,7 @@ const DamNgoAnHoi = forwardRef(({ }, ref) => {
 
             <div className='fullwidth_input_colum'>
                 <div className='single_hor_input'>
-                    {renderInput(refLocationOfEgagement, '', 'Nhập ' + Languages.text.placeEagement, Egagement.locationOfEgagement, value.timeAndLocationOfEgagement.locationOfEgagement, 'text', 200, true, <FaMap />, '', value.timeAndLocationOfEgagement.locationOfEgagement)}
+                    {renderInput(refLocationOfEgagement, '', 'Nhập ' + Languages.text.placeEagement, Egagement.locationOfEgagement, value.timeAndLocationOfEgagement.locationOfEgagement, 'text', 200, true, <FaMap />)}
                 </div>
             </div>
 
@@ -223,7 +251,7 @@ const DamNgoAnHoi = forwardRef(({ }, ref) => {
 
             <div className='fullwidth_input_colum'>
                 <div className='single_hor_input'>
-                    {renderInput(refLocationOfEventInterrogation, '','Nhập ' + Languages.text.placeInterrogation, Interrogation.locationOfInterrogation, value.timeAndLocationOfInterrogation.locationOfInterrogation, 'text', 200, true, <FaMap />)}
+                    {renderInput(refLocationOfEventInterrogation, '', 'Nhập ' + Languages.text.placeInterrogation, Interrogation.locationOfInterrogation, value.timeAndLocationOfInterrogation.locationOfInterrogation, 'text', 200, true, <FaMap />)}
                 </div>
             </div>
 

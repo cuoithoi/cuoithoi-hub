@@ -309,11 +309,15 @@ export const fiedlsCreatePage = {
     "dateOfEventWedding": "",
     "timeOfEventWedding": "",
     "locationOfWedding": "",
+    "namelocationOfWedding": "",
     "mapDirectLink": "",
     "isDisplayCountDown": "",
   },
   "arraylist": [{
-    "contentOfCountDown": ""
+    "contentOfCountDown": "",
+    "isUseVideo": false,
+    "isUseEvent": false,
+    "isUseDamNgo": false,
   }],
   "timeAndLocationOfEgagement": {
     "dateOfEventEgagement": "",

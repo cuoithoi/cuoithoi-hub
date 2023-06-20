@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 import { uploadImage } from "@/utils/axios";
 import { getItemFromLocalStorage } from "@/utils/localStorage";
 import { useBaseService } from "@/utils/BaseServices";
+import Ic_Bride from '@/assets/home-image/Ic_Bride.png'
 
 const BankingBrice = forwardRef(({ }, ref) => {
 
@@ -360,14 +361,14 @@ const BankingBrice = forwardRef(({ }, ref) => {
 
     return (
         <div className='section_banking_Bride '>
-            <h2>{Languages.text.women}</h2>
+            <h2><img src={Ic_Bride} alt="Ic_Bride" /> {Languages.text.accountBride}</h2>
 
             <div className='inforBank_one_per'>
 
                 <div className='three_input_col'>
-                    {renderBank(NAME_INPUT_BRIDE.nameBankOfBride, 'Ngân Hàng Cô dâu', value.informationOfBride[0].nameBankOfBride)}
-                    {renderInput(refOwnerBride, Languages.text.accountHolder, 'Nhập ' + Languages.text.accountHolder, NAME_INPUT_BRIDE.ownerBankOfBride, 'text', 200, false, '', value.informationOfBride[0].ownerBankOfBride)}
-                    {renderInput(refNumberBankBride, Languages.text.serinumber, 'Nhập ' + Languages.text.serinumber, NAME_INPUT_BRIDE.bankOfNumberBride, 'number', 16, false, '', value.informationOfBride[0].bankOfNumberBride)}
+                    {renderBank(NAME_INPUT_BRIDE.nameBankOfBride, '', value.informationOfBride[0].nameBankOfBride)}
+                    {renderInput(refOwnerBride, '', 'Nhập ' + Languages.text.accountHolder, NAME_INPUT_BRIDE.ownerBankOfBride, 'text', 200, false, '', value.informationOfBride[0].ownerBankOfBride)}
+                    {renderInput(refNumberBankBride, '', 'Nhập ' + Languages.text.serinumber, NAME_INPUT_BRIDE.bankOfNumberBride, 'number', 16, false, '', value.informationOfBride[0].bankOfNumberBride)}
                 </div>
                 <div className='list_album_uploads'>
                     {renderImageUploadSingle(
@@ -388,9 +389,9 @@ const BankingBrice = forwardRef(({ }, ref) => {
             <div className='inforBank_one_per'>
 
                 <div className='three_input_col'>
-                    {renderBank(NAME_INPUT_BRIDE.nameBankOfFatherBride, 'Ngân Hàng Bố Cô dâu', value.informationOfBride[0].nameBankOfFatherBride)}
-                    {renderInput(refOwnerFather, Languages.text.accountHolder, 'Nhập ' + Languages.text.accountHolder, NAME_INPUT_BRIDE.ownerBankOfFatherBride, 'text', 200, false, '', value.informationOfBride[0].ownerBankOfFatherBride)}
-                    {renderInput(refNumberBankFather, Languages.text.serinumber, 'Nhập ' + Languages.text.serinumber, NAME_INPUT_BRIDE.bankOfNumberFatherBride, 'number', 16, false, '', value.informationOfBride[0].bankOfNumberFatherBride)}
+                    {renderBank(NAME_INPUT_BRIDE.nameBankOfFatherBride, '', value.informationOfBride[0].nameBankOfFatherBride)}
+                    {renderInput(refOwnerFather, '', 'Nhập ' + Languages.text.accountHolder, NAME_INPUT_BRIDE.ownerBankOfFatherBride, 'text', 200, false, '', value.informationOfBride[0].ownerBankOfFatherBride)}
+                    {renderInput(refNumberBankFather, '', 'Nhập ' + Languages.text.serinumber, NAME_INPUT_BRIDE.bankOfNumberFatherBride, 'number', 16, false, '', value.informationOfBride[0].bankOfNumberFatherBride)}
 
                 </div>
                 <div className='list_album_uploads'>
@@ -412,11 +413,11 @@ const BankingBrice = forwardRef(({ }, ref) => {
             <div className='inforBank_one_per'>
 
                 <div className='three_input_col'>
-                    {renderBank(NAME_INPUT_BRIDE.nameBankOfMotherBride, 'Ngân Hàng Mẹ Cô dâu', value.informationOfBride[0].nameBankOfMotherBride)}
+                    {renderBank(NAME_INPUT_BRIDE.nameBankOfMotherBride, '', value.informationOfBride[0].nameBankOfMotherBride)}
 
-                    {renderInput(refOwnerMother, Languages.text.accountHolder, 'Nhập ' + Languages.text.accountHolder, NAME_INPUT_BRIDE.ownerBankOfMotherBride, 'text', 200, false, '', value.informationOfBride[0].ownerBankOfMotherBride)}
+                    {renderInput(refOwnerMother, '', 'Nhập ' + Languages.text.accountHolder, NAME_INPUT_BRIDE.ownerBankOfMotherBride, 'text', 200, false, '', value.informationOfBride[0].ownerBankOfMotherBride)}
 
-                    {renderInput(refNumberBankMother, Languages.text.serinumber, 'Nhập ' + Languages.text.serinumber, NAME_INPUT_BRIDE.bankOfNumberMotherBride, 'number', 16, false, '', value.informationOfBride[0].bankOfNumberMotherBride)}
+                    {renderInput(refNumberBankMother, '', 'Nhập ' + Languages.text.serinumber, NAME_INPUT_BRIDE.bankOfNumberMotherBride, 'number', 16, false, '', value.informationOfBride[0].bankOfNumberMotherBride)}
 
                 </div>
                 <div className='list_album_uploads'>

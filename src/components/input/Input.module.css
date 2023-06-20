@@ -1,6 +1,6 @@
 .boxGroupInput {
     display: block;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .formGroup {
@@ -49,6 +49,8 @@
     border-radius: 5px;
     border: none;
     font-family: var(--quick-sand-font-family);
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .form_control::placeholder{
     color: var(--gray-color-3);
