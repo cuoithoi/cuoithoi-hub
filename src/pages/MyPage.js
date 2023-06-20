@@ -61,9 +61,7 @@ const Mypage = () => {
         console.error('Đã xảy ra lỗi:', error)
       }
     }
-
-    console.log(limit)
-
+  
     const asyncLimit = async () => {
       try {
         const response = await get(APi.checkLimit, config, {
@@ -80,16 +78,19 @@ const Mypage = () => {
   }, [])
 
   const navigateLetterpage = () => {
-    if (user && limit < 3) {
-      navigate(Alias.createPage, {
-        state: {
-          createpage: true,
-        },
-      })
-      window.location.reload()
-    } else if (limit === 3) {
-      setCheckParams(CheckParams.LIMIT)
-      refModal.current?.showModal()
+    if (user?.token) {
+      if (limit < 3) {
+        navigate(Alias.createPage, {
+          state: {
+            createpage: true,
+          },
+        })
+        window.location.reload()
+      } else {
+        setCheckParams(CheckParams.LIMIT)
+        refModal.current?.showModal()
+      }
+
     } else {
       setCheckParams(CheckParams.NOTOKEN)
       refModal.current?.showModal()
@@ -148,7 +149,7 @@ const Mypage = () => {
         onSuccessPress={onPressLogin}
       />
     )
-  }, [])
+  }, [renderContentModal])
 
   const renderTable = useMemo(() => {
     return (
@@ -282,6 +283,8 @@ const Mypage = () => {
 
   const onChangePayment = useCallback((id, amount) => {
     refPayment?.current?.show()
+    refPayment?.current?.handlegetId(id)
+    refPayment?.current?.handleggetAmount(amount)
   }, [])
 
   return (
@@ -404,11 +407,9 @@ const Mypage = () => {
                                 autocenter
                                 width={60}
                                 isLowerCase
-                                onPress={onChangePayment}
+                                onPress={() => onChangePayment(item?._id, item?.productId?.amount)}
                               />
                             )}
-
-                            <Payment ref={refPayment} id={item?._id} amount={item?.amount} />
 
                             {item?.isPaid === true && (
                               <Button
@@ -481,6 +482,7 @@ const Mypage = () => {
           </div>
         )}
       </div>
+      <Payment ref={refPayment} />
       {renderModal}
       <Footer />
     </div>

@@ -2,35 +2,47 @@ import React, { forwardRef, useCallback, useImperativeHandle, useMemo, useRef, u
 import Popup from "./modal/Popup";
 import { MyTextInput } from "./input";
 import Languages from "@/commons/Languages";
-import ICQrLogo from '@/assets/home-image/IcQrLogo.svg'
+import ICQrLogo from '@/assets/home-image/qrcode.jpg'
 import ICMomo from '@/assets/home-image/IcMomo.svg'
 import { BUTTON_STYLES, CheckParams, Convert } from "@/commons/Constant.ts";
 import { Button } from "./button";
 import IcCheck from '@/assets/home-image/IcCheck.svg'
+import Validate from "@/utils/Validate";
 
 export const Payment = forwardRef(
     (
         {
-            id,
-            amount
+
         },
         ref
     ) => {
         useImperativeHandle(ref, () => ({
             show,
-            hide
+            hide,
+            handlegetId,
+            handleggetAmount
         }));
 
         const refModal = useRef(null)
 
         const [value, setValue] = useState('')
 
+        const [getId, setGetId] = useState('')
+        const [getAmount, setGetAmount] = useState(0)
+
         const [checkParams, setCheckParams] = useState(CheckParams.PAYMENT)
 
         const show = () => {
-            console.log(id, amount)
             setCheckParams(CheckParams.PAYMENT)
             refModal?.current?.showModal();
+        }
+
+        const handlegetId = (id) => {
+            setGetId(id)
+        }
+
+        const handleggetAmount = (amount) => {
+            setGetAmount(amount)
         }
 
         const hide = () => {
@@ -86,20 +98,20 @@ export const Payment = forwardRef(
                                         <img src={ICQrLogo} alt='qr' />
                                         <div className='infor'>
                                             <span>Tên ngân hàng: Shinhan Bank</span>
-                                            <span>Số tài khoản: 220-232-23223</span>
-                                            <span>Tên chủ tài khoản: Cuoithoi</span>
+                                            <span>Số tài khoản: 7000 2557 1768</span>
+                                            <span>Tên chủ tài khoản: RYU SUN HWAN</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div className='block_step block_step_2'>
                                     <div className='name_step'>
-                                        <p><strong>Bước 2: </strong>Nhập nội dung chuyển tiền</p>
+                                        <p><strong>Bước 2: </strong>Nhập Số tiền và nội dung</p>
                                     </div>
                                     <div className='content_step'>
+                                        Số tiền thanh toán<p className='warn'> {Validate.formatMoney(getAmount)}</p>
                                         <div className='demo'>
-                                            <p>Email - Số điện thoại</p>
+                                            <p>CTODID{getId.substr(-4, 4).toUpperCase()}</p>
                                         </div>
-                                        <p className='warn'>*Đây là Emai đã dùng để đăng ký tài khoản</p>
                                         <p className='note'>Lưu ý: Quý khách vui lòng chuyển khoản đúng theo cú pháp để đơn hàng được hệ thống cập nhật nhanh chóng.</p>
                                     </div>
                                 </div>
@@ -131,7 +143,7 @@ export const Payment = forwardRef(
                         </div>
                 }
             </>
-        }, [value, onChangeText, checkParams])
+        }, [value, onChangeText, checkParams, getAmount])
 
         function onChangeText(event) {
             setValue(event.target.value);

@@ -3270,7 +3270,9 @@ input:disabled {
 
 .content_step .warn {
   color: var(--bg-pink-color);
-  font-size: 15px;
+  font-size: 25px;
+  margin-top: 10px;
+  font-weight: 500;
 }
 
 .content_step .demo {

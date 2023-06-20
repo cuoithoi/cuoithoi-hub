@@ -1161,7 +1161,7 @@ const CreatePage = () => {
 
   const onShowModalAgree = () => {
 
-    setCheckParams(CheckParams.AFFTER)
+    setCheckParams(CheckParams.SUCCESS_CREATE)
     refModal.current?.showModal()
 
   }
@@ -1374,7 +1374,7 @@ const CreatePage = () => {
             </h1>
             <div className='buttton_header'>
               <Button
-                label={Languages.common.cancel}
+                label={Languages.common.listLetter}
                 isLowerCase
                 onPress={onShowModalAgree}
               />
