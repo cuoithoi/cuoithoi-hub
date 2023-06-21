@@ -42,7 +42,7 @@ const LoginSocial = () => {
         userId: response.googleId,
         token: response.tokenId,
         email: response.profileObj.familyName + ' ' + response.profileObj.givenName,
-        // email: response.profileObj.email
+        email_res: response.profileObj.email
       }
       addUserToLocalStorage(dataUser)
 

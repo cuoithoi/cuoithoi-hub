@@ -186,6 +186,9 @@ const CreatePage = () => {
       // itemLocal?.coverImage && (values.coverImage = itemLocal?.coverImage)
       // itemLocal?.thumbnailImage && (values.thumbnailImage = itemLocal?.thumbnailImage)
       itemLocal?.album && (values.album = itemLocal?.album)
+      itemLocal?.isUseConfirm && (values.isUseConfirm = itemLocal?.isUseConfirm)
+      itemLocal?.isUseGuestBook && (values.isUseGuestBook = itemLocal?.isUseGuestBook)
+      itemLocal?.isEffectOfOpenning && (values.isEffectOfOpenning = itemLocal?.isEffectOfOpenning)
     }
 
   }, [values, setRadioMusic, setRadioStyleTitle, setRadioStyleContent, setRadioTypeBg, setRadioColorBg, setRadioEffectBg])
@@ -607,7 +610,7 @@ const CreatePage = () => {
             <div className="Input_boxGroupInput__8ghvv man_inputStyle">
               <label className="Input_label__XHiJ4">{Languages.text.use}</label>
               <div className="Input_formGroup__Ln91z ">
-                <input name="" defaultChecked={itemLocal ? itemLocal?.isUseConfirm : false} type="checkbox" className="Input_form_control__zkQn6 checkbox_input_style " onChange={(e) => onChangeText(e.target.checked, INPUT_FIELDS.isUseConfirm)} />
+                <input name="" defaultChecked={itemLocal?.isUseConfirm} type="checkbox" className="Input_form_control__zkQn6 checkbox_input_style " onChange={(e) => onChangeText(e.target.checked, INPUT_FIELDS.isUseConfirm)} />
               </div>
             </div>
           </div>
@@ -635,7 +638,7 @@ const CreatePage = () => {
           <div className="Input_boxGroupInput__8ghvv man_inputStyle">
             <label className="Input_label__XHiJ4">{Languages.text.use}</label>
             <div className="Input_formGroup__Ln91z ">
-              <input name="" defaultChecked={itemLocal ? itemLocal?.isUseGuestBook : false} type="checkbox" className="Input_form_control__zkQn6 checkbox_input_style " onChange={(e) => onChangeText(e.target.checked, INPUT_FIELDS.isUseGuestBook)} />
+              <input name="" defaultChecked={itemLocal?.isUseGuestBook} type="checkbox" className="Input_form_control__zkQn6 checkbox_input_style " onChange={(e) => onChangeText(e.target.checked, INPUT_FIELDS.isUseGuestBook)} />
             </div>
           </div>
 
@@ -814,14 +817,16 @@ const CreatePage = () => {
     if (response.data === null) {
       refCodeinvite?.current?.setErrorMsg(Languages.errorMsg.errorCode)
       setMessageCodeInvite('')
-      setCodeinvite('')
     } else {
-      setCodeinvite(response.data.code)
-      setMessageCodeInvite(Languages.errorMsg.correctCode)
-      setPercentOff(response.data.percentOff)
+      setTimeout(() => {
+        refCodeinvite?.current?.setNoErrorMsg()
+        setCodeinvite(response.data.code)
+        setMessageCodeInvite(Languages.errorMsg.correctCode)
+        setPercentOff(response.data.percentOff)
+      }, 1000);
     }
 
-  }, [setMessageCodeInvite, setCodeinvite])
+  }, [setMessageCodeInvite, setCodeinvite, refCodeinvite?.current?.setErrorMsg()])
 
   const renderReferralCode = useMemo(() => {
 
@@ -1014,9 +1019,10 @@ const CreatePage = () => {
       "codeInvite": codeinvite,
       "isUseVideo": values.arraylist[0].isUseVideo,
       "isUseEvent": values.arraylist[0].isUseEvent,
-      "isUseDamNgo": values.arraylist[0].isUseDamNgo
+      "isUseDamNgo": values.arraylist[0].isUseDamNgo,
+      "note": values.note
     }
-    
+
     if (checkUrl) {
       const response = await post(APi.createInvitation, Object.assign(jsonData, {
         "status": '2'
@@ -1037,8 +1043,7 @@ const CreatePage = () => {
 
       const dataUpdate = Object.assign(jsonData, {
         "_id": idCreateRespon,
-        "status": 3,
-        "note": values.note
+        "status": 3
       })
 
       const responseupdate = await post(APi.updateInvitation, dataUpdate, config);
@@ -1099,6 +1104,7 @@ const CreatePage = () => {
           const sum = parseInt(arrayItem[0]);
           return acc + sum;
         }, 0);
+
         const discount = parseInt((1 - percentOff) * 100);
         const total = (parseInt(packageType[1]) + totalSumAnother) * (discount / 100);
         setValuedataAnotherTotalPrice(total)
@@ -1157,7 +1163,7 @@ const CreatePage = () => {
     // }
     // return false
 
-  }, [values, valuedataAnotherTotalPrice])
+  }, [values, valuedataAnotherTotalPrice, idCreateRespon])
 
   const onShowModalAgree = () => {
 

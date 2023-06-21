@@ -55,6 +55,8 @@ const VideoandEvent = forwardRef(({ }, ref) => {
             itemLocal.eventOfProgram.timeToDinner && (value.eventOfProgram.timeToDinner = itemLocal.eventOfProgram.timeToDinner)
             itemLocal.eventOfProgram.timeToMusic && (value.eventOfProgram.timeToMusic = itemLocal.eventOfProgram.timeToMusic)
             itemLocal.note && setWarnTemp(itemLocal.note)
+            itemLocal?.isUseVideo && (value.arraylist[0].isUseVideo = itemLocal?.isUseVideo)
+            itemLocal?.isUseEvent && (value.arraylist[0].isUseEvent = itemLocal?.isUseEvent)
         } else {
             value.videoLink = ''
             value.eventOfProgram.timeToWellcome = ''
@@ -66,7 +68,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
     const radioChangeHandlerWarnTemplate = (text, values) => {
         setRadioWarnTemplate(values)
         setWarnTemp(text)
-        value.note = values
+        value.note = text
     }
 
     const onChangeCreatLetter = useCallback(() => {
@@ -339,8 +341,8 @@ const VideoandEvent = forwardRef(({ }, ref) => {
     }, [renderContentModal, checkParams])
 
     function onChangeWarnTemp(event) {
-        setWarnTemp(event.target.value)
         value.note = event.target.value
+        setWarnTemp(event.target.value)
     }
 
     const onChangeBlockEvent = (event) => {
@@ -383,7 +385,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
                             <div className="Input_boxGroupInput__8ghvv man_inputStyle">
                                 <label className="Input_label__XHiJ4">{Languages.text.use}</label>
                                 <div className="Input_formGroup__Ln91z ">
-                                    <input name="" defaultChecked={itemLocal ? itemLocal?.isUseVideo : false} type="checkbox" className="Input_form_control__zkQn6 checkbox_input_style " onChange={(e) => onChangeText(e.target.checked, INPUT_FIELDS.isUseVideo)} />
+                                    <input name="" defaultChecked={itemLocal?.isUseVideo} type="checkbox" className="Input_form_control__zkQn6 checkbox_input_style " onChange={(e) => onChangeText(e.target.checked, INPUT_FIELDS.isUseVideo)} />
                                 </div>
                             </div>
                         </div>
@@ -413,7 +415,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
                             <div className="Input_boxGroupInput__8ghvv man_inputStyle">
                                 <label className="Input_label__XHiJ4">{Languages.text.use}</label>
                                 <div className="Input_formGroup__Ln91z ">
-                                    <input name="" defaultChecked={itemLocal ? itemLocal?.isUseEvent : false} type="checkbox" className="Input_form_control__zkQn6 checkbox_input_style " onChange={(e) => onChangeText(e.target.checked, INPUT_FIELDS.isUseEvent)} />
+                                    <input name="" defaultChecked={itemLocal?.isUseEvent} type="checkbox" className="Input_form_control__zkQn6 checkbox_input_style " onChange={(e) => onChangeText(e.target.checked, INPUT_FIELDS.isUseEvent)} />
                                 </div>
                             </div>
                         </div>

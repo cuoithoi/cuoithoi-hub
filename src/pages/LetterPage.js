@@ -127,13 +127,12 @@ const LetterPage = () => {
         />
         <Gallery1 album={album} />
         {isUseVideo && <YoutubeVideo videoLink={videoLink} />}
-        {
-          isUseDamNgo && <TimeLocation
+        <TimeLocation
             timeAndLocationOfWedding={timeAndLocationOfWedding}
             timeAndLocationOfEgagement={timeAndLocationOfEgagement}
             timeAndLocationOfInterrogation={timeAndLocationOfInterrogation}
+            isUseDamNgo={isUseDamNgo}
           />
-        }
         {isUseEvent && <Schedule eventOfProgram={eventOfProgram} note={note} />}
         <Congrats
           setModalContent={setModalContent}

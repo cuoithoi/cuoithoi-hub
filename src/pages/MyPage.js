@@ -83,8 +83,6 @@ const Mypage = () => {
 
   }, [])
 
-  console.log(limit)
-
   const navigateLetterpage = () => {
     if (user?.token) {
       if (limit < 3) {

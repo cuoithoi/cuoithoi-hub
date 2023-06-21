@@ -44,6 +44,7 @@ export const MyTextInput = forwardRef(
       focus,
       blur,
       setErrorMsg,
+      setNoErrorMsg
     }));
 
     const [textfieldVal, setTextfieldVal] = useState(`${value}`);
@@ -111,12 +112,16 @@ export const MyTextInput = forwardRef(
 
     const setErrorMsg = useCallback((msg) => {
       if (Validate.isStringEmpty(msg)) {
-        return;
+        return
       }
       if (orgTextInput.current) {
         orgTextInput.current?.focus();
       }
       setErrMsg(msg);
+    }, []);
+
+    const setNoErrorMsg = useCallback(() => {
+      setErrMsg('');
     }, []);
 
     const errorMessage = useMemo(() => {

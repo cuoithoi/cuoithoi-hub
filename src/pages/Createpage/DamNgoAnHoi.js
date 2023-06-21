@@ -39,6 +39,7 @@ const DamNgoAnHoi = forwardRef(({ }, ref) => {
             itemLocal.timeAndLocationOfInterrogation.dateOfEventInterrogation && (value.timeAndLocationOfInterrogation.dateOfEventInterrogation = itemLocal.timeAndLocationOfInterrogation.dateOfEventInterrogation)
             itemLocal.timeAndLocationOfInterrogation.timeOfEventInterrogation && (value.timeAndLocationOfInterrogation.timeOfEventInterrogation = itemLocal.timeAndLocationOfInterrogation.timeOfEventInterrogation)
             itemLocal.timeAndLocationOfInterrogation.locationOfInterrogation && (value.timeAndLocationOfInterrogation.locationOfInterrogation = itemLocal.timeAndLocationOfInterrogation.locationOfInterrogation)
+            itemLocal?.isUseDamNgo && (value.arraylist[0].isUseDamNgo = itemLocal?.isUseDamNgo)
         } else {
             value.timeAndLocationOfEgagement.dateOfEventEgagement = ''
             value.timeAndLocationOfEgagement.timeOfEventEgagement = ''
@@ -220,7 +221,7 @@ const DamNgoAnHoi = forwardRef(({ }, ref) => {
                     <div className="Input_boxGroupInput__8ghvv man_inputStyle">
                         <label className="Input_label__XHiJ4">{Languages.text.use}</label>
                         <div className="Input_formGroup__Ln91z ">
-                            <input name="" defaultChecked={itemLocal ? itemLocal?.isUseDamNgo : false} type="checkbox" className="Input_form_control__zkQn6 checkbox_input_style " onChange={(e) => onChangeText(e.target.checked, INPUT_FIELDS.isUseDamNgo)} />
+                            <input name="" defaultChecked={itemLocal?.isUseDamNgo} type="checkbox" className="Input_form_control__zkQn6 checkbox_input_style " onChange={(e) => onChangeText(e.target.checked, INPUT_FIELDS.isUseDamNgo)} />
                         </div>
                     </div>
                 </div>

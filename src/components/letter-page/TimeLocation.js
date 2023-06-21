@@ -11,6 +11,7 @@ const TimeLocation = ({
   timeAndLocationOfWedding,
   timeAndLocationOfEgagement,
   timeAndLocationOfInterrogation,
+  isUseDamNgo
 }) => {
 
   const [embeddedMap, setEmbeddedMap] = useState('');
@@ -51,20 +52,26 @@ const TimeLocation = ({
     >
       <div className=' text-center '>
         <TitleSection title='THỜI GIAN & ĐỊA ĐIỂM' />
-        <div className='pb-2'>
-          <h2 className='text-second'>Dạm ngõ</h2>
-          <p className='max-w-xs text-base margin-auto'>
-            Lễ dạm ngõ sẽ diễn tại {locationOfInterrogation}, vào lúc{' '}
-            {timeOfEventInterrogation}, {formatDay(dateOfEventInterrogation)}
-          </p>
-        </div>
-        <div className=' pb-2'>
-          <h2 className='text-second'>Ăn hỏi</h2>
-          <p className='max-w-xs text-base margin-auto'>
-            Lễ ăn hỏi sẽ diễn tại {locationOfEgagement}, vào lúc{' '}
-            {timeOfEventEgagement}, {formatDay(dateOfEventEgagement)}
-          </p>
-        </div>
+        {
+          isUseDamNgo && <div className='pb-2'>
+            <h2 className='text-second'>Dạm ngõ</h2>
+            <p className='max-w-xs text-base margin-auto'>
+              Lễ dạm ngõ sẽ diễn tại {locationOfInterrogation}, vào lúc{' '}
+              {timeOfEventInterrogation}, {formatDay(dateOfEventInterrogation)}
+            </p>
+          </div>
+        }
+
+        {
+          isUseDamNgo && <div className=' pb-2'>
+            <h2 className='text-second'>Ăn hỏi</h2>
+            <p className='max-w-xs text-base margin-auto'>
+              Lễ ăn hỏi sẽ diễn tại {locationOfEgagement}, vào lúc{' '}
+              {timeOfEventEgagement}, {formatDay(dateOfEventEgagement)}
+            </p>
+          </div>
+        }
+
         <div className='pb-2 border-section-1'>
           <h2 className='text-second'>Lê cưới sẽ diễn ra vào lúc</h2>
           <p className='max-w-xs text-base margin-auto'>
@@ -94,11 +101,13 @@ const TimeLocation = ({
         </div>
         <p className='pb-2'>Số 458 Lý Bôn, P. Đề Thám, TP. Thái Bình</p> */}
       </div>
-      <div>
-        <LazyLoad height={325} offset={200}>
-          <div dangerouslySetInnerHTML={{ __html: embeddedMap }}></div>
-        </LazyLoad>
-      </div>
+      {
+        mapDirectLink && <div>
+          <LazyLoad height={325} offset={200}>
+            <div dangerouslySetInnerHTML={{ __html: embeddedMap }}></div>
+          </LazyLoad>
+        </div>
+      }
       <div className='flex justify-center pt-6 mt-2'>
         <button className='btn-map'>
           <img src={mapIcon} alt='' className='gg-map-icon' />
