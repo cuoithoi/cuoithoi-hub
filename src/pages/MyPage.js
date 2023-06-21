@@ -61,7 +61,14 @@ const Mypage = () => {
         console.error('Đã xảy ra lỗi:', error)
       }
     }
-  
+    asyncListPage()
+    // }
+  }, [listDataApi])
+
+  useEffect(() => {
+
+    if (!user) return
+
     const asyncLimit = async () => {
       try {
         const response = await get(APi.checkLimit, config, {
@@ -73,9 +80,10 @@ const Mypage = () => {
       }
     }
     asyncLimit()
-    asyncListPage()
-    // }
+
   }, [])
+
+  console.log(limit)
 
   const navigateLetterpage = () => {
     if (user?.token) {
@@ -219,6 +227,10 @@ const Mypage = () => {
     else if (value === Status.EXPIRE)
       return (
         <p className='formatnotColor free'>{Languages.buttonText.expire}</p>
+      )
+    else if (value === Status.PROGESSING)
+      return (
+        <p className='formatnotColor payment'>{Languages.buttonText.progessing}</p>
       )
     else
       return (

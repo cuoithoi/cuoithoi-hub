@@ -37,6 +37,7 @@ export enum Status {
   INACTIVE = 3, // CHƯA KÍCH HOẠT
   REQUEST_PAYMENT = 4, //YÊU CẦU TRẢ PHÍ
   EXPIRE = 5, //HẾT HẠN SỬ DỤNG
+  PROGESSING = 6, //ĐANG TIẾN HÀNH
 }
 
 export enum ErrorCodes {
@@ -223,7 +224,8 @@ export const APi = {
   faq: '/get-list-question',
   inforCompany: '/get-information-base',
   codeSale: '/check-sale-code',
-  checkLimit: 'check-limit-create'
+  checkLimit: '/check-limit-create',
+  loginWithGoogle: '/loginWithGoogle'
 }
 
 export const BankData = 'https://api.vietqr.io/v2/banks'

@@ -64,7 +64,7 @@ export const Payment = forwardRef(
 
                 const dataUpdate = {
                     "_id": getId,
-                    "status": "4",
+                    "status": "6",
                 }
 
                 const responseupdate = await post(APi.updateInvitation, dataUpdate, config);
@@ -83,9 +83,9 @@ export const Payment = forwardRef(
 
         const onChangeCloseModal = useCallback(() => {
             refModal?.current?.hideModal();
-            setTimeout(() => {
-                window.location.reload()
-            }, 1000);
+            // setTimeout(() => {
+            //     window.location.reload()
+            // }, 1000);
         })
 
         const renderContentModal = useMemo(() => {

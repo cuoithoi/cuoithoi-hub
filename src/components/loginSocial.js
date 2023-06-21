@@ -2,28 +2,59 @@ import React, { useEffect } from 'react'
 import Languages from '@/commons/Languages'
 import { Button } from '@/components/button'
 import IcFacebook from '@/assets/home-image/IcFacebook.svg'
-import IcGoogle from '@/assets/home-image/IcGoogle.svg'
 import FacebookLogin from '@greatsumini/react-facebook-login'
 import GoogleLogin from 'react-google-login';
+import { useBaseService } from '@/utils/BaseServices'
+import { APi, Alias } from '@/commons/Constant.ts'
+import { toast } from 'react-toastify'
+import { addUserToLocalStorage } from '@/utils/localStorage'
+import { useNavigate } from 'react-router-dom'
 import { gapi } from 'gapi-script'
 
 const LoginSocial = () => {
 
-  useEffect(() => {
+  const { post } = useBaseService()
 
+  const navigate = useNavigate()
+
+  const clientID = "714927639601-9opts6sksavno6i1h6pjik4avt5vvnnj.apps.googleusercontent.com"
+
+  useEffect(() => {
     function start() {
       gapi.client.init({
-        clientId: "714927639601-9opts6sksavno6i1h6pjik4avt5vvnnj.apps.googleusercontent.com",
+        clientId: clientID,
         scope: ""
       })
     }
-
     gapi.load('client:auth2', start)
-
   }, [])
 
-  const responseGoogle = (response) => {
-    console.log(response);
+  const responseGoogle = async (response) => {
+
+    const dataUpdate = {
+      "googleId": response.googleId,
+    }
+
+    const res = await post(APi.loginWithGoogle, dataUpdate)
+
+    if (res.errorCode === 0) {
+      const dataUser = {
+        userId: response.googleId,
+        token: response.tokenId,
+        email: response.profileObj.familyName + ' ' + response.profileObj.givenName,
+        // email: response.profileObj.email
+      }
+      addUserToLocalStorage(dataUser)
+
+      setTimeout(() => {
+        toast.success('Đăng nhập thành công!')
+      }, 1500);
+
+      setTimeout(() => {
+        window.location.reload()
+        navigate(Alias.mypage)
+      }, 2000);
+    }
   }
 
   return (
@@ -33,17 +64,17 @@ const LoginSocial = () => {
       </div>
 
       {/* <Button
-        label={Languages.inputText.continueWithFB}
-        width={100}
-        isLowerCase
-        leftIcon={
-          <img
-            src={IcFacebook}
-            className='icon_login'
-            title={Languages.inputText.continueWithFB}
-          />
-        }
-      /> */}
+          label={Languages.inputText.continueWithFB}
+          width={100}
+          isLowerCase
+          leftIcon={
+            <img
+              src={IcFacebook}
+              className='icon_login'
+              title={Languages.inputText.continueWithFB}
+            />
+          }
+        /> */}
 
       <FacebookLogin
         appId="6234250993358177"
@@ -71,11 +102,13 @@ const LoginSocial = () => {
         />
       </FacebookLogin>
       <GoogleLogin
-        clientId="714927639601-9opts6sksavno6i1h6pjik4avt5vvnnj.apps.googleusercontent.com"
-        buttonText="Login"
+        clientId={clientID}
         onSuccess={responseGoogle}
         onFailure={responseGoogle}
         cookiePolicy={'single_host_origin'}
+        accessType={'online'}
+        buttonText='Đăng nhập với Google'
+        className='social_login'
       />
 
     </div>
@@ -83,3 +116,4 @@ const LoginSocial = () => {
 }
 
 export default LoginSocial
+

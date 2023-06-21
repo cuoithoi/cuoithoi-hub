@@ -3248,6 +3248,13 @@ input:disabled {
   color: var(--black-color);
 }
 
+.social_login {
+  justify-content: center;
+  font-family: var(--quick-sand-font-family) !important;
+  color: var(--black-color) !important;
+  font-size: 16px !important;
+}
+
 .block_step {
   border: 1px solid var(--gray-color-2);
   width: 100%;

@@ -38,7 +38,6 @@ export const signinUser = createAsyncThunk(
   async (user, thunkAPI) => {
     try {
       const response = await customFetch.post('/signin', user)
-      console.log(response)
       if (response.data.data.errorCode)
         throw new Error('Tên đăng nhập hoặc mật khẩu không chính xác')
       return response.data

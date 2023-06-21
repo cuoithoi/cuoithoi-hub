@@ -71,7 +71,8 @@ const Languages = {
     titleTemplate: 'Tiêu đề mẫu',
     saveSettings: 'LƯU CÀI ĐẶT',
     success: 'Xác nhận',
-    svDetails: 'Xem chi tiết dịch vụ'
+    svDetails: 'Xem chi tiết dịch vụ',
+    progessing: 'Đang tiến hành'
   },
   errorMsg: {
     noInternet: 'Kết nối bị gián đoạn, vui lòng thử lại!',
