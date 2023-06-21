@@ -136,13 +136,9 @@ const CreatePage = () => {
               t === item
             ));
           });
-          // console.log(response.data?.codeInvite === [])
-          // if (response.data?.codeInvite === []) {
-          //   setCodeinvite('')
-          // } else {
-          //   setCodeinvite(response.data?.codeInvite)
-          // }
-          setPackageType([response.data?.productId?.name, response.data?.productId?.amount, response.data?.productId?._id])
+          setPercentOff(response.data?.codeInvite[0]?.percentOff)
+          setCodeinvite(response.data?.codeInvite[0]?.code)
+          setPackageType([response.data?.productId[0]?.name, response.data?.productId[0]?.amount, response.data?.productId[0]?._id])
           setValueDataAnother(anotherProduct)
           setValuedataAnotherTotalPrice(response.data?.totalAmount)
           setAlbumURL(response.data?.album)
@@ -156,7 +152,6 @@ const CreatePage = () => {
     }
 
   }, [])
-
 
   useEffect(() => {
 
@@ -779,7 +774,7 @@ const CreatePage = () => {
         onChange={onChangePackage}
         style={{ maxWidth: 'unset' }}
       >
-        <option value='-1'>{itemLocal?.productId[0] ? itemLocal.productId[0].name : Languages.text.packagePro}</option>
+        <option value='-1'>{itemLocal?.productId[0]?.name ? itemLocal?.productId[0]?.name : Languages.text.packagePro}</option>
         {
           dataPackage.map(function (item, index) {
 

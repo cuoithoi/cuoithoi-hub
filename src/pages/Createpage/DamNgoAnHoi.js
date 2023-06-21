@@ -40,6 +40,7 @@ const DamNgoAnHoi = forwardRef(({ }, ref) => {
             itemLocal.timeAndLocationOfInterrogation.timeOfEventInterrogation && (value.timeAndLocationOfInterrogation.timeOfEventInterrogation = itemLocal.timeAndLocationOfInterrogation.timeOfEventInterrogation)
             itemLocal.timeAndLocationOfInterrogation.locationOfInterrogation && (value.timeAndLocationOfInterrogation.locationOfInterrogation = itemLocal.timeAndLocationOfInterrogation.locationOfInterrogation)
             itemLocal?.isUseDamNgo && (value.arraylist[0].isUseDamNgo = itemLocal?.isUseDamNgo)
+            setBlock(itemLocal?.isUseDamNgo)
         } else {
             value.timeAndLocationOfEgagement.dateOfEventEgagement = ''
             value.timeAndLocationOfEgagement.timeOfEventEgagement = ''
@@ -165,7 +166,7 @@ const DamNgoAnHoi = forwardRef(({ }, ref) => {
         }
 
 
-    }, [value]);
+    }, [value, block]);
 
     const onKeyPress = useCallback(() => {
 

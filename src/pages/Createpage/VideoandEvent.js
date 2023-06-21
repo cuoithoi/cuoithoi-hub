@@ -57,6 +57,8 @@ const VideoandEvent = forwardRef(({ }, ref) => {
             itemLocal.note && setWarnTemp(itemLocal.note)
             itemLocal?.isUseVideo && (value.arraylist[0].isUseVideo = itemLocal?.isUseVideo)
             itemLocal?.isUseEvent && (value.arraylist[0].isUseEvent = itemLocal?.isUseEvent)
+            setBlock(itemLocal?.isUseVideo)
+            setBlockEvent(itemLocal?.isUseEvent)
         } else {
             value.videoLink = ''
             value.eventOfProgram.timeToWellcome = ''
@@ -224,7 +226,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
         }
 
 
-    }, [value, block]);
+    }, [value, block, blockEvent]);
 
     const onKeyPress = useCallback(() => {
 
