@@ -41,7 +41,7 @@ const Hero = ({
           <img src={''} alt='' className='w-full' />
         </div>
         <h1 className='wind-song big-size text-9xl pt-20'>
-          {formatDayHero(timeAndLocationOfWedding.dateOfEventWedding)}
+          {timeAndLocationOfWedding.dateOfEventWedding && formatDayHero(timeAndLocationOfWedding.dateOfEventWedding)}
         </h1>
         <div>
           <h1>

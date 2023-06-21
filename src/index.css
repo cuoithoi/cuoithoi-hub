@@ -4169,6 +4169,13 @@ input:disabled {
   }
 }
 
+@media (max-width: 1199px) {
+  .my_input_form_data_group, .header_editpage, .savesetting_btn {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
 @media (max-width: 991px) {
   .box_abs_image_video {
     transform: translate3d(0, 0, 0);

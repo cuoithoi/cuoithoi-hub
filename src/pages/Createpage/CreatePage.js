@@ -136,7 +136,12 @@ const CreatePage = () => {
               t === item
             ));
           });
-          setCodeinvite(response.data?.codeInvite)
+          // console.log(response.data?.codeInvite === [])
+          // if (response.data?.codeInvite === []) {
+          //   setCodeinvite('')
+          // } else {
+          //   setCodeinvite(response.data?.codeInvite)
+          // }
           setPackageType([response.data?.productId?.name, response.data?.productId?.amount, response.data?.productId?._id])
           setValueDataAnother(anotherProduct)
           setValuedataAnotherTotalPrice(response.data?.totalAmount)
@@ -774,7 +779,7 @@ const CreatePage = () => {
         onChange={onChangePackage}
         style={{ maxWidth: 'unset' }}
       >
-        <option value='-1'>{itemLocal?.productId ? itemLocal.productId.name : Languages.text.packagePro}</option>
+        <option value='-1'>{itemLocal?.productId[0] ? itemLocal.productId[0].name : Languages.text.packagePro}</option>
         {
           dataPackage.map(function (item, index) {
 
@@ -1047,7 +1052,7 @@ const CreatePage = () => {
       })
 
       const responseupdate = await post(APi.updateInvitation, dataUpdate, config);
-
+      console.log(jsonData, responseupdate)
       if (responseupdate.errorCode == 0) {
         // setStorage('createLeter', JSON.stringify(responseupdate.data), 10 * 86400)
         toast.success(Languages.errorMsg.updatesuccess)

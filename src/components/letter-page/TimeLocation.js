@@ -42,8 +42,8 @@ const TimeLocation = ({
       const iframeCode = `<iframe src="https://maps.google.com/maps?q=${latitude},${longitude}&hl=es&z=14&amp;output=embed" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`;
       setEmbeddedMap(iframeCode);
     }
-  }, [])
 
+  }, [])
   return (
     <div
       className='pt-10 pb-10 bg-main-bg section-mb layout-mw'
@@ -57,7 +57,7 @@ const TimeLocation = ({
             <h2 className='text-second'>Dạm ngõ</h2>
             <p className='max-w-xs text-base margin-auto'>
               Lễ dạm ngõ sẽ diễn tại {locationOfInterrogation}, vào lúc{' '}
-              {timeOfEventInterrogation}, {formatDay(dateOfEventInterrogation)}
+              {timeOfEventInterrogation && timeOfEventInterrogation}, {dateOfEventInterrogation && formatDay(dateOfEventInterrogation)}
             </p>
           </div>
         }
@@ -67,7 +67,7 @@ const TimeLocation = ({
             <h2 className='text-second'>Ăn hỏi</h2>
             <p className='max-w-xs text-base margin-auto'>
               Lễ ăn hỏi sẽ diễn tại {locationOfEgagement}, vào lúc{' '}
-              {timeOfEventEgagement}, {formatDay(dateOfEventEgagement)}
+              {timeOfEventEgagement && timeOfEventEgagement}, {dateOfEventEgagement && formatDay(dateOfEventEgagement)}
             </p>
           </div>
         }
@@ -76,7 +76,7 @@ const TimeLocation = ({
           <h2 className='text-second'>Lê cưới sẽ diễn ra vào lúc</h2>
           <p className='max-w-xs text-base margin-auto'>
             Lễ cưới sẽ diễn tại {locationOfWedding}, vào lúc{' '}
-            {timeOfEventWedding}, {formatDay(dateOfEventWedding)}
+            {timeOfEventWedding && timeOfEventWedding}, {dateOfEventWedding && formatDay(dateOfEventWedding)}
           </p>
         </div>
         <Calendar dateOfEventWedding={dateOfEventWedding} />
