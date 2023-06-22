@@ -86,6 +86,7 @@ const CreatePage = () => {
   const [codeinvite, setCodeinvite] = useState('')
   const [percentOff, setPercentOff] = useState(0)
   const [checkUrl, setCheckUrl] = useState(true)
+  const [isPaid, setIsPaid] = useState(false)
 
   const refUnderfine = useRef(null)
   const refGroom = useRef(null)
@@ -144,13 +145,13 @@ const CreatePage = () => {
           setAlbumURL(response.data?.album)
           setImagesURL(response.data?.thumbnailImage)
           setImagesCoverURL(response.data?.coverImage)
+          setIsPaid(response.data?.isPaid)
         } catch (error) {
           console.error('Đã xảy ra lỗi:', error)
         }
       }
       asyncDetails()
     }
-
   }, [])
 
   useEffect(() => {
@@ -1043,11 +1044,11 @@ const CreatePage = () => {
 
       const dataUpdate = Object.assign(jsonData, {
         "_id": idCreateRespon,
-        "status": 3
+        "status": isPaid ? "1" : 3
       })
 
       const responseupdate = await post(APi.updateInvitation, dataUpdate, config);
-      console.log(jsonData, responseupdate)
+
       if (responseupdate.errorCode == 0) {
         // setStorage('createLeter', JSON.stringify(responseupdate.data), 10 * 86400)
         toast.success(Languages.errorMsg.updatesuccess)
@@ -1136,7 +1137,7 @@ const CreatePage = () => {
 
     const jsonData = {
       "_id": idCreateRespon,
-      "status": "4",
+      "status": isPaid ? "1" : "4",
       "confirmName": values.confirmName,
       "confirmPhone": values.confirmPhone,
       "confirmEmail": values.confirmEmail,

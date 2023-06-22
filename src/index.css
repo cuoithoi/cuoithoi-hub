@@ -225,10 +225,14 @@ p {
 }
 
 .slide-container img {
-  position: absolute;
-  height: 100%;
-  width: 100%;
   object-fit: cover;
+  opacity: 0.8;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+  filter: brightness(0.5);
 }
 
 .main_tit .tit_type2 {
@@ -4170,7 +4174,10 @@ input:disabled {
 }
 
 @media (max-width: 1199px) {
-  .my_input_form_data_group, .header_editpage, .savesetting_btn {
+
+  .my_input_form_data_group,
+  .header_editpage,
+  .savesetting_btn {
     max-width: 100%;
     width: 100%;
   }

@@ -19,8 +19,11 @@ import Gallery1 from '@/components/letter-page/Gallery-1'
 import LetterEnvelopTrial from '@/components/letter-page/LetterEnvelop'
 import { getDataApi } from '@/utils/axios'
 import styles from './LetterPage.module.css'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import SnowFall from '@/components/letter-page/SnowFall'
+import { Alias } from '@/commons/Constant.ts'
+import { getUserFromLocalStorage } from '@/utils/localStorage'
+
 const LetterPage = () => {
   const { id } = useParams()
   const [isOpen, setIsOpen] = useState(false)
@@ -30,6 +33,10 @@ const LetterPage = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [index, setIndex] = useState(0)
   const [isNavOpen, setIsNavOpen] = useState(false)
+  
+  const storageId = getUserFromLocalStorage()
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isOpen) {
@@ -84,7 +91,12 @@ const LetterPage = () => {
     userId,
     videoLink,
     note,
+    isPaid
   } = letter
+
+  if (!isPaid && userId !== storageId?.userId) {
+    navigate(Alias.homePage)
+  }
 
   if (!isLetterOpen && !isLoading && isEffectOfOpenning) {
     return (
@@ -128,11 +140,11 @@ const LetterPage = () => {
         <Gallery1 album={album} />
         {isUseVideo && <YoutubeVideo videoLink={videoLink} />}
         <TimeLocation
-            timeAndLocationOfWedding={timeAndLocationOfWedding}
-            timeAndLocationOfEgagement={timeAndLocationOfEgagement}
-            timeAndLocationOfInterrogation={timeAndLocationOfInterrogation}
-            isUseDamNgo={isUseDamNgo}
-          />
+          timeAndLocationOfWedding={timeAndLocationOfWedding}
+          timeAndLocationOfEgagement={timeAndLocationOfEgagement}
+          timeAndLocationOfInterrogation={timeAndLocationOfInterrogation}
+          isUseDamNgo={isUseDamNgo}
+        />
         {isUseEvent && <Schedule eventOfProgram={eventOfProgram} note={note} />}
         <Congrats
           setModalContent={setModalContent}

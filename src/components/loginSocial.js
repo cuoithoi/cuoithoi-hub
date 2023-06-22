@@ -33,18 +33,15 @@ const LoginSocial = () => {
 
     const dataUpdate = {
       "googleId": response.googleId,
+      "username": response.profileObj.familyName + ' ' + response.profileObj.givenName,
+      "email": response.profileObj.email
     }
 
     const res = await post(APi.loginWithGoogle, dataUpdate)
 
     if (res.errorCode === 0) {
-      const dataUser = {
-        userId: response.googleId,
-        token: response.tokenId,
-        email: response.profileObj.familyName + ' ' + response.profileObj.givenName,
-        email_res: response.profileObj.email
-      }
-      addUserToLocalStorage(dataUser)
+
+      addUserToLocalStorage(res.data)
 
       setTimeout(() => {
         toast.success('Đăng nhập thành công!')

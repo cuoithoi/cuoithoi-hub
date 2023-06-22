@@ -9,6 +9,7 @@ import {
   BUTTON_STYLES,
   CheckParams,
   Status,
+  coppyLink,
 } from '@/commons/Constant.ts'
 import ChooseTypeBlock from '@/components/chooseTypeBlock'
 import Loading from '@/components/Loading'
@@ -25,6 +26,7 @@ import { csv, useBaseService } from '@/utils/BaseServices'
 import dayjs from 'dayjs'
 import fileDownload from 'js-file-download'
 import { Payment } from '@/components/Payment'
+import { toast } from 'react-toastify'
 
 const Mypage = () => {
   const navigate = useNavigate()
@@ -268,7 +270,7 @@ const Mypage = () => {
           Authorization: `Bearer ${accessToken}`,
         },
       })
-      fileDownload(response.data, `Quản lý thu hồi.xlsx`)
+      fileDownload(response.data, `Danh sách khách Phản Hổi.xlsx`)
     } catch (error) {
       // Xử lý lỗi nếu cần
     }
@@ -296,6 +298,13 @@ const Mypage = () => {
     refPayment?.current?.handlegetId(id)
     refPayment?.current?.handleggetAmount(amount)
   }, [])
+
+  const onChangeClipBoard = useCallback((id) => {
+    toast.success('Link đã được sao chép, Bạn có thể gửi cho người thân và bạn bè', {
+      autoClose: 1000,
+    })
+    navigator.clipboard.writeText(coppyLink + '/' + id)
+  })
 
   return (
     <div className='mypage'>
@@ -404,6 +413,7 @@ const Mypage = () => {
                                 autocenter
                                 width={60}
                                 isLowerCase
+                                onPress={() => onChangeClipBoard(item?._id)}
                               />
                             )}
                           </td>

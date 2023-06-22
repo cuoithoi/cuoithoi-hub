@@ -298,10 +298,15 @@ const Homepage = () => {
           <div className="wrapbox_image_pc box_3phone_section">
             <div className="container mx-auto">
               <div className="head">
-
-                <h3>
-                  Trải nghiệm các tính năng chỉ có ở thiệp cưới di động
-                </h3>
+                <AnimationOnScroll
+                  animateIn="animate__fadeInUp"
+                  offset={0}
+                  delay={300}
+                >
+                  <h3>
+                    Trải nghiệm các tính năng chỉ có ở thiệp cưới di động
+                  </h3>
+                </AnimationOnScroll>
                 <div className="main-cont-wrap box_3phone_wrap_iconn_section">
 
                   <ul className="step2_list slideDown2">

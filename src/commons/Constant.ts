@@ -235,3 +235,5 @@ export const config = {
 }
 
 export const itemLocal = getItemFromLocalStorage('createLeter')
+
+export const coppyLink = window.location.origin + '/letterPage';
