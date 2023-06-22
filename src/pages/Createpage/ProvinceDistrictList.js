@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { fiedlsCreatePage } from '@/commons/FieldsDataObj';
+import { getItemFromLocalStorage } from '@/utils/localStorage';
 
 const ProvinceDistrictList = () => {
     const [provinces, setProvinces] = useState([]);
@@ -11,6 +12,21 @@ const ProvinceDistrictList = () => {
     const [selectedWard, setSelectedWard] = useState('');
 
     const [value] = useState(fiedlsCreatePage);
+
+    const itemLocal = getItemFromLocalStorage('createLeter')
+
+
+    useEffect(() => {
+        if (itemLocal) {
+            itemLocal?.confirmProvince && (value.confirmProvince = itemLocal?.confirmProvince)
+            itemLocal?.confirmDistrict && (value.confirmDistrict = itemLocal?.confirmDistrict)
+            itemLocal?.confirmWard && (value.confirmWard = itemLocal?.confirmWard)
+        } else {
+            value.confirmProvince = ''
+            value.confirmDistrict = ''
+            value.confirmWard = ''
+        }
+    }, [])
 
     useEffect(() => {
         // Gọi API để lấy danh sách tỉnh
@@ -70,7 +86,7 @@ const ProvinceDistrictList = () => {
                 name='form_sellect_stt'
                 value={selectedProvince} onChange={handleProvinceChange}
             >
-                <option value='-1'>Chọn Tình/Thành</option>
+                <option value='-1'>{itemLocal?.confirmProvince ? itemLocal?.confirmProvince : 'Chọn Tình/Thành'} </option>
                 {provinces.map((province) => (
                     <option key={province.province_id} value={province.province_id}>
                         {province.province_name}
@@ -82,7 +98,7 @@ const ProvinceDistrictList = () => {
                 name='form_sellect_stt'
                 value={selectedDistrict} onChange={handleDistrictChange}
             >
-                <option value='-1'>Chọn Quận/Huyện</option>
+                <option value='-1'>{itemLocal?.confirmDistrict ? itemLocal?.confirmDistrict : 'Chọn Quận/Huyện'}</option>
                 {districts.map((district) => (
                     <option key={district.district_id} value={district.district_id}>
                         {district.district_name}
@@ -94,7 +110,7 @@ const ProvinceDistrictList = () => {
                 name='form_sellect_stt'
                 value={selectedWard} onChange={handleWardChange}
             >
-                <option value='-1'>Chọn Phường/Xã</option>
+                <option value='-1'>{itemLocal?.confirmWard ? itemLocal?.confirmWard : 'Chọn Phường/Xã'}</option>
                 {wards.map((ward) => (
                     <option key={ward.ward_id} value={ward.ward_id}>
                         {ward.ward_name}

@@ -1021,7 +1021,15 @@ const CreatePage = () => {
       "isUseVideo": values.arraylist[0].isUseVideo,
       "isUseEvent": values.arraylist[0].isUseEvent,
       "isUseDamNgo": values.arraylist[0].isUseDamNgo,
-      "note": values.note
+      "note": values.note,
+      "confirmName": values.confirmName,
+      "confirmPhone": values.confirmPhone,
+      "confirmEmail": values.confirmEmail,
+      "confirmAddress": values.confirmAddress,
+      "confirmNote": values.confirmNote,
+      "confirmProvince": values.confirmProvince,
+      "confirmDistrict": values.confirmDistrict,
+      "confirmWard": values.confirmWardt
     }
 
     if (checkUrl) {
@@ -1145,7 +1153,7 @@ const CreatePage = () => {
       "confirmNote": values.confirmNote,
       "confirmProvince": values.confirmProvince,
       "confirmDistrict": values.confirmDistrict,
-      "confirmWardt": values.confirmWardt,
+      "confirmWard": values.confirmWardt,
       "totalAmount": valuedataAnotherTotalPrice,
     }
 

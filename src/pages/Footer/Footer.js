@@ -1,22 +1,46 @@
 
 import Languages from '@/commons/Languages'
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import IcZalo from '@/assets/home-image/IcZalo.svg'
 import IcPhone from '@/assets/home-image/IcPhone.svg'
 import { Button } from '@/components/button'
-import { BUTTON_STYLES } from '@/commons/Constant.ts'
+import { APi, BUTTON_STYLES } from '@/commons/Constant.ts'
 import { FaAngleDown, FaRegClock } from 'react-icons/fa'
 import Iclogo from '@/assets/home-image/IcLogo.svg'
 import { Payment } from '@/components/Payment'
+import { useBaseService } from '@/utils/BaseServices'
 
 const Footer = () => {
 
     const ref = useRef(null);
 
-
     const onChangeShowModalPayment = () => {
         ref?.current?.show();
     }
+
+    const { get } = useBaseService();
+
+    const [data, setData] = useState('');
+
+    useEffect(() => {
+
+        const asyncLimit = async () => {
+            try {
+                const response = await get(APi.getInformationBase, '', {
+                    created: "643d0497d04d231dc24a2765"
+                })
+                console.log(response)
+                setData(response)
+            } catch (error) {
+                console.error('Đã xảy ra lỗi:', error)
+            }
+        }
+        asyncLimit()
+
+    }, [])
+
+
+    console.log(data)
 
     return (
         <div className='footer'>

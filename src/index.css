@@ -1477,6 +1477,11 @@ p {
   margin-bottom: 40px;
 }
 
+.faq_box_custormer .collapse-child-title {
+  justify-content: space-between !important;
+  flex-flow: row-reverse !important;
+}
+
 .panel_colisape_description {
   font-family: var(--quick-sand-font-family);
   color: var(--black-color);

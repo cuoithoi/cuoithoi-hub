@@ -225,7 +225,8 @@ export const APi = {
   inforCompany: '/get-information-base',
   codeSale: '/check-sale-code',
   checkLimit: '/check-limit-create',
-  loginWithGoogle: '/loginWithGoogle'
+  loginWithGoogle: '/loginWithGoogle',
+  getInformationBase: '/get-information-base'
 }
 
 export const BankData = 'https://api.vietqr.io/v2/banks'
