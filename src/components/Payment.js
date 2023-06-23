@@ -36,7 +36,9 @@ export const Payment = forwardRef(
 
         const [checkParams, setCheckParams] = useState(CheckParams.PAYMENT)
 
-        const { post } = useBaseService()
+        const [data, setData] = useState('');
+
+        const { get, post } = useBaseService()
 
         const show = () => {
             setCheckParams(CheckParams.PAYMENT)
@@ -54,6 +56,22 @@ export const Payment = forwardRef(
         const hide = () => {
             refModal?.current?.hideModal()
         }
+
+        useEffect(() => {
+
+            const asyncLimit = async () => {
+                try {
+                    const response = await get(APi.getInformationBase)
+                    setData(response.data[0].data)
+                } catch (error) {
+                    console.error('Đã xảy ra lỗi:', error)
+                }
+            }
+            asyncLimit()
+
+        }, [])
+
+        console.log(data)
 
         const onChangePayment = useCallback(async () => {
 
@@ -104,9 +122,9 @@ export const Payment = forwardRef(
                                 <div className="br"></div>
                                 <div className="contact_now">
                                     <h4>{Languages.text.contactnow}</h4>
-                                    <p>Số điện thoại: (+84) 083595123 - (+84) 028451245</p>
-                                    <p>Email liên hệ:  info@cuoithoi.com.vn</p>
-                                    <p>Thời gian làm việc: 09h Sáng - 18h Chiều / Thứ 2 - Thứ 6</p>
+                                    <p>Số điện thoại: {data[data.length - 1]?.numberPhone}</p>
+                                    <p>Email liên hệ:  {data[data.length - 1]?.emailCompany}</p>
+                                    <p>Thời gian làm việc: {data[data.length - 1]?.timeWork}</p>
                                 </div>
                                 <Button
                                     label={Languages.common.agree}
@@ -127,9 +145,9 @@ export const Payment = forwardRef(
                                     <div className='content_step'>
                                         <img src={ICQrLogo} alt='qr' />
                                         <div className='infor'>
-                                            <span>Tên ngân hàng: Shinhan Bank</span>
-                                            <span>Số tài khoản: 7000 2557 1768</span>
-                                            <span>Tên chủ tài khoản: RYU SUN HWAN</span>
+                                            <span>Tên ngân hàng: {data[data.length - 1]?.nameBank}</span>
+                                            <span>Số tài khoản: {data[data.length - 1]?.numberBank}</span>
+                                            <span>Tên chủ tài khoản: {data[data.length - 1]?.ceoPeople}</span>
                                         </div>
                                     </div>
                                 </div>

@@ -43,14 +43,18 @@ const LoginSocial = () => {
 
       addUserToLocalStorage(res.data)
 
+      toast.warning('Đang liên kết', {
+        autoClose: 1000,
+      })
+
       setTimeout(() => {
-        toast.success('Đăng nhập thành công!')
-      }, 1500);
+        toast.success('Liên kết thành công... Đang chuyển hướng')
+      }, 2000);
 
       setTimeout(() => {
         window.location.reload()
         navigate(Alias.mypage)
-      }, 2000);
+      }, 4000);
     }
   }
 
