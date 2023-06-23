@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import TitleSection from '@/components/letter-page/sub-comp/TitleSection'
 import WeddingCmt from '@/components/letter-page/sub-comp/WeddingCmt'
-import { customFetch } from '@/utils/axios'
-import { useParams } from 'react-router-dom'
 
-const CommentDetail = () => {
-  const { id } = useParams()
-  const [cmtList, setCmtList] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
-  // const { get, del } = useBaseService()
+const CommentDetail = ({ cmtLists }) => {
+
+  const [cmtList, setCmtList] = useState(cmtLists)
 
   const deleteCmt = (index) => {
     let newCmtList = cmtList
@@ -19,20 +15,8 @@ const CommentDetail = () => {
   }
 
   useEffect(() => {
-    const getData = async () => {
-      try {
-        setIsLoading(true)
-        const resp = await customFetch.get(`/get/list-wish?_id=${id}`)
-        setCmtList(resp.data.data[0].data)
-        setIsLoading(false)
-      } catch (err) {
-        console.log(err)
-      }
-    }
-    getData()
-  }, [])
-
-  if (isLoading) return
+    setCmtList(cmtLists)
+  }, [cmtLists])
 
   return (
     <div className='h-full'>

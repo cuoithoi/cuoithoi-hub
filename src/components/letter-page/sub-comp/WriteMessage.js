@@ -29,7 +29,6 @@ const WriteMessage = ({ setCmtList, handleCloseModal }) => {
     resolver: yupResolver(schema),
   })
   const onSubmit = (data) => {
-    console.log(data)
     const postData = async () => {
       try {
         const res = await postDataApi('/send/wish', {

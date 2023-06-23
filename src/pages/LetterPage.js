@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import Hero from '../components/letter-page/Hero'
 import { useEffect, useState, useMemo } from 'react'
 import Invitation from '../components/letter-page/Invitation'
@@ -23,6 +23,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import SnowFall from '@/components/letter-page/SnowFall'
 import { Alias } from '@/commons/Constant.ts'
 import { getUserFromLocalStorage } from '@/utils/localStorage'
+import html2canvas from 'html2canvas';
 
 const LetterPage = () => {
   const { id } = useParams()
@@ -33,10 +34,12 @@ const LetterPage = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [index, setIndex] = useState(0)
   const [isNavOpen, setIsNavOpen] = useState(false)
-  
+
   const storageId = getUserFromLocalStorage()
 
   const navigate = useNavigate();
+
+  const containerRef = useRef(null);
 
   useEffect(() => {
     if (isOpen) {
@@ -45,6 +48,7 @@ const LetterPage = () => {
       document.body.style.overflow = 'unset'
     }
   }, [isOpen])
+
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true)
@@ -55,6 +59,7 @@ const LetterPage = () => {
     }
     fetchData()
   }, [])
+
   const bgColor = useMemo(() => {
     let style = ''
 
@@ -93,6 +98,23 @@ const LetterPage = () => {
     note,
     isPaid
   } = letter
+  
+  const captureAndUpload = () => {
+    setTimeout(() => {
+      html2canvas(containerRef.current)
+        .then((canvas) => {
+          const image = canvas.toDataURL('image/png');
+          const link = document.createElement('a');
+          link.href = image;
+          link.download = 'screenshot.png';
+          link.click();
+        })
+        .catch((error) => {
+          console.error('Lỗi khi chụp ảnh:', error);
+        });
+    }, 1000);
+    setIsLetterOpen(true)
+  };
 
   if (!isPaid && userId !== storageId?.userId) {
     navigate(Alias.homePage)
@@ -103,7 +125,7 @@ const LetterPage = () => {
       <div className='w-screen h-screen m-0 p-0 flex items-center justify-center bg-main'>
         <LetterEnvelopTrial
           isLetterOpen={isLetterOpen}
-          setIsLetterOpen={setIsLetterOpen}
+          setIsLetterOpen={captureAndUpload}
           manfirstName={informationOfGroom.firstName}
           coverImage={coverImage}
           manName={informationOfGroom.name}
@@ -117,7 +139,7 @@ const LetterPage = () => {
 
   return (
     <div className={`letter-wrapper ${bgColor}`}>
-      <div className={`letter-layout ${bgColor}`}>
+      <div ref={containerRef} className={`letter-layout ${bgColor}`}>
         <SnowFall type={effectBackgroud.value} />
         <NavButton setIsNavOpen={setIsNavOpen} song={song} />
 

@@ -17,7 +17,6 @@ const InvitationDetail = ({ info, isBride }) => {
       isGoneMotherOfBride,
       isGoneFatherBride
     } = info
-    console.log(info)
     return (
       <div className='text-center px-4'>
         <h2 className='text-main'>Nhà Gái</h2>
