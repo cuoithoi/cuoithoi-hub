@@ -264,7 +264,7 @@ const Mypage = () => {
     try {
       const response = await csv.get(APi.excelClient, {
         params: {
-          _id: id,
+          invitationsId: id,
         },
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -281,7 +281,7 @@ const Mypage = () => {
     try {
       const response = await csv.get(APi.exportWish, {
         params: {
-          _id: id,
+          invitationsId: id,
         },
         headers: {
           Authorization: `Bearer ${accessToken}`,

@@ -16,7 +16,7 @@ export const ResponseCodes = {
 export const csv = axios.create({
     baseURL: APi.BaseUrl,
     responseType: 'blob',
-    timeout: 12000
+    timeout: TIMEOUT_API
 });
 
 const api = axios.create({

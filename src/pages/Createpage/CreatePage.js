@@ -137,8 +137,8 @@ const CreatePage = () => {
               t === item
             ));
           });
-          setPercentOff(response.data?.codeInvite[0]?.percentOff)
-          setCodeinvite(response.data?.codeInvite[0]?.code)
+          setPercentOff(response.data?.codeInvite[0]?.percentOff ? response.data?.codeInvite[0]?.percentOff : 0)
+          setCodeinvite(response.data?.codeInvite[0]?.code ? response.data?.codeInvite[0]?.code : '')
           setPackageType([response.data?.productId[0]?.name, response.data?.productId[0]?.amount, response.data?.productId[0]?._id])
           setValueDataAnother(anotherProduct)
           setValuedataAnotherTotalPrice(response.data?.totalAmount)
@@ -146,6 +146,7 @@ const CreatePage = () => {
           setImagesURL(response.data?.thumbnailImage)
           setImagesCoverURL(response.data?.coverImage)
           setIsPaid(response.data?.isPaid)
+          setPointer(response.data?.isUseGuestBook)
         } catch (error) {
           console.error('Đã xảy ra lỗi:', error)
         }
@@ -190,6 +191,8 @@ const CreatePage = () => {
       itemLocal?.isUseConfirm && (values.isUseConfirm = itemLocal?.isUseConfirm)
       itemLocal?.isUseGuestBook && (values.isUseGuestBook = itemLocal?.isUseGuestBook)
       itemLocal?.isEffectOfOpenning && (values.isEffectOfOpenning = itemLocal?.isEffectOfOpenning)
+      itemLocal?.confirmName && (values.confirmName = itemLocal?.confirmName)
+      itemLocal?.password && (values.password = itemLocal?.password)
     }
 
   }, [values, setRadioMusic, setRadioStyleTitle, setRadioStyleContent, setRadioTypeBg, setRadioColorBg, setRadioEffectBg])
@@ -360,10 +363,6 @@ const CreatePage = () => {
         }));
         break
 
-      case INPUT_FIELDS.referralCode:
-        setCodeinvite(e)
-        break
-
       case INPUT_FIELDS.confirmName:
         values.confirmName = e;
         setValues(prevValues => ({
@@ -500,6 +499,7 @@ const CreatePage = () => {
       isIcon,
       icon,
       inputStyle,
+      value
     ) => {
 
       return (
@@ -516,6 +516,7 @@ const CreatePage = () => {
             onChangeText={(e) => onChangeText(e.target.value, name)}
             onKeyPress={onKeyPress}
             inputStyle={inputStyle}
+            value={value}
           />
         </div>
       )
@@ -647,7 +648,7 @@ const CreatePage = () => {
         <div className={`${pointer ? 'double_input_row' : 'double_input_row disable'}`}>
           <div className='half_row_hor_input'>
             <form>
-              {renderInput(refPassword, Languages.text.settingPwd, Languages.text.settingPwd, INPUT_FIELDS.password, 'password', 50, false)}
+              {renderInput(refPassword, Languages.text.settingPwd, Languages.text.settingPwd, INPUT_FIELDS.password, 'password', 50, false, '', '', values.password)}
             </form>
           </div>
           <div className='half_row_hor_input'>
@@ -1243,7 +1244,7 @@ const CreatePage = () => {
               <div className='form_group_info'>
                 <div className='double_input_row'>
                   <div className='half_row_hor_input'>
-                    {renderInput(refConfirmName, '', Languages.inputText.name, INPUT_FIELDS.confirmName, 'text', 100, false)}
+                    {renderInput(refConfirmName, '', Languages.inputText.name, INPUT_FIELDS.confirmName, 'text', 100, false, '', '')}
                   </div>
                   <div className='half_row_hor_input'>
                     {renderInput(refConfirmPhone, '', Languages.inputText.phone, INPUT_FIELDS.confirmPhone, 'number', 10, false)}
