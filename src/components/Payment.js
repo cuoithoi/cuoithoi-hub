@@ -71,8 +71,6 @@ export const Payment = forwardRef(
 
         }, [])
 
-        console.log(data)
-
         const onChangePayment = useCallback(async () => {
 
             const errMsgValue = FormValidate.inputContentEmpty(value);
