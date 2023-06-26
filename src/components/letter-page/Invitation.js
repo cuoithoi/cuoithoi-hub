@@ -22,11 +22,11 @@ const Invitation = ({
     >
       <div className='section-mb text-center py-14 pr-2 pl-2'>
         <TitleSection title='LỜI MỜI' />
-        <p className='border-section-1 pb-4'>
+        <div className='border-section-1 pb-4'>
           <p className='text-lg '>Trân trọng kính mời,</p>
           <p />
           đến dự buổi tiệc chung vui cùng gia đình chúng tôi
-        </p>
+        </div>
         <div>
           <div className='flex justify-center'>
             <InvitationDetail info={informationOfGroom} isBride={false} />

@@ -9,6 +9,7 @@ import { FaAngleDown, FaRegClock } from 'react-icons/fa'
 import Iclogo from '@/assets/home-image/IcLogo.svg'
 import { Payment } from '@/components/Payment'
 import { useBaseService } from '@/utils/BaseServices'
+import { last, lastIndexOf } from 'lodash'
 
 const Footer = () => {
 
@@ -29,8 +30,7 @@ const Footer = () => {
                 const response = await get(APi.getInformationBase, '', {
                     created: "643d0497d04d231dc24a2765"
                 })
-                console.log(response)
-                setData(response)
+                setData(response.data[0].data)
             } catch (error) {
                 console.error('Đã xảy ra lỗi:', error)
             }
@@ -38,9 +38,6 @@ const Footer = () => {
         asyncLimit()
 
     }, [])
-
-
-    console.log(data)
 
     return (
         <div className='footer'>
@@ -61,13 +58,12 @@ const Footer = () => {
                             <p>{Languages.text.timeWork}</p>
                             <div className='contact_phone'>
                                 <img src={IcZalo} title='zalo' />
-                                <p>Zalo: 090932421</p>
+                                <p>Zalo: {data[data.length - 1]?.zaloNumber}</p>
                             </div>
                             <div className='contact_phone'>
                                 <img src={IcPhone} title='phone' />
                                 <div>
-                                    <p>+84 083595123</p>
-                                    <p>+84 028451245</p>
+                                    <p>{data[data.length - 1]?.numberPhone}</p>
                                 </div>
                             </div>
                         </div>
@@ -83,9 +79,9 @@ const Footer = () => {
                         </label>
                         <div className='infomationDetails'>
                             <div className='contact'>
-                                <p>Ngân hàng: Shinhan</p>
-                                <p>Số tk: 220-232-23223</p>
-                                <p>Holder: Cuoithoi</p>
+                                <p>Ngân hàng: {data[data.length - 1]?.nameBank}</p>
+                                <p>Số tk: {data[data.length - 1]?.numberBank}</p>
+                                <p>Holder: {data[data.length - 1]?.ceoPeople}</p>
                             </div>
                             <Button
                                 label={Languages.buttonText.scanQr}
@@ -109,10 +105,10 @@ const Footer = () => {
                         </label>
                         <div className='infomationDetails'>
                             <div className='contact'>
-                                <p>CEO: Đặng Hoàng Minh</p>
-                                <p>Company No: 0110245404</p>
-                                <p>Email: info@cuoithoi.com.vn</p>
-                                <p>Address: 14-15A, Tầng 7, Tòa nhà Charmvit, số 117 Trần Duy Hưng, Trung Hòa, Cầu Giấy, Hà Nội</p>
+                                <p>CEO: {data[data.length - 1]?.ceoPeople}</p>
+                                <p>Company No: {data[data.length - 1]?.companyNumber}</p>
+                                <p>Email: {data[data.length - 1]?.emailCompany}</p>
+                                <p>Address: {data[data.length - 1]?.adressCompany}</p>
                             </div>
                         </div>
                     </div>

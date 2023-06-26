@@ -29,6 +29,7 @@ const CustomerCare = () => {
     const { get } = useBaseService();
     const [data, setData] = useState([]);
     const [dataNotifi, setDataNotifi] = useState([]);
+    const [dataInfor, setDataInfor] = useState([]);
 
     useEffect(() => {
         const asyncListFAQ = async () => {
@@ -43,11 +44,25 @@ const CustomerCare = () => {
         asyncListNotifi();
     }, []);
 
+    useEffect(() => {
+
+        const asyncLimit = async () => {
+            try {
+                const response = await get(APi.getInformationBase)
+                setDataInfor(response.data[0].data)
+            } catch (error) {
+                console.error('Đã xảy ra lỗi:', error)
+            }
+        }
+        asyncLimit()
+
+    }, [])
+
     const handleClick = (ref) => {
         ref.current?.scrollIntoView({ behavior: 'smooth' })
     };
 
-    const onNavigateZalo = () => window.open('https://chat.zalo.me/')
+    const onNavigateZalo = () => window.open('https://zalo.me/' + dataInfor[data.length -1]?.zaloNumber)
 
     const onscrollTop = () => window.scrollTo(0, 0)
 

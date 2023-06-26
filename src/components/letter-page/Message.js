@@ -14,6 +14,7 @@ import { Convert } from '../../commons/Constant.ts'
 const Message = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [cmtList, setCmtList] = useState([])
+  const [cmtListProps, setCmtListProps] = useState([])
   const cmtRef = useRef()
   const { id } = useParams()
   const modalRef = useRef()
@@ -23,9 +24,7 @@ const Message = () => {
   const handleCloseModalWriting = () => {
     modalRef.current.hideModal()
   }
-  const handleShowCmtDetail = () => {
-    cmtRef.current.showModal()
-  }
+  
   const deleteCmt = (index) => {
     setCmtList((prev) => {
       prev.splice(index, 1)
@@ -45,6 +44,13 @@ const Message = () => {
     }
     getData()
   }, [])
+
+  const handleShowCmtDetail = async () => {
+    const resp = await customFetch.get(`/get/list-wish?_id=${id}`)
+    setCmtListProps(resp.data.data[0].data)
+    cmtRef.current.showModal()
+  }
+  
   if (isLoading) return
   return (
     <div className='layout-mw section-mb py-10'>
@@ -105,7 +111,7 @@ const Message = () => {
           />
         }
       />
-      <Popup ref={cmtRef} height={'80vh'} content={<CommentDetail />} maxWidth={Convert.W_800} />
+      <Popup ref={cmtRef} height={'80vh'} content={<CommentDetail cmtLists={cmtListProps} />} maxWidth={Convert.W_800} />
     </div>
   )
 }

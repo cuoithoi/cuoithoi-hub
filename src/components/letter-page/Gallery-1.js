@@ -23,9 +23,9 @@ const Gallery = ({ album }) => {
           showThumbs={false}
           selectedItem={selectedItem}
         >
-          {album.map((image) => {
+          {album.map((image, index) => {
               return (
-              <div className='gallery-image mb-3 relative'>
+              <div key={index} className='gallery-image mb-3 relative'>
                 <img src={image} alt='image gallery' />
                 <div
                   className='absolute bottom-8 right-8 w-12 h-6 flex items-center justify-end cursor-pointer rounded-md '

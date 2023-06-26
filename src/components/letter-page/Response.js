@@ -39,7 +39,6 @@ const Response = () => {
     setNumberPeopleAttend((prev) => prev - 1)
   }
   const onSubmit = (data) => {
-    console.log(data)
     if (!guestSide) {
       toast.error('Vui lòng chọn khách cô dâu hoặc chú rể')
       return
@@ -79,7 +78,6 @@ const Response = () => {
     }
     sendResponse()
   }
-  console.log(errors)
   return (
     <div
       className='layout-mw section-mb py-10 text-center'
