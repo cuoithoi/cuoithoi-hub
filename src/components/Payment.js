@@ -65,6 +65,7 @@ export const Payment = forwardRef(
                 const dataUpdate = {
                     "_id": getId,
                     "status": "6",
+                    "OID": value
                 }
 
                 const responseupdate = await post(APi.updateInvitation, dataUpdate, config);
