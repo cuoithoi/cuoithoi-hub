@@ -6,17 +6,16 @@
   /* width: 100%; */
 }
 
-.container>.envelopeWrapper {
+.container > .envelopeWrapper {
   /* background: #f5edd1; */
   /* box-shadow: 0 0 40px rgba(0, 0, 0, 0.2); */
 }
 
-.envelopeWrapper>.envelope {
+.envelopeWrapper > .envelope {
   position: relative;
   width: 500px;
   height: 250px;
 }
-
 
 .envelope_abs {
   background-color: #f5edd1;
@@ -62,7 +61,6 @@
   width: 100%;
 }
 
-
 /* .envelopeWrapper > .envelope::after {
   content: '';
   position: absolute;
@@ -75,7 +73,7 @@
   border-left: 150px solid #e6cfa7;
 } */
 
-.envelope>.letter {
+.envelope > .letter {
   position: absolute;
   right: 8%;
   bottom: 5px;
@@ -88,7 +86,7 @@
   padding: 20px 10px;
 }
 
-.envelope>.letter>.text {
+.envelope > .letter > .text {
   /* font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif; */
   color: var(--txt-color);
   text-align: left;
@@ -138,19 +136,19 @@
   right: 7.5px;
 }
 
-.flap>.envelope:before {
+.flap > .envelope:before {
   transform: rotateX(180deg);
   z-index: 0;
 }
 
-.flap>.envelope>.letter {
+.flap > .envelope > .letter {
   -webkit-animation-name: uptotop;
   animation-name: uptotop;
   animation-duration: 6s;
   animation-delay: 2s;
 }
 
-.flap>.signIcon > .signIconRotate {
+.flap > .signIcon > .signIconRotate {
   transform: rotate(60deg);
   transition-delay: 0.3s;
   transition: transform 0.4s ease-in-out 0.6s;
@@ -393,17 +391,17 @@
 }
 
 .animate__backInDown {
-  -webkit-animation-name: backInDown;
+  /* -webkit-animation-name: backInDown;
   animation-name: backInDown;
   animation-duration: 1.5s;
-  animation-delay: 0.5s;
+  animation-delay: 0.5s; */
 }
 
 .animate__outDown_signIcon {
-  -webkit-animation-name: animate__outDown_signIcon;
+  /* -webkit-animation-name: animate__outDown_signIcon;
   animation-name: animate__outDown_signIcon;
   animation-duration: 6s;
-  animation-delay: 2s;
+  animation-delay: 2s; */
 }
 
 @keyframes animate__outDown_signIcon {
@@ -508,5 +506,4 @@
   to {
     bottom: 900px;
   }
-
 }

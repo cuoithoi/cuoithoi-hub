@@ -35,7 +35,9 @@ const LetterEnvelop = ({
         >
           <div className={`${classes.envelope} `}>
             <div
-              className={`${classes.envelopImg} ${open && classes.envelopOpen} ${open && classes.animate__outDown} `}
+              className={`${classes.envelopImg} ${
+                open && classes.envelopOpen
+              }  `}
             >
               <img src={envelopImg} alt='' />
             </div>
@@ -55,9 +57,7 @@ const LetterEnvelop = ({
                 />
               </div>
             </div>
-            <div className={`${classes.envelope_abs} ${open && classes.animate__outDown}`}>
-
-            </div>
+            <div className={`${classes.envelope_abs}`}></div>
             <div className={`${classes.hearts} ${!open && classes.close}`}>
               <div className={`${classes.heart} ${classes.a1}`}></div>
               <div className={`${classes.heart} ${classes.a2}`}></div>
@@ -68,17 +68,20 @@ const LetterEnvelop = ({
               <div className={`${classes.heart} ${classes.a7}`}></div>
               <div className={`${classes.heart} ${classes.a8}`}></div>
             </div>
-            <div className={`${classes.envelopBodyImg} ${open && classes.animate__outDown}`} style={{ zIndex: '2' }}>
+            <div
+              className={`${classes.envelopBodyImg} ${open}`}
+              style={{ zIndex: '2' }}
+            >
               <img src={envelopBodyImg} alt='' />
             </div>
           </div>
-          <div className={`${classes.signIcon} ${open && classes.animate__outDown_signIcon}`}>
+          <div className={`${classes.signIcon} ${open}`}>
             <div className={`${classes.signIconRotate}`}>
               <img src={heartIcon} alt='' />
             </div>
           </div>
         </div>
-      </div >
+      </div>
     </>
   )
 }

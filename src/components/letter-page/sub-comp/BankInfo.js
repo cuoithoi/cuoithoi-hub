@@ -10,7 +10,7 @@ const BankInfo = ({
   qrCodeMotherLink,
   isGoneFather,
   isGoneMother,
-  isBride
+  isBride,
 }) => {
   return (
     <div>
@@ -20,9 +20,9 @@ const BankInfo = ({
       <div className=' text-left'>
         <Carousel
           showStatus={false}
-          showArrows={false}
+          showArrows={true}
           centerMode={true}
-          showIndicators={false}
+          showIndicators={true}
           swipeable
           emulateTouch
           centerSlidePercentage={100}
@@ -34,23 +34,25 @@ const BankInfo = ({
             <p className='pr-4 text-sm'>{nameBank}</p>
             <img src={qrCode} alt={isBride ? 'Cô dâu' : 'Chú rể'} />
           </div>
-          {
-            isGoneFather === false ? <div className=' text-left'>
+          {isGoneFather === false ? (
+            <div className=' text-left'>
               <h2 className=' text-left'>Bố</h2>
               <p className='pr-4 text-sm'>{nameBankOfFather}</p>
               <img src={qrCodeFatherLink} alt='qrFather' />
-            </div> : <div className=' text-left'>
             </div>
-          }
+          ) : (
+            <div className=' text-left'></div>
+          )}
 
-          {
-            isGoneMother === false ? <div className=' text-left'>
+          {isGoneMother === false ? (
+            <div className=' text-left'>
               <h2>Mẹ</h2>
               <p className='pr-4 text-sm'>{nameBankOfMother}</p>
               <img src={qrCodeMotherLink} alt='qrMother' />
-            </div> : <div className=' text-left'>
             </div>
-          }
+          ) : (
+            <div className=' text-left'></div>
+          )}
         </Carousel>
       </div>
     </div>
