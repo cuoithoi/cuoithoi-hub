@@ -37,6 +37,7 @@ const WriteMessage = ({ setCmtList, handleCloseModal }) => {
           invitationsId: id,
         })
         const newData = { ...data, createTime: new Date() }
+        console.log(res)
         setCmtList((prev) => [newData, ...prev])
         toast.success(res.data[0].messaging)
         handleCloseModal()
@@ -64,6 +65,7 @@ const WriteMessage = ({ setCmtList, handleCloseModal }) => {
           <MyTextArea
             type='text'
             className='text'
+            inputStyle='height-input-writeMessage'
             placeHolder='Nhập lời chúc'
             name='desWish'
             register={register}

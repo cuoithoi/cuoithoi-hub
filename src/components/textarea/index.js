@@ -17,6 +17,7 @@ export const MyTextArea = forwardRef(
   (
     {
       id,
+      register,
       label,
       name,
       value,
@@ -140,6 +141,7 @@ export const MyTextArea = forwardRef(
             disabled={!disabled}
             readOnly={!disabled}
             autoCapitalize="none"
+            {...register(name)}
             onFocus={focus}
             onKeyUp={onKeyPress}
             className={`${styles.form_control} ${

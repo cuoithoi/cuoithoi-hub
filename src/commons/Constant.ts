@@ -221,7 +221,7 @@ export const APi = {
   excelClient: '/export-excel/recurrent-info',
   exportWish: '/export-excel/wish',
   invitationDetail: '/invitation-detail',
-  notifi: '/get-list-question-category',
+  notifi: '/get-list-notification',
   faq: '/get-list-question',
   inforCompany: '/get-information-base',
   codeSale: '/check-sale-code',
