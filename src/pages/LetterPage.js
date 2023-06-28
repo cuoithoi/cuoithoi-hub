@@ -23,7 +23,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import SnowFall from '@/components/letter-page/SnowFall'
 import { Alias } from '@/commons/Constant.ts'
 import { getUserFromLocalStorage } from '@/utils/localStorage'
-import html2canvas from 'html2canvas';
+import html2canvas from 'html2canvas'
 
 const LetterPage = () => {
   const { id } = useParams()
@@ -37,9 +37,9 @@ const LetterPage = () => {
 
   const storageId = getUserFromLocalStorage()
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const containerRef = useRef(null);
+  const containerRef = useRef(null)
 
   useEffect(() => {
     if (isOpen) {
@@ -96,30 +96,30 @@ const LetterPage = () => {
     userId,
     videoLink,
     note,
-    isPaid
+    isPaid,
   } = letter
-  
+
   const captureAndUpload = () => {
     setTimeout(() => {
       html2canvas(containerRef.current)
         .then((canvas) => {
-          const image = canvas.toDataURL('image/png');
-          const link = document.createElement('a');
-          link.href = image;
-          link.download = 'screenshot.png';
-          link.click();
+          const image = canvas.toDataURL('image/png')
+          const link = document.createElement('a')
+          link.href = image
+          link.download = 'screenshot.png'
+          link.click()
         })
         .catch((error) => {
-          console.error('Lỗi khi chụp ảnh:', error);
-        });
-    }, 1000);
+          console.error('Lỗi khi chụp ảnh:', error)
+        })
+    }, 1000)
     setIsLetterOpen(true)
-  };
+  }
 
   if (!isPaid && userId !== storageId?.userId) {
     navigate(Alias.homePage)
   }
-
+  //!isLetterOpen && !isLoading && isEffectOfOpenning
   if (!isLetterOpen && !isLoading && isEffectOfOpenning) {
     return (
       <div className='w-screen h-screen m-0 p-0 flex items-center justify-center bg-main'>
