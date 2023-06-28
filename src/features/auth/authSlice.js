@@ -24,6 +24,11 @@ export const signupUser = createAsyncThunk(
   async (user, thunkAPI) => {
     try {
       const resp = await customFetch.post('/signup', user)
+      console.log(resp)
+      if (resp.data.message === 'errors.field.email.isExist') {
+        toast.error('Tài khoản đã tồn tại')
+        throw new Error('Tên đăng nhập hoặc mật khẩu không chính xác')
+      }
       return resp.data.data
       // toast message
     } catch (error) {
@@ -47,32 +52,6 @@ export const signinUser = createAsyncThunk(
   }
 )
 
-// this function use for verify email when user forgot password
-// export const verifyEmail = createAsyncThunk(
-//   'auth/verifyEmail',
-//   async (email) => {
-//     try {
-//       const response = await customFetch.post('/verify-user-by-email', email)
-//       return response.data.data
-//     } catch (error) {
-//       toast.error(
-//         'Xác thực email thất bại, Vui lòng kiểm tra lại',
-//         error.response.message
-//       )
-//     }
-//   }
-// )
-// export const FogotPassVerifyOTP = createAsyncThunk(
-//   'auth/verifyOtp',
-//   async (otp, thunkAPI) => {
-//     try {
-//       const response = await customFetch.post('/verify-otp', otp)
-//       return response.data.data
-//     } catch (error) {
-//       toast.error('Xác thực OTP thất bại, Vui lòng kiểm tra lại')
-//     }
-//   }
-// )
 export const verifyOTP = createAsyncThunk(
   'auth/verifyOtp',
   async (otp, thunkAPI) => {
@@ -101,6 +80,9 @@ const authSlice = createSlice({
   },
   extraReducers: {
     [signupUser.pending]: (state) => {
+      state.isSignupSuccess = false
+    },
+    [signupUser.rejected]: (state) => {
       state.isSignupSuccess = false
     },
     [signupUser.fulfilled]: (state, { payload }) => {

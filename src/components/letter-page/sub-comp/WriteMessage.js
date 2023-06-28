@@ -62,6 +62,7 @@ const WriteMessage = ({ setCmtList, handleCloseModal }) => {
           />
           <Input
             type='text'
+            className='text'
             placeHolder='Nhập lời chúc'
             name='desWish'
             register={register}
