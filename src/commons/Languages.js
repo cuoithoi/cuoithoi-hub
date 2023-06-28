@@ -192,6 +192,7 @@ const Languages = {
     useFeatureVideo: 'Bạn có muốn sử dụng tính năng video không?',
     useFeatureEvent: 'Bạn có muốn sử dụng tính năng Chương trình không?',
     useFeatureDamNgo: 'Bạn có muốn sử dụng tính năng Dặm ngõ và Ăn hỏi không?',
+    useBanking: 'Bạn có muốn sử dụng tính năng Gửi chúc phúc không?',
     use: 'Sử dụng',
     attend: 'Tính năng',
     enablevideo: 'Để thể hiện tình yêu của các bạn trong ngày trọng đại này, hãy gửi cho Cưới Thôi một video trên thiệp cưới của bạn nhé.',

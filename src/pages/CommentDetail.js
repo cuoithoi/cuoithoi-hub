@@ -21,7 +21,7 @@ const CommentDetail = ({ cmtLists }) => {
   return (
     <div className='h-full'>
       <div className='text-center relative section-mb h-full'>
-        <div className='congrats-wrapper pt-16'>
+        <div className='congrats-wrapper pt-5'>
           <TitleSection title='LỜI CHÚC' />
         </div>
         <div className='row'>

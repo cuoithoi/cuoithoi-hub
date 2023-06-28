@@ -193,6 +193,7 @@ export const EventOfProgram = {
 
 export const INPUT_FIELDS = {
   videoLink: 'videoLink',
+  isUseBanking: 'isUseBanking',
   isUseConfirm: 'isUseConfirm',
   isUseVideo: 'isUseVideo',
   isUseEvent: 'isUseEvent',

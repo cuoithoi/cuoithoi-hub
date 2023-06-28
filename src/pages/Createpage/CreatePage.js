@@ -330,11 +330,11 @@ const CreatePage = () => {
 
     switch (name) {
 
-      case INPUT_FIELDS.isUseConfirm:
-        values.isUseConfirm = e;
+      case INPUT_FIELDS.isUseBanking:
+        values.isUseBanking = e;
         setValues(prevValues => ({
           ...prevValues,
-          isUseConfirm: e
+          isUseBanking: e
         }));
         break
 
@@ -660,7 +660,7 @@ const CreatePage = () => {
         <div className='details_attend'>
           <span>{Languages.text.obligatory}</span>
         </div>
-        <div className='single_hor_input' style={{display: 'none'}}>
+        <div className='single_hor_input' style={{ display: 'none' }}>
           <MyTextArea
             ref={refContentGuestBook}
             value={guestbookTemp}
@@ -1458,11 +1458,21 @@ const CreatePage = () => {
             <FamilyBride ref={refBrice} />
             <TimeandLocation ref={refTimeandLocation} />
             <div className='sec_group_panel_collape float_display'>
-
               <DamNgoAnHoi ref={refDamngovaAnhoi} />
               {renderAlbum}
               <VideoandEvent ref={refVideovaSukien} />
               <Panel title={Languages.text.informationBanking}>
+                <div class="title">{Languages.text.useBanking}</div>
+                <div className='single_hor_input checkbox_inline_colum'>
+                  <div className="item_field_single">
+                    <div className="Input_boxGroupInput__8ghvv man_inputStyle">
+                      <label className="Input_label__XHiJ4">{Languages.text.use}</label>
+                      <div className="Input_formGroup__Ln91z ">
+                        <input name="" defaultChecked={itemLocal?.isUseBanking} type="checkbox" className="Input_form_control__zkQn6 checkbox_input_style " onChange={(e) => onChangeText(e.target.checked, INPUT_FIELDS.isUseBanking)} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <BankingGroom ref={refBankingGroom} />
                 <BankingBrice ref={refBankingBride} />
               </Panel>

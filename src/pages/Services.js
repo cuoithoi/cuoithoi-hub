@@ -194,11 +194,11 @@ const Services = () => {
         </div>
 
         <div className="section_video_NFT">
-          <div className="container mx-auto" style={{position: 'relative'}}>
-            <div className="md:grid md:grid-cols-2 md:gap-4">
-              <TabContent>
-                <div title="Video Clip Service" className="tab-content">
-                  <div className="tab_index_container ">
+          <div className="container mx-auto" style={{ position: 'relative' }}>
+            <TabContent>
+              <div title="Video Clip Service" className="tab-contents">
+                <div className="tab_index_container ">
+                  <div className="animate__fadeInLeft_Content">
                     <h3>
                       Hãy cùng sẵn sàng cho Xu hướng Mới Nhất!
                     </h3>
@@ -234,19 +234,21 @@ const Services = () => {
                       textStyle={BUTTON_STYLES.WHITE}
                       onPress={onChangeRes}
                     />
-                    <div className="box_abs_image_video">
-                      <div className="frame_video_box">
-                        <img src={ICFrameVideo} alt="video" />
-                        <video ref={videoRef} controls autoPlay loop muted>
-                          <source src={video_wedding} type="video/mp4" />
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
+                  </div>
+                  <div className="box_abs_image_video animate__fadeInLeft_phone">
+                    <div className="frame_video_box">
+                      <img src={ICFrameVideo} alt="video" />
+                      <video ref={videoRef} controls autoPlay loop muted>
+                        <source src={video_wedding} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
                     </div>
                   </div>
                 </div>
-                <div title="NFT Service" className="tab-content">
-                  <div className="tab_index_container">
+              </div>
+              <div title="NFT Service" className="tab-contents">
+                <div className="tab_index_container">
+                  <div className="animate__fadeInLeft_Content">
                     <h3>
                       Đám Cưới của bạn sẽ được minh chứng dưới dạng NFT, chỉ có tại CuoiThoi !!!
                     </h3>
@@ -267,17 +269,17 @@ const Services = () => {
                       textStyle={BUTTON_STYLES.WHITE}
                       onPress={onChangeRes}
                     />
-                    <div className="box_abs_image_video">
-                      <video ref={videoRef} controls autoPlay loop muted>
-                        <source src={video_NFT} type="video/mp4" />
-                        Your browser does not support the video tag.
-                      </video>
+                  </div>
+                  <div className="box_abs_image_video animate__fadeInLeft_phone">
+                    <video ref={videoRef} controls autoPlay loop muted>
+                      <source src={video_NFT} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
 
-                    </div>
                   </div>
                 </div>
-              </TabContent>
-            </div>
+              </div>
+            </TabContent>
           </div>
         </div>
 

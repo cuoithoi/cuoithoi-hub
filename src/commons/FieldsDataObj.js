@@ -318,6 +318,7 @@ export const fiedlsCreatePage = {
     "isUseVideo": false,
     "isUseEvent": false,
     "isUseDamNgo": false,
+    "isUseBanking": false,
   }],
   "timeAndLocationOfEgagement": {
     "dateOfEventEgagement": "",

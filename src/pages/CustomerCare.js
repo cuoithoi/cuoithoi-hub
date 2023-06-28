@@ -34,8 +34,9 @@ const CustomerCare = () => {
     useEffect(() => {
         const asyncListFAQ = async () => {
             const response = await get(APi.faq, '', {
-                isNotification: 1
+                isNotification: 2
             });
+
             console.log(response)
             setData(response.data);
         };
@@ -68,7 +69,6 @@ const CustomerCare = () => {
     const onNavigateZalo = () => window.open('https://zalo.me/' + dataInfor[data.length - 1]?.zaloNumber)
 
     const onscrollTop = () => window.scrollTo(0, 0)
-
     return (
         <div className='customer_care_page'>
             <Loading />
@@ -175,7 +175,7 @@ const CustomerCare = () => {
                                     <div className='category_name_group'>
                                         <h3>{item.content}</h3>
                                     </div> {
-                                        <PaginatedList data={item.questions} itemsPerPage={5} />
+                                        <PaginatedList data={item?.questions} itemsPerPage={5} />
                                     }
 
                                 </div>
