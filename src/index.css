@@ -2271,7 +2271,6 @@ img {
 
 .header_editpage {
   padding: 20px;
-  width: 75%;
   z-index: 2;
   /* backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px); */
@@ -3454,6 +3453,192 @@ input:disabled {
 @media (min-width: 768px) {
   .image_show_demo_wish img {
     width: 1000px;
+  }
+}
+
+@media (max-width: 991px) {
+
+  .header_editpage,
+  .my_input_form_data_group {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .my_input_form_data_group {
+    padding-top: 0;
+  }
+
+  .uploading_single_img_group {
+    margin-bottom: 20px;
+  }
+
+  .group_input_control {
+    display: block;
+  }
+
+  .group_input_control .checkbox {
+    margin: 15px 0;
+  }
+
+  .body_form .wrap_form .address_province_ {
+    display: block;
+    margin-bottom: 0;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .header h1 {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .buttton_header {
+    position: relative;
+  }
+
+  .root-remove {
+    flex-wrap: unset;
+  }
+
+  .collapse-child-title {
+    font-size: 18px;
+    gap: 10px;
+  }
+
+  .collapse-child-title .no_fields {
+    font-size: 9px;
+  }
+
+  .savesetting_btn {
+    width: 100%;
+  }
+
+  .title_comp_wed h2 {
+    font-size: 18px;
+  }
+
+  .form_sellect_control {
+    margin-bottom: 10px;
+  }
+
+  .all_services {
+    padding: 50px 0;
+  }
+
+  .List_item_show .item_single_line {
+    padding: 26px 8px;
+  }
+
+  .dotted_scroll {
+    display: none;
+  }
+
+  .main_tit .tit_type2 {
+    font-size: 35px;
+  }
+
+  .navbar-toggler svg {
+    fill: #000;
+  }
+
+  .wrapbox_image_pc {
+    align-items: center;
+  }
+
+  div[name='section3'] .wrapbox_image_pc .head h3 {
+    margin-bottom: 250px;
+  }
+
+  .image_single_pc {
+    bottom: 100px;
+    max-width: 100%;
+  }
+
+  .box_3phone_wrap_image {
+    max-width: 100%;
+    justify-content: center;
+  }
+
+  .box_3phone_wrap_image img {
+    margin-bottom: 200px;
+    width: 1000px;
+    max-width: unset;
+    object-fit: none;
+    overflow: inherit;
+  }
+
+  .image_show_demo_wish {
+    justify-content: start;
+    margin-left: 0;
+  }
+
+  .image_show_demo_wish img {
+    width: 1500px;
+    max-width: unset;
+  }
+
+  .footer .component_ShowInf_Company {
+    margin-bottom: 30px;
+  }
+
+  .view_experience {
+    display: none;
+  }
+
+  .menu_bar_fix_top {
+    display: none;
+  }
+
+  .box_support_guest .all_ready span {
+    font-size: 22px;
+  }
+
+  .box_support_guest .all_ready svg {
+    font-size: 25px;
+  }
+
+  .box_support_guest {
+    margin: 20px auto;
+  }
+
+  .sec_video {
+    padding: 50px 0;
+  }
+
+  .respon-table {
+    display: block;
+    overflow: auto;
+  }
+
+  .respon-table button {
+    width: 100% !important;
+  }
+
+  .respon-table tbody td {
+    min-width: 180px;
+  }
+
+  .choose_ser_another .box_head h2 {
+    font-size: 25px;
+  }
+
+  .choose_ser_another .box_head p {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1299px) {
+  .my_input_form_data_group {
+    max-width: fit-content;
+  }
+
+  .header_editpage {
+    width: 100%;
   }
 }
 
