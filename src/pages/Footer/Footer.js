@@ -1,22 +1,23 @@
 
 import Languages from '@/commons/Languages'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import IcZalo from '@/assets/home-image/IcZalo.svg'
 import IcPhone from '@/assets/home-image/IcPhone.svg'
 import { Button } from '@/components/button'
 import { APi, BUTTON_STYLES } from '@/commons/Constant.ts'
 import { FaAngleDown, FaRegClock } from 'react-icons/fa'
 import Iclogo from '@/assets/home-image/IcLogo.svg'
-import { Payment } from '@/components/Payment'
 import { useBaseService } from '@/utils/BaseServices'
-import { last, lastIndexOf } from 'lodash'
+import ICQrLogo from '@/assets/home-image/qrcode.jpg'
+import Popup from '@/components/modal/Popup'
+
 
 const Footer = () => {
 
-    const ref = useRef(null);
+    const refModal = useRef(null)
 
     const onChangeShowModalPayment = () => {
-        ref?.current?.show();
+        refModal?.current?.showModal();
     }
 
     const { get } = useBaseService();
@@ -38,6 +39,39 @@ const Footer = () => {
         asyncLimit()
 
     }, [])
+
+    const renderContentModal = useMemo(() => {
+        return <>
+            {
+                <div className='renderContentModal'>
+                    <div className='bock_content_modal'>
+                        <div className='block_step '>
+                            <div className='content_step'>
+                                <img src={ICQrLogo} alt='qr' />
+                                <div className='infor'>
+                                    <span>Tên ngân hàng: {data[data.length - 1]?.nameBank}</span>
+                                    <span>Số tài khoản: {data[data.length - 1]?.numberBank}</span>
+                                    <span>Tên chủ tài khoản: {data[data.length - 1]?.ceoPeople}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='chuy'>
+                        <p>Lưu ý: <strong>Sau khi chuyển khoản xong</strong> thì bạn mới nhấn thanh toán để hệ thống ghi nhận giao dịch.</p>
+                    </div>
+                </div>
+            }
+        </>
+    }, [])
+
+    const renderModal = useMemo(() => {
+        return (
+            <Popup
+                ref={refModal}
+                content={renderContentModal}
+            />
+        )
+    }, [renderContentModal])
 
     return (
         <div className='footer'>
@@ -112,9 +146,7 @@ const Footer = () => {
                             </div>
                         </div>
                     </div>
-                    <Payment
-                        ref={ref}
-                    />
+                    {renderModal}
                 </div>
             </div>
         </div>

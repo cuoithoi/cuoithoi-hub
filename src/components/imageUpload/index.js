@@ -124,10 +124,10 @@ export const ImageUpload = forwardRef(
                   {
                     imageList.map((image, index) =>
                       <SortableItem key={index} imgProps={{ draggable: false }}>
-                        <div className="image-item flex justify-center">
+                        <div className="image-item flex justify-center" style={{ width: '100%' }}>
                           <div
-                            className="relative max-w-fit"
-                            style={{ height: height }}
+                            className="relative"
+                            style={{ height: height, width: '100%' }}
                             {...dragProps}
                           >
                             <div
@@ -140,7 +140,7 @@ export const ImageUpload = forwardRef(
                               src={image.data_url}
                               alt={'thumbs' + image.file?.size}
                               onClick={() => onImageUpdate(index)}
-                              style={{ height: height }}
+                              style={{ height: height, width: '100%' }}
                             />
                           </div>
                         </div>
@@ -179,8 +179,8 @@ export const ImageUpload = forwardRef(
               !isArray(urlLocal) &&
               <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                 <div
-                  className="relative max-w-fit "
-                  style={{ height: height }}
+                  className="relative"
+                  style={{ height: height, width: '100%'}}
 
                 >
                   <div
@@ -193,7 +193,7 @@ export const ImageUpload = forwardRef(
                     src={urlLocal}
                     alt={'thumbs'}
 
-                    style={{ height: height }}
+                    style={{ height: height, width: '100%' }}
                   />
                 </div></div>
               || isArray(urlLocal) && <> {

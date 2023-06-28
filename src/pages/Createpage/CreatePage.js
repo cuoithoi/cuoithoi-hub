@@ -660,7 +660,7 @@ const CreatePage = () => {
         <div className='details_attend'>
           <span>{Languages.text.obligatory}</span>
         </div>
-        <div className='single_hor_input'>
+        <div className='single_hor_input' style={{display: 'none'}}>
           <MyTextArea
             ref={refContentGuestBook}
             value={guestbookTemp}
@@ -1344,7 +1344,7 @@ const CreatePage = () => {
                   {Languages.text.payServices}
                 </p>
                 <p className='contact'>
-                  Zalo: 090932421 - Hotline: (+84) 083595123
+                  Zalo: 0933619010 - Hotline: (+84) 933619010
                 </p>
               </div>
             </div>
@@ -1380,24 +1380,24 @@ const CreatePage = () => {
 
   return (
     <div className='Createpage'>
-
       <Loading />
-      <div className='header_editpage'>
-        <div className='container mx-auto'>
-          <div className='header header_edit'>
-            <h1>
-              {Languages.text.togetherCreate}
-            </h1>
-            <div className='buttton_header'>
-              <Button
-                label={Languages.common.listLetter}
-                isLowerCase
-                onPress={onShowModalAgree}
-              />
-            </div>
+      <div className='my_input_form_data_group'>
+        <div className='header_editpage'>
+          <div className='container mx-auto'>
+            <div className='header header_edit'>
+              <h1>
+                {Languages.text.togetherCreate}
+              </h1>
+              <div className='buttton_header'>
+                <Button
+                  label={Languages.common.back}
+                  isLowerCase
+                  onPress={onShowModalAgree}
+                />
+              </div>
 
-            <div className='btn_group_r'>
-              {/* {
+              <div className='btn_group_r'>
+                {/* {
               checkUrl ? <Button
                 label={Languages.common.saveDraf}
                 buttonStyle={BUTTON_STYLES.GRAY}
@@ -1406,18 +1406,17 @@ const CreatePage = () => {
               /> : ''
             } */}
 
-              {/* <Button
+                {/* <Button
                 label={Languages.common.listLetter}
                 buttonStyle={BUTTON_STYLES.PINK}
                 textStyle={BUTTON_STYLES.WHITE}
                 isLowerCase
                 onPress={onNavigateMypage}
               /> */}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className='my_input_form_data_group'>
         <div className='container mx-auto'>
           <div className='upload_represent_box'>
             <div className='md:grid md:grid-cols-3 md:gap-5'>

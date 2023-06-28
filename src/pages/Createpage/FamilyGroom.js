@@ -348,7 +348,7 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                         {renderInput(
                             refNameGroom,
                             '',
-                            'A',
+                            'Họ và Tên ',
                             NAME_INPUT_GROOM.name,
                             'text',
                             30,
@@ -374,7 +374,7 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                         {renderInput(
                             refPhoneGroom,
                             '',
-                            '0384012345',
+                            'Số điện thoại',
                             NAME_INPUT_GROOM.phoneNumberOfGroom,
                             'number',
                             10,
@@ -395,7 +395,7 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                         {renderInput(
                             refNameFather,
                             '',
-                            'A',
+                            'Họ và Tên ',
                             NAME_INPUT_GROOM.fatherNameOfGroom,
                             'text',
                             30,
@@ -416,7 +416,7 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                         {renderInput(
                             refPhoneFather,
                             '',
-                            '0384012345',
+                            'Số điện thoại',
                             NAME_INPUT_GROOM.phoneNumberOfFatherGroom,
                             'number',
                             10,
@@ -437,7 +437,7 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                         {renderInput(
                             refNameMother,
                             '',
-                            'B',
+                            'Họ và Tên ',
                             NAME_INPUT_GROOM.motherNameOfGroom,
                             'text',
                             30,
@@ -458,7 +458,7 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                         {renderInput(
                             refPhoneMother,
                             '',
-                            '0384012345',
+                            'Số điện thoại',
                             NAME_INPUT_GROOM.phoneNumberOfMotherGroom,
                             'number',
                             10,

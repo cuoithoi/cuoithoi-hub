@@ -24,7 +24,6 @@ export const signupUser = createAsyncThunk(
   async (user, thunkAPI) => {
     try {
       const resp = await customFetch.post('/signup', user)
-      console.log(resp)
       if (resp.data.message === 'errors.field.email.isExist') {
         toast.error('Tài khoản đã tồn tại')
         throw new Error('Tên đăng nhập hoặc mật khẩu không chính xác')

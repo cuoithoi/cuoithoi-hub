@@ -24,7 +24,7 @@ import { Input } from '@/components/input/Input'
 import { useEffect } from 'react'
 // initial state
 const schema = yup.object().shape({
-  username: yup.string().required('Yêu cầu nhập trường này'),
+  username: yup.string(),
   password: yup
     .string()
     .min(6, 'Mật khẩu tối thiểu 6 ký tự')
@@ -46,7 +46,6 @@ const RegisterRefactor = () => {
   const navigate = useNavigate()
   // /////// handle redirect when sign up success//////////
   useEffect(() => {
-    console.log(isSignupSuccess)
     if (isSignupSuccess) navigate(Alias.verifyOtp)
   }, [isSignupSuccess])
 
@@ -97,14 +96,6 @@ const RegisterRefactor = () => {
                   name='fullName'
                   type='text'
                   placeHolder={Languages.inputText.name}
-                  inputStyle={'form-control'}
-                />
-                <Input
-                  register={register}
-                  errors={errors}
-                  name='username'
-                  type='text'
-                  placeHolder={'User name'}
                   inputStyle={'form-control'}
                 />
                 <Input

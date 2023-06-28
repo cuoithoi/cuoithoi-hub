@@ -21,14 +21,14 @@ const InvitationDetail = ({ info, isBride }) => {
       <div className='text-center px-4'>
         <h2 className='text-main'>Nhà Gái</h2>
         <p>Cô Dâu</p>
-        <h1>{`${name}`}</h1>
-        <p>{isOldBrotherBride ? 'Trưởng nữ' : 'Thứ nữ'}</p>
-        <p>Bố {isGoneMotherOfBride ? '(Cố)' : ''}</p>
-        <p className='show_type_display'>
+        <h1 className='name_show'>{`${name}`}</h1>
+        <p className='dashed-top-bottom'>{isOldBrotherBride ? 'Trưởng nữ' : 'Thứ nữ'}</p>
+        <p>{isGoneMotherOfBride ? 'Cố Phụ' : 'Bố'}</p>
+        <p className='show_type_display dashed-top-bottom'>
           {isGoneFatherBride ? <img src={IcChrysanthemum} /> : ''} Ông.{' '}
           {`${fatherNameOfBride}`}
         </p>
-        <p>Mẹ {isGoneMotherOfBride ? '(Cố)' : ''}</p>
+        <p> {isGoneMotherOfBride ? 'Cố Mẫu' : 'Mẹ'}</p>
         <p className='show_type_display'>
           {isGoneMotherOfBride ? <img src={IcChrysanthemum} /> : ''} Bà.{' '}
           {`${motherNameOfBride}`}
@@ -55,14 +55,14 @@ const InvitationDetail = ({ info, isBride }) => {
     <div className='text-center px-4'>
       <h2 className='text-main'>Nhà Trai</h2>
       <p>Chú Rể</p>
-      <h1>{`${name}`}</h1>
-      <p>{isOldBrotherGroom ? 'Trưởng nam' : 'Thứ nam'}</p>
-      <p>Bố {isGoneFather ? '(Cố)' : ''}</p>
-      <p className='show_type_display'>
+      <h1 className='name_show'>{`${name}`}</h1>
+      <p className='dashed-top-bottom'>{isOldBrotherGroom ? 'Trưởng nam' : 'Thứ nam'}</p>
+      <p>{isGoneFather ? 'Cố Phụ' : 'Bố'}</p>
+      <p className='show_type_display dashed-top-bottom'>
         {isGoneFather ? <img src={IcChrysanthemum} /> : ''} Ông.{' '}
         {`${fatherNameOfGroom}`}
       </p>
-      <p>Mẹ {isGoneMother ? '(Cố)' : ''}</p>
+      <p>{isGoneMother ? 'Cố Mẫu' : 'Mẹ'}</p>
       <p className='show_type_display'>
         {isGoneMother ? <img src={IcChrysanthemum} /> : ''} Bà.{' '}
         {`${motherNameOfGroom}`}

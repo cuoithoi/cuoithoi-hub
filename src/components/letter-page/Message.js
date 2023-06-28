@@ -66,7 +66,7 @@ const Message = () => {
           emulateTouch
           className='slider_cmt'
           renderThumbs={() => null}
-          centerSlidePercentage={100}
+          // centerSlidePercentage={100}
         >
           {cmtList?.map((cmt, index) => {
             return (

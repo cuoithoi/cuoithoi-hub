@@ -450,7 +450,7 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                         {renderInput(
                             refNameBride,
                             '',
-                            'B',
+                            'Họ và Tên',
                             NAME_INPUT_BRIDE.name,
                             'text',
                             30,
@@ -477,7 +477,7 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                         {renderInput(
                             refPhoneBride,
                             '',
-                            '0384012345',
+                            'Số điện thoại',
                             NAME_INPUT_BRIDE.phoneNumberOfBride,
                             'number',
                             10,
@@ -498,7 +498,7 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                         {renderInput(
                             refNameFather,
                             '',
-                            'A',
+                            'Họ và Tên',
                             NAME_INPUT_BRIDE.fatherNameOfBride,
                             'text',
                             30,
@@ -519,7 +519,7 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                         {renderInput(
                             refPhoneFather,
                             '',
-                            '0384012345',
+                            'Số điện thoại',
                             NAME_INPUT_BRIDE.phoneNumberOfFatherBride,
                             'number',
                             10,
@@ -540,7 +540,7 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                         {renderInput(
                             refNameMother,
                             '',
-                            'B',
+                            'Họ và Tên',
                             NAME_INPUT_BRIDE.motherNameOfBride,
                             'text',
                             30,
@@ -562,7 +562,7 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                         {renderInput(
                             refPhoneMother,
                             '',
-                            '0384012345',
+                            'Số điện thoại',
                             NAME_INPUT_BRIDE.phoneNumberOfMotherBride,
                             'number',
                             10,

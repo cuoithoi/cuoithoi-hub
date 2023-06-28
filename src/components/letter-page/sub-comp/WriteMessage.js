@@ -8,6 +8,7 @@ import { Button } from '@/components/button'
 import { BUTTON_STYLES } from '@/commons/Constant.ts'
 import { useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { MyTextArea } from '@/components/textarea'
 const schema = yup.object().shape({
   namePeopleSend: yup
     .string()
@@ -60,7 +61,7 @@ const WriteMessage = ({ setCmtList, handleCloseModal }) => {
             errors={errors}
             inputStyle='letter-input'
           />
-          <Input
+          <MyTextArea
             type='text'
             className='text'
             placeHolder='Nhập lời chúc'

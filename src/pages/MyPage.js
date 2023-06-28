@@ -170,10 +170,10 @@ const Mypage = () => {
         <th className='p-3 text-center' width='200px'>
           {Languages.text.packageServices}
         </th>
-        <th className='p-3 text-center' width='250px'>
+        <th className='p-3 text-center' width='230px'>
           {Languages.buttonText.edit}
         </th>
-        <th className='p-3 text-center' width='350px'>
+        <th className='p-3 text-center' width='230px'>
           {Languages.text.manager}
         </th>
       </tr>
@@ -387,7 +387,7 @@ const Mypage = () => {
                                 buttonStyle={BUTTON_STYLES.BLUE}
                                 textStyle={BUTTON_STYLES.WHITE}
                                 autocenter
-                                width={60}
+                                width={100}
                                 isLowerCase
                                 onPress={() => onChangeEditor(item?._id, item?.isPaid)}
                               />
@@ -399,7 +399,7 @@ const Mypage = () => {
                                 buttonStyle={BUTTON_STYLES.ORRANGE}
                                 textStyle={BUTTON_STYLES.WHITE}
                                 autocenter
-                                width={60}
+                                width={100}
                                 isLowerCase
                                 onPress={() => onChangeSeeBefore(item?._id)}
                               />
@@ -411,7 +411,7 @@ const Mypage = () => {
                                 buttonStyle={BUTTON_STYLES.DARKMODE}
                                 textStyle={BUTTON_STYLES.WHITE}
                                 autocenter
-                                width={60}
+                                width={100}
                                 isLowerCase
                                 onPress={() => onChangeClipBoard(item?._id)}
                               />
@@ -425,7 +425,7 @@ const Mypage = () => {
                                 buttonStyle={BUTTON_STYLES.PINK}
                                 textStyle={BUTTON_STYLES.WHITE}
                                 autocenter
-                                width={60}
+                                width={100}
                                 isLowerCase
                                 onPress={() => onChangePayment(item?._id, item?.productId?.amount)}
                               />
@@ -437,7 +437,7 @@ const Mypage = () => {
                                 buttonStyle={BUTTON_STYLES.PINK}
                                 textStyle={BUTTON_STYLES.WHITE}
                                 autocenter
-                                width={60}
+                                width={100}
                                 isLowerCase
                               />
                             )}
@@ -448,7 +448,7 @@ const Mypage = () => {
                                 buttonStyle={BUTTON_STYLES.BLUE}
                                 textStyle={BUTTON_STYLES.WHITE}
                                 autocenter
-                                width={75}
+                                width={100}
                                 isLowerCase
                                 onPress={() => onChangeDowloadClient(item?._id)}
                               />
@@ -460,7 +460,7 @@ const Mypage = () => {
                                 buttonStyle={BUTTON_STYLES.LIGHT_BLUE}
                                 textStyle={BUTTON_STYLES.WHITE}
                                 autocenter
-                                width={70}
+                                width={100}
                                 isLowerCase
                                 onPress={() => onChangeDowloadWish(item?._id)}
                               />
@@ -471,7 +471,7 @@ const Mypage = () => {
                               buttonStyle={BUTTON_STYLES.DARKMODE}
                               textStyle={BUTTON_STYLES.WHITE}
                               autocenter
-                              width={60}
+                              width={100}
                               isLowerCase
                               onPress={() => onChangeDetele(item._id)}
                             />

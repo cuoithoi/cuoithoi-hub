@@ -33,7 +33,10 @@ const CustomerCare = () => {
 
     useEffect(() => {
         const asyncListFAQ = async () => {
-            const response = await get(APi.faq);
+            const response = await get(APi.faq, '', {
+                isNotification: 1
+            });
+            console.log(response)
             setData(response.data);
         };
         const asyncListNotifi = async () => {
@@ -62,7 +65,7 @@ const CustomerCare = () => {
         ref.current?.scrollIntoView({ behavior: 'smooth' })
     };
 
-    const onNavigateZalo = () => window.open('https://zalo.me/' + dataInfor[data.length -1]?.zaloNumber)
+    const onNavigateZalo = () => window.open('https://zalo.me/' + dataInfor[data.length - 1]?.zaloNumber)
 
     const onscrollTop = () => window.scrollTo(0, 0)
 
@@ -166,17 +169,16 @@ const CustomerCare = () => {
                             </h2>
                         </div>
                         {
-                            data.map(function (item, indexParent) {
-                                return item.data.map(function (item, index) {
-                                    return <div className='panel_colisape_group' key={index - indexParent}>
-                                        <div className='category_name_group'>
-                                            <h3>{item.content}</h3>
-                                        </div> {
-                                            <PaginatedList data={item.questions} itemsPerPage={5} />
-                                        }
 
-                                    </div>
-                                })
+                            data.map(function (item, indexParent) {
+                                return <div className='panel_colisape_group' key={indexParent}>
+                                    <div className='category_name_group'>
+                                        <h3>{item.content}</h3>
+                                    </div> {
+                                        <PaginatedList data={item.questions} itemsPerPage={5} />
+                                    }
+
+                                </div>
                             })
                         }
                     </div>
@@ -205,7 +207,7 @@ const CustomerCare = () => {
                         </div>
                         <div className='box_support_guest'>
                             <div className='all_ready'>
-                                <FaHeadphones /> <span>We will Answer Quickly</span>
+                                <FaHeadphones /> <span>Chúng tôi luôn hỗ trợ bạn sớm nhất có thể</span>
                             </div>
                             <div className='timetowork'>
                                 <p>Mon to Fri : 09:00 ~ 18:00</p>
@@ -214,7 +216,7 @@ const CustomerCare = () => {
                             </div>
                             <div className='bottom_btn'>
                                 <Button
-                                    label={'Zalo id : ~~~~ & QR'}
+                                    label={'Zalo id: 0933619010'}
                                     buttonStyle={BUTTON_STYLES.PINK}
                                     textStyle={BUTTON_STYLES.WHITE}
                                     onPress={onNavigateZalo}

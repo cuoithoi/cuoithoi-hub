@@ -28,7 +28,7 @@ const Invitation = ({
           đến dự buổi tiệc chung vui cùng gia đình chúng tôi
         </div>
         <div>
-          <div className='flex justify-center pt-4'>
+          <div className='flex justify-center pt-4 md:grid md:grid-cols-2 md:gap-4' style={{paddingTop: '1.5rem'}}>
             <InvitationDetail info={informationOfGroom} isBride={false} />
             <InvitationDetail info={informationOfBride} isBride={true} />
           </div>
