@@ -141,12 +141,11 @@ export const MyTextArea = forwardRef(
             disabled={!disabled}
             readOnly={!disabled}
             autoCapitalize="none"
-            {...register(name)}
+            {...register && { ...register(name) }}
             onFocus={focus}
             onKeyUp={onKeyPress}
-            className={`${styles.form_control} ${
-              inputStyle ? inputStyle : ""
-            } ${!disabled ? styleDisable : ""}`}
+            className={`${styles.form_control} ${inputStyle ? inputStyle : ""
+              } ${!disabled ? styleDisable : ""}`}
           />
           {isIcon && <div className={styles.ic_icon}>{icon}</div>}
         </div>
