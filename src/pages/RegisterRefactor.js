@@ -62,8 +62,7 @@ const RegisterRefactor = () => {
   })
 
   const onSubmit = (data) => {
-    console.log(data)
-    dispatch(signupUser(data))
+    dispatch(signupUser({ ...data, email: data.email.toLowerCase() }))
   }
 
   // dispatch(signupUser(data))

@@ -22,13 +22,17 @@ const LetterEnvelop = ({
     setOpen(true)
     setTimeout(() => {
       setIsLetterOpen(true)
-    }, 6100)
+    }, 4900)
   }
 
   return (
     <>
       <Loading />
-      <div className={`${classes.container} ${classes.animate__backInDown}`}>
+      <div
+        className={`${classes.container} ${classes.animate__backInDown} ${
+          open && classes.disapear
+        }`}
+      >
         <div
           className={`${classes.envelopeWrapper} ${open && classes.flap} `}
           onClick={openLetter}
@@ -57,7 +61,7 @@ const LetterEnvelop = ({
                 />
               </div>
             </div>
-            <div className={`${classes.envelope_abs}`}></div>
+            {/* <div className={`${classes.envelope_abs}`}></div> */}
             <div className={`${classes.hearts} ${!open && classes.close}`}>
               <div className={`${classes.heart} ${classes.a1}`}></div>
               <div className={`${classes.heart} ${classes.a2}`}></div>
@@ -75,7 +79,7 @@ const LetterEnvelop = ({
               <img src={envelopBodyImg} alt='' />
             </div>
           </div>
-          <div className={`${classes.signIcon} ${open}`}>
+          <div className={`${classes.signIcon} `}>
             <div className={`${classes.signIconRotate}`}>
               <img src={heartIcon} alt='' />
             </div>

@@ -13,7 +13,7 @@ const EnvelopContent = ({
 }) => {
   return (
     <div
-      className='text-center text-xs  relative section-mb layout-mw bg-no-repeat bg-center bg-contain'
+      className='text-center text-xs  relative section-mb layout-mw bg-no-repeat bg-center bg-cover'
       style={{ backgroundImage: `url(${coverImage})` }}
     >
       <div

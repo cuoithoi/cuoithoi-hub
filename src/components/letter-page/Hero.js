@@ -22,7 +22,7 @@ const Hero = ({
     if (effectImage === 'none') img = noneGray
     if (effectImage === 'Heart Frame') img = heartGray
     if (effectImage === 'Light') img = lightGray
-    if (effectImage === 'Wave Frame') img = waveGrayBg
+    if (effectImage === 'Wave') img = waveGrayBg
     return img
   }
   return (
@@ -41,7 +41,8 @@ const Hero = ({
           <img src={''} alt='' className='w-full' />
         </div>
         <h1 className='wind-song big-size text-9xl pt-20'>
-          {timeAndLocationOfWedding.dateOfEventWedding && formatDayHero(timeAndLocationOfWedding.dateOfEventWedding)}
+          {timeAndLocationOfWedding.dateOfEventWedding &&
+            formatDayHero(timeAndLocationOfWedding.dateOfEventWedding)}
         </h1>
         <div>
           <h1>
