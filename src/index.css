@@ -3241,19 +3241,29 @@ input:disabled {
 }
 
 .name_show {
-  height: 75px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 22px;
+  margin-bottom: 0;
 }
 
 .dashed-top-bottom {
+  font-size: 16px;
+  position: relative;
   padding-bottom: 10px;
-  border-bottom: 1px dashed rgba(243, 135, 35, 0.4);
   padding-top: 10px;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 16px
+}
+
+.dashed-top-bottom:after {
+  content: '';
+  border-bottom: 1px dashed rgba(243, 135, 35, 0.4);
+  position: absolute;
+  width: 70px;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .checkbox {
