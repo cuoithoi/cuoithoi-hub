@@ -6,6 +6,10 @@ import Loading from '../Loading'
 import envelopImg from '@/assets/envelopImg/Envelope_ 1.png'
 import envelopBodyImg from '@/assets/envelopImg/Envelope_body1.png'
 import heartIcon from '@/assets/envelopImg/heartOpen.png'
+import bg_logo from '@/assets/envelopImg/bg_logo.png'
+import shadow_left from '@/assets/envelopImg/shadow_left.png'
+import shadow_right from '@/assets/envelopImg/shadow_right.png'
+import heart from '@/assets/envelopImg/heart.png'
 
 const LetterEnvelop = ({
   setIsLetterOpen,
@@ -22,16 +26,15 @@ const LetterEnvelop = ({
     setOpen(true)
     setTimeout(() => {
       setIsLetterOpen(true)
-    }, 4900)
+    }, 6000)
   }
 
   return (
     <>
-      <Loading />
+      {/* <Loading /> */}
       <div
-        className={`${classes.container} ${classes.animate__backInDown} ${
-          open && classes.disapear
-        }`}
+        className={`${classes.container} ${classes.animate__backInDown} ${open && classes.disapear
+          }`}
       >
         <div
           className={`${classes.envelopeWrapper} ${open && classes.flap} `}
@@ -39,9 +42,8 @@ const LetterEnvelop = ({
         >
           <div className={`${classes.envelope} `}>
             <div
-              className={`${classes.envelopImg} ${
-                open && classes.envelopOpen
-              }  `}
+              className={`${classes.envelopImg} ${open && classes.envelopOpen
+                }  `}
             >
               <img src={envelopImg} alt='' />
             </div>
@@ -51,40 +53,46 @@ const LetterEnvelop = ({
               style={{ zIndex: '1' }}
             >
               <div className={classes.text}>
-                <EnvelopContent
+                <p>{manName} <br />{womanName}</p>
+                <img src={coverImage} alt='' />
+                {/* <EnvelopContent
                   manfirstName={manfirstName}
                   manName={manName}
                   womanfirstName={womanfirstName}
                   womanName={womanName}
-                  coverImage={coverImage}
+                  coverImage={}
                   timeAndLocationOfWedding={timeAndLocationOfWedding}
-                />
+                /> */}
               </div>
             </div>
             {/* <div className={`${classes.envelope_abs}`}></div> */}
-            <div className={`${classes.hearts} ${!open && classes.close}`}>
-              <div className={`${classes.heart} ${classes.a1}`}></div>
-              <div className={`${classes.heart} ${classes.a2}`}></div>
-              <div className={`${classes.heart} ${classes.a3}`}></div>
-              <div className={`${classes.heart} ${classes.a4}`}></div>
-              <div className={`${classes.heart} ${classes.a5}`}></div>
-              <div className={`${classes.heart} ${classes.a6}`}></div>
-              <div className={`${classes.heart} ${classes.a7}`}></div>
-              <div className={`${classes.heart} ${classes.a8}`}></div>
-            </div>
+
             <div
-              className={`${classes.envelopBodyImg} ${open}`}
+              className={`${classes.envelopBodyImg} ${open && classes.shadow} ${open}`}
               style={{ zIndex: '2' }}
             >
+              <img className={`${classes.shadow_left} ${classes.shadow_letter}`} src={shadow_left} alt='' />
               <img src={envelopBodyImg} alt='' />
+              <img className={`${classes.shadow_right} ${classes.shadow_letter}`} src={shadow_right} alt='' />
             </div>
           </div>
           <div className={`${classes.signIcon} `}>
             <div className={`${classes.signIconRotate}`}>
-              <img src={heartIcon} alt='' />
+              <img className={`${classes.signIconRotate_bgLogo}`} src={bg_logo} alt='' />
+              <img className={`${classes.signIconRotate_Logo}`} src={heartIcon} alt='' />
             </div>
           </div>
         </div>
+      </div>
+      <div className={`${classes.hearts} ${!open && classes.close}`}>
+        <div className={`image ${classes.heart} ${classes.a1}`}><img src={heart} alt='heart' /></div>
+        <div className={`image ${classes.heart} ${classes.a2}`}><img src={heart} alt='heart' /></div>
+        <div className={`image ${classes.heart} ${classes.a3}`}><img src={heart} alt='heart' /></div>
+        <div className={`image ${classes.heart} ${classes.a4}`}><img src={heart} alt='heart' /></div>
+        <div className={`image ${classes.heart} ${classes.a5}`}><img src={heart} alt='heart' /></div>
+        <div className={`image ${classes.heart} ${classes.a6}`}><img src={heart} alt='heart' /></div>
+        <div className={`image ${classes.heart} ${classes.a7}`}><img src={heart} alt='heart' /></div>
+        <div className={`image ${classes.heart} ${classes.a8}`}><img src={heart} alt='heart' /></div>
       </div>
     </>
   )

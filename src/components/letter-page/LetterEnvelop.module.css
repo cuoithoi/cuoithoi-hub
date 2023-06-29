@@ -5,21 +5,23 @@
   z-index: 10;
   /* -webkit-animation-name: dissapear; */
 }
+
 .disapear {
   -webkit-animation-name: dissapear;
   animation-name: dissapear;
   animation-duration: 1s;
-  animation-delay: 4s;
-}
-.container > .envelopeWrapper {
-  /* background: #f5edd1; */
-  /* box-shadow: 0 0 40px rgba(0, 0, 0, 0.2); */
+  animation-delay: 5s;
 }
 
-.envelopeWrapper > .envelope {
+.container>.envelopeWrapper {
+  /* background: #f5edd1; */
+  /* box-shadow: 0 0 40px rgba(0, 0, 0, 0.2); */
+  position: relative;
+}
+
+.envelopeWrapper>.envelope {
   position: relative;
   width: 500px;
-  height: 250px;
 }
 
 .envelope_abs {
@@ -60,7 +62,7 @@
 }
 
 .envelopBodyImg {
-  position: absolute;
+  position: relative;
   top: 0;
   z-index: 2;
   width: 100%;
@@ -78,7 +80,7 @@
   border-left: 150px solid #e6cfa7;
 } */
 
-.envelope > .letter {
+.envelope>.letter {
   position: absolute;
   right: 8%;
   bottom: 5px;
@@ -88,14 +90,29 @@
   text-align: center;
   transition: all 0.8s ease-in-out;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  padding: 20px 10px;
+  padding: 10px 10px;
+  border-radius: 20px;
 }
 
-.envelope > .letter > .text {
+.envelope>.letter>.text {
   /* font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif; */
   color: var(--txt-color);
   text-align: left;
   font-size: 10px;
+}
+
+.envelope>.letter>.text>img {
+  width: 100%;
+  border-radius: 20px;
+  height: 364px;
+  object-fit: cover;
+}
+
+.envelope>.letter>.text>P {
+  text-align: center;
+  font-size: 26px;
+  text-transform: capitalize;
+  color: #b28a58;
 }
 
 .heartIcon {
@@ -112,6 +129,28 @@
   cursor: pointer;
 }
 
+.shadow_letter {
+  position: absolute;
+  width: 300px;
+  top: 0;
+  transform: translate3d(0px, 37px, 0);
+}
+
+
+.shadow_left {
+  left: 0;
+}
+
+.shadow_right {
+  right: 0;
+}
+
+.shadow .shadow_left,
+.shadow .shadow_right {
+  opacity: 0;
+  transition: ease-in 2s;
+}
+
 .signIcon {
   position: absolute;
   left: 50%;
@@ -121,6 +160,17 @@
   transform: translate(-50%, 0%);
   transition: transform 0.4s ease-in-out 0.6s;
   cursor: pointer;
+  bottom: 150px;
+}
+
+.signIconRotate_bgLogo {
+  position: absolute;
+}
+
+.signIconRotate_Logo {
+  position: absolute;
+  width: 33px;
+  transform: translate(100%, 100%);
 }
 
 .heartIcon:before,
@@ -141,153 +191,175 @@
   right: 7.5px;
 }
 
-.flap > .envelope:before {
+.flap>.envelope:before {
   transform: rotateX(180deg);
   z-index: 0;
 }
 
-.flap > .envelope > .letter {
+.flap>.envelope>.letter {
   -webkit-animation-name: uptotop;
   animation-name: uptotop;
-  animation-duration: 3s;
+  animation-duration: 4s;
   animation-delay: 2s;
 }
 
-.flap > .signIcon > .signIconRotate {
-  transform: rotate(60deg);
-  transition-delay: 0.3s;
-  transition: transform 0.4s ease-in-out 0.6s;
+.signIconRotate {
+  position: relative;
 }
 
-.hearts {
-  position: absolute;
-  top: 90px;
-  left: 0;
-  right: 0;
-  z-index: 2;
+.flap>.signIcon>.signIconRotate {
+  -webkit-animation-name: opacity;
+  animation-name: opacity;
+  animation-duration: 2s;
+  opacity: 0;
 }
 
-.heart {
-  position: absolute;
-  bottom: -60px;
-  right: 10%;
-  transform: rotate(-45deg);
+.heart img {
+  width: 50px;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  transform: rotateY(0);
 }
 
-.heart:before,
-.heart:after {
-  position: absolute;
-  content: '';
-  left: 33px;
-  top: 0;
-  width: 33px;
-  height: 53px;
-  background: #d00000;
-  border-radius: 33px 33px 0 0;
-  transform: rotate(-45deg);
-  transform-origin: 0 100%;
-}
-
-.heart:after {
-  left: 0;
-  transform: rotate(45deg);
-  transform-origin: 100% 100%;
-}
 
 .close .heart {
   opacity: 0;
   animation: none;
+  margin-bottom: -100px;
+
+}
+
+.heart {
+  opacity: 1;
+  transition: ease-in 20s;
 }
 
 .a1 {
   left: 20%;
-  transform: scale(0.6);
+  transform: scale(0.5);
   opacity: 1;
-  animation: slideUp 4s linear 1, sideSway 2s ease-in-out 4 alternate;
+  animation: slideUp 10s linear 1, sideSway 1s ease-in-out 8 alternate;
   animation-fill-mode: forwards;
   animation-delay: 1s;
+  top: 40%;
 }
 
 .a2 {
-  left: 55%;
+  left: 80%;
   transform: scale(1);
   opacity: 1;
-  animation: slideUp 5s linear 1, sideSway 4s ease-in-out 2 alternate;
+  animation: slideUp 10s linear 1, sideSway 1s ease-in-out 8 alternate;
   animation-fill-mode: forwards;
   animation-delay: 0.7s;
+  top: 45%;
 }
 
 .a3 {
   left: 10%;
   transform: scale(0.8);
   opacity: 1;
-  animation: slideUp 6s linear 1, sideSway 2s ease-in-out 6 alternate;
+  animation: slideUp 10s linear 1, sideSway 1s ease-in-out 6 alternate;
   animation-fill-mode: forwards;
   animation-delay: 1.2s;
+  top: 70%;
 }
 
 .a4 {
   left: 33%;
   transform: scale(0.6);
   opacity: 1;
-  animation: slideUp 5s linear 1, sideSway 1.25s ease-in-out 6 alternate;
+  animation: slideUp 10s linear 1, sideSway 1s ease-in-out 6 alternate;
   animation-fill-mode: forwards;
   animation-delay: 1s;
+  top: 83%
 }
 
 .a5 {
-  left: 70%;
+  left: 90%;
   transform: scale(0.4);
   opacity: 1;
-  animation: slideUp 6s linear 1, sideSway 1.25s ease-in-out 6 alternate;
+  animation: slideUp 10s linear 1, sideSway 1.25s ease-in-out 6 alternate;
   animation-fill-mode: forwards;
   animation-delay: 0.9s;
+  top: 25%;
 }
 
 .a6 {
-  left: 40%;
+  left: 75%;
   transform: scale(0.25);
   opacity: 1;
-  animation: slideUp 6s linear 1, sideSway 1.25s ease-in-out 6 alternate;
+  animation: slideUp 10s linear 1, sideSway 1.25s ease-in-out 6 alternate;
   animation-fill-mode: forwards;
   animation-delay: 0.8s;
+  top: 20%;
 }
 
 .a7 {
-  left: -20%;
+  left: 60%;
   transform: scale(0.5);
   opacity: 1;
-  animation: slideUp 6s linear 1, sideSway 1.25s ease-in-out 6 alternate;
+  animation: slideUp 10s linear 1, sideSway 1.25s ease-in-out 6 alternate;
   animation-fill-mode: forwards;
   animation-delay: 1s;
+  top: 80%;
 }
 
 .a8 {
-  left: -10%;
+  left: 10%;
   transform: scale(0.4);
   opacity: 1;
-  animation: slideUp 6s linear 1, sideSway 1.25s ease-in-out 6 alternate;
+  animation: slideUp 10s linear 1, sideSway 1.25s ease-in-out 6 alternate;
   animation-fill-mode: forwards;
   animation-delay: 1.2s;
+  top: 60%;
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 1;
+    transform: scale(1.2);
+    transition-delay: 0.3s;
+  }
+
+  100% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
 }
 
 @keyframes slideUp {
   0% {
-    top: 0;
+    opacity: 0.5;
   }
 
+  30% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  60% {
+    opacity: 0;
+  }
+
+  70%,
+  80%,
+  90%,
   100% {
-    top: -900px;
+    opacity: 0;
+    top: 100px;
   }
 }
 
 @keyframes sideSway {
   0% {
-    margin-left: 0px;
+    margin-left: 10px;
   }
 
   100% {
-    margin-left: 50px;
+    margin-left: -20px;
   }
 }
 
@@ -391,15 +463,13 @@
     opacity: 1;
   }
 
-  70% {
-    bottom: 80px;
+  40% {
+    bottom: 190px;
     opacity: 1;
   }
 
   100% {
-    bottom: 80px;
-
-    opacity: 0;
+    bottom: 190px;
   }
 }
 
@@ -416,10 +486,12 @@
     bottom: 80px;
   }
 }
+
 @keyframes dissapear {
   0% {
     opacity: 1;
   }
+
   100% {
     opacity: 0;
   }

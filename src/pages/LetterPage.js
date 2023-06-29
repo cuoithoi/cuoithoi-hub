@@ -17,13 +17,14 @@ import Message from '@/components/letter-page/Message'
 import Response from '@/components/letter-page/Response'
 import Gallery1 from '@/components/letter-page/Gallery-1'
 import LetterEnvelopTrial from '@/components/letter-page/LetterEnvelop'
-import { getDataApi } from '@/utils/axios'
+import { getDataApi, uploadImage } from '@/utils/axios'
 import styles from './LetterPage.module.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import SnowFall from '@/components/letter-page/SnowFall'
 import { Alias } from '@/commons/Constant.ts'
 import { getUserFromLocalStorage } from '@/utils/localStorage'
 import html2canvas from 'html2canvas'
+import { toast } from 'react-toastify'
 
 const LetterPage = () => {
   const { id } = useParams()
@@ -101,13 +102,25 @@ const LetterPage = () => {
 
   const captureAndUpload = () => {
     setTimeout(() => {
-      html2canvas(containerRef.current)
+      html2canvas(containerRef.current, {
+        allowTaint: true,
+        useCORS: true,
+        proxy: true
+      })
         .then((canvas) => {
           const image = canvas.toDataURL('image/png')
-          const link = document.createElement('a')
-          link.href = image
-          link.download = 'screenshot.png'
-          link.click()
+          // const link = document.createElement('a')
+          // link.href = image
+          // link.download = 'screenshot.png'
+          // link.click()
+
+          // uploadImage(link.href)
+          //   .then((response) => {
+          //     console.log(response.data.data)
+          //   })
+          //   .catch((error) => {
+          //     toast.error(error)
+          //   });
         })
         .catch((error) => {
           console.error('Lỗi khi chụp ảnh:', error)
@@ -138,8 +151,8 @@ const LetterPage = () => {
   }
 
   return (
-    <div className={`letter-wrapper ${bgColor}`}>
-      <div ref={containerRef} className={`letter-layout ${bgColor}`}>
+    <div ref={containerRef} className={`letter-wrapper ${bgColor}`}>
+      <div className={`letter-layout ${bgColor}`}>
         <SnowFall type={effectBackgroud.value} />
         <NavButton setIsNavOpen={setIsNavOpen} song={song} />
 

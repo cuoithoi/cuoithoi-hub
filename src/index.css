@@ -321,11 +321,16 @@ p {
   box-shadow: 0px 13px 37px rgba(0, 0, 0, 0.21);
 }
 
-.letter-layout {
+.image {
+  position: absolute;
+  z-index: 99999;
+}
+
+/* .letter-layout {
   -webkit-animation-name: gototiop;
   animation-name: gototiop;
   animation-duration: 0.5s;
-}
+} */
 
 .letter-layout .modal-content {
   overflow: scroll;
@@ -3247,6 +3252,14 @@ input:disabled {
   justify-content: center;
   font-size: 22px;
   margin-bottom: 0;
+}
+
+.carousel .slider-wrapper {
+  padding-bottom: 20px;
+}
+
+.carousel .control-dots .dot {
+  background: #000 !important;
 }
 
 .dashed-top-bottom {

@@ -331,11 +331,15 @@ const CreatePage = () => {
     switch (name) {
 
       case INPUT_FIELDS.isUseBanking:
-        values.isUseBanking = e;
-        setValues(prevValues => ({
-          ...prevValues,
-          isUseBanking: e
-        }));
+        values.arraylist[0].isUseBanking = e;
+        setValues(prevValues => {
+          const newArray = [...prevValues.arraylist];
+          newArray[0]['isUseBanking'] = e;
+          return {
+            ...prevValues,
+            arraylist: newArray
+          };
+        });
         break
 
       case INPUT_FIELDS.isUseGuestBook:
@@ -1015,6 +1019,7 @@ const CreatePage = () => {
       "anotherProduct": valuedataAnother,
       "isUseConfirm": values.isUseConfirm,
       "isUseGuestBook": values.isUseGuestBook,
+      "isUseBanking": values.arraylist[0].isUseBanking,
       "password": values.password,
       "contentGuestBook": values.contentGuestBook,
       "isEffectOfOpenning": values.isEffectOfOpenning,
@@ -1462,7 +1467,7 @@ const CreatePage = () => {
               {renderAlbum}
               <VideoandEvent ref={refVideovaSukien} />
               <Panel title={Languages.text.informationBanking}>
-                <div class="title">{Languages.text.useBanking}</div>
+                <div className="title">{Languages.text.useBanking}</div>
                 <div className='single_hor_input checkbox_inline_colum'>
                   <div className="item_field_single">
                     <div className="Input_boxGroupInput__8ghvv man_inputStyle">
