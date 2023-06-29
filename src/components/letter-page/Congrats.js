@@ -28,7 +28,7 @@ const Congrats = ({ informationOfBride, informationOfGroom }) => {
     qrCodeFatherBrideLink,
     qrCodeMotherBrideLink,
     isGoneFatherBride,
-    isGoneMotherOfBride
+    isGoneMotherOfBride,
   } = informationOfBride
   const {
     firstName: firstNameGroom,
@@ -50,7 +50,7 @@ const Congrats = ({ informationOfBride, informationOfGroom }) => {
     qrCodeFatherGroomLink,
     qrCodeMotherGroomLink,
     isGoneFather,
-    isGoneMother
+    isGoneMother,
   } = informationOfGroom
   const modalRef = useRef()
   const modalRef1 = useRef()

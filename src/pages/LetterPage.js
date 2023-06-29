@@ -105,7 +105,7 @@ const LetterPage = () => {
       html2canvas(containerRef.current, {
         allowTaint: true,
         useCORS: true,
-        proxy: true
+        proxy: true,
       })
         .then((canvas) => {
           const image = canvas.toDataURL('image/png')
@@ -149,7 +149,7 @@ const LetterPage = () => {
       </div>
     )
   }
-
+  console.log(letter)
   return (
     <div ref={containerRef} className={`letter-wrapper ${bgColor}`}>
       <div className={`letter-layout ${bgColor}`}>

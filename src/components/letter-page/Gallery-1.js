@@ -1,15 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import TitleSection from './sub-comp/TitleSection'
 import heartIcon from '@/assets/svg/letter-heart.svg'
 import heartIconFill from '@/assets/svg/letter-heart-fill.svg'
 import { Carousel } from 'react-responsive-carousel'
 import styles from 'react-responsive-carousel/lib/styles/carousel.min.css'
-
+import Popup from '../modal/Popup'
+import CarouselGallery from './sub-comp/CarouselGallery'
 const Gallery = ({ album }) => {
+  const modalRef = useRef()
   const [selectedItem, setSelectedItem] = useState(0)
   const randomNumber = (number) => {
     return Math.floor(Math.random() * number)
   }
+
   return (
     <div
       className='py-10 px-3 section-mb layout-mw gallery-section'
@@ -17,14 +20,36 @@ const Gallery = ({ album }) => {
     >
       <TitleSection title='ALBUM' />
       <div>
+        <Popup
+          ref={modalRef}
+          content={
+            <CarouselGallery
+              index={selectedItem}
+              setIndex={setSelectedItem}
+              album={album}
+            />
+          }
+        />
+
+        {/* <div
+          className='gallery-image mb-3'
+          onClick={() => {
+            setIsOpen(true)
+            setModalContent(<CarouselGallery index={0} setIndex={setIndex} />)
+            setIndex(0)
+          }}
+        >
+          <img src={galleryImage[0].imageUrl} alt='image gallery' />
+        </div> */}
         <Carousel
           showStatus={false}
           showIndicators={false}
           showThumbs={false}
           selectedItem={selectedItem}
+          onClickItem={() => modalRef.current?.showModal()}
         >
           {album.map((image, index) => {
-              return (
+            return (
               <div key={index} className='gallery-image mb-3 relative'>
                 <img src={image} alt='image gallery' />
                 <div
@@ -44,7 +69,7 @@ const Gallery = ({ album }) => {
             )
           })}
         </Carousel>
-  
+
         <ul className=' gallery-container'>
           {album.map((image, index) => {
             const heartRandom = Math.floor(Math.random() * 2)

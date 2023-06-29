@@ -12,6 +12,46 @@ const BankInfo = ({
   isGoneMother,
   isBride,
 }) => {
+  const data = [
+    {
+      nameB: isBride ? 'Cô dâu' : 'Chú rể',
+      qr: qrCode,
+      isGone: false,
+    },
+    {
+      name: 'Bố',
+      nameB: nameBankOfFather,
+      qr: qrCodeFatherLink,
+      isGone: isGoneFather,
+    },
+    {
+      name: 'Mẹ',
+      nameB: nameBankOfMother,
+      qr: qrCodeMotherLink,
+      isGone: isGoneMother,
+    },
+  ]
+  for (let i = data.length - 1; i >= 0; i--) {
+    console.log(data[i])
+    console.log(!data[i].qr, data[i].isGone)
+    if (data[i].isGone || !data[i].qr) {
+      data.splice(i, 1)
+    }
+    console.log(data)
+  }
+  // console.log(data)
+  const renderBankInfoFather = (name, bankName, qrLink, isGone) => {
+    if (isGone && qrLink) {
+      return (
+        <div className=' text-left'>
+          <h2 className=' text-left'>{name}</h2>
+          <p className='pr-4 text-sm'>{bankName}</p>
+          <img src={qrLink} alt='qrFather' />
+        </div>
+      )
+    }
+    return
+  }
   return (
     <div>
       <h2 className='text-center text-second'>
@@ -29,30 +69,50 @@ const BankInfo = ({
           showThumbs={false}
           className='banking_happy_invite'
         >
-          <div className=' text-left'>
+          {data.map((item, index) => {
+            return (
+              <div className=' text-left'>
+                <h2 className=' text-left'>{item.name}</h2>
+                <p className='pr-4 text-sm'>{item.nameB}</p>
+                <img src={item.qr} alt='qrFather' />
+              </div>
+            )
+          })}
+          {/* <div className=' text-left'>
             <h2>{isBride ? 'Cô dâu' : 'Chú rể'}</h2>
             <p className='pr-4 text-sm'>{nameBank}</p>
             <img src={qrCode} alt={isBride ? 'Cô dâu' : 'Chú rể'} />
           </div>
-          {isGoneFather === false ? (
+          {renderBankInfoFather(
+            'Bố',
+            nameBankOfFather,
+            qrCodeFatherLink,
+            isGoneFather
+          )}
+          {renderBankInfoFather(
+            'Mẹ',
+            nameBankOfMother,
+            qrCodeMotherLink,
+            isGoneMother
+          )} */}
+          {/* {isGoneFather && qrCodeFatherLink ? (
             <div className=' text-left'>
               <h2 className=' text-left'>Bố</h2>
               <p className='pr-4 text-sm'>{nameBankOfFather}</p>
               <img src={qrCodeFatherLink} alt='qrFather' />
             </div>
           ) : (
-            <div className=' text-left'></div>
+            ''
           )}
-
-          {isGoneMother === false ? (
+          {isGoneMother && qrCodeFatherLink ? (
             <div className=' text-left'>
               <h2>Mẹ</h2>
               <p className='pr-4 text-sm'>{nameBankOfMother}</p>
               <img src={qrCodeMotherLink} alt='qrMother' />
             </div>
           ) : (
-            <div className=' text-left'></div>
-          )}
+            ''
+          )} */}
         </Carousel>
       </div>
     </div>
