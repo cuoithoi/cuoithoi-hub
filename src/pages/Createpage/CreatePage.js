@@ -1444,7 +1444,7 @@ const CreatePage = () => {
             <div className='title'>{Languages.text.effectImage}</div>
 
             {renderRadio('none', 'none', 'none', radioChangeHandler, radioEffectImage)}
-            {renderRadio('Light', 'Light', 'Light', radioChangeHandler, radioEffectImage)}
+            {renderRadio('Light', 'Crown', 'Light', radioChangeHandler, radioEffectImage)}
             {renderRadio('Wave', 'Wave', 'Wave', radioChangeHandler, radioEffectImage)}
             {renderRadio('Heart Frame', 'Heart Frame', 'Heart Frame', radioChangeHandler, radioEffectImage)}
 
