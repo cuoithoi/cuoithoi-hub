@@ -85,7 +85,6 @@ export const Payment = forwardRef(
                 }
 
                 const responseupdate = await post(APi.updateInvitation, dataUpdate, config);
-
                 if (responseupdate.errorCode == 0) {
                     toast.success(Languages.errorMsg.expireRequest)
                     setCheckParams(CheckParams.PAYMENTSUCCESS)

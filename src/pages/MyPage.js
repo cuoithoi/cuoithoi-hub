@@ -449,7 +449,7 @@ const Mypage = () => {
                                 autocenter
                                 width={100}
                                 isLowerCase
-                                onPress={() => onChangePayment(item?._id, item?.productId?.amount)}
+                                onPress={() => onChangePayment(item?._id, item?.totalAmount)}
                               />
                             )}
 

@@ -1153,7 +1153,7 @@ const CreatePage = () => {
     // refConfirmAddress.current?.setErrorMsg(errMsgCornfimAddress)
 
     // if (`${errMsgCornfimName}${errMsgCornfimPhone}${errMsgCornfimEmail}${errMsgCornfimAddress}`.length === 0) {
-    console.log(values.confirmName)
+
     const jsonData = {
       "_id": idCreateRespon,
       "status": isPaid ? "1" : "4",
@@ -1178,7 +1178,7 @@ const CreatePage = () => {
       toast.error(Languages.errorMsg.errorSuccess)
     }
 
-    // navigate(Alias.mypage)
+    navigate(Alias.mypage)
 
     // }
     // return false
