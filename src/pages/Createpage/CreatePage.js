@@ -192,10 +192,14 @@ const CreatePage = () => {
       itemLocal?.isUseGuestBook && (values.isUseGuestBook = itemLocal?.isUseGuestBook)
       itemLocal?.isEffectOfOpenning && (values.isEffectOfOpenning = itemLocal?.isEffectOfOpenning)
       itemLocal?.confirmName && (values.confirmName = itemLocal?.confirmName)
+      itemLocal?.confirmEmail && (values.confirmEmail = itemLocal?.confirmEmail)
+      itemLocal?.confirmPhone && (values.confirmPhone = itemLocal?.confirmPhone)
+      itemLocal?.confirmAddress && (values.confirmAddress = itemLocal?.confirmAddress)
+      itemLocal?.confirmNote && (values.confirmNote = itemLocal?.confirmNote)
       itemLocal?.password && (values.password = itemLocal?.password)
     }
 
-  }, [values, setRadioMusic, setRadioStyleTitle, setRadioStyleContent, setRadioTypeBg, setRadioColorBg, setRadioEffectBg])
+  }, [])
 
   useEffect(() => {
 
@@ -373,6 +377,7 @@ const CreatePage = () => {
           ...prevValues,
           confirmName: e
         }));
+        console.log(values.confirmName)
         break
 
       case INPUT_FIELDS.confirmPhone:
@@ -1148,7 +1153,7 @@ const CreatePage = () => {
     // refConfirmAddress.current?.setErrorMsg(errMsgCornfimAddress)
 
     // if (`${errMsgCornfimName}${errMsgCornfimPhone}${errMsgCornfimEmail}${errMsgCornfimAddress}`.length === 0) {
-
+    console.log(values.confirmName)
     const jsonData = {
       "_id": idCreateRespon,
       "status": isPaid ? "1" : "4",
@@ -1173,7 +1178,7 @@ const CreatePage = () => {
       toast.error(Languages.errorMsg.errorSuccess)
     }
 
-    navigate(Alias.mypage)
+    // navigate(Alias.mypage)
 
     // }
     // return false
@@ -1249,20 +1254,20 @@ const CreatePage = () => {
               <div className='form_group_info'>
                 <div className='double_input_row'>
                   <div className='half_row_hor_input'>
-                    {renderInput(refConfirmName, '', Languages.inputText.name, INPUT_FIELDS.confirmName, 'text', 100, false, '', '')}
+                    {renderInput(refConfirmName, '', Languages.inputText.name, INPUT_FIELDS.confirmName, 'text', 100, false, '', '', values.confirmName)}
                   </div>
                   <div className='half_row_hor_input'>
-                    {renderInput(refConfirmPhone, '', Languages.inputText.phone, INPUT_FIELDS.confirmPhone, 'number', 10, false)}
+                    {renderInput(refConfirmPhone, '', Languages.inputText.phone, INPUT_FIELDS.confirmPhone, 'number', 10, false, '', '', values.confirmPhone)}
                   </div>
                 </div>
                 <div className='fullwidth_input_colum'>
                   <div className='single_hor_input'>
-                    {renderInput(refConfirmEmail, '', 'Email', INPUT_FIELDS.confirmEmail, 'text', 50, true)}
+                    {renderInput(refConfirmEmail, '', 'Email', INPUT_FIELDS.confirmEmail, 'text', 50, true, '', '', values.confirmEmail)}
                   </div>
                 </div>
                 <div className='fullwidth_input_colum'>
                   <div className='single_hor_input'>
-                    {renderInput(refConfirmAddress, '', Languages.inputText.address, INPUT_FIELDS.confirmAdd, 'text', 200, true)}
+                    {renderInput(refConfirmAddress, '', Languages.inputText.address, INPUT_FIELDS.confirmAdd, 'text', 200, true, '', '', values.confirmAddress)}
                   </div>
                 </div>
 
@@ -1270,7 +1275,7 @@ const CreatePage = () => {
 
                 <div className='fullwidth_input_colum'>
                   <div className='single_hor_input'>
-                    {renderInput('', '', Languages.inputText.note, INPUT_FIELDS.confirmNote, 'text', 200, true)}
+                    {renderInput('', '', Languages.inputText.note, INPUT_FIELDS.confirmNote, 'text', 200, true, '', '', values.confirmNote)}
                   </div>
                 </div>
               </div>
@@ -1365,6 +1370,7 @@ const CreatePage = () => {
     radioGuestbookTemplate,
     valuedataAnother,
     valuedataAnotherTotalPrice,
+    values,
     renderMapRadio,
     radioChangeHandlerGuestbookTemplate
   ])

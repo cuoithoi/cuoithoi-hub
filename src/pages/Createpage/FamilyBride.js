@@ -66,8 +66,8 @@ const FamilyBride = forwardRef(({ props }, ref) => {
             itemLocal.informationOfBride.motherNameOfBride && (value.informationOfBride[0].motherNameOfBride = itemLocal.informationOfBride.motherNameOfBride)
             itemLocal.informationOfBride.phoneNumberOfMotherBride && (value.informationOfBride[0].phoneNumberOfMotherBride = itemLocal.informationOfBride.phoneNumberOfMotherBride)
             itemLocal.informationOfBride.isGoneMotherOfBride && (value.informationOfBride[0].isGoneMotherOfBride = itemLocal.informationOfBride.isGoneMotherOfBride)
-            itemLocal.informationOfBride.isDisplayGonePeople && (setRadioDead(itemLocal.informationOfBride.isDisplayGonePeople))
             itemLocal.contentOfInvitation && (setInviteTemp(itemLocal.contentOfInvitation))
+            itemLocal.isDisplayGonePeople && (setRadioDead(itemLocal.isDisplayGonePeople))
             itemLocal.contentOfInvitation && (value.informationOfBride[0].contentOfInvitation = itemLocal.contentOfInvitation)
         } else {
             value.informationOfBride[0].firstName = ''

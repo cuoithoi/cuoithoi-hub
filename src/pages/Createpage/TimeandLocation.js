@@ -45,12 +45,14 @@ const TimeandLocation = forwardRef(({ }, ref) => {
             itemLocal.timeAndLocationOfWedding.mapDirectLink && (value.timeAndLocationOfWedding.mapDirectLink = itemLocal.timeAndLocationOfWedding.mapDirectLink)
             itemLocal.timeAndLocationOfWedding.contentOfCountDown && (setCountdownTemp(itemLocal.timeAndLocationOfWedding.contentOfCountDown))
             itemLocal.timeAndLocationOfWedding.contentOfCountDown && (value.arraylist[0].contentOfCountDown = itemLocal.timeAndLocationOfWedding.contentOfCountDown)
+            itemLocal.timeAndLocationOfWedding.namelocationOfWedding && (value.timeAndLocationOfWedding.namelocationOfWedding = itemLocal.timeAndLocationOfWedding.namelocationOfWedding)
         } else {
             value.timeAndLocationOfWedding.dateOfEventWedding = ''
             value.timeAndLocationOfWedding.timeOfEventWedding = ''
             value.timeAndLocationOfWedding.locationOfWedding = ''
             value.timeAndLocationOfWedding.mapDirectLink = ''
             value.timeAndLocationOfWedding.contentOfCountDown = ''
+            value.timeAndLocationOfWedding.timeOfEventWedding = ''
         }
     }, [])
 
