@@ -227,7 +227,8 @@ export const APi = {
   codeSale: '/check-sale-code',
   checkLimit: '/check-limit-create',
   loginWithGoogle: '/loginWithGoogle',
-  getInformationBase: '/get-information-base'
+  getInformationBase: '/get-information-base',
+  convertBase64: '/convert-base64-pdf'
 }
 
 export const BankData = 'https://api.vietqr.io/v2/banks'

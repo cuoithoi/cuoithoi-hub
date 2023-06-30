@@ -60,12 +60,25 @@ const Mypage = () => {
         })
         setListDataApi(response.data)
       } catch (error) {
-        console.error('Đã xảy ra lỗi:', error)
+        toast.warn('Hệ thống tải lại dữ liệu', {
+          autoClose: 1000
+        })
+        window.location.reload()
       }
     }
+
     asyncListPage()
+
+    const interval = setInterval(() => {
+      asyncListPage()
+    }, 10000)
+
+    return () => {
+      clearInterval(interval)
+    }
+
     // }
-  }, [listDataApi])
+  }, [])
 
   useEffect(() => {
 
@@ -276,6 +289,15 @@ const Mypage = () => {
     }
   }, [])
 
+  const onChangeDowloadLetter = useCallback((url) => {
+    if (url)
+      window.open(url)
+    else
+      toast.error('Cần kiểm tra thiệp trước khi dowload', {
+        autoClose: 1000
+      })
+  }, [])
+
   const onChangeDowloadWish = useCallback(async (id) => {
     const accessToken = getLocalAccessToken()
     try {
@@ -439,6 +461,7 @@ const Mypage = () => {
                                 autocenter
                                 width={100}
                                 isLowerCase
+                                onPress={() => onChangeDowloadLetter(item?.urlDownload)}
                               />
                             )}
 

@@ -17,14 +17,14 @@ import Message from '@/components/letter-page/Message'
 import Response from '@/components/letter-page/Response'
 import Gallery1 from '@/components/letter-page/Gallery-1'
 import LetterEnvelopTrial from '@/components/letter-page/LetterEnvelop'
-import { getDataApi, uploadImage } from '@/utils/axios'
+import { getDataApi } from '@/utils/axios'
 import styles from './LetterPage.module.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import SnowFall from '@/components/letter-page/SnowFall'
-import { Alias } from '@/commons/Constant.ts'
+import { Alias, APi, config } from '@/commons/Constant.ts'
 import { getUserFromLocalStorage } from '@/utils/localStorage'
 import html2canvas from 'html2canvas'
-import { toast } from 'react-toastify'
+import { useBaseService } from '@/utils/BaseServices'
 
 const LetterPage = () => {
   const { id } = useParams()
@@ -41,6 +41,8 @@ const LetterPage = () => {
   const navigate = useNavigate()
 
   const containerRef = useRef(null)
+
+  const { post } = useBaseService()
 
   useEffect(() => {
     if (isOpen) {
@@ -100,6 +102,7 @@ const LetterPage = () => {
     isPaid,
   } = letter
 
+
   const captureAndUpload = () => {
     setTimeout(() => {
       html2canvas(containerRef.current, {
@@ -107,20 +110,18 @@ const LetterPage = () => {
         useCORS: true,
         proxy: true,
       })
-        .then((canvas) => {
+        .then(async (canvas) => {
           const image = canvas.toDataURL('image/png')
           // const link = document.createElement('a')
           // link.href = image
           // link.download = 'screenshot.png'
           // link.click()
 
-          // uploadImage(link.href)
-          //   .then((response) => {
-          //     console.log(response.data.data)
-          //   })
-          //   .catch((error) => {
-          //     toast.error(error)
-          //   });
+          const res = await post(APi.convertBase64, {
+            "_id": id,
+            "data": image
+          }, config)
+          console.log(res)
         })
         .catch((error) => {
           console.error('Lỗi khi chụp ảnh:', error)

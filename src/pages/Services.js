@@ -24,6 +24,7 @@ import itemImageShowServices2 from "@/assets/home-image/Img_Show2.png";
 import itemImageShowServices3 from "@/assets/home-image/Img_Show3.png";
 import { FaCheck } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import Validate from "@/utils/Validate";
 
 const Services = () => {
 
@@ -122,7 +123,10 @@ const Services = () => {
                         duration={2}
                       >
                         <div className="item_package_level">
-                          <div className="header">{item.name}</div>
+                          <div className="header">
+                            {item.name}
+                            <div className="header_price">{Validate.formatMoney(item.amount)}</div>
+                          </div>
                           <div className="List_item_show">
                             {item.subProduct.map(function (item, index) {
                               return (
@@ -271,11 +275,14 @@ const Services = () => {
                     />
                   </div>
                   <div className="box_abs_image_video animate__fadeInLeft_phone">
-                    <video ref={videoRef} controls autoPlay loop muted>
-                      <source src={video_NFT} type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
-
+                    <div className="NFT_parent_bg">
+                      <div className="NFT_child_bg">
+                        <video ref={videoRef} controls autoPlay loop muted>
+                          <source src={video_NFT} type="video/mp4" />
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

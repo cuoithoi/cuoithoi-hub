@@ -62,7 +62,7 @@ const Footer = () => {
                 </div>
             }
         </>
-    }, [])
+    }, [data])
 
     const renderModal = useMemo(() => {
         return (
