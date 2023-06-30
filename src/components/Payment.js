@@ -151,11 +151,11 @@ export const Payment = forwardRef(
                                 </div>
                                 <div className='block_step block_step_2'>
                                     <div className='name_step'>
-                                        <p><strong>Bước 2: </strong>Nhập Số tiền và nội dung</p>
+                                        <p><strong>Bước 2: </strong>Nhập Số tiền và mã giao dịch</p>
                                     </div>
                                     <div className='content_step'>
                                         Số tiền thanh toán<p className='warn'> {Validate.formatMoney(getAmount)}</p>
-                                        Nội dung
+                                        Mã giao dịch của quý khách
                                         <div className='demo'>
                                             <p>CTODID{getId.substr(-4, 4).toUpperCase()}</p>
                                         </div>
@@ -164,7 +164,7 @@ export const Payment = forwardRef(
                                 </div>
                                 <div className='block_step block_step_4'>
                                     <div className='name_step'>
-                                        <p><strong>Bước 2: </strong>Nhập mã giao dịch</p>
+                                        <p><strong>Bước 3: </strong>Nhập mã giao dịch</p>
                                     </div>
                                     <div className='content_step'>
                                         <MyTextInput

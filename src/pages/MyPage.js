@@ -58,6 +58,7 @@ const Mypage = () => {
         const response = await get(APi.listInvitation, config, {
           userId: user?.userId,
         })
+        console.log(response.data)
         setListDataApi(response.data)
       } catch (error) {
         toast.warn('Hệ thống tải lại dữ liệu', {
