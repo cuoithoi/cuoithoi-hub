@@ -7,7 +7,7 @@ import BankInfo from './sub-comp/BankInfo'
 import { Button } from '../button'
 import { BUTTON_STYLES } from '@/commons/Constant.ts'
 
-const Congrats = ({ informationOfBride, informationOfGroom }) => {
+const Congrats = ({ informationOfBride, informationOfGroom, isuseBanking }) => {
   const {
     firstName: firstNameBride,
     name: nameBride,
@@ -107,24 +107,26 @@ const Congrats = ({ informationOfBride, informationOfGroom }) => {
           phoneNumber={phoneNumberOfMotherBride}
         />
       </div>
-      <div className='flex justify-around items-center py-4'>
-        <Button
-          buttonStyle={BUTTON_STYLES.LIGHT_BLUE}
-          label='Gửi chúc phúc'
-          rounded={true}
-          onPress={() => {
-            handleShowModal1()
-          }}
-        />
-        <Button
-          buttonStyle={BUTTON_STYLES.ORANGE}
-          label='Gửi chúc phúc'
-          rounded={true}
-          onPress={() => {
-            handleShowModal()
-          }}
-        />
-      </div>
+      {
+        isuseBanking && <div className='flex justify-around items-center py-4'>
+          <Button
+            buttonStyle={BUTTON_STYLES.LIGHT_BLUE}
+            label='Gửi chúc phúc'
+            rounded={true}
+            onPress={() => {
+              handleShowModal1()
+            }}
+          />
+          <Button
+            buttonStyle={BUTTON_STYLES.ORANGE}
+            label='Gửi chúc phúc'
+            rounded={true}
+            onPress={() => {
+              handleShowModal()
+            }}
+          />
+        </div>
+      }
 
       <h3 className='pt-4 text-center '>Rất hân hạnh được đón tiếp!</h3>
       <Popup

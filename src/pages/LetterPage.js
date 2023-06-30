@@ -92,6 +92,7 @@ const LetterPage = () => {
     isUseEvent,
     isUseVideo,
     isUseDamNgo,
+    isUseBanking,
     song,
     timeAndLocationOfEgagement,
     timeAndLocationOfInterrogation,
@@ -187,6 +188,7 @@ const LetterPage = () => {
           setIsOpen={setIsOpen}
           informationOfBride={informationOfBride}
           informationOfGroom={informationOfGroom}
+          isuseBanking={isUseBanking}
         />
         {isUseGuestBook && <Message id={userId} />}
         {isUseConfirm && <Response />}

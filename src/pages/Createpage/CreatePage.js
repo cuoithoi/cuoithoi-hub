@@ -1432,14 +1432,16 @@ const CreatePage = () => {
           <div className='upload_represent_box'>
             <div className='md:grid md:grid-cols-3 md:gap-5'>
               <div className='col-span-2'>
-                {renderImageUploadSingle(
-                  <><img src={Ic_RedHeart} alt='Ic_RedHeart' />{Languages.text.chooseCoverImage}</>,
-                  imagesCover,
-                  Languages.text.bigsize,
-                  false,
-                  onChangeCoverImage,
-                  itemLocal?.coverImage
-                )}
+                <div className='img_upload_box'>
+                  {renderImageUploadSingle(
+                    <><img src={Ic_RedHeart} alt='Ic_RedHeart' />{Languages.text.chooseCoverImage}</>,
+                    imagesCover,
+                    Languages.text.bigsize,
+                    false,
+                    onChangeCoverImage,
+                    itemLocal?.coverImage
+                  )}
+                </div>
               </div>
               {renderImageUploadSingle(
                 <><img src={Ic_PurpleHeart} alt='Ic_RedHeart' />{Languages.text.chooseThumbs}</>,

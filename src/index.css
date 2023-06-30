@@ -867,8 +867,15 @@ p {
   filter: brightness(0);
 }
 
+.img_upload_box .flex,
+.img_upload_box .relative,
+.img_upload_box .image-item img {
+  width: 100%;
+}
+
 .renderContentModal {
   font-family: var(--quick-sand-font-family);
+  padding-top: 5px;
 }
 
 .renderContentModal .head {
@@ -1741,7 +1748,7 @@ table .date {
   text-align: center;
   font-weight: 600;
   font-size: 24px;
-  animation: hot 2s ease-in-out;
+  animation: hot 1s ease-in;
   animation-iteration-count: infinite;
   animation-fill-mode: forwards;
   animation-direction: alternate;
