@@ -1,8 +1,12 @@
 import React from 'react'
 import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
 import { Carousel } from 'react-responsive-carousel'
-import { galleryImage } from '../../../utils/gallery-data'
-const CarouselGallery = ({ index }) => {
+import heartIcon from '@/assets/svg/letter-heart.svg'
+import heartIconFill from '@/assets/svg/letter-heart-fill.svg'
+const CarouselGallery = ({ index, album }) => {
+  const randomNumber = (number) => {
+    return Math.floor(Math.random() * number)
+  }
   return (
     <div className='carousel-gallery-container layout-mw'>
       <Carousel
@@ -15,36 +19,26 @@ const CarouselGallery = ({ index }) => {
         showStatus={false}
         className='casourel'
       >
-        <div className=''>
-          <img src={galleryImage[0].imageUrl} alt='image-gallery' />
-        </div>
-        <div>
-          <img src={galleryImage[1].imageUrl} alt='image-gallery' />
-        </div>
-        <div>
-          <img src={galleryImage[2].imageUrl} alt='image-gallery' />
-        </div>
-        <div>
-          <img src={galleryImage[3].imageUrl} alt='image-gallery' />
-        </div>
-        <div>
-          <img src={galleryImage[4].imageUrl} alt='image-gallery' />
-        </div>
-        <div>
-          <img src={galleryImage[5].imageUrl} alt='image-gallery' />
-        </div>
-        <div>
-          <img src={galleryImage[6].imageUrl} alt='image-gallery' />
-        </div>
-        <div>
-          <img src={galleryImage[7].imageUrl} alt='image-gallery' />
-        </div>
-        <div>
-          <img src={galleryImage[8].imageUrl} alt='image-gallery' />
-        </div>
-        <div>
-          <img src={galleryImage[9].imageUrl} alt='image-gallery' />
-        </div>
+        {album.map((image, index) => {
+          return (
+            <div key={index} className='gallery-image mb-3 relative'>
+              <img src={image} alt='image gallery' />
+              <div
+                className='absolute bottom-8 right-8 w-12 h-6 flex items-center justify-end cursor-pointer rounded-md '
+                style={{ backgroundColor: 'rgba(0,0,0,0.2)' }}
+              >
+                <span style={{ color: 'white' }} className='mr-1'>
+                  {randomNumber(16)}
+                </span>
+                <img
+                  src={randomNumber(2) === 0 ? heartIcon : heartIconFill}
+                  alt='heart icon'
+                  className='w-6 h-6'
+                />
+              </div>
+            </div>
+          )
+        })}
       </Carousel>
     </div>
   )
