@@ -28,7 +28,7 @@ export enum CheckParams {
   NOTOKEN = 9,
   PAYMENT = 10,
   PAYMENTSUCCESS = 11,
-  LIMIT = 12
+  LIMIT = 12,
 }
 
 export enum Status {
@@ -188,7 +188,7 @@ export const EventOfProgram = {
   eventOfProgramEditOne: 'eventOfProgramEditOne',
   eventOfProgramEditTwo: 'eventOfProgramEditTwo',
   eventOfProgramEditThree: 'eventOfProgramEditThree',
-  eventOfProgramEditFour: 'eventOfProgramEditFour'
+  eventOfProgramEditFour: 'eventOfProgramEditFour',
 }
 
 export const INPUT_FIELDS = {
@@ -228,7 +228,7 @@ export const APi = {
   checkLimit: '/check-limit-create',
   loginWithGoogle: '/loginWithGoogle',
   getInformationBase: '/get-information-base',
-  convertBase64: '/convert-base64-pdf'
+  convertBase64: '/convert-base64-pdf',
 }
 
 export const BankData = 'https://api.vietqr.io/v2/banks'
@@ -239,4 +239,4 @@ export const config = {
 
 export const itemLocal = getItemFromLocalStorage('createLeter')
 
-export const coppyLink = window.location.origin + '/letterPage';
+export const coppyLink = window.location.origin + '/letterPage'

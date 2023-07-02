@@ -78,6 +78,7 @@ const LetterPage = () => {
   }, [])
   if (isLoading) return
   const {
+    _id,
     album,
     contentOfInvitation,
     coverImage,
@@ -103,7 +104,6 @@ const LetterPage = () => {
     isPaid,
   } = letter
 
-
   const captureAndUpload = () => {
     setTimeout(() => {
       html2canvas(containerRef.current, {
@@ -118,10 +118,14 @@ const LetterPage = () => {
           // link.download = 'screenshot.png'
           // link.click()
 
-          const res = await post(APi.convertBase64, {
-            "_id": id,
-            "data": image
-          }, config)
+          const res = await post(
+            APi.convertBase64,
+            {
+              _id: id,
+              data: image,
+            },
+            config
+          )
           console.log(res)
         })
         .catch((error) => {
@@ -174,7 +178,7 @@ const LetterPage = () => {
           contentOfInvitation={contentOfInvitation}
           timeAndLocationOfWedding={timeAndLocationOfWedding}
         />
-        <Gallery1 album={album} />
+        <Gallery1 album={album} id={_id} />
         {isUseVideo && <YoutubeVideo videoLink={videoLink} />}
         <TimeLocation
           timeAndLocationOfWedding={timeAndLocationOfWedding}
