@@ -27,6 +27,7 @@ import dayjs from 'dayjs'
 import fileDownload from 'js-file-download'
 import { Payment } from '@/components/Payment'
 import { toast } from 'react-toastify'
+import { isArray } from 'lodash'
 
 const Mypage = () => {
   const navigate = useNavigate()
@@ -364,146 +365,149 @@ const Mypage = () => {
               <table className='respon-table w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5 text-center'>
                 <thead className='text-white'>{renderTable}</thead>
                 <tbody className='flex-1 sm:flex-none'>
-                  {listDataApi.length === 0 ? (
-                    <tr className='flex noItemTd flex-col flex-no wrap sm:table-row mb-2 sm:mb-0'>
-                      <td className='border-grey-light hover:bg-gray-100 p-3'>
-                        <p className='noItem'>
-                          {Languages.errorMsg.nocreaptePage}
-                        </p>
-                      </td>
-                    </tr>
-                  ) : (
-                    listDataApi.map(function (item, index) {
-                      return (
-                        <tr
-                          key={index}
-                          className='wrap sm:table-row mb-2 sm:mb-0'
-                        >
-                          <td className='border-grey-light hover:bg-gray-100 p-3'>
-                            <p className='formatnotColor free'>{item?._id}</p>
-                          </td>
-                          <td className='border-grey-light hover:bg-gray-100 p-3 truncate'>
-                            {renderStatus(item?.status)}
-                          </td>
-                          <td className='border-grey-light hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer'>
-                            <p className='date'>
-                              {
-                                item?.timeAndLocationOfWedding
-                                  ?.dateOfEventWedding
-                              }
-                            </p>
-                            <p className='onlydateplus'>
-                              {renderCoundownTimeStart(
-                                item?.timeAndLocationOfWedding
-                                  ?.dateOfEventWedding
+                  {
+                    isArray(listDataApi) &&
+                      listDataApi.length === 0 ? (
+                      <tr className='flex noItemTd flex-col flex-no wrap sm:table-row mb-2 sm:mb-0'>
+                        <td className='border-grey-light hover:bg-gray-100 p-3'>
+                          <p className='noItem'>
+                            {Languages.errorMsg.nocreaptePage}
+                          </p>
+                        </td>
+                      </tr>
+                    ) : (
+                      listDataApi.map(function (item, index) {
+                        return (
+                          <tr
+                            key={index}
+                            className='wrap sm:table-row mb-2 sm:mb-0'
+                          >
+                            <td className='border-grey-light hover:bg-gray-100 p-3'>
+                              <p className='formatnotColor free'>{item?._id}</p>
+                            </td>
+                            <td className='border-grey-light hover:bg-gray-100 p-3 truncate'>
+                              {renderStatus(item?.status)}
+                            </td>
+                            <td className='border-grey-light hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer'>
+                              <p className='date'>
+                                {
+                                  item?.timeAndLocationOfWedding
+                                    ?.dateOfEventWedding
+                                }
+                              </p>
+                              <p className='onlydateplus'>
+                                {renderCoundownTimeStart(
+                                  item?.timeAndLocationOfWedding
+                                    ?.dateOfEventWedding
+                                )}
+                              </p>
+                            </td>
+                            <td className='border-grey-light hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer'>
+                              <p className='date'>{item?.productId?.name}</p>
+                              <p className='autodelete'>(Full Package)</p>
+                            </td>
+                            <td className='border-grey-light hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer'>
+                              {item?.status != Status.EXPIRE && (
+                                <Button
+                                  label={Languages.buttonText.edit}
+                                  buttonStyle={BUTTON_STYLES.BLUE}
+                                  textStyle={BUTTON_STYLES.WHITE}
+                                  autocenter
+                                  width={100}
+                                  isLowerCase
+                                  onPress={() => onChangeEditor(item?._id, item?.isPaid)}
+                                />
                               )}
-                            </p>
-                          </td>
-                          <td className='border-grey-light hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer'>
-                            <p className='date'>{item?.productId?.name}</p>
-                            <p className='autodelete'>(Full Package)</p>
-                          </td>
-                          <td className='border-grey-light hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer'>
-                            {item?.status != Status.EXPIRE && (
-                              <Button
-                                label={Languages.buttonText.edit}
-                                buttonStyle={BUTTON_STYLES.BLUE}
-                                textStyle={BUTTON_STYLES.WHITE}
-                                autocenter
-                                width={100}
-                                isLowerCase
-                                onPress={() => onChangeEditor(item?._id, item?.isPaid)}
-                              />
-                            )}
 
-                            {item?.status != Status.EXPIRE && (
-                              <Button
-                                label={Languages.buttonText.seeBefore}
-                                buttonStyle={BUTTON_STYLES.ORRANGE}
-                                textStyle={BUTTON_STYLES.WHITE}
-                                autocenter
-                                width={100}
-                                isLowerCase
-                                onPress={() => onChangeSeeBefore(item?._id)}
-                              />
-                            )}
+                              {item?.status != Status.EXPIRE && (
+                                <Button
+                                  label={Languages.buttonText.seeBefore}
+                                  buttonStyle={BUTTON_STYLES.ORRANGE}
+                                  textStyle={BUTTON_STYLES.WHITE}
+                                  autocenter
+                                  width={100}
+                                  isLowerCase
+                                  onPress={() => onChangeSeeBefore(item?._id)}
+                                />
+                              )}
 
-                            {item?.isPaid === true && (
+                              {item?.isPaid === true && (
+                                <Button
+                                  label={Languages.buttonText.copylink}
+                                  buttonStyle={BUTTON_STYLES.DARKMODE}
+                                  textStyle={BUTTON_STYLES.WHITE}
+                                  autocenter
+                                  width={100}
+                                  isLowerCase
+                                  onPress={() => onChangeClipBoard(item?._id)}
+                                />
+                              )}
+                            </td>
+
+                            <td className='border-grey-light hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer'>
+                              {item?.status != Status.ACTIVE && (
+                                <Button
+                                  label={Languages.buttonText.payment}
+                                  buttonStyle={BUTTON_STYLES.PINK}
+                                  textStyle={BUTTON_STYLES.WHITE}
+                                  autocenter
+                                  width={100}
+                                  isLowerCase
+                                  onPress={() => onChangePayment(item?._id, item?.totalAmount)}
+                                />
+                              )}
+
+                              {item?.isPaid === true && (
+                                <Button
+                                  label={Languages.buttonText.dowloadTc}
+                                  buttonStyle={BUTTON_STYLES.PINK}
+                                  textStyle={BUTTON_STYLES.WHITE}
+                                  autocenter
+                                  width={100}
+                                  isLowerCase
+                                  onPress={() => onChangeDowloadLetter(item?.urlDownload)}
+                                />
+                              )}
+
+                              {item?.isPaid === true && (
+                                <Button
+                                  label={Languages.buttonText.dowloadClient}
+                                  buttonStyle={BUTTON_STYLES.BLUE}
+                                  textStyle={BUTTON_STYLES.WHITE}
+                                  autocenter
+                                  width={100}
+                                  isLowerCase
+                                  onPress={() => onChangeDowloadClient(item?._id)}
+                                />
+                              )}
+
+                              {item?.isPaid === true && (
+                                <Button
+                                  label={Languages.buttonText.checkGuest}
+                                  buttonStyle={BUTTON_STYLES.LIGHT_BLUE}
+                                  textStyle={BUTTON_STYLES.WHITE}
+                                  autocenter
+                                  width={100}
+                                  isLowerCase
+                                  onPress={() => onChangeDowloadWish(item?._id)}
+                                />
+                              )}
+
                               <Button
-                                label={Languages.buttonText.copylink}
+                                label={Languages.buttonText.delete}
                                 buttonStyle={BUTTON_STYLES.DARKMODE}
                                 textStyle={BUTTON_STYLES.WHITE}
                                 autocenter
                                 width={100}
                                 isLowerCase
-                                onPress={() => onChangeClipBoard(item?._id)}
+                                onPress={() => onChangeDetele(item._id)}
                               />
-                            )}
-                          </td>
-
-                          <td className='border-grey-light hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer'>
-                            {item?.status != Status.ACTIVE && (
-                              <Button
-                                label={Languages.buttonText.payment}
-                                buttonStyle={BUTTON_STYLES.PINK}
-                                textStyle={BUTTON_STYLES.WHITE}
-                                autocenter
-                                width={100}
-                                isLowerCase
-                                onPress={() => onChangePayment(item?._id, item?.totalAmount)}
-                              />
-                            )}
-
-                            {item?.isPaid === true && (
-                              <Button
-                                label={Languages.buttonText.dowloadTc}
-                                buttonStyle={BUTTON_STYLES.PINK}
-                                textStyle={BUTTON_STYLES.WHITE}
-                                autocenter
-                                width={100}
-                                isLowerCase
-                                onPress={() => onChangeDowloadLetter(item?.urlDownload)}
-                              />
-                            )}
-
-                            {item?.isPaid === true && (
-                              <Button
-                                label={Languages.buttonText.dowloadClient}
-                                buttonStyle={BUTTON_STYLES.BLUE}
-                                textStyle={BUTTON_STYLES.WHITE}
-                                autocenter
-                                width={100}
-                                isLowerCase
-                                onPress={() => onChangeDowloadClient(item?._id)}
-                              />
-                            )}
-
-                            {item?.isPaid === true && (
-                              <Button
-                                label={Languages.buttonText.checkGuest}
-                                buttonStyle={BUTTON_STYLES.LIGHT_BLUE}
-                                textStyle={BUTTON_STYLES.WHITE}
-                                autocenter
-                                width={100}
-                                isLowerCase
-                                onPress={() => onChangeDowloadWish(item?._id)}
-                              />
-                            )}
-
-                            <Button
-                              label={Languages.buttonText.delete}
-                              buttonStyle={BUTTON_STYLES.DARKMODE}
-                              textStyle={BUTTON_STYLES.WHITE}
-                              autocenter
-                              width={100}
-                              isLowerCase
-                              onPress={() => onChangeDetele(item._id)}
-                            />
-                          </td>
-                        </tr>
-                      )
-                    })
-                  )}
+                            </td>
+                          </tr>
+                        )
+                      })
+                    )
+                  }
                 </tbody>
               </table>
             </div>
