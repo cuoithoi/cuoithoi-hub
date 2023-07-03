@@ -89,10 +89,11 @@ const Gallery = ({ id }) => {
             showThumbs={false}
             selectedItem={selectedItem}
             onClickItem={() => modalRef.current?.showModal()}
+            dynamicHeight={false}
           >
             {album?.map((image, index) => {
               return (
-                <div key={index} className='gallery-image mb-3 relative'>
+                <div key={index} className='gallery-image relative'>
                   <img src={image.url} alt='image gallery' />
                 </div>
               )

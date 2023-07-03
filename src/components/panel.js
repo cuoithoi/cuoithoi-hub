@@ -28,7 +28,7 @@ export const Panel = (props) => {
                         </div>
                         {title}
                         {
-                            noFields && <span className='no_fields'>
+                            noFields &&  <span className='no_fields'>* 
                                 {Languages.text.noFields}
                             </span>
                         }

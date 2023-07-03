@@ -32,11 +32,11 @@ const CarouselGallery = ({ index, album, handleLikeImage }) => {
       >
         {album?.map((image, index) => {
           return (
-            <div key={index} className='gallery-image mb-3 relative'>
+            <div key={index} className='mb-3 relative'>
               <img
                 src={image.url}
                 alt='image gallery'
-                className='gallery-image mb-3 relative'
+                className='mb-3 relative'
               />
               {/* <div
                 className='absolute bottom-8 right-8 w-12 h-6 flex items-center justify-end cursor-pointer rounded-md '
