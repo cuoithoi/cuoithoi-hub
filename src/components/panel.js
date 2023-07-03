@@ -3,7 +3,7 @@ import React, { useCallback, useState } from 'react'
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
 
 export const Panel = (props) => {
-    const { title, children, valiOpen, date, noFields } = props;
+    const { title, children, valiOpen, date, noFields, icon } = props;
 
     const [open, setOpen] = useState(true)
 
@@ -28,8 +28,8 @@ export const Panel = (props) => {
                         </div>
                         {title}
                         {
-                            noFields &&  <span className='no_fields'>* 
-                                {Languages.text.noFields}
+                            noFields && <span className='no_fields'>
+                                {Languages.text.noFields} <span className='text-center' style={{ display: 'inline-block', width: 30 }}>{icon && icon}</span>
                             </span>
                         }
                     </h2>

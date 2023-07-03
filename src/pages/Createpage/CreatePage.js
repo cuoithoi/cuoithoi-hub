@@ -1482,7 +1482,7 @@ const CreatePage = () => {
               <DamNgoAnHoi ref={refDamngovaAnhoi} />
               {renderAlbum}
               <VideoandEvent ref={refVideovaSukien} />
-              <Panel title={Languages.text.informationBanking}>
+              <Panel title={Languages.text.informationBanking} noFields={true} icon={'💵'}>
                 <div className="title">{Languages.text.useBanking}</div>
                 <div className='single_hor_input checkbox_inline_colum'>
                   <div className="item_field_single">

@@ -3,7 +3,7 @@ import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo
 import Languages from '@/commons/Languages'
 import { SelectWarningTemplate, fiedlsCreatePage } from "@/commons/FieldsDataObj";
 import { BUTTON_STYLES, CheckParams, Convert, EventOfProgram, INPUT_FIELDS, itemLocal } from "@/commons/Constant.ts";
-import { FaLink } from "react-icons/fa";
+import { FaLink, FaMicrophone } from "react-icons/fa";
 import { Panel } from "@/components/panel";
 import FormValidate from "@/utils/FormValidate";
 import Popup from "@/components/modal/Popup";
@@ -12,6 +12,7 @@ import { MyTextArea } from "@/components/textarea";
 import { Button } from "@/components/button";
 import { getItemFromLocalStorage } from "@/utils/localStorage";
 import Ic_Edit from '@/assets/home-image/Ic_createOutline.png'
+import { AiFillVideoCamera } from "react-icons/ai";
 
 const VideoandEvent = forwardRef(({ }, ref) => {
 
@@ -377,7 +378,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
     return (
 
         <>
-            <Panel noFields={true} title={Languages.text.video} valiOpen={openPanel}>
+            <Panel noFields={true} title={Languages.text.video} valiOpen={openPanel} icon={'🎥'}>
                 <div className='sec_panel_use_feature_attend fullwidth_input_colum'>
                     <div className='title'>
                         {Languages.text.useFeatureVideo}
@@ -407,7 +408,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
                 </div>
             </Panel>
 
-            <Panel noFields={true} title={Languages.text.weddingProgram} valiOpen={openPanel}>
+            <Panel noFields={true} title={Languages.text.weddingProgram} valiOpen={openPanel} icon={'🎤'}>
                 <div className='program_wedding'>
                     <div className='title'>
                         {Languages.text.useFeatureEvent}
@@ -473,7 +474,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
                 </div>
             </Panel>
 
-            <Panel title={Languages.text.warnning} valiOpen={openPanel}>
+            <Panel title={Languages.text.warnning} valiOpen={openPanel} noFields={true} icon={'❗️'}>
                 <div className='fullwidth_input_colum'>
                     <div className='single_hor_input'>
                         <MyTextArea
