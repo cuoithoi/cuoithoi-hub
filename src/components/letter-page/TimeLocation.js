@@ -66,7 +66,7 @@ const TimeLocation = ({
           isUseDamNgo && <div className=' pb-2'>
             <h2 className='text-second'>Ăn hỏi</h2>
             <p className='max-w-xs text-base margin-auto'>
-              Lễ ăn hỏi sẽ diễn tại {locationOfEgagement}, vào lúc{' '}
+              Lễ ăn hỏi sẽ diễn ra tại {locationOfEgagement}, vào lúc{' '}
               {timeOfEventEgagement && timeOfEventEgagement}, {dateOfEventEgagement && formatDay(dateOfEventEgagement)}
             </p>
           </div>
