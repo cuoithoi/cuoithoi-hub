@@ -25,7 +25,6 @@ import { Alias, APi, config } from '@/commons/Constant.ts'
 import { getUserFromLocalStorage } from '@/utils/localStorage'
 import html2canvas from 'html2canvas'
 import { useBaseService } from '@/utils/BaseServices'
-import { Helmet } from 'react-helmet'
 
 const LetterPage = () => {
   const { id } = useParams()
@@ -158,11 +157,6 @@ const LetterPage = () => {
   }
   return (
     <div ref={containerRef} className={`letter-wrapper ${bgColor}`}>
-      <Helmet>
-        <meta property="og:image" content={coverImage} />
-        <meta property="og:image:width" content="800" />
-        <meta property="og:image:height" content="354" />
-      </Helmet>
       <div className={`letter-layout ${bgColor}`}>
         <SnowFall type={effectBackgroud.value} />
         <NavButton setIsNavOpen={setIsNavOpen} song={song} />
