@@ -2752,7 +2752,7 @@ input:disabled {
 }
 
 .NFT_child_bg {
-  border: 1.5x solid var(--bg-pink-color);
+  border: 1.5px solid var(--bg-pink-color);
   padding: 10px;
 }
 

@@ -78,7 +78,7 @@ const LoginSocial = () => {
         /> */}
 
       <FacebookLogin
-        appId="6234250993358177"
+        appId="1307219236855458"
         onSuccess={(response) => {
           console.log('Login Success!', response.profileObj);
         }}
