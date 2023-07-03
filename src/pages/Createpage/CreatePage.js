@@ -355,6 +355,14 @@ const CreatePage = () => {
         setPointer(!pointer)
         break
 
+      case INPUT_FIELDS.isUseConfirm:
+        setValues(prevValues => ({
+          ...prevValues,
+          isUseConfirm: e
+        }));
+        values.isUseConfirm = e;
+        break
+
       case INPUT_FIELDS.password:
         values.password = e;
         setValues(prevValues => ({

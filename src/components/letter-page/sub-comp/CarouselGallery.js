@@ -21,13 +21,14 @@ const CarouselGallery = ({ index, album, handleLikeImage }) => {
         />
       </div> */}
       <Carousel
-        showArrows={true}
+        showArrows={false}
         infiniteLoop={true}
         swipeable={true}
         selectedItem={index}
         dynamicHeight={true}
-        showIndicators={true}
+        showIndicators={false}
         showStatus={false}
+        showThumbs={false}
       >
         {album?.map((image, index) => {
           return (
