@@ -36,7 +36,7 @@ const Modal = ({
             className='close-modal-icon'
             onClick={onCancel}
           />
-          <h1 className='text-text text-center text-3xl'></h1>
+          <h2 className='text-text text-center text-3xl'></h2>
           {content}
           <div className='flex justify-center items-center gap-4'>
             {btnCancelText && (

@@ -153,7 +153,7 @@ const Homepage = () => {
                 {fadeImages.map((fadeImage, index) => (
                   <div className="each-fade" key={index} style={{ height: "100vh" }}>
                     <div className="image-container" >
-                      <img src={fadeImage.url} />
+                      <img src={fadeImage.url} alt='slider' />
                     </div>
                   </div>
                 ))}

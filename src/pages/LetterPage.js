@@ -155,9 +155,13 @@ const LetterPage = () => {
       </div>
     )
   }
-  console.log(letter)
   return (
     <div ref={containerRef} className={`letter-wrapper ${bgColor}`}>
+      <Helmet>
+        <meta property="og:image" content={coverImage} />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="354" />
+      </Helmet>
       <div className={`letter-layout ${bgColor}`}>
         <SnowFall type={effectBackgroud.value} />
         <NavButton setIsNavOpen={setIsNavOpen} song={song} />
