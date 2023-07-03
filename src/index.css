@@ -3586,6 +3586,10 @@ input:disabled {
     font-size: 9px;
   }
 
+  .slide-container img {
+    height: 100vh;
+  }
+
   .savesetting_btn {
     width: 100%;
   }
