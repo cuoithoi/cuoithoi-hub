@@ -25,7 +25,7 @@ import Languages from './commons/Languages'
 import ForgotPassOtp from './pages/ForgetPassOtp'
 import ChangePassword from './pages/ChangePassword'
 import { Helmet } from 'react-helmet'
-import invitationBg from '../../assets/home-image/invitation-bg.jpg'
+import invitationBg from '@/assets/home-image/Bg_Banner.png'
 
 export const PageTitle = (props) => {
   useEffect(() => {
