@@ -69,8 +69,11 @@ const Response = () => {
           setTimeout(() => {
             setDisable(false)
           }, 10000);
+        } else {
+          setTimeout(() => {
+            setDisable(false)
+          }, 10000);
         }
-
       } catch (error) {
         setDisable(false)
         toast.success(error.message)
