@@ -144,6 +144,7 @@ const LetterPage = () => {
     return (
       <div className='w-screen h-screen m-0 p-0 flex items-center justify-center bg-main'>
         <Helmet>
+          <title>Mở thiệp - Cưới thôi</title>
           <meta property="og:image" content={coverImage} />
         </Helmet>
         <LetterEnvelopTrial
