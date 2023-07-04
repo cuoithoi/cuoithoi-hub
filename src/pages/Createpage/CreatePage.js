@@ -618,7 +618,7 @@ const CreatePage = () => {
   }, [radioMusic, radioChangeHandlerMusic])
 
   const renderConfirmAttend = useMemo(() => {
-    return !editor && <Panel title={Languages.text.confirmAttend} noFields={true}>
+    return  <Panel title={Languages.text.confirmAttend} noFields={true}>
 
       <div className='sec_panel_use_feature_attend fullwidth_input_colum'>
         <div className='title'>
@@ -643,11 +643,11 @@ const CreatePage = () => {
       </div>
 
     </Panel>
-  }, [editor])
+  }, [])
 
   const renderGuestbook = useMemo(() => {
 
-    return !editor && <Panel noFields={true} title={Languages.text.guestbook} valiOpen={openPanel}>
+    return <Panel noFields={true} title={Languages.text.guestbook} valiOpen={openPanel}>
 
       <div className='sec_panel_use_feature_attend fullwidth_input_colum'>
         <div className='title'>
@@ -699,7 +699,7 @@ const CreatePage = () => {
 
     </Panel>
 
-  }, [guestbookTemp, onChangeOpenGuestbookTemplate, onChangeGuestbookTemp, pointer, editor])
+  }, [guestbookTemp, onChangeOpenGuestbookTemplate, onChangeGuestbookTemp, pointer])
 
   const renderOpenStartEffect = useMemo(() => {
 

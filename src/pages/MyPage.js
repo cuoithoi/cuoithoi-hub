@@ -59,7 +59,6 @@ const Mypage = () => {
         const response = await get(APi.listInvitation, config, {
           userId: user?.userId,
         })
-        console.log(response.data)
         setListDataApi(response.data)
       } catch (error) {
         toast.warn('Hệ thống tải lại dữ liệu', {
@@ -285,6 +284,7 @@ const Mypage = () => {
           Authorization: `Bearer ${accessToken}`,
         },
       })
+      console.log(response)
       fileDownload(response.data, `Danh sách khách Phản Hổi.xlsx`)
     } catch (error) {
       // Xử lý lỗi nếu cần
@@ -311,6 +311,7 @@ const Mypage = () => {
           Authorization: `Bearer ${accessToken}`,
         },
       })
+      
       await fileDownload(response.data, `Danh sách Lời chúc.xlsx`)
     } catch (error) {
       // Xử lý lỗi nếu cần

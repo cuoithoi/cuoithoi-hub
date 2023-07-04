@@ -64,7 +64,7 @@ const Languages = {
     expire: 'Hết hạn',
     dowloadTc: 'Tải thiệp cưới',
     dowloadClient: 'Tải danh sách khách',
-    checkGuest: 'Kiểm tra khách mời',
+    checkGuest: 'Lời chúc',
     delete: 'Xoá thiệp',
     edit: 'Chỉnh sửa',
     invitationTemplate: 'Lời mời mẫu',
