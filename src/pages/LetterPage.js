@@ -25,6 +25,7 @@ import { Alias, APi, config } from '@/commons/Constant.ts'
 import { getUserFromLocalStorage } from '@/utils/localStorage'
 import html2canvas from 'html2canvas'
 import { useBaseService } from '@/utils/BaseServices'
+import { MetaTags } from 'react-meta-tags'
 
 const LetterPage = () => {
   const { id } = useParams()
@@ -142,6 +143,9 @@ const LetterPage = () => {
   if (!isLetterOpen && !isLoading && isEffectOfOpenning) {
     return (
       <div className='w-screen h-screen m-0 p-0 flex items-center justify-center bg-main'>
+        <MetaTags>
+          <meta property="og:image" content={coverImage} />
+        </MetaTags>
         <LetterEnvelopTrial
           isLetterOpen={isLetterOpen}
           setIsLetterOpen={captureAndUpload}
