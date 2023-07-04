@@ -24,8 +24,6 @@ import 'react-toastify/dist/ReactToastify.css'
 import Languages from './commons/Languages'
 import ForgotPassOtp from './pages/ForgetPassOtp'
 import ChangePassword from './pages/ChangePassword'
-import { Helmet } from 'react-helmet'
-import invitationBg from '@/assets/home-image/Bg_Banner.png'
 
 export const PageTitle = (props) => {
   useEffect(() => {
@@ -37,10 +35,6 @@ export const PageTitle = (props) => {
 function App() {
   return (
     <div className='app'>
-      <Helmet>
-        <title>Mở thiệp - Cưới thôi</title>
-        <meta property="og:image" content={invitationBg} />
-      </Helmet>
       <BrowserRouter>
         <Routes>
           <Route path={Alias.homePage} element={<HomePage />} />
