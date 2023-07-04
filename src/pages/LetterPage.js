@@ -25,6 +25,7 @@ import { Alias, APi, config } from '@/commons/Constant.ts'
 import { getUserFromLocalStorage } from '@/utils/localStorage'
 import html2canvas from 'html2canvas'
 import { useBaseService } from '@/utils/BaseServices'
+import invitationBg from '@/assets/home-image/Bg_Banner.png'
 
 const LetterPage = () => {
   const { id } = useParams()
@@ -62,6 +63,10 @@ const LetterPage = () => {
     }
     fetchData()
   }, [])
+
+  useEffect(() => {
+    document.querySelector("meta[name='og:image']").setAttribute("content", invitationBg);
+  }, []);
 
   const bgColor = useMemo(() => {
     let style = ''
@@ -134,11 +139,6 @@ const LetterPage = () => {
     }, 1000)
     setIsLetterOpen(true)
   }
-
-
-  useEffect(() => {
-    document.querySelector("meta[name='og:image']").setAttribute("content", coverImage);
-  }, [defaultTitle, title, defaultDesc, description]);
 
   if (!isPaid && userId !== storageId?.userId) {
     navigate(Alias.homePage)
