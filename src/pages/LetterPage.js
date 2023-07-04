@@ -135,15 +135,10 @@ const LetterPage = () => {
     setIsLetterOpen(true)
   }
 
-  const usePageMeta = (title, description) => {
-    const defaultTitle = "app-name";
-    const defaultDesc = "meta description";
 
-    useEffect(() => {
-      document.title = title || defaultTitle;
-      document.querySelector("meta[name='og:image']").setAttribute("content", coverImage);
-    }, [defaultTitle, title, defaultDesc, description]);
-  };
+  useEffect(() => {
+    document.querySelector("meta[name='og:image']").setAttribute("content", coverImage);
+  }, [defaultTitle, title, defaultDesc, description]);
 
   if (!isPaid && userId !== storageId?.userId) {
     navigate(Alias.homePage)
@@ -152,7 +147,6 @@ const LetterPage = () => {
   if (!isLetterOpen && !isLoading && isEffectOfOpenning) {
     return (
       <div className='w-screen h-screen m-0 p-0 flex items-center justify-center bg-main'>
-        {usePageMeta("Demo Page Title", "Demo meta description")}
         <LetterEnvelopTrial
           isLetterOpen={isLetterOpen}
           setIsLetterOpen={captureAndUpload}
