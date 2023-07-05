@@ -32,7 +32,6 @@ const AudioPlay = ({ song }) => {
     return songSrc
   }
   const handlePlayPause = () => {
-    console.log('click')
     if (isAudioPlay) {
       audioMusic.current.pause()
     } else {

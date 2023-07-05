@@ -127,7 +127,6 @@ const LetterPage = () => {
             },
             config
           )
-          console.log(res)
         })
         .catch((error) => {
           console.error('Lỗi khi chụp ảnh:', error)

@@ -81,7 +81,7 @@ const BankInfo = ({
         >
           {data.map((item, index) => {
             return (
-              <div className=' text-left'>
+              <div className=' text-left' key={index}>
                 <h2 className=' text-left'>{item.name}</h2>
                 <div className='bank_info_show'>
                   <img src={item.qr} alt='qrFather' />

@@ -3,7 +3,7 @@ import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useRef,
 import Languages from '@/commons/Languages'
 import { fiedlsCreatePage } from "@/commons/FieldsDataObj";
 import { Egagement, INPUT_FIELDS, Interrogation } from "@/commons/Constant.ts";
-import { FaMap } from "react-icons/fa";
+import { FaCalendar, FaClock, FaMap } from "react-icons/fa";
 import { Panel } from "@/components/panel";
 import FormValidate from "@/utils/FormValidate";
 import { getItemFromLocalStorage } from "@/utils/localStorage";
@@ -229,10 +229,10 @@ const DamNgoAnHoi = forwardRef(({ }, ref) => {
             </div>
             <div className='double_input_row'>
                 <div className='half_row_hor_input'>
-                    {renderInput(refDateOfEgagement, Languages.text.Egagement, Languages.text.Egagement, Egagement.dateOfEventEgagement, value.timeAndLocationOfEgagement.dateOfEventEgagement, 'date', 200, false)}
+                    {renderInput(refDateOfEgagement, Languages.text.Egagement, Languages.text.Egagement, Egagement.dateOfEventEgagement, value.timeAndLocationOfEgagement.dateOfEventEgagement, 'date', 200, true, <FaCalendar />)}
                 </div>
                 <div className='half_row_hor_input'>
-                    {renderInput(refTimeOfEgagement, Languages.text.timer, Languages.text.timer, Egagement.timeOfEventEgagement, value.timeAndLocationOfEgagement.timeOfEventEgagement, 'time', 200, false)}
+                    {renderInput(refTimeOfEgagement, Languages.text.timer, Languages.text.timer, Egagement.timeOfEventEgagement, value.timeAndLocationOfEgagement.timeOfEventEgagement, 'time', 200, true, <FaClock />)}
                 </div>
             </div>
 
@@ -244,10 +244,10 @@ const DamNgoAnHoi = forwardRef(({ }, ref) => {
 
             <div className='double_input_row'>
                 <div className='half_row_hor_input'>
-                    {renderInput(refDateOfEventInterrogation, Languages.text.interrogation, Languages.text.interrogation, Interrogation.dateOfEventInterrogation, value.timeAndLocationOfInterrogation.dateOfEventInterrogation, 'date', 200, false)}
+                    {renderInput(refDateOfEventInterrogation, Languages.text.interrogation, Languages.text.interrogation, Interrogation.dateOfEventInterrogation, value.timeAndLocationOfInterrogation.dateOfEventInterrogation, 'date', 200, true, <FaCalendar />)}
                 </div>
                 <div className='half_row_hor_input'>
-                    {renderInput(refTimeOfEventInterrogation, Languages.text.timer, Languages.text.timer, Interrogation.timeOfEventInterrogation, value.timeAndLocationOfInterrogation.timeOfEventInterrogation, 'time', 200, false)}
+                    {renderInput(refTimeOfEventInterrogation, Languages.text.timer, Languages.text.timer, Interrogation.timeOfEventInterrogation, value.timeAndLocationOfInterrogation.timeOfEventInterrogation, 'time', 200, true, <FaClock />)}
                 </div>
             </div>
 

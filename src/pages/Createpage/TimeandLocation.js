@@ -5,7 +5,7 @@ import { SelectTimeTemplate, fiedlsCreatePage } from "@/commons/FieldsDataObj";
 import { BUTTON_STYLES, CheckParams, Convert, TIME_AND_LOCATION } from "@/commons/Constant.ts";
 import { Button } from "@/components/button";
 import { MyTextArea } from "@/components/textarea";
-import { FaLink, FaMap } from "react-icons/fa";
+import { FaCalendar, FaClock, FaLink, FaMap } from "react-icons/fa";
 import { RadioButton } from "@/components/RadioButton";
 import Popup from "@/components/modal/Popup";
 import TitleCreate from "@/components/createPage/subcomp/TitleCreate";
@@ -291,10 +291,10 @@ const TimeandLocation = forwardRef(({ }, ref) => {
                 </div>
                 <div className='double_input_row'>
                     <div className='half_row_hor_input'>
-                        {renderInput(refDateOfEventWedding, '', Languages.text.wedding, TIME_AND_LOCATION.dateOfEventWedding, value.timeAndLocationOfWedding.dateOfEventWedding, 'date', 200, false)}
+                        {renderInput(refDateOfEventWedding, '', Languages.text.wedding, TIME_AND_LOCATION.dateOfEventWedding, value.timeAndLocationOfWedding.dateOfEventWedding, 'date', 200, true, <FaCalendar />)}
                     </div>
                     <div className='half_row_hor_input'>
-                        {renderInput(refTimeOfEventWedding, '', Languages.text.timer, TIME_AND_LOCATION.timeOfEventWedding, value.timeAndLocationOfWedding.timeOfEventWedding, 'time', 200, false)}
+                        {renderInput(refTimeOfEventWedding, '', Languages.text.timer, TIME_AND_LOCATION.timeOfEventWedding, value.timeAndLocationOfWedding.timeOfEventWedding, 'time', 200, true, <FaClock />)}
                     </div>
                 </div>
             </div>

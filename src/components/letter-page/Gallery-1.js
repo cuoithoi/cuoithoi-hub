@@ -81,7 +81,7 @@ const Gallery = ({ id }) => {
                     : heartIconFill
                 }
                 alt='heart icon'
-                className='w-6 h-6 '
+                className='w-6 h-6 fill-icon'
                 onClick={() =>
                   handleLikeImage(selectedItem, album[selectedItem]._id)
                 }
@@ -98,8 +98,8 @@ const Gallery = ({ id }) => {
           >
             {album?.map((image, index) => {
               return (
-                <LazyLoad threshold={0.95} height='100%'>
-                  <div key={index} className='gallery-image relative'>
+                <LazyLoad threshold={0.95} height='100%' key={index}>
+                  <div className='gallery-image relative'>
                     <img src={image.url} alt='image gallery' />
                   </div>
                 </LazyLoad>
@@ -129,7 +129,7 @@ const Gallery = ({ id }) => {
                   <img
                     src={image.totalLike === 0 ? heartIcon : heartIconFill}
                     alt='heart icon'
-                    className='w-4 h-4'
+                    className='w-4 h-4 fill-icon'
                     onClick={() => handleLikeImage(index, image._id)}
                   />
                 </div>

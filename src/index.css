@@ -1040,7 +1040,7 @@ p {
 }
 
 .gallery-img .img-container img {
-  object-fit: contain;
+  object-fit: cover;
   width: 100%;
   height: 100%;
 }
@@ -1144,6 +1144,14 @@ p {
   font-weight: 700;
   font-size: 25px;
   color: var(--text-color-head);
+}
+
+.slide .lazyload-wrapper {
+  height: 100%;
+}
+
+.fill-icon {
+  filter: opacity(0.5) brightness(0.5) contrast(0.5);
 }
 
 .bottom-button-click {
@@ -1524,6 +1532,7 @@ p {
   font-family: var(--quick-sand-font-family);
   font-size: 14px;
 }
+
 
 @media (min-width: 640px) {
   table {
@@ -3564,6 +3573,12 @@ input:disabled {
   .container {
     width: 970px;
   }
+
+  input[type="date"]+div>svg,
+  input[type="time"]+div>svg {
+    display: none;
+    -webkit-appearance: none;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -3585,6 +3600,21 @@ input:disabled {
 }
 
 @media (max-width: 991px) {
+
+  input[type="time"],
+  input[type="date"] {
+    width: 100%;
+    display: flex;
+    min-width: 150px;
+  }
+
+  input[type="date"]::-webkit-inner-spin-button,
+  input[type="date"]::-webkit-calendar-picker-indicator,
+  input[type="time"]::-webkit-inner-spin-button,
+  input[type="time"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+  }
 
   .header_editpage,
   .my_input_form_data_group {
