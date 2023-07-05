@@ -8,6 +8,7 @@ import Popup from '../modal/Popup'
 import CarouselGallery from './sub-comp/CarouselGallery'
 import { api } from '@/utils/axios'
 import { toast } from 'react-toastify'
+import LazyLoad from 'react-lazyload'
 const Gallery = ({ id }) => {
   const modalRef = useRef()
   const [isLoading, setIsLoading] = useState(true)
@@ -72,16 +73,20 @@ const Gallery = ({ id }) => {
             <span style={{ color: 'white' }} className='mr-1'>
               {album[selectedItem].totalLike}
             </span>
-            <img
-              src={
-                album[selectedItem].totalLike === 0 ? heartIcon : heartIconFill
-              }
-              alt='heart icon'
-              className='w-6 h-6 '
-              onClick={() =>
-                handleLikeImage(selectedItem, album[selectedItem]._id)
-              }
-            />
+            <LazyLoad threshold={0.95}>
+              <img
+                src={
+                  album[selectedItem].totalLike === 0
+                    ? heartIcon
+                    : heartIconFill
+                }
+                alt='heart icon'
+                className='w-6 h-6 '
+                onClick={() =>
+                  handleLikeImage(selectedItem, album[selectedItem]._id)
+                }
+              />
+            </LazyLoad>
           </div>
           <Carousel
             showStatus={false}
@@ -93,9 +98,11 @@ const Gallery = ({ id }) => {
           >
             {album?.map((image, index) => {
               return (
-                <div key={index} className='gallery-image relative'>
-                  <img src={image.url} alt='image gallery' />
-                </div>
+                <LazyLoad threshold={0.95} height='100%'>
+                  <div key={index} className='gallery-image relative'>
+                    <img src={image.url} alt='image gallery' />
+                  </div>
+                </LazyLoad>
               )
             })}
           </Carousel>
