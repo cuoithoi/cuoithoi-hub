@@ -143,6 +143,26 @@ const LetterPage = () => {
   if (!isLetterOpen && !isLoading && isEffectOfOpenning) {
     return (
       <div className='w-screen h-screen m-0 p-0 flex items-center justify-center bg-main'>
+        <Helmet>
+          <title>Cưới thôi</title>
+          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+          <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+          <meta name="title" key="title" content="Trang chủ" />
+          <meta property="og:title" key="og:title" content="Trang chủ" />
+          <meta property="og:locale" key="og:locale" content="en_US" />
+          <meta charSet="utf-8" />
+          <meta property="og:type" key="og:type" content="website" />
+          <meta
+            property="og:description"
+            key="og:description"
+            content={'metaDescription'}
+          />
+          <meta
+            property="og:image"
+            key="og:image"
+            content={coverImage}
+          />
+        </Helmet>
         <LetterEnvelopTrial
           isLetterOpen={isLetterOpen}
           setIsLetterOpen={captureAndUpload}
@@ -158,13 +178,7 @@ const LetterPage = () => {
   }
   return (
     <div ref={containerRef} className={`letter-wrapper ${bgColor}`}>
-      <Helmet>
-        <meta
-          property="og:image"
-          key="og:image"
-          content={coverImage}
-        />
-      </Helmet>
+
       <div className={`letter-layout ${bgColor}`}>
         <SnowFall type={effectBackgroud.value} />
         <NavButton setIsNavOpen={setIsNavOpen} song={song} />

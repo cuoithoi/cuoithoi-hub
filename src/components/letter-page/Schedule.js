@@ -38,7 +38,7 @@ const Schedule = ({ eventOfProgram, note }) => {
                 <TitleDescribeIcon />
               </div>
             </div>
-            <div className='w-28'>
+            <div className='w-28 text-center'>
               <h3>{timeToWellcome}</h3>
               <h2>{eventOfProgramEditOne}</h2>
             </div>
@@ -53,7 +53,7 @@ const Schedule = ({ eventOfProgram, note }) => {
                 <TitleDescribeIcon />
               </div>
             </div>
-            <div className='w-28'>
+            <div className='w-28 text-center'>
               <h3>{timeToCelebrate}</h3>
               <h2>{eventOfProgramEditTwo}</h2>
             </div>
@@ -72,7 +72,7 @@ const Schedule = ({ eventOfProgram, note }) => {
                 <TitleDescribeIcon />
               </div>
             </div>
-            <div className='w-28'>
+            <div className='w-28 text-center'>
               <h3>{timeToDinner}</h3>
               <h2>{eventOfProgramEditThree}</h2>
             </div>
@@ -91,7 +91,7 @@ const Schedule = ({ eventOfProgram, note }) => {
                 <TitleDescribeIcon />
               </div>
             </div>
-            <div className='w-28'>
+            <div className='w-28 text-center'>
               <h3>{timeToMusic}</h3>
               <h2>{eventOfProgramEditFour}</h2>
             </div>

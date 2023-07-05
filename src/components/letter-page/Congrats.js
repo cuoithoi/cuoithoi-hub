@@ -29,6 +29,13 @@ const Congrats = ({ informationOfBride, informationOfGroom, isuseBanking }) => {
     qrCodeMotherBrideLink,
     isGoneFatherBride,
     isGoneMotherOfBride,
+    bankOfNumberBride,
+    bankOfNumberFatherBride,
+    bankOfNumberMotherBride,
+    ownerBankOfBride,
+    ownerBankOfFatherBride,
+    ownerBankOfMotherBride
+
   } = informationOfBride
   const {
     firstName: firstNameGroom,
@@ -51,6 +58,13 @@ const Congrats = ({ informationOfBride, informationOfGroom, isuseBanking }) => {
     qrCodeMotherGroomLink,
     isGoneFather,
     isGoneMother,
+    bankOfNumberFatherGroom,
+    bankOfNumberGroom,
+    bankOfNumberMotherGroom,
+    ownerBankOfFatherGroom,
+    ownerBankOfGroom,
+    ownerBankOfMotherGroom
+
   } = informationOfGroom
   const modalRef = useRef()
   const modalRef1 = useRef()
@@ -141,6 +155,12 @@ const Congrats = ({ informationOfBride, informationOfGroom, isuseBanking }) => {
             qrCode={qrCodeGroomLink}
             qrCodeFatherLink={qrCodeFatherGroomLink}
             qrCodeMotherLink={qrCodeMotherGroomLink}
+            numberBank={bankOfNumberGroom}
+            numberBankFather={bankOfNumberFatherGroom}
+            numberBankMother={bankOfNumberMotherGroom}
+            ownerBank={ownerBankOfGroom}
+            ownerBankFather={ownerBankOfFatherGroom}
+            ownerBankMother={ownerBankOfMotherGroom}
             isGoneFather={isGoneFather}
             isGoneMother={isGoneMother}
             isBride={false}
@@ -162,6 +182,12 @@ const Congrats = ({ informationOfBride, informationOfGroom, isuseBanking }) => {
             isBride={true}
             isGoneFather={isGoneFatherBride}
             isGoneMother={isGoneMotherOfBride}
+            numberBank={bankOfNumberBride}
+            numberBankFather={bankOfNumberFatherBride}
+            numberBankMother={bankOfNumberMotherBride}
+            ownerBank={ownerBankOfBride}
+            ownerBankFather={ownerBankOfFatherBride}
+            ownerBankMother={ownerBankOfMotherBride}
           />
         }
       />

@@ -618,7 +618,7 @@ const CreatePage = () => {
   }, [radioMusic, radioChangeHandlerMusic])
 
   const renderConfirmAttend = useMemo(() => {
-    return  <Panel title={Languages.text.confirmAttend} noFields={true}>
+    return <Panel title={Languages.text.confirmAttend} noFields={true}>
 
       <div className='sec_panel_use_feature_attend fullwidth_input_colum'>
         <div className='title'>
@@ -850,7 +850,7 @@ const CreatePage = () => {
   const renderReferralCode = useMemo(() => {
 
     return !editor && <div className='sec_group_panel_collape'>
-      <Panel title={Languages.text.referralCode}>
+      <Panel title={Languages.text.referralCode} noFields={true} textNofields={'(nếu có)'}>
         <div className='wrap_package_referralcode'>
           <div className='fullwidth_input_colum'>
             <div className='single_hor_input'>
@@ -1137,15 +1137,21 @@ const CreatePage = () => {
         const total = (parseInt(packageType[1]) + totalSumAnother) * (discount / 100);
         setValuedataAnotherTotalPrice(total)
 
-        setCheckParams(CheckParams.CONFIRM_INFO)
-        refModal.current?.showModal()
+        if (editor) {
+          setTimeout(() => {
+            navigate(Alias.mypage)
+          }, 5000);
+        } else {
+          setCheckParams(CheckParams.CONFIRM_INFO)
+          refModal.current?.showModal()
+        }
       }
 
     } catch {
       window.location.reload()
     }
 
-  }, [onChangeSaveSetting, passValidateSuccess, setValuedataAnotherTotalPrice, imagesCoverURL, imagesURL, albumURL, codeinvite, percentOff, disable])
+  }, [onChangeSaveSetting, passValidateSuccess, setValuedataAnotherTotalPrice, imagesCoverURL, imagesURL, albumURL, codeinvite, percentOff, disable, editor])
 
 
   const onChangeValidateConfirm = useCallback(async () => {
@@ -1482,7 +1488,7 @@ const CreatePage = () => {
               <DamNgoAnHoi ref={refDamngovaAnhoi} />
               {renderAlbum}
               <VideoandEvent ref={refVideovaSukien} />
-              <Panel title={Languages.text.informationBanking} noFields={true} icon={'💵'}>
+              <Panel title={Languages.text.informationBanking} noFields={true} icon={'💵'} style={'panel_icon_style'}>
                 <div className="title">{Languages.text.useBanking}</div>
                 <div className='single_hor_input checkbox_inline_colum'>
                   <div className="item_field_single">

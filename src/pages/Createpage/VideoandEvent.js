@@ -378,7 +378,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
     return (
 
         <>
-            <Panel noFields={true} title={Languages.text.video} valiOpen={openPanel} icon={'🎥'}>
+            <Panel noFields={true} title={Languages.text.video} valiOpen={openPanel} icon={'🎥'} style={'panel_icon_style'}>
                 <div className='sec_panel_use_feature_attend fullwidth_input_colum'>
                     <div className='title'>
                         {Languages.text.useFeatureVideo}
@@ -408,7 +408,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
                 </div>
             </Panel>
 
-            <Panel noFields={true} title={Languages.text.weddingProgram} valiOpen={openPanel} icon={'🎤'}>
+            <Panel noFields={true} title={Languages.text.weddingProgram} valiOpen={openPanel} icon={'🎤'} style={'panel_icon_style'}>
                 <div className='program_wedding'>
                     <div className='title'>
                         {Languages.text.useFeatureEvent}
@@ -474,7 +474,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
                 </div>
             </Panel>
 
-            <Panel title={Languages.text.warnning} valiOpen={openPanel} noFields={true} icon={'❗️'}>
+            <Panel title={Languages.text.warnning} valiOpen={openPanel} noFields={true} icon={'❗️'} style={'panel_icon_style'}>
                 <div className='fullwidth_input_colum'>
                     <div className='single_hor_input'>
                         <MyTextArea
