@@ -20,15 +20,15 @@ const InvitationDetail = ({ info, isBride }) => {
     return (
       <div className='text-center px-4'>
         <h2 className='text-main'>Nhà Gái</h2>
-        <p>Cô Dâu</p>
+        <p className='title_tooltipInfo'>Cô Dâu</p>
         <h1 className='name_show'>{`${name}`}</h1>
-        <p className='dashed-top-bottom'>{isOldBrotherBride ? 'Trưởng nữ' : 'Thứ nữ'}</p>
-        <p>{isGoneMotherOfBride ? 'Cố Phụ' : 'Bố'}</p>
+        <p className='dashed-top-bottom title_tooltipInfo'>{isOldBrotherBride ? 'Trưởng nữ' : 'Thứ nữ'}</p>
+        <p className='title_tooltipInfo'>{isGoneMotherOfBride ? 'Cố Phụ' : 'Bố'}</p>
         <p className='show_type_display dashed-top-bottom'>
           {isGoneFatherBride ? <img src={IcChrysanthemum} /> : ''} Ông.{' '}
           {`${fatherNameOfBride}`}
         </p>
-        <p> {isGoneMotherOfBride ? 'Cố Mẫu' : 'Mẹ'}</p>
+        <p className='title_tooltipInfo'> {isGoneMotherOfBride ? 'Cố Mẫu' : 'Mẹ'}</p>
         <p className='show_type_display'>
           {isGoneMotherOfBride ? <img src={IcChrysanthemum} /> : ''} Bà.{' '}
           {`${motherNameOfBride}`}
@@ -54,15 +54,15 @@ const InvitationDetail = ({ info, isBride }) => {
   return (
     <div className='text-center px-4'>
       <h2 className='text-main'>Nhà Trai</h2>
-      <p>Chú Rể</p>
+      <p className='title_tooltipInfo'>Chú Rể</p>
       <h1 className='name_show'>{`${name}`}</h1>
       <p className='dashed-top-bottom'>{isOldBrotherGroom ? 'Trưởng nam' : 'Thứ nam'}</p>
-      <p>{isGoneFather ? 'Cố Phụ' : 'Bố'}</p>
+      <p className='title_tooltipInfo'>{isGoneFather ? 'Cố Phụ' : 'Bố'}</p>
       <p className='show_type_display dashed-top-bottom'>
         {isGoneFather ? <img src={IcChrysanthemum} /> : ''} Ông.{' '}
         {`${fatherNameOfGroom}`}
       </p>
-      <p>{isGoneMother ? 'Cố Mẫu' : 'Mẹ'}</p>
+      <p className='title_tooltipInfo'>{isGoneMother ? 'Cố Mẫu' : 'Mẹ'}</p>
       <p className='show_type_display'>
         {isGoneMother ? <img src={IcChrysanthemum} /> : ''} Bà.{' '}
         {`${motherNameOfGroom}`}

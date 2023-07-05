@@ -3345,6 +3345,11 @@ input:disabled {
   margin: auto;
 }
 
+.title_tooltipInfo {
+  font-weight: 600;
+  color: var(--orange-color);
+}
+
 .bank_info_show {
   display: block;
   position: relative;
@@ -3368,6 +3373,7 @@ input:disabled {
   font-size: 15px;
   font-weight: 600;
 }
+
 .banking_happy_invite .carousel .slide {
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
@@ -3376,6 +3382,7 @@ input:disabled {
 .banking_happy_invite .carousel .slide.selected {
   opacity: 1;
 }
+
 .checkbox {
   display: none;
 }
