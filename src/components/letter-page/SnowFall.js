@@ -4,12 +4,28 @@ import peachEffect from '@/assets/home-image/peachEffect.png'
 import snowWhiteEffect from '@/assets/home-image/snowWhiteEffect.png'
 import { SelectEffectBg } from '@/commons/FieldsDataObj'
 import React from 'react'
-
+import leave1 from '@/assets/leaves/leave-1.png'
+import leave2 from '@/assets/leaves/leave-2.png'
+import leave3 from '@/assets/leaves/leave-3.png'
+import leave4 from '@/assets/leaves/leave-4.png'
 const SnowFall = ({ type }) => {
   const renderImg = () => {
     const imgE = document.createElement('img')
+    const imgE2 = document.createElement('img')
+    const imgE3 = document.createElement('img')
+    const imgE4 = document.createElement('img')
+    if (type === 'lavang') {
+      imgE.src = leave1
+      imgE2.src = leave2
+      imgE3.src = leave3
+      imgE4.src = leave4
+      imgE.width = 60
+      imgE2.width = 60
+      imgE3.width = 60
+      imgE4.width = 60
+      return [imgE, imgE2, imgE3, imgE4]
+    }
     if (type === 'hoadao') imgE.src = peachEffect
-    if (type === 'lavang') imgE.src = leaveEffect
     if (type === 'bongtuyet') imgE.src = snowWhiteEffect
     imgE.width = 60
     return [imgE]
@@ -30,6 +46,7 @@ const SnowFall = ({ type }) => {
       />
     )
   }
+  console.log(renderImg())
   return (
     <Snowfall
       // color='#E29C67'
