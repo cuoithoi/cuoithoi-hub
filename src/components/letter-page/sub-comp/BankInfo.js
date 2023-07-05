@@ -70,7 +70,7 @@ const BankInfo = ({
       <div className=' text-left'>
         <Carousel
           showStatus={false}
-          showArrows={true}
+          showArrows={false}
           centerMode={true}
           showIndicators={true}
           swipeable

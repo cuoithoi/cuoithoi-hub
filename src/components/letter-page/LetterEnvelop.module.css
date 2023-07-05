@@ -600,6 +600,10 @@
     right: 0;
     margin: auto;
   }
+
+  .container>.envelopeWrapper {
+    top: 100px;
+  }
 }
 
 @media (max-width: 768px) {
