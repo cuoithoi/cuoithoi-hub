@@ -26,7 +26,6 @@
     "react-easy-sort": "^1.5.1",
     "react-facebook": "^9.0.12",
     "react-google-login": "^5.2.2",
-    "react-helmet": "^6.1.0",
     "react-hook-form": "^7.43.9",
     "react-icons": "^4.8.0",
     "react-image-upload": "^3.0.1",
@@ -40,7 +39,6 @@
     "react-scroll": "^1.8.9",
     "react-slick": "^0.29.0",
     "react-slideshow-image": "^4.2.1",
-    "react-snap": "^1.23.0",
     "react-snowfall": "^1.2.1",
     "react-toastify": "^9.1.2",
     "react-wow": "^1.0.0",
@@ -54,12 +52,7 @@
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject",
-    "deploy-production": "pm2 start ecosystem.config.js --name WeddingInvitationWeb",
-    "postbuild": "react-snap"
-  },
-  "reactSnap": {
-    "inlineCss": true,
-    "inlineJs": true
+    "deploy-production": "pm2 start ecosystem.config.js --name WeddingInvitationWeb"
   },
   "browserslist": {
     "production": [
