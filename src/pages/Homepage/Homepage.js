@@ -32,6 +32,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import Slider1 from '@/assets/home-image/m_img2-min.jpg';
 import Slider2 from '@/assets/home-image/m_img3-min.jpg';
 import Slider3 from '@/assets/home-image/m_img4-min.jpg';
+import { Helmet } from "react-helmet";
 
 
 const fadeImages = [
@@ -103,6 +104,26 @@ const Homepage = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Trang chủ</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="title" key="title" content="Trang chủ" />
+        <meta property="og:title" key="og:title" content="Trang chủ" />
+        <meta property="og:locale" key="og:locale" content="en_US" />
+        <meta charSet="utf-8" />
+        <meta property="og:type" key="og:type" content="website" />
+        <meta
+          property="og:description"
+          key="og:description"
+          content={'metaDescription'}
+        />
+        <meta
+          property="og:image"
+          key="og:image"
+          content={`/images/frontend.jpeg`}
+        />
+      </Helmet>
       <nav className="dotted_scroll">
         <ul>
           <li>

@@ -11,7 +11,7 @@ import IcCheck from "@/assets/home-image/IcCheck.svg";
 import ICFrameVideo from "@/assets/home-image/Ic_frameVideo.png";
 import IcSuccess from "@/assets/home-image/ic_success.png";
 import video_wedding from "@/assets/audio/videoplayback.mp4";
-import video_NFT from "@/assets/audio/videoNFT.MP4";
+import video_NFT from "@/assets/audio/videoNFT.mp4";
 import { Button } from "@/components/button";
 import { AnimationOnScroll } from "react-animation-on-scroll";
 import { useBaseService } from "@/utils/BaseServices";
