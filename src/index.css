@@ -3792,6 +3792,19 @@ input:disabled {
   .choose_ser_another .box_head p {
     width: 100%;
   }
+
+  .title_tooltipInfo {
+    font-size: 14px;
+  }
+
+  .dashed-top-bottom {
+    font-size: 14px;
+  }
+
+  .show_type_display img {
+    position: absolute;
+    top: -15px;
+  }
 }
 
 @media (max-width: 1299px) {
