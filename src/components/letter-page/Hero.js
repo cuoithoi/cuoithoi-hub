@@ -27,7 +27,7 @@ const Hero = ({
     return img
   }
   return (
-    <LazyLoad height={325} offset={300}>
+    <LazyLoad height={325} offset={0}>
       <div
         className='text-center  relative section-mb layout-mw bg-no-repeat bg-center bg-contain'
         id='hero'
