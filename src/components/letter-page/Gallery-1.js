@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import TitleSection from './sub-comp/TitleSection'
 import heartIcon from '@/assets/svg/letter-heart.svg'
 import heartIconFill from '@/assets/svg/letter-heart-fill.svg'
@@ -9,11 +9,16 @@ import CarouselGallery from './sub-comp/CarouselGallery'
 import { api } from '@/utils/axios'
 import { toast } from 'react-toastify'
 import LazyLoad from 'react-lazyload'
+import FsLightbox from 'fslightbox-react'
+
 const Gallery = ({ id }) => {
   const modalRef = useRef()
   const [isLoading, setIsLoading] = useState(true)
   const [album, setAlbum] = useState([])
   const [selectedItem, setSelectedItem] = useState(0)
+  const [open, setOpen] = useState(false);
+  const [urlLightbox, setUrlLightbox] = useState('');
+
   const randomNumber = (number) => {
     return Math.floor(Math.random() * number)
   }
@@ -33,6 +38,11 @@ const Gallery = ({ id }) => {
     })
     return resp
   }
+  const showLightbox = useCallback((url) => {
+    setOpen(!open)
+    setUrlLightbox(url)
+  }, [open])
+
   const handleLikeImage = async (index, _id) => {
     try {
       await api.post('/like-image', {
@@ -46,6 +56,7 @@ const Gallery = ({ id }) => {
       toast.error('something went wrong, maybe your network is overloaded')
     }
   }
+
   if (isLoading) return
   return (
     <div
@@ -64,6 +75,7 @@ const Gallery = ({ id }) => {
               handleLikeImage={handleLikeImage}
             />
           }
+          maxWidth={1000}
         />
         <div className='relative'>
           <div
@@ -93,13 +105,12 @@ const Gallery = ({ id }) => {
             showIndicators={false}
             showThumbs={false}
             selectedItem={selectedItem}
-            onClickItem={() => modalRef.current?.showModal()}
             dynamicHeight={false}
           >
             {album?.map((image, index) => {
               return (
                 <LazyLoad threshold={0.95} height='100%' key={index}>
-                  <div className='gallery-image relative'>
+                  <div className='gallery-image relative' onClick={() => showLightbox(image.url)} >
                     <img src={image.url} alt='image gallery' />
                   </div>
                 </LazyLoad>
@@ -107,7 +118,12 @@ const Gallery = ({ id }) => {
             })}
           </Carousel>
         </div>
-
+        {
+          <FsLightbox
+            toggler={open}
+            sources={[urlLightbox]}
+          />
+        }
         <ul className=' gallery-container'>
           {album.map((image, index) => {
             return (
@@ -119,7 +135,7 @@ const Gallery = ({ id }) => {
                 <div className='img-container'>
                   <img src={image.url} alt='image gallery' />
                 </div>
-                <div
+                {/* <div
                   className='absolute bottom-2 right-2 w-8 h-6 flex items-center justify-end cursor-pointer rounded-md  bg-bg-appear'
                   style={{ backgroundColor: 'rgba(0,0,0,0.2)' }}
                 >
@@ -132,7 +148,7 @@ const Gallery = ({ id }) => {
                     className='w-4 h-4 fill-icon'
                     onClick={() => handleLikeImage(index, image._id)}
                   />
-                </div>
+                </div> */}
               </li>
             )
           })}
