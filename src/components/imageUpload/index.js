@@ -20,7 +20,7 @@ export const ImageUpload = forwardRef(
 
     const [checkUrlLocal, setCheckurlLocal] = useState(false);
 
-    const [albumList, setAlbumList] = useState(urlLocal)
+    const [albumList, setAlbumList] = useState(urlLocal ? [...urlLocal] : [] )
 
     const maxNumber = maxnumber || 10;
 
