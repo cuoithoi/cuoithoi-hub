@@ -40,6 +40,7 @@ const SnowFall = ({ type }) => {
           position: 'fixed',
           width: '100vw',
           height: '100vh',
+          top:0,
           zIndex: 11,
         }}
         radius={[2, 7]}
@@ -55,6 +56,7 @@ const SnowFall = ({ type }) => {
         position: 'fixed',
         width: '100vw',
         height: '100vh',
+        top:0,
         zIndex: 11,
       }}
       images={renderImg()}

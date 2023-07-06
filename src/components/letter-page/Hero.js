@@ -42,7 +42,7 @@ const Hero = ({
           <div className='flex justify-center pt-3 w-full'>
             <img src={''} alt='' className='w-full' />
           </div>
-          <h1 className='wind-song big-size text-9xl pt-20'>
+          <h1 className='wind-song big-size text-9xl pt-20' style={effectImage === 'Heart Frame' ? { paddingTop: '12rem' } : undefined}>
             {timeAndLocationOfWedding.dateOfEventWedding &&
               formatDayHero(timeAndLocationOfWedding.dateOfEventWedding)}
           </h1>
