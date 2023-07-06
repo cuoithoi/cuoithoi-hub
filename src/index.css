@@ -3316,6 +3316,13 @@ input:disabled {
   font-size: 19px;
   font-weight: 600;
   font-size: 16px;
+  justify-content: center;
+  position: relative;
+}
+
+.show_type_display img {
+  position: absolute;
+  left: 0;
 }
 
 .name_show {
