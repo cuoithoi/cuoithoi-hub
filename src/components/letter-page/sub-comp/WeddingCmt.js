@@ -47,12 +47,16 @@ const WeddingCmt = ({ viewDetail, cmt, deleteCmt, index }) => {
             {convertTimeFormat(cmt.createTime)}
           </p>
         </div>
-
-
       </div>
       <Popup
         ref={modalRef}
-        content={<DeleteCmtInput deleteCmt={deleteCmt} _id={cmt._id} />}
+        content={
+          <DeleteCmtInput
+            deleteCmt={deleteCmt}
+            _id={cmt._id}
+            handleCloseModal={() => modalRef?.current.hideModal()}
+          />
+        }
       />
     </div>
   )
