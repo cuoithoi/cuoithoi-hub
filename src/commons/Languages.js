@@ -254,7 +254,7 @@ const Languages = {
     accountGroom: 'Tài khoản nhà trai',
     accountBride: 'Tài khoản nhà gái',
     noFields: '(Không bắt buộc)',
-    coppyMaps: '*Sao chép liên kết địa điểm lễ cưới trên trang Google Maps',
+    coppyMaps: '*Sao chép liên kết địa điểm lễ cưới trên trang Google Maps và liên kết phải có thông số tọa độ',
     togetherCreate: 'Cùng tạo Thiệp Cưới cho ngày trọng đại của bạn nhé!'
   },
   errorMsg: {

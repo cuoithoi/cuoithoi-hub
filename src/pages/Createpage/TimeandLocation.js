@@ -12,6 +12,8 @@ import TitleCreate from "@/components/createPage/subcomp/TitleCreate";
 import FormValidate from "@/utils/FormValidate";
 import { getItemFromLocalStorage } from "@/utils/localStorage";
 import ProvinceDistrictList from "./ProvinceDistrictList";
+import IMG_Map from "@/assets/home-image/IMG_Maps.png";
+import FsLightbox from "fslightbox-react";
 
 const TimeandLocation = forwardRef(({ }, ref) => {
 
@@ -27,6 +29,7 @@ const TimeandLocation = forwardRef(({ }, ref) => {
     const refModal = useRef(null)
 
     const [value, setValue] = useState(fiedlsCreatePage)
+    const [open, setOpen] = useState(false);
 
     const refUnderfine = useRef(null)
     const refDateOfEventWedding = useRef(null)
@@ -281,6 +284,8 @@ const TimeandLocation = forwardRef(({ }, ref) => {
     }, [value])
 
 
+    const showLightbox = () => setOpen(!open)
+
     return (
         <div className='sec_time_location_wed'>
 
@@ -320,7 +325,16 @@ const TimeandLocation = forwardRef(({ }, ref) => {
 
                     <div className='single_hor_input'>
                         {renderInput(refMapDirectLink, '', 'Nhập ' + Languages.text.mapPlaceWedding, TIME_AND_LOCATION.mapDirectLink, value.timeAndLocationOfWedding.mapDirectLink, 'text', 200, true, <FaLink />)}
-                        <p className="coppyMaps">{Languages.text.coppyMaps}</p>
+                        <div class="details_attend">
+                            <p className="coppyMaps">{Languages.text.coppyMaps}. Hình ảnh ví dụ</p>
+                            <img src={IMG_Map} alt="maps" onClick={showLightbox} />
+                        </div>
+                        {
+                            <FsLightbox
+                                toggler={open}
+                                sources={[IMG_Map]}
+                            />
+                        }
                     </div>
 
                     <div className='single_hor_input checkbox_inline_colum'>

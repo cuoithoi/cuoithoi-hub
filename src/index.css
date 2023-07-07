@@ -1151,7 +1151,7 @@ p {
 }
 
 .fill-icon {
-  filter: opacity(0.5) brightness(0.5) contrast(0.5);
+  filter: opacity(1) brightness(1) contrast(0.5);
 }
 
 .bottom-button-click {
@@ -2890,7 +2890,7 @@ input:disabled {
   font-family: var(--quick-sand-font-family);
 }
 
-.sec_panel_use_feature_attend .details_attend {
+.details_attend {
   background: var(--gray-color-2);
   padding: 30px;
   margin-bottom: 15px;
