@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import homeMain from '../../assets/home-image/home-main.png'
 import { AnimationOnScroll } from 'react-animation-on-scroll'
 import { formatDayHero } from '@/utils/helpers'
@@ -18,6 +18,15 @@ const Hero = ({
   coverImage,
   timeAndLocationOfWedding,
 }) => {
+
+  const [url, setUrl] = useState('')
+
+  useEffect(() => {
+
+    setUrl(coverImage)
+
+  }, [coverImage])
+
   const renderEffectImage = () => {
     let img
     if (effectImage === 'none') img = noneGray
@@ -26,12 +35,13 @@ const Hero = ({
     if (effectImage === 'Wave') img = waveGrayBg
     return img
   }
+
   return (
     <LazyLoad height={325} offset={0}>
       <div
         className='text-center  relative section-mb layout-mw bg-no-repeat bg-center bg-contain'
         id='hero'
-        style={{ backgroundImage: `url(${coverImage})` }}
+        style={url ? { backgroundImage: `url('${url}')` } : undefined}
       >
         <div
           className='bg-no-repeat bg-center bg-cover py-20'

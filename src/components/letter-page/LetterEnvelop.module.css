@@ -110,12 +110,14 @@
   text-align: left;
   font-size: 10px;
   position: relative;
+  height: 100%;
 }
 
 .envelope>.letter>.text>img {
   width: 100%;
   border-radius: 20px;
   object-fit: cover;
+  height: 100%;
 }
 
 .envelope>.letter>.text>P {
@@ -513,10 +515,12 @@
   40% {
     bottom: 230px;
     opacity: 1;
+    overflow: visible;
   }
 
   100% {
     bottom: 230px;
+    overflow: visible;
   }
 }
 
@@ -528,10 +532,12 @@
   70% {
     bottom: 230px;
     opacity: 1;
+    overflow: visible;
   }
 
   100% {
     bottom: 230px;
+    overflow: visible;
   }
 }
 
@@ -545,10 +551,12 @@
     40% {
       bottom: 160px;
       opacity: 1;
+      overflow: visible;
     }
 
     100% {
       bottom: 160px;
+      overflow: visible;
     }
   }
 
