@@ -25,10 +25,9 @@ const DeleteCmtInput = ({ handleCloseModal, deleteCmt, _id }) => {
     resolver: yupResolver(schema),
   })
   const onSubmit = (data) => {
-
     const postData = async () => {
       try {
-        const res = await deleteDataApi(`/delete-wish/${_id}`, {
+        const res = await deleteDataApi(`/delete-wish/id`, {
           ...data,
           _id: _id,
         })

@@ -17,7 +17,7 @@ const PackageProduct = () => {
     asyncListProduct()
   }, [])
   return (
-    <div className='scale-90 '>
+    <div className='scale-90 text-sm md:text-lg'>
       <h2 className='text-4xl font-bold pb-10'>Các gói dịch vụ</h2>
       <div className='xs:grid xs:grid-cols-3 xs:gap-10'>
         {data?.map(function (item, index) {
