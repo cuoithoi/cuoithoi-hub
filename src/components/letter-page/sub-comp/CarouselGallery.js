@@ -3,39 +3,55 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loa
 import { Carousel } from 'react-responsive-carousel'
 import heartIcon from '@/assets/svg/letter-heart.svg'
 import heartIconFill from '@/assets/svg/letter-heart-fill.svg'
-const CarouselGallery = ({ index, album }) => {
-  const randomNumber = (number) => {
-    return Math.floor(Math.random() * number)
-  }
+const CarouselGallery = ({ index, album, handleLikeImage }) => {
   return (
-    <div className='carousel-gallery-container layout-mw'>
+    <div className='layout-mw gallery-section relative'>
+      {/* <div
+        className='absolute bottom-8 right-2 w-10 h-6 flex items-center justify-end cursor-pointer rounded-md z-50  bg-bg-appear'
+        style={{ backgroundColor: 'rgba(0,0,0,0.2)' }}
+      >
+        <span style={{ color: 'white' }} className='mr-1'>
+          {album[index].totalLike}
+        </span>
+        <img
+          src={album[index].totalLike === 0 ? heartIcon : heartIconFill}
+          alt='heart icon'
+          className='w-6 h-6 '
+          onClick={() => handleLikeImage(index, album[index]._id)}
+        />
+      </div> */}
       <Carousel
-        showArrows={true}
+        showArrows={false}
         infiniteLoop={true}
         swipeable={true}
         selectedItem={index}
         dynamicHeight={true}
-        showIndicators={true}
+        showIndicators={false}
         showStatus={false}
-        className='casourel'
+        showThumbs={false}
       >
-        {album.map((image, index) => {
+        {album?.map((image, index) => {
           return (
-            <div key={index} className='gallery-image mb-3 relative'>
-              <img src={image} alt='image gallery' />
-              <div
+            <div key={index} className='mb-3 relative'>
+              <img
+                src={image.url}
+                alt='image gallery'
+                className='mb-3 relative'
+              />
+              {/* <div
                 className='absolute bottom-8 right-8 w-12 h-6 flex items-center justify-end cursor-pointer rounded-md '
                 style={{ backgroundColor: 'rgba(0,0,0,0.2)' }}
               >
                 <span style={{ color: 'white' }} className='mr-1'>
-                  {randomNumber(16)}
+                  {image.totalLike}
                 </span>
                 <img
-                  src={randomNumber(2) === 0 ? heartIcon : heartIconFill}
+                  src={image.totalLike === 0 ? heartIcon : heartIconFill}
                   alt='heart icon'
                   className='w-6 h-6'
+                  handleLikeImage={() => handleLikeImage(index, image._id)}
                 />
-              </div>
+              </div> */}
             </div>
           )
         })}

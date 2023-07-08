@@ -64,7 +64,7 @@ const Languages = {
     expire: 'Hết hạn',
     dowloadTc: 'Tải thiệp cưới',
     dowloadClient: 'Tải danh sách khách',
-    checkGuest: 'Kiểm tra khách mời',
+    checkGuest: 'Lời chúc',
     delete: 'Xoá thiệp',
     edit: 'Chỉnh sửa',
     invitationTemplate: 'Lời mời mẫu',
@@ -120,7 +120,7 @@ const Languages = {
     draffversion: 'Bản nháp',
     autoDelete: '(Tự động xoá sau 24 ngày)',
     onlyDate: '(Còn 30 ngày)',
-    complete: 'Hoàn thành',
+    complete: 'Đã thanh toán',
     notrushpay: 'Đừng vội thanh toán!',
     freeDraft: 'Hãy tạo bản nháp miễn phí.',
     beauToday:
@@ -184,8 +184,8 @@ const Languages = {
     warnning: 'Lưu ý',
     contentWarnning: 'Nội dung lưu ý',
     informationBanking: 'thông tin ngân hàng',
-    accountHolder: 'Chủ tài khoản',
-    serinumber: 'Số tài khoản',
+    accountHolder: 'chủ tài khoản',
+    serinumber: 'số tài khoản',
     qrcode: 'Tải lên QR Code',
     confirmAttend: 'Xác nhận tham dự ',
     useFeatureAttend: 'Bạn có muốn sử dụng tính năng Xác nhận tham dự không?',
@@ -195,7 +195,7 @@ const Languages = {
     useBanking: 'Bạn có muốn sử dụng tính năng Gửi chúc phúc không?',
     use: 'Sử dụng',
     attend: 'Tính năng',
-    enablevideo: 'Để thể hiện tình yêu của các bạn trong ngày trọng đại này, hãy gửi cho Cưới Thôi một video trên thiệp cưới của bạn nhé.',
+    enablevideo: 'Hãy gửi video của bạn cho Cưới Thôi và để biến khoảnh khắc quý giá đó thành một thiệp cưới độc đáo và ấn tượng.',
     enableAttend:
       'cho phép khách mời xác nhận có tham dự đám cưới hay không. Chỉ có cô dâu và chú rể xem được tình trạng tham dự và số liệu thống kê khách mời.',
     readChart:
@@ -254,7 +254,7 @@ const Languages = {
     accountGroom: 'Tài khoản nhà trai',
     accountBride: 'Tài khoản nhà gái',
     noFields: '(Không bắt buộc)',
-    coppyMaps: '*Sao chép liên kết địa điểm lễ cưới trên trang Google Maps',
+    coppyMaps: '*Sao chép liên kết địa điểm lễ cưới trên trang Google Maps và liên kết phải có thông số tọa độ',
     togetherCreate: 'Cùng tạo Thiệp Cưới cho ngày trọng đại của bạn nhé!'
   },
   errorMsg: {

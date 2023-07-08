@@ -8,36 +8,46 @@ const BankInfo = ({
   qrCode,
   qrCodeFatherLink,
   qrCodeMotherLink,
+  numberBank,
+  numberBankFather,
+  numberBankMother,
+  ownerBank,
+  ownerBankFather,
+  ownerBankMother,
   isGoneFather,
   isGoneMother,
   isBride,
 }) => {
   const data = [
     {
-      nameB: isBride ? 'Cô dâu' : 'Chú rể',
+      name: isBride ? 'Cô dâu' : 'Chú rể',
+      nameB: nameBank,
+      numberBank: numberBank,
+      ownerBank: ownerBank,
       qr: qrCode,
       isGone: false,
     },
     {
       name: 'Bố',
       nameB: nameBankOfFather,
+      numberBank: numberBankFather,
+      ownerBank: ownerBankFather,
       qr: qrCodeFatherLink,
       isGone: isGoneFather,
     },
     {
       name: 'Mẹ',
       nameB: nameBankOfMother,
+      numberBank: numberBankMother,
+      ownerBank: ownerBankMother,
       qr: qrCodeMotherLink,
       isGone: isGoneMother,
     },
   ]
   for (let i = data.length - 1; i >= 0; i--) {
-    console.log(data[i])
-    console.log(!data[i].qr, data[i].isGone)
     if (data[i].isGone || !data[i].qr) {
       data.splice(i, 1)
     }
-    console.log(data)
   }
   // console.log(data)
   const renderBankInfoFather = (name, bankName, qrLink, isGone) => {
@@ -60,7 +70,7 @@ const BankInfo = ({
       <div className=' text-left'>
         <Carousel
           showStatus={false}
-          showArrows={true}
+          showArrows={false}
           centerMode={true}
           showIndicators={true}
           swipeable
@@ -71,10 +81,25 @@ const BankInfo = ({
         >
           {data.map((item, index) => {
             return (
-              <div className=' text-left'>
+              <div className=' text-left' key={index}>
                 <h2 className=' text-left'>{item.name}</h2>
-                <p className='pr-4 text-sm'>{item.nameB}</p>
-                <img src={item.qr} alt='qrFather' />
+                <div className='bank_info_show'>
+                  <img src={item.qr} alt='qrFather' />
+                  <div className='content_info'>
+                    <div className='group_label'>
+                      <span>Ngân hàng</span>
+                      <p className='pr-4 text-sm'>{item.nameB}</p>
+                    </div>
+                    <div className='group_label'>
+                      <span>Chủ tài khoản</span>
+                      <p className='pr-4 text-sm'>{item.ownerBank}</p>
+                    </div>
+                    <div className='group_label'>
+                      <span>Số tài khoản</span>
+                      <p className='pr-4 text-sm'>{item.numberBank}</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             )
           })}

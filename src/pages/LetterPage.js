@@ -25,6 +25,7 @@ import { Alias, APi, config } from '@/commons/Constant.ts'
 import { getUserFromLocalStorage } from '@/utils/localStorage'
 import html2canvas from 'html2canvas'
 import { useBaseService } from '@/utils/BaseServices'
+import { Helmet } from 'react-helmet'
 
 const LetterPage = () => {
   const { id } = useParams()
@@ -78,6 +79,7 @@ const LetterPage = () => {
   }, [])
   if (isLoading) return
   const {
+    _id,
     album,
     contentOfInvitation,
     coverImage,
@@ -103,7 +105,6 @@ const LetterPage = () => {
     isPaid,
   } = letter
 
-
   const captureAndUpload = () => {
     setTimeout(() => {
       html2canvas(containerRef.current, {
@@ -118,11 +119,14 @@ const LetterPage = () => {
           // link.download = 'screenshot.png'
           // link.click()
 
-          const res = await post(APi.convertBase64, {
-            "_id": id,
-            "data": image
-          }, config)
-          console.log(res)
+          const res = await post(
+            APi.convertBase64,
+            {
+              _id: id,
+              data: image,
+            },
+            config
+          )
         })
         .catch((error) => {
           console.error('Lỗi khi chụp ảnh:', error)
@@ -151,9 +155,9 @@ const LetterPage = () => {
       </div>
     )
   }
-  console.log(letter)
   return (
     <div ref={containerRef} className={`letter-wrapper ${bgColor}`}>
+
       <div className={`letter-layout ${bgColor}`}>
         <SnowFall type={effectBackgroud.value} />
         <NavButton setIsNavOpen={setIsNavOpen} song={song} />
@@ -174,7 +178,7 @@ const LetterPage = () => {
           contentOfInvitation={contentOfInvitation}
           timeAndLocationOfWedding={timeAndLocationOfWedding}
         />
-        <Gallery1 album={album} />
+        <Gallery1 album={album} id={_id} />
         {isUseVideo && <YoutubeVideo videoLink={videoLink} />}
         <TimeLocation
           timeAndLocationOfWedding={timeAndLocationOfWedding}

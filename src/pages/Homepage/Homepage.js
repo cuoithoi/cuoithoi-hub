@@ -32,6 +32,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import Slider1 from '@/assets/home-image/m_img2-min.jpg';
 import Slider2 from '@/assets/home-image/m_img3-min.jpg';
 import Slider3 from '@/assets/home-image/m_img4-min.jpg';
+import { Helmet } from "react-helmet";
 
 
 const fadeImages = [
@@ -153,7 +154,7 @@ const Homepage = () => {
                 {fadeImages.map((fadeImage, index) => (
                   <div className="each-fade" key={index} style={{ height: "100vh" }}>
                     <div className="image-container" >
-                      <img src={fadeImage.url} />
+                      <img src={fadeImage.url} alt='slider' />
                     </div>
                   </div>
                 ))}

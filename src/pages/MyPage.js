@@ -79,7 +79,7 @@ const Mypage = () => {
     }
 
     // }
-  }, [config, get, user])
+  }, [])
 
   useEffect(() => {
 
@@ -97,7 +97,7 @@ const Mypage = () => {
     }
     asyncLimit()
 
-  }, [config, get, user])
+  }, [])
 
   const navigateLetterpage = () => {
     if (user?.token) {
@@ -171,7 +171,7 @@ const Mypage = () => {
         onSuccessPress={onPressLogin}
       />
     )
-  }, [onPressLogin, renderContentModal])
+  }, [renderContentModal])
 
   const renderTable = useMemo(() => {
     return (
@@ -208,7 +208,7 @@ const Mypage = () => {
         refModal.current?.showModal()
       }
     },
-    [navigate]
+    [setCheckParams]
   )
 
   const onChangeSeeBefore = useCallback(
@@ -220,7 +220,7 @@ const Mypage = () => {
         refModal.current?.showModal()
       }
     },
-    [navigate]
+    [setCheckParams]
   )
 
   const renderStatus = useCallback((value) => {
@@ -270,7 +270,7 @@ const Mypage = () => {
       await del(APi.deleteInvitation, { _id: id })
       window.location.reload()
     }
-  }, [del])
+  }, [])
 
   const onChangeDowloadClient = useCallback(async (id) => {
     const accessToken = getLocalAccessToken()
@@ -326,7 +326,7 @@ const Mypage = () => {
     toast.success('Link đã được sao chép, Bạn có thể gửi cho người thân và bạn bè', {
       autoClose: 1000,
     })
-    navigator.clipboard.writeText(coppyLink + '' + id)
+    navigator.clipboard.writeText(coppyLink + '/' + id)
   })
 
   return (

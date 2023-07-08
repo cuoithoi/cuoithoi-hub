@@ -4,9 +4,9 @@ import phoneSecond from '../../../assets/home-image/phone-second.svg'
 
 const InforPhone = ({ title, name, phoneNumber, phoneColor, nameSizeLg }) => {
   return (
-    <div className='text-center w-50' style={{width: '50%'}}>
-      <p>{title}</p>
-      <h2 className={`${nameSizeLg ? 'text-2xl' : 'text-base'}`}>{name}</h2>
+    <div className='text-center w-50 dashed-top-bottom' style={{width: '50%'}}>
+      <p className='title_tooltipInfo'>{title}</p>
+      <h2 className={`${nameSizeLg ? 'text-2xl' : 'text-base'} `}>{name}</h2>
       <a href='tel:+84985145293' className='href-call text-center pb-3'>
         <div className='phone-container'>
           <img

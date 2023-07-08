@@ -62,15 +62,18 @@ const Response = () => {
           ...data,
           isGuestSide: guestSide,
           numberPeopleParticipate: numPeopleAttend,
-          invitationsId: '',
+          invitationsId: id,
         })
         if (resp.errorCode === 0) {
           toast.success('Gửi phản hồi thành công. Sau 10 giây mới có thể gửi lại')
           setTimeout(() => {
             setDisable(false)
           }, 10000);
+        } else {
+          setTimeout(() => {
+            setDisable(false)
+          }, 10000);
         }
-
       } catch (error) {
         setDisable(false)
         toast.success(error.message)

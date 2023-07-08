@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import TitleSection from './sub-comp/TitleSection'
 import heartIcon from '@/assets/svg/letter-heart.svg'
 import heartIconFill from '@/assets/svg/letter-heart-fill.svg'
@@ -6,20 +6,65 @@ import { Carousel } from 'react-responsive-carousel'
 import styles from 'react-responsive-carousel/lib/styles/carousel.min.css'
 import Popup from '../modal/Popup'
 import CarouselGallery from './sub-comp/CarouselGallery'
-const Gallery = ({ album }) => {
+import { api } from '@/utils/axios'
+import { toast } from 'react-toastify'
+import LazyLoad from 'react-lazyload'
+import FsLightbox from 'fslightbox-react'
+
+const Gallery = ({ id }) => {
   const modalRef = useRef()
+  const [isLoading, setIsLoading] = useState(true)
+  const [album, setAlbum] = useState([])
   const [selectedItem, setSelectedItem] = useState(0)
+  const [open, setOpen] = useState(false);
+  const [urlLightbox, setUrlLightbox] = useState('');
+
   const randomNumber = (number) => {
     return Math.floor(Math.random() * number)
   }
+  useEffect(() => {
+    const getDataImage = async () => {
+      setIsLoading(true)
+      const resp = await api.get(`list-images?invitationId=${id}`)
+      setAlbum(resp.data.data)
+      setIsLoading(false)
+    }
+    getDataImage()
+  }, [])
+  const handleLikeImageApi = async (_id) => {
+    const resp = await api.post('/like-image', {
+      _id: _id,
+      like: true,
+    })
+    return resp
+  }
+  const showLightbox = useCallback((url) => {
+    setOpen(!open)
+    setUrlLightbox(url)
+  }, [open])
 
+  const handleLikeImage = async (index, _id) => {
+    try {
+      await api.post('/like-image', {
+        _id: _id,
+        like: true,
+      })
+      const newAlbum = [...album]
+      newAlbum[index].totalLike = newAlbum[index].totalLike + 1
+      setAlbum(newAlbum)
+    } catch (error) {
+      toast.error('something went wrong, maybe your network is overloaded')
+    }
+  }
+
+  if (isLoading) return
   return (
     <div
       className='py-10 px-3 section-mb layout-mw gallery-section'
       id='gallery'
     >
       <TitleSection title='ALBUM' />
-      <div>
+      <div className=''>
         <Popup
           ref={modalRef}
           content={
@@ -27,52 +72,60 @@ const Gallery = ({ album }) => {
               index={selectedItem}
               setIndex={setSelectedItem}
               album={album}
+              handleLikeImage={handleLikeImage}
             />
           }
+          maxWidth={1000}
         />
-
-        {/* <div
-          className='gallery-image mb-3'
-          onClick={() => {
-            setIsOpen(true)
-            setModalContent(<CarouselGallery index={0} setIndex={setIndex} />)
-            setIndex(0)
-          }}
-        >
-          <img src={galleryImage[0].imageUrl} alt='image gallery' />
-        </div> */}
-        <Carousel
-          showStatus={false}
-          showIndicators={false}
-          showThumbs={false}
-          selectedItem={selectedItem}
-          onClickItem={() => modalRef.current?.showModal()}
-        >
-          {album.map((image, index) => {
-            return (
-              <div key={index} className='gallery-image mb-3 relative'>
-                <img src={image} alt='image gallery' />
-                <div
-                  className='absolute bottom-8 right-8 w-12 h-6 flex items-center justify-end cursor-pointer rounded-md '
-                  style={{ backgroundColor: 'rgba(0,0,0,0.2)' }}
-                >
-                  <span style={{ color: 'white' }} className='mr-1'>
-                    {randomNumber(16)}
-                  </span>
-                  <img
-                    src={randomNumber(2) === 0 ? heartIcon : heartIconFill}
-                    alt='heart icon'
-                    className='w-6 h-6'
-                  />
-                </div>
-              </div>
-            )
-          })}
-        </Carousel>
-
+        <div className='relative'>
+          <div
+            className='absolute bottom-8 right-2 w-10 h-6 flex items-center justify-end cursor-pointer rounded-md z-50  bg-bg-appear'
+            style={{ backgroundColor: 'rgba(0,0,0,0.2)' }}
+          >
+            <span style={{ color: 'white' }} className='mr-1'>
+              {album[selectedItem].totalLike}
+            </span>
+            <LazyLoad threshold={0.95}>
+              <img
+                src={
+                  album[selectedItem].totalLike === 0
+                    ? heartIcon
+                    : heartIconFill
+                }
+                alt='heart icon'
+                className='w-6 h-6 fill-icon'
+                onClick={() =>
+                  handleLikeImage(selectedItem, album[selectedItem]._id)
+                }
+              />
+            </LazyLoad>
+          </div>
+          <Carousel
+            showStatus={false}
+            showIndicators={false}
+            showThumbs={false}
+            selectedItem={selectedItem}
+            dynamicHeight={false}
+          >
+            {album?.map((image, index) => {
+              return (
+                <LazyLoad threshold={0.95} height='100%' key={index}>
+                  <div className='gallery-image relative' onClick={() => showLightbox(image.url)} >
+                    <img src={image.url} alt='image gallery' />
+                  </div>
+                </LazyLoad>
+              )
+            })}
+          </Carousel>
+        </div>
+        {
+          <FsLightbox
+            toggler={open}
+            sources={[urlLightbox]}
+          />
+        }
         <ul className=' gallery-container'>
           {album.map((image, index) => {
-            const heartRandom = Math.floor(Math.random() * 2)
             return (
               <li
                 key={index}
@@ -80,21 +133,22 @@ const Gallery = ({ album }) => {
                 onClick={() => setSelectedItem(index)}
               >
                 <div className='img-container'>
-                  <img src={image} alt='image gallery' />
+                  <img src={image.url} alt='image gallery' />
                 </div>
-                <div
+                {/* <div
                   className='absolute bottom-2 right-2 w-8 h-6 flex items-center justify-end cursor-pointer rounded-md  bg-bg-appear'
                   style={{ backgroundColor: 'rgba(0,0,0,0.2)' }}
                 >
                   <span style={{ color: 'white' }} className='mr-1'>
-                    {randomNumber(16)}
+                    {image.totalLike}
                   </span>
                   <img
-                    src={randomNumber(2) === 0 ? heartIcon : heartIconFill}
+                    src={image.totalLike === 0 ? heartIcon : heartIconFill}
                     alt='heart icon'
-                    className='w-4 h-4'
+                    className='w-4 h-4 fill-icon'
+                    onClick={() => handleLikeImage(index, image._id)}
                   />
-                </div>
+                </div> */}
               </li>
             )
           })}

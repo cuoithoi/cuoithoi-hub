@@ -3,7 +3,7 @@ import React, { useCallback, useState } from 'react'
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
 
 export const Panel = (props) => {
-    const { title, children, valiOpen, date, noFields } = props;
+    const { title, children, valiOpen, date, noFields, icon, style, textNofields } = props;
 
     const [open, setOpen] = useState(true)
 
@@ -15,8 +15,9 @@ export const Panel = (props) => {
         <div className={`accordion ${valiOpen == false || !open ? 'ishow' : 'isclose'}`}>
             <div className="panel multi-collapse" onClick={handleChange}>
                 <div className='card_body'>
-                    <h2 className='collapse-child-title'>
+                    <h2 className={`collapse-child-title ${style}`}>
                         <div className='right_title_panel'>
+
                             {
                                 date && <span className='date'>
                                     {date}
@@ -25,11 +26,14 @@ export const Panel = (props) => {
                             {
                                 !open ? <FaAngleUp /> : <FaAngleDown />
                             }
+                            {
+                                icon && <span className='text-center' style={{ display: 'inline-block', fontSize: 14 }}>{icon}</span>
+                            }
                         </div>
                         {title}
                         {
                             noFields && <span className='no_fields'>
-                                {Languages.text.noFields}
+                                {textNofields || Languages.text.noFields}
                             </span>
                         }
                     </h2>

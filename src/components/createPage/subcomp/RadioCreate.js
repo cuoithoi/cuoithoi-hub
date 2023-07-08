@@ -1,9 +1,7 @@
 
 import React from 'react'
 import { RadioButton } from '@/components/RadioButton'
-const RadioCreate = ({ id, label, value }) => {
 
-import { RadioButton } from '@/components/RadioButton'
 const RadioCreate = ({ id, label, value }) => {
   const [radioValue, setRadioValue] = useState('')
   const radioChangeHandler = (e) => {

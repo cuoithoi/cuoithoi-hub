@@ -3,7 +3,7 @@ import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo
 import Languages from '@/commons/Languages'
 import { SelectWarningTemplate, fiedlsCreatePage } from "@/commons/FieldsDataObj";
 import { BUTTON_STYLES, CheckParams, Convert, EventOfProgram, INPUT_FIELDS, itemLocal } from "@/commons/Constant.ts";
-import { FaLink } from "react-icons/fa";
+import { FaClock, FaLink, FaMicrophone } from "react-icons/fa";
 import { Panel } from "@/components/panel";
 import FormValidate from "@/utils/FormValidate";
 import Popup from "@/components/modal/Popup";
@@ -12,6 +12,7 @@ import { MyTextArea } from "@/components/textarea";
 import { Button } from "@/components/button";
 import { getItemFromLocalStorage } from "@/utils/localStorage";
 import Ic_Edit from '@/assets/home-image/Ic_createOutline.png'
+import { AiFillVideoCamera } from "react-icons/ai";
 
 const VideoandEvent = forwardRef(({ }, ref) => {
 
@@ -377,7 +378,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
     return (
 
         <>
-            <Panel noFields={true} title={Languages.text.video} valiOpen={openPanel}>
+            <Panel noFields={true} title={Languages.text.video} valiOpen={openPanel} icon={'🎥'} style={'panel_icon_style'}>
                 <div className='sec_panel_use_feature_attend fullwidth_input_colum'>
                     <div className='title'>
                         {Languages.text.useFeatureVideo}
@@ -407,7 +408,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
                 </div>
             </Panel>
 
-            <Panel noFields={true} title={Languages.text.weddingProgram} valiOpen={openPanel}>
+            <Panel noFields={true} title={Languages.text.weddingProgram} valiOpen={openPanel} icon={'🎤'} style={'panel_icon_style'}>
                 <div className='program_wedding'>
                     <div className='title'>
                         {Languages.text.useFeatureEvent}
@@ -427,7 +428,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
                             {renderInput(refEdit1, '', Languages.text.welcomeGuest, EventOfProgram.eventOfProgramEditOne, 'text', 200, false, '', blockEvent1 && 'disable', value.eventOfProgram.eventOfProgramEditOne)}
                         </div>
                         <div className='half_row_hor_input'>
-                            {renderInput(refTimeToWellcome, '', '', EventOfProgram.timeToWellcome, 'time', 200, false, '', '', value.eventOfProgram.timeToWellcome, blockEvent)}
+                            {renderInput(refTimeToWellcome, '', '', EventOfProgram.timeToWellcome, 'time', 200, true, <FaClock />, '', value.eventOfProgram.timeToWellcome, blockEvent)}
                         </div>
                         <div className="ic_ceateoutline" onClick={() => onChangeBlockEvent('event1')}>
                             <img src={Ic_Edit} alt="Ic_Edit" />
@@ -439,7 +440,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
                             {renderInput(refEdit2, '', Languages.text.celebrate, EventOfProgram.eventOfProgramEditTwo, 'text', 200, false, '', blockEvent2 && 'disable', value.eventOfProgram.eventOfProgramEditTwo)}
                         </div>
                         <div className='half_row_hor_input'>
-                            {renderInput(refTimeToCelebrate, '', '', EventOfProgram.timeToCelebrate, 'time', 200, false, '', '', value.eventOfProgram.timeToCelebrate, blockEvent)}
+                            {renderInput(refTimeToCelebrate, '', '', EventOfProgram.timeToCelebrate, 'time', 200, true, <FaClock />, '', value.eventOfProgram.timeToCelebrate, blockEvent)}
                         </div>
                         <div className="ic_ceateoutline" onClick={() => onChangeBlockEvent('event2')}>
                             <img src={Ic_Edit} alt="Ic_Edit" />
@@ -451,7 +452,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
                             {renderInput(refEdit3, '', Languages.text.dinner, EventOfProgram.eventOfProgramEditThree, 'text', 200, false, '', blockEvent3 && 'disable', value.eventOfProgram.eventOfProgramEditThree)}
                         </div>
                         <div className='half_row_hor_input'>
-                            {renderInput(refTimeToDinner, '', '', EventOfProgram.timeToDinner, 'time', 200, false, '', '', value.eventOfProgram.timeToDinner, blockEvent)}
+                            {renderInput(refTimeToDinner, '', '', EventOfProgram.timeToDinner, 'time', 200, true, <FaClock />, '', value.eventOfProgram.timeToDinner, blockEvent)}
                         </div>
                         <div className="ic_ceateoutline" onClick={() => onChangeBlockEvent('event3')}>
                             <img src={Ic_Edit} alt="Ic_Edit" />
@@ -463,7 +464,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
                             {renderInput(refEdit4, '', Languages.text.music, EventOfProgram.eventOfProgramEditFour, 'text', 200, false, '', blockEvent4 && 'disable', value.eventOfProgram.eventOfProgramEditFour)}
                         </div>
                         <div className='half_row_hor_input'>
-                            {renderInput(refTimeToMusic, '', '', EventOfProgram.timeToMusic, 'time', 200, false, '', '', value.eventOfProgram.timeToMusic, blockEvent)}
+                            {renderInput(refTimeToMusic, '', '', EventOfProgram.timeToMusic, 'time', 200, true, <FaClock />, '', value.eventOfProgram.timeToMusic, blockEvent)}
                         </div>
                         <div className="ic_ceateoutline" onClick={() => onChangeBlockEvent('event4')}>
                             <img src={Ic_Edit} alt="Ic_Edit" />
@@ -473,7 +474,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
                 </div>
             </Panel>
 
-            <Panel title={Languages.text.warnning} valiOpen={openPanel}>
+            <Panel title={Languages.text.warnning} valiOpen={openPanel} noFields={true} icon={'❗️'} style={'panel_icon_style'}>
                 <div className='fullwidth_input_colum'>
                     <div className='single_hor_input'>
                         <MyTextArea

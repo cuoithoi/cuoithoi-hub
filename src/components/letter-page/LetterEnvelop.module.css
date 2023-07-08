@@ -92,6 +92,7 @@
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   padding: 10px 10px;
   border-radius: 20px;
+  overflow: hidden;
 }
 
 .envelope>.letter>.text::after {
@@ -109,13 +110,14 @@
   text-align: left;
   font-size: 10px;
   position: relative;
+  height: 100%;
 }
 
 .envelope>.letter>.text>img {
   width: 100%;
   border-radius: 20px;
-  height: 364px;
   object-fit: cover;
+  height: 100%;
 }
 
 .envelope>.letter>.text>P {
@@ -248,7 +250,7 @@
 
 .heart {
   opacity: 1;
-  transition: ease-in 20s;
+  transition: linear 1s;
 }
 
 .a1 {
@@ -370,6 +372,36 @@
   }
 }
 
+@media (max-width: 768px) {
+  @keyframes slideUp {
+    0% {
+      opacity: 0.5;
+    }
+
+    30% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0;
+      top: 20%;
+    }
+
+    60% {
+      opacity: 0;
+      top: 10%;
+    }
+
+    70%,
+    80%,
+    90%,
+    100% {
+      opacity: 0;
+      top: 200px;
+    }
+  }
+}
+
 @keyframes sideSway {
   0% {
     margin-left: 10px;
@@ -481,12 +513,14 @@
   }
 
   40% {
-    bottom: 190px;
+    bottom: 230px;
     opacity: 1;
+    overflow: visible;
   }
 
   100% {
-    bottom: 190px;
+    bottom: 230px;
+    overflow: visible;
   }
 }
 
@@ -496,11 +530,49 @@
   }
 
   70% {
-    bottom: 80px;
+    bottom: 230px;
+    opacity: 1;
+    overflow: visible;
   }
 
   100% {
-    bottom: 80px;
+    bottom: 230px;
+    overflow: visible;
+  }
+}
+
+@media (max-width: 991px) {
+  @keyframes uptotop {
+    0% {
+      bottom: 0;
+      opacity: 1;
+    }
+
+    40% {
+      bottom: 160px;
+      opacity: 1;
+      overflow: visible;
+    }
+
+    100% {
+      bottom: 160px;
+      overflow: visible;
+    }
+  }
+
+  @-webkit-keyframes uptotop {
+    0% {
+      bottom: 0;
+    }
+
+    70% {
+      bottom: 200px;
+      opacity: 1;
+    }
+
+    100% {
+      bottom: 200px;
+    }
   }
 }
 
@@ -508,6 +580,7 @@
   0% {
     top: 300px
   }
+
   100% {
     top: 0;
   }
@@ -517,6 +590,7 @@
   0% {
     top: 300px
   }
+
   100% {
     top: 0;
   }
@@ -529,5 +603,47 @@
 
   100% {
     opacity: 0;
+  }
+}
+
+@media (max-width: 991px) {
+  .envelopeWrapper {
+    padding: 0 15px;
+    top: 100px;
+  }
+
+  .envelopeWrapper>.envelope {
+    position: relative;
+    width: auto;
+  }
+
+  .shadow_letter {
+    width: 230px;
+    transform: translate3d(0px, 44px, 0);
+  }
+
+  .signIconRotate {
+    position: relative;
+    height: 150px;
+  }
+
+  .signIconRotate_bgLogo {
+    bottom: 0;
+  }
+
+  .signIconRotate_Logo {
+    transform: unset;
+    bottom: 0;
+    top: 50px;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .shadow_letter {
+    width: 155px;
+    transform: translate3d(0px, 26px, 0);
   }
 }

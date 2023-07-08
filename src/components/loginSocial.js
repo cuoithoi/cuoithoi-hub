@@ -58,6 +58,35 @@ const LoginSocial = () => {
     }
   }
 
+  const responseFacebook = async (response) => {
+
+    const dataUpdate = {
+      "googleId": response?.id,
+      "username": response?.name,
+      "email": response?.email
+    }
+
+    const res = await post(APi.loginWithGoogle, dataUpdate)
+
+    if (res.errorCode === 0) {
+
+      addUserToLocalStorage(res.data)
+
+      toast.warning('Đang liên kết', {
+        autoClose: 1000,
+      })
+
+      setTimeout(() => {
+        toast.success('Liên kết thành công... Đang chuyển hướng')
+      }, 2000);
+
+      setTimeout(() => {
+        window.location.reload()
+        navigate(Alias.mypage)
+      }, 4000);
+    }
+  }
+
   return (
     <div className='otherLoginSocial'>
       <div className='titleOrther'>
@@ -79,15 +108,11 @@ const LoginSocial = () => {
 
       <FacebookLogin
         appId="6234250993358177"
-        onSuccess={(response) => {
-          console.log('Login Success!', response.profileObj);
-        }}
+        onSuccess={responseFacebook}
         onFail={(error) => {
           console.log('Login Failed!', error);
         }}
-        onProfileSuccess={(response) => {
-          console.log('Get Profile Success!', response);
-        }}
+        onProfileSuccess={responseFacebook}
       >
         <Button
           label={Languages.inputText.continueWithFB}

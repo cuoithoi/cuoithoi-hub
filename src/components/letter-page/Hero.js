@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import homeMain from '../../assets/home-image/home-main.png'
 import { AnimationOnScroll } from 'react-animation-on-scroll'
 import { formatDayHero } from '@/utils/helpers'
@@ -8,6 +8,7 @@ import waveGrayBg from '@/assets/home-image/wave-gray.png'
 import heartGray from '@/assets/home-image/heart-gray.png'
 import noneGray from '@/assets/home-image/none-gray.png'
 import lightGray from '@/assets/home-image/light-gray.png'
+import LazyLoad from 'react-lazyload'
 const Hero = ({
   effectImage,
   manfirstName,
@@ -17,6 +18,15 @@ const Hero = ({
   coverImage,
   timeAndLocationOfWedding,
 }) => {
+
+  const [url, setUrl] = useState('')
+
+  useEffect(() => {
+
+    setUrl(coverImage)
+
+  }, [coverImage])
+
   const renderEffectImage = () => {
     let img
     if (effectImage === 'none') img = noneGray
@@ -25,33 +35,36 @@ const Hero = ({
     if (effectImage === 'Wave') img = waveGrayBg
     return img
   }
+
   return (
-    <div
-      className='text-center  relative section-mb layout-mw bg-no-repeat bg-center bg-contain'
-      id='hero'
-      style={{ backgroundImage: `url(${coverImage})` }}
-    >
+    <LazyLoad height={325} offset={0}>
       <div
-        className='bg-no-repeat bg-center bg-cover py-20'
-        style={{ backgroundImage: `url(${renderEffectImage()})` }}
+        className='text-center  relative section-mb layout-mw bg-no-repeat bg-center bg-contain'
+        id='hero'
+        style={url ? { backgroundImage: `url('${url}')` } : undefined}
       >
-        <h2 className='text-main'>Thân mời tới dự bữa tiệc</h2>
-        <h1 className='pb-96'>{`${manName} & ${womanName}`}</h1>
-        <div className='flex justify-center pt-3 w-full'>
-          <img src={''} alt='' className='w-full' />
-        </div>
-        <h1 className='wind-song big-size text-9xl pt-20'>
-          {timeAndLocationOfWedding.dateOfEventWedding &&
-            formatDayHero(timeAndLocationOfWedding.dateOfEventWedding)}
-        </h1>
-        <div>
-          <h1>
-            SAVE<span className='wind-song text-main text-2xl'>the</span>DATE
+        <div
+          className='bg-no-repeat bg-center bg-cover py-20'
+          style={{ backgroundImage: `url(${renderEffectImage()})` }}
+        >
+          <h2 className='text-main'>Thân mời tới dự bữa tiệc</h2>
+          <h1 className='pb-96'>{`${manName} & ${womanName}`}</h1>
+          <div className='flex justify-center pt-3 w-full'>
+            <img src={''} alt='' className='w-full' />
+          </div>
+          <h1 className='wind-song big-size text-9xl pt-20' style={effectImage === 'Heart Frame' ? { paddingTop: '12rem' } : undefined}>
+            {timeAndLocationOfWedding.dateOfEventWedding &&
+              formatDayHero(timeAndLocationOfWedding.dateOfEventWedding)}
           </h1>
+          <div>
+            <h1>
+              SAVE<span className='wind-song text-main text-2xl'>the</span>DATE
+            </h1>
+          </div>
         </div>
+        {/* <AudioPlay song={song} /> */}
       </div>
-      {/* <AudioPlay song={song} /> */}
-    </div>
+    </LazyLoad>
   )
 }
 

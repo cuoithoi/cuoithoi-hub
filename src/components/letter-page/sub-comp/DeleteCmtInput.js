@@ -25,10 +25,9 @@ const DeleteCmtInput = ({ handleCloseModal, deleteCmt, _id }) => {
     resolver: yupResolver(schema),
   })
   const onSubmit = (data) => {
-
     const postData = async () => {
       try {
-        const res = await deleteDataApi(`/delete-wish/${_id}`, {
+        const res = await deleteDataApi(`/delete-wish/id`, {
           ...data,
           _id: _id,
         })
@@ -36,6 +35,7 @@ const DeleteCmtInput = ({ handleCloseModal, deleteCmt, _id }) => {
         deleteCmt()
         handleCloseModal()
       } catch (error) {
+        console.log(error)
         toast.error('Xoá lời chúc không thành công, vui lòng thử lại')
       }
     }
@@ -57,6 +57,7 @@ const DeleteCmtInput = ({ handleCloseModal, deleteCmt, _id }) => {
         </div>
         <div className='flex w-full justify-center'>
           <Button
+            type='submit'
             label={'Xoá lời chúc'}
             buttonStyle={BUTTON_STYLES.PINK}
             textStyle={BUTTON_STYLES.WHITE}

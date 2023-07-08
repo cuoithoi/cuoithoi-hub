@@ -1002,10 +1002,14 @@ p {
   overflow: hidden;
   /* padding: 0 0.25rem; */
   margin: auto;
+  width: 100%;
+  height: 100%;
 }
 
 .gallery-image img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .gallery-container {
@@ -1036,7 +1040,7 @@ p {
 }
 
 .gallery-img .img-container img {
-  object-fit: contain;
+  object-fit: cover;
   width: 100%;
   height: 100%;
 }
@@ -1140,6 +1144,14 @@ p {
   font-weight: 700;
   font-size: 25px;
   color: var(--text-color-head);
+}
+
+.slide .lazyload-wrapper {
+  height: 100%;
+}
+
+.fill-icon {
+  filter: opacity(1) brightness(1) contrast(0.5);
 }
 
 .bottom-button-click {
@@ -1520,6 +1532,7 @@ p {
   font-family: var(--quick-sand-font-family);
   font-size: 14px;
 }
+
 
 @media (min-width: 640px) {
   table {
@@ -2596,6 +2609,14 @@ img {
   position: relative;
 }
 
+.collapse-child-title.panel_icon_style {
+  gap: 10px;
+}
+
+.collapse-child-title.panel_icon_style .right_title_panel {
+  gap: 10px;
+}
+
 .collapse-child-title .left {
   display: flex;
   align-items: center;
@@ -2606,6 +2627,7 @@ img {
   position: absolute;
   right: 10px;
   font-size: 24px;
+  text-transform: initial;
 }
 
 .collapse-child-title::-moz-selection {
@@ -2748,7 +2770,7 @@ input:disabled {
 }
 
 .NFT_child_bg {
-  border: 1.5x solid var(--bg-pink-color);
+  border: 1.5px solid var(--bg-pink-color);
   padding: 10px;
 }
 
@@ -2868,7 +2890,7 @@ input:disabled {
   font-family: var(--quick-sand-font-family);
 }
 
-.sec_panel_use_feature_attend .details_attend {
+.details_attend {
   background: var(--gray-color-2);
   padding: 30px;
   margin-bottom: 15px;
@@ -2976,23 +2998,27 @@ input:disabled {
 }
 
 .option_effect_bg .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map:first-child input:is([type='checkbox'], [type='radio']) {
-  background: url('../src/assets/home-image/IcNone.png');
+  background: url('../src/assets/home-image/IcNone.png') #F2F2F2;
 }
 
 .option_effect_bg .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map:nth-child(2) input:is([type='checkbox'], [type='radio']) {
-  background: url('../src/assets/home-image/IcHoadao.png');
+  background: url('../src/assets/home-image/IcHoadao.png') #F2F2F2;
 }
 
 .option_effect_bg .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map:nth-child(3) input:is([type='checkbox'], [type='radio']) {
-  background: url('../src/assets/home-image/IcLavang.png');
+  background: url('../src/assets/home-image/IcLavang.png') #F2F2F2;
 }
 
 .option_effect_bg .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map:nth-child(4) input:is([type='checkbox'], [type='radio']) {
-  background: url('../src/assets/home-image/IcBongtuyet.png');
+  background: url('../src/assets/home-image/IcBongtuyet.png') #F2F2F2;
 }
 
 .option_effect_bg .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map:last-child input:is([type='checkbox'], [type='radio']) {
-  background: url('../src/assets/home-image/IcKimtuyen.png');
+  background: url('../src/assets/home-image/IcKimtuyen.png') #F2F2F2;
+}
+
+.option_effect_bg .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map input:is([type='checkbox'], [type='radio']) {
+  background-size: contain !important;
 }
 
 .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map input:is([type='checkbox'], [type='radio']):hover {
@@ -3006,7 +3032,7 @@ input:disabled {
 
 .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map input:is([type='checkbox'], [type='radio']):checked {
   border: 2px solid var(--primary-Blue-color-400);
-  filter: brightness(1.2);
+  filter: brightness(1);
 }
 
 .option_type_container .option_title_head h5 {
@@ -3290,6 +3316,13 @@ input:disabled {
   font-size: 19px;
   font-weight: 600;
   font-size: 16px;
+  justify-content: center;
+  position: relative;
+}
+
+.show_type_display img {
+  position: absolute;
+  left: 0;
 }
 
 .name_show {
@@ -3314,6 +3347,7 @@ input:disabled {
   position: relative;
   padding-bottom: 10px;
   padding-top: 10px;
+  font-weight: 600;
 }
 
 .dashed-top-bottom:after {
@@ -3325,6 +3359,44 @@ input:disabled {
   left: 0;
   right: 0;
   margin: auto;
+}
+
+.title_tooltipInfo {
+  font-weight: 600;
+  color: var(--orange-color);
+}
+
+.bank_info_show {
+  display: block;
+  position: relative;
+}
+
+.bank_info_show .content_info {
+  display: block;
+  background: var(--gray-color-2);
+  border-radius: 10px;
+  padding: 10px;
+  font-family: var(--quick-sand-font-family);
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
+.bank_info_show .content_info span {
+  font-size: 13px;
+}
+
+.bank_info_show .content_info p {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.banking_happy_invite .carousel .slide {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.banking_happy_invite .carousel .slide.selected {
+  opacity: 1;
 }
 
 .checkbox {
@@ -3508,6 +3580,12 @@ input:disabled {
   .container {
     width: 970px;
   }
+
+  input[type="date"]+div>svg,
+  input[type="time"]+div>svg {
+    display: none;
+    -webkit-appearance: none;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -3529,6 +3607,21 @@ input:disabled {
 }
 
 @media (max-width: 991px) {
+
+  input[type="time"],
+  input[type="date"] {
+    width: 100%;
+    display: flex;
+    min-width: 95%;
+  }
+
+  input[type="date"]::-webkit-inner-spin-button,
+  input[type="date"]::-webkit-calendar-picker-indicator,
+  input[type="time"]::-webkit-inner-spin-button,
+  input[type="time"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+  }
 
   .header_editpage,
   .my_input_form_data_group {
@@ -3584,6 +3677,10 @@ input:disabled {
 
   .collapse-child-title .no_fields {
     font-size: 9px;
+  }
+
+  .slide-container img {
+    height: 100vh;
   }
 
   .savesetting_btn {
@@ -3701,6 +3798,19 @@ input:disabled {
 
   .choose_ser_another .box_head p {
     width: 100%;
+  }
+
+  .title_tooltipInfo {
+    font-size: 14px;
+  }
+
+  .dashed-top-bottom {
+    font-size: 14px;
+  }
+
+  .show_type_display img {
+    position: absolute;
+    top: -15px;
   }
 }
 
@@ -4509,14 +4619,6 @@ input:disabled {
     transform: translate3d(0, 0, 0);
     margin-top: 30px;
   }
-}
-
-/* fix bug gallery slider */
-.gallery-section .slide {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .comment-detail {
