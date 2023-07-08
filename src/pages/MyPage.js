@@ -326,7 +326,7 @@ const Mypage = () => {
     toast.success('Link đã được sao chép, Bạn có thể gửi cho người thân và bạn bè', {
       autoClose: 1000,
     })
-    navigator.clipboard.writeText(coppyLink + '/' + id)
+    navigator.clipboard.writeText(coppyLink + '' + id)
   })
 
   return (
