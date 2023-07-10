@@ -340,7 +340,6 @@ const CreatePage = () => {
           .then((response) => {
             values.album.push(response.data.data)
             setAlbumURL((prevAlbumURL) => [...prevAlbumURL, response.data.data])
-            console.log('values.album1', values.album)
           })
           .catch((error) => {
             toast.error(error)
