@@ -17,7 +17,6 @@ const Gallery = ({ id }) => {
   const [album, setAlbum] = useState([])
   const [selectedItem, setSelectedItem] = useState(0)
   const [open, setOpen] = useState(false);
-  const [urlLightbox, setUrlLightbox] = useState('');
 
   const randomNumber = (number) => {
     return Math.floor(Math.random() * number)
@@ -38,9 +37,8 @@ const Gallery = ({ id }) => {
     })
     return resp
   }
-  const showLightbox = useCallback((url) => {
+  const showLightbox = useCallback(() => {
     setOpen(!open)
-    setUrlLightbox(url)
   }, [open])
 
   const handleLikeImage = async (index, _id) => {
@@ -56,6 +54,8 @@ const Gallery = ({ id }) => {
       toast.error('something went wrong, maybe your network is overloaded')
     }
   }
+
+  const urls = album.map(item => item.url)
 
   if (isLoading) return
   return (
@@ -110,7 +110,7 @@ const Gallery = ({ id }) => {
             {album?.map((image, index) => {
               return (
                 <LazyLoad threshold={0.95} height='100%' key={index}>
-                  <div className='gallery-image relative' onClick={() => showLightbox(image.url)} >
+                  <div className='gallery-image relative' onClick={() => showLightbox()} >
                     <img src={image.url} alt='image gallery' />
                   </div>
                 </LazyLoad>
@@ -121,7 +121,8 @@ const Gallery = ({ id }) => {
         {
           <FsLightbox
             toggler={open}
-            sources={[urlLightbox]}
+            sources={urls}
+            sourceIndex={selectedItem}
           />
         }
         <ul className=' gallery-container'>

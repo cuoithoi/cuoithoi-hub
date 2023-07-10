@@ -45,17 +45,10 @@ function ChooseTypeBlock({
                 </div>
                 <div className='slide-track scroll-item-horizontal slide-group-item'>
 
-
                     {renderSection('Mẫu 35', 'Mùa hè kỉ niệm')}
                     {renderSection('Mẫu 35', 'Mùa hè kỉ niệm')}
                     {renderSection('Mẫu 35', 'Mùa hè kỉ niệm')}
                     {renderSection('Mẫu 35', 'Mùa hè kỉ niệm')}
-                    {renderSection('Mẫu 35', 'Mùa hè kỉ niệm')}
-                    {renderSection('Mẫu 35', 'Mùa hè kỉ niệm')}
-                    {renderSection('Mẫu 35', 'Mùa hè kỉ niệm')}
-                    {renderSection('Mẫu 35', 'Mùa hè kỉ niệm')}
-                    {renderSection('Mẫu 35', 'Mùa hè kỉ niệm')}
-
 
                 </div>
                 <div className='bottom-button-click center'>

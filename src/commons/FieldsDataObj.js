@@ -9,7 +9,7 @@ export const SelectInvitationTemplate = [
     id: 'invitation_two',
     name: 'invitation_two',
     value: 'invitation_two',
-    text: 'Người thương của <TÊN CÔ DÂU> <>TÊN CHÚ RỂ> ơi, cảm ơn vì đã có mặt trong lễ cưới tuyệt vời này nhé!'
+    text: 'Người thương của <TÊN CÔ DÂU> <TÊN CHÚ RỂ> ơi, cảm ơn vì đã có mặt trong lễ cưới tuyệt vời này nhé!'
   },
   ,
   {
@@ -25,7 +25,7 @@ export const SelectTimeTemplate = [
     id: 'timetemplate_one',
     name: 'timetemplate_one',
     value: 'timetemplate_one',
-    text: 'Người thương của <TÊN CÔ DÂU> <>TÊN CHÚ RỂ> ơi, cảm ơn vì đã có mặt trong lễ cưới tuyệt vời này nhé!'
+    text: 'Người thương của <TÊN CÔ DÂU> <TÊN CHÚ RỂ> ơi, cảm ơn vì đã có mặt trong lễ cưới tuyệt vời này nhé!'
   }
 ];
 
