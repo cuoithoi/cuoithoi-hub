@@ -58,6 +58,7 @@ const Mypage = () => {
         const response = await get(APi.listInvitation, config, {
           userId: user?.userId,
         })
+        console.log('response.data', response.data, typeof response.data)
         setListDataApi(response.data)
       } catch (error) {
         toast.warn('Hệ thống tải lại dữ liệu', {
@@ -336,6 +337,8 @@ const Mypage = () => {
         colorText={'var(--text-color-darkmode)'}
         borderColor={'var(--gray-color-2)'}
       />
+      {/* <iframe src="https://www.google.com/maps?q=596-2 Donghyeon-dong, Gongju-si, Chungcheongnam-do, South Korea&hl=es&z=14&amp;output=embed" width="100%" height="450" allowfullscreen="" loading="lazy"></iframe>
+      <a href='https://www.google.com/maps?q=596-2 Donghyeon-dong, Gongju-si, Chungcheongnam-do, South Korea'>link</a> */}
       <div className='wrapper_box_create'>
         {!user && (
           <div className='container mx-auto'>

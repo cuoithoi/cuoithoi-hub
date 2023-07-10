@@ -20,7 +20,7 @@ export const ImageUpload = forwardRef(
 
     const [checkUrlLocal, setCheckurlLocal] = useState(false);
 
-    const [albumList, setAlbumList] = useState(urlLocal ? [...urlLocal] : [] )
+    const [albumList, setAlbumList] = useState(urlLocal ? urlLocal : [])
 
     const maxNumber = maxnumber || 10;
 
@@ -127,7 +127,7 @@ export const ImageUpload = forwardRef(
                         <div className="image-item flex justify-center" >
                           <div
                             className="relative"
-                            style={{ height: height}}
+                            style={{ height: height }}
                             {...dragProps}
                           >
                             <div
@@ -140,7 +140,7 @@ export const ImageUpload = forwardRef(
                               src={image.data_url}
                               alt={'thumbs' + image.file?.size}
                               onClick={() => onImageUpdate(index)}
-                              style={{ height: height}}
+                              style={{ height: height }}
                             />
                           </div>
                         </div>
@@ -180,7 +180,7 @@ export const ImageUpload = forwardRef(
               <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                 <div
                   className="relative"
-                  style={{ height: height}}
+                  style={{ height: height }}
 
                 >
                   <div
@@ -193,7 +193,7 @@ export const ImageUpload = forwardRef(
                     src={urlLocal}
                     alt={'thumbs'}
 
-                    style={{ height: height}}
+                    style={{ height: height }}
                   />
                 </div></div>
               || isArray(urlLocal) && <> {

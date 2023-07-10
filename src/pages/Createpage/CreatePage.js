@@ -297,7 +297,6 @@ const CreatePage = () => {
   }
 
   const onChange = (imageList) => {
-    values.album = albumURL
     setImages(imageList)
     if (imageList.length > 0) {
       imageList.slice(-1).map(function (item) {
@@ -313,7 +312,6 @@ const CreatePage = () => {
   }
 
   const onChangeCoverImage = (imageList) => {
-    values.album = albumURL
     setImagesCover(imageList)
     if (imageList.length > 0) {
       imageList.slice(-1).map(function (item) {
@@ -330,13 +328,19 @@ const CreatePage = () => {
 
   const onChangeAlbum = (imageList) => {
     setAlbum(imageList)
-
+    values.album = []
+    setAlbumURL([])
+    if (itemLocal) {
+      values.album = itemLocal.album
+      setAlbumURL(itemLocal.album)
+    }
     if (imageList.length > 0) {
       imageList.forEach((imageUrl) => {
         uploadImage(imageUrl.file)
           .then((response) => {
             values.album.push(response.data.data)
             setAlbumURL((prevAlbumURL) => [...prevAlbumURL, response.data.data])
+            console.log('values.album1', values.album)
           })
           .catch((error) => {
             toast.error(error)
@@ -733,9 +737,8 @@ const CreatePage = () => {
             </div>
           </div>
           <div
-            className={`${
-              pointer ? 'double_input_row' : 'double_input_row disable'
-            }`}
+            className={`${pointer ? 'double_input_row' : 'double_input_row disable'
+              }`}
           >
             <div className='half_row_hor_input'>
               <form>
@@ -1006,7 +1009,7 @@ const CreatePage = () => {
                             itemLocal?.anotherProduct.find((items) =>
                               items.includes(item.name)
                             ) ===
-                            item.amount + ',' + item.name
+                              item.amount + ',' + item.name
                               ? true
                               : false
                           }
@@ -1358,7 +1361,6 @@ const CreatePage = () => {
   ])
 
   const onOpenSuccessConfirm = useCallback(() => {
-    console.log(values.note)
     try {
       if (
         imagesCoverURL.length === 0 ||
@@ -1691,7 +1693,7 @@ const CreatePage = () => {
         onSuccessPress={onPressHandleModal}
         maxWidth={
           checkParams === CheckParams.AFFTER ||
-          checkParams === CheckParams.SUCCESS_CREATE
+            checkParams === CheckParams.SUCCESS_CREATE
             ? Convert.W_400
             : Convert.W_800
         }
