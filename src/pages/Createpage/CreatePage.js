@@ -1122,186 +1122,186 @@ const CreatePage = () => {
 
   const onChangeSaveSetting = useCallback(async () => {
     const jsonData = {
-      userId: user?.userId,
-      coverImage: imagesCoverURL,
-      thumbnailImage: imagesURL,
-      effectImage: radioEffectImage,
-      informationOfGroom: {
-        firstName: values.informationOfGroom[0].firstName,
-        middleName: values.informationOfGroom[0].middleName,
-        name: values.informationOfGroom[0].name,
-        isOldBrotherGroom: values.informationOfBride[0].isOldBrotherGroom,
-        codingRegion: '84',
-        phoneNumberOfGroom: values.informationOfGroom[0].phoneNumberOfGroom,
-        firstFatherNameOfGroom:
+      "userId": user?.userId,
+      "coverImage": imagesCoverURL,
+      "thumbnailImage": imagesURL,
+      "effectImage": radioEffectImage,
+      "informationOfGroom": {
+        "firstName": values.informationOfGroom[0].firstName,
+        "middleName": values.informationOfGroom[0].middleName,
+        "name": values.informationOfGroom[0].name,
+        "isOldBrotherGroom": values.informationOfBride[0].isOldBrotherGroom,
+        "codingRegion": '84',
+        "phoneNumberOfGroom": values.informationOfGroom[0].phoneNumberOfGroom,
+        "firstFatherNameOfGroom":
           values.informationOfGroom[0].firstFatherNameOfGroom,
-        middleFatherNameOfGroom:
+        "middleFatherNameOfGroom":
           values.informationOfGroom[0].middleFatherNameOfGroom,
-        fatherNameOfGroom: values.informationOfGroom[0].fatherNameOfGroom,
-        phoneNumberOfFatherGroom:
+        "fatherNameOfGroom": values.informationOfGroom[0].fatherNameOfGroom,
+        "phoneNumberOfFatherGroom":
           values.informationOfGroom[0].phoneNumberOfFatherGroom,
-        isGoneFather: values.informationOfGroom[0].isGoneFather || false,
-        firstMotherNameOfGroom:
+        "isGoneFather": values.informationOfGroom[0].isGoneFather || false,
+        "firstMotherNameOfGroom":
           values.informationOfGroom[0].firstMotherNameOfGroom,
-        middleMotherNameOfGroom:
+        "middleMotherNameOfGroom":
           values.informationOfGroom[0].middleMotherNameOfGroom,
-        motherNameOfGroom: values.informationOfGroom[0].motherNameOfGroom,
-        phoneNumberOfMotherGroom:
+        "motherNameOfGroom": values.informationOfGroom[0].motherNameOfGroom,
+        "phoneNumberOfMotherGroom":
           values.informationOfGroom[0].phoneNumberOfMotherGroom,
-        isGoneMother: values.informationOfGroom[0].isGoneMother || false,
-        nameBankOfGroom: values.informationOfGroom[0].nameBankOfGroom,
-        ownerBankOfGroom: values.informationOfGroom[0].ownerBankOfGroom,
-        bankOfNumberGroom: values.informationOfGroom[0].bankOfNumberGroom,
-        qrCodeGroomLink: values.informationOfGroom[0].qrCodeGroomLink,
-        nameBankOfFatherGroom:
+        "isGoneMother": values.informationOfGroom[0].isGoneMother || false,
+        "nameBankOfGroom": values.informationOfGroom[0].nameBankOfGroom,
+        "ownerBankOfGroom": values.informationOfGroom[0].ownerBankOfGroom,
+        "bankOfNumberGroom": values.informationOfGroom[0].bankOfNumberGroom,
+        "qrCodeGroomLink": values.informationOfGroom[0].qrCodeGroomLink,
+        "nameBankOfFatherGroom":
           values.informationOfGroom[0].nameBankOfFatherGroom,
-        ownerBankOfFatherGroom:
+        "ownerBankOfFatherGroom":
           values.informationOfGroom[0].ownerBankOfFatherGroom,
-        bankOfNumberFatherGroom:
+        "bankOfNumberFatherGroom":
           values.informationOfGroom[0].bankOfNumberFatherGroom,
-        qrCodeFatherGroomLink:
+        "qrCodeFatherGroomLink":
           values.informationOfGroom[0].qrCodeFatherGroomLink,
-        nameBankOfMotherGroom:
+        "nameBankOfMotherGroom":
           values.informationOfGroom[0].nameBankOfMotherGroom,
-        ownerBankOfMotherGroom:
+        "ownerBankOfMotherGroom":
           values.informationOfGroom[0].ownerBankOfMotherGroom,
-        bankOfNumberMotherGroom:
+        "bankOfNumberMotherGroom":
           values.informationOfGroom[0].bankOfNumberMotherGroom,
-        qrCodeMotherGroomLink:
+        "qrCodeMotherGroomLink":
           values.informationOfGroom[0].qrCodeMotherGroomLink,
       },
-      informationOfBride: {
-        firstName: values.informationOfBride[0].firstName,
-        middleName: values.informationOfBride[0].middleName,
-        name: values.informationOfBride[0].name,
-        isOldBrotherBride:
+      "informationOfBride": {
+        "firstName": values.informationOfBride[0].firstName,
+        "middleName": values.informationOfBride[0].middleName,
+        "name": values.informationOfBride[0].name,
+        "isOldBrotherBride":
           values.informationOfBride[0].isOldBrotherBride || false,
-        codingRegion: '84',
-        phoneNumberOfBride: values.informationOfBride[0].phoneNumberOfBride,
-        firstFatherNameOfBride:
+        "codingRegion": '84',
+        "phoneNumberOfBride": values.informationOfBride[0].phoneNumberOfBride,
+        "firstFatherNameOfBride":
           values.informationOfBride[0].firstFatherNameOfBride,
-        middleFatherNameOfBride:
+        "middleFatherNameOfBride":
           values.informationOfBride[0].middleFatherNameOfBride,
-        fatherNameOfBride: values.informationOfBride[0].fatherNameOfBride,
-        phoneNumberOfFatherBride:
+        "fatherNameOfBride": values.informationOfBride[0].fatherNameOfBride,
+        "phoneNumberOfFatherBride":
           values.informationOfBride[0].phoneNumberOfFatherBride,
-        isGoneFatherBride:
+        "isGoneFatherBride":
           values.informationOfBride[0].isGoneFatherBride || false,
-        firstMotherNameOfBride:
+        "firstMotherNameOfBride":
           values.informationOfBride[0].firstMotherNameOfBride,
-        middleMotherNameOfBride:
+        "middleMotherNameOfBride":
           values.informationOfBride[0].middleMotherNameOfBride,
-        motherNameOfBride: values.informationOfBride[0].motherNameOfBride,
-        phoneNumberOfMotherBride:
+        "motherNameOfBride": values.informationOfBride[0].motherNameOfBride,
+        "phoneNumberOfMotherBride":
           values.informationOfBride[0].phoneNumberOfMotherBride,
-        isGoneMotherOfBride:
+        "isGoneMotherOfBride":
           values.informationOfBride[0].isGoneMotherOfBride || false,
-        nameBankOfBride: values.informationOfBride[0].nameBankOfBride,
-        ownerBankOfBride: values.informationOfBride[0].ownerBankOfBride,
-        bankOfNumberBride: values.informationOfBride[0].bankOfNumberBride,
-        qrCodeBrideLink: values.informationOfBride[0].qrCodeBrideLink,
-        nameBankOfFatherBride:
+        "nameBankOfBride": values.informationOfBride[0].nameBankOfBride,
+        "ownerBankOfBride": values.informationOfBride[0].ownerBankOfBride,
+        "bankOfNumberBride": values.informationOfBride[0].bankOfNumberBride,
+        "qrCodeBrideLink": values.informationOfBride[0].qrCodeBrideLink,
+        "nameBankOfFatherBride":
           values.informationOfBride[0].nameBankOfFatherBride,
-        ownerBankOfFatherBride:
+        "ownerBankOfFatherBride":
           values.informationOfBride[0].ownerBankOfFatherBride,
-        bankOfNumberFatherBride:
+        "bankOfNumberFatherBride":
           values.informationOfBride[0].bankOfNumberFatherBride,
-        qrCodeFatherBrideLink:
+        "qrCodeFatherBrideLink":
           values.informationOfBride[0].qrCodeFatherBrideLink,
-        nameBankOfMotherBride:
+        "nameBankOfMotherBride":
           values.informationOfBride[0].nameBankOfMotherBride,
-        ownerBankOfMotherBride:
+        "ownerBankOfMotherBride":
           values.informationOfBride[0].ownerBankOfMotherBride,
-        bankOfNumberMotherBride:
+        "bankOfNumberMotherBride":
           values.informationOfBride[0].bankOfNumberMotherBride,
-        qrCodeMotherBrideLink:
+        "qrCodeMotherBrideLink":
           values.informationOfBride[0].qrCodeMotherBrideLink,
       },
-      isDisplayGonePeople:
+      "isDisplayGonePeople":
         values.informationOfBride[0].isDisplayGonePeople || false,
-      contentOfInvitation: values.informationOfBride[0].contentOfInvitation,
-      timeAndLocationOfWedding: {
-        dateOfEventWedding: values.timeAndLocationOfWedding.dateOfEventWedding,
-        timeOfEventWedding: values.timeAndLocationOfWedding.timeOfEventWedding,
-        namelocationOfWedding:
+      "contentOfInvitation": values.informationOfBride[0].contentOfInvitation,
+      "timeAndLocationOfWedding": {
+        "dateOfEventWedding": values.timeAndLocationOfWedding.dateOfEventWedding,
+        "timeOfEventWedding": values.timeAndLocationOfWedding.timeOfEventWedding,
+        "namelocationOfWedding":
           values.timeAndLocationOfWedding.namelocationOfWedding,
-        locationOfWedding: values.timeAndLocationOfWedding.locationOfWedding,
-        mapDirectLink: values.timeAndLocationOfWedding.mapDirectLink,
-        isDisplayCountDown: values.timeAndLocationOfWedding.isDisplayCountDown,
-        contentOfCountDown: values.arraylist[0].contentOfCountDown,
+        "locationOfWedding": values.timeAndLocationOfWedding.locationOfWedding,
+        "mapDirectLink": values.timeAndLocationOfWedding.mapDirectLink,
+        "isDisplayCountDown": values.timeAndLocationOfWedding.isDisplayCountDown,
+        "contentOfCountDown": values.arraylist[0].contentOfCountDown,
       },
-      timeAndLocationOfEgagement: {
-        dateOfEventEgagement:
+      "timeAndLocationOfEgagement": {
+        "dateOfEventEgagement":
           values.timeAndLocationOfEgagement.dateOfEventEgagement,
-        timeOfEventEgagement:
+        "timeOfEventEgagement":
           values.timeAndLocationOfEgagement.timeOfEventEgagement,
-        locationOfEgagement:
+        "locationOfEgagement":
           values.timeAndLocationOfEgagement.locationOfEgagement,
       },
-      timeAndLocationOfInterrogation: {
-        dateOfEventInterrogation:
+      "timeAndLocationOfInterrogation": {
+        "dateOfEventInterrogation":
           values.timeAndLocationOfInterrogation.dateOfEventInterrogation,
-        timeOfEventInterrogation:
+        "timeOfEventInterrogation":
           values.timeAndLocationOfInterrogation.timeOfEventInterrogation,
-        locationOfInterrogation:
+        "locationOfInterrogation":
           values.timeAndLocationOfInterrogation.locationOfInterrogation,
       },
-      album: values.album === [] ? albumURL : values.album,
-      videoLink: values.videoLink,
-      eventOfProgram: {
-        eventOfProgramEditOne: values.eventOfProgram.eventOfProgramEditOne,
-        eventOfProgramEditTwo: values.eventOfProgram.eventOfProgramEditTwo,
-        eventOfProgramEditThree: values.eventOfProgram.eventOfProgramEditThree,
-        eventOfProgramEditFour: values.eventOfProgram.eventOfProgramEditFour,
-        timeToWellcome: values.eventOfProgram.timeToWellcome,
-        timeToCelebrate: values.eventOfProgram.timeToCelebrate,
-        timeToDinner: values.eventOfProgram.timeToDinner,
-        timeToMusic: values.eventOfProgram.timeToMusic,
+      "album": values.album === [] ? albumURL : values.album,
+      "videoLink": values.videoLink,
+      "eventOfProgram": {
+        "eventOfProgramEditOne": values.eventOfProgram.eventOfProgramEditOne,
+        "eventOfProgramEditTwo": values.eventOfProgram.eventOfProgramEditTwo,
+        "eventOfProgramEditThree": values.eventOfProgram.eventOfProgramEditThree,
+        "eventOfProgramEditFour": values.eventOfProgram.eventOfProgramEditFour,
+        "timeToWellcome": values.eventOfProgram.timeToWellcome,
+        "timeToCelebrate": values.eventOfProgram.timeToCelebrate,
+        "timeToDinner": values.eventOfProgram.timeToDinner,
+        "timeToMusic": values.eventOfProgram.timeToMusic,
       },
-      song: radioMusic,
-      fontStyleOfTitle: {
-        value: radioStyleTitle,
+      "song": radioMusic,
+      "fontStyleOfTitle": {
+        "value": radioStyleTitle,
       },
-      fontStyleOfContent: {
-        value: radioStyleContent,
+      "fontStyleOfContent": {
+        "value": radioStyleContent,
       },
-      styleBackground: {
-        value: radioTypeBg,
+      "styleBackground": {
+        "value": radioTypeBg,
       },
-      backgroundColor: {
-        value: radioColorBg,
+      "backgroundColor": {
+        "value": radioColorBg,
       },
-      effectBackgroud: {
-        value: radioEffectBg,
+      "effectBackgroud": {
+        "value": radioEffectBg,
       },
-      productId: packageType[2],
-      anotherProduct: valuedataAnother,
-      isUseConfirm: values.isUseConfirm,
-      isUseGuestBook: values.isUseGuestBook,
-      isUseBanking: values.arraylist[0].isUseBanking,
-      password: values.password,
-      contentGuestBook: values.contentGuestBook,
-      isEffectOfOpenning: values.isEffectOfOpenning,
-      codeInvite: codeinvite,
-      isUseVideo: values.arraylist[0].isUseVideo,
-      isUseEvent: values.arraylist[0].isUseEvent,
-      isUseDamNgo: values.arraylist[0].isUseDamNgo,
-      note: values.note,
-      confirmName: values.confirmName,
-      confirmPhone: values.confirmPhone,
-      confirmEmail: values.confirmEmail,
-      confirmAddress: values.confirmAddress,
-      confirmNote: values.confirmNote,
-      confirmProvince: values.confirmProvince,
-      confirmDistrict: values.confirmDistrict,
-      confirmWard: values.confirmWardt,
+      "productId": packageType[2],
+      "anotherProduct": valuedataAnother,
+      "isUseConfirm": values.isUseConfirm,
+      "isUseGuestBook": values.isUseGuestBook,
+      "isUseBanking": values.arraylist[0].isUseBanking,
+      "password": values.password,
+      "contentGuestBook": values.contentGuestBook,
+      "isEffectOfOpenning": values.isEffectOfOpenning,
+      "codeInvite": codeinvite,
+      "isUseVideo": values.arraylist[0].isUseVideo,
+      "isUseEvent": values.arraylist[0].isUseEvent,
+      "isUseDamNgo": values.arraylist[0].isUseDamNgo,
+      "note": values.note,
+      "confirmName": values.confirmName,
+      "confirmPhone": values.confirmPhone,
+      "confirmEmail": values.confirmEmail,
+      "confirmAddress": values.confirmAddress,
+      "confirmNote": values.confirmNote,
+      "confirmProvince": values.confirmProvince,
+      "confirmDistrict": values.confirmDistrict,
+      "confirmWard": values.confirmWardt,
     }
 
     if (checkUrl) {
       const response = await post(
         APi.createInvitation,
         Object.assign(jsonData, {
-          status: '2',
+          "status": '2',
         }),
         config
       )
@@ -1319,7 +1319,7 @@ const CreatePage = () => {
     } else {
       const dataUpdate = Object.assign(jsonData, {
         _id: idCreateRespon,
-        status: isPaid ? '1' : 3,
+        "status": isPaid ? '1' : 3,
       })
 
       const responseupdate = await post(
@@ -1358,6 +1358,7 @@ const CreatePage = () => {
   ])
 
   const onOpenSuccessConfirm = useCallback(() => {
+    console.log(values.note)
     try {
       if (
         imagesCoverURL.length === 0 ||
@@ -1429,17 +1430,17 @@ const CreatePage = () => {
     // if (`${errMsgCornfimName}${errMsgCornfimPhone}${errMsgCornfimEmail}${errMsgCornfimAddress}`.length === 0) {
 
     const jsonData = {
-      _id: idCreateRespon,
-      status: isPaid ? '1' : '4',
-      confirmName: values.confirmName,
-      confirmPhone: values.confirmPhone,
-      confirmEmail: values.confirmEmail,
-      confirmAddress: values.confirmAddress,
-      confirmNote: values.confirmNote,
-      confirmProvince: values.confirmProvince,
-      confirmDistrict: values.confirmDistrict,
-      confirmWard: values.confirmWardt,
-      totalAmount: valuedataAnotherTotalPrice,
+      "_id": idCreateRespon,
+      "status": isPaid ? '1' : '4',
+      "confirmName": values.confirmName,
+      "confirmPhone": values.confirmPhone,
+      "confirmEmail": values.confirmEmail,
+      "confirmAddress": values.confirmAddress,
+      "confirmNote": values.confirmNote,
+      "confirmProvince": values.confirmProvince,
+      "confirmDistrict": values.confirmDistrict,
+      "confirmWard": values.confirmWardt,
+      "totalAmount": valuedataAnotherTotalPrice,
     }
 
     const response = await post(APi.updateInvitation, jsonData, config)
