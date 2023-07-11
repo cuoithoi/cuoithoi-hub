@@ -115,7 +115,7 @@ const Footer = () => {
                             <div className='contact'>
                                 <p>Ngân hàng: {data[data.length - 1]?.nameBank}</p>
                                 <p>Số tk: {data[data.length - 1]?.numberBank}</p>
-                                <p>Holder: {data[data.length - 1]?.ceoPeople}</p>
+                                <p>Holder: Ryu Sunhwan</p>
                             </div>
                             <Button
                                 label={Languages.buttonText.scanQr}
