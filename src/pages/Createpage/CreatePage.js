@@ -594,7 +594,8 @@ const CreatePage = () => {
       max,
       height,
       icon,
-      titleImages
+      titleImages,
+      maxFileSize
     ) => {
       return (
         <div className='uploading_single_img_group'>
@@ -612,6 +613,7 @@ const CreatePage = () => {
             title={titleImages || Languages.text.addonepic}
             urlLocal={urlLocal}
             idCreateRespon={idCreateRespon}
+            maxFileSize={maxFileSize}
           />
         </div>
       )
@@ -647,7 +649,10 @@ const CreatePage = () => {
               onChangeAlbum,
               itemLocal?.album,
               30,
-              150
+              150,
+              '',
+              '',
+              20971520
             )}
           </div>
         </div>

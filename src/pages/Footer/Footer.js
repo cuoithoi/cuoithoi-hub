@@ -139,6 +139,7 @@ const Footer = () => {
                         </label>
                         <div className='infomationDetails'>
                             <div className='contact'>
+                                <p>Công ty TNHH Cưới Thôi</p>
                                 <p>CEO: {data[data.length - 1]?.ceoPeople}</p>
                                 <p>Company No: {data[data.length - 1]?.companyNumber}</p>
                                 <p>Email: {data[data.length - 1]?.emailCompany}</p>

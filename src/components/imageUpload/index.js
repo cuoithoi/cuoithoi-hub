@@ -7,9 +7,10 @@ import { isArray } from "lodash";
 import { fiedlsCreatePage } from "@/commons/FieldsDataObj";
 import { APi, config } from '@/commons/Constant.ts'
 import { useBaseService } from '@/utils/BaseServices'
+import { toast } from "react-toastify";
 
 export const ImageUpload = forwardRef(
-  ({ images, title, icon, maxW, height, desc, maxnumber, allowDrag, onChange, onSortEnd, urlLocal, idCreateRespon }, ref) => {
+  ({ images, title, icon, maxW, height, desc, maxnumber, allowDrag, onChange, onSortEnd, urlLocal, idCreateRespon, maxFileSize }, ref) => {
     useImperativeHandle(ref, () => ({
       setErrorMsg
     }));
@@ -44,7 +45,9 @@ export const ImageUpload = forwardRef(
     }, [])
 
     const onError = () => {
-      console.log('Số lượng tối đa ' + maxnumber + ' ảnh')
+      toast.warning('Tổng dung lượng ảnh Album cao quá 20MB', {
+        autoClose: 1000
+      })
     };
 
     const setErrorMsg = useCallback((msg) => {
@@ -99,6 +102,7 @@ export const ImageUpload = forwardRef(
             dataURLKey="data_url"
             acceptType={["jpg", "png", "jpeg", "bmp", ".gif", "HEIC"]}
             onError={onError}
+            maxFileSize={maxFileSize}
           >
             {({
 
@@ -224,6 +228,7 @@ export const ImageUpload = forwardRef(
                   dataURLKey="data_url"
                   acceptType={["jpg", "png", "jpeg", "bmp", ".gif", "HEIC"]}
                   onError={onError}
+                  maxFileSize={maxFileSize}
                 >
                   {({
 
