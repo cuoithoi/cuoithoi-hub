@@ -94,7 +94,7 @@ const Languages = {
     editorPage: 'Chỉnh sửa thiệp'
   },
   text: {
-    verifyHeader: 'Xác thực OTP gửi về Email',
+    verifyHeader: 'Đổi mật khẩu',
     textBanner: 'Chia sẻ khoảnh khắc đặc biệt trong cuộc sống!',
     textTinhte: '"Chạm tinh tế - Khắc thương yêu"',
     textHeadTC:

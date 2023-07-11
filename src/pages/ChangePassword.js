@@ -23,6 +23,10 @@ import { toast } from 'react-toastify'
 import { customFetch } from '@/utils/axios'
 // initial state
 const schema = yup.object().shape({
+  email: yup
+    .string()
+    .email('Email không hợp lệ')
+    .required('Yêu cầu nhập trường này'),
   password: yup.string().min(6, 'Mật khẩu tối thiểu 6 ký tự'),
   confirmPassword: yup.string().min(6, 'Mật khẩu tối thiểu 6 ký tự'),
   // .min(6, 'Mật khẩu tối thiểu 6 ký tự')
@@ -32,9 +36,6 @@ const ChangePassword = () => {
   const { hash, otp } = useSelector((store) => store.auth.emailVerify)
   const navigate = useNavigate()
   // /////// handle redirect when signin success//////////
-  useEffect(() => {}, [])
-  const dispatch = useDispatch()
-
   const {
     register,
     handleSubmit,
@@ -52,11 +53,8 @@ const ChangePassword = () => {
     const postData = async () => {
       try {
         const resp = await customFetch.post('/change-forgot-password', {
-          ...data,
-          otp: otp,
-          hash: hash,
+          ...data
         })
-        console.log(resp)
         toast.success('Thay đổi mật khẩu thành công')
         navigate(Alias.login)
       } catch (error) {
@@ -65,9 +63,6 @@ const ChangePassword = () => {
     }
     postData()
   }
-
-  // console.log(register('username'))
-  console.log(errors)
 
   return (
     <div className='Login'>
@@ -87,6 +82,14 @@ const ChangePassword = () => {
                 className='fieldscli_data'
                 onSubmit={handleSubmit(onSubmit)}
               >
+                <Input
+                  register={register}
+                  errors={errors}
+                  name='email'
+                  type='email'
+                  placeHolder='email'
+                  inputStyle={'form-control'}
+                />
                 <Input
                   register={register}
                   errors={errors}
