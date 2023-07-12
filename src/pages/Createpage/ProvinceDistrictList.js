@@ -20,7 +20,7 @@ const ProvinceDistrictList = () => {
         if (itemLocal) {
             itemLocal?.confirmProvince && (value.confirmProvince = itemLocal?.confirmProvince)
             itemLocal?.confirmDistrict && (value.confirmDistrict = itemLocal?.confirmDistrict)
-            itemLocal?.confirmWard && (value.confirmWardt = itemLocal?.confirmWardt)
+            itemLocal?.confirmWard && (value.confirmWardt = itemLocal?.confirmWard)
         } else {
             value.confirmProvince = ''
             value.confirmDistrict = ''
