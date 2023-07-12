@@ -51,7 +51,7 @@ const Footer = () => {
                                 <div className='infor'>
                                     <span>Tên ngân hàng: {data[data.length - 1]?.nameBank}</span>
                                     <span>Số tài khoản: {data[data.length - 1]?.numberBank}</span>
-                                    <span>Tên chủ tài khoản: {data[data.length - 1]?.ceoPeople}</span>
+                                    <span>Tên chủ tài khoản: Ryu Sunhwan</span>
                                 </div>
                             </div>
                         </div>
