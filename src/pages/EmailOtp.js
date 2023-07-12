@@ -21,15 +21,16 @@ import { signinUser, verifyOTP } from '@/features/auth/authSlice'
 import { Input } from '@/components/input/Input'
 // initial state
 const schema = yup.object().shape({
-  otp: yup.string(),
-  // .min(6, 'Mật khẩu tối thiểu 6 ký tự')
+  otp: yup.string()
+    .min(6, 'OTP tối thiểu 6 ký tự')
+    .required('Yêu cầu nhập OTP')
 })
 
 const EmailOtp = () => {
   const { hash } = useSelector((store) => store.auth.emailVerify)
   const navigate = useNavigate()
   // /////// handle redirect when signin success//////////
-  useEffect(() => {}, [])
+  useEffect(() => { }, [])
   const dispatch = useDispatch()
 
   const {

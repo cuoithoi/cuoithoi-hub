@@ -25,7 +25,7 @@ const schema = yup.object().shape({
   email: yup
     .string()
     .email('Email không hợp lệ')
-    .required('Yêu cầu nhập trường này'),
+    .required('Yêu cầu nhập email đã đăng ký'),
 })
 const RecoveryPwd = () => {
   const dispatch = useDispatch()

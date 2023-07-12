@@ -24,15 +24,16 @@ import { toast } from 'react-toastify'
 import { forgotPassOtp } from '@/features/auth/authSlice'
 // initial state
 const schema = yup.object().shape({
-  otp: yup.string(),
-  // .min(6, 'Mật khẩu tối thiểu 6 ký tự')
+  otp: yup.string()
+    .required('Yêu cầu nhập OTP')
+    .min(6, 'Mật khẩu tối thiểu 6 ký tự')
 })
 
 const ForgotPassOtp = () => {
   const { hash } = useSelector((store) => store.auth.emailVerify)
   const navigate = useNavigate()
   // /////// handle redirect when signin success//////////
-  useEffect(() => {}, [])
+  useEffect(() => { }, [])
   const dispatch = useDispatch()
 
   const {
@@ -45,25 +46,30 @@ const ForgotPassOtp = () => {
     resolver: yupResolver(schema),
   })
   const onSubmit = (data) => {
-    console.log(data)
     const postData = async () => {
       try {
-        await customFetch.post('/verify-otp', {
+        const resp = await customFetch.post('/verify-otp', {
           ...data,
           hash: hash,
         })
-        dispatch(forgotPassOtp(data.otp))
-        navigate(Alias.changePassword)
-        toast.success('Xác thực OTP thành công')
+        if (resp.data.errorCode === -1) {
+          toast.error('OTP không chính xác', {
+            autoClose: 1000
+          })
+        } else {
+          dispatch(forgotPassOtp(data.otp))
+          navigate(Alias.changePassword)
+          toast.success('Xác thực OTP thành công', {
+            autoClose: 1000
+          })
+        }
+
       } catch {
         toast.error('Xác thực OTP thất bại')
       }
     }
     postData()
   }
-
-  // console.log(register('username'))
-  console.log(errors)
 
   return (
     <div className='Login'>
