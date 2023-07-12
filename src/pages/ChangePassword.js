@@ -1,32 +1,22 @@
-import React, { useState, useCallback, useEffect } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
-import { useDispatch } from 'react-redux'
 
 import { yupResolver } from '@hookform/resolvers/yup'
 import yup from '@/utils/yupGlobal'
 import { useForm } from 'react-hook-form'
 import Languages from '@/commons/Languages'
 import Header from '@/components/header'
-import { MyTextInput } from '@/components/input'
-import { useRef } from 'react'
 import { BUTTON_STYLES } from '@/commons/Constant.ts'
 import { Button } from '@/components/button'
-import { Link, useNavigate } from 'react-router-dom'
-import LoginSocial from '@/components/loginSocial'
+import { useNavigate } from 'react-router-dom'
 import Footer from './Footer/Footer'
-import FormValidate from '@/utils/FormValidate'
 import { Alias } from '@/commons/Constant.ts'
 import Loading from '@/components/Loading'
-import { signinUser, verifyOTP } from '@/features/auth/authSlice'
 import { Input } from '@/components/input/Input'
 import { toast } from 'react-toastify'
 import { customFetch } from '@/utils/axios'
 // initial state
 const schema = yup.object().shape({
-  email: yup
-    .string()
-    .email('Email không hợp lệ')
-    .required('Yêu cầu nhập trường này'),
   password: yup.string().min(6, 'Mật khẩu tối thiểu 6 ký tự'),
   confirmPassword: yup.string().min(6, 'Mật khẩu tối thiểu 6 ký tự'),
   // .min(6, 'Mật khẩu tối thiểu 6 ký tự')
@@ -52,8 +42,10 @@ const ChangePassword = () => {
     }
     const postData = async () => {
       try {
-        const resp = await customFetch.post('/change-forgot-password', {
-          ...data
+        await customFetch.post('/change-forgot-password', {
+          ...data,
+          otp: otp,
+          hash: hash,
         })
         toast.success('Thay đổi mật khẩu thành công')
         navigate(Alias.login)
@@ -82,14 +74,6 @@ const ChangePassword = () => {
                 className='fieldscli_data'
                 onSubmit={handleSubmit(onSubmit)}
               >
-                <Input
-                  register={register}
-                  errors={errors}
-                  name='email'
-                  type='email'
-                  placeHolder='email'
-                  inputStyle={'form-control'}
-                />
                 <Input
                   register={register}
                   errors={errors}

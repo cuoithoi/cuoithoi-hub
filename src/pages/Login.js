@@ -95,7 +95,7 @@ const Login = () => {
                 />
 
                 <div className='forgotPwd'>
-                  <Link to={Alias.changePassword}>
+                  <Link to={Alias.pwdRecovery}>
                     {Languages.inputText.forgotPass}
                   </Link>
                 </div>
