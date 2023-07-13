@@ -22,6 +22,7 @@ import { Input } from '@/components/input/Input'
 
 // initial state
 import { useEffect } from 'react'
+import { toast } from 'react-toastify'
 // initial state
 const schema = yup.object().shape({
   username: yup.string(),
@@ -44,8 +45,9 @@ const schema = yup.object().shape({
 const RegisterRefactor = () => {
   const { isSignupSuccess } = useSelector((store) => store.auth)
   const navigate = useNavigate()
+  const [block, setBlock] = useState(true)
   // /////// handle redirect when sign up success//////////
-  
+
   useEffect(() => {
     if (isSignupSuccess) navigate(Alias.verifyOtp)
   }, [isSignupSuccess])
@@ -65,7 +67,19 @@ const RegisterRefactor = () => {
   const onSubmit = (data) => {
     const email = data.email.toLowerCase()
     const dataSubmit = { ...data, email: email, username: email }
-    dispatch(signupUser(dataSubmit))
+    toast.success('Đang gửi OTP.....', {
+      autoClose: 1000
+    })
+    if (block) dispatch(signupUser(dataSubmit))
+    else {
+      setTimeout(() => {
+        toast.success('OTP đã được gửi vui lòng check email')
+      }, 1500);
+    }
+    setBlock(false)
+    setTimeout(() => {
+      setBlock(true)
+    }, 90000);
   }
 
   // dispatch(signupUser(data))

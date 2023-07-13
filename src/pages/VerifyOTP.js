@@ -90,6 +90,9 @@ const VerifyOtp = () => {
                   isLowerCase
                 />
               </form>
+              <span style={{ color: 'var(--white-color)', fontSize: 14, display: 'block', marginTop: 10 }}>
+                * Nếu bạn không nhận được OTP vui lòng xóa cookie hoặc refresh lại website
+              </span>
             </div>
           </div>
         </div>
