@@ -47,9 +47,7 @@ const VerifyOtp = () => {
     resolver: yupResolver(schema),
   })
   const onSubmit = (data) => {
-    console.log(data)
     const dataSending = { ...data, hash, userId, email }
-    console.log(dataSending)
     dispatch(verifyOTP(dataSending))
   }
 

@@ -45,7 +45,6 @@ const EmailOtp = () => {
   const onSubmit = (data) => {
     console.log(data)
     const dataSending = { ...data, hash }
-    console.log(dataSending)
     dispatch(verifyOTP(dataSending))
   }
 
