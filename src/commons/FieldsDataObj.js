@@ -3,67 +3,67 @@ export const SelectInvitationTemplate = [
     id: 'invitation_one',
     name: 'invitation_one',
     value: 'invitation_one',
-    text: 'Trời ban phận đẹp duyên ưa Ngày hay tháng tốt se tơ sợi hồng Trăm năm một kiếp mặn nồng Xin mời quan khách đến cùng chung vui'
+    text: 'Trời ban phận đẹp duyên ưa Ngày hay tháng tốt se tơ sợi hồng Trăm năm một kiếp mặn nồng Xin mời quan khách đến cùng chung vui',
   },
   {
     id: 'invitation_two',
     name: 'invitation_two',
     value: 'invitation_two',
-    text: 'Người thương của <TÊN CÔ DÂU> <>TÊN CHÚ RỂ> ơi, cảm ơn vì đã có mặt trong lễ cưới tuyệt vời này nhé!'
+    text: 'Người thương của <TÊN CÔ DÂU> <>TÊN CHÚ RỂ> ơi, cảm ơn vì đã có mặt trong lễ cưới tuyệt vời này nhé!',
   },
   ,
   {
     id: 'invitation_three',
     name: 'invitation_three',
     value: 'invitation_three',
-    text: 'Sự hiện diện của bạn là minh chứng cho tình yêu của chúng tôi...'
-  }
-];
+    text: 'Sự hiện diện của bạn là minh chứng cho tình yêu của chúng tôi...',
+  },
+]
 
 export const SelectTimeTemplate = [
   {
     id: 'timetemplate_one',
     name: 'timetemplate_one',
     value: 'timetemplate_one',
-    text: 'Người thương của <TÊN CÔ DÂU> <>TÊN CHÚ RỂ> ơi, cảm ơn vì đã có mặt trong lễ cưới tuyệt vời này nhé!'
-  }
-];
+    text: 'Người thương của <TÊN CÔ DÂU> <>TÊN CHÚ RỂ> ơi, cảm ơn vì đã có mặt trong lễ cưới tuyệt vời này nhé!',
+  },
+]
 
 export const SelectWarningTemplate = [
   {
     id: 'warning_one',
     name: 'warning_one',
     value: 'warning_one',
-    text: 'Đừng quên mang theo chiếc vé thông hành trên tay bạn tới bữa tiệc nha!'
+    text: 'Đừng quên mang theo chiếc vé thông hành trên tay bạn tới bữa tiệc nha!',
   },
   {
     id: 'warning_two',
     name: 'warning_two',
     value: 'warning_two',
-    text: 'Dresscode'
-  }
-];
+    text: 'Dresscode',
+  },
+]
 
 export const SelectSavePenTemplate = [
   {
     id: 'savepen_one',
     name: 'savepen_one',
     value: 'savepen_one',
-    text: 'Đừng quên để lại lời chúc ngọt ngào của bạn cho khởi đầu trăm năm của cặp dâu rể mới cưới này tại đây nha!'
+    text: 'Đừng quên để lại lời chúc ngọt ngào của bạn cho khởi đầu trăm năm của cặp dâu rể mới cưới này tại đây nha!',
   },
   {
     id: 'savepen_two',
     name: 'savepen_two',
     value: 'savepen_two',
-    text: 'Còn cách nào tuyệt vời hơn việc để lại lời chúc phúc và kỷ niệm đẹp đẽ mà bạn đã có trong lễ thành hôn này với một chữ ký thật xinh nhỉ?'
+    text: 'Còn cách nào tuyệt vời hơn việc để lại lời chúc phúc và kỷ niệm đẹp đẽ mà bạn đã có trong lễ thành hôn này với một chữ ký thật xinh nhỉ?',
   },
   {
     id: 'savepen_three',
     name: 'savepen_three',
     value: 'savepen_three',
-    text: 'Hãy cùng chúng tôi xây đắp những kỷ niệm đẹp bằng cách để lại lời chúc phúc và chữ ký của bạn trong cuốn sổ này nhé!'
-  }
-];
+    text: 'Hãy cùng chúng tôi xây đắp những kỷ niệm đẹp bằng cách để lại lời chúc phúc và chữ ký của bạn trong cuốn sổ này nhé!',
+  },
+]
 
 export const SelectMusic = [
   {
@@ -71,13 +71,13 @@ export const SelectMusic = [
     name: 'none',
     value: 0,
     url: ' ',
-    text: 'Không phát nhạc nền'
+    text: 'Không phát nhạc nền',
   },
   {
     id: 'music_one',
     name: 'music_one',
     value: 1,
-    text: 'Vũ điệu tình yêu'
+    text: 'Vũ điệu tình yêu',
   },
   {
     id: 'music_two',
@@ -89,307 +89,318 @@ export const SelectMusic = [
     id: 'music_three',
     name: 'music_three',
     value: 3,
-    text: 'Bước chân hoàng gia'
-  }
-];
+    text: 'Bước chân hoàng gia',
+  },
+]
 
 export const SelectStyleTitle = [
   {
     id: '1',
     name: 'Pacifico',
-    value: 'pacifico'
+    value: 'pacifico',
+    class: 'pacifico',
   },
   {
     id: '2',
     name: 'great vibes',
-    value: 'greatvibes'
+    value: 'greatvibes',
+    class: 'great-vibes',
   },
   {
     id: '3',
     name: 'yeseva one',
-    value: 'yesevaone'
+    value: 'yesevaone',
+    class: 'yeseva-one',
   },
   {
     id: '4',
     name: 'lobster',
-    value: 'lobster'
+    value: 'lobster',
+    class: 'lobster',
   },
   {
     id: '5',
     name: 'Playfair Display',
-    value: 'playfairdisplay'
-  }
-];
+    value: 'playfairdisplay',
+    class: 'playfair-display',
+  },
+]
 
 export const SelectStyleTContent = [
   {
     id: '1',
     name: 'Inter',
-    value: 'inter'
+    value: 'inter',
+    class: 'inter',
   },
   {
     id: '2',
     name: 'Roboto',
-    value: 'roboto'
+    value: 'roboto',
+    class: 'rototo',
   },
   {
     id: '3',
     name: 'Open Sans',
-    value: 'opensans'
+    value: 'opensans',
+    class: 'open-sans',
   },
   {
     id: '4',
     name: 'Montserrat',
-    value: 'montserrat'
+    value: 'montserrat',
+    class: 'montserrat',
   },
   {
     id: '5',
     name: 'Noto Sans',
-    value: 'notosans'
-  }
-];
+    value: 'notosans',
+    class: 'noto-sans',
+  },
+]
 
 export const SelectTypeBg = [
   {
     id: '1',
     name: 'none',
-    value: 'none'
+    value: 'none',
   },
   {
     id: '2',
     name: 'hoa',
-    value: 'hoa'
+    value: 'hoa',
   },
   {
     id: '3',
     name: 'la',
-    value: 'la'
+    value: 'la',
   },
   {
     id: '4',
     name: 'tuyet',
-    value: 'tuyet'
+    value: 'tuyet',
   },
   {
     id: '5',
     name: 'hoavan',
-    value: 'hoavan'
-  }
-];
+    value: 'hoavan',
+  },
+]
 
 export const SelectColorBg = [
   {
     id: '1',
     name: 'trang',
-    value: 'none'
+    value: 'none',
   },
   {
     id: '2',
     name: 'xam',
-    value: 'xam'
+    value: 'xam',
   },
   {
     id: '3',
     name: 'hong',
-    value: 'hong'
+    value: 'hong',
   },
   {
     id: '4',
     name: 'xanh',
-    value: 'xanh'
+    value: 'xanh',
   },
   {
     id: '5',
     name: 'vang',
-    value: 'vang'
-  }
-];
+    value: 'vang',
+  },
+]
 
 export const SelectEffectBg = [
   {
     id: '1',
     name: 'khong',
-    value: 'none'
+    value: 'none',
   },
   {
     id: '2',
     name: 'hoadao',
-    value: 'hoadao'
+    value: 'hoadao',
   },
   {
     id: '3',
     name: 'lavang',
-    value: 'lavang'
+    value: 'lavang',
   },
   {
     id: '4',
     name: 'bongtuyet',
-    value: 'bongtuyet'
+    value: 'bongtuyet',
   },
   {
     id: '5',
     name: 'kimtuyen',
-    value: 'kimtuyen'
-  }
-];
+    value: 'kimtuyen',
+  },
+]
 
 export const fiedlsCreatePage = {
-  "userId": "",
-  "id": "",
-  "coverImage": "",
-  "thumbnailImage": "",
-  "effectImage": "none",
-  "informationOfGroom": [
+  userId: '',
+  id: '',
+  coverImage: '',
+  thumbnailImage: '',
+  effectImage: 'none',
+  informationOfGroom: [
     {
-      "firstName": "",
-      "middleName": "",
-      "name": "",
-      "isOldBrotherGroom": true,
-      "codingRegion": "",
-      "phoneNumberOfGroom": "",
-      "firstFatherNameOfGroom": "",
-      "middleFatherNameOfGroom": "",
-      "fatherNameOfGroom": "",
-      "phoneNumberOfFatherGroom": "",
-      "isGoneFather": false,
-      "firstMotherNameOfGroom": "",
-      "middleMotherNameOfGroom": "",
-      "motherNameOfGroom": "",
-      "phoneNumberOfMotherGroom": "",
-      "isGoneMother": false,
-      "nameBankOfGroom": "",
-      "ownerBankOfGroom": "",
-      "bankOfNumberGroom": "",
-      "qrCodeGroomLink": "",
-      "nameBankOfFatherGroom": "",
-      "ownerBankOfFatherGroom": "",
-      "bankOfNumberFatherGroom": "",
-      "qrCodeFatherGroomLink": "",
-      "nameBankOfMotherGroom": "",
-      "ownerBankOfMotherGroom": "",
-      "bankOfNumberMotherGroom": "",
-      "qrCodeMotherGroomLink": ""
-    }
+      firstName: '',
+      middleName: '',
+      name: '',
+      isOldBrotherGroom: true,
+      codingRegion: '',
+      phoneNumberOfGroom: '',
+      firstFatherNameOfGroom: '',
+      middleFatherNameOfGroom: '',
+      fatherNameOfGroom: '',
+      phoneNumberOfFatherGroom: '',
+      isGoneFather: false,
+      firstMotherNameOfGroom: '',
+      middleMotherNameOfGroom: '',
+      motherNameOfGroom: '',
+      phoneNumberOfMotherGroom: '',
+      isGoneMother: false,
+      nameBankOfGroom: '',
+      ownerBankOfGroom: '',
+      bankOfNumberGroom: '',
+      qrCodeGroomLink: '',
+      nameBankOfFatherGroom: '',
+      ownerBankOfFatherGroom: '',
+      bankOfNumberFatherGroom: '',
+      qrCodeFatherGroomLink: '',
+      nameBankOfMotherGroom: '',
+      ownerBankOfMotherGroom: '',
+      bankOfNumberMotherGroom: '',
+      qrCodeMotherGroomLink: '',
+    },
   ],
-  "informationOfBride": [
+  informationOfBride: [
     {
-      "firstName": "",
-      "middleName": "",
-      "name": "",
-      "isOldBrotherBride": true,
-      "codingRegion": "",
-      "phoneNumberOfBride": "",
-      "firstFatherNameOfBride": "",
-      "middleFatherNameOfBride": "",
-      "fatherNameOfBride": "",
-      "phoneNumberOfFatherBride": "",
-      "isGoneFatherBride": false,
-      "firstMotherNameOfBride": "",
-      "middleMotherNameOfBride": "",
-      "motherNameOfBride": "",
-      "phoneNumberOfMotherBride": "",
-      "isGoneMotherOfBride": false,
-      "nameBankOfBride": "",
-      "ownerBankOfBride": "",
-      "bankOfNumberBride": "",
-      "qrCodeBrideLink": "",
-      "nameBankOfFatherBride": "",
-      "ownerBankOfFatherBride": "",
-      "bankOfNumberFatherBride": "",
-      "qrCodeFatherBrideLink": "",
-      "nameBankOfMotherBride": "",
-      "ownerBankOfMotherBride": "",
-      "bankOfNumberMotherBride": "",
-      "qrCodeMotherBrideLink": "",
-      "isDisplayGonePeople": false,
-      "contentOfInvitation": "",
-    }
+      firstName: '',
+      middleName: '',
+      name: '',
+      isOldBrotherBride: true,
+      codingRegion: '',
+      phoneNumberOfBride: '',
+      firstFatherNameOfBride: '',
+      middleFatherNameOfBride: '',
+      fatherNameOfBride: '',
+      phoneNumberOfFatherBride: '',
+      isGoneFatherBride: false,
+      firstMotherNameOfBride: '',
+      middleMotherNameOfBride: '',
+      motherNameOfBride: '',
+      phoneNumberOfMotherBride: '',
+      isGoneMotherOfBride: false,
+      nameBankOfBride: '',
+      ownerBankOfBride: '',
+      bankOfNumberBride: '',
+      qrCodeBrideLink: '',
+      nameBankOfFatherBride: '',
+      ownerBankOfFatherBride: '',
+      bankOfNumberFatherBride: '',
+      qrCodeFatherBrideLink: '',
+      nameBankOfMotherBride: '',
+      ownerBankOfMotherBride: '',
+      bankOfNumberMotherBride: '',
+      qrCodeMotherBrideLink: '',
+      isDisplayGonePeople: false,
+      contentOfInvitation: '',
+    },
   ],
-  "timeAndLocationOfWedding": {
-    "dateOfEventWedding": "",
-    "timeOfEventWedding": "",
-    "locationOfWedding": "",
-    "namelocationOfWedding": "",
-    "mapDirectLink": "",
-    "isDisplayCountDown": "",
+  timeAndLocationOfWedding: {
+    dateOfEventWedding: '',
+    timeOfEventWedding: '',
+    locationOfWedding: '',
+    namelocationOfWedding: '',
+    mapDirectLink: '',
+    isDisplayCountDown: '',
   },
-  "arraylist": [{
-    "contentOfCountDown": "",
-    "isUseVideo": false,
-    "isUseEvent": false,
-    "isUseDamNgo": false,
-    "isUseBanking": false,
-  }],
-  "timeAndLocationOfEgagement": {
-    "dateOfEventEgagement": "",
-    "timeOfEventEgagement": "",
-    "locationOfEgagement": ""
+  arraylist: [
+    {
+      contentOfCountDown: '',
+      isUseVideo: false,
+      isUseEvent: false,
+      isUseDamNgo: false,
+      isUseBanking: false,
+    },
+  ],
+  timeAndLocationOfEgagement: {
+    dateOfEventEgagement: '',
+    timeOfEventEgagement: '',
+    locationOfEgagement: '',
   },
-  "timeAndLocationOfInterrogation": {
-    "dateOfEventInterrogation": "",
-    "timeOfEventInterrogation": "",
-    "locationOfInterrogation": ""
+  timeAndLocationOfInterrogation: {
+    dateOfEventInterrogation: '',
+    timeOfEventInterrogation: '',
+    locationOfInterrogation: '',
   },
-  "album": [],
-  "videoLink": "",
-  "eventOfProgram": {
-    "eventOfProgramEditOne": "Đón khách",
-    "eventOfProgramEditTwo": "Làm lễ",
-    "eventOfProgramEditThree": "Tiệc tối",
-    "eventOfProgramEditFour": "Âm nhạc",
-    "timeToWellcome": "",
-    "timeToCelebrate": "",
-    "timeToDinner": "",
-    "timeToMusic": ""
+  album: [],
+  videoLink: '',
+  eventOfProgram: {
+    eventOfProgramEditOne: 'Đón khách',
+    eventOfProgramEditTwo: 'Làm lễ',
+    eventOfProgramEditThree: 'Tiệc tối',
+    eventOfProgramEditFour: 'Âm nhạc',
+    timeToWellcome: '',
+    timeToCelebrate: '',
+    timeToDinner: '',
+    timeToMusic: '',
   },
-  "song": 1,
-  "note": '',
-  "isUseConfirm": false,
-  "isUseGuestBook": false,
-  "password": "",
-  "contentGuestBook": "",
-  "isEffectOfOpenning": false,
-  "fontStyleOfTitle": {
-    "id": 1,
-    "name": "",
-    "value": "pacifico"
+  song: 1,
+  note: '',
+  isUseConfirm: false,
+  isUseGuestBook: false,
+  password: '',
+  contentGuestBook: '',
+  isEffectOfOpenning: false,
+  fontStyleOfTitle: {
+    id: 1,
+    name: '',
+    value: 'pacifico',
   },
-  "fontStyleOfContent": {
-    "id": 1,
-    "name": "",
-    "value": "inter"
+  fontStyleOfContent: {
+    id: 1,
+    name: '',
+    value: 'inter',
   },
-  "styleBackground": {
-    "id": 1,
-    "name": "",
-    "value": "none"
+  styleBackground: {
+    id: 1,
+    name: '',
+    value: 'none',
   },
-  "backgroundColor": {
-    "id": 1,
-    "name": "",
-    "value": "none"
+  backgroundColor: {
+    id: 1,
+    name: '',
+    value: 'none',
   },
-  "effectBackgroud": {
-    "id": 1,
-    "name": "",
-    "value": "none"
+  effectBackgroud: {
+    id: 1,
+    name: '',
+    value: 'none',
   },
-  "packageType": "",
-  "anotherProduct": [],
-  "codeInvite": "",
-  "isPaid": false,
-  "createTime": "",
-  "updatedTime": "",
-  "expiredTime": "",
-  "confirmName": "",
-  "confirmPhone": "",
-  "confirmEmail": "",
-  "confirmAddress": "",
-  "confirmNote": "",
-  "confirmProvince": "",
-  "confirmDistrict": "",
-  "confirmWardt": "",
-  "totalAmount": "",
-  "productId": ""
-
+  packageType: '',
+  anotherProduct: [],
+  codeInvite: '',
+  isPaid: false,
+  createTime: '',
+  updatedTime: '',
+  expiredTime: '',
+  confirmName: '',
+  confirmPhone: '',
+  confirmEmail: '',
+  confirmAddress: '',
+  confirmNote: '',
+  confirmProvince: '',
+  confirmDistrict: '',
+  confirmWardt: '',
+  totalAmount: '',
+  productId: '',
 }

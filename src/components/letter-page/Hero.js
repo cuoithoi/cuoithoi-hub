@@ -17,14 +17,13 @@ const Hero = ({
   womanName,
   coverImage,
   timeAndLocationOfWedding,
+  generateFontTitle,
+  generateFontContent,
 }) => {
-
   const [url, setUrl] = useState('')
 
   useEffect(() => {
-
     setUrl(coverImage)
-
   }, [coverImage])
 
   const renderEffectImage = () => {
@@ -48,17 +47,32 @@ const Hero = ({
           style={{ backgroundImage: `url(${renderEffectImage()})` }}
         >
           <h2 className='text-main'>Thân mời tới dự bữa tiệc</h2>
-          <h1 className='pb-96'>{`${manName} & ${womanName}`}</h1>
+          <h1
+            className={`pb-96 ${generateFontTitle()}`}
+          >{`${manName} & ${womanName}`}</h1>
           <div className='flex justify-center pt-3 w-full'>
             <img src={''} alt='' className='w-full' />
           </div>
-          <h1 className='wind-song big-size text-9xl pt-20' style={effectImage === 'Heart Frame' ? { paddingTop: '12rem' } : undefined}>
+          <h1
+            className={`big-size text-9xl pt-20 ${generateFontTitle()}`}
+            style={
+              effectImage === 'Heart Frame'
+                ? { paddingTop: '12rem' }
+                : undefined
+            }
+          >
             {timeAndLocationOfWedding.dateOfEventWedding &&
               formatDayHero(timeAndLocationOfWedding.dateOfEventWedding)}
           </h1>
           <div>
             <h1>
-              SAVE<span className='wind-song text-main text-2xl'>the</span>DATE
+              SAVE
+              <span
+                className={`wind-song text-main text-2xl ${generateFontTitle()}`}
+              >
+                the
+              </span>
+              DATE
             </h1>
           </div>
         </div>
