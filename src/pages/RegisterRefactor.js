@@ -43,10 +43,11 @@ const schema = yup.object().shape({
 
 const RegisterRefactor = () => {
   const { isSignupSuccess } = useSelector((store) => store.auth)
+  const [isSuccess, setIsSuccess] = useState(false)
   const navigate = useNavigate()
   // /////// handle redirect when sign up success//////////
   useEffect(() => {
-    if (isSignupSuccess) navigate(Alias.verifyOtp)
+    if (isSignupSuccess) setIsSuccess(isSignupSuccess)
   }, [isSignupSuccess])
 
   const dispatch = useDispatch()
@@ -64,8 +65,8 @@ const RegisterRefactor = () => {
   const onSubmit = (data) => {
     const email = data.email.toLowerCase()
     const dataSubmit = { ...data, email: email, username: email }
-    console.log(dataSubmit)
     dispatch(signupUser(dataSubmit))
+    if(isSuccess) navigate(Alias.verifyOtp)
   }
 
   // dispatch(signupUser(data))
