@@ -52,9 +52,9 @@ const TimeLocation = ({
           <div className='pb-2'>
             <h2 className='text-second'>Dạm ngõ</h2>
             <p className='max-w-xs text-base margin-auto'>
-              Lễ dạm ngõ sẽ diễn tại {locationOfInterrogation}, vào lúc{' '}
-              {timeOfEventInterrogation && timeOfEventInterrogation},{' '}
-              {dateOfEventInterrogation && formatDay(dateOfEventInterrogation)}
+              Lễ dạm ngõ sẽ diễn tại {locationOfEgagement}, vào lúc{' '}
+              {timeOfEventEgagement && timeOfEventEgagement},{' '}
+              {dateOfEventEgagement && formatDay(dateOfEventEgagement)}
             </p>
           </div>
         )}
@@ -63,9 +63,9 @@ const TimeLocation = ({
           <div className=' pb-2'>
             <h2 className='text-second'>Ăn hỏi</h2>
             <p className='max-w-xs text-base margin-auto'>
-              Lễ ăn hỏi sẽ diễn ra tại {locationOfEgagement}, vào lúc{' '}
-              {timeOfEventEgagement && timeOfEventEgagement},{' '}
-              {dateOfEventEgagement && formatDay(dateOfEventEgagement)}
+              Lễ ăn hỏi sẽ diễn ra tại {locationOfInterrogation}, vào lúc{' '}
+              {timeOfEventInterrogation && timeOfEventInterrogation},{' '}
+              {dateOfEventInterrogation && formatDay(dateOfEventInterrogation)}
             </p>
           </div>
         )}
