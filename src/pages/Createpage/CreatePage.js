@@ -241,6 +241,7 @@ const CreatePage = () => {
         (values.confirmAddress = itemLocal?.confirmAddress)
       itemLocal?.confirmNote && (values.confirmNote = itemLocal?.confirmNote)
       itemLocal?.password && (values.password = itemLocal?.password)
+      itemLocal?.isUseBanking && (values.arraylist[0].isUseBanking = itemLocal?.isUseBanking)
     }
   }, [])
 
