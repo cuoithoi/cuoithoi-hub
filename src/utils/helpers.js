@@ -91,3 +91,10 @@ export function convertTimeFormat(timeString) {
   const convertedTime = `${day}.${month}.${year} ${hours}:${minutes}:${seconds}`
   return convertedTime
 }
+
+export function getClassByValue(value, array) {
+  console.log(value, array)
+  const matchedElement = array.find((element) => element.value === value)
+  console.log(matchedElement)
+  return matchedElement.class
+}

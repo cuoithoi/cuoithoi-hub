@@ -26,7 +26,9 @@ import { getUserFromLocalStorage } from '@/utils/localStorage'
 import html2canvas from 'html2canvas'
 import { useBaseService } from '@/utils/BaseServices'
 import { Helmet } from 'react-helmet'
-
+import { SelectStyleTitle } from '@/commons/FieldsDataObj'
+import { SelectStyleTContent } from '@/commons/FieldsDataObj'
+import { getClassByValue } from '@/utils/helpers'
 const LetterPage = () => {
   const { id } = useParams()
   const [isOpen, setIsOpen] = useState(false)
@@ -85,6 +87,8 @@ const LetterPage = () => {
     coverImage,
     effectBackgroud,
     effectImage,
+    fontStyleOfContent,
+    fontStyleOfTitle,
     eventOfProgram,
     informationOfBride,
     informationOfGroom,
@@ -104,7 +108,12 @@ const LetterPage = () => {
     note,
     isPaid,
   } = letter
-
+  const generateFontContent = () => {
+    return getClassByValue(fontStyleOfContent.value, SelectStyleTContent)
+  }
+  const generateFontTitle = () => {
+    return getClassByValue(fontStyleOfTitle.value, SelectStyleTitle)
+  }
   const captureAndUpload = () => {
     setTimeout(() => {
       html2canvas(containerRef.current, {
@@ -156,8 +165,10 @@ const LetterPage = () => {
     )
   }
   return (
-    <div ref={containerRef} className={`letter-wrapper ${bgColor}`}>
-
+    <div
+      ref={containerRef}
+      className={`letter-wrapper ${bgColor} ${generateFontContent()}`}
+    >
       <div className={`letter-layout ${bgColor}`}>
         <SnowFall type={effectBackgroud.value} />
         <NavButton setIsNavOpen={setIsNavOpen} song={song} />
@@ -171,6 +182,8 @@ const LetterPage = () => {
           womanfirstName={informationOfBride.firstName}
           womanName={`${informationOfBride.name}`}
           timeAndLocationOfWedding={timeAndLocationOfWedding}
+          generateFontTitle={generateFontTitle}
+          generateFontContent={generateFontContent}
         />
         <Invitation
           informationOfBride={informationOfBride}
