@@ -95,11 +95,9 @@ const deleteDataApi = async (url, data) => {
     const resp = await customFetch.delete(url, {
       data: data,
     })
-    console.log(resp)
     return resp.data
   } catch (error) {
-    console.log(error)
-    throw error
+    throw new Error(error)
   }
 }
 const getDataWithParams = async (url, params) => {

@@ -31,14 +31,11 @@ const DeleteCmtInput = ({ handleCloseModal, deleteCmt, _id }) => {
           ...data,
           _id: _id,
         })
-        if (res.message === 'errors.server.error') {
-          toast.error('Mật khẩu không chính xác, vui lòng thử lại!')
-          return
-        }
         toast.success('Xoá lời chúc thành công')
         deleteCmt()
         handleCloseModal()
       } catch (error) {
+        console.log(error)
         toast.error('Xoá lời chúc không thành công, vui lòng thử lại')
       }
     }
@@ -52,7 +49,7 @@ const DeleteCmtInput = ({ handleCloseModal, deleteCmt, _id }) => {
         <div>
           <Input
             type='text'
-            placeHolder='Mật khẩuu'
+            placeHolder='Mật khẩu'
             name='passWish'
             register={register}
             errors={errors}

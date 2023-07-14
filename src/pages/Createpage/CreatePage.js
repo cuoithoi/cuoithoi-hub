@@ -1040,7 +1040,8 @@ const CreatePage = () => {
     async (e) => {
       setCodeinvite(e)
       const response = await post(APi.codeSale, { code: e }, config)
-      if (response.data === null) {
+      console.log(response)
+      if (response.data === {}) {
         refCodeinvite?.current?.setErrorMsg(Languages.errorMsg.errorCode)
         setMessageCodeInvite('')
       } else {
