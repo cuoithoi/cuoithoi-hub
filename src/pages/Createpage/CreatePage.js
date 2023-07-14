@@ -1043,6 +1043,7 @@ const CreatePage = () => {
       if (JSON.stringify(response.data) === JSON.stringify({})) {
         refCodeinvite?.current?.setErrorMsg(Languages.errorMsg.errorCode)
         setMessageCodeInvite('')
+        setPercentOff(0)
       } else {
         setTimeout(() => {
           refCodeinvite?.current?.setNoErrorMsg()
