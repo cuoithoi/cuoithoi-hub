@@ -1,23 +1,17 @@
-import React, { useState, useCallback, useEffect } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
-import { useDispatch } from 'react-redux'
 
 import { yupResolver } from '@hookform/resolvers/yup'
 import yup from '@/utils/yupGlobal'
 import { useForm } from 'react-hook-form'
 import Languages from '@/commons/Languages'
 import Header from '@/components/header'
-import { MyTextInput } from '@/components/input'
-import { useRef } from 'react'
 import { BUTTON_STYLES } from '@/commons/Constant.ts'
 import { Button } from '@/components/button'
-import { Link, useNavigate } from 'react-router-dom'
-import LoginSocial from '@/components/loginSocial'
+import { useNavigate } from 'react-router-dom'
 import Footer from './Footer/Footer'
-import FormValidate from '@/utils/FormValidate'
 import { Alias } from '@/commons/Constant.ts'
 import Loading from '@/components/Loading'
-import { signinUser, verifyOTP } from '@/features/auth/authSlice'
 import { Input } from '@/components/input/Input'
 import { toast } from 'react-toastify'
 import { customFetch } from '@/utils/axios'
@@ -32,9 +26,6 @@ const ChangePassword = () => {
   const { hash, otp } = useSelector((store) => store.auth.emailVerify)
   const navigate = useNavigate()
   // /////// handle redirect when signin success//////////
-  useEffect(() => {}, [])
-  const dispatch = useDispatch()
-
   const {
     register,
     handleSubmit,
@@ -51,12 +42,11 @@ const ChangePassword = () => {
     }
     const postData = async () => {
       try {
-        const resp = await customFetch.post('/change-forgot-password', {
+        await customFetch.post('/change-forgot-password', {
           ...data,
           otp: otp,
           hash: hash,
         })
-        console.log(resp)
         toast.success('Thay đổi mật khẩu thành công')
         navigate(Alias.login)
       } catch (error) {
@@ -65,9 +55,6 @@ const ChangePassword = () => {
     }
     postData()
   }
-
-  // console.log(register('username'))
-  console.log(errors)
 
   return (
     <div className='Login'>

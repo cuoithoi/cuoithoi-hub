@@ -90,7 +90,7 @@ const authSlice = createSlice({
       state.userId = payload._id
       state.token = payload.token
       state.isSignupSuccess = true
-      toast.success('Đăng ký thành công!')
+      toast.success('OTP đã được gửi vui lòng check email')
     },
     [verifyOTP.fulfilled]: (state, { payload }) => {
       const user = {

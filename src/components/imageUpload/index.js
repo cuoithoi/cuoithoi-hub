@@ -7,9 +7,10 @@ import { isArray } from "lodash";
 import { fiedlsCreatePage } from "@/commons/FieldsDataObj";
 import { APi, config } from '@/commons/Constant.ts'
 import { useBaseService } from '@/utils/BaseServices'
+import { toast } from "react-toastify";
 
 export const ImageUpload = forwardRef(
-  ({ images, title, icon, maxW, height, desc, maxnumber, allowDrag, onChange, onSortEnd, urlLocal, idCreateRespon }, ref) => {
+  ({ images, title, icon, maxW, height, desc, maxnumber, allowDrag, onChange, onSortEnd, urlLocal, idCreateRespon, maxFileSize }, ref) => {
     useImperativeHandle(ref, () => ({
       setErrorMsg
     }));
@@ -20,7 +21,7 @@ export const ImageUpload = forwardRef(
 
     const [checkUrlLocal, setCheckurlLocal] = useState(false);
 
-    const [albumList, setAlbumList] = useState(urlLocal ? [...urlLocal] : [] )
+    const [albumList, setAlbumList] = useState(urlLocal ? urlLocal : [])
 
     const maxNumber = maxnumber || 10;
 
@@ -44,7 +45,9 @@ export const ImageUpload = forwardRef(
     }, [])
 
     const onError = () => {
-      console.log('Số lượng tối đa ' + maxnumber + ' ảnh')
+      toast.warning('Tổng dung lượng ảnh Album cao quá 20MB', {
+        autoClose: 1000
+      })
     };
 
     const setErrorMsg = useCallback((msg) => {
@@ -99,6 +102,7 @@ export const ImageUpload = forwardRef(
             dataURLKey="data_url"
             acceptType={["jpg", "png", "jpeg", "bmp", ".gif", "HEIC"]}
             onError={onError}
+            maxFileSize={maxFileSize}
           >
             {({
 
@@ -127,7 +131,7 @@ export const ImageUpload = forwardRef(
                         <div className="image-item flex justify-center" >
                           <div
                             className="relative"
-                            style={{ height: height}}
+                            style={{ height: height }}
                             {...dragProps}
                           >
                             <div
@@ -140,7 +144,7 @@ export const ImageUpload = forwardRef(
                               src={image.data_url}
                               alt={'thumbs' + image.file?.size}
                               onClick={() => onImageUpdate(index)}
-                              style={{ height: height}}
+                              style={{ height: height }}
                             />
                           </div>
                         </div>
@@ -180,7 +184,7 @@ export const ImageUpload = forwardRef(
               <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                 <div
                   className="relative"
-                  style={{ height: height}}
+                  style={{ height: height }}
 
                 >
                   <div
@@ -193,7 +197,7 @@ export const ImageUpload = forwardRef(
                     src={urlLocal}
                     alt={'thumbs'}
 
-                    style={{ height: height}}
+                    style={{ height: height }}
                   />
                 </div></div>
               || isArray(urlLocal) && <> {
@@ -224,6 +228,7 @@ export const ImageUpload = forwardRef(
                   dataURLKey="data_url"
                   acceptType={["jpg", "png", "jpeg", "bmp", ".gif", "HEIC"]}
                   onError={onError}
+                  maxFileSize={maxFileSize}
                 >
                   {({
 

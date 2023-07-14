@@ -47,9 +47,7 @@ const VerifyOtp = () => {
     resolver: yupResolver(schema),
   })
   const onSubmit = (data) => {
-    console.log(data)
     const dataSending = { ...data, hash, userId, email }
-    console.log(dataSending)
     dispatch(verifyOTP(dataSending))
   }
 
@@ -92,6 +90,9 @@ const VerifyOtp = () => {
                   isLowerCase
                 />
               </form>
+              <span style={{ color: 'var(--white-color)', fontSize: 14, display: 'block', marginTop: 10 }}>
+                * Nếu bạn không nhận được OTP vui lòng xóa cookie hoặc refresh lại website
+              </span>
             </div>
           </div>
         </div>

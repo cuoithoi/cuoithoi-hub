@@ -1122,7 +1122,7 @@ p {
   gap: 30px;
   white-space: nowrap;
   scroll-behavior: smooth;
-  overflow-x: scroll;
+  /* overflow-x: scroll; */
   margin-bottom: 40px;
 }
 
@@ -1141,7 +1141,7 @@ p {
 .slide-track .slide-item {
   flex-grow: 1;
   flex-shrink: 0;
-  max-width: 23.5%;
+  max-width: 23%;
   width: 100%;
   margin-bottom: 20px;
 }

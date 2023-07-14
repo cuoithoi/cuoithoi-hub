@@ -51,7 +51,7 @@ const Footer = () => {
                                 <div className='infor'>
                                     <span>Tên ngân hàng: {data[data.length - 1]?.nameBank}</span>
                                     <span>Số tài khoản: {data[data.length - 1]?.numberBank}</span>
-                                    <span>Tên chủ tài khoản: {data[data.length - 1]?.ceoPeople}</span>
+                                    <span>Tên chủ tài khoản: Ryu Sunhwan</span>
                                 </div>
                             </div>
                         </div>
@@ -115,7 +115,7 @@ const Footer = () => {
                             <div className='contact'>
                                 <p>Ngân hàng: {data[data.length - 1]?.nameBank}</p>
                                 <p>Số tk: {data[data.length - 1]?.numberBank}</p>
-                                <p>Holder: {data[data.length - 1]?.ceoPeople}</p>
+                                <p>Holder: Ryu Sunhwan</p>
                             </div>
                             <Button
                                 label={Languages.buttonText.scanQr}
@@ -139,6 +139,7 @@ const Footer = () => {
                         </label>
                         <div className='infomationDetails'>
                             <div className='contact'>
+                                <p>Công ty TNHH Cưới Thôi</p>
                                 <p>CEO: {data[data.length - 1]?.ceoPeople}</p>
                                 <p>Company No: {data[data.length - 1]?.companyNumber}</p>
                                 <p>Email: {data[data.length - 1]?.emailCompany}</p>

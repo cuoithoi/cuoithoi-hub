@@ -22,7 +22,7 @@ const PackageProduct = () => {
       <div className='xs:grid xs:grid-cols-3 xs:gap-10'>
         {data?.map(function (item, index) {
           return (
-            <div className='item_package_level'>
+            <div className='item_package_level' key={index}>
               <div className='header' style={{ backgroundColor: '#cf9897' }}>
                 {item.name}
                 <div className=' text-white'>

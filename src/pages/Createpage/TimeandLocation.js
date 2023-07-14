@@ -325,14 +325,13 @@ const TimeandLocation = forwardRef(({ }, ref) => {
 
                     <div className='single_hor_input'>
                         {renderInput(refMapDirectLink, '', 'Nhập ' + Languages.text.mapPlaceWedding, TIME_AND_LOCATION.mapDirectLink, value.timeAndLocationOfWedding.mapDirectLink, 'text', 200, true, <FaLink />)}
-                        <div class="details_attend">
-                            <p className="coppyMaps">{Languages.text.coppyMaps}. Hình ảnh ví dụ (Bấm vào hình ảnh để phóng to)</p>
-                            <img src={IMG_Map} alt="maps" onClick={showLightbox} />
+                        <div className="details_attend">
+                            <p className="coppyMaps">{Languages.text.coppyMaps}. <span style={{ cursor: 'pointer', color: 'blue' }} onClick={showLightbox}>Bấm vào đây để xem hướng dẫn</span></p>
                         </div>
                         {
                             <FsLightbox
                                 toggler={open}
-                                sources={[IMG_Map]}
+                                sources={['https://www.youtube.com/watch?v=CDz8w0ltGD8']}
                             />
                         }
                     </div>

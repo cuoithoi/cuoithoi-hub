@@ -59,7 +59,7 @@ const Languages = {
     seeAll: 'Xem tất cả',
     createTypeTC: 'Tạo mẫu thiệp cưới',
     seeBefore: 'Xem trước',
-    copylink: 'Copy link',
+    copylink: 'Link chia sẻ',
     payment: 'Trả phí',
     expire: 'Hết hạn',
     dowloadTc: 'Tải thiệp cưới',
