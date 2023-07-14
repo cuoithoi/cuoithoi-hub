@@ -27,6 +27,7 @@ import dayjs from 'dayjs'
 import fileDownload from 'js-file-download'
 import { Payment } from '@/components/Payment'
 import { toast } from 'react-toastify'
+import { isArray } from 'lodash'
 
 const Mypage = () => {
   const navigate = useNavigate()
