@@ -50,7 +50,7 @@
     min-width: 250px;
     position: absolute;
     font-family: var(--quick-sand-font-family);
-    top: 100px;
+    top: 70px;
     z-index: 999;
 }
 
