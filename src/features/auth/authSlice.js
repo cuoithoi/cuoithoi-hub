@@ -25,7 +25,9 @@ export const signupUser = createAsyncThunk(
     try {
       const resp = await customFetch.post('/signup', user)
       if (resp.data.message === 'errors.field.email.isExist') {
-        toast.error('Tài khoản đã tồn tại')
+        toast.error('Tài khoản đã tồn tại', {
+          autoClose: 1500
+        })
         throw new Error('Tên đăng nhập hoặc mật khẩu không chính xác')
       }
       return resp.data.data
@@ -58,7 +60,9 @@ export const verifyOTP = createAsyncThunk(
       const response = await customFetch.post('/signup-verify-otp', otp)
       return response.data.data
     } catch (error) {
-      toast.error('Xác thực OTP thất bại, Vui lòng kiểm tra lại')
+      toast.error('Xác thực OTP thất bại, Vui lòng kiểm tra lại', {
+        autoClose: 1500
+      })
     }
   }
 )
@@ -90,7 +94,9 @@ const authSlice = createSlice({
       state.userId = payload._id
       state.token = payload.token
       state.isSignupSuccess = true
-      toast.success('OTP đã được gửi vui lòng check email')
+      toast.success('OTP đã được gửi vui lòng check email', {
+        autoClose: 1500
+      })
     },
     [verifyOTP.fulfilled]: (state, { payload }) => {
       const user = {
@@ -100,18 +106,24 @@ const authSlice = createSlice({
       }
       state.user = user
       addUserToLocalStorage(payload)
-      toast.success('Xác thực OTP thành công!')
+      toast.success('Xác thực OTP thành công!', {
+        autoClose: 1500
+      })
     },
     [signinUser.pending]: (state) => {
       state.isLoading = false
     },
     [signinUser.fulfilled]: (state, { payload }) => {
       if (payload.errorCode) {
-        toast.error('Email hoặc mật khẩu không đúng')
+        toast.error('Email hoặc mật khẩu không đúng', {
+          autoClose: 1500
+        })
         return
       }
       state.user = payload.data
-      toast.success('Đăng nhập thành công!')
+      toast.success('Đăng nhập thành công!', {
+        autoClose: 1500
+      })
       addUserToLocalStorage(payload.data)
       state.isLoading = false
     },

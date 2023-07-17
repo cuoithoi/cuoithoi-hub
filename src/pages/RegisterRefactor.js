@@ -67,15 +67,11 @@ const RegisterRefactor = () => {
   const onSubmit = (data) => {
     const email = data.email.toLowerCase()
     const dataSubmit = { ...data, email: email, username: email }
-    toast.loading('Đang gửi yêu cầu.....', {
-      autoClose: 1000
+    toast.warning('Đang gửi yêu cầu.....', {
+      autoClose: 1500
     })
     if (block) dispatch(signupUser(dataSubmit))
-    else {
-      setTimeout(() => {
-        toast.loading('Đang gửi yêu cầu.....')
-      }, 1500);
-    }
+ 
     setBlock(false)
     setTimeout(() => {
       setBlock(true)
