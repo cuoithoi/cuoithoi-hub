@@ -160,20 +160,19 @@ function MenuBar({ colorText }) {
               />
             )}
           </li>
-
-          {open && (
-            <div className={styles.dropdownbutton}>
-              <div className={styles.text}>
-                <span>{Languages.text.hello} {user && user.email}</span>
-                <p onClick={onOpenModal}>
-                  <FaSignOutAlt /> {Languages.text.logout}
-                </p>
-              </div>
-            </div>
-          )}
-          {renderModal}
         </ul>
       </div>
+      {open && (
+        <div className={styles.dropdownbutton}>
+          <div className={styles.text}>
+            <span>{Languages.text.hello} {user && user.email}</span>
+            <p onClick={onOpenModal}>
+              <FaSignOutAlt /> {Languages.text.logout}
+            </p>
+          </div>
+        </div>
+      )}
+      {renderModal}
     </nav>
   )
 }
