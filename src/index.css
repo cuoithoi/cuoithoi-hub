@@ -3666,10 +3666,6 @@ input:disabled {
     position: relative;
   }
 
-  .root-remove {
-    flex-wrap: unset;
-  }
-
   .collapse-child-title {
     font-size: 18px;
     gap: 10px;
@@ -3870,7 +3866,7 @@ input:disabled {
   }
 
   .root-remove {
-    flex-wrap: unset;
+    flex-wrap: wrap;
   }
 
   .collapse-child-title {
