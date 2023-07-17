@@ -65,6 +65,7 @@ const uploadImage = (imageFile) => {
   return api.post(APi.uploadImage, formData, {
     headers: {
       'Content-Type': 'multipart/form-data',
+      'Access-Control-Allow-Origin': '*'
     },
   })
 }
