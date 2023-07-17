@@ -1,5 +1,6 @@
 import React from 'react'
 import { Carousel } from 'react-responsive-carousel'
+import Ic_NoImage from '@/assets/home-image/Ic_NoImage.png'
 
 const BankInfo = ({
   nameBank,
@@ -24,7 +25,7 @@ const BankInfo = ({
       nameB: nameBank,
       numberBank: numberBank,
       ownerBank: ownerBank,
-      qr: qrCode,
+      qr: qrCode || Ic_NoImage,
       isGone: false,
     },
     {
@@ -32,7 +33,7 @@ const BankInfo = ({
       nameB: nameBankOfFather,
       numberBank: numberBankFather,
       ownerBank: ownerBankFather,
-      qr: qrCodeFatherLink,
+      qr: qrCodeFatherLink || Ic_NoImage,
       isGone: isGoneFather,
     },
     {
@@ -40,7 +41,7 @@ const BankInfo = ({
       nameB: nameBankOfMother,
       numberBank: numberBankMother,
       ownerBank: ownerBankMother,
-      qr: qrCodeMotherLink,
+      qr: qrCodeMotherLink || Ic_NoImage,
       isGone: isGoneMother,
     },
   ]
