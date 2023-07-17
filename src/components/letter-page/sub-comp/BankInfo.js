@@ -45,7 +45,7 @@ const BankInfo = ({
     },
   ]
   for (let i = data.length - 1; i >= 0; i--) {
-    if (data[i].isGone || !data[i].qr) {
+    if (data[i].isGone) {
       data.splice(i, 1)
     }
   }
