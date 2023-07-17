@@ -60,6 +60,8 @@ const LoginSocial = () => {
 
   const responseFacebook = async (response) => {
 
+    console.log(response)
+
     const dataUpdate = {
       "googleId": response?.id,
       "username": response?.name,
