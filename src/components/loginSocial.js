@@ -107,7 +107,7 @@ const LoginSocial = () => {
         /> */}
 
       <FacebookLogin
-        appId="6234250993358177"
+        appId="223400743980380"
         onSuccess={responseFacebook}
         onFail={(error) => {
           console.log('Login Failed!', error);
