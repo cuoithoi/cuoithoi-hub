@@ -113,19 +113,28 @@ const LoginSocial = () => {
           console.log('Login Failed!', error);
         }}
         onProfileSuccess={responseFacebook}
+        style={{
+          backgroundColor: '#fff',
+          color: '#000',
+          fontSize: '16px',
+          padding: '12px 24px',
+          border: 'none',
+          borderRadius: '4px',
+          fontFamily: 'Quicksand',
+          fontWeight: 500,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: 30
+        }}
       >
-        <Button
-          label={Languages.inputText.continueWithFB}
-          width={100}
-          isLowerCase
-          leftIcon={
-            <img
-              src={IcFacebook}
-              className='icon_login'
-              title={Languages.inputText.continueWithFB}
-            />
-          }
+
+        <img
+          src={IcFacebook}
+          className='icon_login'
+          title={Languages.inputText.continueWithFB}
         />
+        <span>{Languages.inputText.continueWithFB}</span>
       </FacebookLogin>
       <GoogleLogin
         clientId={clientID}
