@@ -67,13 +67,13 @@ const RegisterRefactor = () => {
   const onSubmit = (data) => {
     const email = data.email.toLowerCase()
     const dataSubmit = { ...data, email: email, username: email }
-    toast.success('Đang gửi OTP.....', {
+    toast.loading('Đang gửi yêu cầu.....', {
       autoClose: 1000
     })
     if (block) dispatch(signupUser(dataSubmit))
     else {
       setTimeout(() => {
-        toast.success('OTP đã được gửi vui lòng check email')
+        toast.loading('Đang gửi yêu cầu.....')
       }, 1500);
     }
     setBlock(false)
