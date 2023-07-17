@@ -33,7 +33,6 @@ import {
 } from '@/commons/FieldsDataObj'
 
 import { Panel } from '@/components/panel'
-import Footer from '../Footer/Footer'
 import MultiPlayer from '@/components/multiAudio'
 import FamilyGroom from './FamilyGroom'
 import FamilyBride from './FamilyBride'
@@ -113,6 +112,7 @@ const CreatePage = () => {
   const [percentOff, setPercentOff] = useState(0)
   const [checkUrl, setCheckUrl] = useState(true)
   const [isPaid, setIsPaid] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const refUnderfine = useRef(null)
   const refGroom = useRef(null)
@@ -337,6 +337,7 @@ const CreatePage = () => {
     }
     if (imageList.length > 0) {
       imageList.forEach((imageUrl) => {
+        setLoading(true)
         uploadImage(imageUrl.file)
           .then((response) => {
             values.album.push(response.data.data)
@@ -345,6 +346,9 @@ const CreatePage = () => {
           .catch((error) => {
             toast.error(error)
           })
+        setTimeout(() => {
+          setLoading(false)
+        }, 3000);
       })
     }
   }
@@ -655,6 +659,10 @@ const CreatePage = () => {
               '',
               20971520
             )}
+            {loading && <div className="progress progress-striped">
+              <div className="progress-bar">
+              </div>
+            </div>}
           </div>
         </div>
       </Panel>
