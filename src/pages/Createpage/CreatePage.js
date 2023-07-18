@@ -335,21 +335,31 @@ const CreatePage = () => {
       values.album = itemLocal.album
       setAlbumURL(itemLocal.album)
     }
+
+    const totalSize = imageList.reduce((accumulator, image) => accumulator + image.file.size, 0);
+
     if (imageList.length > 0) {
-      imageList.forEach((imageUrl) => {
-        setLoading(true)
-        uploadImage(imageUrl.file)
-          .then((response) => {
-            values.album.push(response.data.data)
-            setAlbumURL((prevAlbumURL) => [...prevAlbumURL, response.data.data])
-          })
-          .catch((error) => {
-            toast.error(error)
-          })
-        setTimeout(() => {
-          setLoading(false)
-        }, 3000);
-      })
+      if (totalSize < 20971520) {
+        imageList.forEach((imageUrl) => {
+          setLoading(true)
+          uploadImage(imageUrl.file)
+            .then((response) => {
+              values.album.push(response.data.data)
+              setAlbumURL((prevAlbumURL) => [...prevAlbumURL, response.data.data])
+            })
+            .catch((error) => {
+              toast.error(error)
+            })
+          setTimeout(() => {
+            setLoading(false)
+          }, 6000);
+        })
+      }
+      else {
+        toast.warning('Quá tải dung lượng, xin hãy bỏ bớt ảnh', {
+          autoClose: 1000
+        })
+      }
     }
   }
 

@@ -825,7 +825,7 @@ p {
       rgba(212, 150, 150) 75%,
       transparent 75%,
       transparent);
-  animation: progressAnimationStrike 3s;
+  animation: progressAnimationStrike 6s;
 }
 
 @keyframes progressAnimationStrike {
