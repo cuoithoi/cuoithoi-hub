@@ -42,8 +42,6 @@ export const ImageUpload = forwardRef(
       setLoadings(loading)
     }, [loading])
 
-    console.log(loadings)
-
     useEffect(() => {
 
       if (urlLocal?.length === 0 || urlLocal === '' || urlLocal === undefined) {

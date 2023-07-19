@@ -235,7 +235,7 @@ const Languages = {
     servicesInfo: 'Thông tin dịch vụ',
     packageSer: 'Gói dịch vụ',
     total: 'Tổng',
-    free14day: '(Bạn có thể sử dụng miễn phí thiệp trong vòng 14 ngày)',
+    free14day: '(Bạn có thể sử dụng miễn phí thiệp trong vòng 7 ngày)',
     payServices: 'Để thanh toán dịch vụ, vui lòng liên hệ tới bộ phận chăm sóc khách hàng',
     draff: 'Lưu bản nháp thành công',
     noneToken: 'Phiên đăng nhập hết hạn vui lòng đăng nhập lại để sử dụng tính năng này',

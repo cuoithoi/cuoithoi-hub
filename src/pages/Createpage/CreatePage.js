@@ -333,7 +333,6 @@ const CreatePage = () => {
     setAlbumURL([]);
 
     if (itemLocal) {
-      values.album = itemLocal.album;
       setAlbumURL(itemLocal.album);
     }
 
@@ -1290,7 +1289,7 @@ const CreatePage = () => {
         "locationOfInterrogation":
           values.timeAndLocationOfInterrogation.locationOfInterrogation,
       },
-      "album": values.album === [] ? albumURL : values.album,
+      "album": values.album ,
       "videoLink": values.videoLink,
       "eventOfProgram": {
         "eventOfProgramEditOne": values.eventOfProgram.eventOfProgramEditOne,
@@ -1402,11 +1401,12 @@ const CreatePage = () => {
   ])
 
   const onOpenSuccessConfirm = useCallback(() => {
+    console.log(values.album)
     try {
       if (
         imagesCoverURL.length === 0 ||
         imagesURL.length === 0 ||
-        albumURL.length === 0
+        values.album.length === 0
       ) {
         toast.error(Languages.errorMsg.uploadingEmpty)
       } else if (packageType.length === 0) {
