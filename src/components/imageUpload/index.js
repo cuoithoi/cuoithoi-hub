@@ -8,7 +8,6 @@ import { fiedlsCreatePage } from "@/commons/FieldsDataObj";
 import { APi, config } from '@/commons/Constant.ts'
 import { useBaseService } from '@/utils/BaseServices'
 import { toast } from "react-toastify";
-import { FaTruckLoading } from "react-icons/fa";
 
 export const ImageUpload = forwardRef(
   ({ images, title, icon, maxW, height, desc, maxnumber, allowDrag, onChange, onSortEnd, urlLocal, idCreateRespon, maxFileSize, loading }, ref) => {
