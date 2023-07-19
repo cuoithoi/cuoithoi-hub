@@ -45,8 +45,9 @@ export const ImageUpload = forwardRef(
 
     }, [])
 
-    const onError = () => {
-      if (maxFileSize > 30000000) {
+    const onError = (imageList) => {
+
+      if (imageList.maxFileSize) {
         toast.warning('Ảnh quá nặng vượt quá 30 MB', {
           autoClose: 1000
         })
@@ -55,6 +56,7 @@ export const ImageUpload = forwardRef(
           autoClose: 1000
         })
       }
+      
     };
 
     const setErrorMsg = useCallback((msg) => {

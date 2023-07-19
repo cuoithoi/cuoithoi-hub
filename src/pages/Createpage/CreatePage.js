@@ -342,16 +342,16 @@ const CreatePage = () => {
       if (totalSize < 200971520) {
         imageList.forEach((imageUrl) => {
           setLoading(true)
-          uploadImage(imageUrl.file)
-            .then((response) => {
-              values.album.push(response.data.data)
-              setAlbumURL((prevAlbumURL) => [...prevAlbumURL, response.data.data])
-              setLoading(false);
-            })
-            .catch((error) => {
-              toast.error(error)
-              setLoading(false);
-            })
+          // uploadImage(imageUrl.file)
+          //   .then((response) => {
+          //     values.album.push(response.data.data)
+          //     setAlbumURL((prevAlbumURL) => [...prevAlbumURL, response.data.data])
+          //     setLoading(false);
+          //   })
+          //   .catch((error) => {
+          //     toast.error(error)
+          //     setLoading(false);
+          //   })
         })
       }
       else {
