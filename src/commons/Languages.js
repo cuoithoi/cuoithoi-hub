@@ -101,7 +101,7 @@ const Languages = {
       'Tạo thiệp dễ dàng, chia sẻ nhanh chóng, & sửa đổi không giới hạn!',
     showFullIf: 'Hiển thị đầy đủ thông tin:',
     address: 'Địa điểm diễn ra lễ cưới',
-    albumWed: 'Album ảnh cưới (tối đa 30 ảnh)',
+    albumWed: 'Album ảnh cưới (tối đa 15 ảnh)',
     listCustomer: 'Danh sách khách mời',
     effectOpen: 'Hiệu ứng mở thiệp đẹp & chuyên nghiệp',
     contentEffect:
@@ -132,7 +132,7 @@ const Languages = {
     packAllDs: 'trọn gói thiết kế',
     mUse: '3 tháng sử dụng',
     savePen: 'Lưu bút',
-    album: 'Album ảnh (20 ảnh)',
+    album: 'Album ảnh (15 ảnh)',
     confirmInvite: 'Xác nhận lời mời',
     bigsize: '(Kích thước khuyến nghị 1024x768px)',
     smallsize: '(Kích thước khuyến nghị 1024x1024px)',
@@ -171,7 +171,7 @@ const Languages = {
     placeEagement: 'Địa điểm dạm ngõ',
     placeInterrogation: 'Địa điểm ăn hỏi',
     sortImage: 'Bạn có thể kéo ảnh và thay đổi thứ tự',
-    maximumUpload: 'Số lượng tối đa là 30 ảnh, kích thước tối đa là 20 MB.',
+    maximumUpload: 'Số lượng tối đa là 15 ảnh, kích thước tối đa một ảnh lên đến 30 MB.',
     performance:
       'Nếu bạn tải lên nhiều ảnh, trên một số thiết bị, tốc độ sẽ chậm.',
     linkVideo: 'Liên kết video',

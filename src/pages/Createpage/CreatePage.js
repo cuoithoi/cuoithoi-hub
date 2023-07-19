@@ -663,7 +663,7 @@ const CreatePage = () => {
               true,
               onChangeAlbum,
               itemLocal?.album,
-              30,
+              15,
               150,
               '',
               '',
@@ -1385,6 +1385,7 @@ const CreatePage = () => {
   ])
 
   const onOpenSuccessConfirm = useCallback(() => {
+    console.log(values.album, albumURL)
     try {
       if (
         imagesCoverURL.length === 0 ||
@@ -1422,8 +1423,10 @@ const CreatePage = () => {
             navigate(Alias.mypage)
           }, 5000)
         } else {
-          setCheckParams(CheckParams.CONFIRM_INFO)
-          refModal.current?.showModal()
+          setTimeout(() => {
+            setCheckParams(CheckParams.CONFIRM_INFO)
+            refModal.current?.showModal()
+          }, 2000)
         }
       }
     } catch {
