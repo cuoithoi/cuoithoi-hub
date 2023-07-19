@@ -327,40 +327,56 @@ const CreatePage = () => {
     }
   }
 
-  const onChangeAlbum = (imageList) => {
-    setAlbum(imageList)
-    values.album = []
-    setAlbumURL([])
+  const onChangeAlbum = async (imageList) => {
+    setAlbum(imageList);
+    values.album = [];
+    setAlbumURL([]);
+
     if (itemLocal) {
-      values.album = itemLocal.album
-      setAlbumURL(itemLocal.album)
+      values.album = itemLocal.album;
+      setAlbumURL(itemLocal.album);
     }
 
     const totalSize = imageList.reduce((accumulator, image) => accumulator + image.file.size, 0);
 
     if (imageList.length > 0) {
-      if (totalSize < 200971520) {
-        imageList.forEach((imageUrl) => {
-          setLoading(true)
-          uploadImage(imageUrl.file)
-            .then((response) => {
-              values.album.push(response.data.data)
-              setAlbumURL((prevAlbumURL) => [...prevAlbumURL, response.data.data])
-              setLoading(false);
-            })
-            .catch((error) => {
-              toast.error(error)
-              setLoading(false);
-            })
-        })
-      }
-      else {
+      if (totalSize < 900971520) {
+        try {
+          await processImageList(imageList, 0);
+        } catch (error) {
+          toast.error(error);
+        }
+      } else {
         toast.warning('Quá tải dung lượng, xin hãy bỏ bớt ảnh', {
           autoClose: 1000
-        })
+        });
       }
     }
-  }
+  };
+
+  const processImageList = async (imageList, index) => {
+    if (index >= imageList.length) {
+      // Khi đã xử lý xong tất cả các phần tử trong danh sách, tiến hành các thao tác sau
+      setLoading(false);
+      return;
+    }
+
+    const imageUrl = imageList[index];
+
+    setLoading(true);
+    try {
+      const response = await uploadImage(imageUrl.file);
+      values.album.push(response.data.data);
+      setAlbumURL((prevAlbumURL) => [...prevAlbumURL, response.data.data]);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      toast.error(error);
+    }
+
+    // Gọi đệ quy để xử lý phần tử tiếp theo sau khi đã hoàn thành phần tử hiện tại
+    await processImageList(imageList, index + 1);
+  };
 
   const onSortEnd = useCallback((oldIndex, newIndex) => {
     setAlbum((array) => arrayMove(array, oldIndex, newIndex))
