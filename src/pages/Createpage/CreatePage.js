@@ -668,7 +668,7 @@ const CreatePage = () => {
               150,
               '',
               '',
-              20971520,
+              30000000,
               loading
             )}
             {loading && <div className="progress progress-striped">
