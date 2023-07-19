@@ -65,25 +65,28 @@ const RegisterRefactor = () => {
   })
 
   const onSubmit = (data) => {
+
     const email = data.email.toLowerCase()
-    const dataSubmit = { ...data, email: email, username: email }
+
+    const dataSubmit = {
+      "phoneNumber": data.phoneNumber,
+      "username": data.email,
+      "email": data.email,
+      "fullName": data.fullName,
+      "password": data.password
+    }
+
     toast.warning('Đang gửi yêu cầu.....', {
       autoClose: 1500
     })
     if (block) dispatch(signupUser(dataSubmit))
- 
+
     setBlock(false)
     setTimeout(() => {
       setBlock(true)
     }, 90000);
   }
 
-  // dispatch(signupUser(data))
-
-  // console.log(register('username'))
-
-  // console.log(register('username'))
-  console.log(errors)
   return (
     <div className='Login'>
       <Loading />

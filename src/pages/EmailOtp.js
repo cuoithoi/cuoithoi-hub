@@ -88,7 +88,7 @@ const EmailOtp = () => {
                 />
               </form>
               <span style={{ color: 'var(--white-color)', fontSize: 14, display: 'block', marginTop: 10 }}>
-                * Nếu bạn không nhận được OTP vui lòng xóa cookie hoặc refresh lại website
+                * OTP có thể được gửi tại "Thư rác" trong email của bạn. Vui lòng kiểm tra
               </span>
             </div>
           </div>

@@ -339,7 +339,7 @@ const CreatePage = () => {
     const totalSize = imageList.reduce((accumulator, image) => accumulator + image.file.size, 0);
 
     if (imageList.length > 0) {
-      if (totalSize < 20971520) {
+      if (totalSize < 200971520) {
         imageList.forEach((imageUrl) => {
           setLoading(true)
           uploadImage(imageUrl.file)

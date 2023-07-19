@@ -32,7 +32,6 @@ const VerifyOtp = () => {
   const navigate = useNavigate()
   // /////// handle redirect when signin success//////////
   useEffect(() => {
-    console.log(user)
     if (user) navigate(Alias.mypage)
   }, [user])
   const dispatch = useDispatch()
@@ -91,7 +90,7 @@ const VerifyOtp = () => {
                 />
               </form>
               <span style={{ color: 'var(--white-color)', fontSize: 14, display: 'block', marginTop: 10 }}>
-                * Nếu bạn không nhận được OTP vui lòng xóa cookie hoặc refresh lại website
+                * OTP có thể được gửi tại "Thư rác" trong email của bạn. Vui lòng kiểm tra
               </span>
             </div>
           </div>
