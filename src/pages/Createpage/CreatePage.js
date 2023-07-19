@@ -452,7 +452,6 @@ const CreatePage = () => {
             ...prevValues,
             confirmName: e,
           }))
-          console.log(values.confirmName)
           break
 
         case INPUT_FIELDS.confirmPhone:
@@ -1403,7 +1402,6 @@ const CreatePage = () => {
   ])
 
   const onOpenSuccessConfirm = useCallback(() => {
-    console.log(values.album, albumURL)
     try {
       if (
         imagesCoverURL.length === 0 ||

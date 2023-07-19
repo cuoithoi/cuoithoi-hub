@@ -3,14 +3,14 @@ import ImageUploading from "react-images-uploading";
 import CloseIcon from "../icons/CloseIcon";
 import SortableList, { SortableItem } from "react-easy-sort";
 import Validate from "@/utils/Validate";
-import { isArray } from "lodash";
+import { isArray, last } from "lodash";
 import { fiedlsCreatePage } from "@/commons/FieldsDataObj";
 import { APi, config } from '@/commons/Constant.ts'
 import { useBaseService } from '@/utils/BaseServices'
 import { toast } from "react-toastify";
 
 export const ImageUpload = forwardRef(
-  ({ images, title, icon, maxW, height, desc, maxnumber, allowDrag, onChange, onSortEnd, urlLocal, idCreateRespon, maxFileSize, loading }, ref) => {
+  ({ images, title, icon, maxW, height, desc, maxnumber, allowDrag, onChange, onSortEnd, urlLocal, idCreateRespon, maxFileSize, loading = false }, ref) => {
     useImperativeHandle(ref, () => ({
       setErrorMsg
     }));
@@ -22,6 +22,8 @@ export const ImageUpload = forwardRef(
     const [checkUrlLocal, setCheckurlLocal] = useState(false);
 
     const [albumList, setAlbumList] = useState(urlLocal ? urlLocal : [])
+
+    const [loadings, setLoadings] = useState(false)
 
     const maxNumber = maxnumber || 10;
 
@@ -35,6 +37,12 @@ export const ImageUpload = forwardRef(
     // const onSortEnd = useCallback((oldIndex, newIndex) => {
     //   setImages((array) => arrayMove(array, oldIndex, newIndex));
     // }, []);
+
+    useEffect(() => {
+      setLoadings(loading)
+    }, [loading])
+
+    console.log(loadings)
 
     useEffect(() => {
 
@@ -55,7 +63,7 @@ export const ImageUpload = forwardRef(
           autoClose: 1000
         })
       }
-      
+
     };
 
     const setErrorMsg = useCallback((msg) => {
@@ -92,9 +100,12 @@ export const ImageUpload = forwardRef(
         "album": newAlbum
       })
 
+      setLoadings(true)
+
       const responseupdate = await post(APi.updateInvitation, dataUpdate, config);
       if (responseupdate.errorCode == 0) {
         values.album = responseupdate.data?.album
+        setLoadings(false)
       }
     }
 
@@ -156,7 +167,7 @@ export const ImageUpload = forwardRef(
                             />
 
                             {
-                              loading && <div className="loading_image"><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
+                              loadings && <div className="loading_image"><div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
                             }
 
                           </div>
@@ -213,7 +224,7 @@ export const ImageUpload = forwardRef(
                     style={{ height: height }}
                   />
                   {
-                    loading && <div className="loading_image"><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
+                    loadings && <div className="loading_image"><div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
                   }
                 </div></div>
               || isArray(urlLocal) && <> {
@@ -225,7 +236,7 @@ export const ImageUpload = forwardRef(
                   >
                     <div
                       className="absolute pointer"
-                      onClick={() => onRemoveAlnum(image)}
+                      onClick={() => onRemoveAlnum(index)}
                     >
                       <CloseIcon />
                     </div>
@@ -235,7 +246,7 @@ export const ImageUpload = forwardRef(
                       style={{ height: height }}
                     />
                     {
-                      loading && <div className="loading_image"><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
+                      loadings && <div className="loading_image"><div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
                     }
                   </div>
                 )}
@@ -292,7 +303,7 @@ export const ImageUpload = forwardRef(
                                     style={{ height: height }}
                                   />
                                   {
-                                    loading && <div className="loading_image"><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
+                                    loadings && <div className="loading_image"><div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
                                   }
                                 </div>
                               </div>
