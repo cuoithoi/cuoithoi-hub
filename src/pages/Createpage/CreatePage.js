@@ -333,6 +333,7 @@ const CreatePage = () => {
     setAlbumURL([]);
 
     if (itemLocal) {
+      values.album = itemLocal.album
       setAlbumURL(itemLocal.album);
     }
 
@@ -1289,7 +1290,7 @@ const CreatePage = () => {
         "locationOfInterrogation":
           values.timeAndLocationOfInterrogation.locationOfInterrogation,
       },
-      "album": values.album ,
+      "album": values.album,
       "videoLink": values.videoLink,
       "eventOfProgram": {
         "eventOfProgramEditOne": values.eventOfProgram.eventOfProgramEditOne,
