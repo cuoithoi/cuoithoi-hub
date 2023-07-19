@@ -346,13 +346,12 @@ const CreatePage = () => {
             .then((response) => {
               values.album.push(response.data.data)
               setAlbumURL((prevAlbumURL) => [...prevAlbumURL, response.data.data])
+              setLoading(false);
             })
             .catch((error) => {
               toast.error(error)
+              setLoading(false);
             })
-          setTimeout(() => {
-            setLoading(false)
-          }, 6000);
         })
       }
       else {
@@ -610,7 +609,8 @@ const CreatePage = () => {
       height,
       icon,
       titleImages,
-      maxFileSize
+      maxFileSize,
+      loading
     ) => {
       return (
         <div className='uploading_single_img_group'>
@@ -629,6 +629,7 @@ const CreatePage = () => {
             urlLocal={urlLocal}
             idCreateRespon={idCreateRespon}
             maxFileSize={maxFileSize}
+            loading={loading}
           />
         </div>
       )
@@ -667,7 +668,8 @@ const CreatePage = () => {
               150,
               '',
               '',
-              20971520
+              20971520,
+              loading
             )}
             {loading && <div className="progress progress-striped">
               <div className="progress-bar">
@@ -677,7 +679,7 @@ const CreatePage = () => {
         </div>
       </Panel>
     )
-  }, [album, onChangeAlbum])
+  }, [album, onChangeAlbum, loading])
 
   const renderMusic = useMemo(() => {
     return (

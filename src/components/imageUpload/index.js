@@ -8,9 +8,10 @@ import { fiedlsCreatePage } from "@/commons/FieldsDataObj";
 import { APi, config } from '@/commons/Constant.ts'
 import { useBaseService } from '@/utils/BaseServices'
 import { toast } from "react-toastify";
+import { FaTruckLoading } from "react-icons/fa";
 
 export const ImageUpload = forwardRef(
-  ({ images, title, icon, maxW, height, desc, maxnumber, allowDrag, onChange, onSortEnd, urlLocal, idCreateRespon, maxFileSize }, ref) => {
+  ({ images, title, icon, maxW, height, desc, maxnumber, allowDrag, onChange, onSortEnd, urlLocal, idCreateRespon, maxFileSize, loading }, ref) => {
     useImperativeHandle(ref, () => ({
       setErrorMsg
     }));
@@ -146,6 +147,11 @@ export const ImageUpload = forwardRef(
                               onClick={() => onImageUpdate(index)}
                               style={{ height: height }}
                             />
+
+                            {
+                              loading && <div className="loading_image"><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
+                            }
+
                           </div>
                         </div>
                       </SortableItem>
@@ -199,6 +205,9 @@ export const ImageUpload = forwardRef(
 
                     style={{ height: height }}
                   />
+                  {
+                    loading && <div className="loading_image"><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
+                  }
                 </div></div>
               || isArray(urlLocal) && <> {
                 albumList.map((image, index) =>
@@ -218,6 +227,9 @@ export const ImageUpload = forwardRef(
                       alt={'thumbs' + image.file?.size}
                       style={{ height: height }}
                     />
+                    {
+                      loading && <div className="loading_image"><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
+                    }
                   </div>
                 )}
                 <ImageUploading
@@ -272,6 +284,9 @@ export const ImageUpload = forwardRef(
                                     onClick={() => onImageUpdate(index)}
                                     style={{ height: height }}
                                   />
+                                  {
+                                    loading && <div className="loading_image"><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
+                                  }
                                 </div>
                               </div>
                             </SortableItem>
