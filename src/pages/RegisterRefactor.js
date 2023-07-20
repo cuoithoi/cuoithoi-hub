@@ -71,7 +71,7 @@ const RegisterRefactor = () => {
     const dataSubmit = {
       "phoneNumber": data.phoneNumber,
       "username": data.email,
-      "email": data.email,
+      "email": email,
       "fullName": data.fullName,
       "password": data.password
     }
