@@ -98,6 +98,8 @@ const CreatePage = () => {
   const [radioEffectBg, setRadioEffectBg] = useState('none')
   const [radioMusic, setRadioMusic] = useState(0)
 
+  const [maxLenghtAlbum, setMaxLenghtAlbum] = useState(0)
+
   const [openPanel, setOpenPanel] = useState(true)
 
   const [pointer, setPointer] = useState(false)
@@ -187,6 +189,7 @@ const CreatePage = () => {
           setImagesCoverURL(response.data?.coverImage)
           setIsPaid(response.data?.isPaid)
           setPointer(response.data?.isUseGuestBook)
+          setMaxLenghtAlbum(15 - response.data?.album.length)
         } catch (error) {
           console.error('Đã xảy ra lỗi:', error)
         }
@@ -673,7 +676,7 @@ const CreatePage = () => {
               true,
               onChangeAlbum,
               itemLocal?.album,
-              15,
+              maxLenghtAlbum,
               150,
               '',
               '',
@@ -688,7 +691,7 @@ const CreatePage = () => {
         </div>
       </Panel>
     )
-  }, [album, onChangeAlbum, loading])
+  }, [album, onChangeAlbum, loading, maxLenghtAlbum])
 
   const renderMusic = useMemo(() => {
     return (
