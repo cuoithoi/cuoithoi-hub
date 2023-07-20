@@ -98,7 +98,7 @@ const CreatePage = () => {
   const [radioEffectBg, setRadioEffectBg] = useState('none')
   const [radioMusic, setRadioMusic] = useState(0)
 
-  const [maxLenghtAlbum, setMaxLenghtAlbum] = useState(0)
+  const [maxLenghtAlbum, setMaxLenghtAlbum] = useState(15)
 
   const [openPanel, setOpenPanel] = useState(true)
 
@@ -333,6 +333,10 @@ const CreatePage = () => {
   const onChangeAlbum = async (imageList) => {
     setAlbum(imageList);
     values.album = [];
+
+    if (values.albumLocal.length === 0) {
+      values.album = itemLocal.album
+    }
 
     const totalSize = imageList.reduce((accumulator, image) => accumulator + image.file.size, 0);
 
@@ -1287,7 +1291,7 @@ const CreatePage = () => {
         "locationOfInterrogation":
           values.timeAndLocationOfInterrogation.locationOfInterrogation,
       },
-      "album": values.album.concat(values.albumLocal),
+      "album": [...new Set(values.album.concat(values.albumLocal))],
       "videoLink": values.videoLink,
       "eventOfProgram": {
         "eventOfProgramEditOne": values.eventOfProgram.eventOfProgramEditOne,
@@ -1397,6 +1401,8 @@ const CreatePage = () => {
     radioEffectBg,
     radioEffectImage,
   ])
+
+  console.log(maxLenghtAlbum)
 
   const onOpenSuccessConfirm = useCallback(() => {
     try {

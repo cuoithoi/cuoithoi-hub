@@ -105,8 +105,6 @@ const LetterPage = () => {
     isPaid,
   } = letter
 
-  console.log(album)
-
   const captureAndUpload = () => {
     setTimeout(() => {
       html2canvas(containerRef.current, {

@@ -28,6 +28,7 @@ const TimeLocation = ({
     locationOfWedding,
     timeOfEventWedding,
     mapDirectLink,
+    namelocationOfWedding
   } = timeAndLocationOfWedding
 
   useEffect(() => {
@@ -90,7 +91,7 @@ const TimeLocation = ({
         <h2 className='pb-6 border-section-1'>Ngày</h2>
         <h2 className='text-second'>Địa chỉ</h2>
         <p className='margin-auto pb-6 border-section-1 max-w-xs'>
-          {locationOfWedding}
+          {namelocationOfWedding} {namelocationOfWedding && ', '} {locationOfWedding}
         </p>
         {/* <div className='flex justify-center items-center pb-5'>
           <MapIcon />

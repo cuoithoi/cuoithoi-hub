@@ -25,7 +25,9 @@ export const ImageUpload = forwardRef(
 
     const [loadings, setLoadings] = useState(false)
 
-    const maxNumber = maxnumber || 10;
+    const [counts, setCounts] = useState(maxnumber || 10)
+
+    var maxNumber = maxnumber || 10;
 
     const { post } = useBaseService()
 
@@ -41,6 +43,10 @@ export const ImageUpload = forwardRef(
     useEffect(() => {
       setLoadings(loading)
     }, [loading])
+
+    useEffect(() => {
+      setCounts(maxNumber)
+    }, [maxNumber])
 
     useEffect(() => {
 
@@ -105,6 +111,7 @@ export const ImageUpload = forwardRef(
         values.album = responseupdate.data?.album
         values.albumLocal = responseupdate.data?.album
         setLoadings(false)
+        setCounts(15 - responseupdate.data?.album.length)
       }
     }
 
@@ -116,7 +123,7 @@ export const ImageUpload = forwardRef(
             multiple
             value={images}
             onChange={onChange}
-            maxNumber={maxNumber}
+            maxNumber={counts}
             dataURLKey="data_url"
             acceptType={["jpg", "png", "jpeg", "bmp", ".gif", "HEIC"]}
             onError={onError}
@@ -175,7 +182,7 @@ export const ImageUpload = forwardRef(
                     )
                   }
                   {
-                    images.length < maxNumber && <div
+                    images.length < counts && <div
                       className="wrap_imageUploading border-img-dash flex items-center"
                       style={{ maxWidth: maxW, height: height }}
                       onClick={onImageUpload}
@@ -310,7 +317,7 @@ export const ImageUpload = forwardRef(
                           )
                         }
                         {
-                          images.length < maxNumber && <div
+                          images.length < counts && <div
                             className="wrap_imageUploading border-img-dash flex items-center"
                             style={{ maxWidth: maxW, height: height }}
                             onClick={onImageUpload}

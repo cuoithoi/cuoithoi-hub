@@ -57,8 +57,6 @@ const Gallery = ({ id }) => {
 
   const urls = album.map(item => item.url)
 
-  console.log(album)
-
   if (isLoading) return
   return (
     <div
