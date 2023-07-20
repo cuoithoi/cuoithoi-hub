@@ -13,7 +13,7 @@ const Invitation = ({
   timeAndLocationOfWedding,
   contentOfInvitation,
 }) => {
-  const { dateOfEventWedding, locationOfWedding } = timeAndLocationOfWedding
+  const { dateOfEventWedding, locationOfWedding, namelocationOfWedding } = timeAndLocationOfWedding
   return (
     <section
       className='bg-center bg-no-repeat bg-cover section-mb layout-mw'
@@ -28,7 +28,7 @@ const Invitation = ({
           đến dự buổi tiệc chung vui cùng gia đình chúng tôi
         </div>
         <div>
-          <div className='flex justify-center pt-4 md:grid md:grid-cols-2 md:gap-4' style={{paddingTop: '1.5rem'}}>
+          <div className='flex justify-center pt-4 md:grid md:grid-cols-2 md:gap-4' style={{ paddingTop: '1.5rem' }}>
             <InvitationDetail info={informationOfGroom} isBride={false} />
             <InvitationDetail info={informationOfBride} isBride={true} />
           </div>
@@ -43,7 +43,7 @@ const Invitation = ({
           {locationOfWedding && (
             <>
               <h2 className='text-second'>Địa chỉ</h2>
-              <p className='px-20 pb-6 border-section-1'>{locationOfWedding}</p>
+              <p className='px-20 pb-6 border-section-1'>{namelocationOfWedding}, {locationOfWedding}</p>
               <p className='pt-8 px-20'>{contentOfInvitation}</p>
             </>
           )}

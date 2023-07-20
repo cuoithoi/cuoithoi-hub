@@ -52,11 +52,11 @@ const Hero = ({
           <div className='flex justify-center pt-3 w-full'>
             <img src={''} alt='' className='w-full' />
           </div>
-          <h1 className='wind-song big-size text-9xl pt-20' style={effectImage === 'Heart Frame' ? { paddingTop: '12rem' } : undefined}>
-            {timeAndLocationOfWedding.dateOfEventWedding &&
-              formatDayHero(timeAndLocationOfWedding.dateOfEventWedding)}
-          </h1>
-          <div>
+          <div style={effectImage === 'none' ? { position: 'relative', top: 120 } : undefined}>
+            <h1 className='wind-song big-size text-9xl pt-20' style={effectImage === 'Heart Frame' ? { paddingTop: '12rem' } : undefined}>
+              {timeAndLocationOfWedding.dateOfEventWedding &&
+                formatDayHero(timeAndLocationOfWedding.dateOfEventWedding)}
+            </h1>
             <h1>
               SAVE<span className='wind-song text-main text-2xl'>the</span>DATE
             </h1>
@@ -64,6 +64,7 @@ const Hero = ({
         </div>
         {/* <AudioPlay song={song} /> */}
       </div>
+      <div style={effectImage === 'none' ? { paddingBottom: 100, background: '#f4f5f6' } : undefined}></div>
     </LazyLoad>
   )
 }

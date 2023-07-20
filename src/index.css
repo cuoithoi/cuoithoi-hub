@@ -800,6 +800,11 @@ p {
   object-fit: cover;
 }
 
+.letterPageShow.py-20 {
+  padding-top: 2rem;
+  padding-bottom: 25rem;
+}
+
 .loading_image {
   position: absolute;
   background: #08080885;
