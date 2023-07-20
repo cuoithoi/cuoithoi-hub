@@ -1175,7 +1175,7 @@ const CreatePage = () => {
         "firstName": values.informationOfGroom[0].firstName,
         "middleName": values.informationOfGroom[0].middleName,
         "name": values.informationOfGroom[0].name,
-        "isOldBrotherGroom": values.informationOfBride[0].isOldBrotherGroom,
+        "isOldBrotherGroom": values.informationOfGroom[0].isOldBrotherGroom,
         "codingRegion": '84',
         "phoneNumberOfGroom": values.informationOfGroom[0].phoneNumberOfGroom,
         "firstFatherNameOfGroom":
@@ -1350,7 +1350,7 @@ const CreatePage = () => {
         }),
         config
       )
-
+      
       removeStorage('createLeter')
 
       if (response.errorCode == 0) {
@@ -1366,6 +1366,8 @@ const CreatePage = () => {
         _id: idCreateRespon,
         "status": isPaid ? '1' : 3,
       })
+
+      
 
       const responseupdate = await post(
         APi.updateInvitation,
