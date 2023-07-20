@@ -331,6 +331,7 @@ export const fiedlsCreatePage = {
     "locationOfInterrogation": ""
   },
   "album": [],
+  "albumLocal": [],
   "videoLink": "",
   "eventOfProgram": {
     "eventOfProgramEditOne": "Đón khách",

@@ -330,12 +330,6 @@ const CreatePage = () => {
   const onChangeAlbum = async (imageList) => {
     setAlbum(imageList);
     values.album = [];
-    setAlbumURL([]);
-
-    if (itemLocal) {
-      values.album = itemLocal.album
-      setAlbumURL(itemLocal.album);
-    }
 
     const totalSize = imageList.reduce((accumulator, image) => accumulator + image.file.size, 0);
 
@@ -1290,7 +1284,7 @@ const CreatePage = () => {
         "locationOfInterrogation":
           values.timeAndLocationOfInterrogation.locationOfInterrogation,
       },
-      "album": values.album,
+      "album": values.album.concat(values.albumLocal),
       "videoLink": values.videoLink,
       "eventOfProgram": {
         "eventOfProgramEditOne": values.eventOfProgram.eventOfProgramEditOne,
@@ -1402,7 +1396,6 @@ const CreatePage = () => {
   ])
 
   const onOpenSuccessConfirm = useCallback(() => {
-    console.log(values.album)
     try {
       if (
         imagesCoverURL.length === 0 ||

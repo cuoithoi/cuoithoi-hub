@@ -103,6 +103,7 @@ export const ImageUpload = forwardRef(
       const responseupdate = await post(APi.updateInvitation, dataUpdate, config);
       if (responseupdate.errorCode == 0) {
         values.album = responseupdate.data?.album
+        values.albumLocal = responseupdate.data?.album
         setLoadings(false)
       }
     }
