@@ -334,8 +334,8 @@ const CreatePage = () => {
     setAlbum(imageList);
     values.album = [];
 
-    if (values.albumLocal.length === 0) {
-      values.album = itemLocal.album
+    if (values.albumLocal.length === 0 && itemLocal) {
+      values.album = itemLocal?.album
     }
 
     const totalSize = imageList.reduce((accumulator, image) => accumulator + image.file.size, 0);
@@ -1402,9 +1402,8 @@ const CreatePage = () => {
     radioEffectImage,
   ])
 
-  console.log(maxLenghtAlbum)
-
   const onOpenSuccessConfirm = useCallback(() => {
+    console.log(values.album)
     try {
       if (
         imagesCoverURL.length === 0 ||
