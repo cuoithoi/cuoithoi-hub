@@ -467,7 +467,7 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                                     name='form_sellect_stt'
                                     onChange={onChangeSelectStt}
                                 >
-                                    <option selected value={'-1'}>{itemLocal ? (itemLocal?.informationOfBride?.isOldBrotherBride ? `Thứ bậc: ${Languages.inputText.top1woman} ` : `Thứ bậc: ${Languages.inputText.notTop} `) : 'Chọn thứ bậc'}</option>
+                                    <option value={'-1'}>{itemLocal ? (itemLocal?.informationOfBride?.isOldBrotherBride ? `Thứ bậc: ${Languages.inputText.top1woman} ` : `Thứ bậc: ${Languages.inputText.notTop} `) : 'Chọn thứ bậc'}</option>
                                     <option value='true'>{Languages.inputText.top1woman}</option>
                                     <option value='false'>{Languages.inputText.notTop}</option>
                                 </select>

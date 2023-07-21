@@ -90,7 +90,6 @@ export const ImageUpload = forwardRef(
 
     const onRemove = useCallback(() => {
       setCheckurlLocal(true)
-      values.album = []
     }, [checkUrlLocal])
 
     const onRemoveAlnum = async (itemUrl) => {

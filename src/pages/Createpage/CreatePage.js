@@ -1405,7 +1405,7 @@ const CreatePage = () => {
   ])
 
   const onOpenSuccessConfirm = useCallback(() => {
-    console.log(values.album)
+
     try {
       if (
         imagesCoverURL.length === 0 ||
