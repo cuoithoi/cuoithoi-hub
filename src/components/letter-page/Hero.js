@@ -39,7 +39,7 @@ const Hero = ({
   return (
     <LazyLoad height={325} offset={0}>
       <div
-        className='text-center  relative section-mb layout-mw bg-no-repeat bg-center bg-contain'
+        className={`text-center  relative section-mb layout-mw bg-no-repeat bg-center bg-contain ${effectImage === 'Wave' ? 'fullbgSize' : ''}`}
         id='hero'
         style={url ? { backgroundImage: `url('${url}')` } : undefined}
       >

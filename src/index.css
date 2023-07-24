@@ -1285,6 +1285,10 @@ p {
   height: 100%;
 }
 
+.fullbgSize{
+  background-size: cover !important;
+}
+
 .fill-icon {
   filter: opacity(1) brightness(1) contrast(0.5);
 }
