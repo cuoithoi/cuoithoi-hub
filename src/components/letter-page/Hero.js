@@ -41,7 +41,7 @@ const Hero = ({
       <div
         className='text-center  relative section-mb layout-mw bg-no-repeat bg-center bg-contain'
         id='hero'
-        style={url ? { backgroundImage: `url('${url}')`, backgroundSize: 'cover' } : undefined}
+        style={url ? { backgroundImage: `url('${url}')` } : undefined}
       >
         <div
           className='bg-no-repeat bg-center bg-cover py-20'
@@ -53,14 +53,16 @@ const Hero = ({
             <div className='flex justify-center pt-3 w-full'>
               <img src={''} alt='' className='w-full' />
             </div>
-            <div style={effectImage === 'none' ? { position: 'relative', top: 120 } : undefined}>
-              <h1 className={`wind-song big-size text-9xl ${effectImage === 'Light' ? '' : 'pt-20'}`} style={effectImage === 'Heart Frame' ? { paddingTop: '12rem' } : undefined}>
-                {timeAndLocationOfWedding.dateOfEventWedding &&
-                  formatDayHero(timeAndLocationOfWedding.dateOfEventWedding)}
-              </h1>
-              <h1>
-                SAVE<span className='wind-song text-main text-2xl'>the</span>DATE
-              </h1>
+            <div style={effectImage === 'none' || effectImage === 'Wave' ? { position: 'relative', top: 120 } : undefined} >
+              <div style={effectImage === 'Wave' ? { paddingBottom: '3rem' } : undefined}>
+                <h1 className={`wind-song big-size text-9xl ${effectImage === 'Light' ? '' : 'pt-20'}`} style={effectImage === 'Heart Frame' ? { paddingTop: '12rem' } : undefined}>
+                  {timeAndLocationOfWedding.dateOfEventWedding &&
+                    formatDayHero(timeAndLocationOfWedding.dateOfEventWedding)}
+                </h1>
+                <h1>
+                  SAVE<span className='wind-song text-main text-2xl'>the</span>DATE
+                </h1>
+              </div>
             </div>
           </div>
         </div>
