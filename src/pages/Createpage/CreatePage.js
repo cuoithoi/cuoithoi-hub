@@ -1821,28 +1821,28 @@ const CreatePage = () => {
 
             {renderRadio(
               'none',
-              'none',
+              'Memory',
               'none',
               radioChangeHandler,
               radioEffectImage
             )}
             {renderRadio(
               'Light',
-              'Crown',
+              'Royal',
               'Light',
               radioChangeHandler,
               radioEffectImage
             )}
             {renderRadio(
               'Wave',
-              'Wave',
+              'Magical',
               'Wave',
               radioChangeHandler,
               radioEffectImage
             )}
             {renderRadio(
               'Heart Frame',
-              'Heart Frame',
+              'Love',
               'Heart Frame',
               radioChangeHandler,
               radioEffectImage

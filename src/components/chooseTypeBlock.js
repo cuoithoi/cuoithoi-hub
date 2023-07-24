@@ -54,10 +54,10 @@ function ChooseTypeBlock({
                 </div>
                 <div className='slide-track scroll-item-horizontal slide-group-item'>
 
-                    {renderSection('Mẫu 1', 'Mùa hè kỉ niệm', itemImageNone, itemPDFNone)}
-                    {renderSection('Mẫu 2', 'Mùa hè kỉ niệm', itemImageCrown, itemPDFCrown)}
-                    {renderSection('Mẫu 3', 'Mùa hè kỉ niệm', itemImageWave, itemPDFWave)}
-                    {renderSection('Mẫu 4', 'Mùa hè kỉ niệm', itemImageHeart, itemPDFHeart)}
+                    {renderSection('Mẫu 1', 'Memory Bliss', itemImageNone, 'https://cuoithoi.com.vn/letterPage/64bd0929bf6e72197a2dc736')}
+                    {renderSection('Mẫu 2', 'Royal Romance', itemImageCrown, 'https://cuoithoi.com.vn/letterPage/64be083cb73b6b732b10a9c1')}
+                    {renderSection('Mẫu 3', 'Magic Moments', itemImageWave, 'https://cuoithoi.com.vn/letterPage/64be0fb7b73b6b732b10aa92')}
+                    {renderSection('Mẫu 4', 'Lovestruck', itemImageHeart, 'https://cuoithoi.com.vn/letterPage/64bdfd7db73b6b732b10a8f6')}
 
                 </div>
                 <div className='bottom-button-click center'>
