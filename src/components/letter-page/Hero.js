@@ -54,7 +54,7 @@ const Hero = ({
               <img src={''} alt='' className='w-full' />
             </div>
             <div style={effectImage === 'none' ? { position: 'relative', top: 120 } : undefined}>
-              <h1 className='wind-song big-size text-9xl pt-20' style={effectImage === 'Heart Frame' ? { paddingTop: '12rem' } : undefined}>
+              <h1 className={`wind-song big-size text-9xl ${effectImage === 'Light' ? '' : 'pt-20'}`} style={effectImage === 'Heart Frame' ? { paddingTop: '12rem' } : undefined}>
                 {timeAndLocationOfWedding.dateOfEventWedding &&
                   formatDayHero(timeAndLocationOfWedding.dateOfEventWedding)}
               </h1>

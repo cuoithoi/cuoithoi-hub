@@ -789,7 +789,7 @@ p {
 }
 
 .pt-96 {
-  padding-top: 42rem;
+  padding-top: 40rem;
 }
 
 .effect_light {
@@ -3893,7 +3893,8 @@ input:disabled {
   }
 
   .effect_light {
-    top: 90px;
+    top: 125px;
+    padding-bottom: 3rem;
   }
 
   .footer .component_ShowInf_Company {
