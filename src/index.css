@@ -1258,7 +1258,7 @@ p {
 
 .slide-track .slide-item .box-image img {
   width: 100%;
-  object-fit: contain;
+  object-fit: cover;
   border: 1px solid;
 }
 

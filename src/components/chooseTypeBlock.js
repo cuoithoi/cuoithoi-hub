@@ -2,16 +2,22 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Button } from './button';
 import { Alias, BUTTON_STYLES } from '@/commons/Constant.ts';
 import Languages from '@/commons/Languages';
-import itemImage from '@/assets/home-image/item.png'
+import itemImageNone from '@/assets/home-image/none.png'
+import itemImageCrown from '@/assets/home-image/crown.png'
+import itemImageWave from '@/assets/home-image/wave.png'
+import itemImageHeart from '@/assets/home-image/heart.png'
 import { useNavigate } from 'react-router-dom';
-
+import itemPDFNone from '@/assets/pdf/pdf_none.pdf'
+import itemPDFCrown from '@/assets/pdf/pdf_crown.pdf'
+import itemPDFWave from '@/assets/pdf/pdf_wave.pdf'
+import itemPDFHeart from '@/assets/pdf/pdf_heart.pdf'
 
 function ChooseTypeBlock({
     backgroundColor
 }) {
 
     const navigate = useNavigate();
-    const [heightImg, setHeightImg] = useState('auto')
+    const [heightImg, setHeightImg] = useState('600px')
 
     useEffect(() => {
         const windowHeight = window.innerHeight;
@@ -20,15 +26,18 @@ function ChooseTypeBlock({
             setHeightImg(heightBoxTopFooter)
     }, [])
 
-    const renderSection = useCallback((label, title) => {
+    const renderSection = useCallback((label, title, itemImage, href) => {
         return <div className='slide-item'>
-            <div className='box-image'>
-                <img style={{ height: heightImg }} src={itemImage} title={'item'} alt={label} />
-            </div>
-            <div className='title'>
-                <span>{label}</span>
-                <h3>{title}</h3>
-            </div></div >
+            <a href={href} target='_blank' title={title}>
+                <div className='box-image'>
+                    <img style={{ height: heightImg }} src={itemImage} alt={label} />
+                </div>
+                <div className='title'>
+                    <span>{label}</span>
+                    <h3>{title}</h3>
+                </div>
+            </a>
+        </div >
 
     }, [heightImg]);
 
@@ -45,10 +54,10 @@ function ChooseTypeBlock({
                 </div>
                 <div className='slide-track scroll-item-horizontal slide-group-item'>
 
-                    {renderSection('Mẫu 35', 'Mùa hè kỉ niệm')}
-                    {renderSection('Mẫu 35', 'Mùa hè kỉ niệm')}
-                    {renderSection('Mẫu 35', 'Mùa hè kỉ niệm')}
-                    {renderSection('Mẫu 35', 'Mùa hè kỉ niệm')}
+                    {renderSection('Mẫu 1', 'Mùa hè kỉ niệm', itemImageNone, itemPDFNone)}
+                    {renderSection('Mẫu 2', 'Mùa hè kỉ niệm', itemImageCrown, itemPDFCrown)}
+                    {renderSection('Mẫu 3', 'Mùa hè kỉ niệm', itemImageWave, itemPDFWave)}
+                    {renderSection('Mẫu 4', 'Mùa hè kỉ niệm', itemImageHeart, itemPDFHeart)}
 
                 </div>
                 <div className='bottom-button-click center'>
@@ -58,7 +67,7 @@ function ChooseTypeBlock({
                         isLowerCase
                         textStyle={BUTTON_STYLES.WHITE}
                         onPress={onChangeToServices}
-                        
+
                     />
                 </div>
             </div>
