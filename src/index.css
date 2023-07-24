@@ -788,6 +788,15 @@ p {
   right: 2rem;
 }
 
+.pt-96 {
+  padding-top: 42rem;
+}
+
+.effect_light {
+  position: relative;
+  top: 0;
+}
+
 .footer-logo {
   position: absolute;
   left: 50%;
@@ -3877,6 +3886,14 @@ input:disabled {
   .image_show_demo_wish img {
     width: 1500px;
     max-width: unset;
+  }
+
+  .pt-96 {
+    padding-top: 20rem;
+  }
+
+  .effect_light {
+    top: 90px;
   }
 
   .footer .component_ShowInf_Company {
