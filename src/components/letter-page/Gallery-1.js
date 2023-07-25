@@ -7,7 +7,6 @@ import Popup from '../modal/Popup'
 import CarouselGallery from './sub-comp/CarouselGallery'
 import { api } from '@/utils/axios'
 import { toast } from 'react-toastify'
-import LazyLoad from 'react-lazyload'
 import FsLightbox from 'fslightbox-react'
 
 const Gallery = ({ id }) => {
@@ -56,18 +55,6 @@ const Gallery = ({ id }) => {
     >
       <TitleSection title='ALBUM' />
       <div className=''>
-        <Popup
-          ref={modalRef}
-          content={
-            <CarouselGallery
-              index={selectedItem}
-              setIndex={setSelectedItem}
-              album={album}
-              handleLikeImage={handleLikeImage}
-            />
-          }
-          maxWidth={1000}
-        />
         <div className='relative'>
           <div
             className='absolute bottom-8 right-2 w-10 h-6 flex items-center justify-end cursor-pointer rounded-md z-50  bg-bg-appear'

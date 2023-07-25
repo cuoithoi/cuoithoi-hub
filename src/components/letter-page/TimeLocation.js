@@ -4,7 +4,6 @@ import mapIcon from '../../assets/home-image/map-icon.png'
 import background from '../../assets/home-image/time-schedule-bg.png'
 import Calendar from './sub-comp/Calendar'
 import CountDown from './sub-comp/Countdown'
-import LazyLoad from 'react-lazyload'
 
 import { formatDay } from '@/utils/helpers'
 

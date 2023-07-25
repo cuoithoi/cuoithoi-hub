@@ -32,8 +32,6 @@ import { NavLink, useNavigate } from "react-router-dom";
 import Slider1 from '@/assets/home-image/m_img2-min.jpg';
 import Slider2 from '@/assets/home-image/m_img3-min.jpg';
 import Slider3 from '@/assets/home-image/m_img4-min.jpg';
-import { Helmet } from "react-helmet";
-
 
 const fadeImages = [
   {
