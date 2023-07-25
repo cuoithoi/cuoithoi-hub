@@ -1,7 +1,6 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useState } from 'react'
 import classes from './LetterEnvelop.module.css'
-import EnvelopContent from './sub-comp/EnvelopContent'
 import Loading from '../Loading'
 import envelopImg from '@/assets/envelopImg/Envelope_ 1.png'
 import envelopBodyImg from '@/assets/envelopImg/Envelope_body1.png'
@@ -13,21 +12,18 @@ import heart from '@/assets/envelopImg/heart.png'
 
 const LetterEnvelop = ({
   setIsLetterOpen,
-  manfirstName,
   manName,
-  womanfirstName,
   womanName,
   coverImage,
-  timeAndLocationOfWedding,
 }) => {
   const [open, setOpen] = useState(false)
 
-  const openLetter = () => {
+  const openLetter = useCallback(() => {
     setOpen(true)
     setTimeout(() => {
       setIsLetterOpen(true)
     }, 6000)
-  }
+  })
 
   return (
     <>
@@ -50,23 +46,15 @@ const LetterEnvelop = ({
 
             <div
               className={`overflow-hidden ${classes.letter} ${open && classes.lineUptop
-              }`}
+                }`}
               style={{ zIndex: '1' }}
             >
               <div className={classes.text}>
                 <p>{manName} <br />{womanName}</p>
                 <img src={coverImage} alt='' />
-                {/* <EnvelopContent
-                  manfirstName={manfirstName}
-                  manName={manName}
-                  womanfirstName={womanfirstName}
-                  womanName={womanName}
-                  coverImage={}
-                  timeAndLocationOfWedding={timeAndLocationOfWedding}
-                /> */}
+
               </div>
             </div>
-            {/* <div className={`${classes.envelope_abs}`}></div> */}
 
             <div
               className={`${classes.envelopBodyImg} ${open && classes.shadow} ${open}`}

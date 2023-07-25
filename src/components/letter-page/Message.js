@@ -7,7 +7,7 @@ import { BUTTON_STYLES } from '@/commons/Constant.ts'
 import Popup from '../modal/Popup'
 import { useRef } from 'react'
 import WriteMessage from './sub-comp/WriteMessage'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { customFetch } from '@/utils/axios'
 import CommentDetail from '@/pages/CommentDetail'
 import { Convert } from '../../commons/Constant.ts'
@@ -24,7 +24,7 @@ const Message = () => {
   const handleCloseModalWriting = () => {
     modalRef.current.hideModal()
   }
-  
+
   const deleteCmt = (index) => {
     setCmtList((prev) => {
       prev.splice(index, 1)
@@ -50,7 +50,7 @@ const Message = () => {
     setCmtListProps(resp.data.data[0].data)
     cmtRef.current.showModal()
   }
-  
+
   if (isLoading) return
   return (
     <div className='layout-mw section-mb py-10'>
@@ -66,7 +66,7 @@ const Message = () => {
           emulateTouch
           className='slider_cmt'
           renderThumbs={() => null}
-          // centerSlidePercentage={100}
+        // centerSlidePercentage={100}
         >
           {cmtList?.map((cmt, index) => {
             return (
@@ -116,4 +116,4 @@ const Message = () => {
   )
 }
 
-export default Message
+export default React.memo(Message)

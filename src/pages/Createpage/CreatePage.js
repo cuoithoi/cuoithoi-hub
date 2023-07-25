@@ -1350,7 +1350,7 @@ const CreatePage = () => {
         }),
         config
       )
-      
+
       removeStorage('createLeter')
 
       if (response.errorCode == 0) {
@@ -1367,7 +1367,7 @@ const CreatePage = () => {
         "status": isPaid ? '1' : 3,
       })
 
-      
+
 
       const responseupdate = await post(
         APi.updateInvitation,
@@ -1441,7 +1441,7 @@ const CreatePage = () => {
         if (editor) {
           setTimeout(() => {
             navigate(Alias.mypage)
-          }, 5000)
+          }, 3000)
         } else {
           setTimeout(() => {
             setCheckParams(CheckParams.CONFIRM_INFO)

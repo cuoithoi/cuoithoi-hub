@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useCallback, useRef } from 'react'
 import Hero from '../components/letter-page/Hero'
 import { useEffect, useState, useMemo } from 'react'
 import Invitation from '../components/letter-page/Invitation'
@@ -25,7 +25,6 @@ import { Alias, APi, config } from '@/commons/Constant.ts'
 import { getUserFromLocalStorage } from '@/utils/localStorage'
 import html2canvas from 'html2canvas'
 import { useBaseService } from '@/utils/BaseServices'
-import { Helmet } from 'react-helmet'
 
 const LetterPage = () => {
   const { id } = useParams()
@@ -119,7 +118,7 @@ const LetterPage = () => {
           // link.download = 'screenshot.png'
           // link.click()
 
-          const res = await post(
+          await post(
             APi.convertBase64,
             {
               _id: id,
@@ -138,6 +137,7 @@ const LetterPage = () => {
   if (!isPaid && userId !== storageId?.userId) {
     navigate(Alias.homePage)
   }
+
   //!isLetterOpen && !isLoading && isEffectOfOpenning
   if (!isLetterOpen && !isLoading && isEffectOfOpenning) {
     return (

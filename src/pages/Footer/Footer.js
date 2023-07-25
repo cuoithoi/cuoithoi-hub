@@ -90,6 +90,8 @@ const Footer = () => {
                         </label>
                         <div id='checkbox1_info' className='infomationDetails'>
                             <p>{Languages.text.timeWork}</p>
+                            <br />
+                            <p>Email : CS@cuoithoi.com.vn</p>
                             <div className='contact_phone'>
                                 <img src={IcZalo} title='zalo' />
                                 <p>Zalo: {data[data.length - 1]?.zaloNumber}</p>

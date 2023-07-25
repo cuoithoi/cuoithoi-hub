@@ -12,6 +12,7 @@ const weekDays = ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7']
 const todayObj = dayjs()
 
 const Calendar = ({ dateOfEventWedding }) => {
+  
   const dayObj = dayjs(dateOfEventWedding)
   const thisYear = dayObj.year()
   const thisMonth = dayObj.month() // (January as 0, December as 11)

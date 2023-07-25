@@ -1,9 +1,5 @@
 import React from 'react'
 import invitationBg from '../../assets/home-image/invitation-bg.jpg'
-import dayjs from 'dayjs'
-// import invitationBg
-import InvitationRight from '../icons/InvitationRight'
-import InvitationLeft from '../icons/InvitationLeft'
 import { getDayOfWeeks, formatDay } from '@/utils/helpers'
 import InvitationDetail from './sub-comp/InvitationDetail'
 import TitleSection from './sub-comp/TitleSection'
@@ -53,4 +49,4 @@ const Invitation = ({
   )
 }
 
-export default Invitation
+export default React.memo(Invitation)

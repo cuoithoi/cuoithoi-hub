@@ -9,14 +9,8 @@ import { BUTTON_STYLES } from '@/commons/Constant.ts'
 
 const Congrats = ({ informationOfBride, informationOfGroom, isuseBanking }) => {
   const {
-    firstName: firstNameBride,
     name: nameBride,
-    middleName: middleNameBride,
-    firstFatherNameOfBride,
-    middleFatherNameOfBride,
     fatherNameOfBride,
-    firstMotherNameOfBride,
-    middleMotherNameOfBride,
     motherNameOfBride,
     phoneNumberOfBride,
     phoneNumberOfFatherBride,
@@ -38,14 +32,8 @@ const Congrats = ({ informationOfBride, informationOfGroom, isuseBanking }) => {
 
   } = informationOfBride
   const {
-    firstName: firstNameGroom,
     name: nameGroom,
-    middleName: middleNameGroom,
-    firstFatherNameOfGroom,
-    middleFatherNameOfGroom,
     fatherNameOfGroom,
-    firstMotherNameOfGroom,
-    middleMotherNameOfGroom,
     motherNameOfGroom,
     phoneNumberOfGroom,
     phoneNumberOfFatherGroom,
@@ -194,5 +182,4 @@ const Congrats = ({ informationOfBride, informationOfGroom, isuseBanking }) => {
     </div>
   )
 }
-
-export default Congrats
+export default React.memo(Congrats)

@@ -116,5 +116,4 @@ const Schedule = ({ eventOfProgram, note }) => {
     </div>
   )
 }
-
-export default Schedule
+export default React.memo(Schedule)

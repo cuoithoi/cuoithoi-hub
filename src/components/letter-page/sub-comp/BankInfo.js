@@ -83,7 +83,6 @@ const BankInfo = ({
           {data.map((item, index) => {
             return (
               <div className=' text-left' key={index}>
-                <h2 className=' text-left'>{item.name}</h2>
                 <div className='bank_info_show'>
                   <img src={item.qr} alt='qrFather' />
                   <div className='content_info'>
@@ -104,41 +103,6 @@ const BankInfo = ({
               </div>
             )
           })}
-          {/* <div className=' text-left'>
-            <h2>{isBride ? 'Cô dâu' : 'Chú rể'}</h2>
-            <p className='pr-4 text-sm'>{nameBank}</p>
-            <img src={qrCode} alt={isBride ? 'Cô dâu' : 'Chú rể'} />
-          </div>
-          {renderBankInfoFather(
-            'Bố',
-            nameBankOfFather,
-            qrCodeFatherLink,
-            isGoneFather
-          )}
-          {renderBankInfoFather(
-            'Mẹ',
-            nameBankOfMother,
-            qrCodeMotherLink,
-            isGoneMother
-          )} */}
-          {/* {isGoneFather && qrCodeFatherLink ? (
-            <div className=' text-left'>
-              <h2 className=' text-left'>Bố</h2>
-              <p className='pr-4 text-sm'>{nameBankOfFather}</p>
-              <img src={qrCodeFatherLink} alt='qrFather' />
-            </div>
-          ) : (
-            ''
-          )}
-          {isGoneMother && qrCodeFatherLink ? (
-            <div className=' text-left'>
-              <h2>Mẹ</h2>
-              <p className='pr-4 text-sm'>{nameBankOfMother}</p>
-              <img src={qrCodeMotherLink} alt='qrMother' />
-            </div>
-          ) : (
-            ''
-          )} */}
         </Carousel>
       </div>
     </div>

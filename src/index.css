@@ -75,7 +75,6 @@ Global Styles
 }
 
 html {
-  /* font-size: 62.5%; */
   overflow: hidden;
   scroll-behavior: smooth;
   scroll-snap-type: y mandatory;
@@ -381,13 +380,6 @@ p {
 
 .letter-input {
   background-color: #c6c6c6;
-}
-
-.layout-mw {
-  max-width: 560px;
-  /* position: relative; */
-  margin: auto !important;
-  background-color: white;
 }
 
 .nav-btn-container {
@@ -1262,6 +1254,15 @@ p {
   border: 1px solid;
 }
 
+datalist option {
+  display: none;
+}
+
+/* Hiển thị chỉ phần văn bản */
+datalist option::before {
+  content: attr(data-value);
+}
+
 .slide-track .slide-item .title span {
   font-style: normal;
   font-weight: 600;
@@ -1285,7 +1286,7 @@ p {
   height: 100%;
 }
 
-.fullbgSize{
+.fullbgSize {
   background-size: cover !important;
 }
 

@@ -4,15 +4,9 @@ import IcChrysanthemum from '@/assets/home-image/IcChrysanthemum.svg'
 const InvitationDetail = ({ info, isBride }) => {
   if (isBride) {
     const {
-      firstName,
       name,
-      middleName,
-      firstFatherNameOfBride,
-      middleFatherNameOfBride,
       fatherNameOfBride,
       isOldBrotherBride,
-      firstMotherNameOfBride,
-      middleMotherNameOfBride,
       motherNameOfBride,
       isGoneMotherOfBride,
       isGoneFatherBride
@@ -37,15 +31,9 @@ const InvitationDetail = ({ info, isBride }) => {
     )
   }
   const {
-    firstName,
     name,
-    middleName,
-    firstFatherNameOfGroom,
-    middleFatherNameOfGroom,
     fatherNameOfGroom,
     isOldBrotherGroom,
-    firstMotherNameOfGroom,
-    middleMotherNameOfGroom,
     motherNameOfGroom,
     isGoneFather,
     isGoneMother

@@ -80,10 +80,7 @@ const TimeLocation = ({
           </p>
         </div>
         <Calendar dateOfEventWedding={dateOfEventWedding} />
-        {/* <TitleDescribe title='Tháng 2/2023' /> */}
-        {/* <div className='flex justify-center'>
-          <img src={calander} alt='calander image' />
-        </div> */}
+
         <h2 className='pt-6 second-text-pink pb-3 max-w-xs margin-auto'>
           Đám cưới sẽ diễn ra sau
         </h2>
@@ -93,19 +90,11 @@ const TimeLocation = ({
         <p className='margin-auto pb-6 border-section-1 max-w-xs'>
           {namelocationOfWedding} {namelocationOfWedding && ', '} {locationOfWedding}
         </p>
-        {/* <div className='flex justify-center items-center pb-5'>
-          <MapIcon />
-          <h2 className='pl-2 m-0 pb-0 ' style={{ color: 'black' }}>
-            Tầng 2, Khách sạn Petro{' '}
-          </h2>
-        </div>
-        <p className='pb-2'>Số 458 Lý Bôn, P. Đề Thám, TP. Thái Bình</p> */}
+
       </div>
       {mapDirectLink && (
         <div>
-          <LazyLoad height={325} offset={200}>
-            <div dangerouslySetInnerHTML={{ __html: embeddedMap }}></div>
-          </LazyLoad>
+          <div dangerouslySetInnerHTML={{ __html: embeddedMap }}></div>
         </div>
       )}
       <div className='flex justify-center pt-6 mt-2'>
@@ -123,5 +112,4 @@ const TimeLocation = ({
     </div>
   )
 }
-
-export default TimeLocation
+export default React.memo(TimeLocation)

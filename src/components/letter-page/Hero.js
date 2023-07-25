@@ -1,19 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import homeMain from '../../assets/home-image/home-main.png'
-import { AnimationOnScroll } from 'react-animation-on-scroll'
+import React, { useCallback, useEffect, useState } from 'react'
 import { formatDayHero } from '@/utils/helpers'
-// import menuNav from '../../assets/home-image/menu-nav.svg'
-import AudioPlay from './sub-comp/AudioPlay'
 import waveGrayBg from '@/assets/home-image/wave-gray.png'
 import heartGray from '@/assets/home-image/heart-gray.png'
 import noneGray from '@/assets/home-image/none-gray.png'
 import lightGray from '@/assets/home-image/light-gray.png'
-import LazyLoad from 'react-lazyload'
+
 const Hero = ({
   effectImage,
-  manfirstName,
   manName,
-  womanfirstName,
   womanName,
   coverImage,
   timeAndLocationOfWedding,
@@ -27,17 +21,17 @@ const Hero = ({
 
   }, [coverImage])
 
-  const renderEffectImage = () => {
+  const renderEffectImage = useCallback(() => {
     let img
     if (effectImage === 'none') img = noneGray
     if (effectImage === 'Heart Frame') img = heartGray
     if (effectImage === 'Light') img = lightGray
     if (effectImage === 'Wave') img = waveGrayBg
     return img
-  }
+  }, [])
 
   return (
-    <LazyLoad height={325} offset={0}>
+    <>
       <div
         className={`text-center  relative section-mb layout-mw bg-no-repeat bg-center bg-contain ${effectImage === 'Light' ? 'fullbgSize' : ''}`}
         id='hero'
@@ -69,8 +63,8 @@ const Hero = ({
         {/* <AudioPlay song={song} /> */}
       </div>
       <div style={effectImage === 'none' ? { paddingBottom: 100, background: '#f4f5f6' } : undefined}></div>
-    </LazyLoad>
+    </>
   )
 }
 
-export default Hero
+export default React.memo(Hero)

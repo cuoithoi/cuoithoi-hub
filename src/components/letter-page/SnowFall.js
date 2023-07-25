@@ -1,15 +1,14 @@
 import Snowfall from 'react-snowfall'
-import leaveEffect from '@/assets/home-image/leaveEffect.png'
 import peachEffect from '@/assets/home-image/peachEffect.png'
 import snowWhiteEffect from '@/assets/home-image/snowWhiteEffect.png'
-import { SelectEffectBg } from '@/commons/FieldsDataObj'
-import React from 'react'
+import React, { useCallback } from 'react'
 import leave1 from '@/assets/leaves/leave-1.png'
 import leave2 from '@/assets/leaves/leave-2.png'
 import leave3 from '@/assets/leaves/leave-3.png'
 import leave4 from '@/assets/leaves/leave-4.png'
 const SnowFall = ({ type }) => {
-  const renderImg = () => {
+
+  const renderImg = useCallback(() => {
     const imgE = document.createElement('img')
     const imgE2 = document.createElement('img')
     const imgE3 = document.createElement('img')
@@ -29,40 +28,25 @@ const SnowFall = ({ type }) => {
     if (type === 'bongtuyet') imgE.src = snowWhiteEffect
     imgE.width = 60
     return [imgE]
-  }
-  if (type === 'kimtuyen') {
-    return (
-      <Snowfall
-        color='#E29C67'
-        snowflakeCount={7}
-        speed={[1, 2]}
-        style={{
-          position: 'fixed',
-          width: '100vw',
-          height: '100vh',
-          top:0,
-          zIndex: 11,
-        }}
-        radius={[2, 7]}
-      />
-    )
-  }
+
+  }, [])
+
   return (
     <Snowfall
-      // color='#E29C67'
+      color={type === 'kimtuyen' && '#E29C67'}
       snowflakeCount={7}
       speed={[1, 2]}
       style={{
         position: 'fixed',
         width: '100vw',
         height: '100vh',
-        top:0,
+        top: 0,
         zIndex: 11,
       }}
       images={renderImg()}
-      radius={[15, 25]}
+      radius={type === 'kimtuyen' ? [2, 7] : [15, 25]}
     />
   )
 }
 
-export default SnowFall
+export default React.memo(SnowFall)

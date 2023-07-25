@@ -1,8 +1,6 @@
 import React, { useRef } from 'react'
 import msgCmtTitle from '@/assets/home-image/msgCmtTitle.png'
 import closeIcon from '@/assets/svg/icon-close-outline.svg'
-import { Button } from '@/components/button'
-import { BUTTON_STYLES } from '@/commons/Constant.ts'
 import { convertTimeFormat } from '@/utils/helpers'
 import Popup from '@/components/modal/Popup'
 import DeleteCmtInput from './DeleteCmtInput'
