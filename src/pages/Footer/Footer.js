@@ -51,7 +51,7 @@ const Footer = () => {
                                 <div className='infor'>
                                     <span>Tên ngân hàng: {data[data.length - 1]?.nameBank}</span>
                                     <span>Số tài khoản: {data[data.length - 1]?.numberBank}</span>
-                                    <span>Tên chủ tài khoản: Ryu Sunhwan</span>
+                                    <span>Tên chủ tài khoản: {data[data.length - 1]?.holder}</span>
                                 </div>
                             </div>
                         </div>
@@ -133,7 +133,7 @@ const Footer = () => {
                     <div className='component_ShowInf_Company infoCompany'>
                         <input className="checkbox" id="checkbox3" type="checkbox" /><label htmlFor="checkbox3" className="checkbox-label">
                             <div className='logo_footer'>
-                                <img src={Iclogo} alt='logo' />
+                                <img src={data[data.length - 1]?.qrCode} alt='logo' />
                             </div>
                             <div className='icon_toogle'>
                                 <FaAngleDown />
