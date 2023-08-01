@@ -55,7 +55,7 @@ function ChooseTypeBlock({
                 <div className='slide-track scroll-item-horizontal slide-group-item'>
 
                     {renderSection('Mẫu 1', 'Memory Bliss', itemImageNone, 'https://cuoithoi.com.vn/letterPage/64c88fdf32892a6ee8435f40')}
-                    {renderSection('Mẫu 2', 'Royal Romance', itemImageCrown, 'https://cuoithoi.com.vn/letterPage/64c88fdf32892a6ee8435f40')}
+                    {renderSection('Mẫu 2', 'Royal Romance', itemImageCrown, 'https://api.cuoithoi.com.vn/?id=64c8912e32892a6ee8435f80')}
                     {renderSection('Mẫu 3', 'Magic Moments', itemImageWave, 'https://cuoithoi.com.vn/letterPage/64c892a532892a6ee8435fcc')}
                     {renderSection('Mẫu 4', 'Lovestruck', itemImageHeart, 'https://cuoithoi.com.vn/letterPage/64c8941632892a6ee8436067')}
 
