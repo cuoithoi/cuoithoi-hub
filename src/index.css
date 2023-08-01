@@ -2113,7 +2113,7 @@ table .date {
 .content_box_right .content .descreption .block .block_content ul li {
   display: flex;
   gap: 10px;
-  align-items: center;
+  align-items: baseline;
   padding-bottom: 5px;
 }
 
