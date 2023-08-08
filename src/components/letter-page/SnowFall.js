@@ -69,7 +69,7 @@ const SnowFall = ({ type }) => {
   return (
     <Snowfall
       color={'#E29C67'}
-      snowflakeCount={7}
+      snowflakeCount={5}
       speed={[1, 2]}
       style={{
         position: 'fixed',
@@ -80,8 +80,8 @@ const SnowFall = ({ type }) => {
       }}
       images={renderImg()}
       radius={[10, 18]}
-      wind={[0, 0]}
-      changeFrequency={50}
+      // wind={[0, 0]}
+      // changeFrequency={50}
     />
   )
 }
