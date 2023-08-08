@@ -37,6 +37,7 @@ const YoutubeVideo = ({ videoLink }) => {
             opts={{ width: '100%', height: '325' }}
             onPlay={onPlay}
             onPause={onPause}
+            loading='lazy'
           />
         </div>
       </div>

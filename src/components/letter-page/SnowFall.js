@@ -6,6 +6,11 @@ import leave1 from '@/assets/leaves/leave-1.png'
 import leave2 from '@/assets/leaves/leave-2.png'
 import leave3 from '@/assets/leaves/leave-3.png'
 import leave4 from '@/assets/leaves/leave-4.png'
+
+import ic_hd1 from '@/assets/leaves/Ic_hoadao1.png'
+import ic_hd2 from '@/assets/leaves/Ic_hoadao2.png'
+import ic_hd3 from '@/assets/leaves/Ic_hoadao3.png'
+import ic_hd4 from '@/assets/leaves/Ic_hoadao4.png'
 const SnowFall = ({ type }) => {
 
   const renderImg = useCallback(() => {
@@ -24,7 +29,17 @@ const SnowFall = ({ type }) => {
       imgE4.width = 60
       return [imgE, imgE2, imgE3, imgE4]
     }
-    if (type === 'hoadao') imgE.src = peachEffect
+    if (type === 'hoadao') {
+      imgE.src = ic_hd1
+      imgE2.src = ic_hd2
+      imgE3.src = ic_hd3
+      imgE4.src = ic_hd4
+      imgE.width = 60
+      imgE2.width = 60
+      imgE3.width = 60
+      imgE4.width = 60
+      return [imgE, imgE2, imgE3, imgE4]
+    }
     if (type === 'bongtuyet') imgE.src = snowWhiteEffect
     imgE.width = 60
     return [imgE]
