@@ -51,7 +51,7 @@ const Footer = () => {
                                 <div className='infor'>
                                     <span>Tên ngân hàng: {data[data.length - 1]?.nameBank}</span>
                                     <span>Số tài khoản: {data[data.length - 1]?.numberBank}</span>
-                                    <span>Tên chủ tài khoản: Ryu Sunhwan</span>
+                                    <span>Tên chủ tài khoản: Công ty TNHH Cưới Thôi</span>
                                 </div>
                             </div>
                         </div>
@@ -117,7 +117,7 @@ const Footer = () => {
                             <div className='contact'>
                                 <p>Ngân hàng: {data[data.length - 1]?.nameBank}</p>
                                 <p>Số tk: {data[data.length - 1]?.numberBank}</p>
-                                <p>Holder: Ryu Sunhwan</p>
+                                <p>Holder: Công ty TNHH Cưới Thôi</p>
                             </div>
                             <Button
                                 label={Languages.buttonText.scanQr}

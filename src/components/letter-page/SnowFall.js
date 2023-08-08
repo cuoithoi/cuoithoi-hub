@@ -46,9 +46,27 @@ const SnowFall = ({ type }) => {
 
   }, [])
 
+  if (type === 'kimtuyen') {
+    return (
+      <Snowfall
+        color='#E29C67'
+        snowflakeCount={7}
+        speed={[1, 2]}
+        style={{
+          position: 'fixed',
+          width: '100vw',
+          height: '100vh',
+          top:0,
+          zIndex: 11,
+        }}
+        radius={[2, 7]}
+      />
+    )
+  }
+
   return (
     <Snowfall
-      color={type === 'kimtuyen' && '#E29C67'}
+      color={'#E29C67'}
       snowflakeCount={7}
       speed={[1, 2]}
       style={{
@@ -59,7 +77,7 @@ const SnowFall = ({ type }) => {
         zIndex: 11,
       }}
       images={renderImg()}
-      radius={type === 'kimtuyen' ? [2, 7] : [15, 25]}
+      radius={[15, 25]}
     />
   )
 }

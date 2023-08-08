@@ -156,7 +156,7 @@ const CustomerCare = () => {
                                 </h2>
                             </div>
                         </div>
-                        <iframe width="100%" height={heightVideo} src="https://www.youtube.com/embed/qnXQgQfwJU4" title="Người được chọn tên Hoa - 23/11/2021" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+                        <iframe width="100%" height={heightVideo} src="https://www.youtube.com/embed/rulmOnR1nYQ" title="Người được chọn tên Hoa - 23/11/2021" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
                     </div>
                 </div>
                 <div ref={refCS} className='sec_quickly_answer'>
