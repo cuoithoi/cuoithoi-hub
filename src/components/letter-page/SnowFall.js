@@ -50,7 +50,7 @@ const SnowFall = ({ type }) => {
     return (
       <Snowfall
         color='#E29C67'
-        snowflakeCount={7}
+        snowflakeCount={5}
         speed={[1, 2]}
         style={{
           position: 'fixed',
