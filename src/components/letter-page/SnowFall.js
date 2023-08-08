@@ -34,10 +34,10 @@ const SnowFall = ({ type }) => {
       imgE2.src = ic_hd2
       imgE3.src = ic_hd3
       imgE4.src = ic_hd4
-      imgE.width = 60
-      imgE2.width = 60
-      imgE3.width = 60
-      imgE4.width = 60
+      imgE.width = 5
+      imgE2.width = 5
+      imgE3.width = 5
+      imgE4.width = 5
       return [imgE, imgE2, imgE3, imgE4]
     }
     if (type === 'bongtuyet') imgE.src = snowWhiteEffect
@@ -56,10 +56,12 @@ const SnowFall = ({ type }) => {
           position: 'fixed',
           width: '100vw',
           height: '100vh',
-          top:0,
+          top: 0,
           zIndex: 11,
         }}
         radius={[2, 7]}
+        wind={[0, 0]}
+        changeFrequency={50}
       />
     )
   }
@@ -77,7 +79,9 @@ const SnowFall = ({ type }) => {
         zIndex: 11,
       }}
       images={renderImg()}
-      radius={[15, 25]}
+      radius={[10, 18]}
+      wind={[0, 0]}
+      changeFrequency={50}
     />
   )
 }
