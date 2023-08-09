@@ -11,6 +11,16 @@ import ic_hd1 from '@/assets/leaves/Ic_hoadao1.png'
 import ic_hd2 from '@/assets/leaves/Ic_hoadao2.png'
 import ic_hd3 from '@/assets/leaves/Ic_hoadao3.png'
 import ic_hd4 from '@/assets/leaves/Ic_hoadao4.png'
+
+import ic_b01 from '@/assets/leaves/B01.png'
+import ic_b02 from '@/assets/leaves/B02.png'
+import ic_b03 from '@/assets/leaves/B03.png'
+import ic_b04 from '@/assets/leaves/B04.png'
+import ic_T1 from '@/assets/leaves/T1-8.png'
+import ic_T2 from '@/assets/leaves/T2-8.png'
+import ic_T3 from '@/assets/leaves/T3-8.png'
+import ic_T4 from '@/assets/leaves/T4-8.png'
+
 const SnowFall = ({ type }) => {
 
   const renderImg = useCallback(() => {
@@ -40,9 +50,28 @@ const SnowFall = ({ type }) => {
       imgE4.width = 5
       return [imgE, imgE2, imgE3, imgE4]
     }
-    if (type === 'bongtuyet') imgE.src = snowWhiteEffect
-    imgE.width = 60
-    return [imgE]
+    if (type === 'kimtuyen') {
+      imgE.src = ic_b01
+      imgE2.src = ic_b02
+      imgE3.src = ic_b03
+      imgE4.src = ic_b04
+      imgE.width = 5
+      imgE2.width = 5
+      imgE3.width = 5
+      imgE4.width = 5
+      return [imgE, imgE2, imgE3, imgE4]
+    }
+    if (type === 'bongtuyet') {
+      imgE.src = ic_T1
+      imgE2.src = ic_T2
+      imgE3.src = ic_T3
+      imgE4.src = ic_T4
+      imgE.width = 5
+      imgE2.width = 5
+      imgE3.width = 5
+      imgE4.width = 5
+      return [imgE, imgE2, imgE3, imgE4]
+    }
 
   }, [])
 
@@ -59,9 +88,10 @@ const SnowFall = ({ type }) => {
           top: 0,
           zIndex: 11,
         }}
-        radius={[2, 7]}
-        wind={[0, 0]}
-        changeFrequency={50}
+        images={renderImg()}
+        radius={[20, 25]}
+        // wind={[0, 0]}
+        // changeFrequency={50}
       />
     )
   }
@@ -80,8 +110,8 @@ const SnowFall = ({ type }) => {
       }}
       images={renderImg()}
       radius={[10, 18]}
-      // wind={[0, 0]}
-      // changeFrequency={50}
+    // wind={[0, 0]}
+    // changeFrequency={50}
     />
   )
 }

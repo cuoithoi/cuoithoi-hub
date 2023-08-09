@@ -133,7 +133,9 @@ const Footer = () => {
                     <div className='component_ShowInf_Company infoCompany'>
                         <input className="checkbox" id="checkbox3" type="checkbox" /><label htmlFor="checkbox3" className="checkbox-label">
                             <div className='logo_footer'>
-                                <img src={Iclogo} alt='logo' />
+                                <a href='/' title='trang chủ'>
+                                    <img src={Iclogo} alt='logo' />
+                                </a>
                             </div>
                             <div className='icon_toogle'>
                                 <FaAngleDown />
