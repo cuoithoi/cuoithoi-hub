@@ -87,4 +87,4 @@ const LetterEnvelop = ({
   )
 }
 
-export default LetterEnvelop
+export default React.memo(LetterEnvelop)
