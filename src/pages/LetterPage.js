@@ -159,7 +159,6 @@ const LetterPage = () => {
     <div ref={containerRef} className={`letter-wrapper ${bgColor}`}>
 
       <div className={`letter-layout ${bgColor}`}>
-        <SnowFall type={effectBackgroud.value} />
         <NavButton setIsNavOpen={setIsNavOpen} song={song} />
 
         <Hero
@@ -206,6 +205,7 @@ const LetterPage = () => {
         modalContent={modalContent}
         index={index}
       />
+      <SnowFall type={effectBackgroud.value} />
     </div>
   )
 }

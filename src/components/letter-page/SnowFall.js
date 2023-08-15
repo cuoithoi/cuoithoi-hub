@@ -82,10 +82,7 @@ const SnowFall = ({ type }) => {
         speed={[1, 2]}
         style={{
           position: 'fixed',
-          width: '100vw',
-          height: '100vh',
-          top: 0,
-          zIndex: 11,
+          top: 0
         }}
         images={renderImg()}
         radius={[20, 25]}
@@ -101,10 +98,7 @@ const SnowFall = ({ type }) => {
       speed={[1, 2]}
       style={{
         position: 'fixed',
-        width: '100vw',
-        height: '100vh',
-        top: 0,
-        zIndex: 11,
+        top: 0
       }}
       images={renderImg()}
       radius={[10, 18]}

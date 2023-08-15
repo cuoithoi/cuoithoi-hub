@@ -13,7 +13,7 @@ import { uploadImage } from "@/utils/axios";
 import { getItemFromLocalStorage } from "@/utils/localStorage";
 import { useBaseService } from "@/utils/BaseServices";
 import Ic_PersonGroom from '@/assets/home-image/Ic_PersonGroom.png'
-
+import Select from 'react-select';
 
 const BankingGroom = forwardRef(({ }, ref) => {
 
@@ -327,27 +327,25 @@ const BankingGroom = forwardRef(({ }, ref) => {
         [onSortEnd]
     )
 
+    const optionList = [
+        dataBank.map(function (item) {
+            return { value: item?.name, label: item?.name }
+        })
+    ];
+
     const renderBank = useCallback((name, label, itemlocal) => {
 
         return <div className='fullwidth_input_colum'>
             <div className='single_hor_input man_inputStyle' style={{ marginBottom: 10 }}>
                 <label className="Input_label__90o4b">{label}</label>
-                <select
-                    className='form_sellect_control'
+                <Select
+                    options={optionList[0]}
+                    placeholder={itemlocal ? itemlocal : "Chọn ngân hàng"}
+                    className='form_sellect_control select_form_search'
                     name='form_sellect_stt'
-                    onChange={(e) => onChangeText(e.target.value, name)}
-                    style={{ maxWidth: 'unset' }}
-                >
-                    <option value={itemlocal ? itemlocal : Languages.text.bank}>{itemlocal ? itemlocal : Languages.text.bank}</option>
-                    {
-
-                        dataBank.map(function (item, index) {
-
-                            return <option key={index} value={item?.amount}>{item?.name} </option>
-
-                        })
-                    }
-                </select>
+                    onChange={(e) => onChangeText(e.value, name)}
+                    defaultValue={itemlocal}
+                />
             </div>
         </div>
 

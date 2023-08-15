@@ -2572,6 +2572,15 @@ img {
   font-family: var(--quick-sand-font-family);
 }
 
+.select_form_search {
+  padding: 0;
+  background: none;
+}
+
+.css-13cymwt-control {
+  background-color: var(--color-input) !important;
+}
+
 .form_sellect_control option {
   padding: 5px;
 }
