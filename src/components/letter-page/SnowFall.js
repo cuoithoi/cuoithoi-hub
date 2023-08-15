@@ -1,7 +1,7 @@
 import Snowfall from 'react-snowfall'
 import peachEffect from '@/assets/home-image/peachEffect.png'
 import snowWhiteEffect from '@/assets/home-image/snowWhiteEffect.png'
-import React, { useCallback } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import leave1 from '@/assets/leaves/leave-1.png'
 import leave2 from '@/assets/leaves/leave-2.png'
 import leave3 from '@/assets/leaves/leave-3.png'
@@ -78,7 +78,6 @@ const SnowFall = ({ type }) => {
   if (type === 'kimtuyen') {
     return (
       <Snowfall
-        color='#E29C67'
         snowflakeCount={5}
         speed={[1, 2]}
         style={{
@@ -91,14 +90,13 @@ const SnowFall = ({ type }) => {
         images={renderImg()}
         radius={[20, 25]}
         // wind={[0, 0]}
-        // changeFrequency={50}
+        changeFrequency={5000}
       />
     )
   }
 
   return (
     <Snowfall
-      color={'#E29C67'}
       snowflakeCount={5}
       speed={[1, 2]}
       style={{
@@ -110,8 +108,8 @@ const SnowFall = ({ type }) => {
       }}
       images={renderImg()}
       radius={[10, 18]}
-    // wind={[0, 0]}
-    // changeFrequency={50}
+      // wind={[0, 0]}
+      changeFrequency={5000}
     />
   )
 }

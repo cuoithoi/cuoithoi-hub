@@ -307,7 +307,7 @@ p {
 
 /* layout restructor */
 .letter-wrapper {
-  background: var(--white-color);
+  scroll-behavior: smooth;
 }
 
 .letter-wrapper .animate__zoomInDown {
@@ -342,26 +342,6 @@ p {
 
 .slider_cmt .close_icon {
   display: none;
-}
-
-.nav-btn-container {
-  -webkit-animation-name: gototiopnav-btn-container;
-  animation-name: gototiopnav-btn-container;
-  animation-duration: 1.5s;
-}
-
-@keyframes gototiopnav-btn-container {
-  0% {
-    top: -700%;
-  }
-
-  60% {
-    top: -200%;
-  }
-
-  to {
-    top: 0;
-  }
 }
 
 @keyframes gototiop {

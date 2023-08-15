@@ -130,7 +130,7 @@ const LetterPage = () => {
         .catch((error) => {
           console.error('Lỗi khi chụp ảnh:', error)
         })
-    }, 1000)
+    }, 500)
     setIsLetterOpen(true)
   }
 
@@ -210,4 +210,4 @@ const LetterPage = () => {
   )
 }
 
-export default LetterPage
+export default React.memo(LetterPage)
