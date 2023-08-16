@@ -2572,7 +2572,10 @@ img {
   font-family: var(--quick-sand-font-family);
 }
 
-.select_form_search {
+.select_form_search,
+.select_province,
+.select_district,
+.select_wardt {
   padding: 0;
   background: none;
 }

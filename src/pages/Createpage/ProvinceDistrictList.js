@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { fiedlsCreatePage } from '@/commons/FieldsDataObj';
 import { getItemFromLocalStorage } from '@/utils/localStorage';
+import Select from 'react-select';
 
 const ProvinceDistrictList = () => {
     const [provinces, setProvinces] = useState([]);
@@ -40,7 +41,7 @@ const ProvinceDistrictList = () => {
     }, []);
 
     const handleProvinceChange = (e) => {
-        const provinceId = e.target.value;
+        const provinceId = e.value;
         setSelectedProvince(provinceId);
 
         // Gọi API để lấy danh sách quận/huyện theo tỉnh đã chọn
@@ -62,7 +63,7 @@ const ProvinceDistrictList = () => {
     }, [selectedProvince, selectedDistrict, selectedWard]);
 
     const handleDistrictChange = (e) => {
-        const districtId = e.target.value;
+        const districtId = e.value;
         setSelectedDistrict(districtId);
 
         // Gọi API để lấy danh sách phường/xã theo quận/huyện đã chọn
@@ -76,47 +77,51 @@ const ProvinceDistrictList = () => {
     };
 
     const handleWardChange = (e) => {
-        setSelectedWard(e.target.value);
+        setSelectedWard(e.value);
     };
+
+    const optionListProvinces = provinces.map(function (item) {
+        return { value: item?.province_id, label: item?.province_name }
+    });
+
+    const optionListDistrict = districts.map(function (item) {
+        return { value: item?.district_id, label: item?.district_name }
+    });
+
+    const optionListWards = wards.map(function (item) {
+        return { value: item?.ward_id, label: item?.ward_name }
+    });
 
     return (
         <div className='address_province_'>
-            <select
+
+            <Select
+                options={optionListProvinces}
+                placeholder={itemLocal?.confirmProvince ? itemLocal?.confirmProvince : 'Chọn Tình/Thành'}
                 className='form_sellect_control select_province'
                 name='form_sellect_stt'
-                value={selectedProvince} onChange={handleProvinceChange}
-            >
-                <option value='-1'>{itemLocal?.confirmProvince ? itemLocal?.confirmProvince : 'Chọn Tình/Thành'} </option>
-                {provinces.map((province) => (
-                    <option key={province.province_id} value={province.province_id}>
-                        {province.province_name}
-                    </option>
-                ))}
-            </select>
-            <select
+                onChange={handleProvinceChange}
+                defaultValue={itemLocal?.confirmProvince}
+            />
+
+            <Select
+                options={optionListDistrict}
+                placeholder={itemLocal?.confirmDistrict ? itemLocal?.confirmDistrict : 'Chọn Quận/Huyện'}
                 className='form_sellect_control select_district'
                 name='form_sellect_stt'
-                value={selectedDistrict} onChange={handleDistrictChange}
-            >
-                <option value='-1'>{itemLocal?.confirmDistrict ? itemLocal?.confirmDistrict : 'Chọn Quận/Huyện'}</option>
-                {districts.map((district) => (
-                    <option key={district.district_id} value={district.district_id}>
-                        {district.district_name}
-                    </option>
-                ))}
-            </select>
-            <select
+                onChange={handleDistrictChange}
+                defaultValue={itemLocal?.confirmDistrict}
+            />
+
+            <Select
+                options={optionListWards}
+                placeholder={itemLocal?.confirmWard ? itemLocal?.confirmWard : 'Chọn Phường/Xã'}
                 className='form_sellect_control select_wardt'
                 name='form_sellect_stt'
-                value={selectedWard} onChange={handleWardChange}
-            >
-                <option value='-1'>{itemLocal?.confirmWard ? itemLocal?.confirmWard : 'Chọn Phường/Xã'}</option>
-                {wards.map((ward) => (
-                    <option key={ward.ward_id} value={ward.ward_id}>
-                        {ward.ward_name}
-                    </option>
-                ))}
-            </select>
+                onChange={handleWardChange}
+                defaultValue={itemLocal?.confirmWard}
+            />
+            
         </div>
     );
 };
