@@ -22,7 +22,6 @@ import ic_T3 from '@/assets/leaves/T3-8.png'
 import ic_T4 from '@/assets/leaves/T4-8.png'
 
 const SnowFall = ({ type }) => {
-
   const renderImg = useCallback(() => {
     const imgE = document.createElement('img')
     const imgE2 = document.createElement('img')
@@ -78,6 +77,7 @@ const SnowFall = ({ type }) => {
   if (type === 'kimtuyen') {
     return (
       <Snowfall
+        color='#E29C67'
         snowflakeCount={5}
         speed={[1, 2]}
         style={{
@@ -92,8 +92,13 @@ const SnowFall = ({ type }) => {
     )
   }
 
+  if (type === 'none') {
+    return false
+  }
+
   return (
     <Snowfall
+      color='#E29C67'
       snowflakeCount={5}
       speed={[1, 2]}
       style={{
