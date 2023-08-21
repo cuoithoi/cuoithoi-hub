@@ -1459,7 +1459,8 @@ datalist option::before {
 .otherLoginSocial .titleOrther {
   text-align: center;
   position: relative;
-  margin-top: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .otherLoginSocial .titleOrther span {
@@ -4384,6 +4385,7 @@ input:disabled {
     -webkit-animation: upanddown2 1s infinite linear alternate;
     animation: upanddown2 1s infinite linear alternate;
     z-index: 99999;
+    cursor: pointer;
   }
 
   .double_input_row .half_row_hor_input.w_67_sm_lg {

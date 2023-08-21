@@ -64,6 +64,7 @@ const Login = () => {
               <h1>{Languages.menu.login}</h1>
             </div>
             <div className='fillDataForm'>
+              <LoginSocial />
               <form
                 className='fieldscli_data'
                 onSubmit={handleSubmit(onSubmit)}
@@ -100,7 +101,6 @@ const Login = () => {
                   </Link>
                 </div>
               </form>
-              <LoginSocial />
             </div>
           </div>
           <div className='footerFormData'>

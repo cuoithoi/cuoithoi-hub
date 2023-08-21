@@ -89,9 +89,7 @@ const LoginSocial = () => {
 
   return (
     <div className='otherLoginSocial'>
-      <div className='titleOrther'>
-        <span>{Languages.inputText.or}</span>
-      </div>
+
 
       {/* <Button
           label={Languages.inputText.continueWithFB}
@@ -145,7 +143,9 @@ const LoginSocial = () => {
         buttonText='Đăng nhập với Google'
         className='social_login'
       />
-
+      <div className='titleOrther'>
+        <span>{Languages.inputText.or}</span>
+      </div>
     </div>
   )
 }

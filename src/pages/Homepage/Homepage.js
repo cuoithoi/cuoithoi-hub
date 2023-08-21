@@ -1,9 +1,9 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useMemo } from "react";
 import styles from "./HomePage.module.css";
 import Languages from "@/commons/Languages";
 import { Button } from "@/components/button";
 import BlockUI from "@/components/blockUI";
-import { Alias, BUTTON_STYLES } from "@/commons/Constant.ts";
+import { APi, Alias, BUTTON_STYLES, CheckParams } from "@/commons/Constant.ts";
 import IcDoublePhone from "@/assets/home-image/IcDoublePhone.png";
 import IcPhoneHeart from "@/assets/home-image/IcPhoneHeart.png";
 import { BACKGROUND_STYLES } from "@/commons/Constant.ts";
@@ -32,6 +32,9 @@ import { NavLink, useNavigate } from "react-router-dom";
 import Slider1 from '@/assets/home-image/m_img2-min.jpg';
 import Slider2 from '@/assets/home-image/m_img3-min.jpg';
 import Slider3 from '@/assets/home-image/m_img4-min.jpg';
+import IcInf from '@/assets/home-image/IcInf.svg'
+import { useSelector } from "react-redux";
+import Popup from "@/components/modal/Popup";
 
 const fadeImages = [
   {
@@ -52,8 +55,14 @@ const Homepage = () => {
 
   const [activeSection, setActiveSection] = useState('section1');
   const [isScrolling, setIsScrolling] = useState(false);
+  const [limit, setLimit] = useState(0)
+  const [checkParams, setCheckParams] = useState(CheckParams.NOTOKEN)
+  const refModal = useRef(null)
 
   const navigate = useNavigate();
+
+  const { user } = useSelector((store) => store.auth)
+
 
   useEffect(() => {
     return window.scrollTo(0, 0)
@@ -96,10 +105,101 @@ const Homepage = () => {
     if (widthScreen > 768) setHeightTopFooter(heightBoxTopFooter)
   }, [])
 
+  useEffect(() => {
+
+    if (!user) return
+
+    const asyncLimit = async () => {
+      try {
+        const response = await get(APi.checkLimit, config, {
+          userId: user?.userId,
+        })
+        setLimit(response.data.total)
+      } catch (error) {
+        console.error('Đã xảy ra lỗi:', error)
+      }
+    }
+    asyncLimit()
+
+  }, [])
+
   const onNavigateCreatePage = () => navigate(Alias.mypage);
 
   const onChangeToServices = () => navigate(Alias.services)
 
+  const navigateLetterpage = () => {
+    if (user?.token) {
+      if (limit < 3) {
+        navigate(Alias.createPage, {
+          state: {
+            createpage: true,
+          },
+        })
+        window.location.reload()
+      } else {
+        setCheckParams(CheckParams.LIMIT)
+        refModal.current?.showModal()
+      }
+
+    } else {
+      setCheckParams(CheckParams.NOTOKEN)
+      refModal.current?.showModal()
+    }
+  }
+  const renderContentModal = useMemo(() => {
+    return (
+      (checkParams == CheckParams.NOTOKEN && (
+        <div className='renderContentModal'>
+          <div className='head'>
+            <img src={IcInf} alt={'icinf'} />
+            <h2>{Languages.text.nologin}</h2>
+          </div>
+          <div className='contentModal'>
+            <p>{Languages.text.nologinContent}</p>
+          </div>
+        </div>
+      )) ||
+      (checkParams == CheckParams.EDITOR && (
+        <div className='renderContentModal'>
+          <div className='head'>
+            <img src={IcInf} alt={'icinf'} />
+            <h2>{Languages.text.noletter}</h2>
+          </div>
+          <div className='contentModal'>
+            <p>{Languages.text.noletterContent}</p>
+          </div>
+        </div>
+      )) ||
+      (checkParams == CheckParams.LIMIT && (
+        <div className='renderContentModal'>
+          <div className='head'>
+            <img src={IcInf} alt={'icinf'} />
+            <h2>{Languages.text.limit}</h2>
+          </div>
+          <div className='contentModal'>
+            <p>{Languages.text.contentLimit}</p>
+          </div>
+        </div>
+      ))
+    )
+  }, [checkParams])
+
+  const onPressLogin = () => {
+    navigate(Alias.login)
+  }
+
+  const renderModal = useMemo(() => {
+    return (
+      <Popup
+        ref={refModal}
+        content={renderContentModal}
+        btnCancelText={Languages.common.cancel}
+        btnSubmitText={Languages.common.agree}
+        onSuccessPress={onPressLogin}
+      />
+    )
+  }, [renderContentModal])
+  
   return (
     <>
       <nav className="dotted_scroll">
@@ -469,15 +569,18 @@ const Homepage = () => {
         </Element>
 
         <div className="view_experience">
-          <NavLink to={Alias.mypage}>
+
+          <div className="btn_creat" onClick={navigateLetterpage}>
             <img src={Ic_HomepageCreate} alt="Ic_HomepageCreate" />
-          </NavLink>
+          </div>
+
           <NavLink to={Alias.mypage}>
             <img className="hidden" src={Ic_HomepageSeemore} alt="Ic_HomepageSeemore" />
           </NavLink>
         </div>
 
       </div>
+      {renderModal}
     </>
   );
 };

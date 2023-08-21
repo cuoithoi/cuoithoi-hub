@@ -101,6 +101,9 @@ const RegisterRefactor = () => {
               <h1>{Languages.menu.register}</h1>
             </div>
             <div className='fillDataForm'>
+              
+              <LoginSocial />
+
               <form
                 className='fieldscli_data'
                 onSubmit={handleSubmit(onSubmit)}
@@ -147,7 +150,6 @@ const RegisterRefactor = () => {
                   isLowerCase
                 />
               </form>
-              <LoginSocial />
             </div>
           </div>
           <div className='footerFormData'>

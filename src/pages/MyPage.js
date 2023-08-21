@@ -28,6 +28,7 @@ import fileDownload from 'js-file-download'
 import { Payment } from '@/components/Payment'
 import { toast } from 'react-toastify'
 import { isArray } from 'lodash'
+import { InformationSevices } from '@/components/informationSevices'
 
 const Mypage = () => {
   const navigate = useNavigate()
@@ -537,7 +538,7 @@ const Mypage = () => {
           </div>
         )}
       </div>
-      <Payment ref={refPayment} />
+      <InformationSevices ref={refPayment} />
       {renderModal}
       <Footer />
     </div>
