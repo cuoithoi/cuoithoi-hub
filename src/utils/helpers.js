@@ -11,13 +11,13 @@ export function getDayOfWeeks(dateString) {
 
   // Define an array of Vietnamese week day names
   const weekDays = [
+    'Chủ nhật',
     'thứ 2',
     'thứ 3',
     'thứ 4',
     'thứ 5',
     'thứ 6',
     'thứ 7',
-    'Chủ nhật',
   ]
 
   // Extract components from the Date object
@@ -31,13 +31,13 @@ export function formatDay(dateString) {
 
   // Define an array of Vietnamese week day names
   const weekDays = [
+    'Chủ nhật',
     'thứ 2',
     'thứ 3',
     'thứ 4',
     'thứ 5',
     'thứ 6',
     'thứ 7',
-    'Chủ nhật',
   ]
 
   // Extract components from the Date object
@@ -73,9 +73,8 @@ export function formatDayHero(dateString) {
   const month = dateObj.getMonth() + 1 // Adding 1 because months are zero-based
 
   // Format the date string
-  const formattedDate = `${day < 10 ? '0' : ''}${day}.${
-    month < 10 ? '0' : ''
-  }${month}`
+  const formattedDate = `${day < 10 ? '0' : ''}${day}.${month < 10 ? '0' : ''
+    }${month}`
 
   return formattedDate
 }

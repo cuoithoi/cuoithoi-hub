@@ -69,45 +69,60 @@ const Congrats = ({ informationOfBride, informationOfGroom, isuseBanking }) => {
     >
       <TitleSection title='CHÚC PHÚC' />
       <div className='flex justify-around'>
-        <InforPhone
-          title='Chú rể'
-          name={`${nameGroom}`}
-          phoneNumber={phoneNumberOfGroom}
-          phoneColor='main'
-          nameSizeLg={true}
-        />
-        <InforPhone
-          title='Cô dâu'
-          name={`${nameBride}`}
-          phoneNumber={phoneNumberOfBride}
-          nameSizeLg={true}
-        />
+        {
+          nameGroom && <InforPhone
+            title='Chú rể'
+            name={`${nameGroom}`}
+            phoneNumber={phoneNumberOfGroom}
+            phoneColor='main'
+            nameSizeLg={true}
+          />
+        }
+        {
+          nameBride && <InforPhone
+            title='Cô dâu'
+            name={`${nameBride}`}
+            phoneNumber={phoneNumberOfBride}
+            nameSizeLg={true}
+          />
+        }
       </div>
       <div className='flex justify-around'>
-        <InforPhone
-          title='Bố'
-          name={`Ông. ${fatherNameOfGroom} ${isGoneFather ? '(Cố)' : ''}`}
-          phoneNumber={phoneNumberOfFatherGroom}
-          phoneColor='main'
-        />
-        <InforPhone
-          title='Bố'
-          name={`Ông. ${fatherNameOfBride} ${isGoneFatherBride ? '(Cố)' : ''}`}
-          phoneNumber={phoneNumberOfFatherBride}
-        />
+        {
+          fatherNameOfGroom && <InforPhone
+            title='Bố'
+            name={`Ông. ${fatherNameOfGroom} ${isGoneFather ? '(Cố)' : ''}`}
+            phoneNumber={phoneNumberOfFatherGroom}
+            phoneColor='main'
+          />
+        }
+        {
+          fatherNameOfBride && <InforPhone
+            title='Bố'
+            name={`Ông. ${fatherNameOfBride} ${isGoneFatherBride ? '(Cố)' : ''}`}
+            phoneNumber={phoneNumberOfFatherBride}
+          />
+        }
+
       </div>
       <div className='flex justify-around'>
-        <InforPhone
-          title='Mẹ'
-          name={`Bà. ${motherNameOfGroom} ${isGoneMother ? '(Cố)' : ''}`}
-          phoneNumber={phoneNumberOfMotherGroom}
-          phoneColor='main'
-        />
-        <InforPhone
-          title='Mẹ'
-          name={`Bà. ${motherNameOfBride} ${isGoneMotherOfBride ? '(Cố)' : ''}`}
-          phoneNumber={phoneNumberOfMotherBride}
-        />
+        {
+          motherNameOfGroom && <InforPhone
+            title='Mẹ'
+            name={`Bà. ${motherNameOfGroom} ${isGoneMother ? '(Cố)' : ''}`}
+            phoneNumber={phoneNumberOfMotherGroom}
+            phoneColor='main'
+          />
+        }
+
+        {
+          motherNameOfBride && <InforPhone
+            title='Mẹ'
+            name={`Bà. ${motherNameOfBride} ${isGoneMotherOfBride ? '(Cố)' : ''}`}
+            phoneNumber={phoneNumberOfMotherBride}
+          />
+        }
+
       </div>
       {
         isuseBanking && <div className='flex justify-around items-center py-4'>

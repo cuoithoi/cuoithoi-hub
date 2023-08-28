@@ -17,17 +17,20 @@ const InvitationDetail = ({ info, isBride }) => {
         <p className='title_tooltipInfo'>Cô Dâu</p>
         <h1 className='name_show'>{`${name}`}</h1>
         <p className='dashed-top-bottom'>{isOldBrotherBride ? 'Trưởng nữ' : 'Thứ nữ'}</p>
-        <p className='title_tooltipInfo'>{isGoneMotherOfBride ? 'Cố Phụ' : 'Bố'}</p>
-        <p className='show_type_display dashed-top-bottom'>
-          {isGoneFatherBride ? <img src={IcChrysanthemum} /> : ''} Ông.{' '}
-          {`${fatherNameOfBride}`}
-        </p>
-        <p className='title_tooltipInfo'> {isGoneMotherOfBride ? 'Cố Mẫu' : 'Mẹ'}</p>
-        <p className='show_type_display'>
-          {isGoneMotherOfBride ? <img src={IcChrysanthemum} /> : ''} Bà.{' '}
-          {`${motherNameOfBride}`}
-        </p>
-      </div>
+        {fatherNameOfBride && <><p className='title_tooltipInfo'>{isGoneMotherOfBride ? 'Cố Phụ' : 'Bố'}</p>
+          <p className='show_type_display dashed-top-bottom'>
+            {isGoneFatherBride ? <img src={IcChrysanthemum} /> : ''} Ông.{' '}
+            {`${fatherNameOfBride}`}
+          </p></>
+        }
+        {motherNameOfBride && <>
+          <p className='title_tooltipInfo'> {isGoneMotherOfBride ? 'Cố Mẫu' : 'Mẹ'}</p>
+          <p className='show_type_display'>
+            {isGoneMotherOfBride ? <img src={IcChrysanthemum} /> : ''} Bà.{' '}
+            {`${motherNameOfBride}`}
+          </p></>
+        }
+      </div >
     )
   }
   const {
@@ -45,16 +48,20 @@ const InvitationDetail = ({ info, isBride }) => {
       <p className='title_tooltipInfo'>Chú Rể</p>
       <h1 className='name_show'>{`${name}`}</h1>
       <p className='dashed-top-bottom'>{isOldBrotherGroom ? 'Trưởng nam' : 'Thứ nam'}</p>
-      <p className='title_tooltipInfo'>{isGoneFather ? 'Cố Phụ' : 'Bố'}</p>
-      <p className='show_type_display dashed-top-bottom'>
-        {isGoneFather ? <img src={IcChrysanthemum} /> : ''} Ông.{' '}
-        {`${fatherNameOfGroom}`}
-      </p>
-      <p className='title_tooltipInfo'>{isGoneMother ? 'Cố Mẫu' : 'Mẹ'}</p>
-      <p className='show_type_display'>
-        {isGoneMother ? <img src={IcChrysanthemum} /> : ''} Bà.{' '}
-        {`${motherNameOfGroom}`}
-      </p>
+      {fatherNameOfGroom && <>
+        <p className='title_tooltipInfo'>{isGoneFather ? 'Cố Phụ' : 'Bố'}</p>
+        <p className='show_type_display dashed-top-bottom'>
+          {isGoneFather ? <img src={IcChrysanthemum} /> : ''} Ông.{' '}
+          {`${fatherNameOfGroom}`}
+        </p></>
+      }
+      {fatherNameOfGroom && <>
+        <p className='title_tooltipInfo'>{isGoneMother ? 'Cố Mẫu' : 'Mẹ'}</p>
+        <p className='show_type_display'>
+          {isGoneMother ? <img src={IcChrysanthemum} /> : ''} Bà.{' '}
+          {`${motherNameOfGroom}`}
+        </p>
+      </>}
     </div>
   )
 }

@@ -64,6 +64,7 @@ Global Styles
   --bg-pink-blur: #f6eaea;
   --rbga--pink-bold: rgba(127, 90, 90, 1);
   --bg-gray-color-letter-page: rgba(207, 207, 207, 1);
+  --color-bold-pink: #7c5b5b;
 }
 
 *,
@@ -3711,6 +3712,69 @@ input:disabled {
 .container {
   padding-right: 15px;
   padding-left: 15px;
+}
+
+.head_option {
+  display: flex;
+  border-bottom: 1px solid var(--color-bold-pink);
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+}
+
+.body_form .wrap_form .head_option h4 {
+  color: var(--color-bold-pink);
+  margin-bottom: 0;
+  text-transform: uppercase;
+}
+
+.group_options {
+  display: flex;
+  margin: 20px 0 40px;
+  gap: 20px;
+}
+
+.group_options .group__items {
+  padding: 15px 30px;
+  border-radius: 10px;
+  border: 1px solid var(--black-color);
+}
+
+.group_options .group__items.active {
+  border-color: var(--bg-pink-color);
+  border-width: 2px;
+}
+
+.group_options .group__items.active input[type='radio'], .sec_group_panel_checkbox .single_hor_input input[type='checkbox']{
+  accent-color: var(--color-bold-pink);
+}
+
+.sec_group_panel_checkbox {
+  display: flex;
+  gap: 30px;
+  margin: 20px 0 40px;
+}
+
+.sec_group_panel_checkbox .single_hor_input {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid var(--black-color);
+}
+
+.sec_group_panel_checkbox .single_hor_input.active {
+  border-color: var(--bg-pink-color);
+  border-width: 2px;
+}
+
+.sec_group_panel_checkbox .man_inputStyle {
+  text-align: center;
+  margin: 0;
+}
+
+.sec_group_panel_checkbox .man_inputStyle .price {
+  color: var(--bg-pink-color);
+  font-weight: 600;
+  font-size: 16px;
+  display: block;
 }
 
 @media (min-width: 768px) {

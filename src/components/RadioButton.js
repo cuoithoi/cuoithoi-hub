@@ -1,5 +1,5 @@
 export const RadioButton = (props) => {
-    const { onChange, id, isSelected, label, value } = props;
+    const { onChange, id, isSelected, label, value, name } = props;
     return (
       <div className="RadioButton customize_radio">
         <input
@@ -8,6 +8,7 @@ export const RadioButton = (props) => {
           value={value}
           type="radio"
           checked={isSelected}
+          name={name}
         />
         <label htmlFor={id}>{label}</label>
       </div>

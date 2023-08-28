@@ -317,10 +317,9 @@ const Mypage = () => {
     }
   }, [])
 
-  const onChangePayment = useCallback((id, amount) => {
+  const onChangePayment = useCallback((id) => {
     refPayment?.current?.show()
     refPayment?.current?.handlegetId(id)
-    refPayment?.current?.handleggetAmount(amount)
   }, [])
 
   const onChangeClipBoard = useCallback((id) => {
