@@ -1413,9 +1413,7 @@ const CreatePage = () => {
         values.album.length === 0
       ) {
         toast.error(Languages.errorMsg.uploadingEmpty)
-      } else if (packageType.length === 0) {
-        toast.error(Languages.text.packagePro)
-      }
+      } 
       // else if (passValidateSuccess() !== true) {
       //   setDisable(false)
       //   if (disable)
@@ -1444,9 +1442,10 @@ const CreatePage = () => {
           }, 3000)
         } else {
           setTimeout(() => {
-            setCheckParams(CheckParams.CONFIRM_INFO)
-            refModal.current?.showModal()
-          }, 2000)
+            // setCheckParams(CheckParams.CONFIRM_INFO)
+            // refModal.current?.showModal()
+            navigate(Alias.mypage)
+          }, 4000)
         }
       }
     } catch {
@@ -1902,9 +1901,9 @@ const CreatePage = () => {
               {renderOpenStartEffect}
               {renderTextStyle}
               {renderEffectBgStyle}
-              {renderReferralCode}
+              {/* {renderReferralCode}
               {renderBuyPackageProduct}
-              {renderProductAnother}
+              {renderProductAnother} */}
 
               <div className='savesetting_btn'>
                 <Button
