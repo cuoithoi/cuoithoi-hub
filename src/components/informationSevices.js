@@ -2,22 +2,20 @@ import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo
 import Popup from "./modal/Popup";
 import { MyTextInput } from "./input";
 import Languages from "@/commons/Languages";
-import ICQrLogo from '@/assets/home-image/qrcode.jpg'
-import ICMomo from '@/assets/home-image/IcMomo.svg'
 import { APi, BUTTON_STYLES, CheckParams, Convert, INPUT_FIELDS, config } from "@/commons/Constant.ts";
 import { Button } from "./button";
-import IcCheck from '@/assets/home-image/IcCheck.svg'
 import Validate from "@/utils/Validate";
-import FormValidate from "@/utils/FormValidate";
 import { useBaseService } from "@/utils/BaseServices";
 import { toast } from "react-toastify";
-import ProvinceDistrictList from "@/pages/Createpage/ProvinceDistrictList";
 import { fiedlsCreatePage } from "@/commons/FieldsDataObj";
 import PackageProduct from "@/pages/Createpage/PackageProduct";
 import { RadioButton } from "./RadioButton";
 import ReferCodePopup from "@/pages/Createpage/ReferCodePopup";
 import AnotherProduct from "@/pages/Createpage/AnotherProduct";
 import { Payment } from "./Payment";
+import axios from "axios";
+import Select from 'react-select';
+
 
 export const InformationSevices = forwardRef(
     (
@@ -50,9 +48,15 @@ export const InformationSevices = forwardRef(
         const [amountPackage, setAmountPackage] = useState(0)
         const [namePackage, setNamePackage] = useState(0)
 
+        const [provinces, setProvinces] = useState([]);
+        const [districts, setDistricts] = useState([]);
+        const [wards, setWards] = useState([]);
+        const [selectedProvince, setSelectedProvince] = useState('');
+        const [selectedDistrict, setSelectedDistrict] = useState('');
+        const [selectedWard, setSelectedWard] = useState('');
+
         const [radioDataPackage, setRadioDataPackage] = useState('none')
 
-        const [data, setData] = useState('');
         const [messageCodeInvite, setMessageCodeInvite] = useState('')
         const [valuedataAnotherTotalPrice, setValuedataAnotherTotalPrice] = useState(0)
 
@@ -89,13 +93,75 @@ export const InformationSevices = forwardRef(
 
             const asyncListProductAnother = async () => {
                 const response = await get(APi.anotherProduct, config)
-                console.log(response)
                 setDataAnother(response.data)
             }
 
             asyncListProduct()
             asyncListProductAnother()
         }, [])
+
+        useEffect(() => {
+            // Gọi API để lấy danh sách tỉnh
+            axios.get('https://vapi.vnappmob.com/api/province/')
+                .then((response) => {
+                    setProvinces(response.data.results);
+                })
+                .catch((error) => {
+                    console.error('Error fetching provinces:', error);
+                });
+        }, []);
+
+        const handleProvinceChange = (e) => {
+            const provinceId = e.value;
+            setSelectedProvince(provinceId);
+
+            // Gọi API để lấy danh sách quận/huyện theo tỉnh đã chọn
+            axios.get(`https://vapi.vnappmob.com/api/province/district/${provinceId}`)
+                .then((response) => {
+                    setDistricts(response.data.results);
+                    setWards([]);
+                })
+                .catch((error) => {
+                    console.error('Error fetching districts:', error);
+                });
+        };
+
+        useEffect(() => {
+            values.confirmProvince = provinces.find((p) => p.province_id === selectedProvince)?.province_name;
+            values.confirmDistrict = districts.find((d) => d.district_id === selectedDistrict)?.district_name;
+            values.confirmWardt = wards.find((w) => w.ward_id === selectedWard)?.ward_name;
+
+        }, [selectedProvince, selectedDistrict, selectedWard]);
+
+        const handleDistrictChange = (e) => {
+            const districtId = e.value;
+            setSelectedDistrict(districtId);
+
+            // Gọi API để lấy danh sách phường/xã theo quận/huyện đã chọn
+            axios.get(`https://vapi.vnappmob.com/api/province/ward/${districtId}`)
+                .then((response) => {
+                    setWards(response.data.results);
+                })
+                .catch((error) => {
+                    console.error('Error fetching wards:', error);
+                });
+        };
+
+        const handleWardChange = (e) => {
+            setSelectedWard(e.value);
+        };
+
+        const optionListProvinces = provinces.map(function (item) {
+            return { value: item?.province_id, label: item?.province_name }
+        });
+
+        const optionListDistrict = districts.map(function (item) {
+            return { value: item?.district_id, label: item?.district_name }
+        });
+
+        const optionListWards = wards.map(function (item) {
+            return { value: item?.ward_id, label: item?.ward_name }
+        });
 
         const onCheckedDataAnother = useCallback(
             (e) => {
@@ -572,7 +638,33 @@ export const InformationSevices = forwardRef(
                                             </div>
                                         </div>
 
-                                        <ProvinceDistrictList />
+                                        <div className='address_province_'>
+
+                                            <Select
+                                                options={optionListProvinces}
+                                                placeholder={'Chọn Tình/Thành'}
+                                                className='form_sellect_control select_province'
+                                                name='form_sellect_stt'
+                                                onChange={handleProvinceChange}
+                                            />
+
+                                            <Select
+                                                options={optionListDistrict}
+                                                placeholder={'Chọn Quận/Huyện'}
+                                                className='form_sellect_control select_district'
+                                                name='form_sellect_stt'
+                                                onChange={handleDistrictChange}
+                                            />
+
+                                            <Select
+                                                options={optionListWards}
+                                                placeholder={'Chọn Phường/Xã'}
+                                                className='form_sellect_control select_wardt'
+                                                name='form_sellect_stt'
+                                                onChange={handleWardChange}
+                                            />
+
+                                        </div>
 
                                         <div className='fullwidth_input_colum'>
                                             <div className='single_hor_input'>
@@ -677,7 +769,13 @@ export const InformationSevices = forwardRef(
             values,
             valuedataAnotherTotalPrice,
             percentOff,
-            renderInput
+            renderInput,
+            optionListWards,
+            optionListProvinces,
+            optionListDistrict,
+            handleProvinceChange,
+            handleDistrictChange,
+            handleWardChange
         ])
 
         const renderModal = useMemo(() => {
