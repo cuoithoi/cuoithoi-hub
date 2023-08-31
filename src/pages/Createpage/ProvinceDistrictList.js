@@ -103,7 +103,7 @@ const ProvinceDistrictList = () => {
                 onChange={handleProvinceChange}
                 defaultValue={itemLocal?.confirmProvince}
             />
-
+   
             <Select
                 options={optionListDistrict}
                 placeholder={itemLocal?.confirmDistrict ? itemLocal?.confirmDistrict : 'Chọn Quận/Huyện'}
