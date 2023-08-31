@@ -194,7 +194,7 @@ const LoginSocial = () => {
         buttonText='Đăng nhập với Google'
         className='social_login'
       />
-      <a href="https://oauth.zaloapp.com/v4/permission?app_id=1641121800720236421&redirect_uri=http://localhost:3000/login&state=100">Đăng nhập bằng ZALO</a>
+      <a href="https://oauth.zaloapp.com/v4/permission?app_id=1641121800720236421&redirect_uri=http://cuoithoi.com.vn/login&state=100">Đăng nhập bằng ZALO</a>
       <div className='titleOrther'>
         <span>{Languages.inputText.or}</span>
       </div>
