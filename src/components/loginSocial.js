@@ -87,6 +87,59 @@ const LoginSocial = () => {
     }
   }
 
+  useEffect(() => {
+    const handleZaloCallback = async () => {
+      const ZALO_APP_ID = '1979310376845954534';
+      const ZALO_APP_SECRET = 'BWrB0QGvKrUF421KEgF6';
+
+      const queryParams = new URLSearchParams(window.location.search);
+      const code = queryParams.get('code');
+
+      if (code) {
+        try {
+          const response = await fetch('https://oauth.zaloapp.com/v4/access_token', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+              'secret_key': ZALO_APP_SECRET,
+            },
+            body: new URLSearchParams({
+              app_id: ZALO_APP_ID,
+              code: code,
+              grant_type: 'authorization_code',
+            }),
+          });
+
+          const authData = await response.json();
+          const token = authData.access_token;
+          const refresh_token = authData.refresh_token;
+          const expires_in = authData.expires_in;
+
+          if (token) {
+            const profileResponse = await fetch(`https://graph.zalo.me/v2.0/me?access_token=${token}&fields=id,birthday,name,gender,picture,email`);
+            const profileData = await profileResponse.json();
+            const id = profileData.id;
+            const name = profileData.name;
+
+            // Thực hiện xử lý với thông tin người dùng
+            // ...
+
+            console.log(profileData)
+
+            // Chuyển hướng sau khi xử lý
+            window.location.href = '/';
+          } else {
+            console.log('Có lỗi xảy ra Zalo 501');
+          }
+        } catch (error) {
+          console.error('Có lỗi xảy ra: ', error);
+        }
+      }
+    };
+
+    handleZaloCallback();
+  }, []);
+
   return (
     <div className='otherLoginSocial'>
 
@@ -143,6 +196,7 @@ const LoginSocial = () => {
         buttonText='Đăng nhập với Google'
         className='social_login'
       />
+      <a href="https://oauth.zaloapp.com/v4/permission?app_id=1641121800720236421&redirect_uri=https://cuoithoi.com.vn/login&state=100">Đăng nhập bằng ZALO</a>
       <div className='titleOrther'>
         <span>{Languages.inputText.or}</span>
       </div>
