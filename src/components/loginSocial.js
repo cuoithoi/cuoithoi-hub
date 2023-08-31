@@ -3,6 +3,7 @@ import Languages from '@/commons/Languages'
 import { Button } from '@/components/button'
 import IcFacebook from '@/assets/home-image/IcFacebook.svg'
 import FacebookLogin from '@greatsumini/react-facebook-login'
+import IcZalo from '@/assets/home-image/Ic_Zalo.png'
 import GoogleLogin from 'react-google-login';
 import { useBaseService } from '@/utils/BaseServices'
 import { APi, Alias } from '@/commons/Constant.ts'
@@ -10,6 +11,19 @@ import { toast } from 'react-toastify'
 import { addUserToLocalStorage } from '@/utils/localStorage'
 import { useNavigate } from 'react-router-dom'
 import { gapi } from 'gapi-script'
+
+function removeVietnameseAndSpace(name) {
+  // Chuyển đổi tên sang chữ thường và loại bỏ dấu
+  const nameWithoutDiacritics = name
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+
+  // Thay thế khoảng trắng và dấu cách bằng dấu "-"
+  const formattedName = nameWithoutDiacritics.replace(/\s+/g, "-");
+
+  return formattedName;
+}
 
 const LoginSocial = () => {
 
@@ -112,8 +126,6 @@ const LoginSocial = () => {
 
           const authData = await response.json();
           const token = authData.access_token;
-          const refresh_token = authData.refresh_token;
-          const expires_in = authData.expires_in;
 
           if (token) {
             const profileResponse = await fetch(`https://graph.zalo.me/v2.0/me?access_token=${token}&fields=id,birthday,name,gender,picture,email`);
@@ -121,10 +133,33 @@ const LoginSocial = () => {
             const id = profileData.id;
             const name = profileData.name;
 
-            // Thực hiện xử lý với thông tin người dùng
-            // ...
+            removeVietnameseAndSpace(name)
 
-            console.log(profileData)
+            const dataUpdate = {
+              "googleId": id,
+              "username": name,
+              "email": `${removeVietnameseAndSpace(name)}@zalo.me`
+            }
+
+            const res = await post(APi.loginWithGoogle, dataUpdate)
+
+            if (res.errorCode === 0) {
+
+              addUserToLocalStorage(res.data)
+
+              toast.warning('Đang liên kết', {
+                autoClose: 1000,
+              })
+
+              setTimeout(() => {
+                toast.success('Liên kết thành công... Đang chuyển hướng')
+              }, 2000);
+
+              setTimeout(() => {
+                window.location.reload()
+                navigate(Alias.mypage)
+              }, 4000);
+            }
 
           } else {
             console.log('Có lỗi xảy ra Zalo 501');
@@ -194,7 +229,25 @@ const LoginSocial = () => {
         buttonText='Đăng nhập với Google'
         className='social_login'
       />
-      <a href="https://oauth.zaloapp.com/v4/permission?app_id=1641121800720236421&redirect_uri=https://cuoithoi.com.vn/login&state=100">Đăng nhập bằng ZALO</a>
+      <button type='button' className='social_login' style={{
+        backgroundColor: '#fff',
+        color: '#000',
+        fontSize: '16px',
+        padding: '12px 24px',
+        border: 'none',
+        borderRadius: '4px',
+        fontFamily: 'Quicksand',
+        fontWeight: 500,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 30,
+        display: 'none'
+      }}>
+        <div style={{ marginRight: 10 }}><img src={IcZalo} width={20} /></div>
+        <a className='social_login' href="https://oauth.zaloapp.com/v4/permission?app_id=1641121800720236421&redirect_uri=https://cuoithoi.com.vn/login&state=100">
+          Đăng nhập với ZALO</a>
+      </button>
       <div className='titleOrther'>
         <span>{Languages.inputText.or}</span>
       </div>
