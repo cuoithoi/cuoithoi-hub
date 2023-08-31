@@ -241,8 +241,7 @@ const LoginSocial = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        gap: 30,
-        display: 'none'
+        gap: 30
       }}>
         <div style={{ marginRight: 10 }}><img src={IcZalo} width={20} /></div>
         <a className='social_login' href="https://oauth.zaloapp.com/v4/permission?app_id=1641121800720236421&redirect_uri=https://cuoithoi.com.vn/login&state=100">
