@@ -7,7 +7,7 @@ import BankInfo from './sub-comp/BankInfo'
 import { Button } from '../button'
 import { BUTTON_STYLES } from '@/commons/Constant.ts'
 
-const Congrats = ({ informationOfBride, informationOfGroom, isuseBanking }) => {
+const Congrats = ({ informationOfBride, informationOfGroom }) => {
   const {
     name: nameBride,
     fatherNameOfBride,
@@ -124,8 +124,7 @@ const Congrats = ({ informationOfBride, informationOfGroom, isuseBanking }) => {
         }
 
       </div>
-      {
-        isuseBanking && <div className='flex justify-around items-center py-4'>
+      <div className='flex justify-around items-center py-4'>
           <Button
             buttonStyle={BUTTON_STYLES.LIGHT_BLUE}
             label='Gửi chúc phúc'
@@ -143,7 +142,7 @@ const Congrats = ({ informationOfBride, informationOfGroom, isuseBanking }) => {
             }}
           />
         </div>
-      }
+      
 
       <h3 className='pt-4 text-center '>Rất hân hạnh được đón tiếp!</h3>
       <Popup

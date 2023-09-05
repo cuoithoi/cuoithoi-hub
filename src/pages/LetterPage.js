@@ -186,13 +186,14 @@ const LetterPage = () => {
           isUseDamNgo={isUseDamNgo}
         />
         <Schedule eventOfProgram={eventOfProgram} note={note} isUseEvent={isUseEvent} />
-        <Congrats
-          setModalContent={setModalContent}
-          setIsOpen={setIsOpen}
-          informationOfBride={informationOfBride}
-          informationOfGroom={informationOfGroom}
-          isuseBanking={isUseBanking}
-        />
+        {
+          isUseBanking && <Congrats
+            setModalContent={setModalContent}
+            setIsOpen={setIsOpen}
+            informationOfBride={informationOfBride}
+            informationOfGroom={informationOfGroom}
+          />
+        }
         {isUseGuestBook && <Message id={userId} />}
         {isUseConfirm && <Response />}
         <FooterLogo />
