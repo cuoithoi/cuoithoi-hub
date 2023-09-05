@@ -7,7 +7,7 @@ import music from '../../assets/home-image/music.svg'
 import TitleDescribeIcon from '../icons/TitleDescribeIcon'
 import scheduleBgLeft from '../../assets/home-image/schedule-bg-left.svg'
 import scheduleBgRight from '../../assets/home-image/schedule-bg-right.svg'
-const Schedule = ({ eventOfProgram, note }) => {
+const Schedule = ({ eventOfProgram, note, isUseEvent }) => {
   const { timeToWellcome, timeToCelebrate, timeToDinner, timeToMusic, eventOfProgramEditOne, eventOfProgramEditTwo, eventOfProgramEditThree, eventOfProgramEditFour } =
     eventOfProgram
   return (
@@ -15,97 +15,102 @@ const Schedule = ({ eventOfProgram, note }) => {
       className='pt-10 pb-4 schedule-container section-mb layout-mw border-section-main'
       id='schedule'
     >
-      <TitleSection title='CHƯƠNG TRÌNH' />
-      <div className='flex  justify-center '>
-        <div className='schedule-bg-lr schedule-bg-l'>
-          <img
-            src={scheduleBgLeft}
-            alt='background left'
-            className='schedule-bg'
-          />
-        </div>
-        <div className=''>
-          <div className='flex justify-center items-center '>
-            <div className='w-28'>
+      {
+        isUseEvent && <>
+          <TitleSection title='CHƯƠNG TRÌNH' />
+          <div className='flex  justify-center '>
+            <div className='schedule-bg-lr schedule-bg-l'>
               <img
-                src={ring}
-                className='schedule-detail-img'
-                alt='ring image'
+                src={scheduleBgLeft}
+                alt='background left'
+                className='schedule-bg'
               />
             </div>
-            <div className='w-px bg-main icon-container mx-8 py-12'>
-              <div className='icon-absolute'>
-                <TitleDescribeIcon />
+            <div className=''>
+              <div className='flex justify-center items-center '>
+                <div className='w-28'>
+                  <img
+                    src={ring}
+                    className='schedule-detail-img'
+                    alt='ring image'
+                  />
+                </div>
+                <div className='w-px bg-main icon-container mx-8 py-12'>
+                  <div className='icon-absolute'>
+                    <TitleDescribeIcon />
+                  </div>
+                </div>
+                <div className='w-28 text-center'>
+                  <h3>{timeToWellcome}</h3>
+                  <h2>{eventOfProgramEditOne}</h2>
+                </div>
+              </div>
+
+              <div className='flex justify-center items-center '>
+                <div className='w-28'>
+                  <img src={cup} className='schedule-detail-img' alt='ring image' />
+                </div>
+                <div className='w-px bg-main icon-container mx-8 py-12'>
+                  <div className='icon-absolute'>
+                    <TitleDescribeIcon />
+                  </div>
+                </div>
+                <div className='w-28 text-center'>
+                  <h3>{timeToCelebrate}</h3>
+                  <h2>{eventOfProgramEditTwo}</h2>
+                </div>
+              </div>
+
+              <div className='flex justify-center items-center '>
+                <div className='w-28'>
+                  <img
+                    src={dish}
+                    className='schedule-detail-img'
+                    alt='ring image'
+                  />
+                </div>
+                <div className='w-px bg-main icon-container mx-8 py-12'>
+                  <div className='icon-absolute'>
+                    <TitleDescribeIcon />
+                  </div>
+                </div>
+                <div className='w-28 text-center'>
+                  <h3>{timeToDinner}</h3>
+                  <h2>{eventOfProgramEditThree}</h2>
+                </div>
+              </div>
+
+              <div className='flex justify-center items-center '>
+                <div className='w-28'>
+                  <img
+                    src={music}
+                    className='schedule-detail-img'
+                    alt='ring image'
+                  />
+                </div>
+                <div className='w-px bg-main icon-container mx-8 py-12'>
+                  <div className='icon-absolute'>
+                    <TitleDescribeIcon />
+                  </div>
+                </div>
+                <div className='w-28 text-center'>
+                  <h3>{timeToMusic}</h3>
+                  <h2>{eventOfProgramEditFour}</h2>
+                </div>
               </div>
             </div>
-            <div className='w-28 text-center'>
-              <h3>{timeToWellcome}</h3>
-              <h2>{eventOfProgramEditOne}</h2>
-            </div>
-          </div>
-
-          <div className='flex justify-center items-center '>
-            <div className='w-28'>
-              <img src={cup} className='schedule-detail-img' alt='ring image' />
-            </div>
-            <div className='w-px bg-main icon-container mx-8 py-12'>
-              <div className='icon-absolute'>
-                <TitleDescribeIcon />
-              </div>
-            </div>
-            <div className='w-28 text-center'>
-              <h3>{timeToCelebrate}</h3>
-              <h2>{eventOfProgramEditTwo}</h2>
-            </div>
-          </div>
-
-          <div className='flex justify-center items-center '>
-            <div className='w-28'>
+            <div className='schedule-bg-lr schedule-bg-r'>
               <img
-                src={dish}
-                className='schedule-detail-img'
-                alt='ring image'
+                src={scheduleBgRight}
+                alt='background right'
+                className='schedule-bg'
               />
             </div>
-            <div className='w-px bg-main icon-container mx-8 py-12'>
-              <div className='icon-absolute'>
-                <TitleDescribeIcon />
-              </div>
-            </div>
-            <div className='w-28 text-center'>
-              <h3>{timeToDinner}</h3>
-              <h2>{eventOfProgramEditThree}</h2>
-            </div>
           </div>
+          <div className='pb-6 border-section-1'></div>
+        </>
+      }
 
-          <div className='flex justify-center items-center '>
-            <div className='w-28'>
-              <img
-                src={music}
-                className='schedule-detail-img'
-                alt='ring image'
-              />
-            </div>
-            <div className='w-px bg-main icon-container mx-8 py-12'>
-              <div className='icon-absolute'>
-                <TitleDescribeIcon />
-              </div>
-            </div>
-            <div className='w-28 text-center'>
-              <h3>{timeToMusic}</h3>
-              <h2>{eventOfProgramEditFour}</h2>
-            </div>
-          </div>
-        </div>
-        <div className='schedule-bg-lr schedule-bg-r'>
-          <img
-            src={scheduleBgRight}
-            alt='background right'
-            className='schedule-bg'
-          />
-        </div>
-      </div>
-      <div className='pb-6 border-section-1'></div>
       {
         note &&
         <div className='text-center pt-4 '>

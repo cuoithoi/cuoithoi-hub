@@ -185,7 +185,7 @@ const LetterPage = () => {
           timeAndLocationOfInterrogation={timeAndLocationOfInterrogation}
           isUseDamNgo={isUseDamNgo}
         />
-        {isUseEvent && <Schedule eventOfProgram={eventOfProgram} note={note} />}
+        <Schedule eventOfProgram={eventOfProgram} note={note} isUseEvent={isUseEvent} />
         <Congrats
           setModalContent={setModalContent}
           setIsOpen={setIsOpen}
