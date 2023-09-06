@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   prevAudioPlay: false,
-  isAudioPlay: true,
+  isAudioPlay: false,
   audioElement: null,
   isYoutubePlay: false,
 }
