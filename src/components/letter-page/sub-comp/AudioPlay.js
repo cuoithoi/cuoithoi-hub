@@ -39,22 +39,22 @@ const AudioPlay = ({ song }) => {
     }
     dispatch(toggleAudioPlay())
   }
-  useEffect(() => {
-    dispatch(setAudioElement(audioMusic.current))
-    audioMusic.current.addEventListener('canplaythrough', () => {
-      audioMusic.current.play().catch((e) => {
-        window.addEventListener(
-          'click',
-          () => {
-            audioMusic.current.play()
-            dispatch(setIsAudioPlay(true))
-          },
-          { once: true }
-        )
-      })
-    })
-    if (!audioMusic.current.paused) dispatch(setIsAudioPlay(true))
-  }, [])
+  // useEffect(() => {
+  //   dispatch(setAudioElement(audioMusic.current))
+  //   audioMusic.current.addEventListener('canplaythrough', () => {
+  //     audioMusic.current.play().catch((e) => {
+  //       window.addEventListener(
+  //         'click',
+  //         () => {
+  //           audioMusic.current.play()
+  //           dispatch(setIsAudioPlay(true))
+  //         },
+  //         { once: true }
+  //       )
+  //     })
+  //   })
+  //   if (!audioMusic.current.paused) dispatch(setIsAudioPlay(true))
+  // }, [])
 
   return (
     <div className='float-left'>
@@ -72,7 +72,7 @@ const AudioPlay = ({ song }) => {
       <audio
         ref={audioMusic}
         src={renderSrcMusic()}
-        autoPlay={true}
+        autoPlay={false}
         loop={true}
       ></audio>
     </div>
