@@ -82,6 +82,8 @@ const Gallery = ({ id }) => {
             showThumbs={false}
             selectedItem={selectedItem}
             dynamicHeight={false}
+            showArrows={false}
+            
           >
             {album?.map((image, index) => {
               return (
