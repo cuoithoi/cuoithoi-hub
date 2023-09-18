@@ -3748,7 +3748,8 @@ input:disabled {
   border-width: 2px;
 }
 
-.group_options .group__items.active input[type='radio'], .sec_group_panel_checkbox .single_hor_input input[type='checkbox']{
+.group_options .group__items.active input[type='radio'],
+.sec_group_panel_checkbox .single_hor_input input[type='checkbox'] {
   accent-color: var(--color-bold-pink);
 }
 
@@ -4027,6 +4028,10 @@ input:disabled {
   .show_type_display img {
     position: absolute;
     top: -15px;
+  }
+
+  .text-2xl {
+    font-size: 1.1rem;
   }
 }
 
