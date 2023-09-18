@@ -71,7 +71,7 @@ const TimeLocation = ({
         )}
 
         <div className='pb-2 border-section-1'>
-          <h2 className='text-second'>Lê cưới sẽ diễn ra vào lúc</h2>
+          <h2 className='text-second'>Lễ cưới sẽ diễn ra vào lúc</h2>
           <p className='max-w-xs text-base margin-auto'>
             Lễ cưới sẽ diễn ra tại {locationOfWedding}, vào lúc{' '}
             {timeOfEventWedding && timeOfEventWedding},{' '}
