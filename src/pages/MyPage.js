@@ -163,15 +163,14 @@ const Mypage = () => {
   }, [checkParams])
 
   const renderModal = useMemo(() => {
-    return (
-      <Popup
-        ref={refModal}
-        content={renderContentModal}
-        btnCancelText={Languages.common.cancel}
-        btnSubmitText={Languages.common.agree}
-        onSuccessPress={onPressLogin}
-      />
-    )
+    return <Popup
+      ref={refModal}
+      content={renderContentModal}
+      btnCancelText={Languages.common.cancel}
+      btnSubmitText={Languages.common.agree}
+      onSuccessPress={onPressLogin}
+    />
+
   }, [renderContentModal])
 
   const renderTable = useMemo(() => {

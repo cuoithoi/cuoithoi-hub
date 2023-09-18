@@ -451,7 +451,7 @@ export const InformationSevices = forwardRef(
                                         ref={packageProductRef}
                                         // height={'75vh'}
                                         content={<PackageProduct />}
-                                        maxWidth={Convert.W_800}
+                                        maxWidth={1400}
                                     />
                                     <div className="group_options">
                                         {
@@ -485,7 +485,7 @@ export const InformationSevices = forwardRef(
                                         ref={anotherProductRef}
                                         height={'80vh'}
                                         content={<AnotherProduct />}
-                                        maxWidth={Convert.W_800}
+                                        maxWidth={1500}
                                     />
                                     {
                                         <div className='sec_group_panel_checkbox'>
@@ -788,5 +788,5 @@ export const InformationSevices = forwardRef(
             )
         }, [renderContentModal])
 
-        return <>({renderModal} <Payment ref={refPayment} />)</>;
+        return <>{renderModal} <Payment ref={refPayment} /></>;
     });

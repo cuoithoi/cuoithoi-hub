@@ -960,6 +960,7 @@ p {
   margin: auto;
   max-width: 400px;
   text-align: center;
+  overflow: auto;
 }
 
 .close-modal-icon {
@@ -1895,9 +1896,12 @@ table .date {
 
 .package_Box_sellect {
   overflow: hidden;
-  visibility: visible;
   height: fit-content;
   margin-top: 50px;
+}
+
+.image_box_left img {
+  width: 100% !important;
 }
 
 .item_package_level {
@@ -1911,7 +1915,7 @@ table .date {
   gap: 4px;
   font-style: normal;
   font-weight: 600;
-  font-size: 30px;
+  font-size: 28px;
   line-height: 150%;
   text-emphasis: none;
   text-align: center;
