@@ -4222,6 +4222,21 @@ input:disabled {
 }
 
 @media (max-width: 768px) {
+  .text_block_line_mb {
+    display: block;
+    text-align: center;
+    padding: 0;
+    font-size: 25px;
+  }
+
+  .py-20 {
+    padding-top: 3rem;
+  }
+
+  .text-9xl {
+    font-size: 6rem;
+  }
+
   .section_wrap_type_ds .head h2 {
     font-size: 25px;
   }
