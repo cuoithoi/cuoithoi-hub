@@ -47,6 +47,7 @@ export const Payment = forwardRef(
 
         const handlegetId = (id) => {
             setGetId(id)
+            setValue(`${'CTODID' + id.substr(-4, 4).toUpperCase()}`)
         }
 
         const handleggetAmount = (amount) => {
@@ -162,6 +163,21 @@ export const Payment = forwardRef(
                                         <p className='note'>Lưu ý: Quý khách vui lòng chuyển khoản đúng theo cú pháp để đơn hàng được hệ thống cập nhật nhanh chóng.</p>
                                     </div>
                                 </div>
+                                <div className='block_step block_step_4'>
+                                    <div className='name_step'>
+                                        <p><strong>Bước 3: </strong>Nhập mã giao dịch</p>
+                                    </div>
+                                    <div className='content_step'>
+                                        <MyTextInput
+                                            ref={refCode}
+                                            value={value}
+                                            placeHolder={'Nhập mã giao dịch'}
+                                            type={'text'}
+                                            onChangeText={onChangeText}
+                                        />
+                                        <img src={ICMomo} alt='ICMomo' />
+                                    </div>
+                                </div>
                             </div>
                             <div className='chuy'>
                                 <p>Lưu ý: <strong>Sau khi chuyển khoản xong</strong> thì bạn mới nhấn thanh toán để hệ thống ghi nhận giao dịch.</p>
@@ -187,7 +203,7 @@ export const Payment = forwardRef(
                 <Popup
                     ref={refModal}
                     content={renderContentModal}
-                    maxWidth={checkParams === CheckParams.PAYMENTSUCCESS ? Convert.W_400 : 800}
+                    maxWidth={checkParams === CheckParams.PAYMENTSUCCESS ? Convert.W_400 : 1200}
                 />
             )
         }, [renderContentModal])
