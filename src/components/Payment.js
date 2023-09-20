@@ -187,7 +187,7 @@ export const Payment = forwardRef(
                 <Popup
                     ref={refModal}
                     content={renderContentModal}
-                    maxWidth={checkParams === CheckParams.PAYMENTSUCCESS ? Convert.W_400 : 1200}
+                    maxWidth={checkParams === CheckParams.PAYMENTSUCCESS ? Convert.W_400 : 800}
                 />
             )
         }, [renderContentModal])

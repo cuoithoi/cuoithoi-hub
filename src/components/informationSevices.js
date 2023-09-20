@@ -638,33 +638,7 @@ export const InformationSevices = forwardRef(
                                             </div>
                                         </div>
 
-                                        <div className='address_province_'>
-
-                                            <Select
-                                                options={optionListProvinces}
-                                                placeholder={'Chọn Tình/Thành'}
-                                                className='form_sellect_control select_province'
-                                                name='form_sellect_stt'
-                                                onChange={handleProvinceChange}
-                                            />
-
-                                            <Select
-                                                options={optionListDistrict}
-                                                placeholder={'Chọn Quận/Huyện'}
-                                                className='form_sellect_control select_district'
-                                                name='form_sellect_stt'
-                                                onChange={handleDistrictChange}
-                                            />
-
-                                            <Select
-                                                options={optionListWards}
-                                                placeholder={'Chọn Phường/Xã'}
-                                                className='form_sellect_control select_wardt'
-                                                name='form_sellect_stt'
-                                                onChange={handleWardChange}
-                                            />
-
-                                        </div>
+                                     
 
                                         <div className='fullwidth_input_colum'>
                                             <div className='single_hor_input'>
