@@ -14,8 +14,7 @@ const schema = yup.object().shape({
     .string()
     // .min(6, 'Mật khẩu tối thiểu 6 ký tự')
     .required('Yêu cầu nhập tên'),
-  desWish: yup.string().required('Viết lời chúc cho cô dâu chú rể'),
-  passWish: yup.string().required('Yêu cầu nhập mật khẩu'),
+  desWish: yup.string().required('Viết lời chúc cho cô dâu chú rể')
 })
 
 const WriteMessage = ({ setCmtList, handleCloseModal }) => {
@@ -68,13 +67,6 @@ const WriteMessage = ({ setCmtList, handleCloseModal }) => {
             inputStyle='height-input-writeMessage'
             placeHolder='Nhập lời chúc'
             name='desWish'
-            register={register}
-            errors={errors}
-          />
-          <Input
-            type='text'
-            placeHolder='Mật khẩu'
-            name='passWish'
             register={register}
             errors={errors}
           />
