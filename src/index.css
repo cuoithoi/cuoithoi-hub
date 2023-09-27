@@ -4017,7 +4017,8 @@ input:disabled {
     width: 100%;
   }
 
-  .title_tooltipInfo {
+  .title_tooltipInfo,
+  .show_type_display {
     font-size: 14px;
   }
 
@@ -4032,6 +4033,10 @@ input:disabled {
 
   .text-2xl {
     font-size: 1.1rem;
+  }
+
+  .name_show {
+    font-size: 17px;
   }
 }
 
