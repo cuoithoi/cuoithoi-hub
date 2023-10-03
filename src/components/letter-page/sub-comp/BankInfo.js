@@ -48,9 +48,12 @@ const BankInfo = ({
   for (let i = data.length - 1; i >= 0; i--) {
     if (data[i].isGone) {
       data.splice(i, 1)
+    } else {
+      if (data[i].nameB === "" || data[i].numberBank === "" || data[i].ownerBank === "" || data[i].ownerBank === Ic_NoImage) {
+        data.splice(i, 1)
+      }
     }
   }
-  // console.log(data)
   const renderBankInfoFather = (name, bankName, qrLink, isGone) => {
     if (isGone && qrLink) {
       return (
