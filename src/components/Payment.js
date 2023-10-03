@@ -161,9 +161,17 @@ export const Payment = forwardRef(
                                             <p>CTODID{getId.substr(-4, 4).toUpperCase()}</p>
                                         </div>
                                         <p className='note'>Lưu ý: Quý khách vui lòng chuyển khoản đúng theo cú pháp để đơn hàng được hệ thống cập nhật nhanh chóng.</p>
+
+                                        <Button
+                                            onPress={onChangePayment}
+                                            label={Languages.common.pay}
+                                            buttonStyle={BUTTON_STYLES.PINK}
+                                            textStyle={BUTTON_STYLES.WHITE}
+                                            autocenter
+                                        />
                                     </div>
                                 </div>
-                                <div className='block_step block_step_4'>
+                                <div className='block_step block_step_4 hidden'>
                                     <div className='name_step'>
                                         <p><strong>Bước 3: </strong>Nhập mã giao dịch</p>
                                     </div>
@@ -182,13 +190,7 @@ export const Payment = forwardRef(
                             <div className='chuy'>
                                 <p>Lưu ý: <strong>Sau khi chuyển khoản xong</strong> thì bạn mới nhấn thanh toán để hệ thống ghi nhận giao dịch.</p>
                             </div>
-                            <Button
-                                onPress={onChangePayment}
-                                label={Languages.common.pay}
-                                buttonStyle={BUTTON_STYLES.PINK}
-                                textStyle={BUTTON_STYLES.WHITE}
-                                autocenter
-                            />
+
                         </div>
                 }
             </>
@@ -203,7 +205,7 @@ export const Payment = forwardRef(
                 <Popup
                     ref={refModal}
                     content={renderContentModal}
-                    maxWidth={checkParams === CheckParams.PAYMENTSUCCESS ? Convert.W_400 : 1200}
+                    maxWidth={checkParams === CheckParams.PAYMENTSUCCESS ? Convert.W_400 : 800}
                 />
             )
         }, [renderContentModal])

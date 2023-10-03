@@ -4449,6 +4449,18 @@ input:disabled {
   .box_top_footer .box_wrap .text h3 {
     font-size: 26px;
   }
+
+  .bock_content_modal {
+    overflow: auto;
+  }
+
+  .block_step {
+    width: 100%;
+    flex: none;
+    scroll-behavior: smooth;
+    max-width: fit-content;
+    scroll-margin-block-start: inherit;
+  }
 }
 
 @media (max-width: 414px) {
