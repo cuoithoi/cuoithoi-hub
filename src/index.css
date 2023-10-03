@@ -4463,6 +4463,10 @@ input:disabled {
   }
 }
 
+.text-9xl {
+  line-height: unset;
+}
+
 @media (max-width: 414px) {
   .image_single_pc img {
     width: 550px;
