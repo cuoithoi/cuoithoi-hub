@@ -195,7 +195,7 @@ const Languages = {
     useBanking: 'Bạn có muốn sử dụng tính năng Gửi chúc phúc không?',
     use: 'Sử dụng',
     attend: 'Tính năng',
-    enablevideo: 'Hãy gửi video của bạn cho Cưới Thôi và để biến khoảnh khắc quý giá đó thành một thiệp cưới độc đáo và ấn tượng.',
+    enablevideo: 'Hãy gửi video của bạn cho Cưới Thôi và để biến khoảnh khắc quý giá đó thành một thiệp cưới độc đáo và ấn tượng nhé.',
     enableAttend:
       'cho phép khách mời xác nhận có tham dự đám cưới hay không. Chỉ có cô dâu và chú rể xem được tình trạng tham dự và số liệu thống kê khách mời.',
     readChart:
