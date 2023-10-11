@@ -3782,6 +3782,10 @@ input:disabled {
   display: block;
 }
 
+.justify-space-between {
+  justify-content: space-between;
+}
+
 @media (min-width: 768px) {
   .container {
     width: 750px;

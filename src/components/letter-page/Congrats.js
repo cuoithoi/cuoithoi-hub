@@ -87,7 +87,7 @@ const Congrats = ({ informationOfBride, informationOfGroom }) => {
           />
         }
       </div>
-      <div className='flex justify-around'>
+      <div className='flex justify-space-between'>
         {
           fatherNameOfGroom && <InforPhone
             title='Bố'
@@ -105,7 +105,7 @@ const Congrats = ({ informationOfBride, informationOfGroom }) => {
         }
 
       </div>
-      <div className='flex justify-around'>
+      <div className='flex justify-space-between'>
         {
           motherNameOfGroom && <InforPhone
             title='Mẹ'
