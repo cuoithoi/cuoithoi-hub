@@ -68,81 +68,80 @@ const Congrats = ({ informationOfBride, informationOfGroom }) => {
       id='congrat'
     >
       <TitleSection title='CHÚC PHÚC' />
-      <div className='flex justify-around'>
-        {
-          nameGroom && <InforPhone
-            title='Chú rể'
-            name={`${nameGroom}`}
-            phoneNumber={phoneNumberOfGroom}
-            phoneColor='main'
-            nameSizeLg={true}
-          />
-        }
-        {
-          nameBride && <InforPhone
-            title='Cô dâu'
-            name={`${nameBride}`}
-            phoneNumber={phoneNumberOfBride}
-            nameSizeLg={true}
-          />
-        }
-      </div>
-      <div className='flex justify-space-between'>
-        {
-          fatherNameOfGroom && <InforPhone
-            title='Bố'
-            name={`Ông. ${fatherNameOfGroom} ${isGoneFather ? '(Cố)' : ''}`}
-            phoneNumber={phoneNumberOfFatherGroom}
-            phoneColor='main'
-          />
-        }
-        {
-          fatherNameOfBride && <InforPhone
-            title='Bố'
-            name={`Ông. ${fatherNameOfBride} ${isGoneFatherBride ? '(Cố)' : ''}`}
-            phoneNumber={phoneNumberOfFatherBride}
-          />
-        }
+      <div className='flex justify-space-between' style={{ paddingLeft: 15, paddingRight: 15 }}>
+        <div className='justify-around'>
+          {
+            nameGroom && <InforPhone
+              title='Chú rể'
+              name={`${nameGroom}`}
+              phoneNumber={phoneNumberOfGroom}
+              phoneColor='main'
+              nameSizeLg={true}
+            />
+          }
+          {
+            fatherNameOfGroom && <InforPhone
+              title='Bố'
+              name={`Ông. ${fatherNameOfGroom} ${isGoneFather ? '(Cố)' : ''}`}
+              phoneNumber={phoneNumberOfFatherGroom}
+              phoneColor='main'
+            />
+          }
+          {
+            motherNameOfGroom && <InforPhone
+              title='Mẹ'
+              name={`Bà. ${motherNameOfGroom} ${isGoneMother ? '(Cố)' : ''}`}
+              phoneNumber={phoneNumberOfMotherGroom}
+              phoneColor='main'
+            />
+          }
 
-      </div>
-      <div className='flex justify-space-between'>
-        {
-          motherNameOfGroom && <InforPhone
-            title='Mẹ'
-            name={`Bà. ${motherNameOfGroom} ${isGoneMother ? '(Cố)' : ''}`}
-            phoneNumber={phoneNumberOfMotherGroom}
-            phoneColor='main'
-          />
-        }
+        </div>
+        <div className='justify-space-between'>
+          {
+            nameBride && <InforPhone
+              title='Cô dâu'
+              name={`${nameBride}`}
+              phoneNumber={phoneNumberOfBride}
+              nameSizeLg={true}
+            />
+          }
+          {
+            fatherNameOfBride && <InforPhone
+              title='Bố'
+              name={`Ông. ${fatherNameOfBride} ${isGoneFatherBride ? '(Cố)' : ''}`}
+              phoneNumber={phoneNumberOfFatherBride}
+            />
+          }
+          {
+            motherNameOfBride && <InforPhone
+              title='Mẹ'
+              name={`Bà. ${motherNameOfBride} ${isGoneMotherOfBride ? '(Cố)' : ''}`}
+              phoneNumber={phoneNumberOfMotherBride}
+            />
+          }
 
-        {
-          motherNameOfBride && <InforPhone
-            title='Mẹ'
-            name={`Bà. ${motherNameOfBride} ${isGoneMotherOfBride ? '(Cố)' : ''}`}
-            phoneNumber={phoneNumberOfMotherBride}
-          />
-        }
-
+        </div>
       </div>
       <div className='flex justify-around items-center py-4'>
-          <Button
-            buttonStyle={BUTTON_STYLES.LIGHT_BLUE}
-            label='Gửi chúc phúc'
-            rounded={true}
-            onPress={() => {
-              handleShowModal1()
-            }}
-          />
-          <Button
-            buttonStyle={BUTTON_STYLES.ORANGE}
-            label='Gửi chúc phúc'
-            rounded={true}
-            onPress={() => {
-              handleShowModal()
-            }}
-          />
-        </div>
-      
+        <Button
+          buttonStyle={BUTTON_STYLES.LIGHT_BLUE}
+          label='Gửi chúc phúc'
+          rounded={true}
+          onPress={() => {
+            handleShowModal1()
+          }}
+        />
+        <Button
+          buttonStyle={BUTTON_STYLES.ORANGE}
+          label='Gửi chúc phúc'
+          rounded={true}
+          onPress={() => {
+            handleShowModal()
+          }}
+        />
+      </div>
+
 
       <h3 className='pt-4 text-center '>Rất hân hạnh được đón tiếp!</h3>
       <Popup
