@@ -109,7 +109,7 @@ function MenuBar({ colorText }) {
               {Languages.menu.home}
             </NavLink>
           </li>
-          <li className={styles.nav_item}>
+          <li style={{ display: 'none' }} className={styles.nav_item}>
             <NavLink
               to={Alias.services}
               className={isactive && `${styles.nav_link}`}
@@ -118,7 +118,7 @@ function MenuBar({ colorText }) {
               {Languages.menu.services}
             </NavLink>
           </li>
-          <li className={styles.nav_item}>
+          <li style={{ display: 'none' }} className={styles.nav_item}>
             <NavLink
               to={Alias.customerCare}
               className={isactive && `${styles.nav_link}`}

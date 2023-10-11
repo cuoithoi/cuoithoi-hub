@@ -55,7 +55,7 @@ const InvitationDetail = ({ info, isBride }) => {
           {`${fatherNameOfGroom}`}
         </p></>
       }
-      {fatherNameOfGroom && <>
+      {motherNameOfGroom && <>
         <p className='title_tooltipInfo'>{isGoneMother ? 'Cố Mẫu' : 'Mẹ'}</p>
         <p className='show_type_display'>
           {isGoneMother ? <img src={IcChrysanthemum} /> : ''} Bà.{' '}

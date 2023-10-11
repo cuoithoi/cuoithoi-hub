@@ -31,6 +31,7 @@ const DeleteCmtInput = ({ handleCloseModal, deleteCmt, _id }) => {
           ...data,
           _id: _id,
         })
+        console.log('res', res)
         toast.success('Xoá lời chúc thành công')
         deleteCmt()
         handleCloseModal()

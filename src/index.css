@@ -3961,6 +3961,7 @@ input:disabled {
 
   .pt-96 {
     padding-top: 20rem;
+    font-size: 18px;
   }
 
   .effect_light {
@@ -4231,7 +4232,7 @@ input:disabled {
     display: block;
     text-align: center;
     padding: 0;
-    font-size: 25px;
+    font-size: 23px;
   }
 
   .py-20 {
@@ -4239,7 +4240,7 @@ input:disabled {
   }
 
   .text-9xl {
-    font-size: 6rem;
+    font-size: 4rem;
   }
 
   .section_wrap_type_ds .head h2 {

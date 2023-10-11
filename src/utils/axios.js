@@ -93,8 +93,12 @@ const postDataApi = async (url, data) => {
 }
 const deleteDataApi = async (url, data) => {
   try {
+    const token = getLocalAccessToken()
     const resp = await customFetch.delete(url, {
       data: data,
+      headers: {
+        Authorization: 'Bearer ' + token,
+      }
     })
     return resp.data
   } catch (error) {
