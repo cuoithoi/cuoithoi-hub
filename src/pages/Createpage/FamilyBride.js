@@ -459,7 +459,7 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                             value.informationOfBride[0].name
                         )}
 
-                        <div className='item_field_single'>
+                        <div className='item_field_single hidden'>
                             <div className='sellect_option'>
 
                                 <select

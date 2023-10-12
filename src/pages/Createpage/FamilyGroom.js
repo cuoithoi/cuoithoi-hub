@@ -357,7 +357,7 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                             value.informationOfGroom[0].name
                         )}
 
-                        <div className='item_field_single'>
+                        <div className='item_field_single hidden'>
                             <div className='sellect_option'>
                                 <select
                                     className='form_sellect_control'

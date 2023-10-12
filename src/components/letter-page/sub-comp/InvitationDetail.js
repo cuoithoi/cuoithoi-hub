@@ -16,7 +16,7 @@ const InvitationDetail = ({ info, isBride }) => {
         <h2 className='text-main'>Nhà Gái</h2>
         <p className='title_tooltipInfo'>Cô Dâu</p>
         <h1 className='name_show'>{`${name}`}</h1>
-        <p className='dashed-top-bottom'>{isOldBrotherBride ? 'Trưởng nữ' : 'Thứ nữ'}</p>
+        <p className='dashed-top-bottom hidden'>{isOldBrotherBride ? 'Trưởng nữ' : 'Thứ nữ'}</p>
         {fatherNameOfBride && <><p className='title_tooltipInfo'>{isGoneMotherOfBride ? 'Cố Phụ' : 'Bố'}</p>
           <p className='show_type_display dashed-top-bottom'>
             {isGoneFatherBride ? <img src={IcChrysanthemum} /> : ''} Ông.{' '}
@@ -47,7 +47,7 @@ const InvitationDetail = ({ info, isBride }) => {
       <h2 className='text-main'>Nhà Trai</h2>
       <p className='title_tooltipInfo'>Chú Rể</p>
       <h1 className='name_show'>{`${name}`}</h1>
-      <p className='dashed-top-bottom'>{isOldBrotherGroom ? 'Trưởng nam' : 'Thứ nam'}</p>
+      <p className='dashed-top-bottom hidden'>{isOldBrotherGroom ? 'Trưởng nam' : 'Thứ nam'}</p>
       {fatherNameOfGroom && <>
         <p className='title_tooltipInfo'>{isGoneFather ? 'Cố Phụ' : 'Bố'}</p>
         <p className='show_type_display dashed-top-bottom'>
