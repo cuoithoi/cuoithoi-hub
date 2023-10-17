@@ -25,7 +25,7 @@ const InvitationDetail = ({ info, isBride }) => {
         }
         {motherNameOfBride && <>
           <p className='title_tooltipInfo'> {isGoneMotherOfBride ? 'Cố Mẫu' : 'Mẹ'}</p>
-          <p className='show_type_display'>
+          <p className={`show_type_display ${!fatherNameOfBride ? 'dashed-top-bottom' : ''}`}>
             {isGoneMotherOfBride ? <img src={IcChrysanthemum} /> : ''} Bà.{' '}
             {`${motherNameOfBride}`}
           </p></>
@@ -57,7 +57,7 @@ const InvitationDetail = ({ info, isBride }) => {
       }
       {motherNameOfGroom && <>
         <p className='title_tooltipInfo'>{isGoneMother ? 'Cố Mẫu' : 'Mẹ'}</p>
-        <p className='show_type_display'>
+        <p className={`show_type_display ${!fatherNameOfGroom ? 'dashed-top-bottom' : ''}`}>
           {isGoneMother ? <img src={IcChrysanthemum} /> : ''} Bà.{' '}
           {`${motherNameOfGroom}`}
         </p>
