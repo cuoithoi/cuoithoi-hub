@@ -40,9 +40,9 @@ const Invitation = ({
             <>
               <h2 className='text-second'>Địa chỉ</h2>
               <p className='px-20 pb-6 border-section-1'>{namelocationOfWedding}, {locationOfWedding}</p>
-              <p className='pt-8 px-20'>{contentOfInvitation}</p>
             </>
           )}
+          <p className='pt-8 px-20'>{contentOfInvitation}</p>
         </div>
       </div>
     </section>
