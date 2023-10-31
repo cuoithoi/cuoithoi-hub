@@ -4,7 +4,7 @@ import closeIcon from '@/assets/svg/icon-close-outline.svg'
 import { convertTimeFormat } from '@/utils/helpers'
 import Popup from '@/components/modal/Popup'
 import DeleteCmtInput from './DeleteCmtInput'
-const WeddingCmt = ({ viewDetail, cmt, deleteCmt, index }) => {
+const WeddingCmt = ({ viewDetail, cmt, deleteCmt, index, handleDeleteCmt }) => {
   const modalRef = useRef()
   return (
     <div
@@ -53,6 +53,8 @@ const WeddingCmt = ({ viewDetail, cmt, deleteCmt, index }) => {
             deleteCmt={deleteCmt}
             _id={cmt._id}
             handleCloseModal={() => modalRef?.current.hideModal()}
+            handleDeleteCmt={handleDeleteCmt}
+            index={index}
           />
         }
       />

@@ -196,7 +196,7 @@ const LetterPage = () => {
         }
         {isUseGuestBook && <Message id={userId} />}
         {isUseConfirm && <Response />}
-        <FooterLogo />
+        <FooterLogo album={album[0]} />
       </div>
 
       <Sidebar isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />

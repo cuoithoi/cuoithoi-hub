@@ -11,11 +11,43 @@ import Popup from "@/components/modal/Popup";
 import TitleCreate from "@/components/createPage/subcomp/TitleCreate";
 import FormValidate from "@/utils/FormValidate";
 import { getItemFromLocalStorage } from "@/utils/localStorage";
-import ProvinceDistrictList from "./ProvinceDistrictList";
-import IMG_Map from "@/assets/home-image/IMG_Maps.png";
 import FsLightbox from "fslightbox-react";
+import ReactQuill from "react-quill";
+import 'react-quill/dist/quill.snow.css';
 
 const TimeandLocation = forwardRef(({ }, ref) => {
+
+    const modules = {
+        toolbar: [
+            [{ header: [1, 2, 3, 4, 5, 6, false] }],
+            ["bold", "italic", "underline", "strike", "blockquote"],
+            [{ size: [] }],
+            [{ font: [] }],
+            [{ align: ["right", "center", "justify"] }],
+            [{ list: "ordered" }, { list: "bullet" }],
+            ["link", "image"],
+            [{ color: ["red", "blue", "Green", "Yellow", "Orange", "Purple", "Pink", "Brown"] }],
+            [{ background: ["red", "blue", "Green", "Yellow", "Orange", "Purple", "Pink", "Brown"] }]
+        ]
+    };
+
+    const formats = [
+        "header",
+        "bold",
+        "italic",
+        "underline",
+        "strike",
+        "blockquote",
+        "list",
+        "bullet",
+        "link",
+        "color",
+        "image",
+        "background",
+        "align",
+        "size",
+        "font"
+    ];
 
     useImperativeHandle(ref, () => ({
 
@@ -278,9 +310,9 @@ const TimeandLocation = forwardRef(({ }, ref) => {
         refModal.current?.showModal();
     }
 
-    const onChangeCountdownTemp = useCallback((e) => {
-        setCountdownTemp(e.target.value)
-        value.arraylist[0].contentOfCountDown = e.target.value
+    const onChangeCountdownTemp = useCallback((content, delta, source, editor) => {
+        setCountdownTemp(content)
+        value.arraylist[0].contentOfCountDown = content
     }, [value])
 
 
@@ -317,11 +349,11 @@ const TimeandLocation = forwardRef(({ }, ref) => {
                         </div>
                     </div>
 
-                    <div className="body_form">
+                    {/* <div className="body_form">
                         <div className="wrap_form">
                             <ProvinceDistrictList />
                         </div>
-                    </div>
+                    </div> */}
 
                     <div className='single_hor_input'>
                         {renderInput(refMapDirectLink, '', 'Nhập ' + Languages.text.mapPlaceWedding, TIME_AND_LOCATION.mapDirectLink, value.timeAndLocationOfWedding.mapDirectLink, 'text', 200, true, <FaLink />)}
@@ -348,13 +380,12 @@ const TimeandLocation = forwardRef(({ }, ref) => {
                     </div>
 
                     <div className='single_hor_input'>
-
-                        <MyTextArea
-                            ref={refTitleTemplate}
+                        <ReactQuill
+                            theme="snow"
+                            modules={modules}
+                            formats={formats}
                             value={countdownTemp}
-                            placeHolder={Languages.inputText.contentInvite}
-                            maxLength={500}
-                            onChangeText={onChangeCountdownTemp}
+                            onChange={onChangeCountdownTemp}
                         />
                         <Button
 

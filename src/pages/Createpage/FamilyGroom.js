@@ -413,19 +413,6 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-width-input-right">
-                        {renderInput(
-                            refPhoneFather,
-                            '',
-                            'Số điện thoại',
-                            NAME_INPUT_GROOM.phoneNumberOfFatherGroom,
-                            'number',
-                            10,
-                            false,
-                            false,
-                            value.informationOfGroom[0].phoneNumberOfFatherGroom
-                        )}
-                    </div>
                 </div>
             </div>
 
@@ -454,19 +441,6 @@ const FamilyGroom = forwardRef(({ }, ref) => {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="col-width-input-right">
-                        {renderInput(
-                            refPhoneMother,
-                            '',
-                            'Số điện thoại',
-                            NAME_INPUT_GROOM.phoneNumberOfMotherGroom,
-                            'number',
-                            10,
-                            false,
-                            false,
-                            value.informationOfGroom[0].phoneNumberOfMotherGroom
-                        )}
                     </div>
                 </div>
             </div>

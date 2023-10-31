@@ -1,7 +1,7 @@
 import { MyTextInput } from "@/components/input";
 import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from "react";
 import Languages from '@/commons/Languages'
-import { SelectInvitationTemplate, fiedlsCreatePage } from "@/commons/FieldsDataObj";
+import { SelectInvitationTemplate, SelectPropagateTemplate, fiedlsCreatePage } from "@/commons/FieldsDataObj";
 import { BUTTON_STYLES, CheckParams, Convert, NAME_INPUT_BRIDE, itemLocal } from "@/commons/Constant.ts";
 import { RadioButton } from "@/components/RadioButton";
 import IcChrysanthemum from '@/assets/home-image/IcChrysanthemum.svg'
@@ -13,8 +13,43 @@ import TitleCreate from "@/components/createPage/subcomp/TitleCreate";
 import FormValidate from "@/utils/FormValidate";
 import { getItemFromLocalStorage } from "@/utils/localStorage";
 import Ic_Bride from '@/assets/home-image/Ic_Bride.png'
+import ReactQuill from "react-quill";
+import 'react-quill/dist/quill.snow.css';
+
+const modules = {
+    toolbar: [
+        [{ header: [1, 2, 3, 4, 5, 6, false] }],
+        ["bold", "italic", "underline", "strike", "blockquote"],
+        [{ size: [] }],
+        [{ font: [] }],
+        [{ align: ["right", "center", "justify"] }],
+        [{ list: "ordered" }, { list: "bullet" }],
+        ["link", "image"],
+        [{ color: ["red", "blue", "Green", "Yellow", "Orange", "Purple", "Pink", "Brown"] }],
+        [{ background: ["red", "blue", "Green", "Yellow", "Orange", "Purple", "Pink", "Brown"] }]
+    ]
+};
+
+const formats = [
+    "header",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "list",
+    "bullet",
+    "link",
+    "color",
+    "image",
+    "background",
+    "align",
+    "size",
+    "font"
+];
 
 const FamilyBride = forwardRef(({ props }, ref) => {
+
     useImperativeHandle(ref, () => ({
 
         onChangeCreatLetter
@@ -24,9 +59,11 @@ const FamilyBride = forwardRef(({ props }, ref) => {
     const [value, setValue] = useState(fiedlsCreatePage)
     const [radioDead, setRadioDead] = useState('none')
     const [inviteTemp, setInviteTemp] = useState('')
+    const [propagate, setPropagate] = useState('')
 
     const [checkParams, setCheckParams] = useState(CheckParams.AFFTER)
     const [radioInviteTemplate, setRadioInviteTemplate] = useState('none')
+    const [radioPropagateTemplate, setRadioPropagateTemplate] = useState('none')
 
     const refModal = useRef(null)
     const refUnderfine = useRef(null)
@@ -68,7 +105,8 @@ const FamilyBride = forwardRef(({ props }, ref) => {
             itemLocal.informationOfBride.isGoneMotherOfBride && (value.informationOfBride[0].isGoneMotherOfBride = itemLocal.informationOfBride.isGoneMotherOfBride)
             itemLocal.contentOfInvitation && (setInviteTemp(itemLocal.contentOfInvitation))
             itemLocal.isDisplayGonePeople && (setRadioDead(itemLocal.isDisplayGonePeople))
-            itemLocal.contentOfInvitation && (value.informationOfBride[0].contentOfInvitation = itemLocal.contentOfInvitation)
+            itemLocal.isDisplayGonePeople && (setRadioDead(itemLocal.isDisplayGonePeople))
+            itemLocal.weddingVow && (setPropagate(itemLocal.weddingVow))
         } else {
             value.informationOfBride[0].firstName = ''
             value.informationOfBride[0].middleName = ''
@@ -85,6 +123,7 @@ const FamilyBride = forwardRef(({ props }, ref) => {
             value.informationOfBride[0].phoneNumberOfMotherBride = ''
             value.informationOfBride[0].isGoneMotherOfBride = ''
             value.informationOfBride[0].contentOfInvitation = ''
+            value.informationOfBride[0].weddingVow = ''
         }
 
     }, [])
@@ -322,6 +361,12 @@ const FamilyBride = forwardRef(({ props }, ref) => {
         value.informationOfBride[0].contentOfInvitation = text
     }
 
+    const radioChangeHandlerPropagateTemplate = (text, values) => {
+        setRadioPropagateTemplate(values)
+        setPropagate(text)
+        value.informationOfBride[0].contentOfInvitation = text
+    }
+
     const renderMapRadio = useCallback((title, data, radioChangeHandlerTemplate, selected) => {
 
         return <div className='section_choose_template'>
@@ -346,12 +391,14 @@ const FamilyBride = forwardRef(({ props }, ref) => {
     const renderContentModal = useMemo(() => {
 
         return (
-            renderMapRadio(Languages.text.inviteLanguage, SelectInvitationTemplate, radioChangeHandlerInviteTemplate, radioInviteTemplate)
+            (checkParams === CheckParams.INVITE_TEMPLATES && renderMapRadio(Languages.text.inviteLanguage, SelectInvitationTemplate, radioChangeHandlerInviteTemplate, radioInviteTemplate)) ||
+            (checkParams === CheckParams.PROPAGATE && renderMapRadio(Languages.text.inviteLanguage, SelectPropagateTemplate, radioChangeHandlerPropagateTemplate, radioPropagateTemplate))
         )
     }, [
         checkParams,
         renderMapRadio,
-        radioChangeHandlerInviteTemplate
+        radioChangeHandlerInviteTemplate,
+        radioChangeHandlerPropagateTemplate
     ])
 
     const renderModal = useMemo(() => {
@@ -372,6 +419,11 @@ const FamilyBride = forwardRef(({ props }, ref) => {
         refModal.current?.showModal();
     }
 
+    const onChangeOpenPropagateTemplate = () => {
+        setCheckParams(CheckParams.PROPAGATE)
+        refModal.current?.showModal();
+    }
+
     const onChangeSelectStt = useCallback((e) => {
 
         value.informationOfBride[0].isOldBrotherBride = e.target.value;
@@ -384,9 +436,14 @@ const FamilyBride = forwardRef(({ props }, ref) => {
 
     }, [value]);
 
-    const onChangeInviteTemp = useCallback((e) => {
-        setInviteTemp(e.target.value)
-        value.informationOfBride[0].contentOfInvitation = e.target.value
+    const onChangeInviteTemp = useCallback((content, delta, source, editor) => {
+        setInviteTemp(content)
+        value.informationOfBride[0].contentOfInvitation = content
+    }, [value])
+
+    const onChangePropagate = useCallback((content, delta, source, editor) => {
+        setPropagate(content)
+        value.informationOfBride[0].weddingVow = content
     }, [value])
 
     const onKeyPress = useCallback(() => {
@@ -516,19 +573,6 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-width-input-right">
-                        {renderInput(
-                            refPhoneFather,
-                            '',
-                            'Số điện thoại',
-                            NAME_INPUT_BRIDE.phoneNumberOfFatherBride,
-                            'number',
-                            10,
-                            false,
-                            false,
-                            value.informationOfBride[0].phoneNumberOfFatherBride
-                        )}
-                    </div>
                 </div>
             </div>
 
@@ -537,7 +581,7 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                     <label>{Languages.inputText.mother}</label>
                 </div>
                 <div className='group_input_control'>
-                    <div className="col-width-input-left">
+                    <div className="col-width-input-left" style={{ width: '100%', flex: 'auto' }}>
                         {renderInput(
                             refNameMother,
                             '',
@@ -558,19 +602,6 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="col-width-input-right">
-                        {renderInput(
-                            refPhoneMother,
-                            '',
-                            'Số điện thoại',
-                            NAME_INPUT_BRIDE.phoneNumberOfMotherBride,
-                            'number',
-                            10,
-                            false,
-                            false,
-                            value.informationOfBride[0].phoneNumberOfMotherBride
-                        )}
                     </div>
                     <div className='enable_show_deadman active'>
                         <div className='label_left'>
@@ -600,12 +631,12 @@ const FamilyBride = forwardRef(({ props }, ref) => {
 
                 <div className='group_textarea_control'>
 
-                    <MyTextArea
-                        ref={refinvite}
+                    <ReactQuill
+                        theme="snow"
+                        modules={modules}
+                        formats={formats}
                         value={inviteTemp}
-                        placeHolder={Languages.inputText.contentInvite}
-                        maxLength={500}
-                        onChangeText={onChangeInviteTemp}
+                        onChange={onChangeInviteTemp}
                     />
 
                     <Button
@@ -620,6 +651,35 @@ const FamilyBride = forwardRef(({ props }, ref) => {
 
                 </div>
                 {renderModal}
+            </div>
+
+            <div className='input_fields_control Select_invitation_template'>
+
+                <div className='place_title_input'>
+                    <label>Lời <br /> tuyên thệ</label>
+                </div>
+
+                <div className='group_textarea_control'>
+
+                    <ReactQuill
+                        theme="snow"
+                        modules={modules}
+                        formats={formats}
+                        value={propagate}
+                        onChange={onChangePropagate}
+                    />
+
+                    <Button
+
+                        label={"Lời tuyên thệ mẫu"}
+                        buttonStyle={BUTTON_STYLES.PINK}
+                        textStyle={BUTTON_STYLES.WHITE}
+                        isLowerCase
+                        onPress={onChangeOpenPropagateTemplate}
+
+                    />
+
+                </div>
             </div>
 
         </div>

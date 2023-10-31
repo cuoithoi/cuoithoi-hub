@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import TitleSection from './sub-comp/TitleSection'
 import WeddingCmt from './sub-comp/WeddingCmt'
 import { Carousel } from 'react-responsive-carousel'
@@ -11,6 +11,7 @@ import { useParams } from 'react-router-dom'
 import { customFetch } from '@/utils/axios'
 import CommentDetail from '@/pages/CommentDetail'
 import { Convert } from '../../commons/Constant.ts'
+import { toast } from 'react-toastify'
 const Message = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [cmtList, setCmtList] = useState([])
@@ -25,12 +26,7 @@ const Message = () => {
     modalRef.current.hideModal()
   }
 
-  const deleteCmt = (index) => {
-    setCmtList((prev) => {
-      prev.splice(index, 1)
-      return prev
-    })
-  }
+
   useEffect(() => {
     const getData = async () => {
       try {
@@ -44,6 +40,15 @@ const Message = () => {
     }
     getData()
   }, [])
+
+
+  const deleteCmt = (index) => {
+    let newCmtList = cmtList
+    newCmtList = newCmtList.filter(function (_, i) {
+      return i !== index
+    })
+    setCmtList(newCmtList)
+  }
 
   const handleShowCmtDetail = async () => {
     const resp = await customFetch.get(`/get/list-wish?_id=${id}`)
@@ -111,7 +116,7 @@ const Message = () => {
           />
         }
       />
-      <Popup ref={cmtRef} height={'80vh'} content={<CommentDetail cmtLists={cmtListProps} />} maxWidth={Convert.W_800} />
+      <Popup ref={cmtRef} height={'80vh'} content={<CommentDetail handleDeleteCmt={deleteCmt} cmtLists={cmtListProps} />} maxWidth={Convert.W_800} />
     </div>
   )
 }

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import TitleSection from '@/components/letter-page/sub-comp/TitleSection'
 import WeddingCmt from '@/components/letter-page/sub-comp/WeddingCmt'
 
-const CommentDetail = ({ cmtLists }) => {
+const CommentDetail = ({ handleDeleteCmt, cmtLists }) => {
 
   const [cmtList, setCmtList] = useState(cmtLists)
 
@@ -38,6 +38,7 @@ const CommentDetail = ({ cmtLists }) => {
                 key={index}
                 index={index}
                 deleteCmt={() => deleteCmt(index)}
+                handleDeleteCmt={handleDeleteCmt}
               />
             )
           })}

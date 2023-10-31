@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import TitleSection from './sub-comp/TitleSection'
 import heartIcon from '@/assets/svg/letter-heart.svg'
 import heartIconFill from '@/assets/svg/letter-heart-fill.svg'
 import { Carousel } from 'react-responsive-carousel'
@@ -8,6 +7,8 @@ import CarouselGallery from './sub-comp/CarouselGallery'
 import { api } from '@/utils/axios'
 import { toast } from 'react-toastify'
 import FsLightbox from 'fslightbox-react'
+import InvitationRight from '../icons/InvitationRight'
+import InvitationLeft from '../icons/InvitationLeft'
 
 const Gallery = ({ id }) => {
   const modalRef = useRef()
@@ -53,7 +54,12 @@ const Gallery = ({ id }) => {
       className='py-10 px-3 section-mb layout-mw gallery-section'
       id='gallery'
     >
-      <TitleSection title='ALBUM' />
+      <div className='flex justify-center pb-5'>
+        <InvitationLeft />
+        <span className='text-xl pl-1 pr-1 text-center'>ALBUM <br /> Khu vườn ký ức
+        </span>
+        <InvitationRight />
+      </div>
       <div className=''>
         <div className='relative'>
           <div
@@ -83,7 +89,7 @@ const Gallery = ({ id }) => {
             selectedItem={selectedItem}
             dynamicHeight={false}
             showArrows={false}
-            
+
           >
             {album?.map((image, index) => {
               return (

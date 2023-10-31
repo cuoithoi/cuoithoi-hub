@@ -90,7 +90,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Playfair Display', sans-serif;
   color: rgba(88, 88, 88, 1);
   font-size: var(--font-size-default);
 }
@@ -118,7 +118,7 @@ code {
 }
 
 .lateef {
-  font-family: 'Lateef', serif;
+  font-family: 'Lateef', sans-serif;
 }
 
 .wind-song {
@@ -583,7 +583,7 @@ p {
 
 .calendar {
   max-width: 320px;
-  margin: 24px auto 0;
+  margin: 24px auto 24px;
   /* box-shadow: 1px 2px 3px 4px rgba(0, 0, 0, 0.1); */
   border-radius: 6px;
 }
@@ -647,6 +647,7 @@ p {
 
 .day-cell {
   opacity: 0.4;
+  font-family: 'Darker Grotesque', sans-serif;
 }
 
 .day-cel--faded {
@@ -668,6 +669,75 @@ p {
   background-color: rgba(243, 135, 35, 1);
   color: white;
   border-radius: 50%;
+}
+
+.namelocationOfWedding {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  color: #000;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 20px 0;
+}
+
+.addlocationOfWedding {
+  font-family: 'Darker Grotesque', sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.interface {
+  width: 100%;
+  text-align: center;
+}
+
+.interface h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 30px 0;
+  color: #585858;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.interface_title {
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 10px;
+}
+
+.interface_groom {
+  color: #91ADA3;
+}
+
+.interface_bride {
+  color: #F38723;
+}
+
+.family {
+  text-align: center;
+}
+
+.family p {
+  font-family: 'Darker Grotesque', sans-serif;
+  margin-bottom: 5px;
+  color: #585858;
+  text-align: center;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 
 /* .day-cell {
@@ -1728,7 +1798,7 @@ table .date {
 .wraps_title {
   font-size: 37px;
   font-weight: normal;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Playfair Display', sans-serif;
 }
 
 .Notfound {
@@ -3782,8 +3852,119 @@ input:disabled {
   display: block;
 }
 
+.bg-invitation {
+  min-height: 740px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.invitation_title {
+  color: #585858;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.invitation_desp {
+  width: 60%;
+  margin: auto;
+}
+
+.outstanding_box {
+  padding-bottom: 40px;
+}
+
+.title_outstanding {
+  color: #F38723;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
 .justify-space-between {
-  justify-content: space-between;
+  justify-content: space-around;
+}
+
+.wedding-vow {
+  height: 700px;
+  position: relative;
+}
+
+.wedding-vow::after,
+.wedding-vow::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 33px;
+}
+
+.wedding-vow::before {
+  background: url('../src/assets/home-image/top.png') no-repeat;
+  background-size: cover;
+  top: -5px;
+}
+
+.wedding-vow::after {
+  background: url('../src/assets/home-image/down.png') no-repeat;
+  background-size: cover;
+  bottom: 0;
+}
+
+.background_couple {
+  display: flex;
+  height: 100%;
+  background-size: cover;
+}
+
+.content_wedding_vow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #ffffff9c;
+  top: 0;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 50px;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.content_wedding_vow .quote {
+  height: 33px;
+  width: 97%;
+}
+
+.content_wedding_vow .quote_top {
+  background: url('../src/assets/home-image/quote_top.png') no-repeat;
+  background-size: contain;
+}
+
+.content_wedding_vow .quote_bottom {
+  background: url('../src/assets/home-image/quote_bot.png') no-repeat;
+  background-size: contain;
+  width: 40px;
+  margin-right: 10px;
+}
+
+.content_wedding_vow .content {
+  margin: 10px;
+  padding: 0 30px;
+  line-height: 200%;
+  color: #585858;
+  font-style: italic;
+}
+
+.quill {
+  background: var(--color-input);
+}
+
+.ql-container.ql-snow {
+  height: 200px;
+  background: var(--color-input);
+  margin-bottom: 20px;
 }
 
 @media (min-width: 768px) {
@@ -3820,6 +4001,7 @@ input:disabled {
   .image_show_demo_wish img {
     width: 1000px;
   }
+
 }
 
 @media (max-width: 991px) {
@@ -4884,6 +5066,12 @@ input:disabled {
     position: relative;
     transform: translate3d(0, 0, 0);
     margin-top: 30px;
+  }
+
+  .background_couple {
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
   }
 }
 

@@ -20,6 +20,15 @@ export const SelectInvitationTemplate = [
   }
 ];
 
+export const SelectPropagateTemplate = [
+  {
+    id: 'Propagate_one',
+    name: 'Propagate_one',
+    value: 'Propagate_one',
+    text: 'Gặp gỡ, yêu và cưới. Điều bạn vừa nghe không nằm trong một câu chuyện cổ tích, mà chính là câu chuyện về cuộc đời hai chúng tôi. Chúng tôi sẽ yêu thương, chăm sóc, trân trọng và nắm tay nhau cùng đi đến hết cuộc đời này. Thật là một niềm vinh hạnh lớn khi ngày hạnh phúc nhất cuộc đời chúng tôi có sự hiện diện và chúc phúc của bạn!'
+  }
+];
+
 export const SelectTimeTemplate = [
   {
     id: 'timetemplate_one',
@@ -43,6 +52,7 @@ export const SelectWarningTemplate = [
     text: 'Dresscode'
   }
 ];
+
 
 export const SelectSavePenTemplate = [
   {
@@ -303,6 +313,7 @@ export const fiedlsCreatePage = {
       "qrCodeMotherBrideLink": "",
       "isDisplayGonePeople": false,
       "contentOfInvitation": "",
+      "weddingVow": ""
     }
   ],
   "timeAndLocationOfWedding": {

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import TitleSection from './sub-comp/TitleSection'
 import mapIcon from '../../assets/home-image/map-icon.png'
 import background from '../../assets/home-image/time-schedule-bg.png'
+import ph_map from '../../assets/home-image/ph_map-pin.png'
 import Calendar from './sub-comp/Calendar'
-import CountDown from './sub-comp/Countdown'
 
 import { formatDay } from '@/utils/helpers'
 
@@ -48,46 +48,15 @@ const TimeLocation = ({
     >
       <div className=' text-center '>
         <TitleSection title='THỜI GIAN & ĐỊA ĐIỂM' />
-        {isUseDamNgo && (
-          <div className='pb-2'>
-            <h2 className='text-second'>Dạm ngõ</h2>
-            <p className='max-w-xs text-base margin-auto'>
-              Lễ dạm ngõ sẽ diễn tại {locationOfEgagement}, vào lúc{' '}
-              {timeOfEventEgagement && timeOfEventEgagement},{' '}
-              {dateOfEventEgagement && formatDay(dateOfEventEgagement)}
-            </p>
-          </div>
-        )}
 
-        {isUseDamNgo && (
-          <div className=' pb-2'>
-            <h2 className='text-second'>Ăn hỏi</h2>
-            <p className='max-w-xs text-base margin-auto'>
-              Lễ ăn hỏi sẽ diễn ra tại {locationOfInterrogation}, vào lúc{' '}
-              {timeOfEventInterrogation && timeOfEventInterrogation},{' '}
-              {dateOfEventInterrogation && formatDay(dateOfEventInterrogation)}
-            </p>
-          </div>
-        )}
 
-        <div className='pb-2 border-section-1'>
-          <h2 className='text-second'>Lễ cưới sẽ diễn ra vào lúc</h2>
-          <p className='max-w-xs text-base margin-auto'>
-            Lễ cưới sẽ diễn ra tại {locationOfWedding}, vào lúc{' '}
-            {timeOfEventWedding && timeOfEventWedding},{' '}
-            {dateOfEventWedding && formatDay(dateOfEventWedding)}
-          </p>
-        </div>
         <Calendar dateOfEventWedding={dateOfEventWedding} />
 
-        <h2 className='pt-6 second-text-pink pb-3 max-w-xs margin-auto'>
-          Đám cưới sẽ diễn ra sau
-        </h2>
-        <CountDown dateOfEventWedding={dateOfEventWedding} />
-        <h2 className='pb-6 border-section-1'>Ngày</h2>
-        <h2 className='text-second'>Địa chỉ</h2>
-        <p className='margin-auto pb-6 border-section-1 max-w-xs'>
-          {namelocationOfWedding} {namelocationOfWedding && ', '} {locationOfWedding}
+        <h2 className='text-second'>Đón khách lúc {timeOfEventWedding && timeOfEventWedding}</h2>
+
+        <p className='namelocationOfWedding'><img src={ph_map} /> {namelocationOfWedding}</p>
+        <p className='margin-auto pb-6 border-section-1 addlocationOfWedding'>
+          {locationOfWedding}
         </p>
 
       </div>

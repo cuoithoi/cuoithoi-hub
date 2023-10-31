@@ -30,6 +30,7 @@ export enum CheckParams {
   PAYMENTSUCCESS = 11,
   LIMIT = 12,
   CONFIRM_PACKAGE = 13,
+  PROPAGATE = 14
 }
 
 export enum Status {

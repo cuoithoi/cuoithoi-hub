@@ -13,7 +13,7 @@ const schema = yup.object().shape({
   passWish: yup.string().required('Yêu cầu nhập mật khẩu'),
 })
 
-const DeleteCmtInput = ({ handleCloseModal, deleteCmt, _id }) => {
+const DeleteCmtInput = ({ handleCloseModal, deleteCmt, _id, handleDeleteCmt, index }) => {
   const { id } = useParams()
   const {
     register,
@@ -31,10 +31,10 @@ const DeleteCmtInput = ({ handleCloseModal, deleteCmt, _id }) => {
           ...data,
           _id: _id,
         })
-        console.log('res', res)
         toast.success('Xoá lời chúc thành công')
         deleteCmt()
         handleCloseModal()
+        handleDeleteCmt(index)
       } catch (error) {
         console.log(error)
         toast.error('Xoá lời chúc không thành công, vui lòng thử lại')

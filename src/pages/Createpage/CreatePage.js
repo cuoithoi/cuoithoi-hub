@@ -1340,6 +1340,7 @@ const CreatePage = () => {
       "confirmProvince": values.confirmProvince,
       "confirmDistrict": values.confirmDistrict,
       "confirmWard": values.confirmWardt,
+      "weddingVow": values.informationOfBride[0].weddingVow
     }
 
     if (checkUrl) {
@@ -1413,7 +1414,7 @@ const CreatePage = () => {
         values.album.length === 0
       ) {
         toast.error(Languages.errorMsg.uploadingEmpty)
-      } 
+      }
       // else if (passValidateSuccess() !== true) {
       //   setDisable(false)
       //   if (disable)
@@ -1859,7 +1860,7 @@ const CreatePage = () => {
             <FamilyBride ref={refBrice} />
             <TimeandLocation ref={refTimeandLocation} />
             <div className='sec_group_panel_collape float_display'>
-              <DamNgoAnHoi ref={refDamngovaAnhoi} />
+              {/* <DamNgoAnHoi ref={refDamngovaAnhoi} /> */}
               {renderAlbum}
               <VideoandEvent ref={refVideovaSukien} />
               <Panel

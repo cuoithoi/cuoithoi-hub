@@ -1,13 +1,20 @@
 import React from "react";
-import IcLogo from "@/assets/home-image/IcLogo.svg";
-import background from '../../assets/home-image/time-schedule-bg.png'
 
-const FooterLogo = () => {
+const FooterLogo = ({ album }) => {
   return (
-    <div className="layout-mw section-mb footer-letter flex justify-center items-center py-5" style={{ backgroundImage: `url(${background})` }}>
-      <a href="/">
-        <img style={{ width: 200 }} src={IcLogo} alt="" />
-      </a>
+    <div className="wedding-vow">
+      <div className="background_couple" style={album ? { backgroundImage: `url('${album}')` } : undefined}>
+        <div className="content_wedding_vow">
+          <div className="quote quote_top">
+          </div>
+          <div className="content">
+            Gặp gỡ, yêu và cưới. Điều bạn vừa nghe không nằm trong một câu chuyện cổ tích, mà chính là câu chuyện về cuộc đời hai chúng tôi <br />
+            Chúng tôi sẽ yêu thương, chăm sóc, trân trọng và nắm tay nhau cùng đi đến hết cuộc đời này. <br />
+            Thật là một niềm vinh hạnh lớn khi ngày hạnh phúc nhất cuộc đời chúng tôi có sự hiện diện và chúc phúc của bạn! <br />
+          </div>
+          <div className="quote quote_bottom"></div>
+        </div>
+      </div>
     </div>
   );
 };
