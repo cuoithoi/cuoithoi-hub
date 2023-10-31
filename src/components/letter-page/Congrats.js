@@ -90,6 +90,24 @@ const Congrats = ({ informationOfBride, informationOfGroom }) => {
           }
         </div>
       </div>
+      <div className='flex justify-around items-center py-4'>
+        <Button
+          buttonStyle={BUTTON_STYLES.LIGHT_BLUE}
+          label='Gửi chúc phúc'
+          rounded={true}
+          onPress={() => {
+            handleShowModal1()
+          }}
+        />
+        <Button
+          buttonStyle={BUTTON_STYLES.ORANGE}
+          label='Gửi chúc phúc'
+          rounded={true}
+          onPress={() => {
+            handleShowModal()
+          }}
+        />
+      </div>
       <div className='interface'>
         <h2>
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
@@ -132,24 +150,7 @@ const Congrats = ({ informationOfBride, informationOfGroom }) => {
           </div>
         </div>
       </div>
-      <div className='flex justify-around items-center py-4'>
-        <Button
-          buttonStyle={BUTTON_STYLES.LIGHT_BLUE}
-          label='Gửi chúc phúc'
-          rounded={true}
-          onPress={() => {
-            handleShowModal1()
-          }}
-        />
-        <Button
-          buttonStyle={BUTTON_STYLES.ORANGE}
-          label='Gửi chúc phúc'
-          rounded={true}
-          onPress={() => {
-            handleShowModal()
-          }}
-        />
-      </div>
+
 
 
       <h2 className='pt-4 text-center '>Rất hân hạnh được đón tiếp!</h2>
