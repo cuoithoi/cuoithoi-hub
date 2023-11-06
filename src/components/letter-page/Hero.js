@@ -62,7 +62,7 @@ const Hero = ({
         </div>
         {/* <AudioPlay song={song} /> */}
       </div>
-      <div style={effectImage === 'none' ? { paddingBottom: 100, background: '#f4f5f6' } : undefined}></div>
+      <div style={effectImage === 'none' ? { paddingBottom: 60, background: '#f4f5f6' } : undefined}></div>
     </>
   )
 }

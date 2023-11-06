@@ -72,41 +72,40 @@ const Congrats = ({ informationOfBride, informationOfGroom }) => {
         <div className='justify-around'>
           {
             nameGroom && <InforPhone
+              title={'Chú rể'}
               name={`${nameGroom}`}
               phoneNumber={phoneNumberOfGroom}
               phoneColor='main'
               nameSizeLg={true}
             />
           }
-
+          <Button
+            buttonStyle={BUTTON_STYLES.LIGHT_BLUE}
+            label='Gửi chúc phúc'
+            rounded={true}
+            onPress={() => {
+              handleShowModal1()
+            }}
+          />
         </div>
         <div className='justify-space-between'>
           {
             nameBride && <InforPhone
+              title={'Cô dâu'}
               name={`${nameBride}`}
               phoneNumber={phoneNumberOfBride}
               nameSizeLg={true}
             />
           }
+          <Button
+            buttonStyle={BUTTON_STYLES.ORANGE}
+            label='Gửi chúc phúc'
+            rounded={true}
+            onPress={() => {
+              handleShowModal()
+            }}
+          />
         </div>
-      </div>
-      <div className='flex justify-around items-center py-4'>
-        <Button
-          buttonStyle={BUTTON_STYLES.LIGHT_BLUE}
-          label='Gửi chúc phúc'
-          rounded={true}
-          onPress={() => {
-            handleShowModal1()
-          }}
-        />
-        <Button
-          buttonStyle={BUTTON_STYLES.ORANGE}
-          label='Gửi chúc phúc'
-          rounded={true}
-          onPress={() => {
-            handleShowModal()
-          }}
-        />
       </div>
       <div className='interface'>
         <h2>
@@ -136,8 +135,8 @@ const Congrats = ({ informationOfBride, informationOfGroom }) => {
             Nhà trai
           </div>
           <div className='family'>
-            <p>{fatherNameOfGroom}</p>
-            <p>{motherNameOfGroom}</p>
+            <p>{fatherNameOfGroom && 'Ông.'} {fatherNameOfGroom}</p>
+            <p>{motherNameOfGroom && 'Bà.'} {motherNameOfGroom}</p>
           </div>
         </div>
         <div className='justify-space-between'>
@@ -145,8 +144,8 @@ const Congrats = ({ informationOfBride, informationOfGroom }) => {
             Nhà gái
           </div>
           <div className='family'>
-            <p>{fatherNameOfBride}</p>
-            <p>{motherNameOfBride}</p>
+            <p>{fatherNameOfBride && 'Ông.'} {fatherNameOfBride}</p>
+            <p>{motherNameOfBride && 'Bà.'} {motherNameOfBride}</p>
           </div>
         </div>
       </div>

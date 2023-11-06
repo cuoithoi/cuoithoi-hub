@@ -52,7 +52,7 @@ const TimeLocation = ({
 
         <Calendar dateOfEventWedding={dateOfEventWedding} />
 
-        <h2 className='text-second'>Đón khách lúc {timeOfEventWedding && timeOfEventWedding}</h2>
+        <h2 className='text-second'>Hôn Lễ Được Tổ Chức Vào Lúc {timeOfEventWedding && timeOfEventWedding}</h2>
 
         <p className='namelocationOfWedding'><img src={ph_map} /> {namelocationOfWedding}</p>
         <p className='margin-auto pb-6 border-section-1 addlocationOfWedding'>

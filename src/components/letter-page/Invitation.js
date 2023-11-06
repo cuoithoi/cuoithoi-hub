@@ -24,7 +24,7 @@ const Invitation = ({
         <div className='pb-4'>
           <p className='text-lg'>Thân mời,</p>
 
-          <p className='invitation_desp'>đến dự buổi tiệc chung vui cùng gia đình chúng tôi tại </p>
+          <p className='invitation_desp'>đến dự buổi tiệc chung vui cùng <br /> gia đình chúng tôi tại </p>
         </div>
         <div>
           {/* <div className='flex justify-center pt-4 md:grid md:grid-cols-2 md:gap-4' style={{ paddingTop: '1.5rem' }}>
