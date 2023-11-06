@@ -3975,7 +3975,10 @@ input:disabled {
   z-index: 999;
   font-size: 16px;
 }
-
+.box-infor button {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
 .quill {
   background: var(--color-input);
 }

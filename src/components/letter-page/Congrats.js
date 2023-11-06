@@ -69,7 +69,7 @@ const Congrats = ({ informationOfBride, informationOfGroom }) => {
     >
       <TitleSection title='CHÚC PHÚC' />
       <div className='flex justify-space-between' style={{ paddingLeft: 15, paddingRight: 15 }}>
-        <div className='justify-around'>
+        <div className='justify-around box-infor'>
           {
             nameGroom && <InforPhone
               title={'Chú rể'}
@@ -86,9 +86,10 @@ const Congrats = ({ informationOfBride, informationOfGroom }) => {
             onPress={() => {
               handleShowModal1()
             }}
+            autocenter
           />
         </div>
-        <div className='justify-space-between'>
+        <div className='justify-space-between box-infor'>
           {
             nameBride && <InforPhone
               title={'Cô dâu'}
@@ -104,6 +105,7 @@ const Congrats = ({ informationOfBride, informationOfGroom }) => {
             onPress={() => {
               handleShowModal()
             }}
+            autocenter
           />
         </div>
       </div>
