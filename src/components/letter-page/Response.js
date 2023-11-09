@@ -88,7 +88,7 @@ const Response = () => {
     >
       <h2 className='text-main'>Thông tin phản hồi</h2>
       <p className='max-w-sm margin-auto pb-6'>
-        Để thuận tiện cho việc sắp xếp chỗ ngồi, vui lòng phản hồi giúp gia đình mình nhé!
+        Để thuận tiện cho việc sắp xếp chỗ ngồi, <br />vui lòng phản hồi giúp gia đình mình nhé!
       </p>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className='flex justify-between gap-10 pb-10 max-w-sm margin-auto'>
