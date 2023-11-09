@@ -43,11 +43,11 @@ const Hero = ({
         >
           <div className={effectImage === 'Light' ? 'effect_light' : undefined}>
             <h2 className={effectImage === 'Light' ? 'text-main pt-96' : ''}>Thân mời tới dự bữa tiệc</h2>
-            <h1 className={effectImage === 'Light' ? '' : 'pb-96'}><span className='text_block_line_mb'>{`${manName}`}</span><span className='text_block_line_mb'>&</span><span className='text_block_line_mb'>{`${womanName}`}</span></h1>
+            <h1 className={effectImage === 'Light' ? '' : 'pb-96'}><span className='text_block_line_mb'>{`${manName}`}</span><span className='text_block_line_mb'> & </span><span className='text_block_line_mb'>{`${womanName}`}</span></h1>
             <div className='flex justify-center pt-3 w-full'>
               <img src={''} alt='' className='w-full' />
             </div>
-            <div style={effectImage === 'none' || effectImage === 'Wave' ? { position: 'relative', top: 120 } : undefined} >
+            <div className='positions_moblie' style={effectImage === 'none' || effectImage === 'Wave' ? { position: 'relative', top: 120 } : undefined} >
               <div style={effectImage === 'Wave' ? { paddingBottom: '3rem' } : undefined}>
                 <h1 className={`wind-song big-size text-9xl ${effectImage === 'Light' ? '' : 'pt-20'}`} style={effectImage === 'Heart Frame' ? { paddingTop: '12rem' } : undefined}>
                   {timeAndLocationOfWedding.dateOfEventWedding &&

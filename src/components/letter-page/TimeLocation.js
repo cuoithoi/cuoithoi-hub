@@ -6,6 +6,7 @@ import ph_map from '../../assets/home-image/ph_map-pin.png'
 import Calendar from './sub-comp/Calendar'
 
 import { formatDay } from '@/utils/helpers'
+import CountDown from './sub-comp/Countdown'
 
 const TimeLocation = ({
   timeAndLocationOfWedding,
@@ -52,9 +53,14 @@ const TimeLocation = ({
 
         <Calendar dateOfEventWedding={dateOfEventWedding} />
 
+        <CountDown dateOfEventWedding={dateOfEventWedding} />
+
+
         <h2 className='text-second'>Hôn Lễ Được Tổ Chức Vào Lúc {timeOfEventWedding && timeOfEventWedding}</h2>
 
-        <p className='namelocationOfWedding'><img src={ph_map} /> {namelocationOfWedding}</p>
+
+        <p className='namelocationOfWedding'><img src={ph_map} /> <span>
+          {namelocationOfWedding}</span></p>
         <p className='margin-auto pb-6 border-section-1 addlocationOfWedding'>
           {locationOfWedding}
         </p>

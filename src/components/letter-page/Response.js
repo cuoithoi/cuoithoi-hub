@@ -208,4 +208,4 @@ const Response = () => {
   )
 }
 
-export default Response
+export default React.memo(Response)

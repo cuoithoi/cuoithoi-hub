@@ -3,7 +3,7 @@ import TitleDescribeIcon from '../../icons/TitleDescribeIcon'
 const TitleDescribe = ({ title }) => {
   return (
     <div>
-      <div className='flex justify-center pb-5'>
+      <div className='flex justify-center pb-5 algin_item-center'>
         <TitleDescribeIcon />
         <span className='text-xl pl-1 pr-1'>{title}</span>
         <TitleDescribeIcon />

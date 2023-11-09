@@ -8,7 +8,7 @@ const Invitation = ({
   timeAndLocationOfWedding,
   contentOfInvitation,
 }) => {
-  const { dateOfEventWedding, locationOfWedding, namelocationOfWedding } = timeAndLocationOfWedding
+  const { dateOfEventWedding, locationOfWedding, namelocationOfWedding, timeOfEventWedding } = timeAndLocationOfWedding
   return (
     <section
       className='bg-center bg-no-repeat bg-cover section-mb layout-mw bg-invitation'
@@ -24,7 +24,9 @@ const Invitation = ({
         <div className='pb-4'>
           <p className='text-lg'>Thân mời,</p>
 
-          <p className='invitation_desp'>đến dự buổi tiệc chung vui cùng <br /> gia đình chúng tôi tại </p>
+          <p className='invitation_desp'>Thân mời quý khách tới dự bữa tiệc chung vui
+            cùng gia đình chúng tôi vào hồi
+          </p>
         </div>
         <div>
           {/* <div className='flex justify-center pt-4 md:grid md:grid-cols-2 md:gap-4' style={{ paddingTop: '1.5rem' }}>
@@ -32,22 +34,25 @@ const Invitation = ({
             <InvitationDetail info={informationOfBride} isBride={true} />
           </div> */}
 
-          {locationOfWedding && (
-            <div className='outstanding_box'>
-              <h2 className='title_outstanding'>{namelocationOfWedding}</h2>
-              <p className='px-20'>{locationOfWedding}</p>
-            </div>
-          )}
 
           <div className='outstanding_box'>
             {dateOfEventWedding && (
               <h2 className='title_outstanding'>
-                {getDayOfWeeks(dateOfEventWedding)}, ngày{' '}
+                {timeOfEventWedding && timeOfEventWedding + ' - '} {getDayOfWeeks(dateOfEventWedding)}, ngày{' '}
                 {formatDay(dateOfEventWedding)}
               </h2>
             )}
             <div className='px-20' dangerouslySetInnerHTML={{ __html: contentOfInvitation }} />
           </div>
+
+          {locationOfWedding && (
+            <div className='outstanding_box'>
+              <h2 className='title_outstanding'>TẠI: {namelocationOfWedding}</h2>
+              <p className='px-20'>{locationOfWedding}</p>
+            </div>
+          )}
+
+
 
         </div>
       </div>

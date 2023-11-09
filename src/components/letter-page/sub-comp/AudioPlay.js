@@ -79,4 +79,4 @@ const AudioPlay = ({ song }) => {
   )
 }
 
-export default AudioPlay
+export default React.memo(AudioPlay)

@@ -32,4 +32,4 @@ const NavButton = ({ setIsNavOpen, song }) => {
   )
 }
 
-export default NavButton
+export default React.memo(NavButton)

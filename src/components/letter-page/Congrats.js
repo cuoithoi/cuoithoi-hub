@@ -154,7 +154,7 @@ const Congrats = ({ informationOfBride, informationOfGroom }) => {
 
 
 
-      <h2 className='pt-4 text-center '>Rất hân hạnh được đón tiếp!</h2>
+      <h2 className='pt-10 text-center '>Trân trọng cảm ơn!</h2>
       <Popup
         ref={modalRef1}
         btnCancelText={Languages.common.cancel}

@@ -561,7 +561,8 @@ p {
 
 .schedule-detail-img {
   margin-left: auto;
-  min-width: 55%;
+  min-width: 40%;
+  margin-right: auto;
 }
 
 .schedule-bg-lr {
@@ -641,7 +642,7 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40px;
+  height: 45.7px;
   width: 40px;
 }
 
@@ -667,7 +668,7 @@ p {
 }
 
 .active-date {
-  background-color: rgba(243, 135, 35, 1);
+  background-color: #f1a09f;
   color: white;
   border-radius: 50%;
 }
@@ -683,11 +684,11 @@ p {
   line-height: normal;
   margin: 20px 0 10px;
   gap: 3px;
-  align-items: center;
+  align-items: baseline;
 }
 
 .namelocationOfWedding img {
-  transform: translate(0, 4px);
+  transform: translate(0, 3px);
 }
 
 .addlocationOfWedding {
@@ -3270,6 +3271,10 @@ input:disabled {
   color: var(--black-color);
 }
 
+.algin_item-center {
+  align-items: center;
+}
+
 .wrap_package_product .form_sellect_control {
   max-width: 100%;
 }
@@ -3888,7 +3893,7 @@ input:disabled {
   color: #F38723;
   font-size: 20px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 600;
   line-height: normal;
 }
 
@@ -3975,10 +3980,12 @@ input:disabled {
   z-index: 999;
   font-size: 16px;
 }
+
 .box-infor button {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
 }
+
 .quill {
   background: var(--color-input);
 }
@@ -4247,6 +4254,10 @@ input:disabled {
   .name_show {
     font-size: 17px;
   }
+
+  .namelocationOfWedding img {
+    transform: translate(15px, 3px);
+  }
 }
 
 @media (max-width: 1299px) {
@@ -4448,7 +4459,27 @@ input:disabled {
   }
 
   .text-9xl {
-    font-size: 4rem;
+    font-size: 6rem;
+  }
+
+  .positions_moblie {
+    top: 75px !important;
+  }
+
+  .invitation_desp {
+    width: 98%;
+  }
+
+  .bg-invitation {
+    min-height: 550px;
+  }
+
+  .title_outstanding {
+    padding: 0 50px;
+  }
+
+  .outstanding_box .px-20 {
+    padding: 0 30px;
   }
 
   .section_wrap_type_ds .head h2 {

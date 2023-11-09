@@ -56,7 +56,7 @@ const Gallery = ({ id }) => {
     >
       <div className='flex justify-center pb-5'>
         <InvitationLeft />
-        <span className='text-xl pl-1 pr-1 text-center'>ALBUM
+        <span className='text-xl pl-1 pr-1 text-center'>Our Memories
         </span>
         <InvitationRight />
       </div>
