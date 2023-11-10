@@ -4256,7 +4256,7 @@ input:disabled {
   }
 
   .namelocationOfWedding img {
-    transform: translate(15px, 3px);
+    transform: translate(0, 3px);
   }
 }
 
@@ -4471,7 +4471,7 @@ input:disabled {
   }
 
   .bg-invitation {
-    min-height: 550px;
+    min-height: 580px;
   }
 
   .title_outstanding {
