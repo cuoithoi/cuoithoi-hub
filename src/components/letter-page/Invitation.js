@@ -22,7 +22,7 @@ const Invitation = ({
           <InvitationRight />
         </div>
         <div className='pb-4'>
-          <p className='text-lg'>Thân mời,</p>
+          <p className='text-lg hidden'>Thân mời,</p>
 
           <p className='invitation_desp'>Thân mời quý khách tới dự bữa tiệc chung vui
             cùng gia đình chúng tôi vào hồi
@@ -42,13 +42,13 @@ const Invitation = ({
                 {formatDay(dateOfEventWedding)}
               </h2>
             )}
-            <div className='px-20' dangerouslySetInnerHTML={{ __html: contentOfInvitation }} />
           </div>
 
           {locationOfWedding && (
             <div className='outstanding_box'>
               <h2 className='title_outstanding'>TẠI: {namelocationOfWedding}</h2>
               <p className='px-20'>{locationOfWedding}</p>
+              <div className='px-20' dangerouslySetInnerHTML={{ __html: contentOfInvitation }} />
             </div>
           )}
 
