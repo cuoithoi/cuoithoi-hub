@@ -313,7 +313,8 @@ export const fiedlsCreatePage = {
       "qrCodeMotherBrideLink": "",
       "isDisplayGonePeople": false,
       "contentOfInvitation": "",
-      "weddingVow": ""
+      "weddingVow": "",
+      "imgWeddingVow": ""
     }
   ],
   "timeAndLocationOfWedding": {

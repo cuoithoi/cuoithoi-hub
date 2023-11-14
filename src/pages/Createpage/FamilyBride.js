@@ -15,6 +15,9 @@ import { getItemFromLocalStorage } from "@/utils/localStorage";
 import Ic_Bride from '@/assets/home-image/Ic_Bride.png'
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
+import { ImageUpload } from "@/components/imageUpload";
+import ImgUploadIcon from "@/components/icons/ImgUploadIcon";
+import { uploadImage } from "@/utils/axios";
 
 const modules = {
     toolbar: [
@@ -48,7 +51,7 @@ const formats = [
     "font"
 ];
 
-const FamilyBride = forwardRef(({ props }, ref) => {
+const FamilyBride = forwardRef(({ props, idCreateRespon }, ref) => {
 
     useImperativeHandle(ref, () => ({
 
@@ -84,6 +87,8 @@ const FamilyBride = forwardRef(({ props }, ref) => {
 
     const refinvite = useRef(null)
 
+    const [imagesCover, setImagesCover] = useState([])
+
     const itemLocal = getItemFromLocalStorage('createLeter')
 
     useEffect(() => {
@@ -103,6 +108,9 @@ const FamilyBride = forwardRef(({ props }, ref) => {
             itemLocal.informationOfBride.motherNameOfBride && (value.informationOfBride[0].motherNameOfBride = itemLocal.informationOfBride.motherNameOfBride)
             itemLocal.informationOfBride.phoneNumberOfMotherBride && (value.informationOfBride[0].phoneNumberOfMotherBride = itemLocal.informationOfBride.phoneNumberOfMotherBride)
             itemLocal.informationOfBride.isGoneMotherOfBride && (value.informationOfBride[0].isGoneMotherOfBride = itemLocal.informationOfBride.isGoneMotherOfBride)
+            itemLocal.weddingVow && (value.informationOfBride[0].weddingVow = itemLocal.weddingVow)
+            itemLocal.imgWeddingVow && (value.informationOfBride[0].imgWeddingVow = itemLocal.imgWeddingVow)
+            itemLocal.contentOfInvitation && (value.informationOfBride[0].contentOfInvitation = itemLocal.contentOfInvitation)
             itemLocal.contentOfInvitation && (setInviteTemp(itemLocal.contentOfInvitation))
             itemLocal.isDisplayGonePeople && (setRadioDead(itemLocal.isDisplayGonePeople))
             itemLocal.isDisplayGonePeople && (setRadioDead(itemLocal.isDisplayGonePeople))
@@ -145,6 +153,25 @@ const FamilyBride = forwardRef(({ props }, ref) => {
         },
         []
     )
+
+    const onSortEnd = useCallback((oldIndex, newIndex) => {
+        setImagesCover((array) => arrayMove(array, oldIndex, newIndex))
+    }, [])
+
+    const onChangeCoverImage = (imageList) => {
+        setImagesCover(imageList)
+        if (imageList.length > 0) {
+            imageList.slice(-1).map(function (item) {
+                return uploadImage(item.file)
+                    .then((response) => {
+                        value.informationOfBride[0].imgWeddingVow = response.data.data
+                    })
+                    .catch((error) => {
+                        toast.error(error)
+                    })
+            })
+        }
+    }
 
     const onChangeCreatLetter = useCallback(() => {
 
@@ -494,6 +521,46 @@ const FamilyBride = forwardRef(({ props }, ref) => {
         value.informationOfBride[0].isDisplayGonePeople = e.target.value
     }
 
+    const renderImageUploadSingle = useCallback(
+        (
+            title,
+            images,
+            desc,
+            allowDrag,
+            onChange,
+            urlLocal,
+            max,
+            height,
+            icon,
+            titleImages,
+            maxFileSize,
+            loading
+        ) => {
+            return (
+                <div className='uploading_single_img_group'>
+                    <h2>{title}</h2>
+                    <ImageUpload
+                        icon={icon || <ImgUploadIcon />}
+                        maxnumber={max || 1}
+                        images={images}
+                        maxW={'100%'}
+                        height={height || 300}
+                        desc={desc}
+                        onChange={onChange}
+                        onSortEnd={onSortEnd}
+                        allowDrag={allowDrag}
+                        title={titleImages || Languages.text.addonepic}
+                        urlLocal={urlLocal}
+                        idCreateRespon={idCreateRespon}
+                        maxFileSize={maxFileSize}
+                        loading={loading}
+                    />
+                </div>
+            )
+        },
+        [onSortEnd, idCreateRespon]
+    )
+
     return (
 
         <div className='total_family_one_side'>
@@ -678,6 +745,31 @@ const FamilyBride = forwardRef(({ props }, ref) => {
                         onPress={onChangeOpenPropagateTemplate}
 
                     />
+
+                </div>
+            </div>
+            <div className='input_fields_control Select_invitation_template'>
+
+                <div className='place_title_input'>
+                    <label>Ảnh <br /> tuyên thệ</label>
+                </div>
+
+                <div className='group_textarea_control'>
+
+                   
+
+                    <div>
+                        {renderImageUploadSingle(
+                            <>
+                                
+                            </>,
+                            imagesCover,
+                            Languages.text.bigsize,
+                            false,
+                            onChangeCoverImage,
+                            itemLocal?.imgWeddingVow
+                        )}
+                    </div>
 
                 </div>
             </div>

@@ -1340,7 +1340,8 @@ const CreatePage = () => {
       "confirmProvince": values.confirmProvince,
       "confirmDistrict": values.confirmDistrict,
       "confirmWard": values.confirmWardt,
-      "weddingVow": values.informationOfBride[0].weddingVow
+      "weddingVow": values.informationOfBride[0].weddingVow,
+      "imgWeddingVow": values.informationOfBride[0].imgWeddingVow
     }
 
     if (checkUrl) {
@@ -1857,7 +1858,7 @@ const CreatePage = () => {
             />
 
             <FamilyGroom ref={refGroom} />
-            <FamilyBride ref={refBrice} />
+            <FamilyBride ref={refBrice} idCreateRespon={idCreateRespon} />
             <TimeandLocation ref={refTimeandLocation} />
             <div className='sec_group_panel_collape float_display'>
               {/* <DamNgoAnHoi ref={refDamngovaAnhoi} /> */}

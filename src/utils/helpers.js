@@ -87,6 +87,6 @@ export function convertTimeFormat(timeString) {
   const minutes = ('0' + date.getMinutes()).slice(-2)
   const seconds = ('0' + date.getSeconds()).slice(-2)
 
-  const convertedTime = `${day}.${month}.${year} ${hours}:${minutes}:${seconds}`
+  const convertedTime = `${day}.${month}.${year}`
   return convertedTime
 }

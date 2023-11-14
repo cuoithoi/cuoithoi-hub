@@ -6,6 +6,7 @@ import Languages from '@/commons/Languages'
 import BankInfo from './sub-comp/BankInfo'
 import { Button } from '../button'
 import { BUTTON_STYLES } from '@/commons/Constant.ts'
+import IcChrysanthemum from '@/assets/home-image/IcChrysanthemum.svg'
 
 const Congrats = ({ informationOfBride, informationOfGroom }) => {
   const {
@@ -137,8 +138,8 @@ const Congrats = ({ informationOfBride, informationOfGroom }) => {
             Nhà trai
           </div>
           <div className='family'>
-            <p>{fatherNameOfGroom && 'Ông.'} {fatherNameOfGroom}</p>
-            <p>{motherNameOfGroom && 'Bà.'} {motherNameOfGroom}</p>
+            <p>{isGoneFather ? <img src={IcChrysanthemum} /> : ''} {fatherNameOfGroom && 'Ông.'} {fatherNameOfGroom}</p>
+            <p>{isGoneMother ? <img src={IcChrysanthemum} /> : ''} {motherNameOfGroom && 'Bà.'} {motherNameOfGroom}</p>
           </div>
         </div>
         <div className='justify-space-between'>
@@ -146,8 +147,8 @@ const Congrats = ({ informationOfBride, informationOfGroom }) => {
             Nhà gái
           </div>
           <div className='family'>
-            <p>{fatherNameOfBride && 'Ông.'} {fatherNameOfBride}</p>
-            <p>{motherNameOfBride && 'Bà.'} {motherNameOfBride}</p>
+            <p>{isGoneFatherBride ? <img src={IcChrysanthemum} /> : ''} {fatherNameOfBride && 'Ông.'} {fatherNameOfBride}</p>
+            <p>{isGoneMotherOfBride ? <img src={IcChrysanthemum} /> : ''} {motherNameOfBride && 'Bà.'} {motherNameOfBride}</p>
           </div>
         </div>
       </div>
