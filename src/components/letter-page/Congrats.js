@@ -131,6 +131,7 @@ const Congrats = ({ informationOfBride, informationOfGroom }) => {
           </svg>
         </h2>
       </div>
+
       <div className='flex justify-space-between' style={{ paddingLeft: 15, paddingRight: 15 }}>
         <div className='justify-around'>
 

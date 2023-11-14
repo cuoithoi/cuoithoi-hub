@@ -103,7 +103,7 @@ const Login = () => {
               </form>
             </div>
           </div>
-          <div className='footerFormData'>
+          <div className='footerFormData hidden'>
             <Link to={Alias.register}>{Languages.inputText.youNotAccount}</Link>
           </div>
         </div>
