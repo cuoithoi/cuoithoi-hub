@@ -102,7 +102,8 @@ const LetterPage = () => {
     videoLink,
     note,
     isPaid,
-    weddingVow
+    weddingVow,
+    imgWeddingVow
   } = letter
 
   const captureAndUpload = () => {
@@ -197,7 +198,7 @@ const LetterPage = () => {
         }
         {isUseGuestBook && <Message id={userId} />}
         {isUseConfirm && <Response />}
-        <FooterLogo album={album[0]} weddingVow={weddingVow} />
+        <FooterLogo album={imgWeddingVow || album[0]} weddingVow={weddingVow} />
       </div>
 
       <Sidebar isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
