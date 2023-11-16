@@ -69,35 +69,6 @@ const Homepage = () => {
   }, [])
 
   useEffect(() => {
-
-    const handleScroll = () => {
-      if (!isScrolling) {
-        const scrollTop = window.scrollY;
-        const windowHeight = window.innerHeight;
-        const sections = ['section1', 'section2', 'section3', 'section4', 'section5', 'section6', 'section7', 'section8'];
-
-        const sectionTops = sections.map((section) => {
-          const element = document.querySelector(`[name="${section}"]`);
-          return element.offsetTop;
-        });
-
-        const sectionIndex = sectionTops.findIndex(
-          (top) => scrollTop < top + windowHeight / 2
-        );
-
-        setActiveSection(sections[sectionIndex]);
-        setIsScrolling(false);
-      };
-    }
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-
-  }, [isScrolling]);
-
-  useEffect(() => {
     const windowHeight = window.innerHeight;
     const heightFooter = refFooter.current?.offsetHeight;
     const heightBoxTopFooter = windowHeight - heightFooter
