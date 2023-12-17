@@ -233,6 +233,11 @@ export const APi = {
   convertBase64: "/convert-base64-pdf",
 };
 
+//size kb
+export const ImageLimitation = {
+  default: 5000000
+}
+
 export const BankData = "https://api.vietqr.io/v2/banks";
 
 export const config = {

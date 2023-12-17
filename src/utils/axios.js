@@ -4,10 +4,15 @@ import {
   getLocalRefreshToken,
   updateLocalAccessToken,
 } from './localStorage'
-import { APi } from '@/commons/Constant.ts'
+import {
+  APi,
+  ImageLimitation
+} from '@/commons/Constant.ts'
 export const customFetch = axios.create({
   baseURL: APi.BaseUrl,
 })
+import Resizer from "react-image-file-resizer";
+
 const handleFetchResponse = (customFetch) => {
   customFetch.interceptors.request.use(
     (config) => {
@@ -59,15 +64,49 @@ const handleErrors = (error) => {
   throw error
 }
 
-const uploadImage = (imageFile) => {
-  const formData = new FormData()
-  formData.append('files', imageFile)
-  return api.post(APi.uploadImage, formData, {
-    headers: {
-      'Content-Type': 'multipart/form-data',
-      'Access-Control-Allow-Origin': '*'
-    },
-  })
+const resizeFile = async (file) => {
+  let size = file.size
+  if (size > ImageLimitation.default) {
+    const reader = new FileReader();
+    let ratio = Math.ceil(Math.sqrt(ImageLimitation.default / size) * 100)
+    let width;
+    let height;
+    reader.readAsDataURL(file)
+    await new Promise(resolve => reader.onload = async () => {
+      var img = new Image;
+      img.src = reader.result; // is the data URL because called with readAsDataURL
+      await new Promise(resolveimg => img.onload = () => resolveimg());
+      width = img.width
+      height = img.height
+      return resolve()
+    });
+    return new Promise((resolve) => {
+      Resizer.imageFileResizer(file, parseInt(height * ratio / 100), parseInt(width * ratio / 100), "JPEG", 100, 0, (uri) => {
+        resolve(uri)
+      }, "file");
+    })
+  } else {
+    return file
+  }
+  
+};
+
+const uploadImage = async (imageFile) => {
+  try {
+    console.log("imageFile: ",imageFile)
+    let resizeImage = await resizeFile(imageFile)
+    console.log("resizeImage: ",resizeImage)
+    const formData = new FormData()
+    formData.append('files', resizeImage)
+    return api.post(APi.uploadImage, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        'Access-Control-Allow-Origin': '*'
+      },
+    })
+  } catch (err) {
+    console.log("imageFileResizer-err: ", err);
+  }
 }
 const getDataApi = async (url) => {
   try {
@@ -186,7 +225,10 @@ const getFromCache = (url) => {
   const cached = localStorage.getItem(url)
 
   if (cached) {
-    const { data, expire } = JSON.parse(cached)
+    const {
+      data,
+      expire
+    } = JSON.parse(cached)
     if (expire && expire > new Date().getTime()) {
       return data
     } else {
@@ -197,7 +239,10 @@ const getFromCache = (url) => {
 
 const storeInCache = (url, data, duration) => {
   const expire = new Date().getTime() + duration
-  const cacheData = { data, expire }
+  const cacheData = {
+    data,
+    expire
+  }
   localStorage.setItem(url, JSON.stringify(cacheData))
 }
 
