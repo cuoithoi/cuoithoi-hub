@@ -82,7 +82,7 @@ const Congrats = ({ informationOfBride, informationOfGroom }) => {
           }
           <Button
             buttonStyle={BUTTON_STYLES.LIGHT_BLUE}
-            label='Gửi chúc phúc'
+            label='Mừng Cưới'
             rounded={true}
             onPress={() => {
               handleShowModal1()
@@ -101,7 +101,7 @@ const Congrats = ({ informationOfBride, informationOfGroom }) => {
           }
           <Button
             buttonStyle={BUTTON_STYLES.ORANGE}
-            label='Gửi chúc phúc'
+            label='Mừng Cưới'
             rounded={true}
             onPress={() => {
               handleShowModal()
