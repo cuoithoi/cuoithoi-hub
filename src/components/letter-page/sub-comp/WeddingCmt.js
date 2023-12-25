@@ -41,9 +41,9 @@ const WeddingCmt = ({ viewDetail, cmt, deleteCmt, index, handleDeleteCmt }) => {
 
         <div>
           <h2 className='text-base font-medium'>-{cmt.namePeopleSend}-</h2>
-          <p className='text-base font-light'>
+          {/* <p className='text-base font-light'>
             {convertTimeFormat(cmt.createTime)}
-          </p>
+          </p> */}
         </div>
       </div>
       <Popup
