@@ -11,6 +11,7 @@ import Validate from "@/utils/Validate";
 import FormValidate from "@/utils/FormValidate";
 import { useBaseService } from "@/utils/BaseServices";
 import { toast } from "react-toastify";
+import { FaArrowRight } from "react-icons/fa";
 
 export const Payment = forwardRef(
     (
@@ -105,6 +106,10 @@ export const Payment = forwardRef(
             // }, 1000);
         })
 
+        const modalRef = useRef(null);
+
+        const executeScroll = () => modalRef.current.scrollIntoView();
+
         const renderContentModal = useMemo(() => {
             return <>
                 {
@@ -136,7 +141,7 @@ export const Payment = forwardRef(
                         </div>
 
                         : <div className='renderContentModal'>
-                            <div className='bock_content_modal'>
+                            <div className='bock_content_modal scroll-smooth'>
                                 <div className='block_step block_step_1'>
                                     <div className='name_step'>
                                         <p><strong>Bước 1: </strong>Quét mã chuyển tiền</p>
@@ -148,9 +153,13 @@ export const Payment = forwardRef(
                                             <span>Số tài khoản: {data[data.length - 1]?.numberBank}</span>
                                             <span>Tên chủ tài khoản: Công ty TNHH Cưới Thôi</span>
                                         </div>
+                                        <div className="flex justify-center items-center gap-2 mt-4 underline text-lg" onClick={executeScroll}>
+                                            <span>Tiếp tục</span>
+                                            <span><FaArrowRight /></span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div className='block_step block_step_2'>
+                                <div ref={modalRef} className='block_step block_step_2'>
                                     <div className='name_step'>
                                         <p><strong>Bước 2: </strong>Nhập Số tiền và mã giao dịch</p>
                                     </div>
