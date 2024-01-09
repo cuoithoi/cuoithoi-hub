@@ -48,7 +48,7 @@ const Languages = {
     or: 'Hoặc',
     continue: 'Tiếp tục',
     saveDraf: 'Lưu bản nháp',
-    pay: 'Thanh toán',
+    pay: 'Kích hoạt thiệp cưới',
     listLetter: 'Danh sách thiệp'
   },
   buttonText: {
