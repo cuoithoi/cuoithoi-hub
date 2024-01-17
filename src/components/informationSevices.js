@@ -2,7 +2,7 @@ import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo
 import Popup from "./modal/Popup";
 import { MyTextInput } from "./input";
 import Languages from "@/commons/Languages";
-import { APi, BUTTON_STYLES, CheckParams, Convert, INPUT_FIELDS, config } from "@/commons/Constant.ts";
+import { APi, BUTTON_STYLES, INPUT_FIELDS, config } from "@/commons/Constant.ts";
 import { Button } from "./button";
 import Validate from "@/utils/Validate";
 import { useBaseService } from "@/utils/BaseServices";
@@ -11,10 +11,8 @@ import { fiedlsCreatePage } from "@/commons/FieldsDataObj";
 import PackageProduct from "@/pages/Createpage/PackageProduct";
 import { RadioButton } from "./RadioButton";
 import ReferCodePopup from "@/pages/Createpage/ReferCodePopup";
-import AnotherProduct from "@/pages/Createpage/AnotherProduct";
 import { Payment } from "./Payment";
 import axios from "axios";
-import Select from 'react-select';
 
 
 export const InformationSevices = forwardRef(
@@ -33,17 +31,13 @@ export const InformationSevices = forwardRef(
         const refPayment = useRef(null)
 
         const [values, setValues] = useState(fiedlsCreatePage)
-        const [valuedataAnother, setValueDataAnother] = useState([])
 
         const [getId, setGetId] = useState('')
-
-        const [checkParams, setCheckParams] = useState(CheckParams.CONFIRM_PACKAGE)
 
         const [pointer, setPointer] = useState(false)
         const [codeinvite, setCodeinvite] = useState('')
         const [percentOff, setPercentOff] = useState(0)
         const [dataPackage, setDataPackage] = useState([])
-        const [dataAnother, setDataAnother] = useState([])
 
         const [amountPackage, setAmountPackage] = useState(0)
         const [namePackage, setNamePackage] = useState(0)
@@ -63,9 +57,6 @@ export const InformationSevices = forwardRef(
         const refUnderfine = useRef(null)
         const refConfirmName = useRef(null)
         const refConfirmPhone = useRef(null)
-        const refConfirmEmail = useRef(null)
-        const refConfirmAddress = useRef(null)
-        const anotherProductRef = useRef()
         const packageProductRef = useRef()
         const referCodePopupRef = useRef()
         const refCodeinvite = useRef(null)
@@ -73,7 +64,6 @@ export const InformationSevices = forwardRef(
         const { get, post } = useBaseService()
 
         const show = () => {
-            setCheckParams(CheckParams.CONFIRM_PACKAGE)
             refModal?.current?.showModal();
         }
 
@@ -91,13 +81,7 @@ export const InformationSevices = forwardRef(
                 setDataPackage(response.data)
             }
 
-            const asyncListProductAnother = async () => {
-                const response = await get(APi.anotherProduct, config)
-                setDataAnother(response.data)
-            }
-
             asyncListProduct()
-            asyncListProductAnother()
         }, [])
 
         useEffect(() => {
@@ -163,19 +147,6 @@ export const InformationSevices = forwardRef(
             return { value: item?.ward_id, label: item?.ward_name }
         });
 
-        const onCheckedDataAnother = useCallback(
-            (e) => {
-                var updatedList = [...valuedataAnother]
-                if (e.target.checked) {
-                    updatedList = [...valuedataAnother, e.target.value]
-                } else {
-                    updatedList.splice(valuedataAnother.indexOf(e.target.value), 1)
-                }
-                values.anotherProduct = updatedList
-                setValueDataAnother(updatedList)
-            },
-            [valuedataAnother]
-        )
 
         const onChangeText = useCallback(
             (e, name) => {
@@ -238,30 +209,6 @@ export const InformationSevices = forwardRef(
                         setValues((prevValues) => ({
                             ...prevValues,
                             confirmPhone: e,
-                        }))
-                        break
-
-                    case INPUT_FIELDS.confirmEmail:
-                        values.confirmEmail = e
-                        setValues((prevValues) => ({
-                            ...prevValues,
-                            confirmEmail: e,
-                        }))
-                        break
-
-                    case INPUT_FIELDS.confirmAdd:
-                        values.confirmAddress = e
-                        setValues((prevValues) => ({
-                            ...prevValues,
-                            confirmAddress: e,
-                        }))
-                        break
-
-                    case INPUT_FIELDS.confirmNote:
-                        values.confirmNote = e
-                        setValues((prevValues) => ({
-                            ...prevValues,
-                            confirmNote: e,
                         }))
                         break
 
@@ -352,9 +299,15 @@ export const InformationSevices = forwardRef(
             const { id, name } = e.target
             setAmountPackage(id)
             setNamePackage(name)
+            const discount = parseInt((1 - percentOff) * 100)
+            const total =
+                parseInt(id) * (discount / 100)
+
+            setValuedataAnotherTotalPrice(total)
         }
 
-        const onChangeModalConfirm = useCallback(async () => {
+
+        const onChangeModalConfirmPayment = useCallback(async () => {
             if (radioDataPackage === 'none')
                 toast.error('Vui lòng chọn gói sản phẩm', {
                     autoClose: 1000,
@@ -365,72 +318,46 @@ export const InformationSevices = forwardRef(
                     "_id": getId,
                     "status": '4',
                     "productId": radioDataPackage,
-                    "anotherProduct": valuedataAnother,
                     "codeInvite": codeinvite,
                 }
-
-                const totalSumAnother = valuedataAnother.reduce((acc, curr) => {
-                    const arrayItem = curr.split(',', 2).slice(0, 1).map(Number)
-                    const sum = parseInt(arrayItem[0])
-                    return acc + sum
-                }, 0)
-
-                const discount = parseInt((1 - percentOff) * 100)
-                const total =
-                    (parseInt(amountPackage) + totalSumAnother) * (discount / 100)
-                setValuedataAnotherTotalPrice(total)
 
                 const response = await post(APi.updateInvitation, jsonData, config)
 
                 if (response.errorCode == 0) {
-                    toast.success(Languages.errorMsg.updatesuccess, {
-                        autoClose: 1000,
-                        closeButton: false
-                    })
+                    const jsonPaymentData = {
+                        "_id": getId,
+                        "status": '4',
+                        "confirmName": values.confirmName,
+                        "confirmPhone": values.confirmPhone,
+                        "confirmProvince": values.confirmProvince,
+                        "confirmDistrict": values.confirmDistrict,
+                        "confirmWard": values.confirmWardt,
+                        "totalAmount": valuedataAnotherTotalPrice,
+                    }
+        
+                    const paymentResponse = await post(APi.updateInvitation, jsonPaymentData, config)
+        
+                    if (paymentResponse.errorCode == 0) {
+                        toast.success(Languages.errorMsg.updatesuccess)
+                        hide()
+                        refPayment?.current?.show()
+                        refPayment?.current?.handlegetId(getId)
+                        refPayment?.current?.handleggetAmount(valuedataAnotherTotalPrice)
+                    } else {
+                        toast.error(Languages.errorMsg.errorSuccess)
+                    }
                 } else {
                     toast.error(Languages.errorMsg.errorSuccess, {
                         autoClose: 1000,
                         closeButton: false
                     })
                 }
-                setTimeout(() => {
-                    setCheckParams(CheckParams.CONFIRM_INFO)
-                }, 2000);
             }
-        }, [radioDataPackage, valuedataAnother, radioDataPackage, getId, codeinvite, amountPackage])
-
-        const onChangeModalConfirmPayment = useCallback(async () => {
-            const jsonData = {
-                "_id": getId,
-                "status": '4',
-                "confirmName": values.confirmName,
-                "confirmPhone": values.confirmPhone,
-                "confirmEmail": values.confirmEmail,
-                "confirmAddress": values.confirmAddress,
-                "confirmNote": values.confirmNote,
-                "confirmProvince": values.confirmProvince,
-                "confirmDistrict": values.confirmDistrict,
-                "confirmWard": values.confirmWardt,
-                "totalAmount": valuedataAnotherTotalPrice,
-            }
-
-            const response = await post(APi.updateInvitation, jsonData, config)
-
-            if (response.errorCode == 0) {
-                toast.success(Languages.errorMsg.updatesuccess)
-                hide()
-                refPayment?.current?.show()
-                refPayment?.current?.handlegetId(getId)
-                refPayment?.current?.handleggetAmount(valuedataAnotherTotalPrice)
-            } else {
-                toast.error(Languages.errorMsg.errorSuccess)
-            }
-        }, [values, valuedataAnotherTotalPrice, getId, hide])
+        }, [values, valuedataAnotherTotalPrice, hide, radioDataPackage, getId, codeinvite, amountPackage])
 
         const renderContentModal = useMemo(() => {
             return <>
                 {
-                    checkParams === CheckParams.CONFIRM_PACKAGE &&
                     <div className='renderContentModal text-left'>
                         <div className='form_confirm_info'>
                             <div className='header text-uppercase'>
@@ -473,57 +400,6 @@ export const InformationSevices = forwardRef(
                                 </div>
                                 <div className='wrap_form'>
                                     <div className="head_option">
-                                        <h4>Sản phẩm PAS (Optional)</h4>
-                                        <div
-                                            className=' ml-4 font-bold w-7 text-center text-lg  h-7 rounded-full border-2 border-b-text cursor-pointer'
-                                            onClick={() => anotherProductRef.current.showModal()}
-                                        >
-                                            ?
-                                        </div>
-                                    </div>
-                                    <Popup
-                                        ref={anotherProductRef}
-                                        height={'80vh'}
-                                        content={<AnotherProduct />}
-                                        maxWidth={1500}
-                                    />
-                                    {
-                                        <div className='sec_group_panel_checkbox'>
-                                            {dataAnother.map(function (item, index) {
-                                                const itemToCheck = `${item.amount},${item.name}`;
-                                                return (
-                                                    <div
-                                                        key={index}
-                                                        className={`single_hor_input checkbox_inline_colum ${valuedataAnother.some(item => item === itemToCheck) ? 'active' : ''}`}
-                                                    >
-                                                        <div className='item_field_single'>
-                                                            <div className='Input_boxGroupInput__8ghvv man_inputStyle'>
-                                                                <label className='Input_label__XHiJ4'>
-                                                                    {item.name}
-                                                                    <span className="price">
-                                                                        {Validate.formatMoney(item.amount)}
-                                                                    </span>
-                                                                </label>
-                                                                <div className='Input_formGroup__Ln91z '>
-                                                                    <input
-                                                                        name={item.name}
-                                                                        type='checkbox'
-                                                                        data--amount={item.amount}
-                                                                        value={[item.amount, item.name]}
-                                                                        onChange={(e) => onCheckedDataAnother(e)}
-                                                                        className='Input_form_control__zkQn6 checkbox_input_style '
-                                                                    />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                )
-                                            })}
-                                        </div>
-                                    }
-                                </div>
-                                <div className='wrap_form'>
-                                    <div className="head_option">
                                         <h4>Mã giới thiệu</h4>
                                         <div
                                             className=' ml-4 font-bold w-7 text-center text-lg  h-7 rounded-full border-2 border-b-text cursor-pointer'
@@ -556,17 +432,6 @@ export const InformationSevices = forwardRef(
                                 </div>
                             </div>
                         </div>
-                        <Button
-                            label={'Tiếp tục'}
-                            autocenter
-                            buttonStyle={BUTTON_STYLES.PINK}
-                            textStyle={BUTTON_STYLES.WHITE}
-                            onPress={onChangeModalConfirm}
-                        />
-                    </div>
-                    ||
-                    checkParams === CheckParams.CONFIRM_INFO &&
-                    <div className='renderContentModal text-left'>
                         <div className='form_confirm_info'>
                             <div className='header'>
                                 <h2>{Languages.text.confimSuccess}</h2>
@@ -605,57 +470,6 @@ export const InformationSevices = forwardRef(
                                                 )}
                                             </div>
                                         </div>
-                                        <div className='fullwidth_input_colum'>
-                                            <div className='single_hor_input'>
-                                                {renderInput(
-                                                    refConfirmEmail,
-                                                    '',
-                                                    'Email',
-                                                    INPUT_FIELDS.confirmEmail,
-                                                    'text',
-                                                    50,
-                                                    true,
-                                                    '',
-                                                    '',
-                                                    values.confirmEmail
-                                                )}
-                                            </div>
-                                        </div>
-                                        <div className='fullwidth_input_colum'>
-                                            <div className='single_hor_input'>
-                                                {renderInput(
-                                                    refConfirmAddress,
-                                                    '',
-                                                    Languages.inputText.address,
-                                                    INPUT_FIELDS.confirmAdd,
-                                                    'text',
-                                                    200,
-                                                    true,
-                                                    '',
-                                                    '',
-                                                    values.confirmAddress
-                                                )}
-                                            </div>
-                                        </div>
-
-                                     
-
-                                        <div className='fullwidth_input_colum'>
-                                            <div className='single_hor_input'>
-                                                {renderInput(
-                                                    '',
-                                                    '',
-                                                    Languages.inputText.note,
-                                                    INPUT_FIELDS.confirmNote,
-                                                    'text',
-                                                    200,
-                                                    true,
-                                                    '',
-                                                    '',
-                                                    values.confirmNote
-                                                )}
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -671,24 +485,6 @@ export const InformationSevices = forwardRef(
                                         </div>
                                         <div className='box_right'>
                                             <h5>{Validate.formatMoney(amountPackage)}</h5>
-                                        </div>
-                                    </div>
-                                    <div className='package_box' style={{ display: 'block' }}>
-                                        <div className='another_item'>
-                                            <h5>{Languages.text.anotherPro}</h5>
-                                            {valuedataAnother.map(function (item, index) {
-                                                const arrayItem = item.split(',', 2)
-                                                return (
-                                                    <div key={index}>
-                                                        <div className='box_left'>
-                                                            <p>{arrayItem[1]}</p>
-                                                        </div>
-                                                        <div className='box_right'>
-                                                            <h5>{Validate.formatMoney(arrayItem[0])}</h5>
-                                                        </div>
-                                                    </div>
-                                                )
-                                            })}
                                         </div>
                                     </div>
                                     <div className='package_box'>
@@ -729,15 +525,11 @@ export const InformationSevices = forwardRef(
                 }
             </>
         }, [
-            checkParams,
             codeinvite,
             messageCodeInvite,
             dataPackage,
             onChangeCodePress,
             radioDataPackage,
-            onCheckedDataAnother,
-            dataAnother,
-            valuedataAnother,
             namePackage,
             amountPackage,
             values,
@@ -757,7 +549,7 @@ export const InformationSevices = forwardRef(
                 <Popup
                     ref={refModal}
                     content={renderContentModal}
-                    maxWidth={checkParams === CheckParams.PAYMENTSUCCESS ? Convert.W_400 : 1000}
+                    maxWidth={1000}
                 />
             )
         }, [renderContentModal])

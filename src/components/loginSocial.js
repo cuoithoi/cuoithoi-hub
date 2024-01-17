@@ -190,7 +190,7 @@ const LoginSocial = () => {
           }
         /> */}
 
-      <FacebookLogin
+      {/* <FacebookLogin
         appId="223400743980380"
         onSuccess={responseFacebook}
         onFail={(error) => {
@@ -219,7 +219,7 @@ const LoginSocial = () => {
           title={Languages.inputText.continueWithFB}
         />
         <span>{Languages.inputText.continueWithFB}</span>
-      </FacebookLogin>
+      </FacebookLogin> */}
       <GoogleLogin
         clientId={clientID}
         onSuccess={responseGoogle}
@@ -247,9 +247,9 @@ const LoginSocial = () => {
         <a className='social_login' href="https://oauth.zaloapp.com/v4/permission?app_id=1641121800720236421&redirect_uri=https://cuoithoi.com.vn/login&state=100">
           Đăng nhập với ZALO</a>
       </button>
-      <div className='titleOrther'>
+      {/* <div className='titleOrther'>
         <span>{Languages.inputText.or}</span>
-      </div>
+      </div> */}
     </div>
   )
 }

@@ -65,7 +65,7 @@ const Login = () => {
             </div>
             <div className='fillDataForm'>
               <LoginSocial />
-              <form
+              {/* <form
                 className='fieldscli_data'
                 onSubmit={handleSubmit(onSubmit)}
               >
@@ -100,7 +100,7 @@ const Login = () => {
                     {Languages.inputText.forgotPass}
                   </Link>
                 </div>
-              </form>
+              </form> */}
             </div>
           </div>
           <div className='footerFormData hidden'>
