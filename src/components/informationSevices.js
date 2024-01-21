@@ -95,6 +95,15 @@ export const InformationSevices = forwardRef(
                 });
         }, []);
 
+
+        useEffect(() => {
+            const discount = parseInt((1 - percentOff) * 100)
+            const total =
+                parseInt(amountPackage) * (discount / 100)
+
+            setValuedataAnotherTotalPrice(total)
+        }, [percentOff, amountPackage]);
+
         const handleProvinceChange = (e) => {
             const provinceId = e.value;
             setSelectedProvince(provinceId);
