@@ -136,7 +136,7 @@ const Congrats = ({ informationOfBride, informationOfGroom }) => {
         <div className='justify-around'>
 
           <div className='interface_title interface_groom'>
-            Nhà trai
+            NHÀ TRAI
           </div>
           <div className='family'>
             <p>{isGoneFather ? <img src={IcChrysanthemum} /> : ''} {fatherNameOfGroom && 'Ông.'} {fatherNameOfGroom}</p>
@@ -145,7 +145,7 @@ const Congrats = ({ informationOfBride, informationOfGroom }) => {
         </div>
         <div className='justify-space-between'>
           <div className='interface_title interface_bride'>
-            Nhà gái
+            NHÀ GÁI
           </div>
           <div className='family'>
             <p>{isGoneFatherBride ? <img src={IcChrysanthemum} /> : ''} {fatherNameOfBride && 'Ông.'} {fatherNameOfBride}</p>

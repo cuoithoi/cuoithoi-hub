@@ -248,13 +248,13 @@ const Homepage = () => {
                     isLowerCase
                     onPress={onNavigateCreatePage}
                   />
-                  <Button
+                  {/* <Button
                     label={Languages.buttonText.anyMore}
                     buttonStyle={BUTTON_STYLES.WHITE}
                     textStyle={BUTTON_STYLES.WHITE}
                     isLowerCase
                     onPress={onChangeToServices}
-                  />
+                  /> */}
                 </AnimationOnScroll>
 
               </div>
@@ -520,7 +520,7 @@ const Homepage = () => {
                     <p>Một lời mời đặc biệt cho ngày đặc biệt của bạn</p>
                     <h3>Bạn muốn tạo lời mời đặc biệt ấy theo cách nào?</h3>
                   </div>
-                  <div className="button">
+                  {/* <div className="button">
                     <Button
                       label={Languages.buttonText.svDetails}
                       buttonStyle={BUTTON_STYLES.WHITE}
@@ -529,7 +529,7 @@ const Homepage = () => {
                       autocenter
                       onPress={onChangeToServices}
                     />
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

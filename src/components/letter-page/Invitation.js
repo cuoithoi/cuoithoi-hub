@@ -11,7 +11,7 @@ const Invitation = ({
   const { dateOfEventWedding, locationOfWedding, namelocationOfWedding, timeOfEventWedding } = timeAndLocationOfWedding
   return (
     <section
-      className='bg-center bg-no-repeat bg-cover section-mb layout-mw bg-invitation'
+      className='bg-center bg-no-repeat bg-[size:120%] section-mb layout-mw bg-invitation md:bg-contain'
       id='invitation'
       style={{ backgroundImage: `url(${invitationBg})` }}
     >
@@ -25,7 +25,7 @@ const Invitation = ({
           <p className='text-lg hidden'>Thân mời,</p>
 
           <p className='invitation_desp'>Thân mời quý khách tới dự bữa tiệc chung vui
-            cùng gia đình chúng tôi vào hồi
+            cùng gia đình chúng tôi vào lúc
           </p>
         </div>
         <div>
