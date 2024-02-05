@@ -260,19 +260,23 @@ const CreatePage = () => {
     refModal.current?.showModal()
   }
 
-  const radioChangeHandlerGuestbookTemplate = (text, value) => {
-    setRadioGuestbookTemplate(value)
-    setGuestbookTemp(text)
+  const radioChangeHandlerGuestbookTemplate = (item) => {
+    setRadioGuestbookTemplate(item.value)
+    setGuestbookTemp(item.text)
   }
 
-  const radioChangeHandlerStyleTitle = (text, value) => {
-    setRadioStyleTitle(value)
-    values.fontStyleOfTitle.value = value
+  const radioChangeHandlerStyleTitle = (item) => {
+    setRadioStyleTitle(item.value)
+    setRadioStyleContent(item.styleContent)
+    values.fontStyleOfContent.value = item.styleContent
+    values.fontStyleOfTitle.value = item.value
   }
 
-  const radioChangeHandlerStyleContent = (text, value) => {
-    setRadioStyleContent(value)
-    values.fontStyleOfContent.value = value
+  const radioChangeHandlerStyleContent = (item) => {
+    setRadioStyleContent(item.value)
+    setRadioStyleTitle(item.styleTitle)
+    values.fontStyleOfTitle.value = item.styleTitle
+    values.fontStyleOfContent.value = item.value
   }
 
   const radioChangeHandlerTypebg = (text, value) => {
@@ -285,9 +289,9 @@ const CreatePage = () => {
     values.backgroundColor.value = value
   }
 
-  const radioChangeHandlerEffectBg = (text, value) => {
-    setRadioEffectBg(value)
-    values.effectBackgroud.value = value
+  const radioChangeHandlerEffectBg = (item) => {
+    setRadioEffectBg(item.value)
+    values.effectBackgroud.value = item.value
   }
 
   const radioChangeHandler = (e) => {
@@ -295,9 +299,9 @@ const CreatePage = () => {
     values.effectImage = e.target.value
   }
 
-  const radioChangeHandlerMusic = (text, value) => {
-    setRadioMusic(value)
-    values.song = value
+  const radioChangeHandlerMusic = (item) => {
+    setRadioMusic(item.value)
+    values.song = item.value
   }
 
   const onChange = (imageList) => {
@@ -562,7 +566,7 @@ const CreatePage = () => {
                   item.value,
                   item.text,
                   item.value,
-                  () => radioChangeHandlerTemplate(item.text, item.value),
+                  () => radioChangeHandlerTemplate(item),
                   selected
                 )}
               </div>

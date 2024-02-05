@@ -107,27 +107,32 @@ export const SelectStyleTitle = [
   {
     id: '1',
     name: 'Pacifico',
-    value: 'pacifico'
+    value: 'pacifico',
+    styleContent: 'inter'
   },
   {
     id: '2',
     name: 'great vibes',
-    value: 'greatvibes'
+    value: 'greatvibes',
+    styleContent: 'roboto'
   },
   {
     id: '3',
     name: 'yeseva one',
-    value: 'yesevaone'
+    value: 'yesevaone',
+    styleContent: 'opensans'
   },
   {
     id: '4',
     name: 'lobster',
-    value: 'lobster'
+    value: 'lobster',
+    styleContent: 'montserrat'
   },
   {
     id: '5',
     name: 'Playfair Display',
-    value: 'playfairdisplay'
+    value: 'playfairdisplay',
+    styleContent: 'notosans'
   }
 ];
 
@@ -135,27 +140,32 @@ export const SelectStyleTContent = [
   {
     id: '1',
     name: 'Inter',
-    value: 'inter'
+    value: 'inter',
+    styleTitle: 'pacifico'
   },
   {
     id: '2',
     name: 'Roboto',
-    value: 'roboto'
+    value: 'roboto',
+    styleTitle: 'greatvibes'
   },
   {
     id: '3',
     name: 'Open Sans',
-    value: 'opensans'
+    value: 'opensans',
+    styleTitle: 'yesevaone'
   },
   {
     id: '4',
     name: 'Montserrat',
-    value: 'montserrat'
+    value: 'montserrat',
+    styleTitle: 'lobster'
   },
   {
     id: '5',
     name: 'Noto Sans',
-    value: 'notosans'
+    value: 'notosans',
+    styleTitle: 'playfairdisplay'
   }
 ];
 
