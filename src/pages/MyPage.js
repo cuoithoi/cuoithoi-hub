@@ -60,6 +60,7 @@ const Mypage = () => {
         const response = await get(APi.listInvitation, config, {
           userId: user?.userId,
         })
+        console.log("response.data", response.data)
         setListDataApi(response.data)
       } catch (error) {
         toast.warn('Hệ thống tải lại dữ liệu', {
@@ -322,6 +323,7 @@ const Mypage = () => {
   }, [])
 
   const onChangeClipBoard = useCallback((id) => {
+    console.log(1133, id)
     toast.success('Link đã được sao chép, Bạn có thể gửi cho người thân và bạn bè', {
       autoClose: 1000,
     })
@@ -439,7 +441,7 @@ const Mypage = () => {
                                     autocenter
                                     width={100}
                                     isLowerCase
-                                    onPress={() => onChangeClipBoard(item?._id)}
+                                    onPress={() => onChangeClipBoard(item?.url || item?._id)}
                                   />
                                 )}
                               </td>
