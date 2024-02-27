@@ -212,7 +212,7 @@ export const INPUT_FIELDS = {
 };
 
 export const APi = {
-  BaseUrl: "https://api.cuoithoi.com.vn/api",
+  BaseUrl: "http://localhost:3001/api",
   uploadImage: "/upload-images",
   createInvitation: "/create-invitation",
   listProduct: "/list-product",

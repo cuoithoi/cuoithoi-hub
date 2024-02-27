@@ -17,7 +17,7 @@ const schema = yup.object().shape({
   isVerified: yup.number().required(),
   numberPeopleParticipate: yup.number().required(),
 })
-const Response = () => {
+const Response = ({invitationsId}) => {
   const { id } = useParams()
   const [guestSide, setGuestSide] = useState(null)
   const {
@@ -62,7 +62,7 @@ const Response = () => {
           ...data,
           isGuestSide: guestSide,
           numberPeopleParticipate: numPeopleAttend,
-          invitationsId: id,
+          invitationsId: invitationsId,
         })
         if (resp.errorCode === 0) {
           toast.success('Gửi phản hồi thành công. Sau 10 giây mới có thể gửi lại')
