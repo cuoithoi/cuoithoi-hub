@@ -6,7 +6,6 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { postDataApi } from '@/utils/axios'
 import { Button } from '@/components/button'
 import { BUTTON_STYLES } from '@/commons/Constant.ts'
-import { useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { MyTextArea } from '@/components/textarea'
 const schema = yup.object().shape({
@@ -17,8 +16,7 @@ const schema = yup.object().shape({
   desWish: yup.string().required('Viết lời chúc cho cô dâu chú rể')
 })
 
-const WriteMessage = ({ setCmtList, handleCloseModal }) => {
-  const { id } = useParams()
+const WriteMessage = ({ id, setCmtList, handleCloseModal }) => {
   const {
     register,
     handleSubmit,

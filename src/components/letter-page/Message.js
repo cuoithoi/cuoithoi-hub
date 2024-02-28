@@ -7,17 +7,14 @@ import { BUTTON_STYLES } from '@/commons/Constant.ts'
 import Popup from '../modal/Popup'
 import { useRef } from 'react'
 import WriteMessage from './sub-comp/WriteMessage'
-import { useParams } from 'react-router-dom'
 import { customFetch } from '@/utils/axios'
 import CommentDetail from '@/pages/CommentDetail'
 import { Convert } from '../../commons/Constant.ts'
-import { toast } from 'react-toastify'
-const Message = () => {
+const Message = ({id}) => {
   const [isLoading, setIsLoading] = useState(true)
   const [cmtList, setCmtList] = useState([])
   const [cmtListProps, setCmtListProps] = useState([])
   const cmtRef = useRef()
-  const { id } = useParams()
   const modalRef = useRef()
   const handleShowModal = () => {
     modalRef.current.showModal()
@@ -111,6 +108,7 @@ const Message = () => {
         ref={modalRef}
         content={
           <WriteMessage
+            id={id}
             setCmtList={setCmtList}
             handleCloseModal={handleCloseModalWriting}
           />

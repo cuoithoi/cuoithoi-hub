@@ -196,7 +196,7 @@ const LetterPage = () => {
             informationOfGroom={informationOfGroom}
           />
         }
-        {isUseGuestBook && <Message id={userId} />}
+        {isUseGuestBook && <Message id={_id} />}
         {isUseConfirm && <Response invitationsId={_id} />}
         <FooterLogo album={imgWeddingVow || album[0]} weddingVow={weddingVow} />
       </div>

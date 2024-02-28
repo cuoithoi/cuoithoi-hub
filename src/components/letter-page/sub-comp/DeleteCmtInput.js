@@ -6,7 +6,6 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { postDataApi } from '@/utils/axios'
 import { Button } from '@/components/button'
 import { BUTTON_STYLES } from '@/commons/Constant.ts'
-import { useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { deleteDataApi } from '@/utils/axios'
 const schema = yup.object().shape({
@@ -14,7 +13,6 @@ const schema = yup.object().shape({
 })
 
 const DeleteCmtInput = ({ handleCloseModal, deleteCmt, _id, handleDeleteCmt, index }) => {
-  const { id } = useParams()
   const {
     register,
     handleSubmit,

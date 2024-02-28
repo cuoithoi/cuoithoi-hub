@@ -10,7 +10,6 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { toast } from 'react-toastify'
 import { postDataApi } from '@/utils/axios'
-import { useParams } from 'react-router-dom'
 
 const schema = yup.object().shape({
   nameGuest: yup.string().required('Yêu cầu nhập tên'),
@@ -18,7 +17,6 @@ const schema = yup.object().shape({
   numberPeopleParticipate: yup.number().required(),
 })
 const Response = ({invitationsId}) => {
-  const { id } = useParams()
   const [guestSide, setGuestSide] = useState(null)
   const {
     register,
