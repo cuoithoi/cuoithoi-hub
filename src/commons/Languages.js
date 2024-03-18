@@ -226,6 +226,7 @@ const Languages = {
     nologinContent: 'Vui lòng đăng nhập hoặc đăng ký tài khoản để thực hiện tính năng này. Xin cảm ơn',
     managerletter: 'Quản lý thiệp cưới',
     productNumber: 'Product Number',
+    customURL: 'Custom URL',
     success: 'Thành Công',
     happysuccess: 'Xin chúc mừng bạn đã tạo thiệp cưới thành công',
     waring: 'Cảnh báo',

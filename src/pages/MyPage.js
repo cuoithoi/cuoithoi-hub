@@ -177,6 +177,7 @@ const Mypage = () => {
     return (
       <tr className='bg-teal-400 wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0'>
         <th className='p-3 text-center'>{Languages.text.productNumber}</th>
+        <th className='p-3 text-center'>{Languages.text.customURL}</th>
         <th className='p-3 text-center' width='200px'>{Languages.text.status}</th>
         <th className='p-3 text-center' width='200px'>
           {Languages.text.date}
@@ -384,6 +385,9 @@ const Mypage = () => {
                             >
                               <td className='border-grey-light hover:bg-gray-100 p-3'>
                                 <p className='formatnotColor free'>{item?._id}</p>
+                              </td>
+                              <td className='border-grey-light hover:bg-gray-100 p-3'>
+                                <p className='formatnotColor free'>{item?.url || "___"}</p>
                               </td>
                               <td className='border-grey-light hover:bg-gray-100 p-3 truncate'>
                                 {renderStatus(item?.status)}
