@@ -1,7 +1,6 @@
 import React, { useRef } from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import Hero from './Hero'
 import classes from './LetterEnvelop1.module.css'
 import EnvelopContent from './sub-comp/EnvelopContent'
 import Loading from '../Loading'

@@ -64,19 +64,18 @@ export function formatMonth(dateString) {
 
   return formattedMonth
 }
-export function formatDayHero(dateString) {
+export function formatDayHero(dateString, includeYear=false) {
   // Convert the input string to a Date object
   const dateObj = new Date(dateString)
 
   // Extract components from the Date object
   const day = dateObj.getDate()
   const month = dateObj.getMonth() + 1 // Adding 1 because months are zero-based
+  const year = dateObj.getFullYear() // Adding 1 because months are zero-based
 
   // Format the date string
-  const formattedDate = `${day < 10 ? '0' : ''}${day}.${month < 10 ? '0' : ''
-    }${month}`
-
-  return formattedDate
+  return `${day < 10 ? '0' : ''}${day}.${month < 10 ? '0' : ''
+    }${month}${includeYear ? '.' + year : ''}`
 }
 export function convertTimeFormat(timeString) {
   const date = new Date(timeString)

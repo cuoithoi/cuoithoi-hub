@@ -1,3 +1,5 @@
+import { INVITATION_STYLES } from '@/commons/Constant.ts';
+
 export const SelectInvitationTemplate = [
   {
     id: 'invitation_one',
@@ -101,6 +103,21 @@ export const SelectMusic = [
     value: 3,
     text: 'Bước chân hoàng gia'
   }
+];
+
+export const SelectInvitationStyle = [
+  {
+    name: 'Default',
+    value: INVITATION_STYLES.DEFAULT,
+  },
+  {
+    name: 'Nền vàng',
+    value: INVITATION_STYLES.GOLDEN,
+  },
+  {
+    name: 'Nền hồng',
+    value: INVITATION_STYLES.PINK,
+  },
 ];
 
 export const SelectStyleTitle = [
@@ -376,6 +393,10 @@ export const fiedlsCreatePage = {
     "id": 1,
     "name": "",
     "value": "pacifico"
+  },
+  "styleOfInvitation": {
+    "name": "Default",
+    "value": INVITATION_STYLES.DEFAULT
   },
   "fontStyleOfContent": {
     "id": 1,

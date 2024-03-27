@@ -24,6 +24,7 @@ import { MyTextArea } from '@/components/textarea'
 import {
   SelectColorBg,
   SelectEffectBg,
+  SelectInvitationStyle,
   SelectMusic,
   SelectSavePenTemplate,
   SelectStyleTContent,
@@ -91,6 +92,7 @@ const CreatePage = () => {
   const [radioEffectImage, setRadioEffectImage] = useState('none')
 
   const [radioGuestbookTemplate, setRadioGuestbookTemplate] = useState('none')
+  const [radioInvitationStyle, setRadioInvitationStyle] = useState('default')
   const [radioStyleTitle, setRadioStyleTitle] = useState('pacifico')
   const [radioStyleContent, setRadioStyleContent] = useState('inter')
   const [radioTypeBg, setRadioTypeBg] = useState('none')
@@ -190,6 +192,7 @@ const CreatePage = () => {
           setIsPaid(response.data?.isPaid)
           setPointer(response.data?.isUseGuestBook)
           setMaxLenghtAlbum(15 - response.data?.album.length)
+          setRadioInvitationStyle(response.data?.invitationStyle)
         } catch (error) {
           console.error('Đã xảy ra lỗi:', error)
         }
@@ -218,6 +221,8 @@ const CreatePage = () => {
   useEffect(() => {
     if (itemLocal) {
       itemLocal?.song && setRadioMusic(itemLocal?.song)
+      itemLocal?.styleOfInvitation &&
+        setRadioStyleContent(itemLocal?.styleOfInvitation.value)
       itemLocal?.fontStyleOfTitle &&
         setRadioStyleTitle(itemLocal?.fontStyleOfTitle.value)
       itemLocal?.fontStyleOfContent &&
@@ -265,6 +270,11 @@ const CreatePage = () => {
     setGuestbookTemp(item.text)
   }
 
+  const radioChangeHandlerInvitationStyle = (item) => {
+    setRadioInvitationStyle(item.value)
+    values.styleOfInvitation.value = item.value
+  }
+
   const radioChangeHandlerStyleTitle = (item) => {
     setRadioStyleTitle(item.value)
     setRadioStyleContent(item.styleContent)
@@ -298,7 +308,6 @@ const CreatePage = () => {
     setRadioEffectImage(e.target.value)
     values.effectImage = e.target.value
   }
-
   const radioChangeHandlerMusic = (item) => {
     setRadioMusic(item.value)
     values.song = item.value
@@ -915,6 +924,27 @@ const CreatePage = () => {
     []
   )
 
+  const renderInvitationStyle = useMemo(() => {
+    return (
+      <Panel title={Languages.text.textStyleInvitation}>
+        <div className='sec_options_select_type'>
+          {renderComponentStyle(
+            'option_invitation_style',
+            Languages.text.chooseInvitationStyle,
+            SelectInvitationStyle,
+            radioChangeHandlerInvitationStyle,
+            radioInvitationStyle
+          )}
+        </div>
+      </Panel>
+    )
+  }, [
+    radioStyleTitle,
+    radioStyleContent,
+    radioChangeHandlerStyleContent,
+    radioChangeHandlerStyleTitle,
+  ])
+
   const renderTextStyle = useMemo(() => {
     return (
       <Panel title={Languages.text.textStyleFont}>
@@ -1345,7 +1375,8 @@ const CreatePage = () => {
       "confirmDistrict": values.confirmDistrict,
       "confirmWard": values.confirmWardt,
       "weddingVow": values.informationOfBride[0].weddingVow,
-      "imgWeddingVow": values.informationOfBride[0].imgWeddingVow
+      "imgWeddingVow": values.informationOfBride[0].imgWeddingVow,
+      "invitationStyle": values.styleOfInvitation.value
     }
 
     if (checkUrl) {
@@ -1905,7 +1936,8 @@ const CreatePage = () => {
               {renderConfirmAttend}
               {renderGuestbook}
               {renderOpenStartEffect}
-              {renderTextStyle}
+              {renderInvitationStyle}
+              {/* {renderTextStyle} */}
               {renderEffectBgStyle}
               {/* {renderReferralCode}
               {renderBuyPackageProduct}

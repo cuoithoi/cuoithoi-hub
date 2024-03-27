@@ -21,7 +21,7 @@ import { getDataApi } from '@/utils/axios'
 import styles from './LetterPage.module.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import SnowFall from '@/components/letter-page/SnowFall'
-import { Alias, APi, config } from '@/commons/Constant.ts'
+import { Alias, APi, config, INVITATION_STYLES } from '@/commons/Constant.ts'
 import { getUserFromLocalStorage } from '@/utils/localStorage'
 import html2canvas from 'html2canvas'
 import { useBaseService } from '@/utils/BaseServices'
@@ -103,8 +103,11 @@ const LetterPage = () => {
     note,
     isPaid,
     weddingVow,
-    imgWeddingVow
+    imgWeddingVow,
+    invitationStyle
   } = letter
+
+  console.log(invitationStyle)
 
   const captureAndUpload = () => {
     setTimeout(() => {
@@ -172,32 +175,36 @@ const LetterPage = () => {
           womanfirstName={informationOfBride.firstName}
           womanName={`${informationOfBride.name}`}
           timeAndLocationOfWedding={timeAndLocationOfWedding}
+          invitationStyle={invitationStyle}
         />
         <Invitation
           informationOfBride={informationOfBride}
           informationOfGroom={informationOfGroom}
           contentOfInvitation={contentOfInvitation}
           timeAndLocationOfWedding={timeAndLocationOfWedding}
+          invitationStyle={invitationStyle}
         />
-        <Gallery1 album={album} id={_id} />
-        {isUseVideo && <YoutubeVideo videoLink={videoLink} />}
+        <Gallery1 album={album} id={_id} invitationStyle={invitationStyle} />
+        {isUseVideo && <YoutubeVideo videoLink={videoLink} invitationStyle={invitationStyle} />}
         <TimeLocation
           timeAndLocationOfWedding={timeAndLocationOfWedding}
           timeAndLocationOfEgagement={timeAndLocationOfEgagement}
           timeAndLocationOfInterrogation={timeAndLocationOfInterrogation}
           isUseDamNgo={isUseDamNgo}
+          invitationStyle={invitationStyle}
         />
-        <Schedule eventOfProgram={eventOfProgram} note={note} isUseEvent={isUseEvent} />
+        <Schedule eventOfProgram={eventOfProgram} note={note} isUseEvent={isUseEvent} invitationStyle={invitationStyle} />
         {
           isUseBanking && <Congrats
             setModalContent={setModalContent}
             setIsOpen={setIsOpen}
             informationOfBride={informationOfBride}
             informationOfGroom={informationOfGroom}
+            invitationStyle={invitationStyle}
           />
         }
-        {isUseGuestBook && <Message id={_id} />}
-        {isUseConfirm && <Response invitationsId={_id} />}
+        {isUseGuestBook && <Message id={_id} invitationStyle={invitationStyle}/>}
+        {isUseConfirm && <Response invitationsId={_id} invitationStyle={invitationStyle} />}
         <FooterLogo album={imgWeddingVow || album[0]} weddingVow={weddingVow} />
       </div>
 

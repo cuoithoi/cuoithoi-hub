@@ -3151,6 +3151,24 @@ input:disabled {
   background-repeat: no-repeat;
 }
 
+.option_invitation_style .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map:first-child input:is([type='checkbox'], [type='radio']) {
+  background: url('../src/assets/home-image/IcDefault.png');
+  background-position-x: center;
+  background-position-y: center;
+}
+
+.option_invitation_style .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map:nth-child(2) input:is([type='checkbox'], [type='radio']) {
+  background: url('../src/assets/home-image/IcNenVang.png');
+  background-position-x: center;
+  background-position-y: center;
+}
+
+.option_invitation_style .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map:nth-child(3) input:is([type='checkbox'], [type='radio']) {
+  background: url('../src/assets/home-image/IcNenHong.png');
+  background-position-x: center;
+  background-position-y: center;
+}
+
 .option_title .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map:first-child input:is([type='checkbox'], [type='radio']) {
   background: url('../src/assets/home-image/IcPacifico.png');
 }
@@ -5170,4 +5188,75 @@ input:disabled {
   .tab-content {
     width: 65%;
   }
+}
+
+
+@font-face {
+  font-family: 'SFUDinLight';
+  src: local('SFUDinLight'), url(./fonts/SFUDinLight.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'BUNDTCAKEEXTRABOLD';
+  src: local('BUNDTCAKEEXTRABOLD'), url(./fonts/BUNDTCAKEEXTRABOLD.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'MaitreeLight';
+  src: local('MaitreeLight'), url(./fonts/MaitreeLight.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'MavenPro';
+  src: local('MavenPro'), url(./fonts/MavenPro.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'NETTOOT';
+  src: local('NETTOOT'), url(./fonts/NETTOOT.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'NEXABOLD';
+  src: local('NEXABOLD'), url(./fonts/NEXABOLD.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'NEXALIGHT';
+  src: local('NEXALIGHT'), url(./fonts/NEXALIGHT.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'PlayfairDisplay-VariableFontwght';
+  src: local('PlayfairDisplay-VariableFontwght'), url(./fonts/PlayfairDisplay-VariableFontwght.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'RokkittExtraLight';
+  src: local('RokkittExtraLight'), url(./fonts/RokkittExtraLight.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'SFUFeniceRegular';
+  src: local('SFUFeniceRegular'), url(./fonts/SFUFeniceRegular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'SFUGaramondCondensedBold';
+  src: local('SFUGaramondCondensedBold'), url(./fonts/SFUGaramondCondensedBold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'SFUGlytusRegular';
+  src: local('SFUGlytusRegular'), url(./fonts/SFUGlytusRegular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'SFUTrajanRegular';
+  src: local('SFUTrajanRegular'), url(./fonts/SFUTrajanRegular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'SVNWallows';
+  src: local('SVNWallows'), url(./fonts/SVNWallows.ttf) format('truetype');
 }

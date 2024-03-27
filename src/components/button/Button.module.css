@@ -13,6 +13,18 @@
   background: var(--pink-color-1);
 }
 
+.goldenButton{
+  background: #F9959D;
+}
+
+.pastelPinkButton{
+  background: #F9959D;
+}
+
+.borderPastelPink{
+  border-color: #F9959D !important;
+}
+
 .whiteButton {
   border: 1px solid var(--white-color);
   background: transparent;
@@ -82,6 +94,9 @@
 }
 .textPink {
   color: var(--pink-color-1);
+}
+.textPastelPink {
+  color: #F9959D;
 }
 .orangeButton {
   background: var(--orange-color);

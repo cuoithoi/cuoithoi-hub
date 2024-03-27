@@ -78,12 +78,15 @@ export const Alias = {
 
 export enum BUTTON_STYLES {
   PINK = "PINK",
+  PASTEL_PINK = "PASTEL_PINK",
+  GOLDEN = "GOLDEN",
   WHITE = "WHITE",
   ORRANGE = "ORRANGE",
   ORANGE = "ORANGE",
   LIGHT_BLUE = "LIGHT_BLUE",
   BORDER_LIGHT_BLUE = "BORDER_LIGHT_BLUE",
   BORDER_PINK = "BORDER_PINK",
+  BORDER_PASTEL_PINK = "BORDER_PASTEL_PINK",
   DARKMODE = "DARKMODE",
   BLUE = "BLUE",
   GRAY = "GRAY",
@@ -96,6 +99,12 @@ export enum BACKGROUND_STYLES {
   GREEN = "GREEN",
   DRAK = "DRAK",
   TRANPARENTGREEN = "TRANPARENTGREEN",
+}
+
+export enum INVITATION_STYLES {
+  PINK = "pink",
+  GOLDEN = "golden",
+  DEFAULT = "default",
 }
 
 export const NAME_INPUT_GROOM = {
