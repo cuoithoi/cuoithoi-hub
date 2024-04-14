@@ -275,7 +275,7 @@ export const fiedlsCreatePage = {
   "id": "",
   "coverImage": "",
   "thumbnailImage": "",
-  "effectImage": "none",
+  "effectImage": "suong-mai",
   "informationOfGroom": [
     {
       "firstName": "",

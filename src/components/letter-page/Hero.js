@@ -1,15 +1,15 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { formatDayHero } from "@/utils/helpers";
-import waveGrayBg from "@/assets/home-image/wave-gray.png";
-import heartGray from "@/assets/home-image/heart-gray.png";
-import noneGray from "@/assets/home-image/none-gray.png";
-import lightGray from "@/assets/home-image/light-gray.png";
 import { INVITATION_STYLES } from "@/commons/Constant.ts";
 
+import suongMai from "@/assets/invitation/frame/suong-mai.png";
+import huongDiem from "@/assets/invitation/frame/huong-diem.png";
+import songVu from "@/assets/invitation/frame/song-vu.png";
+import tinhKhoi from "@/assets/invitation/frame/tinh-khoi.png";
+import vuonXuan from "@/assets/invitation/frame/vuon-xuan.png";
 
 import saveDate from "@/assets/invitation/golden/saveDate.svg";
 import flower1 from "@/assets/invitation/golden/flower1.svg";
-
 
 const Hero = ({
     effectImage,
@@ -26,11 +26,12 @@ const Hero = ({
     }, [coverImage]);
 
     const renderEffectImage = useCallback(() => {
-        let img;
-        if (effectImage === "none") img = noneGray;
-        if (effectImage === "Heart Frame") img = heartGray;
-        if (effectImage === "Light") img = lightGray;
-        if (effectImage === "Wave") img = waveGrayBg;
+        let img = suongMai;
+        if (effectImage === "suong-mai") img = suongMai;
+        if (effectImage === "huong-diem") img = huongDiem;
+        if (effectImage === "song-vu") img = songVu;
+        if (effectImage === "tinh-khoi") img = tinhKhoi;
+        if (effectImage === "vuon-xuan") img = vuonXuan;
         return img;
     }, []);
 
@@ -44,10 +45,7 @@ const Hero = ({
                     //     url ? { backgroundImage: `url('${url}')` } : undefined
                     // }
                 >
-                    <div
-                        className="bg-no-repeat bg-center bg-cover h-[62rem]"
-                        
-                    >
+                    <div className="bg-no-repeat bg-center bg-cover h-[62rem]">
                         <div className="">
                             <h2 className="font-['SFUTrajanRegular'] text-lg">
                                 Thân mời tới dự bữa tiệc
@@ -56,7 +54,10 @@ const Hero = ({
                                 <div className="relative">{`${manName}`}</div>
                                 <div className="pl-24 relative">{`& ${womanName}`}</div>
                             </div>
-                            <img className="aspect-[1077/1017] mt-4 object-cover" src={url} />
+                            <img
+                                className="w-full aspect-[1077/1017] mt-4 object-cover"
+                                src={url}
+                            />
                             <h1
                                 className={`text-5xl pt-12 text-[#AD8955] font-['SVNWallows'] mb-0`}
                             >
@@ -65,8 +66,14 @@ const Hero = ({
                                         timeAndLocationOfWedding.dateOfEventWedding
                                     )}
                             </h1>
-                            <img className="absolute right-0 w-1/3" src={flower1} />
-                            <img className="mt-20 w-11/12 mx-auto" src={saveDate} />
+                            <img
+                                className="absolute right-0 w-1/3"
+                                src={flower1}
+                            />
+                            <img
+                                className="mt-20 w-11/12 mx-auto"
+                                src={saveDate}
+                            />
                         </div>
                     </div>
                     {/* <AudioPlay song={song} /> */}
@@ -77,44 +84,40 @@ const Hero = ({
         return (
             <>
                 <div
-                    className={`text-center  relative section-mb layout-mw bg-no-repeat bg-center bg-contain h-[900px]`}
+                    className={`text-center  relative section-mb layout-mw h-[900px] pt-10`}
                     id="hero"
-                    style={
-                        url ? { backgroundImage: `url('${url}')` } : undefined
-                    }
                 >
-                    <div
-                        className="bg-no-repeat bg-center bg-cover py-10 h-[900px]"
-                        style={{
-                            backgroundImage: `url(${renderEffectImage()})`,
-                        }}
-                    >
-                        <div>
-                            <h2 className="font-['SFUDinLight'] text-xl">
-                                Thân mời tới dự bữa tiệc
-                            </h2>
-                            <h1
-                                className={`text-5xl pt-2 font-['SFUTrajanRegular']`}
-                            >
-                                {timeAndLocationOfWedding.dateOfEventWedding &&
-                                    formatDayHero(
-                                        timeAndLocationOfWedding.dateOfEventWedding,
-                                        true
-                                    )}
-                            </h1>
-                            <div className="pt-[630px]">
-                                <div className="relative text-[2.5rem] z-10 font-['NETTOOT'] leading-[0.25rem]">{`${manName}`}</div>
-                                <div className="text-[10rem] text-[#F9C2C6] leading-[5.75rem] opacity-50">
-                                    {" "}
-                                    &{" "}
-                                </div>
-                                <div className="relative text-[2.5rem] font-['NETTOOT'] z-10">{`${womanName}`}</div>
-                            </div>
+                    <h2 className="font-['SFUDinLight'] text-xl">
+                        Thân mời tới dự bữa tiệc
+                    </h2>
+                    <h1 className={`text-5xl relative z-20 pt-2 font-['SFUTrajanRegular']`}>
+                        {timeAndLocationOfWedding.dateOfEventWedding &&
+                            formatDayHero(
+                                timeAndLocationOfWedding.dateOfEventWedding,
+                                true
+                            )}
+                    </h1>
+                    <div className="relative mt-[-5rem]">
+                        <img className="relative z-10 w-full" src={renderEffectImage()} />
+                        <div className="absolute top-[11.0%] h-[77.2%]">
+                            <img
+                                className="object-cover w-full h-full"
+                                src={url}
+                            />
                         </div>
+                    </div>
+
+                    <div className="mt-[-5rem]">
+                        <div className="relative text-[3rem] z-20 font-['NETTOOT'] leading-[2.5rem]">{`${manName}`}</div>
+                        <div className="z-10 relative text-[10rem] text-[#F9C2C6] leading-[4.5rem] opacity-50">
+                            {" "}
+                            &{" "}
+                        </div>
+                        <div className="relative text-[3rem] font-['NETTOOT'] z-10">{`${womanName}`}</div>
                     </div>
                     {/* <AudioPlay song={song} /> */}
                 </div>
-                <div style={{ paddingBottom: 60, background: "#f4f5f6" }}></div>
+                <div style={{ paddingBottom: 300 }}></div>
             </>
         );
     } else {

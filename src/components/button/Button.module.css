@@ -21,6 +21,10 @@
   background: #F9959D;
 }
 
+.lightPastelPinkButton{
+  background: #FFD6D1;
+}
+
 .borderPastelPink{
   border-color: #F9959D !important;
 }
@@ -92,8 +96,15 @@
 .borderPink {
   border: 1px solid var(--color-hover);
 }
+.borderGolden {
+  border: 1px solid #A57D66;
+}
 .textPink {
   color: var(--pink-color-1);
+}
+
+.textGolden {
+  color: #A57D66;
 }
 .textPastelPink {
   color: #F9959D;

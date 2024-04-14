@@ -15,6 +15,7 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import flower13 from "@/assets/invitation/golden/flower13.svg";
 import flower14 from "@/assets/invitation/golden/flower14.svg";
 import flower15 from "@/assets/invitation/golden/flower15.svg";
+import gradient from "@/assets/invitation/golden/gradient.jpg";
 
 const schema = yup.object().shape({
     nameGuest: yup.string().required("Yêu cầu nhập tên"),
@@ -92,7 +93,7 @@ const Response = ({ invitationsId, invitationStyle }) => {
                 className="layout-mw section-mb relative pb-10 pt-28 text-center bg-[#FAF9F5]"
             >
                 <img className="absolute right-0 top-0 w-1/5" src={flower13} />
-                <h2 className="text-4xl font-[SFUTrajanRegular] text-[#7F4E26]">Thông tin phản hồi</h2>
+                <h2 className="text-3xl font-[SFUTrajanRegular] text-[#7F4E26]">Thông tin phản hồi</h2>
                 <p className="font-[RokkittExtraLight] text-[#808080] max-w-sm margin-auto pb-6">
                     Để thuận tiện cho việc sắp xếp chỗ ngồi, <br />
                     vui lòng phản hồi giúp gia đình chúng tôi!
@@ -205,9 +206,9 @@ const Response = ({ invitationsId, invitationStyle }) => {
                         <input
                             type="number"
                             name="number-attend"
-                            className="font-[NexaBold] text-[#808080] input-count-num mx-2 text-text shadow rounded-lg input-letter"
+                            className="px-8 mx-4 font-[NexaBold] text-[#808080] input-count-num mx-2 text-text shadow rounded-lg input-letter"
                             value={numPeopleAttend}
-                            style={{ width: "56px" }}
+                            style={{ width: "160px" }}
                             {...register("numberPeopleParticipate")}
                         />
                         <span
@@ -217,13 +218,13 @@ const Response = ({ invitationsId, invitationStyle }) => {
                             <FaChevronRight size={24} color="#AD8955" />
                         </span>
                     </div>
-                    <div className="max-w-sm margin-auto pt-6">
+                    <div className="w-[160px] margin-auto pt-6">
                         <Button
                             type="submit"
                             buttonStyle={BUTTON_STYLES.PASTEL_PINK}
                             textStyle={BUTTON_STYLES.WHITE}
                             label="Xác nhận"
-                            rounded={true}
+                            backgroundImageUrl={gradient}
                             width="100"
                             disabled={disable}
                         />
@@ -238,8 +239,8 @@ const Response = ({ invitationsId, invitationStyle }) => {
             <div
                 className="layout-mw section-mb py-10 text-center"
             >
-                <h2 className="font-[NexaBold] text-[#F9959D]">Thông tin phản hồi</h2>
-                <p className="font-[MavenPro] text-[#808080] max-w-sm margin-auto pb-6">
+                <h2 className="font-[NexaBold] text-3xl p-10 text-[#F9959D]">Thông tin phản hồi</h2>
+                <p className="font-[MavenPro] text-[#808080] max-w-sm margin-auto pb-20">
                     Để thuận tiện cho việc sắp xếp chỗ ngồi, <br />
                     vui lòng phản hồi giúp gia đình chúng tôi!
                 </p>
@@ -351,9 +352,9 @@ const Response = ({ invitationsId, invitationStyle }) => {
                         <input
                             type="number"
                             name="number-attend"
-                            className="font-[NexaBold] text-[#808080] input-count-num mx-2 text-text shadow rounded-lg input-letter"
+                            className="px-8 mx-4 font-[NexaBold] text-[#808080] input-count-num mx-2 text-text shadow rounded-lg input-letter"
                             value={numPeopleAttend}
-                            style={{ width: "56px" }}
+                            style={{ width: "160px" }}
                             {...register("numberPeopleParticipate")}
                         />
                         <span
@@ -363,13 +364,12 @@ const Response = ({ invitationsId, invitationStyle }) => {
                             <FaChevronRight size={24} color="#FFD6D1" />
                         </span>
                     </div>
-                    <div className="max-w-sm margin-auto pt-6">
+                    <div className="inline-block margin-auto pt-6 w-[160px]">
                         <Button
                             type="submit"
-                            buttonStyle={BUTTON_STYLES.PASTEL_PINK}
+                            buttonStyle={BUTTON_STYLES.LIGHT_PASTEL_PINK}
                             textStyle={BUTTON_STYLES.WHITE}
                             label="Xác nhận"
-                            rounded={true}
                             width="100"
                             disabled={disable}
                         />

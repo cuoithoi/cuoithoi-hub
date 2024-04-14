@@ -66,7 +66,7 @@ const LetterPage = () => {
   const bgColor = useMemo(() => {
     let style = ''
 
-    if (0) {
+    if (letter?.invitationStyle == INVITATION_STYLES.PINK) {
       style = styles.pinkBg
     }
 
@@ -76,6 +76,7 @@ const LetterPage = () => {
 
     return style
   }, [])
+
   if (isLoading) return
   const {
     _id,
@@ -107,8 +108,7 @@ const LetterPage = () => {
     invitationStyle
   } = letter
 
-  console.log(invitationStyle)
-
+  
   const captureAndUpload = () => {
     setTimeout(() => {
       html2canvas(containerRef.current, {
@@ -163,7 +163,7 @@ const LetterPage = () => {
   return (
     <div ref={containerRef} className={`letter-wrapper ${bgColor}`}>
 
-      <div className={`letter-layout ${bgColor}`}>
+      <div className={`letter-layout ${(invitationStyle == INVITATION_STYLES.PINK) && styles.pinkBg}`}>
         <NavButton setIsNavOpen={setIsNavOpen} song={song} />
 
         <Hero

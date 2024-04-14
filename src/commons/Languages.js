@@ -139,7 +139,7 @@ const Languages = {
     addonepic: 'Thêm một hình ảnh',
     chooseCoverImage: 'Chọn ảnh bìa',
     chooseThumbs: 'Chọn ảnh thumbnail',
-    effectImage: 'Chọn hiệu ứng cho ảnh:',
+    effectImage: 'Chọn khung cho ảnh:',
     logout: 'Đăng xuất',
     hello: 'xin chào, ',
     logoutSure: 'Bạn có chắc chắn muốn đăng xuất tài khoản?',

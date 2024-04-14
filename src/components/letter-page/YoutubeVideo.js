@@ -59,8 +59,8 @@ const YoutubeVideo = ({ videoLink, invitationStyle }) => {
         return (
             videoLink && (
                 <div className="py-10 px-3 section-mb layout-mw">
-                    <div className="flex justify-center pb-5">
-                        <span className="text-xl pl-1 pr-1 text-center font-[NexaBold] text-[#F9959D]">
+                    <div className="flex border-t-2 border-t-[#FFD6D1] justify-center pb-5">
+                        <span className="text-3xl pt-8 pl-1 pr-1 text-center font-[NexaBold] text-[#F9959D]">
                             VIDEO
                         </span>
                     </div>

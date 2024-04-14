@@ -11,7 +11,7 @@ const weekDays = ["CN", "T2", "T3", "T4", "T5", "T6", "T7"];
 
 const todayObj = dayjs();
 
-const Calendar = ({ dateOfEventWedding, titleIcon = true }) => {
+const Calendar = ({ dateOfEventWedding, titleIcon = true, showWeekday = true }) => {
     const dayObj = dayjs(dateOfEventWedding);
     const thisYear = dayObj.year();
     const thisMonth = dayObj.month(); // (January as 0, December as 11)
@@ -45,13 +45,13 @@ const Calendar = ({ dateOfEventWedding, titleIcon = true }) => {
                 </div>
                 {/* ${dayObj.locale('vi').format('M/YYYY')} */}
             </div>
-            <div className="week-container">
+            {showWeekday ?? (<div className="week-container">
                 {weekDays.map((d) => (
                     <div className="week-cell" key={d}>
                         {d}
                     </div>
                 ))}
-            </div>
+            </div>)}
             <div className="day-container ">
                 {range(weekDayOf1).map((i) => (
                     <div className="day-cell day-cell--faded " key={i}>

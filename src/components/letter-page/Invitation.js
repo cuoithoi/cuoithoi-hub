@@ -23,19 +23,19 @@ const Invitation = ({
     if (invitationStyle == INVITATION_STYLES.GOLDEN) {
         return (
             <section
-                className="overflow-hidden relative bg-[#FAF9F5] bg-center bg-no-repeat bg-[size:140%] section-mb layout-mw h-[36rem] md:bg-contain"
+                className="overflow-hidden relative bg-[#FAF9F5] bg-center bg-no-repeat bg-[size:140%] section-mb layout-mw h-[44rem] md:bg-contain"
                 id="invitation"
             >
                 <div className="section-mb text-center py-10 pr-2 pl-2 pt-20">
                     <img
-                        className="absolute top-0 left-0 w-1/3"
+                        className="absolute top-0 left-[-0.5rem] w-1/3"
                         src={flower2}
                     />
                     <img
                         className="absolute top-10 right-[-2rem] w-1/3"
                         src={flower3}
                     />
-                    <div className="flex justify-center pb-5">
+                    <div className="flex justify-center pt-20 pb-5">
                         <span className="font-[SFUTrajanRegular] text-[#7F4E26] text-[2rem] pl-1 pr-1 text-center">
                             LỜI MỜI
                         </span>
@@ -64,13 +64,13 @@ const Invitation = ({
                         </div>
 
                         {locationOfWedding && (
-                            <div className="outstanding_box text-[#7F4E26] font-[MaitreeLight]">
+                            <div className="text-[#7F4E26] font-[MaitreeLight]">
                                 <h2>TẠI: {namelocationOfWedding}</h2>
-                                <p className="font-[RokkittExtraLight] text-[#4D4D4D] mt-10 px-20">
+                                <p className="font-[RokkittExtraLight] text-[#4D4D4D] mt-16 px-20">
                                     {locationOfWedding}
                                 </p>
                                 <div
-                                    className="px-20 font-[RokkittExtraLight]"
+                                    className="pt-4 font-[RokkittExtraLight]"
                                     dangerouslySetInnerHTML={{
                                         __html: contentOfInvitation,
                                     }}
@@ -91,16 +91,16 @@ const Invitation = ({
                 className="bg-center bg-no-repeat bg-[size:140%] section-mb layout-mw bg-invitation md:bg-contain"
                 id="invitation"
             >
-                <div className="section-mb text-center py-10 pr-2 pl-2 pt-20">
+                <div className="section-mb text-center py-10 pr-2 pl-2 pt-32">
                     <div className="flex justify-center pb-5">
-                        <span className="font-[SFUGlytusRegular] text-[#F9959D] text-[2.5rem] pl-1 pr-1 text-center">
+                        <span className="font-[SFUGlytusRegular] text-[#F9959D] text-[3rem] pl-1 pr-1 text-center">
                             LỜI MỜI
                         </span>
                     </div>
-                    <div className="pb-4">
+                    <div className="pb-4 pt-20">
                         <p className="text-lg hidden">Thân mời,</p>
 
-                        <p className="m-auto w-2/3 font-[MavenPro]">
+                        <p className="m-auto w-3/4 leading-8 font-[MavenPro] text-[1.2rem]">
                             Thân mời quý khách tới dự bữa tiệc chung vui <br />{" "}
                             cùng gia đình chúng tôi vào hồi
                         </p>
@@ -113,7 +113,7 @@ const Invitation = ({
 
                         <div className="">
                             {dateOfEventWedding && (
-                                <div className="text-xl text-[#F9959D] font-[NettoOT]">
+                                <div className="text-[1.5rem] text-[#F9959D] pt-16 font-[NettoOT]">
                                     {timeOfEventWedding &&
                                         timeOfEventWedding + " - "}{" "}
                                     {getDayOfWeeks(dateOfEventWedding)}, ngày{" "}
@@ -123,13 +123,13 @@ const Invitation = ({
                         </div>
 
                         {locationOfWedding && (
-                            <div className="outstanding_box font-[NettoOT]">
-                                <h2 className="text-[#F9959D]">
+                            <div className="pb-20 font-[NettoOT]">
+                                <h2 className="text-[#F9959D] pt-2 text-[1.5rem]">
                                     TẠI: {namelocationOfWedding}
                                 </h2>
-                                <p className="px-20">{locationOfWedding}</p>
+                                <p className="px-20 pt-20 text-[1.2rem]">{locationOfWedding}</p>
                                 <div
-                                    className="px-20"
+                                    className="px-16 pt-4 text-[1.2rem]"
                                     dangerouslySetInnerHTML={{
                                         __html: contentOfInvitation,
                                     }}

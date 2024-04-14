@@ -37,17 +37,17 @@ const Schedule = ({ eventOfProgram, note, isUseEvent, invitationStyle }) => {
     if (invitationStyle == INVITATION_STYLES.GOLDEN) {
         return (
             <div
-                className="pt-10 pb-4 schedule-container section-mb layout-mw border-section-main bg-[#FAF9F5]"
+                className="pt-10 pb-4 schedule-container section-mb layout-mw border-section-main bg-[#FAF9F5] px-8"
                 id="schedule"
             >
                 {isUseEvent && (
                     <>
-                        <div className="flex justify-center pb-5">
+                        <div className="flex border-t-2 pt-16 border-t-[#AD8955] justify-center pb-5">
                             <span className="text-4xl pl-1 pr-1 text-center font-[SFUTrajanRegular] text-[#7F4E26]">
                                 CHƯƠNG TRÌNH
                             </span>
                         </div>
-                        <div className="flex  justify-center text-[#7F4E26] font-[MaitreeLight]">
+                        <div className="flex text-xl  justify-center text-[#7F4E26] font-[MaitreeLight]">
                             <div className="">
                                 <div className="flex justify-center items-center ">
                                     <div className="w-28">
@@ -116,22 +116,6 @@ const Schedule = ({ eventOfProgram, note, isUseEvent, invitationStyle }) => {
                                         <div>{eventOfProgramEditFour}</div>
                                     </div>
                                 </div>
-                                <div className="flex justify-center items-center ">
-                                    <div className="w-28">
-                                        <img
-                                            src={goldenCake}
-                                            className="schedule-detail-img w-14"
-                                            alt="ring image"
-                                        />
-                                    </div>
-                                    <div className="w-px bg-main icon-container mx-8 py-12">
-                                        <div className="icon-absolute"></div>
-                                    </div>
-                                    <div className="w-28 text-center">
-                                        <h3>{timeToMusic}</h3>
-                                        <div>{eventOfProgramEditFour}</div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </>
@@ -148,17 +132,17 @@ const Schedule = ({ eventOfProgram, note, isUseEvent, invitationStyle }) => {
     } else if (invitationStyle == INVITATION_STYLES.PINK) {
         return (
             <div
-                className="pt-10 pb-4 schedule-container section-mb layout-mw border-section-main"
+                className="pt-10 pb-4 schedule-container section-mb layout-mw border-section-main px-8"
                 id="schedule"
             >
                 {isUseEvent && (
                     <>
-                        <div className="flex justify-center pb-5">
-                            <span className="text-xl pl-1 pr-1 text-center font-[NexaBold] text-[#F9959D]">
+                        <div className="flex border-t-2 border-t-[#FFD6D1] justify-center pb-5 pt-16">
+                            <span className="text-3xl pl-1 pr-1 text-center font-[NexaBold] text-[#F9959D]">
                                 CHƯƠNG TRÌNH
                             </span>
                         </div>
-                        <div className="flex  justify-center font-[MavenPro]">
+                        <div className="flex text-xl justify-center font-[MavenPro]">
                             <div className="">
                                 <div className="flex justify-center items-center ">
                                     <div className="w-28">
@@ -216,22 +200,6 @@ const Schedule = ({ eventOfProgram, note, isUseEvent, invitationStyle }) => {
                                         <img
                                             src={pinkDish}
                                             className="w-8 ml-auto mr-auto"
-                                            alt="ring image"
-                                        />
-                                    </div>
-                                    <div className="w-px bg-main icon-container mx-8 py-12">
-                                        <div className="icon-absolute"></div>
-                                    </div>
-                                    <div className="w-28 text-center">
-                                        <h3>{timeToMusic}</h3>
-                                        <div>{eventOfProgramEditFour}</div>
-                                    </div>
-                                </div>
-                                <div className="flex justify-center items-center ">
-                                    <div className="w-28">
-                                        <img
-                                            src={cake}
-                                            className="schedule-detail-img w-14"
                                             alt="ring image"
                                         />
                                     </div>

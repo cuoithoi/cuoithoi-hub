@@ -52,10 +52,10 @@ const TimeLocation = ({
                 className="pb-10 section-mb layout-mw bg-[#FAF9F5]"
                 id="time-location"
             >
-                <img className="mx-auto w-1/2" src={flower9} />
+                <img className="mx-auto w-[40%]" src={flower9} />
                 <div className="mt-10 text-center ">
                     <div className="flex justify-center pb-5">
-                        <span className="text-4xl pl-1 pr-1 text-center font-[SFUTrajanRegular] text-[#7F4E26]">
+                        <span className="text-3xl pl-1 pr-1 text-center font-[SFUTrajanRegular] text-[#7F4E26]">
                             THỜI GIAN & ĐỊA ĐIỂM
                         </span>
                     </div>
@@ -63,23 +63,24 @@ const TimeLocation = ({
                         <Calendar
                             dateOfEventWedding={dateOfEventWedding}
                             titleIcon={false}
+                            showWeekday={false}
                         />
                     </div>
-                    <img className="absolute left-0 w-1/3" src={flower10} />
+                    <img className="absolute left-[-2rem] w-1/3" src={flower10} />
 
-                    <div className="font-[SFUFeniceRegular] text-[#7F4E26] mt-36">
-                        <CountDown dateOfEventWedding={dateOfEventWedding} />
+                    <div className="font-[SFUFeniceRegular] text-4xl text-[#7F4E26] mb-12 mt-36">
+                        <CountDown className="text-4xl" dateOfEventWedding={dateOfEventWedding} />
                     </div>
 
-                    <h2 className="font-[RokkittExtraLight] mt-6 text-[#808080]">
+                    <h2 className="font-[RokkittExtraLight] mb-12 mt-6 text-[#808080]">
                         Hôn Lễ Được Tổ Chức Vào Lúc{" "}
                         {timeOfEventWedding && timeOfEventWedding}
                     </h2>
 
-                    <p className="font-[MaitreeLight] text-[#7F4E26] text-3xl">
+                    <p className="font-[MaitreeLight] mb-12 text-[#7F4E26] text-3xl">
                         <span>{namelocationOfWedding}</span>
                     </p>
-                    <p className="margin-auto pb-6 border-section-1 font-[MavenPro] text-[#808080]">
+                    <p className="margin-auto pb-8 border-section-1 font-[MavenPro] text-[#808080]">
                         {locationOfWedding}
                     </p>
                 </div>
@@ -91,7 +92,7 @@ const TimeLocation = ({
                     </div>
                 )}
                 <div className="flex justify-center pt-6 mt-2">
-                    <button className={`relative rounded-md`} style={{
+                    <button className={`relative rounded-md w-3/4 px-16`} style={{
                             backgroundImage: `url(`+gradient+`)`,
                             backgroundSize: "190%",
                             backgroundPosition: "center"
@@ -116,30 +117,31 @@ const TimeLocation = ({
             >
                 <div className=" text-center ">
                     <div className="flex justify-center pb-5">
-                        <span className="text-xl pl-1 pr-1 text-center font-[NexaBold] text-[#F9959D]">
+                        <span className="text-3xl pl-1 pr-1 text-center font-[NexaBold] text-[#F9959D]">
                             THỜI GIAN & ĐỊA ĐIỂM
                         </span>
                     </div>
-                    <div className="font-[NexaBold] text-[#F9959D]">
+                    <div className="mb-16 font-[NexaBold] text-[#F9959D]">
                         <Calendar
                             dateOfEventWedding={dateOfEventWedding}
                             titleIcon={false}
+                            showWeekday={false}
                         />
                     </div>
 
-                    <div className="font-[NettoOT] text-[#F9959D]">
+                    <div className="font-[NettoOT] mb-8 text-[#F9959D]">
                         <CountDown dateOfEventWedding={dateOfEventWedding} />
                     </div>
 
-                    <h2 className="font-[NettoOT] text-[#808080]">
+                    <h2 className="font-[NettoOT] mb-16 text-[#808080]">
                         Hôn Lễ Được Tổ Chức Vào Lúc{" "}
                         {timeOfEventWedding && timeOfEventWedding}
                     </h2>
 
-                    <p className="font-[NettoOT] text-[#F9959D] text-3xl">
+                    <p className="font-[NEXABOLD] text-[#F9959D] text-[1.5rem] mb-8">
                         <span>{namelocationOfWedding}</span>
                     </p>
-                    <p className="margin-auto pb-6 border-section-1 font-[MavenPro] text-[#808080]">
+                    <p className="margin-auto pb-8 border-section-1 font-[MavenPro] text-[#808080]">
                         {locationOfWedding}
                     </p>
                 </div>
@@ -151,7 +153,7 @@ const TimeLocation = ({
                     </div>
                 )}
                 <div className="flex justify-center pt-6 mt-2">
-                    <button className="relative bg-[#FFD6D1] rounded-md">
+                    <button className="relative bg-[#FFD6D1] rounded-md w-3/4 px-16">
                         <img src={mapIcon} alt="" className="gg-map-icon" />
                         <a
                             href={mapDirectLink}

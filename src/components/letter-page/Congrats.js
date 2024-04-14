@@ -10,6 +10,7 @@ import { Button } from "../button";
 import { BUTTON_STYLES } from "@/commons/Constant.ts";
 import IcChrysanthemum from "@/assets/home-image/IcChrysanthemum.svg";
 import { INVITATION_STYLES } from "@/commons/Constant.ts";
+import gradient from "@/assets/invitation/golden/gradient.jpg";
 
 import flower11 from "@/assets/invitation/golden/flower11.svg";
 import flower12 from "@/assets/invitation/golden/flower12.svg";
@@ -73,54 +74,59 @@ const Congrats = ({
     if (invitationStyle == INVITATION_STYLES.GOLDEN) {
         return (
             <div
-                className="py-10 section-mb layout-mw border-section-main bg-[#FAF9F5] relative"
+                className="py-10 section-mb layout-mw bg-[#FAF9F5] relative"
                 id="congrat"
             >
-                <div className="flex justify-center pb-5">
-                    <span className="text-4xl pl-1 pr-1 text-center font-[SFUTrajanRegular] text-[#7F4E26]">
+                <div className="flex justify-center pb-5 px-3">
+                    <span className="border-t-2 py-16 w-full border-t-[#AD8955] text-4xl pl-1 pr-1 text-center font-[SFUTrajanRegular] text-[#7F4E26]">
                         CHÚC PHÚC
                     </span>
                 </div>
                 <div
-                    className="flex justify-space-between"
+                    className="flex justify-space-between mb-24"
                     style={{ paddingLeft: 15, paddingRight: 15 }}
                 >
                     <div className="justify-around box-infor">
                         {nameGroom && (
-                            <InforPhoneGolden
-                                title={"Chú rể"}
-                                name={`${nameGroom}`}
-                                phoneNumber={phoneNumberOfGroom}
-                                phoneColor="main"
-                                nameSizeLg={true}
-                            />
+                            <>
+                                <InforPhoneGolden
+                                    title={"Chú rể"}
+                                    name={`${nameGroom}`}
+                                    phoneNumber={phoneNumberOfGroom}
+                                    phoneColor="main"
+                                    nameSizeLg={true}
+                                />
+                                <br />
+                            </>
                         )}
                         <Button
                             buttonStyle={BUTTON_STYLES.GOLDEN}
                             textStyle={BUTTON_STYLES.WHITE}
                             label="Mừng Cưới"
-                            rounded={true}
                             onPress={() => {
                                 handleShowModal1();
                             }}
+                            backgroundImageUrl={gradient}
                             autocenter
                         />
                     </div>
                     <div className="justify-space-between box-infor">
                         {nameBride && (
-                            <InforPhoneGolden
-                                title={"Cô dâu"}
-                                name={`${nameBride}`}
-                                phoneNumber={phoneNumberOfBride}
-                                nameSizeLg={true}
-                            />
+                            <>
+                                <InforPhoneGolden
+                                    title={"Cô dâu"}
+                                    name={`${nameBride}`}
+                                    phoneNumber={phoneNumberOfBride}
+                                    nameSizeLg={true}
+                                />
+                                <br />
+                            </>
                         )}
                         <Button
                             buttonStyle={BUTTON_STYLES.WHITE}
-                            textStyle={BUTTON_STYLES.BORDER_PASTEL_PINK}
-                            borderStyle={BUTTON_STYLES.BORDER_PASTEL_PINK}
+                            textStyle={BUTTON_STYLES.BORDER_GOLDEN}
+                            borderStyle={BUTTON_STYLES.BORDER_GOLDEN}
                             label="Mừng Cưới"
-                            rounded={true}
                             onPress={() => {
                                 handleShowModal();
                             }}
@@ -247,34 +253,33 @@ const Congrats = ({
         );
     } else if (invitationStyle == INVITATION_STYLES.PINK) {
         return (
-            <div
-                className="py-10 section-mb layout-mw border-section-main"
-                id="congrat"
-            >
-                <div className="flex justify-center pb-5">
-                    <span className="text-xl pl-1 pr-1 text-center font-[NexaBold] text-[#F9959D]">
+            <div className="pt-10 section-mb layout-mw" id="congrat">
+                <div className="flex justify-center pb-5 px-3">
+                    <span className="text-3xl pt-16 pb-16 border-t-2 border-t-[#FFD6D1] w-full pl-1 pr-1 text-center font-[NexaBold] text-[#F9959D]">
                         CHÚC PHÚC
                     </span>
                 </div>
                 <div
-                    className="flex justify-space-between"
+                    className="flex justify-space-between mb-24"
                     style={{ paddingLeft: 15, paddingRight: 15 }}
                 >
                     <div className="justify-around box-infor">
                         {nameGroom && (
-                            <InforPhonePink
-                                title={"Chú rể"}
-                                name={`${nameGroom}`}
-                                phoneNumber={phoneNumberOfGroom}
-                                phoneColor="main"
-                                nameSizeLg={true}
-                            />
+                            <>
+                                <InforPhonePink
+                                    title={"Chú rể"}
+                                    name={`${nameGroom}`}
+                                    phoneNumber={phoneNumberOfGroom}
+                                    phoneColor="main"
+                                    nameSizeLg={true}
+                                />
+                                <br />
+                            </>
                         )}
                         <Button
                             buttonStyle={BUTTON_STYLES.PASTEL_PINK}
                             textStyle={BUTTON_STYLES.WHITE}
                             label="Mừng Cưới"
-                            rounded={true}
                             onPress={() => {
                                 handleShowModal1();
                             }}
@@ -283,19 +288,21 @@ const Congrats = ({
                     </div>
                     <div className="justify-space-between box-infor">
                         {nameBride && (
-                            <InforPhonePink
-                                title={"Cô dâu"}
-                                name={`${nameBride}`}
-                                phoneNumber={phoneNumberOfBride}
-                                nameSizeLg={true}
-                            />
+                            <>
+                                <InforPhonePink
+                                    title={"Cô dâu"}
+                                    name={`${nameBride}`}
+                                    phoneNumber={phoneNumberOfBride}
+                                    nameSizeLg={true}
+                                />
+                                <br />
+                            </>
                         )}
                         <Button
                             buttonStyle={BUTTON_STYLES.WHITE}
                             textStyle={BUTTON_STYLES.BORDER_PASTEL_PINK}
                             borderStyle={BUTTON_STYLES.BORDER_PASTEL_PINK}
                             label="Mừng Cưới"
-                            rounded={true}
                             onPress={() => {
                                 handleShowModal();
                             }}
@@ -305,7 +312,7 @@ const Congrats = ({
                 </div>
                 <div className="interface font-[NexaLight]">
                     <h2>
-                        <span className="text-[#F9959D]">
+                        <span className="text-[#F9959D] mb-16">
                             Đại diện gia đình
                         </span>
                     </h2>
@@ -365,7 +372,7 @@ const Congrats = ({
                     </div>
                 </div>
 
-                <h2 className="pt-10 text-center font-[NexaBold] text-[#F9959D]">
+                <h2 className="py-24 text-center font-[NexaBold] text-[#F9959D]">
                     Trân trọng cảm ơn!
                 </h2>
                 <Popup

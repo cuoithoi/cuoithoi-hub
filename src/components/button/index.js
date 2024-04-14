@@ -19,6 +19,7 @@ export const Button = ({
     width,
     rounded,
     autocenter,
+    backgroundImageUrl = null,
 }) => {
     const _onPress = useCallback(() => {
         onPress?.(tag || label);
@@ -38,6 +39,10 @@ export const Button = ({
 
             case BUTTON_STYLES.PASTEL_PINK:
                 containerStyle = styles.pastelPinkButton;
+                break;
+
+            case BUTTON_STYLES.LIGHT_PASTEL_PINK:
+                containerStyle = styles.lightPastelPinkButton;
                 break;
 
             case BUTTON_STYLES.WHITE:
@@ -102,6 +107,9 @@ export const Button = ({
             case BUTTON_STYLES.BORDER_PASTEL_PINK:
                 color = styles.textPastelPink;
                 break;
+            case BUTTON_STYLES.BORDER_GOLDEN:
+                color = styles.textGolden;
+                break;
             default:
                 color = styles.black;
                 break;
@@ -116,6 +124,9 @@ export const Button = ({
             case BUTTON_STYLES.BORDER_PASTEL_PINK:
                 color = styles.borderPastelPink;
                 break;
+            case BUTTON_STYLES.BORDER_GOLDEN:
+                color = styles.borderGolden;
+                break;
         }
         return color;
     }, [borderStyle]);
@@ -126,14 +137,25 @@ export const Button = ({
         return `${styles.text} ${styles.padding} ${color}`;
     }, [getTextColor]);
 
+    let style = {
+        width: width + "%",
+    };
+
+    if (backgroundImageUrl) {
+        style = {
+            backgroundImage: `url(` + backgroundImageUrl + `)`,
+            width: width + "%",
+        };
+    }
+
     return (
         <button
             type={type}
             disabled={isLoading || disabled}
-            className={`${getContainerStyle} ${getBorderColor}  ${
+            className={`bg-contain ${getContainerStyle} ${getBorderColor}  ${
                 rounded ? styles.borderFull : ""
             } ${autocenter && styles.autocenter}`}
-            style={{ width: width + "%" }}
+            style={style}
             onClick={_onPress}
         >
             {leftIcon}

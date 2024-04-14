@@ -13,6 +13,7 @@ import { customFetch } from "@/utils/axios";
 import CommentDetail from "@/pages/CommentDetail";
 import { Convert } from "../../commons/Constant.ts";
 import { INVITATION_STYLES } from "@/commons/Constant.ts";
+import gradient from "@/assets/invitation/golden/gradient.jpg";
 
 const Message = ({ id, invitationStyle }) => {
     const [isLoading, setIsLoading] = useState(true);
@@ -58,9 +59,9 @@ const Message = ({ id, invitationStyle }) => {
     if (isLoading) return;
     if (invitationStyle == INVITATION_STYLES.GOLDEN) {
         return (
-            <div className="layout-mw section-mb py-10 bg-[#FAF9F5]">
-                <div className="flex justify-center pb-5">
-                    <span className="text-4xl pl-1 pr-1 text-center font-[SFUTrajanRegular] text-[#7F4E26]">
+            <div className="layout-mw section-mb py-10 bg-[#FAF9F5] py-10 px-3">
+                <div className="flex border-t-2 border-t-[#AD8955]  justify-center pb-5">
+                    <span className="text-3xl pt-16 pl-1 pr-1 text-center font-[SFUTrajanRegular] text-[#7F4E26]">
                         LỜI CHÚC
                     </span>
                 </div>
@@ -99,7 +100,7 @@ const Message = ({ id, invitationStyle }) => {
                         label="Xem tất cả"
                         buttonStyle={BUTTON_STYLES.PASTEL_PINK}
                         textStyle={BUTTON_STYLES.WHITE}
-                        rounded={true}
+                        backgroundImageUrl={gradient}
                         onPress={() => {
                             handleShowCmtDetail();
                         }}
@@ -108,9 +109,8 @@ const Message = ({ id, invitationStyle }) => {
                     <Button
                         label="Viết lời chúc"
                         buttonStyle={BUTTON_STYLES.WHITE}
-                        textStyle={BUTTON_STYLES.BORDER_PASTEL_PINK}
-                        borderStyle={BUTTON_STYLES.BORDER_PASTEL_PINK}
-                        rounded={true}
+                        textStyle={BUTTON_STYLES.BORDER_GOLDEN}
+                        borderStyle={BUTTON_STYLES.BORDER_GOLDEN}
                         onPress={() => {
                             handleShowModal();
                         }}
@@ -141,9 +141,9 @@ const Message = ({ id, invitationStyle }) => {
         );
     } else if (invitationStyle == INVITATION_STYLES.PINK) {
         return (
-            <div className="layout-mw section-mb py-10">
-                <div className="flex justify-center pb-5">
-                    <span className="text-xl pl-1 pr-1 text-center font-[NexaBold] text-[#F9959D]">
+            <div className="layout-mw section-mb py-10 px-3">
+                <div className="flex justify-center pb-5 border-t-2 border-t-[#FFD6D1]">
+                    <span className="text-3xl pt-16 pl-1 pr-1 text-center font-[NexaBold] text-[#F9959D]">
                         LỜI CHÚC
                     </span>
                 </div>

@@ -152,7 +152,7 @@ const Gallery = ({ id, invitationStyle }) => {
                 id="gallery"
             >
                 <div className="flex justify-center pb-5">
-                    <span className="text-xl pl-1 pr-1 text-center font-[NexaBold] text-[#F9959D]">
+                    <span className="text-3xl pl-1 pr-1 text-center font-[NexaBold] text-[#F9959D]">
                         OUR MEMORIES
                     </span>
                 </div>
