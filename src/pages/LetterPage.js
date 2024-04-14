@@ -163,7 +163,7 @@ const LetterPage = () => {
   return (
     <div ref={containerRef} className={`letter-wrapper ${bgColor}`}>
 
-      <div className={`letter-layout ${(invitationStyle == INVITATION_STYLES.PINK) && styles.pinkBg}`}>
+      <div className={`letter-layout overflow-hidden ${(invitationStyle == INVITATION_STYLES.PINK) && styles.pinkBg}`}>
         <NavButton setIsNavOpen={setIsNavOpen} song={song} />
 
         <Hero
