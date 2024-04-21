@@ -6,7 +6,7 @@ const InforPhone = ({ title, name, phoneNumber, phoneColor, nameSizeLg }) => {
   return (
     <div className='text-center w-50'>
       <p className='font-[MaitreeLight] text-[#AD8955]' style={{ marginBottom: 0 }}>{title}</p>
-      <h2 className={`font-[MaitreeLight] text-[#7F4E26] text-[2rem]`}>{name}</h2>
+      <h2 className={`font-[MaitreeLight] text-[#7F4E26] text-[1.5rem] sm:text-[2rem]`}>{name}</h2>
       <a href={`'tel:'${phoneNumber}`} className='href-call text-center pb-3'>
         <div className='phone-container'>
           <img

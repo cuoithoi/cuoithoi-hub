@@ -41,7 +41,7 @@ const Invitation = ({
                         </span>
                     </div>
                     <div className="mt-6 pb-4">
-                        <p className="m-auto w-2/3 text-[#333333] font-[RokkittExtraLight]">
+                        <p className="m-auto w-5/6 text-[#333333] font-[RokkittExtraLight]">
                             Thân mời quý khách tới dự bữa tiệc chung vui <br />{" "}
                             cùng gia đình chúng tôi vào hồi
                         </p>
@@ -65,7 +65,7 @@ const Invitation = ({
 
                         {locationOfWedding && (
                             <div className="text-[#7F4E26] font-[MaitreeLight]">
-                                <h2>TẠI: {namelocationOfWedding}</h2>
+                                <h2 className="text-[1rem] sm:text-[1.2rem]">TẠI: {namelocationOfWedding}</h2>
                                 <p className="font-[RokkittExtraLight] text-[#4D4D4D] mt-16 px-20">
                                     {locationOfWedding}
                                 </p>
@@ -88,10 +88,10 @@ const Invitation = ({
     } else if (invitationStyle == INVITATION_STYLES.PINK) {
         return (
             <section
-                className="bg-center bg-no-repeat bg-[size:140%] section-mb layout-mw bg-invitation md:bg-contain"
+                className="bg-center bg-no-repeat bg-[size:140%] layout-mw bg-invitation md:bg-contain"
                 id="invitation"
             >
-                <div className="section-mb text-center py-10 pr-2 pl-2 pt-32">
+                <div className="text-center py-10 pr-2 pl-2 pt-32">
                     <div className="flex justify-center pb-5">
                         <span className="font-[SFUGlytusRegular] text-[#F9959D] text-[3rem] pl-1 pr-1 text-center">
                             LỜI MỜI
@@ -100,7 +100,7 @@ const Invitation = ({
                     <div className="pb-4 pt-20">
                         <p className="text-lg hidden">Thân mời,</p>
 
-                        <p className="m-auto w-3/4 leading-8 font-[MavenPro] text-[1.2rem]">
+                        <p className="m-auto w-5/6 leading-8 font-[MavenPro] text-[0.9rem] sm:text-[1.2rem]">
                             Thân mời quý khách tới dự bữa tiệc chung vui <br />{" "}
                             cùng gia đình chúng tôi vào hồi
                         </p>
@@ -124,12 +124,12 @@ const Invitation = ({
 
                         {locationOfWedding && (
                             <div className="pb-20 font-[NettoOT]">
-                                <h2 className="text-[#F9959D] pt-2 text-[1.5rem]">
+                                <h2 className="text-[#F9959D] pt-2 text-[1.2rem] sm:text-[1.5rem]">
                                     TẠI: {namelocationOfWedding}
                                 </h2>
-                                <p className="px-20 pt-20 text-[1.2rem]">{locationOfWedding}</p>
+                                <p className="w-5/6 mx-auto pt-20 text-[1rem] sm:text-[1.2rem]">{locationOfWedding}</p>
                                 <div
-                                    className="px-16 pt-4 text-[1.2rem]"
+                                    className="w-5/6 mx-auto pt-4 text-[1.2rem]"
                                     dangerouslySetInnerHTML={{
                                         __html: contentOfInvitation,
                                     }}

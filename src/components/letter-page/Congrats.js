@@ -137,7 +137,7 @@ const Congrats = ({
                 <img className="absolute w-1/4 left-0" src={flower11} />
                 <div className="interface font-[MaitreeLight]">
                     <h2>
-                        <span className="text-3xl mt-10 text-[#7F4E26]">
+                        <span className="text-[1.5rem] sm:text-3xl mt-10 text-[#7F4E26]">
                             Đại diện gia đình
                         </span>
                     </h2>

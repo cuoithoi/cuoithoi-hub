@@ -38,7 +38,7 @@ const YoutubeVideo = ({ videoLink, invitationStyle }) => {
                 <div className="py-10 px-10 section-mb layout-mw bg-[#FAF9F5]">
                     <div className="flex gap-2 justify-center pb-5">
                         <img className="w-10" src={flower7} />
-                        <span className="text-4xl font-[SFUTrajanRegular] text-[#7F4E26] pl-1 pr-1 text-center">
+                        <span className="text-3xl sm:text-4xl font-[SFUTrajanRegular] text-[#7F4E26] pl-1 pr-1 text-center">
                             VIDEO
                         </span>
                         <img className="w-10" src={flower8} />

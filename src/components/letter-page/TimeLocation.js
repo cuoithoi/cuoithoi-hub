@@ -55,7 +55,7 @@ const TimeLocation = ({
                 <img className="mx-auto w-[40%]" src={flower9} />
                 <div className="mt-10 text-center ">
                     <div className="flex justify-center pb-5">
-                        <span className="text-3xl pl-1 pr-1 text-center font-[SFUTrajanRegular] text-[#7F4E26]">
+                        <span className="text-[1.5rem] sm:text-3xl pl-1 pr-1 text-center font-[SFUTrajanRegular] text-[#7F4E26]">
                             THỜI GIAN & ĐỊA ĐIỂM
                         </span>
                     </div>
@@ -73,7 +73,7 @@ const TimeLocation = ({
                     </div>
 
                     <h2 className="font-[RokkittExtraLight] mb-12 mt-6 text-[#808080]">
-                        Hôn Lễ Được Tổ Chức Vào Lúc{" "}
+                        Tiệc Mừng Được Tổ Chức Vào Lúc{" "}
                         {timeOfEventWedding && timeOfEventWedding}
                     </h2>
 
@@ -92,7 +92,7 @@ const TimeLocation = ({
                     </div>
                 )}
                 <div className="flex justify-center pt-6 mt-2">
-                    <button className={`relative rounded-md w-3/4 px-16`} style={{
+                    <button className={`relative rounded-md w-3/4 px-6 sm:px-16`} style={{
                             backgroundImage: `url(`+gradient+`)`,
                             backgroundSize: "190%",
                             backgroundPosition: "center"
@@ -134,7 +134,7 @@ const TimeLocation = ({
                     </div>
 
                     <h2 className="font-[NettoOT] mb-16 text-[#808080]">
-                        Hôn Lễ Được Tổ Chức Vào Lúc{" "}
+                        Tiệc Mừng Được Tổ Chức Vào Lúc{" "}
                         {timeOfEventWedding && timeOfEventWedding}
                     </h2>
 
@@ -153,7 +153,7 @@ const TimeLocation = ({
                     </div>
                 )}
                 <div className="flex justify-center pt-6 mt-2">
-                    <button className="relative bg-[#FFD6D1] rounded-md w-3/4 px-16">
+                    <button className="relative bg-[#FFD6D1] rounded-md w-3/4 px-6 sm:px-16">
                         <img src={mapIcon} alt="" className="gg-map-icon" />
                         <a
                             href={mapDirectLink}
@@ -182,7 +182,7 @@ const TimeLocation = ({
                     </div>
 
                     <h2 className="text-second">
-                        Hôn Lễ Được Tổ Chức Vào Lúc{" "}
+                        Tiệc Mừng Được Tổ Chức Vào Lúc{" "}
                         {timeOfEventWedding && timeOfEventWedding}
                     </h2>
 

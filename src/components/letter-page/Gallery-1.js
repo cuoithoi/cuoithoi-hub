@@ -63,7 +63,7 @@ const Gallery = ({ id, invitationStyle }) => {
             >
                 <div className="flex justify-center pb-5">
                     <img className="w-12" src={flower5} />
-                    <span className="text-4xl pl-1 pr-1 text-center font-[SFUTrajanRegular] text-[#7F4E26]">
+                    <span className="text-[1.3rem] sm:text-4xl pl-1 pr-1 text-center font-[SFUTrajanRegular] text-[#7F4E26]">
                         OUR MEMORIES
                     </span>
                     <img className="w-12" src={flower6} />

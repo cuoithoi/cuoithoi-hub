@@ -86,7 +86,7 @@ const Hero = ({
                             <h2 className="font-['SFUTrajanRegular'] text-lg">
                                 Thân mời tới dự bữa tiệc
                             </h2>
-                            <div className="text-3xl pt-12 px-10 font-['SFUTrajanRegular'] text-left">
+                            <div className="text-2xl sm:text-3xl pt-12 px-10 font-['SFUTrajanRegular'] text-left">
                                 <div className="relative">{`${manName}`}</div>
                                 <div className="pl-24 relative">{`& ${womanName}`}</div>
                             </div>
@@ -126,7 +126,7 @@ const Hero = ({
         return (
             <>
                 <div
-                    className={`text-center  relative section-mb layout-mw h-[900px] pt-10`}
+                    className={`text-center  relative section-mb layout-mw pt-10`}
                     id="hero"
                 >
                     <h2 className="font-['SFUDinLight'] text-xl">
@@ -162,7 +162,6 @@ const Hero = ({
                     </div>
                     {/* <AudioPlay song={song} /> */}
                 </div>
-                <div style={{ paddingBottom: 300 }}></div>
             </>
         );
     } else {
