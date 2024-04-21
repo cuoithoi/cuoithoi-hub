@@ -2,11 +2,17 @@ import React, { useCallback, useEffect, useState } from "react";
 import { formatDayHero } from "@/utils/helpers";
 import { INVITATION_STYLES } from "@/commons/Constant.ts";
 
-import suongMai from "@/assets/invitation/frame/suong-mai.png";
-import huongDiem from "@/assets/invitation/frame/huong-diem.png";
-import songVu from "@/assets/invitation/frame/song-vu.png";
-import tinhKhoi from "@/assets/invitation/frame/tinh-khoi.png";
-import vuonXuan from "@/assets/invitation/frame/vuon-xuan.png";
+import suongMaiPink from "@/assets/invitation/pink/frame/suong-mai.png";
+import huongDiemPink from "@/assets/invitation/pink/frame/huong-diem.png";
+import songVuPink from "@/assets/invitation/pink/frame/song-vu.png";
+import tinhKhoiPink from "@/assets/invitation/pink/frame/tinh-khoi.png";
+import vuonXuanPink from "@/assets/invitation/pink/frame/vuon-xuan.png";
+
+import suongMaiGolden from "@/assets/invitation/golden/frame/suong-mai.png";
+import huongDiemGolden from "@/assets/invitation/golden/frame/huong-diem.png";
+import songVuGolden from "@/assets/invitation/golden/frame/song-vu.png";
+import tinhKhoiGolden from "@/assets/invitation/golden/frame/tinh-khoi.png";
+import vuonXuanGolden from "@/assets/invitation/golden/frame/vuon-xuan.png";
 
 import saveDate from "@/assets/invitation/golden/saveDate.svg";
 import flower1 from "@/assets/invitation/golden/flower1.svg";
@@ -26,13 +32,43 @@ const Hero = ({
     }, [coverImage]);
 
     const renderEffectImage = useCallback(() => {
-        let img = suongMai;
-        if (effectImage === "suong-mai") img = suongMai;
-        if (effectImage === "huong-diem") img = huongDiem;
-        if (effectImage === "song-vu") img = songVu;
-        if (effectImage === "tinh-khoi") img = tinhKhoi;
-        if (effectImage === "vuon-xuan") img = vuonXuan;
-        return img;
+        if (invitationStyle == INVITATION_STYLES.GOLDEN) {
+            if (effectImage === "suong-mai") {
+                return suongMaiGolden;
+            }
+            if (effectImage === "huong-diem") {
+                return huongDiemGolden;
+            }
+            if (effectImage === "song-vu") {
+                return songVuGolden;
+            }
+            if (effectImage === "tinh-khoi") {
+                return tinhKhoiGolden;
+            }
+            if (effectImage === "vuon-xuan") {
+                return vuonXuanGolden;
+            }
+            return suongMaiGolden;
+        } else if (invitationStyle == INVITATION_STYLES.PINK) {
+            if (effectImage === "suong-mai") {
+                return suongMaiPink;
+            }
+            if (effectImage === "huong-diem") {
+                return huongDiemPink;
+            }
+            if (effectImage === "song-vu") {
+                return songVuPink;
+            }
+            if (effectImage === "tinh-khoi") {
+                return tinhKhoiPink;
+            }
+            if (effectImage === "vuon-xuan") {
+                return vuonXuanPink;
+            }
+            return suongMaiPink;
+        } else {
+            return suongMaiPink;
+        }
     }, []);
 
     if (invitationStyle == INVITATION_STYLES.GOLDEN) {
@@ -54,10 +90,16 @@ const Hero = ({
                                 <div className="relative">{`${manName}`}</div>
                                 <div className="pl-24 relative">{`& ${womanName}`}</div>
                             </div>
-                            <img
-                                className="w-full aspect-[1077/1017] mt-4 object-cover"
-                                src={url}
-                            />
+                            <div className="relative mt-12">
+                                <img
+                                    className="relative z-10 w-full"
+                                    src={renderEffectImage()}
+                                />
+                                <div
+                                    className="absolute top-0 bottom-0 left-0 right-0 bg-cover bg-center"
+                                    style={{ backgroundImage: `url('${url}')` }}
+                                ></div>
+                            </div>
                             <h1
                                 className={`text-5xl pt-12 text-[#AD8955] font-['SVNWallows'] mb-0`}
                             >
@@ -90,24 +132,27 @@ const Hero = ({
                     <h2 className="font-['SFUDinLight'] text-xl">
                         Thân mời tới dự bữa tiệc
                     </h2>
-                    <h1 className={`text-5xl relative z-20 pt-2 font-['SFUTrajanRegular']`}>
+                    <h1
+                        className={`text-5xl relative z-20 pt-2 font-['SFUTrajanRegular']`}
+                    >
                         {timeAndLocationOfWedding.dateOfEventWedding &&
                             formatDayHero(
                                 timeAndLocationOfWedding.dateOfEventWedding,
                                 true
                             )}
                     </h1>
-                    <div className="relative mt-[-5rem]">
-                        <img className="relative z-10 w-full" src={renderEffectImage()} />
-                        <div className="absolute top-[11.0%] h-[77.2%]">
-                            <img
-                                className="object-cover w-full h-full"
-                                src={url}
-                            />
-                        </div>
+                    <div className="relative mt-12">
+                        <img
+                            className="relative z-10 w-full"
+                            src={renderEffectImage()}
+                        />
+                        <div
+                            className="absolute top-0 bottom-0 left-0 right-0 bg-cover bg-center"
+                            style={{ backgroundImage: `url('${url}')` }}
+                        ></div>
                     </div>
 
-                    <div className="mt-[-5rem]">
+                    <div className="mt-12">
                         <div className="relative text-[3rem] z-20 font-['NETTOOT'] leading-[2.5rem]">{`${manName}`}</div>
                         <div className="z-10 relative text-[10rem] text-[#F9C2C6] leading-[4.5rem] opacity-50">
                             {" "}
