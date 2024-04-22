@@ -23,7 +23,7 @@ const Invitation = ({
     if (invitationStyle == INVITATION_STYLES.GOLDEN) {
         return (
             <section
-                className="overflow-hidden relative bg-[#FAF9F5] bg-center bg-no-repeat bg-[size:140%] section-mb layout-mw h-[44rem] md:bg-contain"
+                className="overflow-hidden relative bg-[#FAF9F5] bg-center bg-no-repeat bg-[size:140%] section-mb layout-mw h-[46rem] md:bg-contain"
                 id="invitation"
             >
                 <div className="section-mb text-center py-10 pr-2 pl-2 pt-20">
