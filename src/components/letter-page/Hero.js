@@ -14,6 +14,12 @@ import songVuGolden from "@/assets/invitation/golden/frame/song-vu.png";
 import tinhKhoiGolden from "@/assets/invitation/golden/frame/tinh-khoi.png";
 import vuonXuanGolden from "@/assets/invitation/golden/frame/vuon-xuan.png";
 
+
+import waveGrayBg from '@/assets/home-image/wave-gray.png'
+import heartGray from '@/assets/home-image/heart-gray.png'
+import noneGray from '@/assets/home-image/none-gray.png'
+import lightGray from '@/assets/home-image/light-gray.png'
+
 import saveDate from "@/assets/invitation/golden/saveDate.svg";
 import flower1 from "@/assets/invitation/golden/flower1.svg";
 
@@ -67,7 +73,15 @@ const Hero = ({
             }
             return suongMaiPink;
         } else {
-            return suongMaiPink;
+            if (effectImage === 'none') 
+                return noneGray
+            if (effectImage === 'Heart Frame')
+                return heartGray
+            if (effectImage === 'Light')
+                return lightGray
+            if (effectImage === 'Wave')
+                return waveGrayBg
+            return noneGray;
         }
     }, []);
 
