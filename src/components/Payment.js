@@ -2,7 +2,7 @@ import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo
 import Popup from "./modal/Popup";
 import { MyTextInput } from "./input";
 import Languages from "@/commons/Languages";
-import ICQrLogo from '@/assets/home-image/qrcode.jpg'
+import ICQrLogo from '@/assets/home-image/QR_code.jpg'
 import ICMomo from '@/assets/home-image/IcMomo.svg'
 import { APi, BUTTON_STYLES, CheckParams, Convert, config } from "@/commons/Constant.ts";
 import { Button } from "./button";
