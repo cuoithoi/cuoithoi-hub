@@ -2,6 +2,12 @@ import React, { useCallback, useEffect, useState } from "react";
 import { formatDayHero } from "@/utils/helpers";
 import { INVITATION_STYLES } from "@/commons/Constant.ts";
 
+import suongMai from "@/assets/invitation/frame/suong-mai.png";
+import huongDiem from "@/assets/invitation/frame/huong-diem.png";
+import songVu from "@/assets/invitation/frame/song-vu.png";
+import tinhKhoi from "@/assets/invitation/frame/tinh-khoi.png";
+import vuonXuan from "@/assets/invitation/frame/vuon-xuan.png";
+
 import suongMaiPink from "@/assets/invitation/pink/frame/suong-mai.png";
 import huongDiemPink from "@/assets/invitation/pink/frame/huong-diem.png";
 import songVuPink from "@/assets/invitation/pink/frame/song-vu.png";
@@ -38,7 +44,24 @@ const Hero = ({
     }, [coverImage]);
 
     const renderEffectImage = useCallback(() => {
-        if (invitationStyle == INVITATION_STYLES.GOLDEN) {
+        if (invitationStyle == INVITATION_STYLES.DEFAULT) {
+            if (effectImage === "suong-mai") {
+                return suongMai;
+            }
+            if (effectImage === "huong-diem") {
+                return huongDiem;
+            }
+            if (effectImage === "song-vu") {
+                return songVu;
+            }
+            if (effectImage === "tinh-khoi") {
+                return tinhKhoi;
+            }
+            if (effectImage === "vuon-xuan") {
+                return vuonXuan;
+            }
+            return suongMai;
+        } else if (invitationStyle == INVITATION_STYLES.GOLDEN) {
             if (effectImage === "suong-mai") {
                 return suongMaiGolden;
             }
@@ -201,6 +224,16 @@ const Hero = ({
                                 <span className="text_block_line_mb"> & </span>
                                 <span className="text_block_line_mb">{`${womanName}`}</span>
                             </h1>
+                            <div className="relative mt-12">
+                                <img
+                                    className="relative z-10 w-full"
+                                    src={renderEffectImage()}
+                                />
+                                <div
+                                    className="absolute top-0 bottom-0 left-0 right-0 bg-cover bg-center"
+                                    style={{ backgroundImage: `url('${url}')` }}
+                                ></div>
+                            </div>
                             <div className="flex justify-center pt-3 w-full">
                                 <img src={""} alt="" className="w-full" />
                             </div>
