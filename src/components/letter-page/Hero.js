@@ -46,21 +46,21 @@ const Hero = ({
     const renderEffectImage = useCallback(() => {
         if (invitationStyle == INVITATION_STYLES.DEFAULT) {
             if (effectImage === "suong-mai") {
-                return suongMai;
+                return suongMaiPink;
             }
             if (effectImage === "huong-diem") {
-                return huongDiem;
+                return huongDiemPink;
             }
             if (effectImage === "song-vu") {
-                return songVu;
+                return songVuPink;
             }
             if (effectImage === "tinh-khoi") {
-                return tinhKhoi;
+                return tinhKhoiPink;
             }
             if (effectImage === "vuon-xuan") {
-                return vuonXuan;
+                return vuonXuanPink;
             }
-            return suongMai;
+            return suongMaiPink;
         } else if (invitationStyle == INVITATION_STYLES.GOLDEN) {
             if (effectImage === "suong-mai") {
                 return suongMaiGolden;
