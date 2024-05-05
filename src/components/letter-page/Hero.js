@@ -207,57 +207,47 @@ const Hero = ({
                 <div
                     className={`text-center  relative section-mb layout-mw bg-no-repeat bg-center bg-contain`}
                     id="hero"
-                    style={
-                        url ? { backgroundImage: `url('${url}')` } : undefined
-                    }
                 >
-                    <div
-                        className="bg-no-repeat bg-center bg-cover py-20"
-                        style={{
-                            backgroundImage: `url(${renderEffectImage()})`,
-                        }}
-                    >
-                        <div>
-                            <h2>Thân mời tới dự bữa tiệc</h2>
-                            <h1 className="pb-96">
-                                <span className="text_block_line_mb">{`${manName}`}</span>
-                                <span className="text_block_line_mb"> & </span>
-                                <span className="text_block_line_mb">{`${womanName}`}</span>
-                            </h1>
-                            <div className="relative mt-12">
-                                <img
-                                    className="relative z-10 w-full"
-                                    src={renderEffectImage()}
-                                />
-                                <div
-                                    className="absolute top-0 bottom-0 left-0 right-0 bg-cover bg-center"
-                                    style={{ backgroundImage: `url('${url}')` }}
-                                ></div>
-                            </div>
-                            <div className="flex justify-center pt-3 w-full">
-                                <img src={""} alt="" className="w-full" />
-                            </div>
+                    <div>
+                        <h2>Thân mời tới dự bữa tiệc</h2>
+                        <h1 className="">
+                            <span className="text_block_line_mb">{`${manName}`}</span>
+                            <span className="text_block_line_mb"> & </span>
+                            <span className="text_block_line_mb">{`${womanName}`}</span>
+                        </h1>
+                        <div className="relative mt-12">
+                            <img
+                                className="relative z-10 w-full"
+                                src={renderEffectImage()}
+                            />
                             <div
-                                className="positions_moblie"
-                                style={{ position: "relative", top: 120 }}
-                            >
-                                <div>
-                                    <h1
-                                        className={`wind-song big-size text-9xl pt-20`}
-                                    >
-                                        {timeAndLocationOfWedding.dateOfEventWedding &&
-                                            formatDayHero(
-                                                timeAndLocationOfWedding.dateOfEventWedding
-                                            )}
-                                    </h1>
-                                    <h1>
-                                        SAVE
-                                        <span className="wind-song text-main text-2xl">
-                                            the
-                                        </span>
-                                        DATE
-                                    </h1>
-                                </div>
+                                className="absolute top-0 bottom-0 left-0 right-0 bg-cover bg-center"
+                                style={{ backgroundImage: `url('${url}')` }}
+                            ></div>
+                        </div>
+                        <div className="flex justify-center pt-3 w-full">
+                            <img src={""} alt="" className="w-full" />
+                        </div>
+                        <div
+                            className="positions_moblie"
+                            style={{ position: "relative", top: 120 }}
+                        >
+                            <div>
+                                <h1
+                                    className={`wind-song big-size text-9xl pt-20`}
+                                >
+                                    {timeAndLocationOfWedding.dateOfEventWedding &&
+                                        formatDayHero(
+                                            timeAndLocationOfWedding.dateOfEventWedding
+                                        )}
+                                </h1>
+                                <h1>
+                                    SAVE
+                                    <span className="wind-song text-main text-2xl">
+                                        the
+                                    </span>
+                                    DATE
+                                </h1>
                             </div>
                         </div>
                     </div>
