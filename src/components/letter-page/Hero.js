@@ -208,7 +208,7 @@ const Hero = ({
                     className={`text-center  relative section-mb layout-mw bg-no-repeat bg-center bg-contain`}
                     id="hero"
                 >
-                    <div>
+                    <div className="py-20">
                         <h2>Thân mời tới dự bữa tiệc</h2>
                         <h1 className="">
                             <span className="text_block_line_mb">{`${manName}`}</span>
