@@ -221,8 +221,7 @@ const CreatePage = () => {
   useEffect(() => {
     if (itemLocal) {
       itemLocal?.song && setRadioMusic(itemLocal?.song)
-      itemLocal?.invitationStyle &&
-        setRadioStyleContent(itemLocal?.invitationStyle.value)
+      itemLocal?.invitationStyle && (values.styleOfInvitation.value = itemLocal?.invitationStyle)
       itemLocal?.fontStyleOfTitle &&
         setRadioStyleTitle(itemLocal?.fontStyleOfTitle.value)
       itemLocal?.fontStyleOfContent &&
