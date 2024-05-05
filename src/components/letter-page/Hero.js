@@ -112,13 +112,13 @@ const Hero = ({
         return (
             <>
                 <div
-                    className={`text-center  relative section-mb layout-mw bg-no-repeat bg-[#FAF9F5] bg-center bg-contain h-[72rem] pt-10 sm:mb-[197px]`}
+                    className={`text-center  relative section-mb layout-mw bg-no-repeat bg-[#FAF9F5] bg-center bg-contain pt-10`}
                     id="hero"
                     // style={
                     //     url ? { backgroundImage: `url('${url}')` } : undefined
                     // }
                 >
-                    <div className="bg-no-repeat bg-center bg-cover h-[62rem]">
+                    <div className="bg-no-repeat bg-center bg-cover">
                         <div className="bg-[#FAF9F5]">
                             <h2 className="font-['SFUTrajanRegular'] text-lg">
                                 Thân mời tới dự bữa tiệc
