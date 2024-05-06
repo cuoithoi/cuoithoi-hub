@@ -101,6 +101,7 @@ const Mypage = () => {
   }, [])
 
   const navigateLetterpage = () => {
+    removeStorage("createLeter");
     if (user?.token) {
       if (limit < 3) {
         navigate(Alias.createPage, {
@@ -197,6 +198,7 @@ const Mypage = () => {
 
   const onChangeEditor = useCallback(
     (id, isPaid) => {
+      removeStorage("createLeter");
       if (id) {
         navigate(`${Alias.editor}/${id}`, {
           state: {

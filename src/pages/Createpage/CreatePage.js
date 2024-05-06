@@ -1393,7 +1393,7 @@ const CreatePage = () => {
         toast.success(Languages.errorMsg.success)
         setIdCreateRespon(response.data.invitation._id)
         setDisable(false)
-        setStorage('createLeter', JSON.stringify(response.data), 10 * 86400)
+        // setStorage('createLeter', JSON.stringify(response.data), 10 * 86400)
       } else {
         toast.error(Languages.errorMsg.errorSuccess)
       }
@@ -1412,7 +1412,7 @@ const CreatePage = () => {
       )
 
       if (responseupdate.errorCode == 0) {
-        setStorage('createLeter', JSON.stringify(responseupdate.data), 10 * 86400)
+        // setStorage('createLeter', JSON.stringify(responseupdate.data), 10 * 86400)
         toast.success(Languages.errorMsg.updatesuccess)
         setDisable(false)
         removeStorage('hasReloaded')
