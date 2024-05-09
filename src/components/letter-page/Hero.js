@@ -230,7 +230,7 @@ const Hero = ({
                         </div>
                         <div
                             className="positions_moblie"
-                            style={{ position: "relative", top: 120 }}
+                            style={{ position: "relative" }}
                         >
                             <div>
                                 <h1
