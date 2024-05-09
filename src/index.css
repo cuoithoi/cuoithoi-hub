@@ -1048,6 +1048,14 @@ p {
   overflow: auto;
 }
 
+.carousel .slider.animated{
+  transition: none !important;
+}
+
+.slider.animated {
+  transform: none;
+}
+
 .close-modal-icon {
   position: absolute;
   top: 0.25rem;
