@@ -466,12 +466,12 @@ const FamilyBride = forwardRef(({ props, idCreateRespon }, ref) => {
     const onChangeInviteTemp = useCallback((content, delta, source, editor) => {
         setInviteTemp(content)
         value.informationOfBride[0].contentOfInvitation = content
-    }, [value])
+    }, [value.informationOfBride[0].contentOfInvitation])
 
     const onChangePropagate = useCallback((content, delta, source, editor) => {
         setPropagate(content)
         value.informationOfBride[0].weddingVow = content
-    }, [value])
+    }, [value.informationOfBride[0].weddingVow])
 
     const onKeyPress = useCallback(() => {
 
