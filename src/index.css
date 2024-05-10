@@ -3166,13 +3166,13 @@ input:disabled {
 }
 
 .option_invitation_style .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map:nth-child(2) input:is([type='checkbox'], [type='radio']) {
-  background: url('../src/assets/home-image/IcNenVang.png');
+  background: url('../src/assets/home-image/IcRoyal.png');
   background-position-x: center;
   background-position-y: center;
 }
 
 .option_invitation_style .custom_style_radio .group_radio_choose_template .SelectInvitationTemplate_map:nth-child(3) input:is([type='checkbox'], [type='radio']) {
-  background: url('../src/assets/home-image/IcNenHong.png');
+  background: url('../src/assets/home-image/IcElegant.png');
   background-position-x: center;
   background-position-y: center;
 }

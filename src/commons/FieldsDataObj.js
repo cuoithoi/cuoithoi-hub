@@ -107,15 +107,15 @@ export const SelectMusic = [
 
 export const SelectInvitationStyle = [
   {
-    name: 'Default',
+    name: 'Basic',
     value: INVITATION_STYLES.DEFAULT,
   },
   {
-    name: 'Nền vàng',
+    name: 'Royal',
     value: INVITATION_STYLES.GOLDEN,
   },
   {
-    name: 'Nền hồng',
+    name: 'Elegant',
     value: INVITATION_STYLES.PINK,
   },
 ];
