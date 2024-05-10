@@ -844,36 +844,34 @@ const CreatePage = () => {
 
   const renderOpenStartEffect = useMemo(() => {
     return (
-      !editor && (
-        <Panel title={Languages.text.startEffect}>
-          <div className='sec_panel_use_feature_attend fullwidth_input_colum'>
-            <div className='title'>{Languages.text.checkedUseStartEffect}</div>
-            <div className='single_hor_input checkbox_inline_colum'>
-              <div className='Input_boxGroupInput__8ghvv man_inputStyle'>
-                <label className='Input_label__XHiJ4'>
-                  {Languages.text.use}
-                </label>
-                <div className='Input_formGroup__Ln91z '>
-                  <input
-                    name=''
-                    defaultChecked={
-                      itemLocal ? itemLocal?.isEffectOfOpenning : false
-                    }
-                    type='checkbox'
-                    className='Input_form_control__zkQn6 checkbox_input_style '
-                    onChange={(e) =>
-                      onChangeText(
-                        e.target.checked,
-                        INPUT_FIELDS.isEffectOfOpenning
-                      )
-                    }
-                  />
-                </div>
+      <Panel title={Languages.text.startEffect}>
+        <div className='sec_panel_use_feature_attend fullwidth_input_colum'>
+          <div className='title'>{Languages.text.checkedUseStartEffect}</div>
+          <div className='single_hor_input checkbox_inline_colum'>
+            <div className='Input_boxGroupInput__8ghvv man_inputStyle'>
+              <label className='Input_label__XHiJ4'>
+                {Languages.text.use}
+              </label>
+              <div className='Input_formGroup__Ln91z '>
+                <input
+                  name=''
+                  defaultChecked={
+                    itemLocal ? itemLocal?.isEffectOfOpenning : false
+                  }
+                  type='checkbox'
+                  className='Input_form_control__zkQn6 checkbox_input_style '
+                  onChange={(e) =>
+                    onChangeText(
+                      e.target.checked,
+                      INPUT_FIELDS.isEffectOfOpenning
+                    )
+                  }
+                />
               </div>
             </div>
           </div>
-        </Panel>
-      )
+        </div>
+      </Panel>
     )
   }, [editor])
 
