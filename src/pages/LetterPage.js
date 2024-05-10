@@ -143,8 +143,9 @@ const LetterPage = () => {
     navigate(Alias.homePage)
   }
 
-  //!isLetterOpen && !isLoading && isEffectOfOpenning
-  if (!isLetterOpen && !isLoading && isEffectOfOpenning) {
+
+  // !isLetterOpen && !isLoading && isEffectOfOpenning
+  if (!isLetterOpen && !isLoading && JSON.parse(isEffectOfOpenning)) {
     return (
       <div className='w-screen h-screen m-0 p-0 flex items-center justify-center bg-main'>
         <LetterEnvelopTrial
