@@ -391,7 +391,7 @@ const FamilyBride = forwardRef(({ props, idCreateRespon }, ref) => {
     const radioChangeHandlerPropagateTemplate = (text, values) => {
         setRadioPropagateTemplate(values)
         setPropagate(text)
-        value.informationOfBride[0].contentOfInvitation = text
+        value.informationOfBride[0].weddingVow = text
     }
 
     const renderMapRadio = useCallback((title, data, radioChangeHandlerTemplate, selected) => {
