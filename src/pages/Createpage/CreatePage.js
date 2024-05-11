@@ -844,7 +844,7 @@ const CreatePage = () => {
 
   const renderOpenStartEffect = useMemo(() => {
     return (
-      <Panel title={Languages.text.startEffect}>
+      !editor && (<Panel title={Languages.text.startEffect}>
         <div className='sec_panel_use_feature_attend fullwidth_input_colum'>
           <div className='title'>{Languages.text.checkedUseStartEffect}</div>
           <div className='single_hor_input checkbox_inline_colum'>
@@ -871,7 +871,7 @@ const CreatePage = () => {
             </div>
           </div>
         </div>
-      </Panel>
+      </Panel>)
     )
   }, [editor])
 
