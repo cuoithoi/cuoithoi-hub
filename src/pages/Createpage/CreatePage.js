@@ -856,7 +856,7 @@ const CreatePage = () => {
                 <input
                   name=''
                   defaultChecked={
-                    itemLocal ? itemLocal?.isEffectOfOpenning : false
+                    itemLocal ? JSON.parse(itemLocal?.isEffectOfOpenning) : false
                   }
                   type='checkbox'
                   className='Input_form_control__zkQn6 checkbox_input_style '
