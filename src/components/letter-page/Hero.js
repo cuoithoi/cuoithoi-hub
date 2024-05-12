@@ -229,12 +229,11 @@ const Hero = ({
                             <img src={""} alt="" className="w-full" />
                         </div>
                         <div
-                            className="positions_moblie"
                             style={{ position: "relative" }}
                         >
                             <div>
                                 <h1
-                                    className={`wind-song big-size text-9xl pt-20`}
+                                    className={`wind-song big-size text-9xl`}
                                 >
                                     {timeAndLocationOfWedding.dateOfEventWedding &&
                                         formatDayHero(
