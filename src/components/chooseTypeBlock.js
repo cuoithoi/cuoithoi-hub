@@ -2,10 +2,10 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Button } from './button';
 import { Alias, BUTTON_STYLES } from '@/commons/Constant.ts';
 import Languages from '@/commons/Languages';
-import itemImageNone from '@/assets/home-image/none.png'
-import itemImageCrown from '@/assets/home-image/crown.png'
+import itemImageNone from '@/assets/home-image/websiteImg1.png'
+import itemImageCrown from '@/assets/home-image/websiteImg2.png'
 import itemImageWave from '@/assets/home-image/wave.png'
-import itemImageHeart from '@/assets/home-image/heart.png'
+import itemImageHeart from '@/assets/home-image/websiteImg4.png'
 import { useNavigate } from 'react-router-dom';
 import itemPDFNone from '@/assets/pdf/pdf_none.pdf'
 import itemPDFCrown from '@/assets/pdf/pdf_crown.pdf'
