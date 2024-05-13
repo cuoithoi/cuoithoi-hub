@@ -148,11 +148,6 @@ export const Payment = forwardRef(
                                     </div>
                                     <div className='content_step'>
                                         <img src={ICQrLogo} alt='qr' />
-                                        <div className='infor'>
-                                            <span>Tên ngân hàng: {data[data.length - 1]?.nameBank}</span>
-                                            <span>Số tài khoản: {data[data.length - 1]?.numberBank}</span>
-                                            <span>Tên chủ tài khoản: Công ty TNHH Cưới Thôi</span>
-                                        </div>
                                         <div className="flex justify-center items-center gap-2 mt-4 underline text-lg" onClick={executeScroll}>
                                             <span>Tiếp tục</span>
                                             <span><FaArrowRight /></span>
