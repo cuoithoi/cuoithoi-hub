@@ -45,7 +45,7 @@ const LetterEnvelop = ({
             </div>
 
             <div
-              className={`overflow-hidden ${classes.letter} ${open && classes.lineUptop
+              className={`${classes.letter} ${open && classes.lineUptop
                 }`}
               style={{ zIndex: '1' }}
             >
@@ -56,9 +56,11 @@ const LetterEnvelop = ({
               </div>
             </div>
 
+            <div className='h-[100%] absolute left-0 right-0 bg-white bottom-[-50%]' style={{ zIndex: '2' }}></div>
+
             <div
               className={`${classes.envelopBodyImg} ${open && classes.shadow} ${open}`}
-              style={{ zIndex: '2' }}
+              style={{ zIndex: '3' }}
             >
               <img className={`${classes.shadow_left} ${classes.shadow_letter}`} src={shadow_left} alt='' />
               <img src={envelopBodyImg} alt='' />

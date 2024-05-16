@@ -49,11 +49,10 @@
 .envelopImg {
   position: absolute;
   top: 0;
-  z-index: 2;
   width: 100%;
   transform-origin: top;
   transition: all 0.6s ease-in-out 0.8s;
-  z-index: 3;
+  z-index: 4;
 }
 
 .envelopImg.envelopOpen {
@@ -64,7 +63,6 @@
 .envelopBodyImg {
   position: relative;
   top: 0;
-  z-index: 2;
   width: 100%;
 }
 
@@ -92,7 +90,6 @@
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   padding: 10px 10px;
   border-radius: 20px;
-  overflow: hidden;
 }
 
 .envelope>.letter>.text::after {
