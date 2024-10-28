@@ -126,7 +126,7 @@ const LetterPage = () => {
           await post(
             APi.convertBase64,
             {
-              _id: id,
+              _id: letter._id,
               data: image,
             },
             config
