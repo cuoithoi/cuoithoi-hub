@@ -412,7 +412,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
                 </div>
             </Panel>
 
-            <Panel noFields={true} title={Languages.text.weddingProgram} valiOpen={openPanel} icon={'🎤'} style={'panel_icon_style'}>
+            {/* <Panel noFields={true} title={Languages.text.weddingProgram} valiOpen={openPanel} icon={'🎤'} style={'panel_icon_style'}>
                 <div className='program_wedding'>
                     <div className='title'>
                         {Languages.text.useFeatureEvent}
@@ -476,7 +476,7 @@ const VideoandEvent = forwardRef(({ }, ref) => {
                     </div>
 
                 </div>
-            </Panel>
+            </Panel> */}
 
             <Panel title={Languages.text.warnning} valiOpen={openPanel} noFields={true} icon={'❗️'} style={'panel_icon_style'}>
                 <div className='fullwidth_input_colum'>

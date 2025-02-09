@@ -100,7 +100,7 @@ const CreatePage = () => {
   const [radioEffectBg, setRadioEffectBg] = useState('none')
   const [radioMusic, setRadioMusic] = useState(0)
 
-  const [maxLenghtAlbum, setMaxLenghtAlbum] = useState(15)
+  const [maxLenghtAlbum, setMaxLenghtAlbum] = useState(10)
 
   const [openPanel, setOpenPanel] = useState(true)
 
@@ -1789,11 +1789,18 @@ const CreatePage = () => {
           <div className='container mx-auto'>
             <div className='header header_edit'>
               <h1>{Languages.text.togetherCreate}</h1>
-              <div className='buttton_header'>
+              <div className='buttton_header flex flex-col gap-4'>
                 <Button
                   label={Languages.common.back}
                   isLowerCase
                   onPress={onShowModalAgree}
+                />
+                <Button
+                  label={Languages.buttonText.saveSettings}
+                  buttonStyle={BUTTON_STYLES.PINK}
+                  textStyle={BUTTON_STYLES.WHITE}
+                  onPress={onOpenSuccessConfirm}
+                  width={100}
                 />
               </div>
 
@@ -1936,8 +1943,8 @@ const CreatePage = () => {
                 <BankingGroom ref={refBankingGroom} />
                 <BankingBrice ref={refBankingBride} />
               </Panel>
-              {renderMusic}
-              {renderConfirmAttend}
+              {/* {renderMusic} */}
+              {/* {renderConfirmAttend} */}
               {renderGuestbook}
               {renderOpenStartEffect}
               {renderInvitationStyle}
@@ -1947,15 +1954,6 @@ const CreatePage = () => {
               {renderBuyPackageProduct}
               {renderProductAnother} */}
 
-              <div className='savesetting_btn'>
-                <Button
-                  label={Languages.buttonText.saveSettings}
-                  buttonStyle={BUTTON_STYLES.PINK}
-                  textStyle={BUTTON_STYLES.WHITE}
-                  onPress={onOpenSuccessConfirm}
-                  width={100}
-                />
-              </div>
               <div className='wrap_flop_note_using float_display'>
                 <div className='box_note_using'>
                   <ul>

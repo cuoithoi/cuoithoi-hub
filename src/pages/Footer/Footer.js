@@ -14,6 +14,8 @@ import Popup from '@/components/modal/Popup'
 
 const Footer = () => {
 
+    return "";
+
     const refModal = useRef(null)
 
     const onChangeShowModalPayment = () => {

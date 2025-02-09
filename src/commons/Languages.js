@@ -101,7 +101,7 @@ const Languages = {
       'Tạo thiệp dễ dàng, chia sẻ nhanh chóng, & sửa đổi không giới hạn!',
     showFullIf: 'Hiển thị đầy đủ thông tin:',
     address: 'Địa điểm diễn ra lễ cưới',
-    albumWed: 'Album ảnh cưới (tối đa 15 ảnh)',
+    albumWed: 'Album ảnh cưới (tối đa 10 ảnh)',
     listCustomer: 'Danh sách khách mời',
     effectOpen: 'Hiệu ứng mở thiệp đẹp & chuyên nghiệp',
     contentEffect:

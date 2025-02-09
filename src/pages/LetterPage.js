@@ -165,7 +165,7 @@ const LetterPage = () => {
     <div ref={containerRef} className={`letter-wrapper ${bgColor}`}>
 
       <div className={`letter-layout overflow-hidden ${(invitationStyle == INVITATION_STYLES.PINK) && styles.pinkBg}`}>
-        <NavButton setIsNavOpen={setIsNavOpen} song={song} />
+        <NavButton setIsNavOpen={setIsNavOpen} />
 
         <Hero
           effectImage={effectImage}
@@ -186,7 +186,12 @@ const LetterPage = () => {
           invitationStyle={invitationStyle}
         />
         <Gallery1 album={album} id={_id} invitationStyle={invitationStyle} />
-        {isUseVideo && <YoutubeVideo videoLink={videoLink} invitationStyle={invitationStyle} />}
+        {isUseVideo && (
+          <YoutubeVideo
+            videoLink={videoLink}
+            invitationStyle={invitationStyle}
+          />
+        )}
         <TimeLocation
           timeAndLocationOfWedding={timeAndLocationOfWedding}
           timeAndLocationOfEgagement={timeAndLocationOfEgagement}
@@ -194,18 +199,27 @@ const LetterPage = () => {
           isUseDamNgo={isUseDamNgo}
           invitationStyle={invitationStyle}
         />
-        <Schedule eventOfProgram={eventOfProgram} note={note} isUseEvent={isUseEvent} invitationStyle={invitationStyle} />
-        {
-          isUseBanking && <Congrats
+        <Schedule
+          eventOfProgram={eventOfProgram}
+          note={note}
+          isUseEvent={isUseEvent}
+          invitationStyle={invitationStyle}
+        />
+        {isUseBanking && (
+          <Congrats
             setModalContent={setModalContent}
             setIsOpen={setIsOpen}
             informationOfBride={informationOfBride}
             informationOfGroom={informationOfGroom}
             invitationStyle={invitationStyle}
           />
-        }
-        {isUseGuestBook && <Message id={_id} invitationStyle={invitationStyle}/>}
-        {isUseConfirm && <Response invitationsId={_id} invitationStyle={invitationStyle} />}
+        )}
+        {isUseGuestBook && (
+          <Message id={_id} invitationStyle={invitationStyle} />
+        )}
+        {isUseConfirm && (
+          <Response invitationsId={_id} invitationStyle={invitationStyle} />
+        )}
         <FooterLogo album={imgWeddingVow || album[0]} weddingVow={weddingVow} />
       </div>
 
@@ -218,7 +232,7 @@ const LetterPage = () => {
       />
       <SnowFall type={effectBackgroud.value} />
     </div>
-  )
+  );
 }
 
 export default React.memo(LetterPage)
