@@ -24,6 +24,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import Languages from './commons/Languages'
 import ForgotPassOtp from './pages/ForgetPassOtp'
 import ChangePassword from './pages/ChangePassword'
+import LetterPreviewPage from './pages/LetterPreviewPage'
 
 export const PageTitle = (props) => {
   useEffect(() => {
@@ -40,6 +41,7 @@ function App() {
           <Route path={Alias.homePage} element={<HomePage />} />
           <Route path={Alias.mypage} element={<Mypage />} />
           <Route path={`${Alias.letterPage}/:id`} element={<LetterPage />} />
+          <Route path={`${Alias.letterPreviewPage}`} element={<LetterPreviewPage />} />
           {/* <Route
             path={`${Alias.letterPage}/:id`}
             element={

@@ -74,6 +74,7 @@ export const Alias = {
   changePassword: "/thay-doi-mat-khau",
   customerCare: "/cham-soc-khach-hang",
   editor: "/chinh-sua-thiep",
+  letterPreviewPage: "/letterPreviewPage",
 };
 
 export enum BUTTON_STYLES {

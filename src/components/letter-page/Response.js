@@ -22,7 +22,7 @@ const schema = yup.object().shape({
     isVerified: yup.number().required(),
     numberPeopleParticipate: yup.number().required(),
 });
-const Response = ({ invitationsId, invitationStyle }) => {
+const Response = ({ invitationsId, invitationStyle, preview=false }) => {
     const [guestSide, setGuestSide] = useState(null);
     const {
         register,
@@ -43,6 +43,12 @@ const Response = ({ invitationsId, invitationStyle }) => {
         setNumberPeopleAttend((prev) => prev - 1);
     };
     const onSubmit = (data) => {
+        if (preview) {
+          toast.success(
+            "Gửi phản hồi thành công. Sau 10 giây mới có thể gửi lại"
+          );
+          return;
+        }
         if (!guestSide) {
             toast.error("Vui lòng chọn khách cô dâu hoặc chú rể");
             return;

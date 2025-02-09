@@ -14,10 +14,33 @@ import CommentDetail from "@/pages/CommentDetail";
 import { Convert } from "../../commons/Constant.ts";
 import { INVITATION_STYLES } from "@/commons/Constant.ts";
 import gradient from "@/assets/invitation/golden/gradient.jpg";
+const mockComents = [
+    {
+      createTime: "2024-03-31T15:05:08.335Z",
+      _id: "6609929463f3244a0b0d6fa4",
+      namePeopleSend: "Cưới Thôi",
+      desWish: "Congratulation",
+      invitationsId: "66097803f41fc623f65c4991",
+      __v: 0,
+    },
+    {
+      createTime: "2024-03-31T15:05:08.335Z",
+      _id: "660992a663f3244a0b0d6fa6",
+      namePeopleSend: "Cưới Thôi",
+      desWish: "Chuc ac hp",
+      invitationsId: "66097803f41fc623f65c4991",
+      __v: 0,
+    },
+  ]
 
-const Message = ({ id, invitationStyle }) => {
+const Message = ({ id, invitationStyle, preview=false }) => {
     const [isLoading, setIsLoading] = useState(true);
-    const [cmtList, setCmtList] = useState([]);
+    const [cmtList, setCmtList] = useState(
+      preview
+        ? mockComents
+        : []
+    );
+
     const [cmtListProps, setCmtListProps] = useState([]);
     const cmtRef = useRef();
     const modalRef = useRef();
@@ -39,10 +62,11 @@ const Message = ({ id, invitationStyle }) => {
                 console.log(err);
             }
         };
-        getData();
+        preview ? setIsLoading(false) : getData();
     }, []);
 
     const deleteCmt = (index) => {
+        if(preview) return;
         let newCmtList = cmtList;
         newCmtList = newCmtList.filter(function (_, i) {
             return i !== index;
@@ -51,9 +75,13 @@ const Message = ({ id, invitationStyle }) => {
     };
 
     const handleShowCmtDetail = async () => {
+      if (preview) {
+        setCmtListProps(mockComents);
+      } else {
         const resp = await customFetch.get(`/get/list-wish?_id=${id}`);
         setCmtListProps(resp.data.data[0].data);
-        cmtRef.current.showModal();
+      }
+      cmtRef.current.showModal();
     };
 
     if (isLoading) return;
@@ -123,6 +151,7 @@ const Message = ({ id, invitationStyle }) => {
                             id={id}
                             setCmtList={setCmtList}
                             handleCloseModal={handleCloseModalWriting}
+                            preview={preview}
                         />
                     }
                 />
@@ -206,6 +235,7 @@ const Message = ({ id, invitationStyle }) => {
                             id={id}
                             setCmtList={setCmtList}
                             handleCloseModal={handleCloseModalWriting}
+                            preview={preview}
                         />
                     }
                 />
@@ -282,6 +312,7 @@ const Message = ({ id, invitationStyle }) => {
                             id={id}
                             setCmtList={setCmtList}
                             handleCloseModal={handleCloseModalWriting}
+                            preview={preview}
                         />
                     }
                 />

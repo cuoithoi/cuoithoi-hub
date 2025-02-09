@@ -16,7 +16,7 @@ const schema = yup.object().shape({
   desWish: yup.string().required('Viết lời chúc cho cô dâu chú rể')
 })
 
-const WriteMessage = ({ id, setCmtList, handleCloseModal }) => {
+const WriteMessage = ({ id, setCmtList, handleCloseModal, preview=false }) => {
   const {
     register,
     handleSubmit,
@@ -43,7 +43,10 @@ const WriteMessage = ({ id, setCmtList, handleCloseModal }) => {
         toast.error('Gửi lời chúc không thành công')
       }
     }
-    postData()
+    if (preview) {
+      toast.success("Gửi lời chúc thành công");
+      handleCloseModal();
+    } else postData();
   }
 
   return (

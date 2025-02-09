@@ -14,10 +14,10 @@ import { INVITATION_STYLES } from "@/commons/Constant.ts";
 import flower5 from "@/assets/invitation/golden/flower5.svg";
 import flower6 from "@/assets/invitation/golden/flower6.svg";
 
-const Gallery = ({ id, invitationStyle }) => {
+const Gallery = ({ id, invitationStyle, preview=false, defaultAlbum=[] }) => {
     const modalRef = useRef();
     const [isLoading, setIsLoading] = useState(true);
-    const [album, setAlbum] = useState([]);
+    const [album, setAlbum] = useState(defaultAlbum);
     const [selectedItem, setSelectedItem] = useState(0);
     const [open, setOpen] = useState(false);
 
@@ -28,7 +28,7 @@ const Gallery = ({ id, invitationStyle }) => {
             setAlbum(resp.data.data);
             setIsLoading(false);
         };
-        getDataImage();
+        preview ? setIsLoading(false) : getDataImage();
     }, []);
 
     const showLightbox = useCallback(() => {
@@ -37,10 +37,12 @@ const Gallery = ({ id, invitationStyle }) => {
 
     const handleLikeImage = useCallback(async (index, _id) => {
         try {
-            await api.post("/like-image", {
-                _id: _id,
-                like: true,
-            });
+            if(!preview) {
+                await api.post("/like-image", {
+                    _id: _id,
+                    like: true,
+                });
+            }
             const newAlbum = [...album];
             newAlbum[index].totalLike = newAlbum[index].totalLike + 1;
             setAlbum(newAlbum);

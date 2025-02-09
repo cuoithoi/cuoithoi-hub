@@ -49,7 +49,8 @@ const Languages = {
     continue: 'Tiếp tục',
     saveDraf: 'Lưu bản nháp',
     pay: 'Kích hoạt thiệp cưới',
-    listLetter: 'Danh sách thiệp'
+    listLetter: 'Danh sách thiệp',
+    preview: 'Preview',
   },
   buttonText: {
     createTC: 'Tạo thiệp cưới',
