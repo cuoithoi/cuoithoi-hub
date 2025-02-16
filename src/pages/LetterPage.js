@@ -21,10 +21,13 @@ import { getDataApi } from '@/utils/axios'
 import styles from './LetterPage.module.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import SnowFall from '@/components/letter-page/SnowFall'
-import { Alias, APi, config, INVITATION_STYLES } from '@/commons/Constant.ts'
+import { Alias, APi, config, INVITATION_STYLES, Status } from '@/commons/Constant.ts'
 import { getUserFromLocalStorage } from '@/utils/localStorage'
 import html2canvas from 'html2canvas'
 import { useBaseService } from '@/utils/BaseServices'
+import dayjs from 'dayjs'
+
+const ADS_STARTED_DATE = '2022-02-15'
 
 const LetterPage = () => {
   const { id } = useParams()
@@ -57,7 +60,6 @@ const LetterPage = () => {
       setIsLoading(true)
       const data = await getDataApi(`/invitation-detail?_id=${id}`)
       setIsLoading(false)
-
       setLetter(data.data)
     }
     fetchData()
@@ -76,6 +78,14 @@ const LetterPage = () => {
 
     return style
   }, [])
+
+  const displayAds = useMemo(() => {
+    if(!letter) return false
+    return (
+      letter.status != Status.ACTIVE &&
+      dayjs(letter.createTime).isAfter(dayjs(ADS_STARTED_DATE))
+    );
+  }, [letter]);
 
   if (isLoading) return
   const {
@@ -163,8 +173,35 @@ const LetterPage = () => {
   }
   return (
     <div ref={containerRef} className={`letter-wrapper ${bgColor}`}>
+      {
+        displayAds && (
+          <>
+            <div className={styles.leftGoogleAdsPlaceholder}></div>
 
-      <div className={`letter-layout overflow-hidden ${(invitationStyle == INVITATION_STYLES.PINK) && styles.pinkBg}`}>
+            <ins
+              className={styles.leftGoogleAds}
+              data-ad-client="ca-pub-9262218469295338"
+              data-ad-slot="4446932927"
+              data-ad-format="auto"
+              data-full-width-responsive="true"
+            ></ins>
+            <ins
+              className={styles.rightGoogleAds}
+              data-ad-client="ca-pub-9262218469295338"
+              data-ad-slot="1151256569"
+              data-ad-format="auto"
+              data-full-width-responsive="true"
+            ></ins>
+          </>
+        )
+      }
+
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      <div
+        className={`letter-layout overflow-hidden ${
+          invitationStyle == INVITATION_STYLES.PINK && styles.pinkBg
+        }`}
+      >
         <NavButton setIsNavOpen={setIsNavOpen} />
 
         <Hero
@@ -231,6 +268,9 @@ const LetterPage = () => {
         index={index}
       />
       <SnowFall type={effectBackgroud.value} />
+      {displayAds && (
+        <div className={styles.rightGoogleAdsPlaceholder}></div>
+      )}
     </div>
   );
 }

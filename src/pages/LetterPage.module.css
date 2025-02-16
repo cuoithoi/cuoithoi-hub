@@ -1,3 +1,52 @@
 .pinkBg {
   background-color: #FAFAFA;
 }
+
+.leftGoogleAds {
+  display: block;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 200px;
+  background-color: gray;
+  @media screen and (max-width:430px) {
+    right: 0;
+    width: unset;
+    height: 100px;
+    bottom: unset;
+    z-index: 999;
+  }
+}
+
+.leftGoogleAdsPlaceholder{
+  height: 0;
+  @media screen and (max-width:430px) {
+    height: 100px;
+  }
+}
+
+.rightGoogleAds {
+  display: block;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 200px;
+  background-color: gray;
+  @media screen and (max-width:430px) {
+    right: 0;
+    width: unset;
+    height: 100px;
+    top: unset;
+    left: 0;
+    z-index: 999;
+  }
+}
+
+.rightGoogleAdsPlaceholder{
+  height: 0;
+  @media screen and (max-width:430px) {
+    height: 100px;
+  }
+}
