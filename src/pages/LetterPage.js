@@ -27,7 +27,7 @@ import html2canvas from 'html2canvas'
 import { useBaseService } from '@/utils/BaseServices'
 import dayjs from 'dayjs'
 
-const ADS_STARTED_DATE = '2022-02-15'
+const ADS_STARTED_DATE = '2025-02-15'
 
 const LetterPage = () => {
   const { id } = useParams()
