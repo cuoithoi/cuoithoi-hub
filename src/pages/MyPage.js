@@ -443,9 +443,7 @@ const Mypage = () => {
                                   />
                                 )}
 
-
-
-{item?.isPaid === true && (
+                                {item?.isPaid === true && (
                                   <Button
                                     label={Languages.buttonText.dowloadTc}
                                     buttonStyle={BUTTON_STYLES.PINK}
@@ -500,7 +498,11 @@ const Mypage = () => {
 
                               <td className="border-grey-light hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer">
                                 <Button
-                                  label={Languages.buttonText.copylink}
+                                  label={
+                                    item?.status != Status.ACTIVE
+                                      ? Languages.buttonText.copylinkFree
+                                      : Languages.buttonText.copylink
+                                  }
                                   buttonStyle={BUTTON_STYLES.DARKMODE}
                                   textStyle={BUTTON_STYLES.WHITE}
                                   autocenter
