@@ -149,23 +149,28 @@ export const Button = ({
     }
 
     return (
-        <button
-            type={type}
-            disabled={isLoading || disabled}
-            className={`bg-contain ${getContainerStyle} ${getBorderColor}  ${
-                rounded ? styles.borderFull : ""
-            } ${autocenter && styles.autocenter}`}
-            style={style}
-            onClick={_onPress}
-        >
-            {leftIcon}
-            {label && (
-                <span className={getTextStyle}>
-                    {isLowerCase ? label : `${label} `.toUpperCase()}
-                </span>
-            )}
+      <button
+        type={type}
+        disabled={isLoading || disabled}
+        className={`bg-contain ${getContainerStyle} ${getBorderColor}  ${
+          rounded ? styles.borderFull : ""
+        } ${autocenter && styles.autocenter}`}
+        style={style}
+        onClick={_onPress}
+      >
+        {leftIcon}
+        {label && (
+          <span
+            style={{
+              whiteSpace: "pre-line",
+            }}
+            className={getTextStyle}
+          >
+            {isLowerCase ? label : `${label} `.toUpperCase()}
+          </span>
+        )}
 
-            {rightIcon}
-        </button>
+        {rightIcon}
+      </button>
     );
 };

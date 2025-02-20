@@ -187,10 +187,10 @@ const Mypage = () => {
           {Languages.text.packageServices}
         </th> */}
         <th className='p-3 text-center' width='230px'>
-          {Languages.buttonText.edit}
+          {Languages.text.manager}
         </th>
         <th className='p-3 text-center' width='230px'>
-          {Languages.text.manager}
+          {Languages.buttonText.pay}
         </th>
       </tr>
     )
@@ -383,25 +383,29 @@ const Mypage = () => {
                           return (
                             <tr
                               key={index}
-                              className='wrap sm:table-row mb-2 sm:mb-0'
+                              className="wrap sm:table-row mb-2 sm:mb-0"
                             >
-                              <td className='border-grey-light hover:bg-gray-100 p-3'>
-                                <p className='formatnotColor free'>{item?._id}</p>
+                              <td className="border-grey-light hover:bg-gray-100 p-3">
+                                <p className="formatnotColor free">
+                                  {item?._id}
+                                </p>
                               </td>
-                              <td className='border-grey-light hover:bg-gray-100 p-3'>
-                                <p className='formatnotColor free'>{item?.url || "___"}</p>
+                              <td className="border-grey-light hover:bg-gray-100 p-3">
+                                <p className="formatnotColor free">
+                                  {item?.url || "___"}
+                                </p>
                               </td>
-                              <td className='border-grey-light hover:bg-gray-100 p-3 truncate'>
+                              <td className="border-grey-light hover:bg-gray-100 p-3 truncate">
                                 {renderStatus(item?.status)}
                               </td>
-                              <td className='border-grey-light hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer'>
-                                <p className='date'>
+                              <td className="border-grey-light hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer">
+                                <p className="date">
                                   {
                                     item?.timeAndLocationOfWedding
                                       ?.dateOfEventWedding
                                   }
                                 </p>
-                                <p className='onlydateplus'>
+                                <p className="onlydateplus">
                                   {renderCoundownTimeStart(
                                     item?.timeAndLocationOfWedding
                                       ?.dateOfEventWedding
@@ -412,7 +416,7 @@ const Mypage = () => {
                                 <p className='date'>{item?.productId?.name}</p>
                                 <p className='autodelete'>(Full Package)</p>
                               </td> */}
-                              <td className='border-grey-light hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer'>
+                              <td className="border-grey-light hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer">
                                 {item?.status != Status.EXPIRE && (
                                   <Button
                                     label={Languages.buttonText.edit}
@@ -421,7 +425,9 @@ const Mypage = () => {
                                     autocenter
                                     width={100}
                                     isLowerCase
-                                    onPress={() => onChangeEditor(item?._id, item?.isPaid)}
+                                    onPress={() =>
+                                      onChangeEditor(item?._id, item?.isPaid)
+                                    }
                                   />
                                 )}
 
@@ -437,33 +443,9 @@ const Mypage = () => {
                                   />
                                 )}
 
-                                {item?.isPaid === true && (
-                                  <Button
-                                    label={Languages.buttonText.copylink}
-                                    buttonStyle={BUTTON_STYLES.DARKMODE}
-                                    textStyle={BUTTON_STYLES.WHITE}
-                                    autocenter
-                                    width={100}
-                                    isLowerCase
-                                    onPress={() => onChangeClipBoard(item?.url || item?._id)}
-                                  />
-                                )}
-                              </td>
 
-                              <td className='border-grey-light hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer'>
-                                {item?.status != Status.ACTIVE && (
-                                  <Button
-                                    label={Languages.buttonText.payment}
-                                    buttonStyle={BUTTON_STYLES.PINK}
-                                    textStyle={BUTTON_STYLES.WHITE}
-                                    autocenter
-                                    width={100}
-                                    isLowerCase
-                                    onPress={() => onChangePayment(item?._id, item?.totalAmount)}
-                                  />
-                                )}
 
-                                {item?.isPaid === true && (
+{item?.isPaid === true && (
                                   <Button
                                     label={Languages.buttonText.dowloadTc}
                                     buttonStyle={BUTTON_STYLES.PINK}
@@ -471,7 +453,9 @@ const Mypage = () => {
                                     autocenter
                                     width={100}
                                     isLowerCase
-                                    onPress={() => onChangeDowloadLetter(item?.urlDownload)}
+                                    onPress={() =>
+                                      onChangeDowloadLetter(item?.urlDownload)
+                                    }
                                   />
                                 )}
 
@@ -483,7 +467,9 @@ const Mypage = () => {
                                     autocenter
                                     width={100}
                                     isLowerCase
-                                    onPress={() => onChangeDowloadClient(item?._id)}
+                                    onPress={() =>
+                                      onChangeDowloadClient(item?._id)
+                                    }
                                   />
                                 )}
 
@@ -495,7 +481,9 @@ const Mypage = () => {
                                     autocenter
                                     width={100}
                                     isLowerCase
-                                    onPress={() => onChangeDowloadWish(item?._id)}
+                                    onPress={() =>
+                                      onChangeDowloadWish(item?._id)
+                                    }
                                   />
                                 )}
 
@@ -509,8 +497,38 @@ const Mypage = () => {
                                   onPress={() => onChangeDetele(item._id)}
                                 />
                               </td>
+
+                              <td className="border-grey-light hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer">
+                                <Button
+                                  label={Languages.buttonText.copylink}
+                                  buttonStyle={BUTTON_STYLES.DARKMODE}
+                                  textStyle={BUTTON_STYLES.WHITE}
+                                  autocenter
+                                  width={100}
+                                  isLowerCase
+                                  onPress={() =>
+                                    onChangeClipBoard(item?.url || item?._id)
+                                  }
+                                />
+                                {item?.status != Status.ACTIVE && (
+                                  <Button
+                                    label={Languages.buttonText.payment}
+                                    buttonStyle={BUTTON_STYLES.PINK}
+                                    textStyle={BUTTON_STYLES.WHITE}
+                                    autocenter
+                                    width={100}
+                                    isLowerCase
+                                    onPress={() =>
+                                      onChangePayment(
+                                        item?._id,
+                                        item?.totalAmount
+                                      )
+                                    }
+                                  />
+                                )}
+                              </td>
                             </tr>
-                          )
+                          );
                         })
                       ) : <tr className='flex noItemTd flex-col flex-no wrap sm:table-row mb-2 sm:mb-0'>
                         <td className='border-grey-light hover:bg-gray-100 p-3'>
@@ -526,7 +544,7 @@ const Mypage = () => {
           </div>
         )}
 
-        {user && (
+        {user && listDataApi.length<3 && (
           <div className='container mx-auto'>
             <div className='btn_box_create onlogged_show'>
               <img src={Icpolygon} title='polygon' />
