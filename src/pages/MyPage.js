@@ -1,104 +1,104 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import Header from '@/components/header'
-import Footer from './Footer/Footer'
-import Icpolygon from '@/assets/home-image/IcPolygon.svg'
-import Languages from '@/commons/Languages'
-import { Button } from '@/components/button'
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+import Header from "@/components/header";
+import Footer from "./Footer/Footer";
+import Icpolygon from "@/assets/home-image/IcPolygon.svg";
+import Languages from "@/commons/Languages";
+import { Button } from "@/components/button";
 import {
   APi,
   BUTTON_STYLES,
   CheckParams,
   Status,
   coppyLink,
-} from '@/commons/Constant.ts'
-import ChooseTypeBlock from '@/components/chooseTypeBlock'
-import Loading from '@/components/Loading'
-import { Alias } from '@/commons/Constant.ts'
-import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import Popup from '@/components/modal/Popup'
-import IcInf from '@/assets/home-image/IcInf.svg'
-import {
-  getLocalAccessToken,
-  removeStorage,
-} from '@/utils/localStorage'
-import { csv, useBaseService } from '@/utils/BaseServices'
-import dayjs from 'dayjs'
-import fileDownload from 'js-file-download'
-import { Payment } from '@/components/Payment'
-import { toast } from 'react-toastify'
-import { isArray } from 'lodash'
-import { InformationSevices } from '@/components/informationSevices'
+} from "@/commons/Constant.ts";
+import ChooseTypeBlock from "@/components/chooseTypeBlock";
+import Loading from "@/components/Loading";
+import { Alias } from "@/commons/Constant.ts";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import Popup from "@/components/modal/Popup";
+import IcInf from "@/assets/home-image/IcInf.svg";
+import { getLocalAccessToken, removeStorage } from "@/utils/localStorage";
+import { csv, useBaseService } from "@/utils/BaseServices";
+import dayjs from "dayjs";
+import fileDownload from "js-file-download";
+import { Payment } from "@/components/Payment";
+import { toast } from "react-toastify";
+import { isArray } from "lodash";
 
 const Mypage = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const [checkParams, setCheckParams] = useState(CheckParams.NOTOKEN)
-  const [listDataApi, setListDataApi] = useState([])
-  const [limit, setLimit] = useState(0)
-  const { user } = useSelector((store) => store.auth)
+  const [checkParams, setCheckParams] = useState(CheckParams.NOTOKEN);
+  const [listDataApi, setListDataApi] = useState([]);
+  const [limit, setLimit] = useState(0);
+  const { user } = useSelector((store) => store.auth);
 
-  const refModal = useRef(null)
-  const refPayment = useRef(null)
+  const refModal = useRef(null);
+  const refPayment = useRef(null);
 
-  const { get, del } = useBaseService()
+  const { get, del, post } = useBaseService();
 
   useEffect(() => {
-    window.scrollTo(0, 0)
-    removeStorage('hasReloaded');
-  }, [])
+    window.scrollTo(0, 0);
+    removeStorage("hasReloaded");
+  }, []);
 
   const config = {
-    headers: { Authorization: 'Bearer ' + user?.token },
-  }
+    headers: { Authorization: "Bearer " + user?.token },
+  };
 
   useEffect(() => {
-    if (!user) return
+    if (!user) return;
     // if (user?.token) {
     const asyncListPage = async () => {
       try {
         const response = await get(APi.listInvitation, config, {
           userId: user?.userId,
-        })
-        setListDataApi(response.data)
+        });
+        setListDataApi(response.data);
       } catch (error) {
-        toast.warn('Hệ thống tải lại dữ liệu', {
-          autoClose: 1000
-        })
-        window.location.reload()
+        toast.warn("Hệ thống tải lại dữ liệu", {
+          autoClose: 1000,
+        });
+        window.location.reload();
       }
-    }
+    };
 
-    asyncListPage()
+    asyncListPage();
 
     const interval = setInterval(() => {
-      asyncListPage()
-    }, 10000)
+      asyncListPage();
+    }, 10000);
 
     return () => {
-      clearInterval(interval)
-    }
+      clearInterval(interval);
+    };
 
     // }
-  }, [])
+  }, []);
 
   useEffect(() => {
-
-    if (!user) return
+    if (!user) return;
 
     const asyncLimit = async () => {
       try {
         const response = await get(APi.checkLimit, config, {
           userId: user?.userId,
-        })
-        setLimit(response.data.total)
+        });
+        setLimit(response.data.total);
       } catch (error) {
-        console.error('Đã xảy ra lỗi:', error)
+        console.error("Đã xảy ra lỗi:", error);
       }
-    }
-    asyncLimit()
-
-  }, [])
+    };
+    asyncLimit();
+  }, []);
 
   const navigateLetterpage = () => {
     removeStorage("createLeter");
@@ -108,93 +108,95 @@ const Mypage = () => {
           state: {
             createpage: true,
           },
-        })
-        window.location.reload()
+        });
+        window.location.reload();
       } else {
-        setCheckParams(CheckParams.LIMIT)
-        refModal.current?.showModal()
+        setCheckParams(CheckParams.LIMIT);
+        refModal.current?.showModal();
       }
-
     } else {
-      setCheckParams(CheckParams.NOTOKEN)
-      refModal.current?.showModal()
+      setCheckParams(CheckParams.NOTOKEN);
+      refModal.current?.showModal();
     }
-  }
+  };
 
   const onPressLogin = () => {
-    navigate(Alias.login)
-  }
+    navigate(Alias.login);
+  };
 
   const renderContentModal = useMemo(() => {
     return (
       (checkParams == CheckParams.NOTOKEN && (
-        <div className='renderContentModal'>
-          <div className='head'>
-            <img src={IcInf} alt={'icinf'} />
+        <div className="renderContentModal">
+          <div className="head">
+            <img src={IcInf} alt={"icinf"} />
             <h2>{Languages.text.nologin}</h2>
           </div>
-          <div className='contentModal'>
+          <div className="contentModal">
             <p>{Languages.text.nologinContent}</p>
           </div>
         </div>
       )) ||
       (checkParams == CheckParams.EDITOR && (
-        <div className='renderContentModal'>
-          <div className='head'>
-            <img src={IcInf} alt={'icinf'} />
+        <div className="renderContentModal">
+          <div className="head">
+            <img src={IcInf} alt={"icinf"} />
             <h2>{Languages.text.noletter}</h2>
           </div>
-          <div className='contentModal'>
+          <div className="contentModal">
             <p>{Languages.text.noletterContent}</p>
           </div>
         </div>
       )) ||
       (checkParams == CheckParams.LIMIT && (
-        <div className='renderContentModal'>
-          <div className='head'>
-            <img src={IcInf} alt={'icinf'} />
+        <div className="renderContentModal">
+          <div className="head">
+            <img src={IcInf} alt={"icinf"} />
             <h2>{Languages.text.limit}</h2>
           </div>
-          <div className='contentModal'>
+          <div className="contentModal">
             <p>{Languages.text.contentLimit}</p>
           </div>
         </div>
       ))
-    )
-  }, [checkParams])
+    );
+  }, [checkParams]);
 
   const renderModal = useMemo(() => {
-    return <Popup
-      ref={refModal}
-      content={renderContentModal}
-      btnCancelText={Languages.common.cancel}
-      btnSubmitText={Languages.common.agree}
-      onSuccessPress={onPressLogin}
-    />
-
-  }, [renderContentModal])
+    return (
+      <Popup
+        ref={refModal}
+        content={renderContentModal}
+        btnCancelText={Languages.common.cancel}
+        btnSubmitText={Languages.common.agree}
+        onSuccessPress={onPressLogin}
+      />
+    );
+  }, [renderContentModal]);
 
   const renderTable = useMemo(() => {
     return (
-      <tr className='bg-teal-400 wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0'>
-        <th className='p-3 text-center'>{Languages.text.productNumber}</th>
-        <th className='p-3 text-center'>{Languages.text.customURL}</th>
-        <th className='p-3 text-center' width='200px'>{Languages.text.status}</th>
-        <th className='p-3 text-center' width='200px'>
+      <tr className="bg-teal-400 wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
+        <th className="p-3 text-center">{Languages.text.productNumber}</th>
+        <th className="p-3 text-center">{Languages.text.customURL}</th>
+        <th className="p-3 text-center" width="200px">
+          {Languages.text.status}
+        </th>
+        <th className="p-3 text-center" width="200px">
           {Languages.text.date}
         </th>
         {/* <th className='p-3 text-center' width='200px'>
           {Languages.text.packageServices}
         </th> */}
-        <th className='p-3 text-center' width='230px'>
+        <th className="p-3 text-center" width="230px">
           {Languages.text.manager}
         </th>
-        <th className='p-3 text-center' width='230px'>
+        <th className="p-3 text-center" width="230px">
           {Languages.buttonText.pay}
         </th>
       </tr>
-    )
-  }, [])
+    );
+  }, []);
 
   const onChangeEditor = useCallback(
     (id, isPaid) => {
@@ -205,78 +207,80 @@ const Mypage = () => {
             editor: isPaid,
             id: id,
           },
-        })
+        });
       } else {
-        setCheckParams(CheckParams.EDITOR)
-        refModal.current?.showModal()
+        setCheckParams(CheckParams.EDITOR);
+        refModal.current?.showModal();
       }
     },
     [setCheckParams]
-  )
+  );
 
   const onChangeSeeBefore = useCallback(
     (id) => {
       if (id) {
-        navigate(`${Alias.letterPage}/${id}`)
+        navigate(`${Alias.letterPage}/${id}`);
       } else {
-        setCheckParams(CheckParams.EDITOR)
-        refModal.current?.showModal()
+        setCheckParams(CheckParams.EDITOR);
+        refModal.current?.showModal();
       }
     },
     [setCheckParams]
-  )
+  );
 
   const renderStatus = useCallback((value) => {
     if (value === Status.ACTIVE)
       return (
-        <p className='formatnotColor complete'>{Languages.text.complete}</p>
-      )
+        <p className="formatnotColor complete">{Languages.text.complete}</p>
+      );
     else if (value === Status.INACTIVE)
-      return <p className='formatnotColor free'>{Languages.text.free}</p>
+      return <p className="formatnotColor free">{Languages.text.free}</p>;
     else if (value === Status.DRAFT)
       return (
-        <p className='formatnotColor free'>{Languages.text.draffversion}</p>
-      )
+        <p className="formatnotColor free">{Languages.text.draffversion}</p>
+      );
     else if (value === Status.REQUEST_PAYMENT)
       return (
-        <p className='formatnotColor payment'>{Languages.buttonText.payment}</p>
-      )
+        <p className="formatnotColor payment">{Languages.buttonText.payment}</p>
+      );
     else if (value === Status.EXPIRE)
       return (
-        <p className='formatnotColor free'>{Languages.buttonText.expire}</p>
-      )
+        <p className="formatnotColor free">{Languages.buttonText.expire}</p>
+      );
     else if (value === Status.PROGESSING)
       return (
-        <p className='formatnotColor payment'>{Languages.buttonText.progessing}</p>
-      )
+        <p className="formatnotColor payment">
+          {Languages.buttonText.progessing}
+        </p>
+      );
     else
       return (
         <>
-          <p className='formatnotColor free'>{Languages.text.draffversion}</p>
+          <p className="formatnotColor free">{Languages.text.draffversion}</p>
           {/* <p className='autodelete'>{Languages.text.autoDelete}</p> */}
         </>
-      )
-  }, [])
+      );
+  }, []);
 
   const renderCoundownTimeStart = useCallback((value) => {
-    const currentDate = dayjs().format('YYYY/MM/DD')
-    const timeLeft = dayjs(value) - dayjs(currentDate)
-    const dayLeft = Math.floor(timeLeft / (1000 * 60 * 60 * 24))
+    const currentDate = dayjs().format("YYYY/MM/DD");
+    const timeLeft = dayjs(value) - dayjs(currentDate);
+    const dayLeft = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
     if (dayjs(value) > dayjs(currentDate))
-      return '(Còn ' + `${dayLeft}` + ' ngày)'
-    else return Languages.errorMsg.noCorect
-  }, [])
+      return "(Còn " + `${dayLeft}` + " ngày)";
+    else return Languages.errorMsg.noCorect;
+  }, []);
 
   const onChangeDetele = useCallback(async (id) => {
-    const confirmed = window.confirm(Languages.text.deleteItem)
+    const confirmed = window.confirm(Languages.text.deleteItem);
     if (confirmed) {
-      await del(APi.deleteInvitation, { _id: id })
-      window.location.reload()
+      await del(APi.deleteInvitation, { _id: id });
+      window.location.reload();
     }
-  }, [])
+  }, []);
 
   const onChangeDowloadClient = useCallback(async (id) => {
-    const accessToken = getLocalAccessToken()
+    const accessToken = getLocalAccessToken();
 
     try {
       const response = await csv.get(APi.excelClient, {
@@ -286,24 +290,23 @@ const Mypage = () => {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
-      })
-      fileDownload(response.data, `Danh sách khách Phản Hổi.xlsx`)
+      });
+      fileDownload(response.data, `Danh sách khách Phản Hổi.xlsx`);
     } catch (error) {
       // Xử lý lỗi nếu cần
     }
-  }, [])
+  }, []);
 
   const onChangeDowloadLetter = useCallback((url) => {
-    if (url)
-      window.open(url)
+    if (url) window.open(url);
     else
-      toast.error('Cần kiểm tra thiệp trước khi dowload', {
-        autoClose: 1000
-      })
-  }, [])
+      toast.error("Cần kiểm tra thiệp trước khi dowload", {
+        autoClose: 1000,
+      });
+  }, []);
 
   const onChangeDowloadWish = useCallback(async (id) => {
-    const accessToken = getLocalAccessToken()
+    const accessToken = getLocalAccessToken();
     try {
       const response = await csv.get(APi.exportWish, {
         params: {
@@ -312,40 +315,86 @@ const Mypage = () => {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
-      })
-      await fileDownload(response.data, `Danh sách Lời chúc.xlsx`)
+      });
+      await fileDownload(response.data, `Danh sách Lời chúc.xlsx`);
     } catch (error) {
       // Xử lý lỗi nếu cần
     }
-  }, [])
+  }, []);
 
-  const onChangePayment = useCallback((id) => {
-    refPayment?.current?.show()
-    refPayment?.current?.handlegetId(id)
-  }, [])
+  const onChangeModalConfirmPayment = useCallback(async (getId) => {
+    const resProducts = await get(APi.listProduct, config);
+    const product = resProducts.data[0];
+
+    if (!product) {
+      toast.error(Languages.errorMsg.errorSuccess, {
+        autoClose: 1000,
+        closeButton: false,
+      });
+    }
+
+    const jsonData = {
+      _id: getId,
+      status: "4",
+      productId: product._id,
+    };
+
+    const response = await post(APi.updateInvitation, jsonData, config);
+
+    if (response.errorCode == 0) {
+      const jsonPaymentData = {
+        _id: getId,
+        status: "4",
+        totalAmount: product.amount,
+      };
+
+      const paymentResponse = await post(
+        APi.updateInvitation,
+        jsonPaymentData,
+        config
+      );
+
+      if (paymentResponse.errorCode == 0) {
+        toast.success(Languages.errorMsg.updatesuccess);
+        refPayment?.current?.show();
+        refPayment?.current?.handlegetId(getId);
+        refPayment?.current?.handleggetAmount(product.amount);
+      } else {
+        toast.error(Languages.errorMsg.errorSuccess);
+      }
+    } else {
+      toast.error(Languages.errorMsg.errorSuccess, {
+        autoClose: 1000,
+        closeButton: false,
+      });
+    }
+  }, []);
 
   const onChangeClipBoard = useCallback((id) => {
-    toast.success('Link đã được sao chép, Bạn có thể gửi cho người thân và bạn bè', {
-      autoClose: 1000,
-    })
-    navigator.clipboard.writeText(coppyLink + '' + id)
-  })
+    toast.success(
+      "Link đã được sao chép, Bạn có thể gửi cho người thân và bạn bè",
+      {
+        autoClose: 1000,
+      }
+    );
+    navigator.clipboard.writeText(coppyLink + "" + id);
+  });
 
   return (
-    <div className='mypage'>
+    <div className="mypage">
       <Loading />
       <Header
-        background={'var(--white-color)'}
-        colorText={'var(--text-color-darkmode)'}
-        borderColor={'var(--gray-color-2)'}
+        background={"var(--white-color)"}
+        colorText={"var(--text-color-darkmode)"}
+        borderColor={"var(--gray-color-2)"}
       />
       {/* <iframe src="https://www.google.com/maps?q=596-2 Donghyeon-dong, Gongju-si, Chungcheongnam-do, South Korea&hl=es&z=14&amp;output=embed" width="100%" height="450" allowfullscreen="" loading="lazy"></iframe>
       <a href='https://www.google.com/maps?q=596-2 Donghyeon-dong, Gongju-si, Chungcheongnam-do, South Korea'>link</a> */}
-      <div className='wrapper_box_create'>
+      <div className="wrapper_box_create">
         {!user && (
-          <div className='container mx-auto'>
-            <div className='btn_box_create'>
-              <img src={Icpolygon} title='polygon' />
+          <div className="container mx-auto">
+            <div className="btn_box_create">
+              <img src={Icpolygon} title="polygon" />
               <h2>{Languages.text.createaWeddingYourOwn}</h2>
               <Button
                 label={Languages.buttonText.createTypeTC}
@@ -362,194 +411,186 @@ const Mypage = () => {
         {!user && <ChooseTypeBlock />}
 
         {user && (
-          <div className='flex items-center justify-center'>
-            <div className='container'>
-              <h2 className='managertc'>{Languages.text.managerTc}</h2>
-              <table className='respon-table w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5 text-center'>
-                <thead className='text-white'>{renderTable}</thead>
-                <tbody className='flex-1 sm:flex-none'>
-                  {
-                    isArray(listDataApi) ?
-                      listDataApi.length === 0 ? (
-                        <tr className='flex noItemTd flex-col flex-no wrap sm:table-row mb-2 sm:mb-0'>
-                          <td className='border-grey-light hover:bg-gray-100 p-3'>
-                            <p className='noItem'>
-                              {Languages.errorMsg.nocreaptePage}
-                            </p>
-                          </td>
-                        </tr>
-                      ) : (
-                        listDataApi.map(function (item, index) {
-                          return (
-                            <tr
-                              key={index}
-                              className="wrap sm:table-row mb-2 sm:mb-0"
-                            >
-                              <td className="border-grey-light hover:bg-gray-100 p-3">
-                                <p className="formatnotColor free">
-                                  {item?._id}
-                                </p>
-                              </td>
-                              <td className="border-grey-light hover:bg-gray-100 p-3">
-                                <p className="formatnotColor free">
-                                  {item?.url || "___"}
-                                </p>
-                              </td>
-                              <td className="border-grey-light hover:bg-gray-100 p-3 truncate">
-                                {renderStatus(item?.status)}
-                              </td>
-                              <td className="border-grey-light hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer">
-                                <p className="date">
-                                  {
-                                    item?.timeAndLocationOfWedding
-                                      ?.dateOfEventWedding
-                                  }
-                                </p>
-                                <p className="onlydateplus">
-                                  {renderCoundownTimeStart(
-                                    item?.timeAndLocationOfWedding
-                                      ?.dateOfEventWedding
-                                  )}
-                                </p>
-                              </td>
-                              {/* <td className='border-grey-light hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer'>
+          <div className="flex items-center justify-center">
+            <div className="container">
+              <h2 className="managertc">{Languages.text.managerTc}</h2>
+              <table className="respon-table w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5 text-center">
+                <thead className="text-white">{renderTable}</thead>
+                <tbody className="flex-1 sm:flex-none">
+                  {isArray(listDataApi) ? (
+                    listDataApi.length === 0 ? (
+                      <tr className="flex noItemTd flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
+                        <td className="border-grey-light hover:bg-gray-100 p-3">
+                          <p className="noItem">
+                            {Languages.errorMsg.nocreaptePage}
+                          </p>
+                        </td>
+                      </tr>
+                    ) : (
+                      listDataApi.map(function (item, index) {
+                        return (
+                          <tr
+                            key={index}
+                            className="wrap sm:table-row mb-2 sm:mb-0"
+                          >
+                            <td className="border-grey-light hover:bg-gray-100 p-3">
+                              <p className="formatnotColor free">{item?._id}</p>
+                            </td>
+                            <td className="border-grey-light hover:bg-gray-100 p-3">
+                              <p className="formatnotColor free">
+                                {item?.url || "___"}
+                              </p>
+                            </td>
+                            <td className="border-grey-light hover:bg-gray-100 p-3 truncate">
+                              {renderStatus(item?.status)}
+                            </td>
+                            <td className="border-grey-light hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer">
+                              <p className="date">
+                                {
+                                  item?.timeAndLocationOfWedding
+                                    ?.dateOfEventWedding
+                                }
+                              </p>
+                              <p className="onlydateplus">
+                                {renderCoundownTimeStart(
+                                  item?.timeAndLocationOfWedding
+                                    ?.dateOfEventWedding
+                                )}
+                              </p>
+                            </td>
+                            {/* <td className='border-grey-light hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer'>
                                 <p className='date'>{item?.productId?.name}</p>
                                 <p className='autodelete'>(Full Package)</p>
                               </td> */}
-                              <td className="border-grey-light hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer">
-                                {item?.status != Status.EXPIRE && (
-                                  <Button
-                                    label={Languages.buttonText.edit}
-                                    buttonStyle={BUTTON_STYLES.BLUE}
-                                    textStyle={BUTTON_STYLES.WHITE}
-                                    autocenter
-                                    width={100}
-                                    isLowerCase
-                                    onPress={() =>
-                                      onChangeEditor(item?._id, item?.isPaid)
-                                    }
-                                  />
-                                )}
-
-                                {item?.status != Status.EXPIRE && (
-                                  <Button
-                                    label={Languages.buttonText.seeBefore}
-                                    buttonStyle={BUTTON_STYLES.ORRANGE}
-                                    textStyle={BUTTON_STYLES.WHITE}
-                                    autocenter
-                                    width={100}
-                                    isLowerCase
-                                    onPress={() => onChangeSeeBefore(item?._id)}
-                                  />
-                                )}
-
-                                {item?.isPaid === true && (
-                                  <Button
-                                    label={Languages.buttonText.dowloadTc}
-                                    buttonStyle={BUTTON_STYLES.PINK}
-                                    textStyle={BUTTON_STYLES.WHITE}
-                                    autocenter
-                                    width={100}
-                                    isLowerCase
-                                    onPress={() =>
-                                      onChangeDowloadLetter(item?.urlDownload)
-                                    }
-                                  />
-                                )}
-
-                                {item?.isPaid === true && (
-                                  <Button
-                                    label={Languages.buttonText.dowloadClient}
-                                    buttonStyle={BUTTON_STYLES.BLUE}
-                                    textStyle={BUTTON_STYLES.WHITE}
-                                    autocenter
-                                    width={100}
-                                    isLowerCase
-                                    onPress={() =>
-                                      onChangeDowloadClient(item?._id)
-                                    }
-                                  />
-                                )}
-
-                                {item?.isPaid === true && (
-                                  <Button
-                                    label={Languages.buttonText.checkGuest}
-                                    buttonStyle={BUTTON_STYLES.LIGHT_BLUE}
-                                    textStyle={BUTTON_STYLES.WHITE}
-                                    autocenter
-                                    width={100}
-                                    isLowerCase
-                                    onPress={() =>
-                                      onChangeDowloadWish(item?._id)
-                                    }
-                                  />
-                                )}
-
+                            <td className="border-grey-light hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer">
+                              {item?.status != Status.EXPIRE && (
                                 <Button
-                                  label={Languages.buttonText.delete}
-                                  buttonStyle={BUTTON_STYLES.DARKMODE}
-                                  textStyle={BUTTON_STYLES.WHITE}
-                                  autocenter
-                                  width={100}
-                                  isLowerCase
-                                  onPress={() => onChangeDetele(item._id)}
-                                />
-                              </td>
-
-                              <td className="border-grey-light hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer">
-                                <Button
-                                  label={
-                                    item?.status != Status.ACTIVE
-                                      ? Languages.buttonText.copylinkFree
-                                      : Languages.buttonText.copylink
-                                  }
-                                  buttonStyle={BUTTON_STYLES.DARKMODE}
+                                  label={Languages.buttonText.edit}
+                                  buttonStyle={BUTTON_STYLES.BLUE}
                                   textStyle={BUTTON_STYLES.WHITE}
                                   autocenter
                                   width={100}
                                   isLowerCase
                                   onPress={() =>
-                                    onChangeClipBoard(item?.url || item?._id)
+                                    onChangeEditor(item?._id, item?.isPaid)
                                   }
                                 />
-                                {item?.status != Status.ACTIVE && (
-                                  <Button
-                                    label={Languages.buttonText.payment}
-                                    buttonStyle={BUTTON_STYLES.PINK}
-                                    textStyle={BUTTON_STYLES.WHITE}
-                                    autocenter
-                                    width={100}
-                                    isLowerCase
-                                    onPress={() =>
-                                      onChangePayment(
-                                        item?._id,
-                                        item?.totalAmount
-                                      )
-                                    }
-                                  />
-                                )}
-                              </td>
-                            </tr>
-                          );
-                        })
-                      ) : <tr className='flex noItemTd flex-col flex-no wrap sm:table-row mb-2 sm:mb-0'>
-                        <td className='border-grey-light hover:bg-gray-100 p-3'>
-                          <p className='noItem'>
-                            {Languages.errorMsg.nocreaptePage}
-                          </p>
-                        </td>
-                      </tr>
-                  }
+                              )}
+
+                              {item?.status != Status.EXPIRE && (
+                                <Button
+                                  label={Languages.buttonText.seeBefore}
+                                  buttonStyle={BUTTON_STYLES.ORRANGE}
+                                  textStyle={BUTTON_STYLES.WHITE}
+                                  autocenter
+                                  width={100}
+                                  isLowerCase
+                                  onPress={() => onChangeSeeBefore(item?._id)}
+                                />
+                              )}
+
+                              {item?.isPaid === true && (
+                                <Button
+                                  label={Languages.buttonText.dowloadTc}
+                                  buttonStyle={BUTTON_STYLES.PINK}
+                                  textStyle={BUTTON_STYLES.WHITE}
+                                  autocenter
+                                  width={100}
+                                  isLowerCase
+                                  onPress={() =>
+                                    onChangeDowloadLetter(item?.urlDownload)
+                                  }
+                                />
+                              )}
+
+                              {item?.isPaid === true && (
+                                <Button
+                                  label={Languages.buttonText.dowloadClient}
+                                  buttonStyle={BUTTON_STYLES.BLUE}
+                                  textStyle={BUTTON_STYLES.WHITE}
+                                  autocenter
+                                  width={100}
+                                  isLowerCase
+                                  onPress={() =>
+                                    onChangeDowloadClient(item?._id)
+                                  }
+                                />
+                              )}
+
+                              {item?.isPaid === true && (
+                                <Button
+                                  label={Languages.buttonText.checkGuest}
+                                  buttonStyle={BUTTON_STYLES.LIGHT_BLUE}
+                                  textStyle={BUTTON_STYLES.WHITE}
+                                  autocenter
+                                  width={100}
+                                  isLowerCase
+                                  onPress={() => onChangeDowloadWish(item?._id)}
+                                />
+                              )}
+
+                              <Button
+                                label={Languages.buttonText.delete}
+                                buttonStyle={BUTTON_STYLES.DARKMODE}
+                                textStyle={BUTTON_STYLES.WHITE}
+                                autocenter
+                                width={100}
+                                isLowerCase
+                                onPress={() => onChangeDetele(item._id)}
+                              />
+                            </td>
+
+                            <td className="border-grey-light hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer">
+                              <Button
+                                label={
+                                  item?.status != Status.ACTIVE
+                                    ? Languages.buttonText.copylinkFree
+                                    : Languages.buttonText.copylink
+                                }
+                                buttonStyle={BUTTON_STYLES.DARKMODE}
+                                textStyle={BUTTON_STYLES.WHITE}
+                                autocenter
+                                width={100}
+                                isLowerCase
+                                onPress={() =>
+                                  onChangeClipBoard(item?.url || item?._id)
+                                }
+                              />
+                              {item?.status != Status.ACTIVE && (
+                                <Button
+                                  label={Languages.buttonText.payment}
+                                  buttonStyle={BUTTON_STYLES.PINK}
+                                  textStyle={BUTTON_STYLES.WHITE}
+                                  autocenter
+                                  width={100}
+                                  isLowerCase
+                                  onPress={() => onChangeModalConfirmPayment(item?._id)}
+                                />
+                              )}
+                            </td>
+                          </tr>
+                        );
+                      })
+                    )
+                  ) : (
+                    <tr className="flex noItemTd flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
+                      <td className="border-grey-light hover:bg-gray-100 p-3">
+                        <p className="noItem">
+                          {Languages.errorMsg.nocreaptePage}
+                        </p>
+                      </td>
+                    </tr>
+                  )}
                 </tbody>
               </table>
             </div>
           </div>
         )}
 
-        {user && listDataApi.length<3 && (
-          <div className='container mx-auto'>
-            <div className='btn_box_create onlogged_show'>
-              <img src={Icpolygon} title='polygon' />
+        {user && listDataApi.length < 3 && (
+          <div className="container mx-auto">
+            <div className="btn_box_create onlogged_show">
+              <img src={Icpolygon} title="polygon" />
               <h2>{Languages.text.createaWeddingYourOwn}</h2>
               <Button
                 label={Languages.buttonText.createTypeTC}
@@ -561,12 +602,28 @@ const Mypage = () => {
             </div>
           </div>
         )}
+
+        <div className="container mx-auto">
+          <div className="wrap_flop_note_using">
+            <div className="box_note_using">
+              <ul>
+                <li>
+                  Thiệp mời Miễn phí sẽ hiển thị Quảng Cáo và có hiệu lực trong
+                  vòng 90 ngày.
+                </li>
+                <li>
+                  Mua gói Trả Phí để sử dụng phiên bản Thiệp không Quảng Cáo.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-      <InformationSevices ref={refPayment} />
+      <Payment ref={refPayment} />
       {renderModal}
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Mypage
+export default Mypage;

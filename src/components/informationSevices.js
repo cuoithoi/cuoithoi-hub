@@ -563,5 +563,5 @@ export const InformationSevices = forwardRef(
             )
         }, [renderContentModal])
 
-        return <>{renderModal} <Payment ref={refPayment} /></>;
+        return <><Payment ref={refPayment} /></>;
     });

@@ -385,57 +385,6 @@ const BankingBrice = forwardRef(({ }, ref) => {
                 </div>
             </div>
 
-            <div className='inforBank_one_per'>
-
-                <div className='three_input_col'>
-                    {renderBank(NAME_INPUT_BRIDE.nameBankOfFatherBride, '', value.informationOfBride[0].nameBankOfFatherBride)}
-                    {renderInput(refOwnerFather, '', 'Nhập ' + Languages.text.accountHolder, NAME_INPUT_BRIDE.ownerBankOfFatherBride, 'text', 200, false, '', value.informationOfBride[0].ownerBankOfFatherBride)}
-                    {renderInput(refNumberBankFather, '', 'Nhập ' + Languages.text.serinumber, NAME_INPUT_BRIDE.bankOfNumberFatherBride, 'number', 16, false, '', value.informationOfBride[0].bankOfNumberFatherBride)}
-
-                </div>
-                <div className='list_album_uploads'>
-                    {renderImageUploadSingle(
-                        '',
-                        qrFather,
-                        '',
-                        true,
-                        onChangeFather,
-                        1,
-                        150,
-                        <Qrcode />,
-                        Languages.text.qrcode,
-                        itemLocal?.informationOfBride.qrCodeFatherBrideLink
-                    )}
-                </div>
-            </div>
-
-            <div className='inforBank_one_per'>
-
-                <div className='three_input_col'>
-                    {renderBank(NAME_INPUT_BRIDE.nameBankOfMotherBride, '', value.informationOfBride[0].nameBankOfMotherBride)}
-
-                    {renderInput(refOwnerMother, '', 'Nhập ' + Languages.text.accountHolder, NAME_INPUT_BRIDE.ownerBankOfMotherBride, 'text', 200, false, '', value.informationOfBride[0].ownerBankOfMotherBride)}
-
-                    {renderInput(refNumberBankMother, '', 'Nhập ' + Languages.text.serinumber, NAME_INPUT_BRIDE.bankOfNumberMotherBride, 'number', 16, false, '', value.informationOfBride[0].bankOfNumberMotherBride)}
-
-                </div>
-                <div className='list_album_uploads'>
-                    {renderImageUploadSingle(
-                        '',
-                        qrMother,
-                        '',
-                        true,
-                        onChangeMother,
-                        1,
-                        150,
-                        <Qrcode />,
-                        Languages.text.qrcode,
-                        itemLocal?.informationOfBride.qrCodeMotherBrideLink
-                    )}
-                </div>
-            </div>
-
-
         </div>
 
     )

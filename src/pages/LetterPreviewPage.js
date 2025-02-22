@@ -21,6 +21,7 @@ import styles from './LetterPage.module.css'
 import SnowFall from '@/components/letter-page/SnowFall'
 import { INVITATION_STYLES } from '@/commons/Constant.ts'
 import { getStorage } from '@/utils/localStorage'
+import Parents from '@/components/letter-page/Parents'
 
 const LetterPreviewPage = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -165,6 +166,11 @@ const LetterPreviewPage = () => {
             invitationStyle={invitationStyle}
           />
         )}
+        <Parents
+          informationOfBride={informationOfBride}
+          informationOfGroom={informationOfGroom}
+          invitationStyle={invitationStyle}
+        />
         {isUseGuestBook && (
           <Message id={_id} invitationStyle={invitationStyle} preview={true} />
         )}

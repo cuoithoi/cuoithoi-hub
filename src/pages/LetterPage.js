@@ -26,6 +26,7 @@ import { getUserFromLocalStorage } from '@/utils/localStorage'
 import html2canvas from 'html2canvas'
 import { useBaseService } from '@/utils/BaseServices'
 import dayjs from 'dayjs'
+import Parents from '@/components/letter-page/Parents'
 
 const ADS_STARTED_DATE = '2025-02-15'
 
@@ -244,13 +245,16 @@ const LetterPage = () => {
         />
         {isUseBanking && (
           <Congrats
-            setModalContent={setModalContent}
-            setIsOpen={setIsOpen}
             informationOfBride={informationOfBride}
             informationOfGroom={informationOfGroom}
             invitationStyle={invitationStyle}
           />
         )}
+        <Parents
+          informationOfBride={informationOfBride}
+          informationOfGroom={informationOfGroom}
+          invitationStyle={invitationStyle}
+        />
         {isUseGuestBook && (
           <Message id={_id} invitationStyle={invitationStyle} />
         )}

@@ -2156,7 +2156,7 @@ const CreatePage = () => {
                 <div className='box_note_using'>
                   <ul>
                     <li>{Languages.text.changePlan}</li>
-                    <li>{Languages.text.useMax7day}</li>
+                    <li>{Languages.text.useFreeWithAds}</li>
                     <li>{Languages.text.useActive90day}</li>
                     <li>{Languages.text.contactSupport}</li>
                   </ul>

@@ -631,14 +631,6 @@ const FamilyBride = forwardRef(({ props, idCreateRespon }, ref) => {
                             false,
                             value.informationOfBride[0].fatherNameOfBride
                         )}
-                        <div className="item_field_single">
-                            <div className="Input_boxGroupInput__G9mP9 man_inputStyle checkbox">
-                                <label className="Input_label__90o4b">{Languages.inputText.death}</label>
-                                <div className="Input_formGroup__mXqJL ">
-                                    <input type="checkbox" defaultChecked={itemLocal ? itemLocal.informationOfBride.isGoneFatherBride : false} className="Input_form_control__5uYZX inputStyle" onChange={(e) => onChangeText(e.target.checked, NAME_INPUT_BRIDE.isGoneFatherBride)} />
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -660,33 +652,7 @@ const FamilyBride = forwardRef(({ props, idCreateRespon }, ref) => {
                             false,
                             value.informationOfBride[0].motherNameOfBride
                         )}
-
-                        <div className="item_field_single">
-                            <div className="Input_boxGroupInput__G9mP9 man_inputStyle checkbox">
-                                <label className="Input_label__90o4b">{Languages.inputText.death}</label>
-                                <div className="Input_formGroup__mXqJL ">
-                                    <input type="checkbox" defaultChecked={itemLocal ? itemLocal.informationOfBride.isGoneMotherOfBride : false} className="Input_form_control__5uYZX inputStyle" onChange={(e) => onChangeText(e.target.checked, NAME_INPUT_BRIDE.isGoneMotherOfBride)} />
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                    <div className='enable_show_deadman active'>
-                        <div className='label_left'>
-                            <label>{Languages.text.displayModeDeceased}</label>
-                        </div>
-                        <div className='radio_enable'>
-
-                            {renderRadio('none', Languages.common.no, 'none', radioChangeHandlerDeadman, radioDead)}
-                            {renderRadio('explanatory', Languages.text.explanatory, 'explanatory', radioChangeHandlerDeadman, radioDead)}
-
-                            {renderRadio('chrysanthemumIcon',
-                                <div className='chrysanthemumIcon'>{Languages.text.chrysanthemumIcon}<img src={IcChrysanthemum} /></div>,
-                                'chrysanthemumIcon', radioChangeHandlerDeadman, radioDead)}
-
-
-                        </div>
-                    </div>
-
                 </div>
             </div>
 

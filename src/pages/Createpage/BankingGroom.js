@@ -379,55 +379,6 @@ const BankingGroom = forwardRef(({ }, ref) => {
                 </div>
             </div>
 
-            <div className='inforBank_one_per'>
-
-                <div className='three_input_col'>
-                    {renderBank(NAME_INPUT_GROOM.nameBankOfFatherGroom, '', value.informationOfGroom[0].nameBankOfFatherGroom)}
-                    {renderInput(refOwnerFather, '', 'Nhập ' + Languages.text.accountHolder, NAME_INPUT_GROOM.ownerBankOfFatherGroom, 'text', 200, false, '', value.informationOfGroom[0].ownerBankOfFatherGroom)}
-                    {renderInput(refNumberBankFather, '', 'Nhập ' + Languages.text.serinumber, NAME_INPUT_GROOM.bankOfNumberFatherGroom, 'number', 14, false, '', value.informationOfGroom[0].bankOfNumberFatherGroom)}
-                </div>
-
-                <div className='list_album_uploads'>
-                    {renderImageUploadSingle(
-                        '',
-                        qrFather,
-                        '',
-                        true,
-                        onChangeFather,
-                        1,
-                        150,
-                        <Qrcode />,
-                        Languages.text.qrcode,
-                        itemLocal?.informationOfGroom.qrCodeFatherGroomLink
-                    )}
-                </div>
-            </div>
-
-            <div className='inforBank_one_per'>
-
-
-                <div className='three_input_col'>
-                    {renderBank(NAME_INPUT_GROOM.nameBankOfMotherGroom, '', value.informationOfGroom[0].nameBankOfMotherGroom)}
-                    {renderInput(refOwnerMother, '', 'Nhập ' + Languages.text.accountHolder, NAME_INPUT_GROOM.ownerBankOfMotherGroom, 'text', 200, false, '', value.informationOfGroom[0].ownerBankOfMotherGroom)}
-                    {renderInput(refNumberBankMother, '', 'Nhập ' + Languages.text.serinumber, NAME_INPUT_GROOM.bankOfNumberMotherGroom, 'number', 14, false, '', value.informationOfGroom[0].bankOfNumberMotherGroom)}
-                </div>
-                <div className='list_album_uploads'>
-                    {renderImageUploadSingle(
-                        '',
-                        qrMother,
-                        '',
-                        true,
-                        onChangeMother,
-                        1,
-                        150,
-                        <Qrcode />,
-                        Languages.text.qrcode,
-                        itemLocal?.informationOfGroom.qrCodeMotherGroomLink
-                    )}
-                </div>
-            </div>
-
-
         </div>
 
     )

@@ -378,25 +378,6 @@ const TimeandLocation = forwardRef(({ }, ref) => {
                             </div>
                         </div>
                     </div>
-
-                    <div className='single_hor_input'>
-                        <ReactQuill
-                            theme="snow"
-                            modules={modules}
-                            formats={formats}
-                            value={countdownTemp}
-                            onChange={onChangeCountdownTemp}
-                        />
-                        <Button
-
-                            label={Languages.buttonText.titleTemplate}
-                            buttonStyle={BUTTON_STYLES.PINK}
-                            textStyle={BUTTON_STYLES.WHITE}
-                            isLowerCase
-                            onPress={onChangeOpenCountdownTemplate}
-                        />
-
-                    </div>
                 </div>
             </div>
 
