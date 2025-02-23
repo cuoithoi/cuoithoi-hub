@@ -241,7 +241,7 @@ const Mypage = () => {
       );
     else if (value === Status.REQUEST_PAYMENT)
       return (
-        <p className="formatnotColor payment">{Languages.buttonText.payment}</p>
+        <p className="formatnotColor payment">{Languages.buttonText.pay}</p>
       );
     else if (value === Status.EXPIRE)
       return (
