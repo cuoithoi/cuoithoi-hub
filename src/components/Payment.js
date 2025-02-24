@@ -12,6 +12,7 @@ import FormValidate from "@/utils/FormValidate";
 import { useBaseService } from "@/utils/BaseServices";
 import { toast } from "react-toastify";
 import { FaArrowRight } from "react-icons/fa";
+import dayjs from "dayjs";
 
 export const Payment = forwardRef(
     (
@@ -81,10 +82,13 @@ export const Payment = forwardRef(
             if (`${errMsgValue}`.length === 0) {
 
                 const dataUpdate = {
-                    "_id": getId,
-                    "status": "6",
-                    "OID": value
-                }
+                  _id: getId,
+                  status: "6",
+                  OID: value,
+                  expiredTime: dayjs()
+                    .add(90, "day")
+                    .format("YYYY-MM-DDTHH:mm:ss.SSSZ"),
+                };
 
                 const responseupdate = await post(APi.updateInvitation, dataUpdate, config);
                 if (responseupdate.errorCode == 0) {
