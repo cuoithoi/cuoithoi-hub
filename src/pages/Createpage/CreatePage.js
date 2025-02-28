@@ -2142,7 +2142,7 @@ const CreatePage = () => {
                 <BankingBrice ref={refBankingBride} />
               </Panel>
               {/* {renderMusic} */}
-              {/* {renderConfirmAttend} */}
+              {renderConfirmAttend}
               {renderGuestbook}
               {renderOpenStartEffect}
               {renderInvitationStyle}
