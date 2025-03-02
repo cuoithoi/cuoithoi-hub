@@ -34,6 +34,7 @@ const LetterPage = () => {
   const { id } = useParams()
   const [isOpen, setIsOpen] = useState(false)
   const [letter, setLetter] = useState(null)
+  const [ads, setAds] = useState(null)
   const [isLetterOpen, setIsLetterOpen] = useState(false)
   const [modalContent, setModalContent] = useState('')
   const [isLoading, setIsLoading] = useState(true)
@@ -60,7 +61,9 @@ const LetterPage = () => {
     const fetchData = async () => {
       setIsLoading(true)
       const data = await getDataApi(`/invitation-detail?_id=${id}`)
+      const adsData = await getDataApi(`/get-ads`)
       setIsLoading(false)
+      setAds(adsData.data[0].data[adsData.data[0].data.length-1])
       setLetter(data.data)
     }
     fetchData()
@@ -174,28 +177,81 @@ const LetterPage = () => {
   }
   return (
     <div ref={containerRef} className={`letter-wrapper ${bgColor}`}>
-      {
-        displayAds && (
-          <>
-            <div className={styles.leftGoogleAdsPlaceholder}></div>
+      {displayAds && ads && (
+        <>
+          {ads.type == 1 ? (
+            <>
+              <div className={styles.leftGoogleAds}>
+                <a href={ads.url1} target="_blank" title={"ads"}>
+                  <div
+                    style={{
+                      height: "100%",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      paddingTop: "100px"
+                    }}
+                  >
+                    <img
+                      className={styles.adsImage}
+                      src={ads.image1}
+                      alt={"Ads"}
+                    />
+                    <p style={{
+                      fontFamily: "var(--quick-sand-font-family)",
+                      color: "white",
+                      padding: "10px"
+                    }}>{ads.description1}</p>
+                  </div>
+                </a>
+              </div>
+              <div className={styles.rightGoogleAds}>
+              <a href={ads.url2} target="_blank" title={"ads"}>
+                  <div
+                    style={{
+                      height: "100%",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      paddingTop: "100px"
+                    }}
+                  >
+                    <img
+                      className={styles.adsImage}
+                      src={ads.image2}
+                      alt={"Ads"}
+                    />
+                    <p style={{
+                      fontFamily: "var(--quick-sand-font-family)",
+                      color: "white",
+                      padding: "10px"
+                    }}>{ads.description2}</p>
+                  </div>
+                </a>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className={styles.leftGoogleAdsPlaceholder}></div>
 
-            <ins
-              className={styles.leftGoogleAds}
-              data-ad-client="ca-pub-9262218469295338"
-              data-ad-slot="4446932927"
-              data-ad-format="auto"
-              data-full-width-responsive="true"
-            ></ins>
-            <ins
-              className={styles.rightGoogleAds}
-              data-ad-client="ca-pub-9262218469295338"
-              data-ad-slot="1151256569"
-              data-ad-format="auto"
-              data-full-width-responsive="true"
-            ></ins>
-          </>
-        )
-      }
+              <ins
+                className={styles.leftGoogleAds}
+                data-ad-client="ca-pub-9262218469295338"
+                data-ad-slot="4446932927"
+                data-ad-format="auto"
+                data-full-width-responsive="true"
+              ></ins>
+              <ins
+                className={styles.rightGoogleAds}
+                data-ad-client="ca-pub-9262218469295338"
+                data-ad-slot="1151256569"
+                data-ad-format="auto"
+                data-full-width-responsive="true"
+              ></ins>
+            </>
+          )}
+        </>
+      )}
 
       <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
       <div
@@ -272,9 +328,7 @@ const LetterPage = () => {
         index={index}
       />
       <SnowFall type={effectBackgroud.value} />
-      {displayAds && (
-        <div className={styles.rightGoogleAdsPlaceholder}></div>
-      )}
+      {displayAds && <div className={styles.rightGoogleAdsPlaceholder}></div>}
     </div>
   );
 }

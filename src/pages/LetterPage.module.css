@@ -2,6 +2,10 @@
   background-color: #FAFAFA;
 }
 
+.adsImage {
+  width: 180px;
+}
+
 .leftGoogleAds {
   display: block;
   position: fixed;
