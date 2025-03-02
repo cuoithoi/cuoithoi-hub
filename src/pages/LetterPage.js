@@ -183,49 +183,45 @@ const LetterPage = () => {
             <>
               <div className={styles.leftGoogleAds}>
                 <a href={ads.url1} target="_blank" title={"ads"}>
-                  <div
-                    style={{
-                      height: "100%",
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      paddingTop: "100px"
-                    }}
-                  >
+                  <div className={styles.adsWrapper}>
                     <img
                       className={styles.adsImage}
                       src={ads.image1}
                       alt={"Ads"}
                     />
-                    <p style={{
-                      fontFamily: "var(--quick-sand-font-family)",
-                      color: "white",
-                      padding: "10px"
-                    }}>{ads.description1}</p>
+                    <div className={styles.adsDesc}>{ads.description1}</div>
                   </div>
                 </a>
-              </div>
-              <div className={styles.rightGoogleAds}>
-              <a href={ads.url2} target="_blank" title={"ads"}>
-                  <div
-                    style={{
-                      height: "100%",
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      paddingTop: "100px"
-                    }}
-                  >
+                <a href={ads.url2} target="_blank" title={"ads"}>
+                  <div className={styles.adsWrapper}>
                     <img
                       className={styles.adsImage}
                       src={ads.image2}
                       alt={"Ads"}
                     />
-                    <p style={{
-                      fontFamily: "var(--quick-sand-font-family)",
-                      color: "white",
-                      padding: "10px"
-                    }}>{ads.description2}</p>
+                    <div className={styles.adsDesc}>{ads.description2}</div>
+                  </div>
+                </a>
+              </div>
+              <div className={styles.rightGoogleAds}>
+                <a href={ads.url3} target="_blank" title={"ads"}>
+                  <div className={styles.adsWrapper}>
+                    <img
+                      className={styles.adsImage}
+                      src={ads.image3}
+                      alt={"Ads"}
+                    />
+                    <div className={styles.adsDesc}>{ads.description3}</div>
+                  </div>
+                </a>
+                <a href={ads.url4} target="_blank" title={"ads"}>
+                  <div className={styles.adsWrapper}>
+                    <img
+                      className={styles.adsImage}
+                      src={ads.image4}
+                      alt={"Ads"}
+                    />
+                    <div className={styles.adsDesc}>{ads.description4}</div>
                   </div>
                 </a>
               </div>

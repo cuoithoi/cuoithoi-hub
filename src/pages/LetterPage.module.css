@@ -2,8 +2,39 @@
   background-color: #FAFAFA;
 }
 
+.adsWrapper {
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+  
+  @media screen and (max-width:430px) {
+    padding: 10px !important;
+    height: 100%;
+  }
+}
+
 .adsImage {
   width: 180px;
+  @media screen and (max-width:430px) {
+    width: 50%;
+  }
+}
+.adsDesc {
+  font-family: var(--quick-sand-font-family);
+  color: white;
+  padding: 10px;
+
+
+  @media screen and (max-width:430px) {
+    font-size: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
 }
 
 .leftGoogleAds {
@@ -14,17 +45,20 @@
   left: 0;
   width: 200px;
   background-color: gray;
+
   @media screen and (max-width:430px) {
     right: 0;
     width: unset;
     height: 100px;
     bottom: unset;
     z-index: 999;
-  }
+  display: flex;
+}
 }
 
-.leftGoogleAdsPlaceholder{
+.leftGoogleAdsPlaceholder {
   height: 0;
+
   @media screen and (max-width:430px) {
     height: 100px;
   }
@@ -38,6 +72,7 @@
   right: 0;
   width: 200px;
   background-color: gray;
+
   @media screen and (max-width:430px) {
     right: 0;
     width: unset;
@@ -45,11 +80,13 @@
     top: unset;
     left: 0;
     z-index: 999;
-  }
+  display: flex;
+}
 }
 
-.rightGoogleAdsPlaceholder{
+.rightGoogleAdsPlaceholder {
   height: 0;
+
   @media screen and (max-width:430px) {
     height: 100px;
   }
