@@ -118,6 +118,7 @@ const Languages = {
     seeTC: 'Xem thiệp ',
     status: 'Trạng thái',
     date: 'Ngày cưới',
+    expiredDate: 'Ngày hết hạn dịch vụ',
     manager: 'Quản lý',
     free: 'Miễn phí',
     draffversion: 'Bản nháp',

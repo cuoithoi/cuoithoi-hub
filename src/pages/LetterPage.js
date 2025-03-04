@@ -189,7 +189,6 @@ const LetterPage = () => {
                       src={ads.image1}
                       alt={"Ads"}
                     />
-                    <div className={styles.adsDesc}>{ads.description1}</div>
                   </div>
                 </a>
                 <a href={ads.url2} target="_blank" title={"ads"}>
@@ -199,11 +198,8 @@ const LetterPage = () => {
                       src={ads.image2}
                       alt={"Ads"}
                     />
-                    <div className={styles.adsDesc}>{ads.description2}</div>
                   </div>
                 </a>
-              </div>
-              <div className={styles.rightGoogleAds}>
                 <a href={ads.url3} target="_blank" title={"ads"}>
                   <div className={styles.adsWrapper}>
                     <img
@@ -211,7 +207,6 @@ const LetterPage = () => {
                       src={ads.image3}
                       alt={"Ads"}
                     />
-                    <div className={styles.adsDesc}>{ads.description3}</div>
                   </div>
                 </a>
                 <a href={ads.url4} target="_blank" title={"ads"}>
@@ -221,7 +216,68 @@ const LetterPage = () => {
                       src={ads.image4}
                       alt={"Ads"}
                     />
-                    <div className={styles.adsDesc}>{ads.description4}</div>
+                  </div>
+                </a>
+              </div>
+              <div className={styles.rightGoogleAds}>
+                
+                <a href={ads.url5} target="_blank" title={"ads"}>
+                  <div className={styles.adsWrapper}>
+                    <img
+                      className={styles.adsImage}
+                      src={ads.image5}
+                      alt={"Ads"}
+                    />
+                  </div>
+                </a>
+                <a href={ads.url6} target="_blank" title={"ads"}>
+                  <div className={styles.adsWrapper}>
+                    <img
+                      className={styles.adsImage}
+                      src={ads.image6}
+                      alt={"Ads"}
+                    />
+                  </div>
+                </a>
+                <a href={ads.url7} target="_blank" title={"ads"}>
+                  <div className={styles.adsWrapper}>
+                    <img
+                      className={styles.adsImage}
+                      src={ads.image7}
+                      alt={"Ads"}
+                    />
+                  </div>
+                </a>
+                <a href={ads.url8} target="_blank" title={"ads"}>
+                  <div className={styles.adsWrapper}>
+                    <img
+                      className={styles.adsImage}
+                      src={ads.image8}
+                      alt={"Ads"}
+                    />
+                  </div>
+                </a>
+              </div>
+
+              <div className={styles.topGoogleAds}>
+                <a href={ads.url1} target="_blank" title={"ads"}>
+                  <div className={styles.adsWrapper}>
+                    <img
+                      className={styles.adsImage}
+                      src={ads.image1}
+                      alt={"Ads"}
+                    />
+                  </div>
+                </a>
+              </div>
+              <div className={styles.bottomGoogleAds}>
+                <a href={ads.url2} target="_blank" title={"ads"}>
+                  <div className={styles.adsWrapper}>
+                    <img
+                      className={styles.adsImage}
+                      src={ads.image2}
+                      alt={"Ads"}
+                    />
                   </div>
                 </a>
               </div>

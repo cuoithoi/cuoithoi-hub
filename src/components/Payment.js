@@ -169,11 +169,12 @@ export const Payment = forwardRef(
                                             <p>CTODID{getId.substr(-4, 4).toUpperCase()}</p>
                                         </div>
                                         <p className='note'>Lưu ý: Quý khách vui lòng chuyển khoản đúng theo cú pháp để đơn hàng được hệ thống cập nhật nhanh chóng.</p>
+                                        <p className='note'>Đừng quên ấn nút bên dưới ↓ </p>
 
                                         <Button
                                             onPress={onChangePayment}
                                             label={Languages.common.pay}
-                                            buttonStyle={BUTTON_STYLES.PINK}
+                                            buttonStyle={BUTTON_STYLES.ORRANGE}
                                             textStyle={BUTTON_STYLES.WHITE}
                                             autocenter
                                         />

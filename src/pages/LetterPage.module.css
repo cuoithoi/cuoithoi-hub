@@ -3,11 +3,12 @@
 }
 
 .adsWrapper {
-  height: 50%;
+  height: 25%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 100px;
+  align-content: center;
+  padding-top: 20px;
   
   @media screen and (max-width:430px) {
     padding: 10px !important;
@@ -18,7 +19,7 @@
 .adsImage {
   width: 180px;
   @media screen and (max-width:430px) {
-    width: 50%;
+    width: 40%;
   }
 }
 .adsDesc {
@@ -47,13 +48,8 @@
   background-color: gray;
 
   @media screen and (max-width:430px) {
-    right: 0;
-    width: unset;
-    height: 100px;
-    bottom: unset;
-    z-index: 999;
-  display: flex;
-}
+    display: none;
+  }
 }
 
 .leftGoogleAdsPlaceholder {
@@ -74,14 +70,38 @@
   background-color: gray;
 
   @media screen and (max-width:430px) {
+    display: none;
+
+  }
+}
+.topGoogleAds {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: gray;
+
+  @media screen and (max-width:430px) {
     right: 0;
-    width: unset;
     height: 100px;
-    top: unset;
+    z-index: 999;
+    display: flex;
+  }
+}
+
+.bottomGoogleAds {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background-color: gray;
+
+  @media screen and (max-width:430px) {
+    height: 100px;
     left: 0;
     z-index: 999;
-  display: flex;
-}
+    display: flex;
+  }
 }
 
 .rightGoogleAdsPlaceholder {
