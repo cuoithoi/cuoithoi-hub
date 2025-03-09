@@ -264,7 +264,7 @@ const LetterPage = () => {
                   <div className={styles.adsWrapper}>
                     <img
                       className={styles.adsImage}
-                      src={ads.image1}
+                      src={ads.image9}
                       alt={"Ads"}
                     />
                   </div>
@@ -275,7 +275,7 @@ const LetterPage = () => {
                   <div className={styles.adsWrapper}>
                     <img
                       className={styles.adsImage}
-                      src={ads.image2}
+                      src={ads.image10}
                       alt={"Ads"}
                     />
                   </div>
