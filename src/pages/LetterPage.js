@@ -153,9 +153,9 @@ const LetterPage = () => {
     setIsLetterOpen(true)
   }
 
-  if (!isPaid && userId !== storageId?.userId) {
-    navigate(Alias.homePage)
-  }
+  // if (!isPaid && userId !== storageId?.userId) {
+  //   navigate(Alias.homePage)
+  // }
 
 
   // !isLetterOpen && !isLoading && isEffectOfOpenning
