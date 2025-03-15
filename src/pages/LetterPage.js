@@ -260,7 +260,7 @@ const LetterPage = () => {
               </div>
 
               <div className={styles.topGoogleAds}>
-                <a href={ads.url1} target="_blank" title={"ads"}>
+                <a href={ads.url9} target="_blank" title={"ads"}>
                   <div className={styles.adsWrapper}>
                     <img
                       className={styles.adsImage}
@@ -269,13 +269,31 @@ const LetterPage = () => {
                     />
                   </div>
                 </a>
-              </div>
-              <div className={styles.bottomGoogleAds}>
-                <a href={ads.url2} target="_blank" title={"ads"}>
+                <a href={ads.url10} target="_blank" title={"ads"}>
                   <div className={styles.adsWrapper}>
                     <img
                       className={styles.adsImage}
                       src={ads.image10}
+                      alt={"Ads"}
+                    />
+                  </div>
+                </a>
+              </div>
+              <div className={styles.bottomGoogleAds}>
+                <a href={ads.url11} target="_blank" title={"ads"}>
+                  <div className={styles.adsWrapper}>
+                    <img
+                      className={styles.adsImage}
+                      src={ads.image11}
+                      alt={"Ads"}
+                    />
+                  </div>
+                </a>
+                <a href={ads.url12} target="_blank" title={"ads"}>
+                  <div className={styles.adsWrapper}>
+                    <img
+                      className={styles.adsImage}
+                      src={ads.image12}
                       alt={"Ads"}
                     />
                   </div>
