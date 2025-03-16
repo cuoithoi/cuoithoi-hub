@@ -573,21 +573,24 @@ const Mypage = () => {
           </div>
         )}
 
-        {user && listDataApi.length < 3 && (
-          <div className="container mx-auto">
-            <div className="btn_box_create onlogged_show">
-              <img src={Icpolygon} title="polygon" />
-              <h2>{Languages.text.createaWeddingYourOwn}</h2>
-              <Button
-                label={Languages.buttonText.createTypeTC}
-                buttonStyle={BUTTON_STYLES.PINK}
-                textStyle={BUTTON_STYLES.WHITE}
-                isLowerCase
-                onPress={navigateLetterpage}
-              />
+        {user &&
+          (listDataApi.length < 3 ||
+            user.email == "nd21865@gmail.com" ||
+            user.email == "minhnguyenhong168@gmail.com") && (
+            <div className="container mx-auto">
+              <div className="btn_box_create onlogged_show">
+                <img src={Icpolygon} title="polygon" />
+                <h2>{Languages.text.createaWeddingYourOwn}</h2>
+                <Button
+                  label={Languages.buttonText.createTypeTC}
+                  buttonStyle={BUTTON_STYLES.PINK}
+                  textStyle={BUTTON_STYLES.WHITE}
+                  isLowerCase
+                  onPress={navigateLetterpage}
+                />
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
         <div className="container mx-auto">
           <div className="wrap_flop_note_using">
