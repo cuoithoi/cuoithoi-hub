@@ -4,82 +4,109 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CUOI THOI - Trang trung gian</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Arial', sans-serif;
-      background-color: #ffffff;
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(135deg, #fff0f5, #ffe4e1);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
       margin: 0;
-      padding: 20px;
+      padding: 30px 20px;
       text-align: center;
+      animation: fadeIn 1s ease-in-out;
     }
 
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
     h1 {
-  color: #e29aa1;
-  margin-bottom: 25px;
-  font-size: 28px; /* 폰트 크게 */
-  line-height: 1.4;
-}
+      color: #d14f61;
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
 
+    .highlight-text {
+      font-size: 20px;
+      color: #1d2232;
+      margin-bottom: 25px;
+    }
+
+    .free-tag {
+      background-color: #ff69b4;
+      color: white;
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 15px;
+      display: inline-block;
+      margin-top: 10px;
+      animation: bounce 1.2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
 
     .link-button {
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: #e29aa1;
-      color: #1d2232;
+      background-color: #ffffff;
+      color: #d14f61;
       text-decoration: none;
-      padding: 10px 16px;
-      border-radius: 10px;
-      margin: 8px 0;
-      font-size: 16px;
-      width: 260px;
-      height: 45px;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      box-shadow: 0 3px 5px rgba(0,0,0,0.04);
+      padding: 12px 20px;
+      border-radius: 14px;
+      margin: 10px 0;
+      font-size: 17px;
+      font-weight: bold;
+      width: 270px;
+      height: 50px;
+      transition: transform 0.25s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 8px rgba(209, 79, 97, 0.15);
+      border: 2px solid #f3b2b8;
     }
 
     .link-button:hover {
-      background-color: #f3b2b8;
-      transform: translateY(-2px);
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(209, 79, 97, 0.25);
     }
 
     .emoji {
-      font-size: 20px;
-      margin-right: 8px;
+      font-size: 22px;
+      margin-right: 10px;
     }
 
     .logo {
-      max-width: 160px;
-      margin-bottom: 18px;
+      max-width: 150px;
+      margin-bottom: 20px;
     }
   </style>
 </head>
 <body>
 
-    <h1>
-        🎉 Hãy trải nghiệm dịch vụ <strong>CUOI THOI</strong> 
-        <strong style="color: #d14f61;">hoàn toàn miễn phí!</strong>
-      </h1>
-      
+
+  <h1>🎉 Chào mừng bạn đến với <strong>CUOI THOI</strong></h1>
+  <div class="highlight-text">Nơi tạo thiệp cưới <strong>cực xinh</strong> chỉ trong vài phút</div>
+  <div class="free-tag">🚀 Miễn phí 100% – Không cần đăng ký!</div>
+
   <a class="link-button" href="https://cuoithoi.com.vn" target="_blank">
-    <span class="emoji">💌</span> Trang tạo thiệp cưới
+    <span class="emoji">💌</span> Tạo thiệp cưới ngay
   </a>
 
   <a class="link-button" href="https://www.tiktok.com/@cuoithoithiepcuoi?_t=ZS-8vgRh6k53Jf&_r=1" target="_blank">
-    <span class="emoji">🎬</span> CUOI THOI trên TikTok!
+    <span class="emoji">🎬</span> Xem trên TikTok
   </a>
 
   <a class="link-button" href="https://www.facebook.com/share/18swAZCkYy/?mibextid=wwXIfr" target="_blank">
-    <span class="emoji">📘</span> Xem trên Facebook
+    <span class="emoji">📘</span> Theo dõi Facebook
   </a>
 
 </body>
 </html>
-
-
