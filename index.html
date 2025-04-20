@@ -55,48 +55,56 @@
     }
 
     .link-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  padding: 12px 20px;
-  border-radius: 14px;
-  margin: 10px 0;
-  font-size: 17px;
-  font-weight: bold;
-  width: 270px;
-  height: 50px;
-  transition: transform 0.25s ease, box-shadow 0.3s ease;
-  font-family: 'Quicksand', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      padding: 12px 20px;
+      border-radius: 14px;
+      margin: 10px 0;
+      font-size: 17px;
+      font-weight: bold;
+      width: 270px;
+      height: 50px;
+      transition: transform 0.25s ease, box-shadow 0.3s ease;
+      font-family: 'Quicksand', sans-serif;
+      cursor: pointer;
+    }
+
+    .link-button.main {
+      background-color: #d14f61;
+      color: white;
+      box-shadow: 0 6px 12px rgba(209, 79, 97, 0.3);
+      border: none;
+      animation: pulse 1.5s infinite;
+    }
+
+    /* 연한 톤 + 작게 */
+.link-button.soft.small {
+  width: 220px;
+  height: 44px;
+  font-size: 15px;
+  padding: 10px 16px;
+  border-radius: 12px;
 }
 
-/* 강조된 메인 버튼 */
-.link-button.main {
-  background-color: #d14f61;
-  color: white;
-  box-shadow: 0 6px 12px rgba(209, 79, 97, 0.3);
-  border: none;
-  animation: pulse 1.5s infinite;
-}
 
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.03); }
-  100% { transform: scale(1); }
-}
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+      100% { transform: scale(1); }
+    }
 
-/* 연한 톤 버튼 */
-.link-button.soft {
-  background-color: #ffeef0;
-  color: #d14f61;
-  border: 2px solid #fbd3d7;
-  box-shadow: none;
-}
+    .link-button.soft {
+      background-color: #ffeef0;
+      color: #d14f61;
+      border: 2px solid #fbd3d7;
+      box-shadow: none;
+    }
 
-.link-button.soft:hover {
-  background-color: #fce4e6;
-}
-
+    .link-button.soft:hover {
+      background-color: #fce4e6;
+    }
 
     .emoji {
       font-size: 22px;
@@ -111,26 +119,34 @@
 </head>
 <body>
 
-
   <h1>🎉 Chào mừng bạn đến với <strong>CUOI THOI</strong></h1>
   <div class="highlight-text">Nơi tạo thiệp cưới <strong>cực xinh</strong> chỉ trong vài phút</div>
-  <div class="free-tag">🚀 Miễn phí 100% – Không cần đăng ký!</div>
+  <div class="free-tag">🚀"FREE luôn á! Tạo thử liền đi 😍" </div>
 
- <!-- 메인 강조 버튼 -->
-<a class="link-button main" href="https://cuoithoi.com.vn" target="_blank">
+  <!-- 메인 강조 버튼 (외부 브라우저 열기) -->
+  <button class="link-button main" onclick="openInExternalBrowser()">
     <span class="emoji">💌</span> Tạo thiệp cưới ngay
-  </a>
+  </button>
   
-  <!-- 틱톡 버튼 (연한 톤) -->
-  <a class="link-button soft" href="https://www.tiktok.com/@cuoithoithiepcuoi?_t=ZS-8vgRh6k53Jf&_r=1" target="_blank">
+<!-- 틱톡 버튼 (연한 톤 + 작게) -->
+<a class="link-button soft small" href="https://www.tiktok.com/@cuoithoithiepcuoi?_t=ZS-8vgRh6k53Jf&_r=1" target="_blank">
     <span class="emoji">🎬</span> Xem trên TikTok
   </a>
   
-  <!-- 페이스북 버튼 (연한 톤) -->
-  <a class="link-button soft" href="https://www.facebook.com/share/18swAZCkYy/?mibextid=wwXIfr" target="_blank">
+  <!-- 페이스북 버튼 (연한 톤 + 작게) -->
+  <a class="link-button soft small" href="https://www.facebook.com/share/18swAZCkYy/?mibextid=wwXIfr" target="_blank">
     <span class="emoji">📘</span> Theo dõi Facebook
   </a>
   
+
+  <!-- 외부 브라우저 열기 스크립트 -->
+  <script>
+    function openInExternalBrowser() {
+      // 이 링크는 반드시 보안 브라우저에서 열어야 하는 주소입니다
+      const targetUrl = "https://cuoithoi.com.vn";
+      window.location.href = targetUrl;
+    }
+  </script>
 
 </body>
 </html>
