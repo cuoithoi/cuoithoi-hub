@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CUOI THOI - Trang trung gian</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Quicksand', sans-serif;
+      line-height: 1.6; /* 글로벌 줄 간격 설정 */
+    }
+
+    /* 흔들리는 애니메이션 */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+    .animate-float {
+      animation: float 2.5s ease-in-out infinite;
+    }
+
+    /* 텍스트 그림자 */
+    .text-shadow {
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+<body
+  class="bg-cover bg-center min-h-screen flex flex-col items-center justify-start pt-20 text-white px-4"
+  style="background-image: url('./wedding-background.png');"
+>
+  <!-- 헤더 -->
+  <h1 class="text-4xl tracking-wide mb-6 text-shadow leading-snug">
+    Chào mừng bạn đến với
+  </h1>
+  <h2 class="text-8xl font-extrabold mb-10 text-shadow leading-snug">
+    CUOI THOI
+  </h2>
+
+  <!-- 감각적인 타원형 박스 -->
+  <div
+    class="relative flex flex-col items-center justify-center
+           px-20 py-4 bg-[#ffffffb3] rounded-full shadow-xl
+           animate-float text-black font-semibold text-3xl
+           mb-60 opacity-90"
+  >
+    <span class="block mb-1 leading-tight">TẠO THIỆP</span>
+    <span class="font-extrabold underline leading-tight">MIỄN PHÍ NGAY</span>
+  </div>
+
+  <!-- 안내 문구 -->
+  <p class="mb-4 text-white text-center text-shadow leading-relaxed">
+    <span class="font-semibold">Nhấn sao chép</span> dưới đây để mở<br/>
+    website Cưới Thôi ngoài TikTok!
+  </p>
+
+  <p class="mb-4 underline text-white text-shadow leading-relaxed">
+    https://cuoithoi.com.vn
+  </p>
+
+  <!-- 복사 버튼 -->
+  <button
+    onclick="copyToClipboard()"
+    class="bg-white text-black font-semibold py-2 px-4 rounded-full shadow hover:bg-gray-200 transition leading-normal"
+  >
+    📋 SAO CHÉP LINK RỒI DÁN VÀO TRÌNH DUYỆT KHÁC ĐỂ MỞ!
+  </button>
+
+  <!-- Script -->
+  <script>
+    function copyToClipboard() {
+      const text = "https://cuoithoi.com.vn";
+      const textArea = document.createElement("textarea");
+      textArea.value = text;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textArea);
+      alert("Đã sao chép vào bộ nhớ tạm!");
+    }
+  </script>
+</body>
+</html>
